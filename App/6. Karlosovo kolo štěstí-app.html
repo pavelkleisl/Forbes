@@ -1,0 +1,692 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karlosovo kolo štěstí</title>
+<style type="text/css">
+    /* === Globální pozadí stránky === */
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .p-4 {
+        padding: 0 !important;
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+    main {
+        padding-top: 100px;
+    }
+
+    .container {
+        margin-top: -80px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* === Globální pozadí stránky === */
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    body {
+        background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 500px;
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+    /* === HLAVNÍ PANEL === */
+    .header-panel {
+        width: 100%;
+        height: 130px;
+        background-image: url("https://www.forbescasino.cz/assets/img/welcome-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .bonus-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 12px;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        border: 2px solid transparent;
+        background: linear-gradient(to right, #ffcc00, #ff6600) border-box;
+        padding: 2px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .bonus-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        padding: 12px 18px;
+        background: #ffffff0a;
+        color: #ffffff;
+        border: 2px solid #ffffff26;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .back-button:hover {
+        background: #ffffff2b;
+        color: #ffffff;
+    }
+
+    .back-button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        vertical-align: middle;
+        transform: rotate(90deg);
+    }
+
+    /* === HLAVNÍ OBSAH PANELU === */
+    .content-panel {
+        width: 100%;
+        background: #ffffff;
+        padding-top: 64px;
+        min-height: 500px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 60px;
+        margin-bottom: 60px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    /* === TITULKY BONUSU === */
+    .bonus-title {
+        color: #0d1345;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .bonus-subtitle {
+        width: 100%;
+        max-width: 900px;
+        justify-self: center;
+        color: #6f6f6f;
+        font-size: 16px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-weight: 400;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 20px;
+    }
+
+    .how-to {
+        width: 100%;
+        text-align: center;
+        color: #10880e;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-top: 40px;
+    }
+
+    /* === SEKCE KROKŮ BONUSU === */
+    .bonus-steps {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 10px 0;
+        max-width: 900px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 20px;
+    }
+
+    .bonus-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 33%;
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        height: stretch;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .bonus-step-link {
+        text-decoration: none;
+        color: inherit;
+        width: 33%;
+        height: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+        border-radius: 8px;
+    }
+
+    .bonus-step-link .bonus-step {
+        width: 100%;
+    }
+
+    .step-icon1,
+    .step-icon2,
+    .step-icon3 {
+        width: 100px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .step-icon1 {
+        background-image: url("https://www.forbescasino.cz/text_img/1214319ODI.png");
+    }
+
+    .step-icon2 {
+        background-image: url("https://www.forbescasino.cz/text_img/1155249MmY.png");
+    }
+
+    .step-icon3 {
+        background-image: url("https://www.forbescasino.cz/text_img/1155251ZjU.png");
+    }
+
+    .bonus-step-title {
+        color: #0d1345;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .bonus-step-subtitle {
+        color: #434343;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .bonus-step-subtitle a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    /* === TABULKY PROTOČENÍ A VÝHER === */
+    .table-section-title {
+        color: #10880e;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .highlight {
+        color: #252428;
+        font-weight: 600;
+    }
+
+    .table-container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: linear-gradient(0deg, #fff 0%, #f8f8f8 100%);
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .bonus-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .bonus-table th,
+    .bonus-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        font-weight: 500;
+    }
+
+    .bonus-table th {
+        background: #f5f5f5;
+        color: #0d1345;
+        font-weight: 600;
+    }
+
+    .bonus-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .bonus-table tbody tr:hover {
+        background: #f0f0f0;
+        transition: background 0.2s ease;
+    }
+
+    .symbol-img {
+        width: 50px;
+        height: 50px;
+        display: block;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 4px;
+    }
+
+    .symbol-img[data-tooltip] {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .symbol-img[data-tooltip]:hover::after,
+    .symbol-img[data-tooltip]:focus::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 50%;
+        top: 110%;
+        transform: translateX(-50%);
+        background: #222;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 15px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        opacity: 1;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    /* === PRAVIDLA BONUSU === */
+    .rules {
+        padding-left: 20px;
+        margin-bottom: 12px;
+        color: #6f6f6f;
+        font-size: 18px;
+    }
+
+    .content-rules {
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* === MEDIA === */
+    @media (max-width: 500px) {
+        .bonus-steps {
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            gap: 10px;
+        }
+
+        .bonus-step {
+            flex-direction: row;
+            width: 100%;
+            height: unset;
+        }
+
+        .bonus-step-link {
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: unset;
+            border-radius: 8px;
+        }
+
+        .bonus-step-text {
+            width: 70%;
+            align-items: flex-start;
+            margin-left: 1rem;
+            text-align: left;
+        }
+
+        .step-icon1,
+        .step-icon2,
+        .step-icon3 {
+            width: 30%;
+            height: 80px;
+            align-items: flex-start;
+            margin-left: 0rem;
+            margin-bottom: 0rem;
+            text-align: left;
+        }
+
+        .back-button img {
+            width: 16px;
+            height: 16px;
+            margin-right: 0px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -27px;
+        }
+
+        .p-0 {
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+        }
+
+        .content-rules {
+            padding: 10px 10px;
+            margin-top: 40px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -10px;
+            padding: 1.5rem !important;
+        }
+
+        .back-button {
+            font-size: 18px;
+            padding: 16px 32px;
+            top: 35px;
+            left: 20px;
+        }
+
+        .bonus-step {
+            height: stretch;
+        }
+
+        .table-container {
+            padding: 20px 10px 10px 10px;
+            margin: 40px auto;
+        }
+
+        .bonus-table {
+            font-size: 14px;
+        }
+
+        .bonus-table th,
+        .bonus-table td {
+            padding: 10px;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -49px;
+        }
+
+        .bonus-title {
+            font-size: 28px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -0.5rem;
+        }
+
+        .content-rules {
+            max-width: 900px;
+            justify-self: center;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 {
+            margin-top: 1rem;
+        }
+
+        .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+            border-radius: 12px 12px 0px 0px;
+            padding: 0rem !important;
+            background: transparent !important;
+        }
+
+        .header-panel {
+            border-radius: 12px 12px 0px 0px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .p-4 {
+            padding: 0rem !important;
+        }
+
+        .ul {
+            padding-left: 1.5rem !important;
+        }
+
+        .content-panel {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .bonus-table {
+            font-size: 12px;
+        }
+
+        .symbol-img {
+            width: 42px;
+            height: 42px;
+        }
+    }
+
+    .bonus-table tbody tr:focus {
+        outline: 2px solid #10880e;
+        background: #e8f4e8;
+    }
+</style>
+<!-- === HLAVNÍ PANEL === -->
+<div class="header-panel">
+    <div class="bonus-image">
+        <img alt="Bonus image" src="https://www.forbescasino.cz//text_img/1089412ZDc.webp" />
+    </div>
+    <a class="back-button" href="https://www.forbescasino.cz/bonuses-app?app=true">
+        <img src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"
+            alt="Back icon" />
+        Zpět
+    </a>
+</div>
+<!-- === HLAVNÍ OBSAH PANELU === -->
+<div class="content-panel">
+    <h1 class="bonus-title">Karlosovo kolo štěstí</h1>
+    <h2 class="bonus-subtitle">Toč denně a získej free spiny, body nebo extra točení! Vyber si Basic nebo Premium kolo
+        podle svých sázek!</h2>
+
+    <!-- === JAK SE ZAPOJIT === -->
+    <h3 class="how-to">Jak získáš tento bonus?</h3>
+    <div class="bonus-steps">
+        <a class="bonus-step-link">
+            <div class="bonus-step">
+                <div class="step-icon step-icon1"></div>
+                <div class="bonus-step-text">
+                    <div class="bonus-step-title">Aktivace bonusu</div>
+                    <div class="bonus-step-subtitle">Ve Forbesmánii si aktivuj bonus!</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- === TABULKA PROTOČENÍ === -->
+    <div class="table-container">
+        <h3 class="table-section-title">Tabulka protočení</h3>
+        <table class="bonus-table">
+            <thead>
+                <tr>
+                    <th>Úroveň</th>
+                    <th>Základní kolo <span class="nowrap">(3 otočení)</span></th>
+                    <th>Prémiové kolo <span class="nowrap">(2 otočení)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1–29</td>
+                    <td class="highlight">500 Kč</td>
+                    <td class="highlight">20 000 Kč</td>
+                </tr>
+                <tr>
+                    <td>30–59</td>
+                    <td class="highlight">2 000 Kč</td>
+                    <td class="highlight">50 000 Kč</td>
+                </tr>
+                <tr>
+                    <td>60+</td>
+                    <td class="highlight">5 000 Kč</td>
+                    <td class="highlight">100 000 Kč</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- === TABULKA VÝHER === -->
+    <div class="table-container">
+        <h3 class="table-section-title">Tabulka výher</h3>
+        <table class="bonus-table">
+            <thead>
+                <tr class="table-head">
+                    <th>Symbol</th>
+                    <th>Úroveň <span class="nowrap">1–29</span></th>
+                    <th>Úroveň <span class="nowrap">30–59</span></th>
+                    <th>Úroveň <span class="nowrap">60+</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166135Yzd.png" alt="Bar" class="symbol-img"
+                            title="Bar" data-tooltip="Bar">
+                    </td>
+                    <td>3 extra točení</td>
+                    <td>50 FS <span class="nowrap">@20 Kč</span></td>
+                    <td>100 FS <span class="nowrap">@20 Kč</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166137NDd.png" alt="Hrozny" class="symbol-img"
+                            title="Hrozny" data-tooltip="Hrozny">
+                    </td>
+                    <td>5 FS <span class="nowrap">@1 Kč</span></td>
+                    <td>20 FS <span class="nowrap">@1 Kč</span></td>
+                    <td>20 FS <span class="nowrap">@5 Kč</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166136N2E.png" alt="Čtyřlístek"
+                            class="symbol-img" title="Čtyřlístek" data-tooltip="Čtyřlístek">
+                    </td>
+                    <td>10 FS <span class="nowrap">@1 Kč</span></td>
+                    <td>15 FS <span class="nowrap">@5 Kč</span></td>
+                    <td>30 FS <span class="nowrap">@5 Kč</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166139MTY.png" alt="Sedmička" class="symbol-img"
+                            title="Sedmička" data-tooltip="Sedmička">
+                    </td>
+                    <td>20 FS <span class="nowrap">@5 Kč</span></td>
+                    <td>10 000 bodů</td>
+                    <td>25 000 bodů</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166138NTI.png" alt="Joker" class="symbol-img"
+                            title="Joker" data-tooltip="Joker">
+                    </td>
+                    <td>200 FS <span class="nowrap">@5 Kč</span></td>
+                    <td>50 000 bodů</td>
+                    <td>250 000 bodů</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166142NDM.png" alt="Citron" class="symbol-img"
+                            title="Citron" data-tooltip="Citron">
+                    </td>
+                    <td>500 Kč (x10 wager)</td>
+                    <td>2 extra točení</td>
+                    <td>2 extra točení</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166141MWE.png" alt="Třešně" class="symbol-img"
+                            title="Třešně" data-tooltip="Třešně">
+                    </td>
+                    <td>5 000 bodů</td>
+                    <td>50 FS <span class="nowrap">@10 Kč</span></td>
+                    <td>100 FS <span class="nowrap">@10 Kč</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://www.forbescasino.cz/text_img/1166140MDA.png" alt="Průstřel" class="symbol-img"
+                            title="Průstřel" data-tooltip="Průstřel">
+                    </td>
+                    <td>Nic</td>
+                    <td>Nic</td>
+                    <td>Nemůže padnout</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- === PRAVIDLA BONUSU === -->
+    <div class="content-rules">
+        <h3 class="how-to" style="margin: 20px 0;">Kompletní pravidla bonusu</h3>
+        <ul>
+            <li>Plně ověřený herní účet.</li>
+            <li>Aktivuj bonus denně ve <strong>Forbesmánii</strong>.</li>
+            <li>Splň sázkové požadavky podle své úrovně (viz tabulka).</li>
+            <li>Roztoč Karlosovo kolo štěstí (Basic: 3 točení, Premium: 2 točení).</li>
+            <li>Odměny: free spiny, věrnostní body nebo extra točení (platí 24 hodin).</li>
+            <li>Free spiny lze využít pouze ve hrách Synot nebo Multiplay 81.</li>
+            <li>Odměny jsou připsány okamžitě, free spiny do 1 minuty.</li>
+            <li>Žádné kompenzace za technické chyby, vyloučení za podvodné chování.</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,354 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .bg-lighter {
+        background: none !important;
+    }
+
+    .bg-lighter2 {
+        background: #f2f2f2;
+    }
+
+    h1 {
+        color: none;
+        font-size: 0px;
+    }
+
+    body {
+        font-family: Rubik;
+        padding: 20px;
+        background-image: url('https://forbescasino.cz/text_img/1079046MjI.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+        text-align: center;
+    }
+
+    .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+        background-color: transparent !important;
+    }
+
+    .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .box1 {
+        width: 100%;
+        max-width: calc(33.333% - 16px);
+        background: #0D1345;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        align-items: center;
+        font-family: rubik;
+
+    }
+
+    .box1 h3 {
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-family: Rubik;
+    }
+
+    .box1 img {
+        width: 100%;
+        height: 272px;
+        object-fit: cover;
+    }
+
+    .box1-content {
+        padding: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .title1 {
+        color: #0D1345;
+        font-size: 22px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .description1 {
+        color: #0D1345;
+        font-size: 16px;
+        font-weight: 400;
+        height: 77px;
+        overflow: hidden;
+    }
+
+    .bonus-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+        background-color: transparent;
+    }
+
+    .unique-h2 {
+        font-size: 40px;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-family: Rubik;
+
+    }
+
+    .unique-h2-yellow {
+        color: #FFFA00;
+        font-size: 60px;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-family: Rubik;
+    }
+
+    .unique-h3 {
+        font-size: 2em;
+        color: #ffffff;
+        text-align: center;
+        margin: 20px;
+        text-transform: uppercase;
+    }
+
+    .bonus-item {
+        text-align: center;
+        padding: 15px;
+        background-color: transparent;
+        border: 0;
+        border-radius: 8px;
+    }
+
+    .bonus-item p {
+        color: #FFFA00 !important;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 0 0 10px;
+    }
+
+    .bonus-item img {
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+        display: block;
+        border-radius: 5px;
+    }
+
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        /* increased max-width for bigger size */
+        overflow: hidden;
+        padding-top: 56.25%;
+        /* maintains 16:9 aspect ratio */
+        margin: 30px auto;
+        border-radius: 8px;
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .button1 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #F5B30C;
+        border-radius: 50px;
+        color: #0D1345;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        padding: 12px 25px;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        transition: background-color 0.3s ease;
+        font-family: Rubik;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .button1:hover {
+        background-color: #ffe600;
+    }
+
+    @media (max-width: 768px) {
+        .box1 {
+            max-width: 100%;
+        }
+
+
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                background-attachment: scroll;
+            }
+
+            .forbes-casino-container {
+                padding: 15px;
+            }
+
+            .forbes-casino-container h2 {
+                font-size: 1.6em;
+            }
+
+            .forbes-casino-container h3 {
+                font-size: 1.3em;
+            }
+
+            .forbes-casino-bonus-amount {
+                font-size: 2em;
+            }
+
+            .bonus-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .forbes-casino-bonus-images {
+                gap: 10px;
+            }
+
+            .forbes-casino-bonus-images img {
+                max-width: 100px;
+            }
+
+            .forbes-casino-container button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .forbes-casino-container h2 {
+                font-size: 1.4em;
+            }
+
+            .forbes-casino-container h3 {
+                font-size: 1.2em;
+            }
+
+            .forbes-casino-bonus-amount {
+                font-size: 1.8em;
+            }
+
+            .forbes-casino-container p {
+                font-size: 1em;
+            }
+
+            .bonus-item p {
+                font-size: 1em;
+            }
+        }
+    }
+</style>
+<div class="bg-lighter py-5" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <h1 class="text-center">registraceaff</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-10 offset-xl-1 p-4 p-sm-5">
+    <div class="content_mce">&nbsp;</div>
+</div>
+
+<h2 class="unique-h2"><strong>vstupní bonus až</strong></h2>
+
+<h2 class="unique-h2-yellow"><strong>125 000 KČ</strong></h2>
+
+<h2 class="unique-h2"><strong>50 freespinů zdarma</strong></h2>
+
+<h2 class="unique-h2"><a class="button1"
+        href="https://www.forbescasino.cz/registraceaff(modal:registration)">Zaregistruj se</a></h2>
+
+<div class="bonus-grid">
+    <div class="bonus-item">
+        <p>KAŽDÝ DEN NOVÝ BONUS</p>
+        <a href="https://www.forbescasino.cz/forbesmanie"><img alt="Denní bonus ikona"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/777/fff?text=Obr%C3%A1zek';this.alt='Chyba načítání obrázku';"
+                src="https://forbescasino.cz/text_img/1079074Yjg.png" /></a>
+    </div>
+
+    <div class="bonus-item">
+        <p>MILIONOVÝ JACKPOT</p>
+        <a href="https://www.forbescasino.cz/jackpoty"><img alt="Jackpot ikona"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/777/fff?text=Obr%C3%A1zek';this.alt='Chyba načítání obrázku';"
+                src="https://forbescasino.cz/text_img/1079075MzA.png" /></a>
+    </div>
+
+    <div class="bonus-item">
+        <p>AŽ 500 KČ VE FREESPINECH KAŽDÝ DEN</p>
+        <a href="https://www.forbescasino.cz/denni-prichod"><img alt="Freespiny ikona"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/777/fff?text=Obr%C3%A1zek';this.alt='Chyba načítání obrázku';"
+                src="https://forbescasino.cz/text_img/1079072ZDk.png" /></a>
+    </div>
+</div>
+
+<h2 class="unique-h2"><strong>jak na registraci?</strong></h2>
+
+<div class="iframe-container"><iframe
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" scrolling="no"
+        src="https://www.youtube.com/embed/iYhQ535HIXk" title="YouTube video player - Jak na registraci"></iframe></div>
+
+<h3 class="unique-h3"><strong>DALŠÍ SKVĚLÉ BONUSY</strong></h3>
+
+<div class="container1">
+    <div class="box1"><img alt="1023891ZmQ.png" src="https://forbescasino.cz//text_img/1084468MWI.jpg" />
+        <div class="box1-content">
+            <h3 class="title1">levelovací systém</h3>
+            <a class="button1" href="https://www.forbescasino.cz/level-system">Více informací zde</a>
+        </div>
+    </div>
+
+    <div class="box1"><img alt="1018264NzU.png" src="https://forbescasino.cz//text_img/1084470OGM.jpg" />
+        <div class="box1-content">
+            <h3 class="title1">karlosovo kolo štěstí</h3>
+            <a class="button1" href="https://www.forbescasino.cz/kolo-stesti">Více informací zde</a>
+        </div>
+    </div>
+
+    <div class="box1"><img alt="forbesmánir 1:1" src="https://forbescasino.cz/text_img/1084474ZWY.png" />
+        <div class="box1-content">
+            <h3 class="title1">Mystery jackpot</h3>
+
+            <p>&nbsp;</p>
+            <a class="button1" href="https://www.forbescasino.cz/mystery-jackpot">Více informací zde</a>
+        </div>
+    </div>
+</div>
+
+<div><a class="button1" href="https://www.forbescasino.cz/registraceaff(modal:registration)">Zaregistruj se</a></div>

@@ -1,0 +1,102 @@
+
+
+<style>
+    .cta-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 32px auto 14px auto;
+        padding: 16px 24px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff6b35 100%);
+        border: 1px solid rgba(255, 215, 0, 0.9);
+        font-size: 14px;
+        color: #1a1a3e;
+        position: relative;
+        overflow: hidden;
+        animation: ctaGlow 2.6s ease-in-out infinite alternate;
+        max-width: 400px;
+        width: fit-content;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 107, 53, 0.6);
+    }
+
+    .cta-button::before {
+        content: "";
+        position: absolute;
+        top: -130%;
+        left: -40%;
+        width: 60%;
+        height: 360%;
+        transform: rotate(18deg);
+        background: linear-gradient(to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.15) 45%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.15) 55%,
+                transparent 100%);
+        opacity: 0;
+        pointer-events: none;
+        animation: ctaShine 4s ease-in-out infinite;
+    }
+
+    .cta-button__text {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #000759;
+        animation: ctaPulse 1.8s ease-in-out infinite;
+        text-align: center;
+        width: 100%;
+    }
+
+    @keyframes ctaGlow {
+        0% {
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+        100% {
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 107, 53, 0.5);
+        }
+    }
+
+    @keyframes ctaPulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.045);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes ctaShine {
+        0% {
+            opacity: 0;
+            transform: translateX(-130%) rotate(18deg);
+        }
+        40% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 0;
+            transform: translateX(190%) rotate(18deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(190%) rotate(18deg);
+        }
+    }
+</style>
+
+<a href="https://www.forbescasino.cz/forbesmanie" class="cta-button" style="text-decoration: none;">
+    <span class="cta-button__text">JDU HRÁT</span>
+</a>

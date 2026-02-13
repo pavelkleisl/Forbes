@@ -1,0 +1,770 @@
+<style type="text/css">
+  /* === Globální pozadí stránky === */
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+
+  body {
+    background-image: url("https://forbescasino.cz/text_img/1204313MGZ.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 1920 px;
+  }
+
+  .d-block {
+    display: none !important;
+  }
+
+  /* === HLAVNI PANEL === */
+  .header-panel {
+    width: 100%;
+    height: 130px;
+    background-image: url("https://www.forbescasino.cz/text_img/1204318ZTY.webp");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* === BONUSOVÝ OBRÁZEK === */
+  .bonus-image {
+    height: 150px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+
+  .bonus-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* === ZPĚT TLAČÍTKO === */
+  .back-button {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 12px 18px;
+    background: #ffffff0a;
+    color: #ffffff;
+    border: 2px solid #ffffff26;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .back-button:hover {
+    background: #ffffff2b;
+    color: #ffffff;
+  }
+
+  .back-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: rotate(90deg);
+  }
+
+  /* === HLAVNÍ OBSAH PANELU === */
+  .content-panel {
+    width: 100%;
+    background: #ffffff;
+    padding-top: 64px;
+    min-height: 500px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* === TITULKY JACKPOTŮ === */
+  .bonus-title {
+    color: #0d1345;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .bonus-subtitle {
+    width: 100%;
+    max-width: 900px;
+    justify-self: center;
+    color: #6f6f6f;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .how-to {
+    width: 100%;
+    text-align: center;
+    color: #10880e;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .how-to-text {
+    width: 100%;
+    max-width: 900px;
+    padding: 18px 24px;
+    color: #333;
+    background-color: #e9ffe6;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    box-shadow: 0 2px 12px 0 rgba(16, 136, 14, 0.08);
+    border: 1px solid #d0f2cc;
+    letter-spacing: 0.01em;
+    line-height: inherit;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  /* === SEKCE KROKŮ BONUSU === */
+  .bonus-steps {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    padding: 10px 0;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 40px;
+  }
+
+  .bonus-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 33%;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    height: stretch;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .bonus-step-link {
+    text-decoration: none;
+    color: inherit;
+    width: 33%;
+    height: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 8px;
+  }
+
+  .bonus-step-link:hover {
+    background: #e8e8e8;
+    transform: scale(1.05);
+    border-radius: 8px;
+  }
+
+  .bonus-step-link .bonus-step {
+    width: 100%;
+  }
+
+  .step-icon1,
+  .step-icon2,
+  .step-icon3 {
+    width: 100px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .step-icon1 {
+    background-image: url("https://www.forbescasino.cz/text_img/1155248MTN.png");
+  }
+
+  .step-icon2 {
+    background-image: url("https://www.forbescasino.cz/text_img/1155249MmY.png");
+  }
+
+  .step-icon3 {
+    background-image: url("https://www.forbescasino.cz/text_img/1155251ZjU.png");
+  }
+
+  .bonus-step-title {
+    color: #0d1345;
+    font-size: 16px;
+  }
+
+  .bonus-step-subtitle {
+    color: #10880e;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .bonus-step-FS {
+    color: #434343;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .bonus-step-subtitle a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .content-rules {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* === MEDIA === */
+  @media (max-width: 500px) {
+    .bonus-steps {
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      gap: 10px;
+    }
+
+    .bonus-step {
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+    }
+
+    .bonus-step-link {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .bonus-step-text {
+      width: 70%;
+      align-items: flex-start;
+      margin-left: 1rem;
+      text-align: left;
+    }
+
+    .content-rules {
+      padding: 10px 10px;
+      margin-top: 40px;
+    }
+
+    .step-icon1,
+    .step-icon2,
+    .step-icon3 {
+      width: 30%;
+      height: 80px;
+      align-items: flex-start;
+      margin-left: 0rem;
+      margin-bottom: 0rem;
+      text-align: left;
+    }
+  }
+
+  .harmonogram-grid {
+    display: grid;
+    gap: 24px;
+    justify-self: center;
+    max-width: 900px;
+  }
+
+  .harmonogram-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 14px 0 rgba(13, 19, 69, 0.08);
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.18s ease-in-out, box-shadow 0.18s;
+    border: 1px solid #e5e5e5;
+    min-width: 0;
+  }
+
+  .harmonogram-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+    background: #f8f8f8;
+  }
+
+  .harmonogram-date {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: #0d1345;
+    padding: 18px 0 8px 0;
+    background-color: #f5f5f5;
+    letter-spacing: 0.04em;
+    border-radius: 0 0 12px 12px;
+    font-family: inherit;
+  }
+
+  .harmonogram-fs {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7e5b09;
+    padding: 12px 2px;
+    background: linear-gradient(135deg, #fffbe6 0%, #f9e79f 80%, #ffe57f 100%);
+    border-bottom: 1px solid #ffd700;
+    font-family: inherit;
+  }
+
+  /* === EXTRA ODMĚNA SEKCE === */
+  .extra-reward-section {
+    background: linear-gradient(135deg, #fffbe6 0%, #f9e79f 80%, #ffe57f 100%);
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 24px 0 rgba(255, 215, 0, 0.12);
+    border-radius: 18px;
+    padding: 0px 30px;
+    margin: 30px auto 0 auto;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .extra-reward-image {
+    min-width: 120px;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+  }
+
+  .extra-reward-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 10px #ffd700bb);
+  }
+
+  .extra-reward-content {
+    flex: 1;
+  }
+
+  .extra-reward-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ba8b1d;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 12px #ffd70044;
+    letter-spacing: 0.03em;
+  }
+
+  .extra-reward-text {
+    font-size: 1rem;
+    color: #4d3b0c;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .cta-jackpot-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .cta-jackpot-btn {
+    display: inline-block;
+    text-align: center;
+    max-width: 350px;
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ffcc00 0%, #ff6600 100%);
+    color: #0d0f22;
+    border: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(255, 102, 0, 0.07);
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(.4, 0, .2, 1), box-shadow 0.15s;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+
+  .cta-jackpot-btn:hover,
+  .cta-jackpot-btn:focus {
+    transform: scale(1.04);
+    background: linear-gradient(90deg, #ffd700 0%, #ff6600 100%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    color: #0d1345;
+    text-decoration: none;
+  }
+
+  .cta-jackpot-btn:active {
+    transform: scale(0.97);
+  }
+
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+
+    .p-0 {
+      margin-left: -16px !important;
+      margin-right: -16px !important;
+    }
+
+    .bonus-image {
+      height: 160px;
+      top: 15px;
+    }
+
+    .how-to-text {
+      font-size: 15px;
+      padding: 12px 8px;
+    }
+
+    .cta-jackpot-container {
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+
+    .cta-jackpot-btn {
+      font-size: 1.1rem;
+      padding: 0.8rem 0.7rem;
+      width: 80vw;
+      max-width: 350px;
+      white-space: normal;
+    }
+
+    .absolute-image {
+      width: 20px !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+
+    .bonus-step {
+      height: 100%;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+
+    .bonus-title {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 991.98px) {
+    .p-sm-5 {
+      margin-top: -0.5rem;
+    }
+
+    .content-rules {
+      max-width: 900px;
+      justify-self: center;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .p-sm-5 {
+      margin-top: 1rem;
+    }
+
+    .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+      border-radius: 12px 12px 0px 0px;
+      padding: 0rem !important;
+      background: transparent !important;
+    }
+
+    .header-panel {
+      border-radius: 12px 12px 0px 0px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .p-4 {
+      padding: 0rem !important;
+    }
+
+    .content-panel {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  @media (max-width: 950px) {
+    .harmonogram-grid {
+      max-width: 100%;
+    }
+
+    .harmonogram-date {
+      font-size: 1.4rem;
+      padding: 12px 0 8px 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .harmonogram-grid {}
+
+    .harmonogram-date {
+      font-size: 1.15rem;
+      padding: 10px 0 6px 0;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .harmonogram-grid {
+      margin: 24px auto 0 auto;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .harmonogram-grid {
+      max-width: 100%;
+    }
+
+    .harmonogram-date {
+      font-size: 1rem;
+      padding: 8px 0 4px 0;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .extra-reward-section {
+      flex-direction: column;
+      gap: 0px;
+      padding: 0px 16px 16px 16px;
+      max-width: 99%;
+      text-align: center;
+    }
+
+    .extra-reward-image {
+      margin: 0 auto;
+    }
+
+    .extra-reward-title {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .extra-reward-bonus {
+      font-size: 1.08rem;
+      padding: 7px 16px;
+    }
+  }
+
+  @media (min-width: 650px) and (max-width: 950px) {
+    .harmonogram-grid {
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
+  }
+
+  @media (max-width: 650px) {
+    .harmonogram-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 950px) {
+    .harmonogram-grid {
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+    }
+  }
+
+  .relative-parent {
+    position: relative;
+    width: auto;
+  }
+
+  .absolute-image {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: auto;
+    z-index: 2;
+  }
+
+ .harmonogram-cena-label {
+  display: block;
+  width: 100%;
+  padding: 6px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 10px 0 rgba(218, 165, 32, 0.08);
+  letter-spacing: 0.08em;
+  background: linear-gradient(90deg, #ffe57f 0%, #ffd700 80%, #fffbe6 100%);
+  color: #48360e;
+  border: 2px solid #ffd700;
+  position: relative;
+  z-index: 3;
+  font-family: inherit;
+  transition: transform 0.15s cubic-bezier(.4, 0, .2, 1), box-shadow 0.15s;
+}
+
+.cena-1 {
+  background: linear-gradient(90deg, #ffd700 0%, #ffcc00 100%);
+  color: #48360e;
+  border-color: #ffd700;
+}
+
+/* Stříbrná - Silver */
+.cena-2 {
+  background: linear-gradient(90deg, #e3e6ea 0%, #bfc7d1 80%, #f7f8fa 100%);
+  color: #262626;
+  border-color: #dadada;
+}
+
+/* Bronzová - Bronze */
+.cena-3 {
+  background: linear-gradient(90deg, #d7b08a 0%, #b27a3a 80%, #f6e7d0 100%);
+  color: #1e1b18;
+  border-color: #e8b882;
+}
+
+</style>
+<div class="header-panel">
+  <div class="bonus-image"><img alt="1197451ZWU.png" src="/text_img/1204312NDF.webp" /></div>
+</div>
+<!-- === TITLE === -->
+
+<div class="content-panel">
+  <h1 class="bonus-title">Karlos soutěž o podepsané trička</h1>
+
+  <h2 class="bonus-subtitle">Zapoj se do soutěže o podepsané triko a 1 000 Kč ve free spinech do hry Karlos Game, pro 3
+    šťastlivce!</h2>
+  <!-- === HLAVNI CENY === -->
+
+  <h3 class="how-to" style="margin-top: 20px; font-size: 24px;">HLAVNÍ CENY</h3>
+
+  <h2 class="how-to-text">Každý hráč, který aktivuje bonus a splní podmínky, získá free spiny a zároveň soutěžní lístky
+    do slosování o hlavní ceny:</h2>
+  <!-- === TRICKA === -->
+
+  <div class="harmonogram-grid">
+    <div class="harmonogram-item">
+      <img alt="1197443OTY.webp" class="harmonogram-img" src="/text_img/1204316NTk.webp" />
+      <div class="harmonogram-cena-label cena-1">1. cena</div>
+      <div class="harmonogram-fs">Podepsané tričko</div>
+      <div class="relative-parent"><img src="/text_img/1204333NTZ.png" alt="Plus" class="absolute-image"></div>
+      <div class="harmonogram-date">1000 Kč ve FS na Karlos Game</div>
+    </div>
+
+    <div class="harmonogram-item">
+      <img alt="1197444YWU.webp" class="harmonogram-img" src="/text_img/1204316NTk.webp" />
+      <div class="harmonogram-cena-label cena-2">2. cena</div>
+      <div class="harmonogram-fs">Podepsané tričko</div>
+      <div class="relative-parent"><img src="/text_img/1204333NTZ.png" alt="Plus" class="absolute-image"></div>
+      <div class="harmonogram-date">1 000 Kč ve FS na Karlos Game</div>
+    </div>
+
+    <div class="harmonogram-item">
+      <img alt="1197445MmF.webp" class="harmonogram-img" src="/text_img/1204316NTk.webp" />
+      <div class="harmonogram-cena-label cena-3">3. cena</div>
+      <div class="harmonogram-fs">Podepsané tričko</div>
+      <div class="relative-parent"><img src="/text_img/1204333NTZ.png" alt="Plus" class="absolute-image"></div>
+      <div class="harmonogram-date">1 000 Kč ve FS na Karlos Game</div>
+    </div>
+  </div>
+
+  <!-- === STEPPER === -->
+  <h3 class="how-to">Podmínky</h3>
+  <div class="bonus-steps"> <a class="bonus-step-link" href="https://www.forbescasino.cz/forbesmanie">
+      <div class="bonus-step">
+        <div class="step-icon step-icon1"></div>
+        <div class="bonus-step-text">
+          <div class="bonus-step-title">Protoč <strong>1 000 Kč</strong> na hrách Apollo Games</div>
+          <div class="bonus-step-subtitle">Získáš 1 lístek do slosování</div>
+          <div class="bonus-step-FS">+ získáš 4 FS po 5 Kč do Karlos Game</div>
+        </div>
+      </div>
+    </a> <a class="bonus-step-link" href="https://www.forbescasino.cz/forbesmanie">
+      <div class="bonus-step">
+        <div class="step-icon step-icon2"></div>
+        <div class="bonus-step-text">
+          <div class="bonus-step-title">Protoč <strong>2 000 Kč</strong> na hrách Apollo Games</div>
+          <div class="bonus-step-subtitle">Zíškáš 3 lístky do slosování</div>
+          <div class="bonus-step-FS">+ získáš 8 FS po 5 Kč do Karlos Game</div>
+        </div>
+      </div>
+    </a> <a class="bonus-step-link" href="https://www.forbescasino.cz/forbesmanie">
+      <div class="bonus-step">
+        <div class="step-icon step-icon3"></div>
+        <div class="bonus-step-text">
+          <div class="bonus-step-title">Protoč <strong>4 000 Kč</strong> na hrách Apollo Games</div>
+          <div class="bonus-step-subtitle">Získáš 5 lístků do slosování</div>
+          <div class="bonus-step-FS">+ získáš 16 FS po 5 Kč do Karlos Game</div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- === PRAVIDLA BONUSU === -->
+
+  <div class="content-rules">
+    <h3 class="how-to" style="margin: 20px 0;">Kompletní pravidla bonusu</h3>
+
+    <ul>
+      <li>Soutěž probíhá 17. 10. 2025 od 17:00 do 24. 10. 2025 do 17:00.</li>
+      <li>Zúčastnit se může každý hráč s dokončenou registrací a aktivovaným bonusem ve Forbesmánii.</li>
+      <li>Každou akci lze během soutěže využít opakovaně, splnění podmínek je nutné do 24 hodin od aktivace.</li>
+      <li>3 výherci budou vylosováni náhodně po skončení soutěže, nejpozději do 14 dnů.</li>
+      <li>Free spiny jsou připsány po splnění podmínek; hodnota jednoho freespinu je 5 Kč.</li>
+      <li>Pořadatel může vyloučit pokusy o zneužití nebo porušení pravidel.</li>
+      <li>Úplné znění podmínek soutěže najdeš <a href="/files/1204393MDI.pdf"
+          style="font-weight: 700; color: #10880e; text-decoration: underline;">ZDE</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-jackpot-container"><a class="cta-jackpot-btn" href="https://forbescasino.cz/forbesmanie">Chci hlavní
+      cenu!</a></div>
+</div>

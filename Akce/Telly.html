@@ -1,0 +1,1003 @@
+<style>
+  /* --- IMPORT PŮVODNÍCH STYLŮ (NEMĚNĚNO) --- */
+  body {
+    background-color: #0e0420 !important;
+  }
+
+  .p-sm-5 {
+    padding: 0rem !important;
+    border-radius: 12px !important;
+  }
+
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+
+  .container .row .bg-white {
+    background: transparent !important;
+  }
+
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+
+    .p-0 {
+      margin-left: -16px !important;
+      margin-right: -16px !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+  }
+
+  @media (min-width: 991.98px) {
+    .p-sm-5 {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .p-sm-5 {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .p-4 {
+      padding: 0rem !important;
+    }
+
+    .content-panel {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  .d-block {
+    display: none !important;
+  }
+
+  /* --- STYLY PRO TELLY WIDGET --- */
+  .telly-widget {
+    background: white;
+    max-width: 450px !important;
+    margin: 20px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    position: relative;
+    z-index: 10;
+  }
+
+  .telly-widget * {
+    box-sizing: border-box;
+  }
+
+  .telly-section-main,
+  .telly-section-cta,
+  .telly-section-info {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .telly-header h2 {
+    font-size: 28px;
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: 700 !important;
+  }
+
+  .telly-channels {
+    color: #2322cc;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0 15px;
+  }
+
+  .telly-logos-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .telly-logos-grid img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .telly-pricing {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    position: relative;
+  }
+
+  .telly-old-price {
+    text-decoration: line-through;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .telly-current-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+
+  .telly-discount-badge {
+    background: #ff005d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .telly-period {
+    color: #666;
+    font-size: 14px;
+    margin-top: -5px;
+  }
+
+  .telly-promo-text {
+    font-size: 13px;
+    color: #666;
+    margin: 10px 0;
+  }
+
+  .telly-btn-main {
+    display: inline-block;
+    background: #2322cc;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(35, 34, 204, 0.2);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .telly-btn-main:hover {
+    background: #1a1a99;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(35, 34, 204, 0.4);
+    color: white;
+  }
+
+  .telly-btn-main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-25deg);
+    transition: none;
+  }
+
+  .telly-btn-main:hover::after {
+    left: 150%;
+    transition: all 0.6s ease;
+  }
+
+  .telly-btn-main:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(35, 34, 204, 0.3);
+  }
+
+  .telly-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .telly-sports-link {
+    color: #999;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+
+  .telly-sports-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+  .telly-sports-icons img {
+    height: 22px;
+    opacity: 0.9;
+  }
+
+  .telly-footer-promo {
+    background: #ff005d;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .telly-promo-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .telly-hbo-logo {
+    height: 18px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1);
+  }
+
+  .telly-bullet {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+
+
+
+  /* --- HLAVNÍ CMS STYLY --- */
+
+  /* Wrapper */
+  .cms-landing-wrapper {
+    background-color: #0E0420;
+    background-image: url('https://www.forbescasino.cz//text_img/1304705NTl.webp');
+    /* Korunky BG */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 2200px;
+    color: #ffffff;
+    font-family: inherit;
+    width: 100%;
+    overflow-x: hidden;
+    line-height: 1.5;
+    text-align: center;
+    padding-bottom: 60px;
+  }
+
+  .cms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+  }
+
+  /* Nový horní přechod v kontejneru */
+  .cms-top-gradient-layer {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    /* Přechod z barvy do průhledna směrem dolů */
+    background: linear-gradient(to bottom, #0E0420, rgba(14, 4, 32, 0));
+    z-index: 1;
+    pointer-events: none;
+    /* Aby neblokoval klikání */
+  }
+
+  /* Typografie */
+  .cms-text-yellow {
+    color: #f5b30c;
+  }
+
+  .cms-h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #f5b30c;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .cms-h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #f5b30c;
+    margin-bottom: 20px;
+  }
+
+  .cms-h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  .cms-p {
+    font-size: 16px;
+    color: #dbdbdb;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tlačítka */
+  .cms-btn {
+    display: inline-block;
+    background-color: #f5b30c;
+    color: #000000;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(245, 179, 12, 0.4);
+  }
+
+  .cms-btn:hover {
+    background-color: #ffc12e;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: #000;
+  }
+
+  /* --- HERO SEKCE (ANIMOVANÁ) --- */
+
+  .cms-hero-section {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .cms-hero-bg-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    /* Mobilní výška */
+    overflow: hidden;
+  }
+
+  /* Přechod na spodní straně Hero obrázku */
+  .cms-hero-bg-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    /* Výška přechodu */
+    /* Gradient z barvy #0e0420 (dole) do průhledné (nahoře) */
+    background: linear-gradient(to top, #0e0420, rgba(14, 4, 32, 0));
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .cms-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Kompozice Popcornu a Lístků */
+  .cms-hero-composition {
+    position: absolute;
+    bottom: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px;
+    height: 350px;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  /* POPCORN - Nakloněný, levitující */
+  .cms-popcorn-img {
+    position: absolute;
+    width: 250px;
+    /* Desktop velikost */
+    bottom: 0;
+    left: 50%;
+    margin-left: -125px;
+    /* Centr na střed */
+    z-index: 5;
+    animation: cms-float-popcorn 4s ease-in-out infinite;
+  }
+
+  /* FS LÍSTKY - Obecný styl */
+  .cms-fs-ticket-img {
+    position: absolute;
+    z-index: 6;
+  }
+
+  /* Levý lístek */
+  .cms-fs-left {
+    width: 230px;
+    left: 35%;
+    bottom: -100px;
+    margin-left: -330px;
+    animation: cms-float-left 3.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  /* Pravý lístek */
+  .cms-fs-right {
+    width: 140px;
+    left: 55%;
+    bottom: -15px;
+    margin-left: 110px;
+    /* Posun doprava od středu */
+    animation: cms-float-right 3.8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* --- ANIMACE (Každá drží jinou rotaci) --- */
+
+  /* Popcorn - Náklon cca 8 stupňů */
+  @keyframes cms-float-popcorn {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+      transform: translateY(-7.5px) rotate(-6deg);
+    }
+  }
+
+  /* Levý lístek - Náklon cca -20 stupňů */
+  @keyframes cms-float-left {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(-20deg);
+    }
+
+    50% {
+      transform: translateY(-12px) rotate(-25deg);
+    }
+  }
+
+  /* Pravý lístek - Náklon cca 20 stupňů */
+  @keyframes cms-float-right {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(20deg);
+    }
+
+    50% {
+      transform: translateY(-12px) rotate(25deg);
+    }
+  }
+
+  /* LOGA ROW */
+  .cms-logos-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 0 30px 0;
+    /* Větší padding top kvůli popcornu */
+    z-index: 10;
+    margin-top: -90px;
+  }
+
+  .cms-logo {
+    height: 60px;
+    width: auto;
+  }
+
+  .cms-logo-divider {
+    width: 1px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Ostatní sekce */
+  .cms-hero-text {
+    position: relative;
+    z-index: 6;
+    padding-top: 10px;
+  }
+
+  .cms-widget-section {
+    position: relative;
+    margin: 60px 0;
+  }
+
+  /* Výchozí stav (mobil) - nic se nemění, jsou pod sebou */
+  .cms-split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 10;
+    /* Aby to bylo nad dekoracemi */
+  }
+
+  /* Desktop úprava (od 992px) */
+  @media (min-width: 992px) {
+    .cms-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      /* Obě strany stejně široké */
+      gap: 40px;
+      align-items: center;
+      /* Zarovnání na střed výšky */
+    }
+
+    /* Úprava features gridu aby byl v sloupci */
+    .cms-features-grid {
+      flex-direction: column;
+      /* Pod sebou */
+      margin: 0;
+      /* Zrušit původní margin */
+      text-align: left;
+      /* Zarovnat text doleva pro lepší čitelnost v sloupci */
+      padding-left: 40px;
+      /* Místo pro oddělovací čáru */
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      /* Oddělovací čára */
+    }
+
+    .cms-feature-item {
+      max-width: 100%;
+      /* Využít celou šířku sloupce */
+      flex: 0 0 auto;
+      /* Nesmršťovat */
+    }
+  }
+
+  .cms-widget-deco-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Pozicování ovoce */
+  .cms-fruit {
+    position: absolute;
+    width: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  }
+
+  .cms-f-clover {
+    top: 50px;
+    right: 50px;
+    width: 140px;
+    transform: rotate(-15deg);
+  }
+
+  .cms-f-orange {
+    top: 50px;
+    right: 50px;
+    width: 120px;
+  }
+
+  .cms-f-plum {
+    top: 50px;
+    right: 50px;
+    width: 130px;
+    transform: rotate(10deg);
+  }
+
+  .cms-f-leaf {
+    top: 50px;
+    right: 50px;
+    width: 100px;
+  }
+
+  .cms-f-diamond {
+    top: 50px;
+    right: 50px;
+    width: 110px;
+    transform: rotate(15deg);
+  }
+
+  .cms-f-grapes {
+    top: 50px;
+    right: 50px;
+    width: 100px;
+  }
+
+  .cms-f-melon {
+    top: 50px;
+    right: 50px;
+    width: 140px;
+  }
+
+  /* Feature Grid */
+  .cms-features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  .cms-feature-item {
+    flex: 1 1;
+  }
+
+  .cms-feature-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 5px;
+  }
+
+  .cms-feature-desc {
+    font-size: 14px;
+    color: #999;
+  }
+
+  /* Steps */
+  .cms-steps-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 40px 20px;
+    margin: 40px auto;
+    text-align: left;
+    max-width: 1000px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .cms-steps-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .cms-step-col h3 {
+    color: #f5b30c;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .cms-step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cms-step-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    color: #dbdbdb;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .cms-step-list li::before {
+    content: attr(data-index) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    color: #f5b30c;
+  }
+
+  .cms-text-block {
+    font-size: 15px;
+    color: #dbdbdb;
+    margin-bottom: 15px;
+  }
+
+  /* Footer */
+  .cms-rules-footer {
+    font-size: 12px;
+    color: #666;
+    max-width: 800px;
+    margin: 40px auto 0;
+    text-align: left;
+    padding: 0 20px;
+  }
+
+  .cms-rules-footer h4 {
+    color: #888;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .cms-rules-list {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  .cms-rules-list li {
+    margin-bottom: 5px;
+  }
+
+  /* --- MEDIA QUERIES --- */
+
+  @media (max-width: 768px) {
+    .cms-popcorn-img {
+      width: 190px;
+      margin-left: -95px;
+    }
+
+    /* Menší na mobilu */
+    .cms-fs-ticket-img {
+      width: 90px;
+      bottom: 20px;
+    }
+
+    .cms-fs-left {
+      margin-left: -130px;
+    }
+
+    .cms-fs-right {
+      margin-left: 50px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .cms-widget-deco-container {
+      display: block;
+    }
+
+    .cms-h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .cms-p {
+      font-size: 18px;
+    }
+
+    .cms-hero-bg-container {
+      height: 500px;
+    }
+
+    .cms-hero-composition {
+      height: 400px;
+      top: 0px;
+    }
+
+    .cms-steps-flex {
+      flex-direction: row;
+    }
+
+    .cms-step-col {
+      flex: 1;
+    }
+  }
+</style>
+
+<div class="cms-landing-wrapper">
+
+  <div class="cms-hero-section">
+    <div class="cms-hero-bg-container">
+      <img src="https://www.forbescasino.cz//text_img/1304630ZTk.webp" alt="Forbes Casino Telly"
+        class="cms-hero-bg-img">
+    </div>
+
+    <div class="cms-hero-composition">
+      <img src="https://www.forbescasino.cz//text_img/1304632MDI.webp" alt="Free Spins"
+        class="cms-fs-ticket-img cms-fs-left">
+
+      <img src="https://www.forbescasino.cz//text_img/1304631YTc.webp" alt="Popcorn" class="cms-popcorn-img">
+
+      <img src="https://www.forbescasino.cz//text_img/1304632MDI.webp" alt="Free Spins"
+        class="cms-fs-ticket-img cms-fs-right">
+    </div>
+    <div class="cms-top-gradient-layer"></div>
+  </div>
+
+  <div class="cms-container">
+
+    <div class="cms-logos-row">
+      <img src="https://www.forbescasino.cz/assets/img/logo-gray.svg" alt="Forbes" class="cms-logo"
+        style="filter: brightness(0) invert(1);">
+      <span class="cms-logo-divider"></span>
+      <img src="https://www.forbescasino.cz//text_img/1304629ZWE.svg" alt="Telly" class="cms-logo"
+        style="filter: brightness(0) invert(1);">
+    </div>
+
+    <div class="cms-hero-text">
+      <h1 class="cms-h1">Toč a sleduj Telly TV<br>měsíc zdarma!</h1>
+      <p class="cms-p">
+        Chceš se pořádně pobavit a ještě získat exkluzivní odměnu? Roztoč své oblíbené Tech4Bet automaty, získej do nich
+        free spiny a my ti přihodíme Střední balíček od Telly TV navíc jako dárek.
+      </p>
+      <a href="#akce" class="cms-btn">Chci balíček!</a>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <h2 class="cms-h2">Free spiny od Tech4Bet & Střední balíček<br>od Telly TV</h2>
+      <p class="cms-p">
+        Určitě to znáš taky. V televizi zrovna nic nedávají a nuda už je doslova hmatatelná. Ve Forbescasino.cz ale na
+        nudu známe lék.
+      </p>
+      <p class="cms-p">
+        Připravili jsme si pro tebe speciální bonusovou akci, která všechno vyřeší za tebe. Čekají na tebe nejen volné
+        točky do her od Tech4Bet v celkové hodnotě 50 Kč, ale také Střední balíček od Telly TV na měsíc zdarma.
+      </p>
+      <p class="cms-p">
+        Můžeš si tak nejen zatočit své oblíbené hry, ale ještě u toho sledovat některý ze 108 dostupných kanálů. Nalaď
+        se na Ligu mistrů nebo si odpočiň u některého z filmových či seriálových hitů. Volba je jenom na tobě.
+      </p>
+    </div>
+
+    <div class="cms-widget-section" id="akce">
+      <div class="cms-split-layout">
+
+        <div class="cms-widget-deco-container">
+          <img src="https://www.forbescasino.cz//text_img/1304637Zjk.webp" class="cms-fruit cms-f-clover" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304638N2F.webp" class="cms-fruit cms-f-orange" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304642ZTk.webp" class="cms-fruit cms-f-plum" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304639ODY.webp" class="cms-fruit cms-f-leaf" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304634MWY.webp" class="cms-fruit cms-f-diamond" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304636NWU.webp" class="cms-fruit cms-f-grapes" alt="">
+          <img src="https://www.forbescasino.cz//text_img/1304635NDB.webp" class="cms-fruit cms-f-melon" alt="">
+        </div>
+
+        <div class="telly-widget">
+          <div class="telly-section-main">
+            <div class="telly-header">
+              <h2>Střední</h2>
+              <div class="telly-channels">108 TV kanálů</div>
+            </div>
+            <div class="telly-logos-grid">
+              <img src="https://www.forbescasino.cz//text_img/1304613YTM.png" alt="AMC">
+              <img src="https://www.forbescasino.cz//text_img/1304612ZTI.png" alt="Disney">
+              <img src="https://www.forbescasino.cz//text_img/1304611MzU.png" alt="NatGeo">
+              <img src="https://www.forbescasino.cz//text_img/1304610YWJ.png" alt="Nova Sport">
+              <img src="https://www.forbescasino.cz//text_img/1304609ZGU.png" alt="Logo">
+            </div>
+          </div>
+
+          <div class="telly-section-cta">
+            <div class="telly-pricing-row">
+              <div class="telly-pricing">
+                <span class="telly-old-price">480 Kč</span>
+                <span class="telly-current-price">345 Kč</span>
+                <span class="telly-discount-badge">Sleva 28%</span>
+              </div>
+              <div class="telly-period">měsíčně</div>
+              <div class="telly-promo-text">Akční cena na 1 měsíc</div>
+            </div>
+            <a href="https://telly.cz/internetova-tv/stredni/" class="telly-btn-main">Zobrazit všechny programy</a>
+          </div>
+
+          <div class="telly-section-info">
+            <div class="telly-description">Střední balíček je sázka na jistotu. Filmy, sporty a dokumenty na jednom
+              místě.
+            </div>
+            <div class="telly-sports-info">
+              <a href="https://telly.cz/internetova-tv/stredni/" class="telly-sports-link">27 sportovních soutěží</a>
+              <div class="telly-sports-icons">
+                <img src="https://www.forbescasino.cz//text_img/1304606NTA.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304604ZTA.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304603ZDZ.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304602YTF.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304601ZGR.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304599NzQ.svg" alt="Sport">
+                <img src="https://www.forbescasino.cz//text_img/1304598N2M.svg" alt="Sport">
+              </div>
+            </div>
+          </div>
+
+          <div class="telly-footer-promo">
+            <div class="telly-promo-item">
+              <img src="https://www.forbescasino.cz//text_img/1304600M2Q.svg" alt="HBO" class="telly-hbo-logo">
+              <span>k balíčku na jeden měsíc</span>
+            </div>
+            <div class="telly-promo-item">
+              <span class="telly-bullet">•</span>
+              <span><strong>RED balíček</strong> do konce února zdarma</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cms-features-grid">
+          <div class="cms-feature-item">
+            <div class="cms-feature-val">Díky zpětnému přehrávání a 7dennímu</div>
+            <div class="cms-feature-desc">archivu vám nic neunikne.</div>
+          </div>
+          <div class="cms-feature-item">
+            <div class="cms-feature-val">99.95 % času bez výpadku.</div>
+            <div class="cms-feature-desc">Telly jede nonstop!</div>
+          </div>
+          <div class="cms-feature-item">
+            <div class="cms-feature-val">Sledujte kdekoliv</div>
+            <div class="cms-feature-desc">a kdykoliv na webu, mobilu a chytré televizi.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2 class="cms-h2">JAK ZÍSKÁM FREE SPINY A BALÍČEK OD TELLY TV?</h2>
+
+    <div class="cms-steps-section">
+      <div class="cms-steps-flex">
+        <div class="cms-step-col">
+          <ul class="cms-step-list">
+            <li data-index="1">Přihlas se do svého Forbes účtu.</li>
+            <li data-index="2">Aktivuj si bonus ve Forbesmánii.</li>
+            <li data-index="3">Vlož si na účet alespoň 1 000 Kč.</li>
+            <li data-index="4">Protoč 10 000 Kč na hrách od Tech4Bet.</li>
+            <li data-index="5">Ber 10 free spinů po 5 Kč do Tech4Bet automatu tvého výběru.</li>
+            <li data-index="6">Po splnění podmínek ti zašleme tvůj unikátní promo kód.</li>
+            <li data-index="7">Zadej promo kód v sekci „Mám předplacenou kartu / promo kód“ ve tvém Telly TV účtu.</li>
+            <li data-index="8">Sleduj tisíce seriálů, filmů a sportovních klání.</li>
+          </ul>
+        </div>
+        <div class="cms-step-col">
+          <div class="cms-text-block">
+            Stačí splnit tyto jednoduché podmínky a měsíc koukáš úplně zdarma. Žádná opakovaná platba kartou, jen čistá
+            zábava. Pamatuj si však, že musíš mít u Telly založený účet a promo kód využít do 31.12.2026, jinak
+            propadne.
+          </div>
+          <div class="cms-text-block">
+            Jsi připravený užít si zábavu na všech frontách? Aktivuj si svůj bonus hned teď, roztoč Tech4Bet hry zdarma
+            a vychutnej si ty nejlepší pořady na Telly TV.
+          </div>
+          <div style="margin-top: 30px; text-align: center;">
+            <a href="#" class="cms-btn">Jdu sledovat!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-rules-footer">
+      <h4>KOMPLETNÍ PRAVIDLA AKCE</h4>
+      <ul class="cms-rules-list">
+        <li>Bonus mohou získat pouze hráči s dokončenou registrací včetně ověření totožnosti, připojení platební metody
+          a nastavení herních limitů.</li>
+        <li>Bonusovou nabídku je nutné manuálně aktivovat ve Forbesmánii.</li>
+        <li>Po aktivaci bonusu je třeba vložit si na konto alespoň 1 000 Kč.</li>
+        <li>Pro získání bonusu musí hráč protočit 10 000 Kč na automatech od Tech4Bet.</li>
+        <li>Free spiny jsou připsány okamžitě do hráčem vybrané hry od Tech4Bet.</li>
+        <li>Promo kód na Telly TV bude hráči doručen po úplném splnění všech podmínek bonusu.</li>
+        <li>Pro využití promo kódu je nutné, aby si hráč založil účet na Telly TV.</li>
+        <li>Speciální promo kód lze uplatnit v sekci „Mám předplacenou kartu / promo kód“ na stránkách Telly TV.</li>
+        <li>Platnost promo kódu je do 31.12.2026.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>

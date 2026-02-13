@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Přehled aktuálních a ukončených turnajů v Forbes Casino. Denní odměny, bonusy a soutěže s hodnotnými cenami pro registrované hráče.">
+    <meta name="keywords"
+        content="Forbes Casino, turnaje, bonusy, casino turnaje, freespiny, casino akce, hazardní hry">
+    <meta name="author" content="Forbes Casino">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Přehled Turnajů - Forbes Casino">
+    <meta property="og:description"
+        content="Aktuální a ukončené turnaje v Forbes Casino. Získejte bonusy, freespiny a hodnotné ceny.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.forbescasino.cz/turnaje">
+    <meta property="og:image" content="https://www.forbescasino.cz//text_img/1096874NDZ.webp">
+    <meta property="og:locale" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Přehled Turnajů - Forbes Casino">
+    <meta name="twitter:description"
+        content="Aktuální a ukončené turnaje v Forbes Casino. Získejte bonusy, freespiny a hodnotné ceny.">
+    <meta name="twitter:image" content="https://www.forbescasino.cz//text_img/1096874NDZ.webp">
+    <link rel="canonical" href="https://www.forbescasino.cz/turnaje">
+    <title>Přehled Turnajů - Forbes Casino | Aktuální Bonusové Akce</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Přehled Turnajů - Forbes Casino",
+      "description": "Přehled aktuálních a ukončených turnajů v Forbes Casino s bonusy a cenami",
+      "url": "https://www.forbescasino.cz/turnaje",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forbes Casino"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+            background: url("https://www.forbescasino.cz//text_img/1096874NDZ.webp") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .bg-lighter {
+            background: none !important;
+            display: none;
+        }
+
+        .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+            border-radius: 12px 12px 0px 0px;
+        }
+
+        .d-block {
+            display: none !important;
+            /* ruší jackpot panel */
+        }
+
+        .content-panel {
+            width: 100%;
+            background: #ffffff;
+            padding-top: 64px;
+            min-height: 500px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 30px;
+            margin-bottom: 60px;
+            border-radius: 12px;
+        }
+
+        .main-title {
+            text-align: center;
+            color: #0d1345;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            margin-top: 0;
+        }
+
+        .section-title {
+            color: #0d1345;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .bonuses-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .box1 {
+            width: 100%;
+            max-width: calc(33.333% - 11px);
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e0e0e0;
+            margin-bottom: 16px;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .box1:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .box1 img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .box1-content {
+            width: 100%;
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge1,
+        .badge3,
+        .badge4 {
+            padding: 6px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px 0 12px 0;
+            color: white;
+            max-width: fit-content;
+            max-height: fit-content;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .badge1 {
+            background: #13db0f;
+            color: #000000;
+        }
+
+        .badge3 {
+            background: #606060;
+            color: #ffffff;
+        }
+
+        .badge4 {
+            background: #cc00ff;
+            color: #ffffff;
+        }
+
+        .title1 {
+            color: #0d1345;
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .description1 {
+            color: #636363;
+            font-size: 14px;
+            font-weight: 400;
+            height: 54px;
+            line-height: 18px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+
+        .tournament-price {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 0.5rem;
+            background: linear-gradient(90deg, #fff59d 0%, #ffd54f 50%, #ffca28 100%);
+            color: #2b2100;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 18px;
+            box-shadow: 0 6px 14px rgba(255, 193, 7, 0.18), inset 0 -2px 0 rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            white-space: nowrap;
+            -webkit-font-smoothing: antialiased;
+            align-self: flex-start;
+        }
+
+        .warning-text {
+            width: 100%;
+            max-width: 900px;
+            padding: 18px 24px;
+            margin-top: 32px;
+            color: #7d7d7d;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 300;
+            text-align: center;
+            box-shadow: 0 2px 12px 0 rgba(16, 136, 14, 0.08);
+            border: 1px solid #d7d7d7;
+            letter-spacing: 0.01em;
+            line-height: inherit;
+            justify-self: center;
+        }
+
+        /* místo emoji použijeme malé SVG jako background image (data URI) */
+        .tournament-price::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232b2100' d='M12 2l2.39 4.85L19 8l-3.5 3.23L16.18 16 12 13.77 7.82 16l.68-4.77L5 8l4.61-.15L12 2z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* mobilní úprava */
+        @media (max-width: 480px) {
+            .tournament-price {
+                font-size: 15px;
+                padding: 6px 10px;
+            }
+
+            .tournament-price::before {
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+            }
+        }
+
+        .divider {
+            color: #e0e0e0;
+            opacity: 100%;
+            height: 1px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 576px) {
+            .p-sm-5 {
+                margin-top: -27px;
+            }
+
+            .p-0 {
+                margin-left: -16px !important;
+                margin-right: -16px !important;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .p-sm-5 {
+                margin-top: -10px;
+                padding: 1.5rem !important;
+            }
+
+            .back-button {
+                font-size: 18px;
+                padding: 16px 32px;
+                top: 35px;
+                left: 20px;
+            }
+
+            .bonus-step {
+                height: -webkit-fill-available;
+            }
+        }
+
+        @media (min-width: 767.98px) {
+            .p-sm-5 {
+                margin-top: -49px;
+            }
+
+            .bonus-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (min-width: 991.98px) {
+            .p-sm-5 {
+                margin-top: -0.5rem;
+            }
+
+            .games-carousel {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .content-rules {
+                max-width: 900px;
+                justify-self: center;
+            }
+        }
+
+        @media (max-width: 978px) {
+            .content-panel {
+                padding-top: 2rem;
+                padding-left: 1rem;
+                padding-right: 0rem;
+                margin-bottom: 0rem;
+            }
+
+            .bonuses-container {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 16px;
+                /* Pro scroll bar */
+            }
+
+            .box1 {
+                max-width: 300px;
+                min-width: 280px;
+                /* Pro konzistenci */
+                flex: 0 0 auto;
+            }
+
+            .box1:hover {
+                transform: scale(1.00);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+            }
+
+            .section .bonuses-container {
+                height: auto;
+                /* Výška se prizpusobí nejvetšímu */
+            }
+
+            .box1-content {
+                padding: 16px;
+            }
+
+            .main-title,
+            .section-title {
+                padding-right: 1rem;
+            }
+
+            .main-title {
+                padding-right: 1rem;
+                font-size: 22px;
+                font-weight: 700;
+            }
+
+            .bonuses-container .box1:last-child {
+                margin-right: 30px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .p-sm-5 {
+                margin-top: 1rem;
+            }
+
+            .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+                border-radius: 12px 12px 0px 0px;
+                padding: 0rem !important;
+                background: transparent !important;
+            }
+
+            .header-panel {
+                border-radius: 12px 12px 0px 0px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+                border-radius: 0px;
+            }
+
+            .p-4 {
+                padding: 0rem !important;
+            }
+
+            .ul {
+                padding-left: 1.5rem !important;
+            }
+        }
+    </style>
+
+    <div class="content-panel">
+        <h1 class="main-title">Přehled Turnajů</h1>
+        <hr class="divider">
+        <div class="section">
+            <h2 class="section-title">UKONČENÉ</h2>
+
+            <div class="bonuses-container">
+                <a href="https://www.forbescasino.cz/vanocni-turnaj" class="box1">
+                    <img alt="vanocni-turnaj" style="filter: grayscale(100%);" src="https://www.forbescasino.cz//text_img/1254417MDc.png" />
+                    <div class="box1-content">
+                        <div class="badge3">UKONČENO</div>
+                        <h3 class="title1">VÁNOČNÍ TURNAJ </h3>
+                        <div class="tournament-price">17 500 Kč na hráče</div>
+                        <div class="description1">7 dnů plných nadupané zábavy a štědrých odměn od Tech4Bet!</div>
+                    </div>
+                </a>
+
+                <a href="https://www.forbescasino.cz/mega-turnaj" class="box1"> <img style="filter: grayscale(100%);"
+                        alt="mega-turnaj" src="https://www.forbescasino.cz//text_img/1236485ZWE.png" />
+                    <div class="box1-content">
+                        <div class="badge3">UKONČENO</div>
+                        <h3 class="title1">MEGA TURNAJ </h3>
+                        <div class="tournament-price">15 000 Kč na hráče</div>
+                        <div class="description1">Předvánoční Mega Turnaj pro hráče s úrovní 10+</div>
+                    </div>
+                </a>
+
+                <a href="https://www.forbescasino.cz/mini-turnaj" class="box1"> <img style="filter: grayscale(100%);"
+                        alt="mini-turnaj" src="https://www.forbescasino.cz//text_img/1236488ZDM.png" />
+                    <div class="box1-content">
+                        <div class="badge3">UKONČENO</div>
+                        <h3 class="title1">MINI TURNAJ</h3>
+                        <div class="tournament-price">2 000 Kč na hráče</div>
+                        <div class="description1">Předvánoční Mini Turnaj pro hráče s úrovní 1–9</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <h2 class="warning-text"><strong>Poznámka:</strong> „Turnaj“ na této stránce je marketingová bonusová akce,
+            nikoli
+            turnaj ve
+            smyslu
+            zákona o hazardních hrách. Hráči spolu nesoutěží, nevznikají žebříčky a odměny nezávisí na výsledku hazardní
+            hry. Jde o dobrovolnou sérii denních úkolů, za jejichž splnění hráč obdrží bonusové odměny (freespiny, body
+            apod.) podle dopředu stanovených pravidel.
+        </h2>
+    </div>

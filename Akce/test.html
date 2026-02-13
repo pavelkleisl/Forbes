@@ -1,0 +1,241 @@
+<style>
+  /* Override existing styles */
+ 
+  /* KONTEJNER A WRAPPER */
+:root {
+  --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+  --duration: 6.66s;
+}
+
+.cms-card-front {
+  display: grid;
+  position: relative;
+  transform: translate3d(0, 0, 0.01px);
+  height: clamp(380px, 100svh - 150px, 500px);
+  width: auto;
+  aspect-ratio: 3/2;
+  border-radius: 3.5%/5%;
+  background-image: url(https://simey-credit-card.netlify.app/img/bgs/default.jpg);
+  background-size: cover;
+  box-shadow: 0 30px 40px -25px rgb(15, 5, 20), 0 20px 50px -15px rgb(15, 5, 20);
+  overflow: hidden;
+  animation: tilt var(--duration) ease infinite;
+  image-rendering: optimizequality;
+}
+
+.cms-card-front:before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translate3d(0, 0, 0.01px);
+  background-image: var(--glitter), var(--glitter), linear-gradient(120deg, black 25%, white, black 75%);
+  background-size: 100% 100%, 80% 80%, 200% 200%;
+  background-blend-mode: multiply, multiply, overlay;
+  background-position: 50% 50%, 50% 50%, 50% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: color-dodge;
+  filter: brightness(2) contrast(0.8);
+  animation: bg var(--duration) ease infinite;
+}
+
+.cms-card-front:after {
+  content: "";
+  background: none, none, linear-gradient(125deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 0.1%, rgba(255, 255, 255, 0) 60%);
+  background-size: 200% 200%;
+  mix-blend-mode: hard-light;
+  animation: bg var(--duration) ease infinite;
+}
+
+.cms-card-front * {
+  font-family: PT Mono, monospace;
+}
+
+.cms-cardLogo,
+.cms-expiry,
+.cms-name,
+.cms-number,
+.cms-chip {
+  color: #ccc;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  font-size: clamp(0.75rem, 2.8vw + 0.2rem, 1.1rem);
+  inset: 5%;
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.5), 1px -1px 0px rgba(255, 255, 255, 0.5), 1px 1px 0px rgba(0, 0, 0, 0.5), 1px -1px 0px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.cms-name, .cms-number, .cms-expiry {
+  background-image: linear-gradient(to bottom, #ededed 20%, #bababa 70%), none, linear-gradient(120deg, transparent 10%, white 40%, white 60%, transparent 90%);
+  background-size: cover, cover, 200%;
+  background-position: 50% 50%;
+  background-blend-mode: overlay;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: bg var(--duration) ease infinite;
+}
+
+.cms-number {
+  font-family: PT Mono, monospace;
+  text-align: center;
+  font-size: clamp(1rem, 8vw - 0.5rem, 2.5rem);
+  letter-spacing: 0.025em;
+  top: 60%;
+  bottom: auto;
+}
+
+.cms-expiry,
+.cms-name {
+  top: auto;
+}
+
+.cms-name {
+  right: auto;
+  max-width: 180px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.cms-expiry {
+  left: auto;
+}
+
+.cms-cardLogo {
+  bottom: auto;
+  left: auto;
+  width: 15%;
+  filter: invert(1) saturate(0) brightness(1) contrast(1.2);
+  mix-blend-mode: screen;
+}
+
+.cms-chip {
+  display: grid;
+  place-items: center;
+  width: 14%;
+  aspect-ratio: 5/4;
+  left: 10%;
+  top: 30%;
+  border-radius: 10% 10% 10% 10%/15% 15% 15% 15%;
+  background-image: none, none, linear-gradient(120deg, #777 10%, #ddd 40%, #ddd 60%, #777 90%);
+  background-size: 200% 200%;
+  background-position: 50% 50%;
+  overflow: hidden;
+  animation: bg var(--duration) ease infinite;
+}
+
+.cms-chip svg {
+  display: block;
+  width: 90%;
+  fill: none;
+  stroke: #444;
+  stroke-width: 2;
+}
+
+.cms-contactless {
+  position: absolute;
+  left: 23%;
+  top: 29.5%;
+  width: 12%;
+}
+
+.cms-contactless svg {
+  rotate: 90deg;
+  stroke-width: 1.25;
+  stroke: white;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.5;
+}
+
+@keyframes tilt {
+  0%, 100% {
+    transform: translate3d(0, 0, 0.01px) rotateY(-20deg) rotateX(5deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0.01px) rotateY(20deg) rotateX(5deg);
+  }
+}
+@keyframes bg {
+  0%, 100% {
+    background-position: 50% 50%, calc(50% + 1px) calc(50% + 1px), 0% 50%;
+  }
+  50% {
+    background-position: 50% 50%, calc(50% - 1px) calc(50% - 1px), 100% 50%;
+  }
+}
+.cms-main {
+  display: grid;
+  grid-template-rows: minmax(20px, 100px) 1fr;
+  place-items: center;
+  min-height: 100%;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.cms-body {
+  color: white;
+  background: #333844;
+  font-family: "Heebo", sans-serif;
+  background: url(https://images.pexels.com/photos/3612932/pexels-photo-3612932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.cms-html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#chip,
+#contactless {
+  display: none;
+}
+
+.cms-h1 {
+  margin: 1em;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 0 1px 1px black;
+}
+</style>
+
+<div class="cms-card-wrapper">
+  <div class="cms-card">
+    <div class="cms-card-inner">
+      <div class="cms-card-front">
+        <div class="cms-card-bg"></div>
+        <div class="cms-card-glow"></div>
+        <svg class="cms-card-logo" width="72" height="24" viewBox="0 0 72 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M52.3973 1.01093L51.5588 5.99054C49.0448 4.56717 43.3231 4.23041 43.3231 6.85138C43.3231 7.89285 44.6177 8.60913 46.178 9.47241C48.5444 10.7817 51.5221 12.4291 51.5221 16.062C51.5221 21.8665 45.4731 24 41.4645 24C37.4558 24 34.8325 22.6901 34.8325 22.6901L35.7065 17.4848C38.1115 19.4688 45.4001 20.032 45.4001 16.8863C45.4001 15.5645 43.9656 14.785 42.3019 13.8811C40.0061 12.6336 37.2742 11.1491 37.2742 7.67563C37.2742 1.30988 44.1978 0 47.1132 0C49.8102 0 52.3973 1.01093 52.3973 1.01093ZM66.6055 23.6006H72L67.2966 0.414276H62.5732C60.3923 0.414276 59.8612 2.14215 59.8612 2.14215L51.0996 23.6006H57.2234L58.4481 20.1566H65.9167L66.6055 23.6006ZM60.1406 15.399L63.2275 6.72235L64.9642 15.399H60.1406ZM14.7942 16.3622L20.3951 0.414917H26.7181L17.371 23.6012H11.2498L6.14551 3.45825C2.83215 1.41281 0 0.807495 0 0.807495L0.108643 0.414917H9.36816C11.9161 0.414917 12.1552 2.50314 12.1552 2.50314L14.1313 12.9281L14.132 12.9294L14.7942 16.3622ZM25.3376 23.6006H31.2126L34.8851 0.414917H29.0095L25.3376 23.6006Z"
+            fill="white" />
+        </svg>
+        <div class="cms-card-contactless">
+          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="56">
+            <path fill="none" stroke="#f9f9f9" stroke-width="6" stroke-linecap="round" d="m35,3a50,50 0 0,1 0,50M24,8.5a39,39 0 0,1 0,39M13.5,13.55a28.2,28.5 0 0,1 0,28.5M3,19a18,17 0 0,1 0,18" />
+          </svg>
+        </div>
+        <div class="cms-card-chip"></div>
+        <div class="cms-card-holder">John Doe</div>
+        <div class="cms-card-number">1234 5678 9000 1234</div>
+        <div class="cms-card-valid">12/24</div>
+      </div>
+      <div class="cms-card-back">
+        <div class="cms-card-signature">John Doe</div>
+        <div class="cms-card-seccode">123</div>
+      </div>
+    </div>
+  </div>
+</div>

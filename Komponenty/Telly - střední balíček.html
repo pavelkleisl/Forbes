@@ -1,0 +1,340 @@
+<style>
+  .telly-widget {
+    background: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  .telly-widget * {
+    box-sizing: border-box;
+  }
+
+  .telly-section-main,
+  .telly-section-cta,
+  .telly-section-info {
+    padding: 25px;
+    text-align: center;
+  }
+
+  /* Typography */
+  .telly-header h2 {
+    font-size: 28px;
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: bold !important;
+  }
+
+  .telly-channels {
+    color: #2322cc;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0 15px;
+  }
+
+  /* Logos */
+  .telly-logos-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .telly-logos-grid img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Pricing Styling - Fixed "Kč" issue */
+  .telly-pricing {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    position: relative;
+  }
+
+  .telly-old-price {
+    text-decoration: line-through;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .telly-current-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+
+  .telly-discount-badge {
+    background: #ff005d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .telly-period {
+    color: #666;
+    font-size: 14px;
+    margin-top: -5px;
+  }
+
+  .telly-promo-text {
+    font-size: 13px;
+    color: #666;
+    margin: 10px 0;
+  }
+
+  /* Button */
+  .telly-btn-main {
+    display: inline-block;
+    background: #2322cc;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Plynulejší dojezd */
+    box-shadow: 0 4px 15px rgba(35, 34, 204, 0.2);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    /* Nutné pro efekt odlesku */
+  }
+
+  /* Samotný HOVER efekt */
+  .telly-btn-main:hover {
+    background: #1a1a99;
+    transform: translateY(-3px) scale(1.02);
+    /* Mírné nadzvednutí a zvětšení */
+    box-shadow: 0 8px 25px rgba(35, 34, 204, 0.4);
+    /* Hlubší stín */
+    color: white;
+  }
+
+  /* Efekt "blesknutí/odlesku" přes tlačítko */
+  .telly-btn-main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transform: skewX(-25deg);
+    transition: none;
+  }
+
+  .telly-btn-main:hover::after {
+    left: 150%;
+    transition: all 0.6s ease;
+  }
+
+  /* Efekt při kliknutí (aktivní stav) */
+  .telly-btn-main:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(35, 34, 204, 0.3);
+  }
+
+  /* Info & Sports */
+  .telly-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .telly-sports-link {
+    color: #999;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+
+  .telly-sports-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+  .telly-sports-icons img {
+    height: 22px;
+    opacity: 0.9;
+  }
+
+  /* Footer */
+  .telly-footer-promo {
+    background: #ff005d;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .telly-promo-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .telly-hbo-logo {
+    height: 18px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1);
+  }
+
+  .telly-bullet {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  /* --- TABLET LAYOUT (700px - 1100px) --- */
+  @media (min-width: 700px) and (max-width: 1099px) {
+    .telly-section-cta {
+      background: #fcfcfc;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      text-align: left;
+      padding: 20px 40px;
+    }
+
+    .telly-pricing-row {
+      margin-bottom: 0;
+    }
+
+    .telly-promo-text {
+      margin: 5px 0 0 0;
+    }
+  }
+
+  /* --- DESKTOP LAYOUT (1100px+) --- */
+  @media (min-width: 1100px) {
+    .telly-widget {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .telly-section-main {
+      flex: 1.4;
+      border-right: 1px solid #f0f0f0;
+      text-align: left;
+    }
+
+    .telly-section-cta {
+      flex: 1.1;
+      border-right: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .telly-section-info {
+      flex: 1.3;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .telly-logos-grid,
+    .telly-sports-icons {
+      justify-content: flex-start;
+    }
+
+    .telly-footer-promo {
+      flex: 1 1 100%;
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    /* Discount badge position on desktop */
+    .telly-discount-badge {
+      position: absolute;
+      top: -22px;
+      right: 0;
+      margin: 0;
+    }
+  }
+</style>
+
+<div class="telly-widget">
+  <div class="telly-section-main">
+    <div class="telly-header">
+      <h2>Střední</h2>
+      <div class="telly-channels">108 TV kanálů</div>
+    </div>
+    <div class="telly-logos-grid">
+      <img src="https://www.forbescasino.cz//text_img/1304613YTM.png" alt="AMC">
+      <img src="https://www.forbescasino.cz//text_img/1304612ZTI.png" alt="Disney">
+      <img src="https://www.forbescasino.cz//text_img/1304611MzU.png" alt="NatGeo">
+      <img src="https://www.forbescasino.cz//text_img/1304610YWJ.png" alt="Nova Sport">
+      <img src="https://www.forbescasino.cz//text_img/1304609ZGU.png" alt="Logo">
+    </div>
+  </div>
+
+  <div class="telly-section-cta">
+    <div class="telly-pricing-row">
+      <div class="telly-pricing">
+        <span class="telly-old-price">480 Kč</span>
+        <span class="telly-current-price">345 Kč</span>
+        <span class="telly-discount-badge">Sleva 28%</span>
+      </div>
+      <div class="telly-period">měsíčně</div>
+      <div class="telly-promo-text">Akční cena na 1 měsíc</div>
+    </div>
+    <a href="https://telly.cz/internetova-tv/stredni/" class="telly-btn-main">Zobrazit všechny programy</a>
+  </div>
+
+  <div class="telly-section-info">
+    <div class="telly-description">Střední balíček je sázka na jistotu. Filmy, sporty a dokumenty na jednom místě.</div>
+    <div class="telly-sports-info">
+      <a href="https://telly.cz/internetova-tv/stredni/" class="telly-sports-link">27 sportovních soutěží</a>
+      <div class="telly-sports-icons">
+        <img src="https://www.forbescasino.cz//text_img/1304606NTA.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304604ZTA.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304603ZDZ.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304602YTF.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304601ZGR.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304599NzQ.svg" alt="Sport">
+        <img src="https://www.forbescasino.cz//text_img/1304598N2M.svg" alt="Sport">
+      </div>
+    </div>
+  </div>
+
+  <div class="telly-footer-promo">
+    <div class="telly-promo-item">
+      <img src="https://www.forbescasino.cz//text_img/1304600M2Q.svg" alt="HBO" class="telly-hbo-logo">
+      <span>k balíčku na jeden měsíc</span>
+    </div>
+    <div class="telly-promo-item">
+      <span class="telly-bullet">•</span>
+      <span><strong>RED balíček</strong> do konce února zdarma</span>
+    </div>
+  </div>
+</div>

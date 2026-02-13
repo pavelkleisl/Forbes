@@ -1,0 +1,244 @@
+<style>
+.rating-section {
+    margin: 40px 0;
+    position: relative;
+}
+
+.rating-container {
+    background: linear-gradient(135deg, rgba(26, 33, 62, 0.95) 0%, rgba(15, 23, 40, 0.95) 100%);
+    border-radius: 24px;
+    padding: 48px 24px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.rating-bg-animation {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245, 179, 12, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+.rating-content {
+    position: relative;
+    z-index: 2;
+}
+
+.trophy-icon {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.trophy-icon-inner {
+    display: inline-block;
+    font-size: 72px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.stars-rating {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.star {
+    font-size: 48px;
+    color: #f5b30c;
+    filter: drop-shadow(0 0 10px #f5b30c);
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.star:nth-child(1) { animation-delay: 0s; }
+.star:nth-child(2) { animation-delay: 0.3s; }
+.star:nth-child(3) { animation-delay: 0.6s; }
+.star:nth-child(4) { animation-delay: 0.9s; }
+.star:nth-child(5) { animation-delay: 1.2s; }
+
+.highlight-text {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.highlight-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.highlight-gradient {
+    background: linear-gradient(135deg, #f5b30c 0%, #ffcc00 50%, #f5b30c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 32px;
+}
+
+.highlight-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
+    background: rgba(245, 179, 12, 0.1);
+    border-radius: 16px;
+    border: 2px solid rgba(245, 179, 12, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #f5b30c;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 900;
+    color: #f5b30c;
+    text-shadow: 0 0 20px rgba(245, 179, 12, 0.6);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.icons-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.icon-item {
+    text-align: center;
+}
+
+.icon-emoji {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.icon-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+</style>
+
+<!-- Interactive Star Rating Section -->
+<div class="rating-section">
+    <div class="rating-container">
+        
+        <!-- Animated background elements -->
+        <div class="rating-bg-animation"></div>
+        
+        <!-- Content -->
+        <div class="rating-content">
+            <!-- Trophy Icon -->
+            <div class="trophy-icon">
+                <div class="trophy-icon-inner">&#127942;</div>
+            </div>
+            
+            <!-- Stars Rating -->
+            <div class="stars-rating">
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+            </div>
+            
+            <!-- Highlight Text -->
+            <div class="highlight-text">
+                <p class="highlight-title">
+                    <span class="highlight-gradient">TOP HODNOCENÍ</span> od hráčů
+                </p>
+                <p class="highlight-description">
+                    Připoj se k tisícům spokojených hráčů a vychutnej si nejlepší online casino zážitek! 🎰
+                </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Aktivních hráčů</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Her v nabídce</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Podpora hráčů</div>
+                </div>
+            </div>
+            
+            <!-- Icons Row -->
+            <div class="icons-row">
+                <div class="icon-item">
+                    <div class="icon-emoji">&#127922;</div>
+                    <div class="icon-label">Casino hry</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-emoji">&#127920;</div>
+                    <div class="icon-label">Automaty</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-emoji">&#128142;</div>
+                    <div class="icon-label">VIP program</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-emoji">&#9889;</div>
+                    <div class="icon-label">Rychlé výběry</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

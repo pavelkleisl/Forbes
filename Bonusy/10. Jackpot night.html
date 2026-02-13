@@ -1,0 +1,427 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackpot Night</title>
+<style type="text/css">
+  /* === Globální pozadí stránky === */
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+  body {
+    background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 500px;
+  }
+  .d-block {
+    display: none !important;
+  }
+
+  /* === HLAVNI PANEL === */
+  .header-panel {
+    width: 100%;
+    height: 130px;
+    background-image: url("https://www.forbescasino.cz/assets/img/welcome-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* === BONUSOVÝ OBRÁZEK === */
+  .bonus-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 2px solid transparent;
+    background: linear-gradient(to right, #ffcc00, #ff6600) border-box;
+    padding: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .bonus-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* === ZPĚT TLAČÍTKO === */
+  .back-button {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 12px 18px;
+    background: #ffffff0a;
+    color: #ffffff;
+    border: 2px solid #ffffff26;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+  }
+  .back-button:hover {
+    background: #ffffff2b;
+    color: #ffffff;
+  }
+  .back-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: rotate(90deg);
+  }
+
+  /* === HLAVNÍ OBSAH PANELU === */
+  .content-panel {
+    width: 100%;
+    background: #ffffff;
+    padding-top: 64px;
+    min-height: 500px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* === TITULKY BONUSU === */
+  .bonus-title {
+    color: #0d1345;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .bonus-subtitle {
+    width: 100%;
+    max-width: 900px;
+    justify-self: center;
+    color: #6f6f6f;
+    font-size: 16px;
+    text-align: center;
+    margin-left: auto; margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+  }
+  .how-to {
+    width: 100%;
+    text-align: center;
+    color: #10880e;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 40px;
+  }
+
+
+  /* === SEKCE KROKŮ BONUSU === */
+  .bonus-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px 0;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+.bonus-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 33%;
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+.step-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  overflow: hidden;
+  background-image: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg');
+  background-size: contain;
+  background-position: center;
+}
+.svg-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  filter: invert(100%) brightness(300%);
+}
+.bonus-step-title {
+  color: #0d1345;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.bonus-step-subtitle {
+  color: #434343;
+  font-size: 14px;
+  line-height: 1.4;
+}
+  .highlight {
+    color: #10880e;
+    font-weight: 600;
+  }
+
+/* === CTA BUTTON === */
+
+  .cta-jackpot-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .cta-jackpot-btn {
+    display: inline-block;
+    text-align: center;
+    max-width: 350px;
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ffcc00 0%, #ff6600 100%);
+    color: #0d0f22;
+    border: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(255, 102, 0, 0.07);
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(.4,0,.2,1), box-shadow 0.15s;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+  .cta-jackpot-btn:hover, .cta-jackpot-btn:focus {
+    transform: scale(1.04);
+    background: linear-gradient(90deg, #ffd700 0%, #ff6600 100%);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    color: #0d1345;
+    text-decoration: none;
+  }
+  .cta-jackpot-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* === MEDIA QUERIES === */
+
+  @media (max-width: 500px) {
+    .bonus-steps {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 10px;
+    }
+    .bonus-step {
+        flex-direction: row;
+        width: 100%;
+    }
+    .step-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+    .svg-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .bonus-step-link {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      height: unset;
+      border-radius: 8px;
+    }
+    .bonus-step-text {
+      width: 60%;
+      align-items: flex-start;
+      margin-left: 1rem;
+      text-align: left;
+    }
+    .step-icon1,
+    .step-icon2,
+    .step-icon3 {
+      width: 30%;
+      height: 80px;
+      align-items: flex-start;
+      margin-left: 0rem;
+      margin-bottom: 0rem;
+      text-align: left;
+    }
+    .back-button img {
+      width: 16px;
+      height: 16px;
+      margin-right: 0px;
+    }
+    .content-panel {
+      padding-bottom: 30px;
+    }
+    .cta-jackpot-container {
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    .cta-jackpot-btn {
+      font-size: 1.1rem;
+      padding: 0.8rem 0.7rem;
+      width: 80vw;
+      max-width: 350px;
+      white-space: normal;
+    }
+  }
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+    .p-0 {
+      margin-left: -16px !important;
+      margin-right: -16px !important;
+    }
+  }
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+    .back-button {
+      font-size: 18px;
+      padding: 16px 32px;
+      top: 35px;
+      left: 20px;
+    }
+    .bonus-step {
+      height: stretch;
+    }
+  }
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+    .bonus-title {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: 760px) {
+    .cta-jackpot-btn {
+      max-width: 350px;
+      font-size: 1.2rem;
+      padding: 1rem 1.2rem;
+    }
+  }
+  @media (min-width: 991.98px) {
+    .p-sm-5 {
+      margin-top: -0.5rem;
+    }
+    .content-rules {
+      max-width: 900px;
+      justify-self: center;
+    }
+    .bonus-types-container { 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      overflow-x: visible; 
+      gap: 10px; 
+      scroll-snap-type: none; 
+      scrollbar-width: none; 
+      -webkit-overflow-scrolling: auto; 
+    }
+    .bonus-types-container::-webkit-scrollbar { display: none; }
+    .bonus-type-box { scroll-snap-align: none; }
+  }
+  @media (min-width: 1200px) {
+    .p-sm-5 {
+      margin-top: 1rem;
+    }
+    .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+      border-radius: 12px 12px 0px 0px;
+      padding: 0rem !important;
+      background: transparent!important;
+    }
+    .header-panel {
+      border-radius: 12px 12px 0px 0px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .p-4 {
+      padding: 0rem !important;
+    }
+    .ul {
+      padding-left: 1.5rem !important;
+    }
+    .content-panel {
+      margin-bottom: 0px;
+    }
+  }
+</style>
+
+<!-- === HLAVNÍ PANEL === -->
+<div class="header-panel">
+  <div class="bonus-image">
+    <img alt="Bonus image" src="https://www.forbescasino.cz/text_img/1167614Mjg.png" />
+  </div>
+  <a class="back-button" href="https://www.forbescasino.cz/bonuses">
+    <img src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e" alt="Back icon" />
+    Zpět
+  </a>
+</div>
+
+<!-- === HLAVNÍ OBSAH PANELU === -->
+<div class="content-panel">
+  <!-- === TITULKY BONUSU === -->
+  <h1 class="bonus-title">Jackpot Night</h1>
+  <h2 class="bonus-subtitle">Každou neděli lovíme jackpoty! Zapomeň na náhodu. Každou neděli večer ve Forbescasino.cz je to jasně dané. Mezi aktivní hráče pošleme balík peněz a ty můžeš být u toho!</h2>
+
+  <!-- === SEKCE KROKŮ BONUSU === -->
+  <h3 class="how-to">Jak si ulovit svůj casino jackpot?</h3>
+  <div class="bonus-steps">
+    <div class="bonus-step">
+      <div class="step-icon">
+        <img src="https://www.forbescasino.cz/text_img/1167617Njg.svg" alt="Krok 1" class="svg-icon" />
+      </div>
+      <div class="bonus-step-text">
+        <div class="bonus-step-title">Každou neděli večer!</div>
+        <div class="bonus-step-subtitle">Přesně od 20:00 do půlnoci</div>
+      </div>
+    </div>
+    <div class="bonus-step">
+      <div class="step-icon">
+        <img src="https://www.forbescasino.cz/text_img/1167616ZmY.svg" alt="Krok 2" class="svg-icon" />
+      </div>
+      <div class="bonus-step-text">
+        <div class="bonus-step-title">Co se stane?</div>
+        <div class="bonus-step-subtitle">Během těchto čtyř hodin garantovaně padne <strong>10 jackpotů!</strong> Ty můžeš být u toho!</div>
+      </div>
+    </div>
+    <div class="bonus-step">
+      <div class="step-icon">
+        <img src="https://www.forbescasino.cz/text_img/1167615ZTI.svg" alt="Krok 3" class="svg-icon" />
+      </div>
+      <div class="bonus-step-text">
+        <div class="bonus-step-title">Ulov si svůj Jackpot!</div>
+        <div class="bonus-step-subtitle">Nemusíš nic protáčet a ani plnit speciální úkoly. Jen se bav a čekej, až to cinkne.</div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-jackpot-container">
+    <a href="https://forbescasino.cz" class="cta-jackpot-btn">Jdu si pro jackpot</a>
+  </div>
+</div>

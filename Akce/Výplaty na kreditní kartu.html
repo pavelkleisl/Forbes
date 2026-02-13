@@ -1,0 +1,967 @@
+<style>
+  /* Override existing styles */
+
+  .p-sm-5 {
+    padding: 0rem !important;
+    border-radius: 12px !important;
+  }
+
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+
+  .container .row .bg-white {
+    background: transparent !important;
+  }
+
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+
+    .p-0 {
+      margin-left: -16px !important;
+      margin-right: -16px !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+  }
+
+  @media (min-width: 991.98px) {
+    .p-sm-5 {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .p-sm-5 {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .p-4 {
+      padding: 0rem !important;
+    }
+
+    .content-panel {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  .d-block {
+    display: none !important;
+  }
+
+
+
+
+
+
+
+
+
+
+  .cms-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Musí být úplně vzadu */
+    background-image: url("https://images.pexels.com/photos/3612932/pexels-photo-3612932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    /* Použijeme klasický filter místo backdrop-filter */
+    transform: scale(1.1);
+    /* Mírné zvětšení zabrání bílým okrajům při rozmazání */
+  }
+
+  /* KONTEJNER - Průhledný pro splynutí s pozadím webu */
+  .cms-withdrawal-main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+
+  /* HERO LAYOUT - Propojení textu a karty */
+  .cms-hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  .cms-hero-content {
+    flex: 1.2;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .cms-hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* TEXTOVÉ STYLY */
+  .cms-hero-title {
+    font-size: 3.5rem;
+    line-height: 0.95;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(245, 179, 12, 0.5);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+  }
+
+  .cms-hero-title span {
+    color: #f5b30c;
+    display: block;
+  }
+
+  .cms-hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+    opacity: 0.95;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+    max-width: 550px;
+  }
+
+  /* TVŮJ ORIGINÁLNÍ KÓD KARTY (BEZ ZMĚN VZHLEDU) */
+  .cms-card2 {
+    position: relative;
+    width: 440px;
+    aspect-ratio: 3/2;
+    border-radius: 18px;
+    background-image: url('https://simey-credit-card.netlify.app/img/bgs/default.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    box-shadow: 0 30px 40px -25px rgba(15, 5, 20, 1), 0 20px 50px -15px rgba(15, 5, 20, 1);
+    animation: cms-card2-tilt 6.66s ease-in-out infinite;
+    image-rendering: optimizequality;
+    will-change: transform;
+    transform-style: flat;
+    /* Zamezí vytváření 3D kontextu pro okolí */
+    backface-visibility: hidden;
+
+    box-shadow:
+      0 30px 40px -25px rgba(15, 5, 20, 1),
+      0 20px 50px -15px rgba(15, 5, 20, 1),
+      /* Intenzivní zlatá těsně u hrany karty */
+      0 0 20px rgba(245, 179, 12, 0.185),
+      /* Širší, měkká jantarová záře */
+      0 0 45px rgba(255, 191, 0, 0.057),
+      /* Velmi jemný, rozptýlený opar do dálky */
+      0 0 90px rgba(255, 165, 0, 0.1);
+
+    filter: drop-shadow(0 0 15px rgba(255, 217, 0, 0.16));
+  }
+
+  .cms-hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    perspective: 1000px;
+  }
+
+  .cms-hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    /* O něco menší než karta */
+    height: 300px;
+    background: radial-gradient(circle,
+        rgba(255, 217, 0, 0.116) 0%,
+        /* Jasný střed */
+        rgba(255, 100, 0, 0.2) 40%,
+        /* Přechod do ohnivé */
+        transparent 75%
+        /* Ztracení do tmy */
+      );
+    filter: blur(50px);
+    mix-blend-mode: screen;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: cms-aura-pulse 6.66s ease-in-out infinite;
+  }
+
+  /* 3. ANIMACE PRO PULZOVÁNÍ ZÁŘE */
+  @keyframes cms-aura-pulse {
+
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  .cms-card2-bg-glitter {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url("https://assets.codepen.io/13471/silver-glitter-background.png"), url("https://assets.codepen.io/13471/silver-glitter-background.png"), linear-gradient(120deg, black 25%, white, black 75%);
+    background-size: 100% 100%, 80% 80%, 200% 200%;
+    background-blend-mode: multiply, multiply, overlay;
+    background-position: 50% 50%, 50% 50%, 50% 50%;
+    mix-blend-mode: color-dodge;
+    filter: brightness(2) contrast(0.8);
+    pointer-events: none;
+    animation: cms-card2-bg-move 6.66s ease-in-out infinite;
+  }
+
+  .cms-card2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 0.1%, rgba(255, 255, 255, 0) 60%);
+    background-size: 200% 200%;
+    mix-blend-mode: hard-light;
+    animation: cms-card2-bg-move 6.66s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .cms-card2-content {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 10;
+  }
+
+  .cms-card2-number {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 68px;
+    text-align: center;
+    font-size: 2rem;
+    font-family: monospace;
+    letter-spacing: 0.045em;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to bottom, #ededed 20%, #bababa 70%), none, linear-gradient(120deg, transparent 10%, white 40%, white 60%, transparent 90%);
+    background-size: cover, cover, 200%;
+    background-position: 50% 50%;
+    background-blend-mode: overlay;
+    animation: cms-card2-bg-move 6.66s ease-in-out infinite;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.5), 1px -1px 0px rgba(255, 255, 255, 0.5), 1px 1px 0px rgba(0, 0, 0, 0.5), 1px -1px 0px rgba(0, 0, 0, 0.35);
+  }
+
+  .cms-card2-holder,
+  .cms-card2-expiry {
+    position: absolute;
+    bottom: 32px;
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to bottom, #ededed 20%, #bababa 70%), none, linear-gradient(120deg, transparent 10%, white 40%, white 60%, transparent 90%);
+    background-size: cover, cover, 200%;
+    background-position: 50% 50%;
+    background-blend-mode: overlay;
+    animation: cms-card2-bg-move 6.66s ease-in-out infinite;
+  }
+
+  .cms-card2-holder {
+    left: 35px;
+    max-width: 220px;
+    text-align: left;
+  }
+
+  .cms-card2-expiry {
+    right: 37px;
+  }
+
+  .cms-card2-logo {
+    position: absolute;
+    right: 37px;
+    top: 40px;
+    width: 64px;
+    filter: invert(1) saturate(0) brightness(1) contrast(1.2);
+    mix-blend-mode: screen;
+  }
+
+  .cms-card2-chip {
+    position: absolute;
+    left: 46px;
+    top: 92px;
+    width: 68px;
+    height: 58px;
+    border-radius: 11px;
+    background: linear-gradient(120deg, #777 10%, #ddd 40%, #ddd 60%, #777 90%);
+    background-size: 200% 200%;
+    background-position: 50% 50%;
+    overflow: hidden;
+    animation: cms-card2-bg-move 6.66s ease-in-out infinite;
+    display: grid;
+    place-items: center;
+  }
+
+  .cms-card2-chip svg {
+    width: 95%;
+    height: auto;
+    fill: none;
+    stroke: #444;
+    stroke-width: 2.4;
+  }
+
+  .cms-card2-contactless {
+    position: absolute;
+    left: 134px;
+    top: 100px;
+    width: 34px;
+    height: 28px;
+  }
+
+  .cms-card2-contactless svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.25;
+    stroke: white;
+    fill: none;
+    transform: rotate(90deg);
+    opacity: 0.45;
+  }
+
+  /* ANIMACE */
+  @keyframes cms-card2-tilt {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0.01px) rotateY(-20deg) rotateX(5deg);
+    }
+
+    50% {
+      transform: translate3d(0, 0, 0.01px) rotateY(20deg) rotateX(5deg);
+    }
+  }
+
+  @keyframes cms-card2-bg-move {
+
+    0%,
+    100% {
+      background-position: 50% 50%, 51% 51%, 0% 50%;
+    }
+
+    50% {
+      background-position: 50% 50%, 49% 49%, 100% 50%;
+    }
+  }
+
+  /* CTA TLAČÍTKO */
+  .cms-cta-button {
+    display: inline-block;
+    position: relative;
+    /* Gradient z tmavě fialové do jasně zlaté */
+    background: linear-gradient(90deg, #b97322 0%, #f5b30c 100%);
+    color: #ffffff !important;
+    padding: 18px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* Vnější zlatá záře */
+    box-shadow: 0 0 20px rgba(245, 179, 12, 0.4),
+      0 10px 20px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Vnitřní horní odlesk (ta bílá linka nahoře v tlačítku) */
+  .cms-cta-button::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 10%;
+    width: 80%;
+    height: 30%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+    border-radius: 50px;
+    pointer-events: none;
+  }
+
+  /* Animovaný "lesk", který projede tlačítkem při hoveru */
+  .cms-cta-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  .cms-cta-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(245, 179, 12, 0.6);
+    color: #ffffff;
+  }
+
+  .cms-cta-button:hover::after {
+    left: 150%;
+  }
+
+  /* Aktivní stav při kliknutí */
+  .cms-cta-button:active {
+    transform: scale(0.95);
+  }
+
+  /* SEKCE POD HERO (Karty a tabulka) */
+  .cms-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 60px 0;
+  }
+
+  .cms-step-card {
+    position: relative;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    /* Skleněný efekt */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Zlatý tenký okraj */
+    border: 1px solid rgba(245, 179, 12, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cms-step-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Horní svítící linka (odlesk) */
+  .cms-step-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(245, 179, 12, 0.8), transparent);
+  }
+
+  .cms-step-card:hover {
+    box-shadow: 0 20px 40px rgba(245, 179, 12, 0.15);
+    border-color: rgba(245, 179, 12, 0.6);
+  }
+
+  /* Úprava textů uvnitř karet */
+  .cms-step-card div[style*="font-weight: 800"] {
+    color: #f5b30c !important;
+    /* Nadpisy budou žluté */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cms-step-card div:last-child {
+    color: rgba(255, 255, 255, 0.8) !important;
+    /* Popisky bílé/šedé */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Ikony v kartách kroků */
+  .cms-step-icon {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(245, 179, 12, 0.5));
+  }
+
+  /* Nadpisy v kartách kroků */
+  .cms-step-title {
+    font-weight: 800;
+    color: #f5b30c;
+    /* Změněno na zlatou, aby to ladilo s dark modem */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Popisky v kartách kroků */
+  .cms-step-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .cms-info-table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03) !important;
+    /* Velmi jemné prosvětlení */
+    backdrop-filter: blur(15px);
+    /* Silnější rozmazání jako u stepperu */
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    /* Zaoblení stejné jako u karet kroků */
+    overflow: hidden;
+    border-collapse: separate;
+    /* Nutné pro border-radius na celé tabulce */
+    border-spacing: 0;
+    margin-top: 0;
+    border: 1px solid rgba(245, 179, 12, 0.3);
+    /* Zlatý tenký okraj */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    /* Hluboký stín */
+  }
+
+  /* Horní svítící odlesk tabulky (stejný efekt jako u kroků) */
+  .cms-table-wrapper {
+    position: relative;
+  }
+
+  /* Hlavička tabulky */
+  .cms-info-table th {
+    background: rgba(245, 179, 12, 0.15) !important;
+    color: #f5b30c !important;
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(245, 179, 12, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+  }
+
+  /* Buňky tabulky */
+  .cms-info-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.95rem;
+  }
+
+  /* Odstranění linky u posledního řádku */
+  .cms-info-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Efekt "proužků" (Zebra), ale velmi decentní */
+  .cms-info-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Hover efekt na řádky */
+  .cms-info-table tr:hover td {
+    background: rgba(245, 179, 12, 0.05);
+    transition: background 0.3s ease;
+  }
+
+  /* NOVÁ SEKCE PRO TEXT A TABULKU */
+  .cms-details-section {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: flex-start;
+  }
+
+  .cms-seo-text {
+    flex: 1.2;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .cms-seo-text h2 {
+    color: #f5b30c;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .cms-table-wrapper {
+    flex: 1;
+    min-width: 320px;
+  }
+
+  /* RESPONZIVITA */
+  @media (max-width: 1024px) {
+    .cms-card2 {
+      width: 400px;
+    }
+
+    .cms-hero-title {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .cms-card2 {
+      transform: scale(0.6);
+      transform-origin: center center;
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    .cms-hero-flex {
+      display: flex;
+      flex-direction: column;
+      /* Vše pod sebe */
+    }
+
+    /* Toto zařídí, aby se vnitřní prvky chovaly jako sourozenci pro 'order' */
+    .cms-hero-flex {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cms-hero-content {
+      display: contents;
+      /* Zruší obal divu pro účely flexboxu */
+    }
+
+    .cms-hero-title {
+      order: 1;
+      /* První nadpis */
+      text-align: center;
+    }
+
+    .cms-hero-visual {
+      order: 3;
+      /* Pořadí pod nadpisem */
+      display: flex;
+      transform: scale(0.78);
+      justify-content: center;
+      align-items: center;
+      margin-top: -20px;
+      margin-bottom: -10px;
+      overflow: visible;
+    }
+
+    .cms-hero-subtitle {
+      order: 2;
+      /* Třetí text */
+      text-align: center;
+    }
+
+    .cms-cta-button {
+      order: 4;
+      /* Čtvrté tlačítko */
+      margin: 0 auto;
+      margin-top: 35px;
+    }
+
+    .cms-card2-number {
+      font-size: 1.6rem;
+    }
+
+    .cms-step-card {
+      padding: 20px 20px;
+    }
+
+    /* Ikony v kartách kroků */
+    .cms-step-icon {
+      font-size: 4.5rem;
+    }
+
+    /* Nadpisy v kartách kroků */
+    .cms-step-title {
+      font-size: 1.6rem;
+    }
+
+    /* Popisky v kartách kroků */
+    .cms-step-description {
+      font-size: 1rem;
+    }
+
+    .cms-card2 {
+      box-shadow: none;
+    }
+
+    .cms-hero-visual::before {
+      background: none;
+    }
+
+    /* Změna kontejneru - menší mezery mezi kartami */
+    .cms-steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      /* Opravdu malé mezery */
+      margin: 30px 0;
+    }
+
+    .cms-step-card {
+      display: flex;
+      align-items: center;
+      /* Zarovnání ikony a textu na střed linky */
+      text-align: left;
+      /* Text už nebude vycentrovaný */
+      padding: 15px 20px;
+      /* Výrazně nižší paddingy */
+      gap: 20px;
+      /* Mezera mezi ikonou a textem */
+    }
+
+    .cms-step-icon {
+      font-size: 2.2rem !important;
+      /* Menší ikona */
+      margin-bottom: 0 !important;
+      /* Zrušení spodního okraje */
+      flex-shrink: 0;
+      /* Aby se ikona nezmenšovala */
+      width: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Obal pro texty uvnitř karty */
+    .cms-step-title {
+      font-size: 1.1rem !important;
+      margin-bottom: 2px !important;
+      margin-top: 0 !important;
+    }
+
+    .cms-step-description {
+      font-size: 0.85rem !important;
+      line-height: 1.3 !important;
+    }
+
+    .cms-details-section {
+      flex-direction: column;
+      /* Na mobilu pod sebe */
+      gap: 30px;
+    }
+
+    .cms-seo-text {
+      order: 1;
+      /* Text pro roboty první */
+    }
+
+    .cms-table-wrapper {
+      order: 2;
+      /* Tabulka druhá */
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    /* Zvětšíme prostor pro Hero sekci */
+    .cms-hero-flex {
+      gap: 40px;
+    }
+
+    .cms-hero-visual {
+      /* Karta se posune doprava mimo hlavní kontejner o 80px */
+      margin-right: -80px;
+      transform-origin: center;
+      transition: all 0.5s ease;
+    }
+
+    /* Volitelné: Jemné ztmavení pozadí za kartou pro lepší kontrast */
+    .cms-hero-visual::before {
+      width: 600px;
+      height: 400px;
+      filter: blur(80px);
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .cms-card2-number {
+      font-size: 2.2rem;
+    }
+
+    .cms-card2 {
+      width: 500px;
+    }
+
+    /* Na ultra-širokých monitorech může jít ještě dál */
+    .cms-hero-visual {
+      margin-right: -150px;
+    }
+  }
+</style>
+<div class="cms-bg-overlay"></div>
+<div class="cms-withdrawal-main-wrapper">
+
+  <div class="cms-hero-flex">
+    <div class="cms-hero-content">
+      <div class="cms-hero-title">
+        Peníze na kartě <span>RYCHLOSTÍ SVĚTLA!</span>
+      </div>
+
+      <div class="cms-mobile-card-wrapper">
+      </div>
+
+      <div class="cms-hero-subtitle">
+        Představujeme nejrychlejší cestu k vašim financím. Elegantní, bezpečná a neuvěřitelně rychlý výběr přímo na
+        vaši platební kartu. Bez zbytečných otázek.
+      </div>
+
+      <a href="/vyplaty-na-kreditni-kartu(modal:login)" class="cms-cta-button">Převést na kartu</a>
+    </div>
+
+    <div class="cms-hero-visual">
+      <div class="cms-card2">
+        <div class="cms-card2-bg-glitter"></div>
+        <div class="cms-card2-content">
+          <span class="cms-card2-number">5355 1234 0000 9999</span>
+          <span class="cms-card2-holder">Jan Novák</span>
+          <span class="cms-card2-expiry">03/27</span>
+          <img class="cms-card2-logo" src="https://simey-credit-card.netlify.app/img/logos/master.svg" alt="logo">
+          <span class="cms-card2-chip">
+            <svg viewBox="0 0 100 100">
+              <g>
+                <polyline points="0,50 35,50"></polyline>
+                <polyline points="0,20 20,20 35,35"></polyline>
+                <polyline points="50,0 50,35"></polyline>
+                <polyline points="65,35 80,20 100,20"></polyline>
+                <polyline points="100,50 65,50"></polyline>
+                <polyline points="35,35 65,35 65,65 35,65 35,35"></polyline>
+                <polyline points="0,80 20,80 35,65"></polyline>
+                <polyline points="50,100 50,65"></polyline>
+                <polyline points="65,65 80,80 100,80"></polyline>
+              </g>
+            </svg>
+          </span>
+          <span class="cms-card2-contactless">
+            <svg viewBox="0 0 24 24">
+              <path d="M9.172 15.172a4 4 0 0 1 5.656 0"></path>
+              <path d="M6.343 12.343a8 8 0 0 1 11.314 0"></path>
+              <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-steps-grid">
+    <div class="cms-step-card">
+      <div class="cms-step-icon">&#128179;</div>
+      <div class="cms-step-title">VYBERTE KARTU</div>
+      <div class="cms-step-description">Vybírejte na jakoukoli svou ověřenou CZ/SK kartu.</div>
+    </div>
+
+    <div class="cms-step-card">
+      <div class="cms-step-icon">&#9889;</div>
+      <div class="cms-step-title">POTVRĎTE</div>
+      <div class="cms-step-description">Zadejte částku a během okamžiku odesíláme.</div>
+    </div>
+
+    <div class="cms-step-card">
+      <div class="cms-step-icon">&#128184;</div>
+      <div class="cms-step-title">HOTOVO</div>
+      <div class="cms-step-description">Peníze máte na kartě dříve, než vypijete kávu.</div>
+    </div>
+  </div>
+
+  <div class="cms-details-section">
+    <div class="cms-seo-text">
+      <h2>Výběry na kartu: Budoucnost okamžitých výplat je zde</h2>
+      <p>
+        Díky nové platební bráně <strong>PayU</strong> využíváme technologii <strong>Card Payout</strong>. Peníze
+        neputují standardním bankovním převodem, který může trvat dny, ale využívají bleskovou infrastrukturu sítí Visa
+        a Mastercard.
+      </p>
+      <p>
+        <strong>Jak na to?</strong> Stačí mít kartu ověřenou (provést s ní dříve alespoň jeden úspěšný vklad). V sekci
+        výběrů pak jen zvolíte "Výběr na kartu" a během desítek sekund je transakce schválena.
+      </p>
+
+      <div
+        style="margin-top: 20px; padding: 15px; border-left: 3px solid #f5b30c; background: rgba(245, 179, 12, 0.05); border-radius: 0 10px 10px 0; font-size: 0.85rem; color: rgba(255,255,255,0.8);">
+        <strong style="color: #f5b30c; display: block; margin-bottom: 5px;">Důležité technické informace:</strong>
+        <ul style="margin: 0; padding-left: 15px;">
+          <li>Služba není podporována pro karty <strong>UniCredit Bank</strong>.</li>
+          <li>U <strong>České spořitelny</strong> je denní limit nastaven na 50 000 Kč.</li>
+          <li>U <strong>Raiffeisen Bank</strong> a <strong>Monety</strong> se prostředky mohou objevit v "blokacích" do
+            doby finálního zaúčtování bankou.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cms-table-wrapper">
+      <div style="overflow-x: auto;">
+        <table class="cms-info-table">
+          <thead>
+            <tr>
+              <th>Služba</th>
+              <th>Podmínky</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dostupnost</strong></td>
+              <td>24/7 (včetně víkendů)</td>
+            </tr>
+            <tr>
+              <td><strong>Doba zpracování</strong></td>
+              <td>Do 2 minut (obvykle okamžitě)</td>
+            </tr>
+            <tr>
+              <td><strong>Podmínka</strong></td>
+              <td>Předchozí vklad použitou kartou</td>
+            </tr>
+            <tr>
+              <td><strong>Poplatek</strong></td>
+              <td>0 Kč (ZDARMA)</td>
+            </tr>
+            <tr>
+              <td><strong>Minimální částka</strong></td>
+              <td>100 Kč</td>
+            </tr>
+            <tr>
+              <td><strong>Bezpečnost</strong></td>
+              <td>PayU + 3D Secure</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+TOP GAME
+
+Top sekce
+
+Detail automatu (výrobce, počet válcu a linii, téma, rozdělení
+
+RTP ukazatel
+
+Mohl bys mi trochu upravit kod pro tuto komponentu. Zde jsou požadavky: jedná se pouze o jednu komponentu kterou pak budu používat na různých místech. Takže vůbec neres nějaké body okolo, jde mi pouze o tu komponentu. Můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá, takže z těchto barev vycházej. Také nenastavuj styly pro body. Opět kvůli kolizi. Pouzivej ARIA role atributy  (role="main", role="navigation")
+
+Samotné fungování komponenty je správné, i texty atd. do toho nesahej. Zamer se pouze na vizuální stránku aby zapadala do schématu webu nadřazeného.
+
+
+Tabulka symbolů a výher
+
+Mohl bys mi vytvořit nějaou takovou komponentu ve které uživatel zjistí jaké symboly a jaké výhry z nich jsou?.(nemusíš to okopírovat 1:1, ale udělej to aby to uživatel hezky pochopil.) Zde jsou požadavky: jedná se pouze o jednu komponentu kterou pak budu používat na různých místech. Takže vůbec neres nějaké body okolo, jde mi pouze o tu komponentu. Můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá, takže z těchto barev vycházej. Také nenastavuj styly pro body. Opět kvůli kolizi. Pouzivej ARIA role atributy  (role="main", role="navigation"). Nastav alt tagy u obrázků. Zajisti dobrou responzivitu. Pro kazdou tridu pouzij prefix "winTable". 
+
+Zde jsou odkazy na obrázky: 
+
+Sedmička: https://www.forbescasino.cz/text_img/1261689NjF.png
+Meloun: https://www.forbescasino.cz/text_img/1261685MTd.png
+Hrozny: https://www.forbescasino.cz/text_img/1261688ZjF.png
+Citron: https://www.forbescasino.cz/text_img/1261683ZTA.png
+Svestka: https://www.forbescasino.cz/text_img/1261684NGV.png
+Tresne: https://www.forbescasino.cz/text_img/1261686MWE.png
+Pomeranč: https://www.forbescasino.cz/text_img/1261687MmQ.png
+BAR: https://www.forbescasino.cz/text_img/1261682M2J.png
+
+
+Tabulka jak funguje wild symbol
+
+Mohl bys mi vytvořit nějakou komponentu ve které uživatel zjistí jak funguje wild symbol na hracím automatu?. Ve screenu posílám jak fyzicky wild funguje. (nemusíš to okopírovat 1:1, ale udělej to aby to uživatel hezky pochopil.) Zde jsou požadavky: jedná se pouze o jednu komponentu kterou pak budu používat na různých místech. Takže vůbec neres nějaké body okolo, jde mi pouze o tu komponentu. Můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá, takže z těchto barev vycházej. Také nenastavuj styly pro body. Opět kvůli kolizi. Pouzivej ARIA role atributy  (role="main", role="navigation"). Nastav alt tagy u obrázků. Zajisti dobrou responzivitu. Pro kazdou tridu pouzij prefix "wildSymbol". 
+
+Zde je odkaz na wild symbol:
+wild symbol: https://www.forbescasino.cz/text_img/1261690YmQ.png
+
+
+
+Ahoj chtěl bych po tobě aby si pomohl navrhnout novou podstránku na nasem online casinu. Jedná se o stránku na které uzivatel najde veskere možné informace o dané hře na našem casinu. 
+
+Já jsem připravil bokem veškeré důležité komponenty které tam mají být. (vse je nastylované, zajištěná responzivita atd.) 
+
+Nyní bych chtěl ti poslat veškeré kody k jednotlivým komponentám a také texty které by na stránce měli být. Ty bys následně akorát celou stránku jakoby sestavil aby vypadala dobre na pc i na mobilu. Na PC by asi bylo záhodno mít jakoby dva bloky vedle sebe. Levy hlavní a v pravém různé další komponenty tak aby stránka na PC nebyla tak dlouhá. 
+
+Nerad bych aby si ty kody pro jednotlivé komponenty nějak extra upravoval. Jsou jiz hotové. Jediné co muzes udělat je že je sladíš barevně (některé jsou na modré a jiné treba bílé, tak je můžeš nějak sjednotlit aby vysdek byl pěkný). 
+
+Tady jsou pravidla kterých by ses měl držet při tvorbě celé stránky: 
+
+
+chci CSS i HTML kod v jednom souboru abych ho jednoduše nakopíroval do editoru CMS.
+- pracuji v CMS tzn - nepoužívej tagy body, head, section atd. Pracuj pouze s obecnými tagy jako je div, span atd aby nedocházelo ke kolizím mezi nadřazenou strukturou webu. Také nenastavuj styly pro body. Opět kvůli kolizi.
+- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám, vyhni se stylování písma (to vše se přebírá od nadřazeného webu)
+- zajisti správnou responzivitu celé stránky
+- zajisti správnou responzivitu
+- JS není v mém CMS povolené, vyhni se mu.
+- jedná se online casino stránku, můžeš používat různé prvky a styly co "tahají oči". Udělej nějaké moderní pěkné UX/UI.
+
+Potvrď mi že víš co po tobě chci a já ti začnu posílat kody k jednotlivým komponentám. (až ti je pošlu všechny tak ti to oznámím a ty začneš tvořit kod pro celou stránku) 
+Rozumíme si? 
+
+
+

@@ -1,0 +1,245 @@
+<div class="winTable-container" role="region" aria-label="Tabulka výher">
+    <div class="winTable-header">
+        <h2 class="winTable-title">Tabulka výher</h2>
+    </div>
+    
+    <div class="winTable-content">
+        <div class="winTable-grid">
+            <!-- Header row -->
+            <div class="winTable-row winTable-header-row">
+                <div class="winTable-cell winTable-cell-symbol">Symbol</div>
+                <div class="winTable-cell winTable-cell-multiplier">3x v linii</div>
+                <div class="winTable-cell winTable-cell-multiplier">4x v linii</div>
+            </div>
+            
+            <!-- Sedmička -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261689NjF.png" alt="Sedmička" class="winTable-icon">
+                    <span class="winTable-symbol-name">Sedmička</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">16x</div>
+                <div class="winTable-cell winTable-cell-multiplier">160x</div>
+            </div>
+            
+            <!-- Meloun -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261685MTd.png" alt="Meloun" class="winTable-icon">
+                    <span class="winTable-symbol-name">Meloun</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">6x</div>
+                <div class="winTable-cell winTable-cell-multiplier">60x</div>
+            </div>
+            
+            <!-- Hrozny -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261688ZjF.png" alt="Hrozny" class="winTable-icon">
+                    <span class="winTable-symbol-name">Hrozny</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                <div class="winTable-cell winTable-cell-multiplier">40x</div>
+            </div>
+            
+            <!-- Citrón -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261683ZTA.png" alt="Citrón" class="winTable-icon">
+                    <span class="winTable-symbol-name">Citrón</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                <div class="winTable-cell winTable-cell-multiplier">4x</div>
+            </div>
+            
+            <!-- Švestka -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261684NGV.png" alt="Švestka" class="winTable-icon">
+                    <span class="winTable-symbol-name">Švestka</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                <div class="winTable-cell winTable-cell-multiplier">4x</div>
+            </div>
+            
+            <!-- Třešně -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261686MWE.png" alt="Třešně" class="winTable-icon">
+                    <span class="winTable-symbol-name">Třešně</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                <div class="winTable-cell winTable-cell-multiplier">4x</div>
+            </div>
+            
+            <!-- Pomeranč -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261687MmQ.png" alt="Pomeranč" class="winTable-icon">
+                    <span class="winTable-symbol-name">Pomeranč</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                <div class="winTable-cell winTable-cell-multiplier">4x</div>
+            </div>
+            
+            <!-- BAR -->
+            <div class="winTable-row">
+                <div class="winTable-cell winTable-cell-symbol">
+                    <img src="https://www.forbescasino.cz/text_img/1261682M2J.png" alt="BAR" class="winTable-icon">
+                    <span class="winTable-symbol-name">BAR</span>
+                </div>
+                <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                <div class="winTable-cell winTable-cell-multiplier">2x</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .winTable-container {
+        background: linear-gradient(135deg, #2145a5 0%, #1a3680 100%);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .winTable-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .winTable-title {
+        color: #f5b30c;
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .winTable-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .winTable-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+    
+    .winTable-row:not(.winTable-header-row):hover {
+        transform: translateX(4px);
+        background: rgba(245, 179, 12, 0.1);
+    }
+    
+    .winTable-header-row {
+        background: rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+    
+    .winTable-cell {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 16px;
+    }
+    
+    .winTable-cell-symbol {
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    
+    .winTable-icon {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+    
+    .winTable-symbol-name {
+        font-weight: 600;
+        color: #dbdbdb;
+    }
+    
+    .winTable-cell-multiplier {
+        font-weight: bold;
+        color: #f5b30c;
+        font-size: 18px;
+    }
+    
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .winTable-container {
+            padding: 16px;
+        }
+        
+        .winTable-title {
+            font-size: 22px;
+        }
+        
+        .winTable-row {
+            grid-template-columns: 1.5fr 1fr 1fr;
+        }
+        
+        .winTable-cell {
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+        
+        .winTable-icon {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .winTable-symbol-name {
+            font-size: 14px;
+        }
+        
+        .winTable-cell-multiplier {
+            font-size: 16px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .winTable-container {
+            padding: 12px;
+            border-radius: 12px;
+        }
+        
+        .winTable-title {
+            font-size: 18px;
+        }
+        
+        .winTable-row {
+            grid-template-columns: 1fr 0.8fr 0.8fr;
+        }
+        
+        .winTable-cell {
+            padding: 10px 6px;
+            font-size: 12px;
+        }
+        
+        .winTable-icon {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .winTable-symbol-name {
+            font-size: 12px;
+        }
+        
+        .winTable-cell-multiplier {
+            font-size: 14px;
+        }
+    }
+</style>

@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplay 81</title>
+    <style>
+        /* Override existing styles */
+        body {
+            background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 500px;
+        }
+
+        .p-sm-5 {
+            padding: 0rem !important;
+            border-radius: 12px !important;
+        }
+
+        .bg-lighter {
+            background: none !important;
+            display: none;
+        }
+
+        .container .row .bg-white {
+            background: transparent !important;
+        }
+
+        @media (max-width: 576px) {
+            .p-sm-5 {
+                margin-top: -27px;
+            }
+
+            .p-0 {
+                margin-left: -16px !important;
+                margin-right: -16px !important;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .p-sm-5 {
+                margin-top: -10px;
+                padding: 1.5rem !important;
+            }
+        }
+
+        @media (min-width: 767.98px) {
+            .p-sm-5 {
+                margin-top: -49px;
+            }
+        }
+
+        @media (min-width: 991.98px) {
+            .p-sm-5 {
+                margin-top: -0.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .p-sm-5 {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .p-4 {
+                padding: 0rem !important;
+            }
+
+            .content-panel {
+                margin-bottom: 0px !important;
+            }
+        }
+
+        .d-block {
+            display: none !important;
+        }
+
+        .topgames-container {
+            display: flex;
+            gap: 24px;
+            background-color: #fff;
+            padding: 32px;
+            box-sizing: border-box;
+        }
+
+        .topgames-left {
+            flex: 2;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .topgames-right {
+            flex: 1;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1000px) {
+            .topgames-container {
+                flex-direction: column;
+                padding: 0px;
+                gap: 0px;
+            }
+
+            .topgames-left,
+            .topgames-right {
+                padding: 16px;
+                padding-bottom: 0px;
+            }
+        }
+
+        .topgames-about {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-top: 16px;
+            box-shadow: 0 2px 8px 0 rgba(33, 69, 165, 0.06);
+            color: #222;
+        }
+
+        .topgames-about p {
+            margin: 0 0 10px 0;
+        }
+
+        .topgames-about p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 800px) {
+            .topgames-about {
+                padding: 14px 10px;
+                font-size: 0.97rem;
+            }
+        }
+
+        .rtp-container {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rtp-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #dbdbdb;
+        }
+
+        .rtp-percentage {
+            font-size: clamp(24px, 8vw, 38px);
+            font-weight: 800;
+            color: #2145a5;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+
+        .rtp-description {
+            background: #f8f8f8;
+            padding: 24px 28px;
+            border-radius: 8px;
+            color: #444;
+            font-size: clamp(15px, 1.8vw, 18px);
+            line-height: 1.7;
+            margin-bottom: 48px;
+            border-left: 4px solid #2145a5;
+        }
+
+        .rtp-scale {
+            margin-top: 40px;
+        }
+
+        .scale-bar-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .scale-bar {
+            height: 16px;
+            border-radius: 100px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scale-segment {
+            height: 100%;
+            flex: 1;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .scale-segment:hover {
+            transform: scaleY(1.2);
+        }
+
+        .segment-red {
+            background: linear-gradient(135deg, #d32f2f, #c62828);
+        }
+
+        .segment-orange {
+            background: linear-gradient(135deg, #f57c00, #ef6c00);
+        }
+
+        .segment-yellow {
+            background: linear-gradient(135deg, #f5b30c, #f0a500);
+        }
+
+        .segment-cyan {
+            background: linear-gradient(135deg, #4a7bbd, #2145a5);
+        }
+
+        .segment-green {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+        }
+
+        .scale-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            border: 4px solid #2145a5;
+            box-shadow: 0 4px 12px rgba(33, 69, 165, 0.4), 0 0 0 8px rgba(33, 69, 165, 0.1);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 12px rgba(33, 69, 165, 0.4), 0 0 0 8px rgba(33, 69, 165, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 4px 16px rgba(33, 69, 165, 0.6), 0 0 0 12px rgba(33, 69, 165, 0.2);
+            }
+        }
+
+        .scale-boundaries {
+            position: relative;
+            height: 40px;
+        }
+
+        .boundary-mark {
+            position: absolute;
+            top: -34px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .boundary-line {
+            width: 2px;
+            height: 20px;
+            background: #9e9e9e;
+        }
+
+        .boundary-label {
+            font-size: clamp(11px, 1.2vw, 14px);
+            font-weight: 700;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .scale-labels {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .scale-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .label-badge {
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: clamp(12px, 1.3vw, 15px);
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        .badge-red {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .badge-orange {
+            background: #f57c00;
+            color: white;
+        }
+
+        .badge-yellow {
+            background: #f5b30c;
+            color: #333;
+        }
+
+        .badge-cyan {
+            background: #4a7bbd;
+            color: white;
+        }
+
+        .badge-green {
+            background: #2145a5;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .rtp-container {
+                padding: 32px 24px;
+            }
+
+            .scale-labels {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .scale-label:nth-child(4),
+            .scale-label:nth-child(5) {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rtp-container {
+                padding: 24px 16px;
+            }
+
+            .scale-labels {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+            }
+
+            .scale-label:last-child {
+                grid-column: span 2;
+            }
+
+            .label-badge {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .scale-bar {
+                height: 12px;
+            }
+
+            .scale-marker {
+                width: 24px;
+                height: 24px;
+                border-width: 3px;
+            }
+
+            .boundary-label {
+                font-size: 10px;
+            }
+
+            .boundary-line {
+                height: 15px;
+            }
+
+            .boundary-mark {
+                top: -30px;
+            }
+        }
+
+        .topgames-header {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px 0 rgba(33, 69, 165, 0.08);
+            padding: 32px;
+            margin-bottom: 32px;
+            border: 1px solid #dbdbdb;
+        }
+
+        .topgames-image-wrapper {
+            flex-shrink: 0;
+            background: #f5b30c;
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 180px;
+            max-height: 180px;
+        }
+
+        .topgames-image {
+            width: 140px;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px 0 rgba(33, 69, 165, 0.10);
+        }
+
+        .topgames-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .topgames-title {
+            margin: 0 0 12px 0;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .topgames-desc {
+            color: #222;
+            margin: 0;
+            font-size: 1.1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px 16px;
+            border-left: 4px solid #f5b30c;
+        }
+
+        @media (max-width: 800px) {
+            .topgames-header {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                padding: 20px;
+                margin-bottom: 0px;
+            }
+
+            .topgames-image-wrapper {
+                max-width: 120px;
+                max-height: 120px;
+                padding: 4px;
+            }
+
+            .topgames-image {
+                width: 90px;
+            }
+
+            .topgames-title {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .topgames-desc {
+                font-size: 1rem;
+                padding: 10px 12px;
+                text-align: center;
+            }
+        }
+
+        .forbes-slot-detail {
+            background: linear-gradient(135deg, #1a3580 0%, #0d1f4d 100%);
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .forbes-slot-detail-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .forbes-slot-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            border-left: 3px solid #f5b30c;
+            transition: background 0.2s;
+            min-height: 40px;
+        }
+
+        .forbes-slot-detail-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .forbes-slot-detail-icon {
+            font-size: 18px;
+            min-width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(245, 179, 12, 0.13);
+            border-radius: 6px;
+        }
+
+        .forbes-slot-detail-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .forbes-slot-detail-label {
+            font-size: 12px;
+            color: #dbdbdb;
+            font-weight: 500;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .forbes-slot-detail-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            word-break: break-word;
+        }
+
+        .forbes-slot-detail-badge {
+            background: #f5b30c;
+            color: #0d1f4d;
+            padding: 2px 8px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        @container (min-width: 600px) {
+            .forbes-slot-detail-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        .winTable-container {
+            background: linear-gradient(135deg, #1a3580 0%, #0d1f4d 100%);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .winTable-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .winTable-title {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .winTable-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .winTable-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .winTable-row:not(.winTable-header-row):hover {
+            transform: translateX(4px);
+            background: rgba(245, 179, 12, 0.1);
+        }
+
+        .winTable-header-row {
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .winTable-cell {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .winTable-cell-symbol {
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        .winTable-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .winTable-symbol-name {
+            font-weight: 600;
+            color: #dbdbdb;
+        }
+
+        .winTable-cell-multiplier {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .winTable-container {
+                padding: 16px;
+            }
+
+            .winTable-title {
+                font-size: 22px;
+            }
+
+            .winTable-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+
+            .winTable-cell {
+                padding: 12px 8px;
+                font-size: 14px;
+            }
+
+            .winTable-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .winTable-symbol-name {
+                font-size: 14px;
+            }
+
+            .winTable-cell-multiplier {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .winTable-container {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .winTable-title {
+                font-size: 18px;
+            }
+
+            .winTable-row {
+                grid-template-columns: 1fr 0.8fr 0.8fr;
+            }
+
+            .winTable-cell {
+                padding: 10px 6px;
+                font-size: 12px;
+            }
+
+            .winTable-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .winTable-symbol-name {
+                font-size: 12px;
+            }
+
+            .winTable-cell-multiplier {
+                font-size: 14px;
+            }
+        }
+
+
+        .wildSymbol-container {
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .wildSymbol-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .wildSymbol-title {
+            color: #f5b30c;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .wildSymbol-description {
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .wildSymbol-demo {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 50px rgba(245, 179, 12, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wildSymbol-demo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 179, 12, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .wildSymbol-multiplier {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wildSymbol-multiplier-title {
+            color: #f5b30c;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(220, 20, 60, 0.3) 100%);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid rgba(245, 179, 12, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(245, 179, 12, 0.3);
+        }
+
+        .wildSymbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .wildSymbol-cell {
+            aspect-ratio: 1;
+            border: 3px solid #2145a5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wildSymbol-cell.wildSymbol-active {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            border-color: #f5b30c;
+            box-shadow: 0 0 15px rgba(245, 179, 12, 0.5);
+        }
+
+        .wildSymbol-cell.wildSymbol-inactive {
+            background: linear-gradient(135deg, #2a2a3e 0%, #1f1f2e 100%);
+            border-color: #444;
+        }
+
+        .wildSymbol-symbol {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .wildSymbol-cross {
+            font-size: 40px;
+            color: #666;
+        }
+
+        .wildSymbol-explanation {
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.15) 0%, rgba(245, 179, 12, 0.05) 100%);
+            border-left: 4px solid #f5b30c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .wildSymbol-info {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+            border: 2px solid #f5b30c;
+        }
+
+        .wildSymbol-info-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #f5b30c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .wildSymbol-info-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+
+            .wildSymbol-title {
+                font-size: 24px;
+            }
+
+            .wildSymbol-multiplier-title {
+                font-size: 18px;
+            }
+
+            .wildSymbol-grid {
+                gap: 8px;
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            }
+
+            .wildSymbol-demo {
+                padding: 20px;
+            }
+
+            .wildSymbol-cross {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wildSymbol-title {
+                font-size: 20px;
+            }
+
+            .wildSymbol-multiplier-title {
+                font-size: 16px;
+            }
+
+            .wildSymbol-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .games-carousel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .game-item {
+            flex: 0 0 auto;
+            transition: transform 0.075s ease-in-out;
+        }
+
+        .game-item:hover {
+            transform: scale(1.1);
+        }
+
+        .game-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .all-games {
+            flex: 0 0 auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            background: #0d1345;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.075s ease-in-out, background 0.075s;
+        }
+
+        .all-games:hover {
+            transform: scale(1.1);
+            background: #1a2b6d;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .games-carousel {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .game-item {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .game-item img {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .game-item img:hover {
+            transform: translateY(-10px) rotateY(10deg);
+        }
+
+        .all-games {
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 8px 16px rgba(13, 19, 69, 0.4);
+        }
+
+        @media (max-width: 991.98px) {
+            .games-carousel {
+                display: grid !important;
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: repeat(8, 100px);
+                gap: 10px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 10px;
+                margin-left: 0;
+                margin-right: 0;
+                border-bottom: none;
+                margin-bottom: 0;
+                max-width: 100vw;
+                white-space: normal;
+                scroll-snap-type: x mandatory;
+            }
+
+            .game-item,
+            .all-games {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                scroll-snap-align: start;
+                flex: unset;
+            }
+        }
+
+        @media (min-width: 991.98px) {
+            .games-carousel {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topgames-container">
+        <div class="topgames-left">
+            <!-- Obsah levé strany -->
+            <div class="topgames-header">
+                <div class="topgames-image-wrapper">
+                    <img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"
+                        class="topgames-image">
+                </div>
+                <div class="topgames-text">
+                    <h1 class="topgames-title">Multiplay 81</h1>
+                    <p class="topgames-desc">
+                        Výherní automat Multiplay 81 patří k těm největším herním legendám, které si můžeš ve Forbes
+                        Casino zahrát! Pojď se s námi podívat, co tento kultovní slot skrývá.
+                    </p>
+                </div>
+            </div>
+
+            <div class="topgames-video" style="margin: 32px 0;">
+                <h2 style="margin-bottom: 16px;">Ukázka hraní Multiplay 81</h2>
+                <div
+                    style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 2px 12px rgba(33,69,165,0.10);background:#000;">
+                    <iframe src="https://www.youtube.com/embed/Z1CwfneQIns?rel=0" title="Multiplay 81 - ukázka hraní"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+                </div>
+            </div>
+
+
+
+            <div class="topgames-about">
+                <h2>Specifikace automatu</h2>
+                <p>
+                    Jestliže hledáš automat, který dokáže výborně zkombinovat klasické herní mechaniky s nadstandardní
+                    zábavou a parádními výhrami, právě jsi ho našel. Multiplay 81 se řadí mezi ty nejvyhledávanější
+                    čtyřválcové hry na trhu a ani naše online casino tě o něj neochudí.
+                </p>
+                <p>
+                    Můžeš se tak těšit na jedinečný ovocný zážitek, ve kterém výhry stříkají jako ovocné smoothie na 81
+                    výherních řadách. Už tak vynikající hru navíc ještě podtrhuje možnost získat Wild násobitele, které
+                    mají potenciál tvoje výhry ještě znásobit. A co je na tom všem nejlepší? Na Forbescasino.cz si ho
+                    můžeš zahrát zdarma v demo režimu, ale také hned přejít do klasické hry o skvělé výhry.
+                </p>
+            </div>
+
+
+
+            <div class="rtp-container">
+                <div class="rtp-header">
+                    <div class="rtp-percentage">RTP: 97%</div>
+                </div>
+
+                <div class="rtp-description">
+                    RTP u automatů je pravidlo, kolik peněz se z automatu vrátí zpět hráčům.
+                    Např. když do něj vložíte 100 korun, RTP určuje, kolik z těchto peněz byste
+                    měli dostat zpět.
+                </div>
+
+                <div class="rtp-scale">
+                    <div class="scale-bar-wrapper">
+                        <div class="scale-bar">
+                            <div class="scale-segment segment-red"></div>
+                            <div class="scale-segment segment-orange"></div>
+                            <div class="scale-segment segment-yellow"></div>
+                            <div class="scale-segment segment-cyan"></div>
+                            <div class="scale-segment segment-green"></div>
+                        </div>
+                        <div class="scale-marker"></div>
+                    </div>
+
+                    <div class="scale-boundaries">
+                        <div class="boundary-mark" style="left: 0%;">
+                            <div class="boundary-line" style="opacity: 0.01;"></div>
+                            <div class="boundary-label">90 %</div>
+                        </div>
+                        <div class="boundary-mark" style="left: 20%;">
+                            <div class="boundary-line"></div>
+                            <div class="boundary-label">95 %</div>
+                        </div>
+                        <div class="boundary-mark" style="left: 40%;">
+                            <div class="boundary-line"></div>
+                            <div class="boundary-label">96.5 %</div>
+                        </div>
+                        <div class="boundary-mark" style="left: 60%;">
+                            <div class="boundary-line"></div>
+                            <div class="boundary-label">97.5 %</div>
+                        </div>
+                        <div class="boundary-mark" style="left: 80%;">
+                            <div class="boundary-line"></div>
+                            <div class="boundary-label">99 %</div>
+                        </div>
+                        <div class="boundary-mark" style="left: 100%;">
+                            <div class="boundary-line" style="opacity: 0.01;"></div>
+                            <div class="boundary-label">100 %</div>
+                        </div>
+                    </div>
+
+                    <div class="scale-labels">
+                        <div class="scale-label">
+                            <div class="label-badge badge-red">Malé</div>
+                        </div>
+                        <div class="scale-label">
+                            <div class="label-badge badge-orange">Podprůměr</div>
+                        </div>
+                        <div class="scale-label">
+                            <div class="label-badge badge-yellow">Průměr</div>
+                        </div>
+                        <div class="scale-label">
+                            <div class="label-badge badge-cyan">Nadprůměr</div>
+                        </div>
+                        <div class="scale-label">
+                            <div class="label-badge badge-green">Vysoké</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="topgames-right">
+            <!-- Obsah pravé strany -->
+            <div class="forbes-slot-detail" role="region" aria-label="Detail automatu"
+                style="container-type: inline-size;">
+                <div class="forbes-slot-detail-grid" role="list">
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x2699;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Výrobce</span>
+                            <span class="forbes-slot-detail-value">eGaming</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F3C6;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Výherní linie</span>
+                            <span class="forbes-slot-detail-value"><span class="forbes-slot-detail-badge">81 výherních
+                                    linií</span></span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F352;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Témata</span>
+                            <span class="forbes-slot-detail-value">Ovocné</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F3B0;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Válce</span>
+                            <span class="forbes-slot-detail-value">4 válce</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F4CA;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Rozložení</span>
+                            <span class="forbes-slot-detail-value">4×3</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F4B5;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Nejnižší sázka</span>
+                            <span class="forbes-slot-detail-value">5 Kč</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F4B0;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Nejvyšší sázka</span>
+                            <span class="forbes-slot-detail-value">500 Kč</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F4B8;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Maximální výhra</span>
+                            <span class="forbes-slot-detail-value">500 000 Kč</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x1F4C8;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">RTP</span>
+                            <span class="forbes-slot-detail-value">97%</span>
+                        </div>
+                    </div>
+                    <div class="forbes-slot-detail-item" role="listitem">
+                        <div class="forbes-slot-detail-icon" aria-hidden="true">&#x2728;</div>
+                        <div class="forbes-slot-detail-content">
+                            <span class="forbes-slot-detail-label">Speciální funkce</span>
+                            <span class="forbes-slot-detail-value">Wild násobitel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+    <div class="topgames-container" style="padding-top:0px;">
+        <div class="topgames-left">
+            <!-- Obsah levé strany -->
+            <div class="topgames-about">
+                <h2>Představujeme Multiplay 81</h2>
+                <p>
+                    Český výrobce her E-Gaming je známý svým originálním přístupem ke všem hrám. Nabízí jak supermoderní
+                    pecky, tak i nezapomenutelnou klasiku. Naše casino Forbes ti samozřejmě nabízí obojí a Multiplay 81
+                    se řadí k tomu nejhranějšímu, co v naší nabídce najdeš.
+                </p>
+                <p>
+                    V jednoduchosti je krása, a právě na to sází také Multiplay 81. Grafika působí trochu retro, ovšem
+                    to je záměr. Má totiž v hráčích vyvolat vzpomínky na klasické land-based automaty, na kterých tento
+                    slot začínal. Pracuje přitom s ovocnými symboly, aby bylo tradičnímu pojetí slotů učiněno za dost.
+                </p>
+                <p>
+                    Co se mechaniky týče, hra ti nabídne tradiční 4 válce s 81 výherními liniemi, což jde ostatně cítit
+                    už z jejího názvu. Automat ti nabídne 3 řady symbolů, což je u čtyřválcových her klasika. O
+                    zpestření zábavy a vyšší výhry se poté stará symbol Wild násobitele.
+                </p>
+            </div>
+
+            <div class="winTable-container" role="region" aria-label="Tabulka výher">
+                <div class="winTable-header">
+                    <h2 class="winTable-title">Tabulka výher</h2>
+                </div>
+
+                <div class="winTable-content">
+                    <div class="winTable-grid">
+                        <!-- Header row -->
+                        <div class="winTable-row winTable-header-row">
+                            <div class="winTable-cell winTable-cell-symbol">Symbol</div>
+                            <div class="winTable-cell winTable-cell-multiplier">3x v linii</div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x v linii</div>
+                        </div>
+
+                        <!-- Sedmička -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261689NjF.png" alt="Sedmička"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Sedmička</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">16x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">160x</div>
+                        </div>
+
+                        <!-- Meloun -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261685MTd.png" alt="Meloun"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Meloun</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">6x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">60x</div>
+                        </div>
+
+                        <!-- Hrozny -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261688ZjF.png" alt="Hrozny"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Hrozny</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">40x</div>
+                        </div>
+
+                        <!-- Citrón -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261683ZTA.png" alt="Citrón"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Citrón</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                        </div>
+
+                        <!-- Švestka -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261684NGV.png" alt="Švestka"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Švestka</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                        </div>
+
+                        <!-- Třešně -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261686MWE.png" alt="Třešně"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Třešně</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                        </div>
+
+                        <!-- Pomeranč -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261687MmQ.png" alt="Pomeranč"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">Pomeranč</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">4x</div>
+                        </div>
+
+                        <!-- BAR -->
+                        <div class="winTable-row">
+                            <div class="winTable-cell winTable-cell-symbol">
+                                <img src="https://www.forbescasino.cz/text_img/1261682M2J.png" alt="BAR"
+                                    class="winTable-icon">
+                                <span class="winTable-symbol-name">BAR</span>
+                            </div>
+                            <div class="winTable-cell winTable-cell-multiplier">1x</div>
+                            <div class="winTable-cell winTable-cell-multiplier">2x</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="topgames-about">
+                <h2>Jak se Multiplay 81 hraje?</h2>
+                <p>
+                    Ovládání hry jako takové je extrémně jednoduché. Všechno, co potřebuješ, najdeš v pravém spodním
+                    rohu. Velké červené tlačítko slouží k jednorázovému roztočení slotu, menšími bílými šipkami spouštíš
+                    automatické roztočení a červenými šipkami si nastavíš svou sázku. Pokud se chceš přímo ve hře
+                    dozvědět něco víc, můžeš kliknout na tlačítko v levém spodním rohu a otevřít si menu.
+
+                </p>
+                <p>
+                    Abys dosáhl výhry, musíš poskládat alespoň tři stejné symboly na prvních třech sousedících válcích.
+                    Pořádné výhry však přijdou v momentě, kdy <strong>získáš 4 stejné symboly a aktivuješ tím všech 81
+                        výherních
+                        linií.</strong> Výhry se poté liší dle jednotlivých symbolů.
+                </p>
+            </div>
+
+            <div style="width: 100%; margin: 24px 0;">
+                <img src="https://www.forbescasino.cz/text_img/1277402Mzd.png" alt="Multiplay 81 herní ukázka"
+                    style="width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+
+            <div class="topgames-about">
+                <h2>V hlavní roli Wild</h2>
+                <p>
+                    Nejdůležitějším symbolem celé hry Multiplay 81 je pochopitelně symbol Wildu. Ten má podobu loga hry
+                    a objevit se může napříč celým herním polem. V základu je jeho úkolem nahrazovat ostatní symboly a
+                    vytvářet tak výherní kombinace. Tam to však rozhodně nekončí.
+
+                </p>
+                <p>
+                    Když se ti totiž podaří trefit kombinaci s Wildem, <strong>automaticky získáš násobitele.</strong>
+                    Čím víc Wildů v
+                    kombinaci máš, tím vyšší je tvoje výhra. Funguje to podle následujícího klíče:
+                </p>
+
+                <div class="wildSymbol-container" role="main">
+
+                    <div class="wildSymbol-demo" role="region" aria-label="Demonstrace Wild symbolu">
+                        <!-- Výhra 2x -->
+                        <div class="wildSymbol-multiplier">
+                            <div class="wildSymbol-multiplier-title">VÝHRA 2x</div>
+                            <div class="wildSymbol-grid">
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Výhra 4x -->
+                        <div class="wildSymbol-multiplier">
+                            <div class="wildSymbol-multiplier-title">VÝHRA 4x</div>
+                            <div class="wildSymbol-grid">
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol 1"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol 2"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Výhra 8x -->
+                        <div class="wildSymbol-multiplier">
+                            <div class="wildSymbol-multiplier-title">VÝHRA 8x</div>
+                            <div class="wildSymbol-grid">
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol 1"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol 2"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-active">
+                                    <img src="https://www.forbescasino.cz/text_img/1261690YmQ.png" alt="Wild symbol 3"
+                                        class="wildSymbol-symbol">
+                                </div>
+                                <div class="wildSymbol-cell wildSymbol-inactive">
+                                    <span class="wildSymbol-cross">×</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2>Hraj Multiplay 81 ve Forbes Casino zdarma i za peníze</h2>
+            <p>
+                Ve <a href="https://www.forbescasino.cz/">Forbescasino.cz </a>ti umožňujeme zahrát si výherní automat
+                Multiplay 81 zdarma i za peníze. V demo
+                režimu si ho můžeš pořádně odzkoušet a když se ti bude líbit, můžeš ho okamžitě roztočit s šancí na
+                reálné výhry. Často ho také navíc využíváme v rámci našich bonusů ve <a
+                    href="https://www.forbescasino.cz/forbesmanie">Forbesmánii</a>. Nahlédni proto do ní a
+                ujisti se, že pro tebe není nějaký připravený.
+            </p>
+
+            <!-- === KARUSEL HER === -->
+            <h3 class="how-to">Další hry od providera E-gaming</h3>
+            <div class="games-carousel">
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3625/online/respin_joker_81">
+                        <img alt="Respin Joker 81" src="https://www.forbescasino.cz/files/1160955MTF.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3544/online/firebird_double_27">
+                        <img alt="Firebird Double 27" src="https://www.forbescasino.cz/files/1160950Mjd.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3562/online/hunters_spirit">
+                        <img alt="Hunter's Spirit" src="https://www.forbescasino.cz/files/1160952ZjQ.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3626/online/fruity_gold_81">
+                        <img alt="Fruity Gold 81" src="https://www.forbescasino.cz/files/1160958ZGF.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3580/online/hell_fruits">
+                        <img alt="Hell Fruits" src="https://www.forbescasino.cz/files/1160957NzV.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3539/online/dice_rush">
+                        <img alt="Dice Rush" src="https://www.forbescasino.cz/files/1006944ZTU.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3648/online/book_of_secrets_6">
+                        <img alt="Book of Secrets 6" src="https://www.forbescasino.cz/files/1007097ZmV.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar">
+                        <img alt="Aztec Jaguar" src="https://www.forbescasino.cz/files/1007055MDY.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3570/online/mysterious_atlantis">
+                        <img alt="Mysterious Atlantis" src="https://www.forbescasino.cz/files/1007035ZmM.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3750/online/respin_joker_243">
+                        <img alt="Respin Joker 243" src="https://www.forbescasino.cz/files/1007122YmU.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3554/online/fruity_gold">
+                        <img alt="Fruity Gold" src="https://www.forbescasino.cz/files/1160951ODF.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3564/online/joker_40">
+                        <img alt="Joker 40" src="https://www.forbescasino.cz/files/1160953ZmV.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3640/online/buffalo_hunt">
+                        <img alt="Buffalo Hunt" src="https://www.forbescasino.cz/files/1007076NmE.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3536/online/blazing_ice">
+                        <img alt="Blazing Ice" src="https://www.forbescasino.cz/files/1006922YTQ.webp" />
+                    </a>
+                </div>
+                <div class="game-item">
+                    <a href="https://www.forbescasino.cz/game/3540/online/dicey_fruits">
+                        <img alt="Dicey Fruits" src="https://www.forbescasino.cz/files/1006948NTY.webp" />
+                    </a>
+                </div>
+                <a class="all-games" href="https://www.forbescasino.cz/tag/synot">
+                    Všechny<br />hry
+                </a>
+            </div>
+        </div>
+        <div class="topgames-right"></div>
+    </div>
+</body>
+
+</html>

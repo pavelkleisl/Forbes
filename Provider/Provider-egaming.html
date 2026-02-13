@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>E-gaming — recenze providera | ForbesCasino</title>
+
+    <style>
+        body {
+            background-image: url(https://forbescasino.cz/assets/img/welcome-bg.jpg);
+            min-height: 500px;
+        }
+
+        .bg-lighter {
+            background: none !important;
+            display: none;
+        }
+
+        .p-4 {
+            padding: 0 !important;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .d-block {
+            display: none !important;
+        }
+
+        main {
+            padding-top: 140px;
+        }
+
+        @media (max-width: 575.98px) {
+            main {
+                padding-top: 80px !important;
+            }
+
+            .container .row:not(.no-gutters) {
+                margin-left: -1rem !important;
+                margin-right: -1rem !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            main {
+                padding-top: 80px !important;
+            }
+
+            .p-4 {
+                border-radius: 0px;
+                margin-bottom: 0px !important;
+            }
+        }
+
+        /* Color palette inspired by the provided screenshot */
+        :root {
+            --provider-bg: #ffffff;
+            --provider-page-bg: #f6f8fb;
+            --provider-deep: #081535;
+            --provider-blue: #153b80;
+            --provider-card: #2b60c6;
+            --provider-accent: #f5b400;
+            --provider-muted: #6b7b95;
+            --provider-success: #17b890;
+            --provider-radius: 14px;
+            --provider-shadow: 0 6px 22px rgba(9, 20, 52, 0.12);
+            --provider-gap: 20px;
+            --provider-max-width: 1100px;
+        }
+
+        /* Basic reset for this widget only */
+        .provider-root * {
+            box-sizing: border-box;
+        }
+
+        .provider-root {
+            color: #0b2340;
+            background: var(--provider-page-bg);
+            padding: 0px 12px;
+        }
+
+        /* Container centered and limited width */
+        .provider-containerr {
+            margin: 0 auto;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        /* Section: Poslední velká výhra (single-file CSS inside the block) */
+        :root {
+            --plw-bg: #fffdfa;
+            --plw-accent: #d4a11a;
+            /* deep gold */
+            --plw-accent-2: #f7c84a;
+            /* light gold */
+            --plw-deep: #072343;
+            --plw-muted: #6b7b95;
+            --plw-radius: 12px;
+            --plw-shadow: 0 8px 26px rgba(9, 20, 52, 0.10);
+            --plw-gap: 14px;
+            --plw-max-width: 1100px;
+            --plw-logo-size: 92px;
+        }
+
+        .lastwin-section {
+            margin: 24px 0;
+            border-radius: 12px;
+            padding: 12px 12px;
+            background-color: #ffffff;
+            box-shadow: 0 6px 18px rgba(15, 30, 70, 0.16);
+        }
+
+        .provider-lastwin {
+            padding: 18px auto;
+            box-sizing: border-box;
+        }
+
+        .provider-lastwin-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--provider-deep);
+            margin: 12px 0 24px 0;
+            text-align: center
+        }
+
+        .provider-lastwin__inner {
+            margin: 12px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-template-areas: "logo meta cta";
+            gap: var(--plw-gap);
+            align-items: center;
+            background-color: #fffaf0;
+            border-radius: var(--plw-radius);
+            padding: 12px;
+            border: 1px solid rgba(212, 161, 26, 0.12);
+            position: relative;
+            overflow: hidden;
+            column-gap: 18px;
+        }
+
+        /* Decorative golden left stripe (thin) */
+        .provider-lastwin__inner::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--plw-accent), var(--plw-accent-2));
+            border-top-left-radius: calc(var(--plw-radius) - 2px);
+            border-bottom-left-radius: calc(var(--plw-radius) - 2px);
+        }
+
+        /* Logo column */
+        .provider-lastwin__logo {
+            grid-area: logo;
+            width: var(--plw-logo-size);
+            height: var(--plw-logo-size);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(248, 241, 225, 1), rgba(255, 250, 243, 1));
+            border: 1px solid rgba(9, 20, 52, 0.06);
+            box-shadow: 0 6px 14px rgba(9, 20, 52, 0.06);
+            margin-left: 6px;
+            /* aligns nicely next to the left stripe */
+            flex-shrink: 0;
+        }
+
+        .provider-lastwin__logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Content column (meta + CTA container) */
+        .provider-lastwin__content {
+            grid-area: meta;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+            padding-right: 6px;
+        }
+
+        /* Amount: main hero of the block */
+        .provider-lastwin__amount {
+            font-weight: 800;
+            color: var(--plw-deep);
+            background-color: #f5b400;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(22px, 5.8vw, 44px);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            display: block;
+        }
+
+        /* Small line describing the game */
+        .provider-lastwin__game {
+            font-weight: 700;
+            color: var(--plw-deep);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* User + date row */
+        .provider-lastwin__meta-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 12px;
+            color: var(--plw-muted);
+            margin-top: 2px;
+            flex-wrap: wrap;
+        }
+
+        .provider-lastwin__user {
+            background: rgba(9, 20, 52, 0.06);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: var(--plw-deep);
+            letter-spacing: 0.02em;
+        }
+
+        .provider-lastwin__date {
+            color: var(--plw-muted);
+            font-size: 12px;
+        }
+
+        /* CTA column */
+        .provider-lastwin__cta {
+            grid-area: cta;
+            margin-left: 6px;
+            justify-self: end;
+            align-self: center;
+        }
+
+        .provider-lastwin__cta-mobile {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            background: var(--provider-accent);
+            color: #071a38;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 13px;
+            white-space: nowrap;
+            padding: 10px 20px;
+        }
+
+        .provider-lastwin__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            background: var(--provider-accent);
+            color: #071a38;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            white-space: nowrap;
+        }
+
+        @media (min-width: 600px) {
+            .provider-lastwin__cta-mobile {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .provider-lastwin__cta {
+                display: none;
+            }
+
+            .provider-lastwin__inner {
+                column-gap: 6px;
+                gap: 8px;
+                margin: 12px 0;
+            }
+        }
+
+        /* Smaller phones: make CTA full width under meta and align right within the content area */
+        @media (max-width: 520px) {
+            :root {
+                --plw-logo-size: 72px;
+            }
+
+            .provider-lastwin__logo {
+                width: var(--plw-logo-size);
+                height: var(--plw-logo-size);
+            }
+
+            .provider-lastwin__amount {
+                font-size: 24px;
+            }
+
+            .provider-lastwin__btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .provider-lastwin__content {
+                gap: 4px;
+            }
+
+            .provider-lastwin__cta {
+                display: none;
+                justify-content: flex-end;
+            }
+        }
+
+        /* Extremely narrow: ensure the block doesn't become too tall and keeps logo left */
+        @media (max-width: 360px) {
+            .provider-lastwin__inner {
+                padding: 10px;
+                row-gap: 8px;
+            }
+
+            .provider-lastwin__cta {
+                display: none;
+                justify-content: flex-end;
+                padding-right: 4px;
+            }
+        }
+
+        /* Main hero card (one main block) */
+        .provider-hero {
+            background: linear-gradient(180deg, rgba(21, 59, 128, 0.98) 0%, rgba(43, 96, 198, 0.95) 100%);
+            color: #fff;
+            border-radius: var(--provider-radius);
+            padding: 34px;
+            box-shadow: var(--provider-shadow);
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 24px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Make hero single column on small screens */
+        @media (max-width: 980px) {
+            .provider-hero {
+                grid-template-columns: 1fr;
+                text-align: left;
+                padding: 28px;
+            }
+
+            .provider-hero__media {
+                order: 2;
+            }
+        }
+
+        /* Hero text */
+        .provider-hero__title {
+            margin: 0 0 8px 0;
+            font-size: 42px;
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+            color: var(--provider-bg) !important;
+        }
+
+        .provider-hero__subtitle {
+            margin: 0 0 18px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+        }
+
+        .provider-hero__lead {
+            margin: 0 0 20px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .provider-strong {
+            font-weight: 700;
+            color: var(--provider-accent);
+        }
+
+        /* CTA */
+        .provider-cta {
+            display: inline-block;
+            background: var(--provider-accent);
+            color: #081535;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(21, 59, 128, 0.18);
+            transition: transform .14s ease, box-shadow .14s ease;
+        }
+
+        .provider-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(21, 59, 128, 0.22);
+        }
+
+        @media (max-width: 980px) {
+            .provider-hero__content .provider-cta-wrap {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .provider-hero__content .provider-cta {
+                margin: 0;
+            }
+        }
+
+        /* --- LOGO WRAPPER --- */
+        .provider-hero__media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .provider-hero__logo-wrapper {
+            width: 70%;
+            height: 200px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            border: 1px solid rgba(20, 40, 80, 0.06);
+            box-shadow: 0 6px 18px rgba(12, 26, 52, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        /* Responsivní menší verze */
+        @media (max-width:980px) {
+            .provider-hero__logo-wrapper {
+                width: 100%;
+                height: 80px;
+                padding: 10px;
+            }
+        }
+
+        /* img uvnitř: pouze jeden obrázek, centrálně, zachová poměr, vhodné pro čtverec i obdélník */
+        .provider-hero__logo-img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            /* zajistí zobrazení celé PNG bez oříznutí */
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        /* Content area after hero */
+        .provider-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 26px;
+            box-shadow: 0 6px 18px rgba(15, 30, 70, 0.16);
+        }
+
+        /* Section titles */
+        .provider-section {
+            margin-bottom: 60px;
+        }
+
+        .provider-section__title {
+            font-size: 22px;
+            margin: 0 0 12px 0;
+            color: var(--provider-deep);
+            font-weight: 700;
+        }
+
+        .provider-section__lead {
+            color: var(--provider-muted);
+            margin: 0 0 18px 0;
+            line-height: 1.6;
+        }
+
+        .provider-subtitle-small {
+            font-size: 18px;
+            margin: 48px 0 8px 0;
+            font-weight: 700;
+            color: var(--provider-deep);
+        }
+
+        /* ---------------------------
+       TOP 5: cards with 1:1 square image + description
+       --------------------------- */
+        .provider-top5-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .provider-top5-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .provider-top5-card {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #fff, #fbfdff);
+            box-shadow: 0 6px 18px rgba(12, 26, 52, 0.04);
+            border: 1px solid rgba(12, 26, 52, 0.04);
+        }
+
+        .provider-top5-card:hover,
+        .provider-cat-card:hover {
+            box-shadow: 0 12px 26px rgba(12, 26, 52, 0.08);
+            transform: scale(1.03);
+            background: linear-gradient(39deg, #f5b30c9c, #fffcf557);
+        }
+
+        .provider-top5-card__img {
+            width: 100px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #eee, #ddd);
+            background-image: url('https://www.forbescasino.cz/files/1154567MmQ.gif');
+            background-position: center;
+            background-size: cover;
+            flex-shrink: 0;
+
+            /* square enforcement */
+            aspect-ratio: 1 / 1;
+        }
+
+        /* fallback for older browsers */
+        @supports not (aspect-ratio: 1 / 1) {
+            .provider-top5-card__img {
+                height: 0;
+                padding-top: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .provider-top5-card__img::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 8px;
+                background-image: inherit;
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        .provider-top5-card__content {
+            flex: 1;
+        }
+
+        .provider-top5-card__title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--provider-deep);
+            margin-bottom: 6px;
+        }
+
+        .provider-top5-card__desc {
+            color: var(--provider-muted);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        /* ---------------------------
+       Games small grid (kept for other sections) - existing game thumbnails also 1:1
+       --------------------------- */
+        .provider-games-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 1200px) {
+            .provider-games-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .provider-games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .provider-game {
+            background: linear-gradient(180deg, #fff, #f7f9ff);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            transition: transform .12s ease, box-shadow .12s ease;
+            box-shadow: 0 4px 12px rgba(15, 30, 70, 0.06);
+        }
+
+        .provider-game:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 28px rgba(15, 30, 70, 0.12);
+        }
+
+        /* ---------------------------
+       STATS, FEATURES and BONUS section tweaks
+       --------------------------- */
+        .provider-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 18px 0 22px 0;
+        }
+
+        @media (max-width:900px) {
+            .provider-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .provider-stat {
+            background: linear-gradient(180deg, #0d13451c, #fbfdff);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(21, 59, 128, 0.04);
+        }
+
+        .provider-stat__value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--provider-deep);
+        }
+
+        .provider-stat__label {
+            font-size: 13px;
+            color: var(--provider-muted);
+        }
+
+        /* Feature list for bonus types: now includes placeholder image for each symbol */
+        .provider-feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width:700px) {
+            .provider-feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .provider-feature {
+            background: linear-gradient(176deg, #ffc10742, #ffffff);
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid rgba(12, 26, 52, 0.04);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .provider-feature__img {
+            width: 72px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f2f6ff, #eef2ff);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><rect width="100%" height="100%" rx="8" fill="%23efeef3"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="12" fill="%23808">BONUS</text></svg>');
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+            aspect-ratio: 1 / 1;
+        }
+
+        @supports not (aspect-ratio: 1 / 1) {
+            .provider-feature__img {
+                height: 0;
+                padding-top: 100%;
+                position: relative;
+            }
+
+            .provider-feature__img::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: inherit;
+                background-size: cover;
+                border-radius: 8px;
+            }
+        }
+
+        .provider-feature__body {
+            flex: 1;
+        }
+
+        .provider-feature__title {
+            font-weight: 700;
+            color: var(--provider-deep);
+            margin-bottom: 6px;
+        }
+
+        .provider-feature__desc {
+            color: var(--provider-muted);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        /* ---------------------------
+       Category cards: make their thumbnails 1:1 as requested
+       --------------------------- */
+        .provider-cat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width:1000px) {
+            .provider-cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:700px) {
+            .provider-cat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .provider-cat-card {
+            background: linear-gradient(180deg, #fff, #f8f8ff);
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border: 1px solid rgba(12, 26, 52, 0.04);
+        }
+
+        .provider-cat-card__img {
+            width: 92px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            aspect-ratio: 1 / 1;
+        }
+
+        @supports not (aspect-ratio: 1 / 1) {
+            .provider-cat-card__img {
+                height: 0;
+                padding-top: 100%;
+                position: relative;
+            }
+
+            .provider-cat-card__img::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: inherit;
+                background-size: cover;
+                border-radius: 8px;
+            }
+        }
+
+        .provider-cat-card__text {
+            font-weight: 700;
+            color: var(--provider-deep);
+        }
+
+        /* Final CTA block */
+        .provider-cta-wrap {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        /* new helper class to center CTA horizontally when needed */
+        .provider-cta-wrap.justify-center {
+            justify-content: center;
+        }
+
+        .provider-cta-outline {
+            background: transparent;
+            border: 2px solid var(--provider-accent);
+            color: var(--provider-accent);
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Small utility */
+        .provider-muted {
+            color: var(--provider-muted);
+        }
+    </style>
+    </he ad>
+
+    <!-- Top-level widget div -->
+    <div class="provider-root provider-containerr" role="region" aria-label="Recenze providera E-gaming">
+        <!-- Hero / main block -->
+        <div class="provider-hero" role="group" aria-label="Hlavní blok">
+            <div class="provider-hero__content">
+                <h1 class="provider-hero__title">E-gaming</h1>
+                <div class="provider-hero__subtitle">Recenze legendárního výrobce e-gaming a jeho nejlepší hry na
+                    Forbescasino.cz!
+                </div>
+                <p class="provider-hero__lead">
+                    Jenom těžko si lze představit hráče, který by neznal kultovní výherní automaty od společnosti
+                    e-gaming. Tato společnost původem z malebné Bystřice pod Hostýnem má na svém kontě několik dnes již
+                    legendárních automatů. U nás ve Forbes Casinu jich najdeš více než 60 a každý nich patří k těm vůbec
+                    nejoblíbenějším.
+
+                </p>
+
+                <p class="provider-hero__lead">
+                    Automaty od e-gaming jsou oblíbené pro svou <span class="provider-strong">vysokou RTP</span>,
+                    unikátní zpracování i řadu bonusových
+                    funkcí, které jistě potěší každého hráče. Pořádně jsme je pro tebe rozebrali a podíváme se na to, co
+                    ti nabízí.
+                </p>
+
+                <div class="provider-cta-wrap">
+                    <a class="provider-cta" href="https://www.forbescasino.cz/tag/egaming"
+                        title="Hraj E-gaming automaty">HRAJ
+                        E-GAMING AUTOMATY!</a>
+                </div>
+            </div>
+            <!-- Provider logo -->
+            <div class="provider-hero__media" aria-hidden="false">
+                <div class="provider-hero__logo-wrapper" role="img" aria-label="Logo providera E-gaming">
+                    <img class="provider-hero__logo-img"
+                        src="https://www.forbescasino.cz/assets/img/footer-logos/egaming_online.svg"
+                        alt="E-gaming logo">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Poslední velká výhra -->
+        <div class="lastwin-section">
+            <h2 class="provider-lastwin-title">Poslední velká výhra</h2>
+            <div class="provider-lastwin" role="region" aria-label="Poslední velká výhra">
+                <div class="provider-lastwin__inner" role="group" aria-label="Poslední velká výhra">
+                    <!-- Square logo / game image -->
+                    <div class="provider-lastwin__logo" role="img" aria-label="Multy 5">
+                        <img class="provider-lastwin__logo-img" src="https://www.forbescasino.cz/files/1006666NjI.webp"
+                            alt="Multy 5">
+                    </div>
+
+                    <!-- Content: meta (amount, game, user/date) -->
+                    <div class="provider-lastwin__content">
+                        <span class="provider-lastwin__amount" aria-live="polite">220 500 CZK</span>
+                        <span class="provider-lastwin__game">ve hře <strong
+                                style="font-weight:800; color:var(--plw-deep);">Multy 5</strong></span>
+
+                        <div class="provider-lastwin__meta-row" aria-hidden="false">
+                            <span class="provider-lastwin__user" title="Uživatel">Za****12</span>
+                            <span class="provider-lastwin__date" title="Datum a čas">12. listopadu 19:33</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="provider-lastwin__cta">
+                        <a class="provider-lastwin__btn" href="https://www.forbescasino.cz/game/3468/online/multi_5"
+                            title="Hrát Multy 5">CHCI HRÁT</a>
+                    </div>
+                </div>
+            </div>
+            <a class="provider-lastwin__cta-mobile" href="https://www.forbescasino.cz/game/3468/online/multi_5"
+                title="Hrát Multy 5">CHCI HRÁT</a>
+        </div>
+
+
+        <!-- Main white content card -->
+        <div class="provider-content" id="vice-o-providere">
+            <!-- Intro paragraphs -->
+            <div class="provider-section">
+                <h2 class="provider-section__title">Nejlepší E-gaming automaty</h2>
+                <p class="provider-section__lead">U automatů od e-gaming se dá říct, že co výherní automat, to perla.
+                    Najdeš mezi nimi legendární pecky i moderní novinky plné herních zvratů a jedinečného hráčského
+                    zážitku. Které hry by sis měl tedy od tohoto původem moravského providera vyzkoušet?
+                </p>
+
+                <!-- Top 5 cards -->
+                <div class="provider-top5-grid" aria-label="Top 5 her od E-GAMING">
+
+                    <a class="provider-top5-card" href="https://www.forbescasino.cz/game/3469/online/multiplay_81"
+                        role="article">
+                        <img class="provider-top5-card__img" src="https://www.forbescasino.cz/files/1006667MzM.webp"
+                            alt="Multiplay 81" loading="lazy" />
+                        <div class="provider-top5-card__content">
+                            <div class="provider-top5-card__title">Multiplay 81</div>
+                            <div class="provider-top5-card__desc">Zahraj si kultovní automat Multiplay 81 s ovocnými
+                                symboly a Wild násobitelem.
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="provider-top5-card" href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"
+                        role="article">
+                        <img class="provider-top5-card__img" src="https://www.forbescasino.cz/files/1006664MzA.webp"
+                            alt="HUNTER’S DREAM 2" loading="lazy" />
+                        <div class="provider-top5-card__content">
+                            <div class="provider-top5-card__title">HUNTER’S DREAM 2</div>
+                            <div class="provider-top5-card__desc">Ulov si pořádné výhry a otevři si dveře do chaloupky
+                                plné free spinů s dodatečnými respiny.
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="provider-top5-card" href="https://www.forbescasino.cz/game/3464/online/fruit_jack"
+                        role="article">
+                        <img class="provider-top5-card__img" src="https://www.forbescasino.cz/files/1160946YWR.webp"
+                            alt="FRUIT JACK" loading="lazy" />
+                        <div class="provider-top5-card__content">
+                            <div class="provider-top5-card__title">FRUIT JACK</div>
+                            <div class="provider-top5-card__desc">Nech vyskočit čertíka z krabičky s pořádnými Mystery
+                                výhrami a až 30 volnými točkami.
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="provider-top5-card" href="https://www.forbescasino.cz/game/3455/online/big_show"
+                        role="article">
+                        <img class="provider-top5-card__img" src="https://www.forbescasino.cz/files/1006653YWQ.webp"
+                            alt="BIG SHOW" loading="lazy" />
+                        <div class="provider-top5-card__content">
+                            <div class="provider-top5-card__title">BIG SHOW</div>
+                            <div class="provider-top5-card__desc">Roztanči to v kabaretu se svůdnými tanečnicemi, Wild
+                                násobiteli a unikátní bonusovkou.
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="provider-top5-card" href="https://www.forbescasino.cz/game/3468/online/multi_5"
+                        role="article">
+                        <img class="provider-top5-card__img" src="https://www.forbescasino.cz/files/1006666NjI.webp"
+                            alt="MULTI 5" loading="lazy" />
+                        <div class="provider-top5-card__content">
+                            <div class="provider-top5-card__title">MULTI 5</div>
+                            <div class="provider-top5-card__desc">V jednoduchosti je krása, která přináší Wild
+                                násobitele i jedinečnou bonusovku se zvýšeným počtem výherních linií.</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mechanika -->
+                <div class="provider-section" id="mechanika">
+                    <h2 class="provider-section__title">E-gaming automaty a jejich mechanikan</h2>
+                    <p class="provider-section__lead">Stále více hráčů se začíná zajímat nejen o to, jak automaty
+                        vypadají, ale také co skrývá jejich mechanika. Tomuto přístupu samozřejmě fandíme, protože každý
+                        by měl vědět, co může od slotu očekávat. Připravili jsme si proto krátký přehled toho, jakou
+                        mechaniku ti hry od e-gaming přináší v otázkách návratnosti, volatility, ale také výše sázek a
+                        výher.
+                    </p>
+
+                    <div class="provider-stats" role="list">
+                        <div class="provider-stat" role="listitem">
+                            <div class="provider-stat__value">až 97 %</div>
+                            <div class="provider-stat__label">RTP</div>
+                        </div>
+                        <div class="provider-stat" role="listitem">
+                            <div class="provider-stat__value">Různá</div>
+                            <div class="provider-stat__label">Volatilita</div>
+                        </div>
+                        <div class="provider-stat" role="listitem">
+                            <div class="provider-stat__value">5 Kč</div>
+                            <div class="provider-stat__label">Minimální sázka</div>
+                        </div>
+                        <div class="provider-stat" role="listitem">
+                            <div class="provider-stat__value">500 000 Kč</div>
+                            <div class="provider-stat__label">Maximální výhra</div>
+                        </div>
+                    </div>
+
+                    <p class="provider-section__lead">Tématika automatu – E-gaming je známý pro svou práci s grafikou a
+                        celkovým pojetím slotů. Většina automatů tak má grafiku připomínající ruční práci. Tematicky si
+                        poté můžeš zahrát ovocné automaty, ale i dobrodružné sloty z přírody.
+                    </p>
+                </div>
+
+                <!-- Kde se vzal -->
+                <div class="provider-section" id="kde-se-vzal">
+                    <h2 class="provider-section__title">E-gaming v čase</h2>
+                    <p class="provider-section__lead">Česká značka e-gaming je na trhu již velmi dlouhou dobu. Svou
+                        cestu zahájila již v roce 2005 a už tehdy měli její zakladatelé bohaté zkušenosti ze světa
+                        hazardního průmyslu. Velmi rychle se etablovala v Česku i na Slovensku, odkud se však rozrostla
+                        také do dalších evropských zemí. Aktuálně již provozuje desítky tisíc zařízení po celém světě a
+                        svou nabídku stále rozšiřuje.
+                    </p>
+                    <p class="provider-section__lead">Kromě samotných výherních automatů se e-gaming věnuje také vývoji
+                        samostatných herních systémů, které odráží potřeby moderních hráčů. Dnešní hráči si sloty od
+                        této společnosti extrémně oblíbili a oceňují především jejich zpracování i cit pro využití
+                        bonusových funkcí.
+                    </p>
+                </div>
+
+                <!-- Bonusy -->
+                <div class="provider-section" id="bonusy">
+                    <h2 class="provider-section__title">Bonusové prvky E-gaming automatů</h2>
+                    <p class="provider-section__lead">Není žádným tajemstvím, že bonusové funkce jsou přesně tím, co
+                        hráči od moderních slotů očekávají. Společnost e-gaming si to samozřejmě dobře uvědomuje, proto
+                        je do svých her neváhá zařadit. Pojď se podívat, co jejich automaty na Forbescasino.cz dokáží.
+                    </p>
+
+                    <!-- Features -->
+                    <div class="provider-feature-list" role="list">
+                        <div class="provider-feature" role="listitem">
+                            <div class="provider-feature__body">
+                                <div class="provider-feature__title">Mystery symboly</div>
+                                <div class="provider-feature__desc">velkou specialitou slotů od e-gaming jsou rozhodně
+                                    Mystery symboly, které v nich najdeš často. Můžeš se tak těšit na překvapivě vysoké
+                                    výhry i mimo výherní linie. Hrát s nimi můžeš třeba v hře Wild Cookies.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="provider-feature" role="listitem">
+                            <div class="provider-feature__body">
+                                <div class="provider-feature__title">Wild symboly</div>
+                                <div class="provider-feature__desc"> práce s bonusy jde vidět i na Wild symbolech, které
+                                    často nejen doplňují výherní linie, ale přináší také luxusní násobitele a respiny.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="provider-feature" role="listitem">
+                            <div class="provider-feature__body">
+                                <div class="provider-feature__title">Volná zatočení</div>
+                                <div class="provider-feature__desc">důležitou složkou automatů jsou také Scatter
+                                    symboly, s nimiž můžeš získat volná zatočení, bonusové hry nebo výhry mimo výherní
+                                    linie.</div>
+                            </div>
+                        </div>
+
+                        <div class="provider-feature" role="listitem">
+                            <div class="provider-feature__body">
+                                <div class="provider-feature__title">Násobitele</div>
+                                <div class="provider-feature__desc">ani o zvyšování výher samozřejmě nebude nouze.
+                                    Násobitele jsou také běžnou součástí her od e-gaming a určitě najdeš i ty tu svou.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="provider-section__lead">Nezapomeň také kontrolovat <a
+                            href="https://www.forbescasino.cz/forbesmanie">Forbesmánii</a>. V ní totiž najdeš další
+                        lákavé bonusy, mezi kterými se samozřejmě mohou objevovat i free spiny do automatů od e-gaming.
+                        Mrkni do ní pro jistotu hned a přesvědč se, co tam aktuálně máme.
+                    </p>
+                </div>
+
+                <!-- Automaty pro všechny  -->
+                <div class="provider-section" id="automaty-pro-vsechny">
+                    <h2 class="provider-section__title">Vyber si z E-gaming nabídky</h2>
+                    <p class="provider-section__lead">Velkou zásluhu na popularitě e-gaming automatů má jistě také to,
+                        jak pestrá samotná nabídka je. Vyberou si z ní zarytí hráči ovocných automatů i nadšenci do
+                        dobrodružných her s četnými bonusovými funkcemi. Pojď se společně s námi podívat na tři stěžejní
+                        kategorie slotů, které si rozhodně musíš otestovat na vlastní kůži.
+                    </p>
+
+                    <div class="provider-subtitle-small">Automaty pro frutariány</div>
+                    <p class="provider-muted">Jestliže se řadíš mezi herní frutariány, tedy milovníky ovocných slotů,
+                        e-gaming pro tebe má opravdu širokou nabídku, ze které si jistě vybereš. Zakousni se třeba do
+                        jedné z naší vybrané trojice.
+                    </p>
+                    <div class="provider-cat-grid" aria-label="Grid: Automaty pro frutariány">
+                        <!-- 1  -->
+                        <a class="provider-cat-card" href="https://www.forbescasino.cz/game/3799/online/respin_fruit"
+                            title="Respin Fruit">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006842MjA.webp"
+                                alt="Respin Fruit" loading="lazy" />
+                            <div class="provider-cat-card__text">Respin Fruit</div>
+                        </a>
+                        <!-- 2  -->
+                        <a class="provider-cat-card" href="https://www.forbescasino.cz/game/3773/online/jiggly_jack"
+                            title="Jiggly Jack">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006821MzQ.webp"
+                                alt="Jiggly Jack" loading="lazy" />
+                            <div class="provider-cat-card__text">Jiggly Jack</div>
+                        </a>
+                        <!-- 3  -->
+                        <a class="provider-cat-card" href="https://www.forbescasino.cz/game/3758/online/maxi_5"
+                            title="Maxi 5">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006819OTA.webp"
+                                alt="Maxi 5" loading="lazy" />
+                            <div class="provider-cat-card__text">Maxi 5</div>
+                        </a>
+                    </div>
+
+                    <div class="provider-subtitle-small">Dobrodružná jízda</div>
+                    <p class="provider-muted">Chceš zažít něco trochu akčnějšího a užít si napětí se skvělými bonusovými
+                        funkcemi? Pak si určitě nenech utéct skvělé dobrodružné sloty.
+                    </p>
+                    <div class="provider-cat-grid" aria-label="Grid: Dobrodružná jízda">
+                        <!-- 1  -->
+                        <a class="provider-cat-card" href="https://www.forbescasino.cz/game/3472/online/space_adventure"
+                            title="Space Adventure">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006698MTA.webp"
+                                alt="Space Adventure" loading="lazy" />
+                            <div class="provider-cat-card__text">Space Adventure</div>
+                        </a>
+                        <!-- 2  -->
+                        <a class="provider-cat-card"
+                            href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"
+                            title="Super Reels Deluxe">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006704OTg.webp"
+                                alt="Super Reels Deluxe" loading="lazy" />
+                            <div class="provider-cat-card__text">Super Reels Deluxe</div>
+                        </a>
+                        <!-- 3  -->
+                        <a class="provider-cat-card"
+                            href="https://www.forbescasino.cz/game/3585/online/pirate_adventures"
+                            title="Pirate Adventures">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006764Mjl.webp"
+                                alt="Pirate Adventures" loading="lazy" />
+                            <div class="provider-cat-card__text">Pirate Adventures</div>
+                        </a>
+                    </div>
+
+                    <div class="provider-subtitle-small">Pro milovníky zvířat</div>
+                    <p class="provider-muted">A pokud si chceš užít nejen bonusy, ale zároveň si užít také zvířecí
+                        společnost, e-gaming ti to umožní. Vyzkoušej si jeho automaty se zvířaty a nech je vyčmuchat
+                        parádní výhry.
+                    </p>
+                    <div class="provider-cat-grid" aria-label="Grid: Pro milovníky zvířat">
+                        <!-- 1  -->
+                        <a class="provider-cat-card"
+                            href="https://www.forbescasino.cz/game/3630/online/mountain_legends_2"
+                            title="Mountain Legends 2">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006809ODY.webp"
+                                alt="Mountain Legends 2" loading="lazy" />
+                            <div class="provider-cat-card__text">Mountain Legends 2</div>
+                        </a>
+                        <!-- 2  -->
+                        <a class="provider-cat-card"
+                            href="https://www.forbescasino.cz/game/3985/online/243_christmas_fruits"
+                            title="243 Christmas Fruits">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1177699MDY.webp"
+                                alt="243 Christmas Fruits" loading="lazy" />
+                            <div class="provider-cat-card__text">243 Christmas Fruits</div>
+                        </a>
+                        <!-- 3  -->
+                        <a class="provider-cat-card"
+                            href="https://www.forbescasino.cz/game/3588/online/savana_sunrise_deluxe"
+                            title="Savana Sunrise Deluxe">
+                            <img class="provider-cat-card__img" src="https://www.forbescasino.cz/files/1006795ODV.webp"
+                                alt="Savana Sunrise Deluxe" loading="lazy" />
+                            <div class="provider-cat-card__text">Savana Sunrise Deluxe</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Final CTA -->
+                <div class="provider-section">
+                    <h2 class="provider-section__title">Zahraj si e-gaming automaty na Forbescasino.cz</h2>
+                    <p class="provider-section__lead">Jestliže si chceš zahrát ty nejlepší automaty a užít si parádní
+                        zábavu i vysoké výhry, automaty od e-gaming na Forbescasino.cz ti zkrátka nemohou uniknout. Na
+                        své si přijdou nejen ti, kteří se opírají o jednoduchost ovocných automatů, ale také ti, kteří
+                        hledají četné bonusové funkce.
+                    </p>
+
+                    <div class="provider-cta-wrap justify-center">
+                        <a id="hrat-tomhorn" class="provider-cta" href="https://www.forbescasino.cz/tag/egaming"
+                            title="Hraj E-gaming automaty">HRAJ E-GAMING AUTOMATY!</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</html>

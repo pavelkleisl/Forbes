@@ -1,0 +1,61 @@
+zkus kompletně přestylovat celou tuhle sekci. Udělej nějaké moderní pěkné UX/UI. Hlavně se zaměř na menší mobilní telefony na kterých to musí být vše hezky viditelné.
+
+
+ABSOLUTNĚ NEMĚŇ TEXTACI. JSOU TO PŘESNÁ PRAVIDLA A NESMÍ BÝT TEXTY ZMĚNĚNY. Můžeš akorát přidat emotikony atd.
+
+
+
+
+FORBES
+
+Pravidla pro tvorbu kodu:
+
+- chci CSS i HTML kod v jednom souboru abych ho jednoduše nakopíroval do editoru CMS.
+
+- pracuji v CMS tzn - nepoužívej tagy body, head, section atd. Pracuj pouze s obecnými tagy jako je div, span atd aby nedocházelo ke kolizím mezi nadřazenou strukturou webu. Také nenastavuj styly pro body. Opět kvůli kolizi. 
+
+- všechny třídy musí mít telly "slava" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
+
+- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám, vyhni se stylování písma (to vše se přebírá od nadřazeného webu). 
+
+- pokud možno vyhni se inline stylům 
+
+- zajisti správnou responzivitu 
+
+- můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá 
+
+- JS není v mém CMS povolené, vyhni se mu.
+
+- jedná se online casino stránku, můžeš používat různé prvky a styly co "tahají oči". Udělej nějaké moderní pěkné UX/UI.
+
+-pokud použiješ emoji tak piš kody emoji aby to CMS správně vypsalo
+
+Zde je zadání nové stránky (je to sepsané v documentu který ti ofotím) ty zajisti stylování a vše potřebné aby stránka vypadala hezky. 
+
+
+
+Championbet Uganda
+
+Pravidla pro tvorbu kodu:
+
+- chci CSS i HTML kod v jednom souboru abych ho jednoduše nakopíroval do editoru CMS.
+
+- pracuji v CMS tzn - nepoužívej tagy body, head, section atd. Pracuj pouze s obecnými tagy jako je div, span atd aby nedocházelo ke kolizím mezi nadřazenou strukturou webu. Také nenastavuj styly pro body. Opět kvůli kolizi. 
+
+- všechny třídy musí mít prefix "xmas" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
+
+- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám, vyhni se stylování písma (to vše se přebírá od nadřazeného webu). 
+
+- pokud možno vyhni se inline stylům 
+
+- zajisti správnou responzivitu 
+
+- můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #234080 a #febe26 a #dadde1 a bílá 
+
+- JS není v mém CMS povolené, vyhni se mu.
+
+- jedná se online casino stránku, můžeš používat různé prvky a styly co "tahají oči". Udělej nějaké moderní pěkné UX/UI.
+
+
+Ve screenu vidíš zadání nové stránky (je to sepsané v documentu který ti ofotím) ty zajisti stylování a vše potřebné aby stránka vypadala hezky. (samotné texty vůbec neměň, jsou to přesné pravidla soutěže a nechci aby si je jakkoliv upravoval)
+

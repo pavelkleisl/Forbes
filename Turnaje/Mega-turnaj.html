@@ -1,0 +1,758 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackpoty</title>
+<style type="text/css">
+    /* === Globální pozadí stránky === */
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    body {
+        background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 500px;
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+    /* === HLAVNI PANEL === */
+    .header-panel {
+        width: 100%;
+        height: 130px;
+        background-image: url("https://www.forbescasino.cz/assets/img/welcome-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    /* === BONUSOVÝ OBRÁZEK === */
+    .bonus-image {
+        height: 150px;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+    }
+
+    .bonus-image img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* === ZPĚT TLAČÍTKO === */
+    .back-button {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        padding: 12px 18px;
+        background: #ffffff0a;
+        color: #ffffff;
+        border: 2px solid #ffffff26;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .back-button:hover {
+        background: #ffffff2b;
+        color: #ffffff;
+    }
+
+    .back-button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        vertical-align: middle;
+        transform: rotate(90deg);
+    }
+
+    /* === HLAVNÍ OBSAH PANELU === */
+    .content-panel {
+        width: 100%;
+        background: #ffffff;
+        padding-top: 64px;
+        min-height: 500px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 60px;
+        margin-bottom: 60px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    /* === TITULKY JACKPOTŮ === */
+    .bonus-title {
+        color: #0d1345;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .bonus-subtitle {
+        width: 100%;
+        max-width: 900px;
+        justify-self: center;
+        color: #6f6f6f;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-weight: 400;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 20px;
+    }
+
+    .how-to {
+        width: 100%;
+        text-align: center;
+        color: #10880e;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-top: 40px;
+    }
+
+    .how-to-text {
+        width: 100%;
+        max-width: 900px;
+        padding: 18px 24px;
+        color: #333;
+        background-color: #e9ffe6;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        box-shadow: 0 2px 12px 0 rgba(16, 136, 14, 0.08);
+        border: 1px solid #d0f2cc;
+        letter-spacing: 0.01em;
+        line-height: inherit;
+        justify-self: center;
+    }
+
+    .warning-text {
+        width: 100%;
+        max-width: 900px;
+        padding: 18px 24px;
+        margin-top: 32px;
+        color: #7d7d7d;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        box-shadow: 0 2px 12px 0 rgba(16, 136, 14, 0.08);
+        border: 1px solid #d7d7d7;
+        letter-spacing: 0.01em;
+        line-height: inherit;
+        justify-self: center;
+    }
+
+    /* === SEKCE KROKŮ BONUSU === */
+    .bonus-steps {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+        padding: 10px 0;
+        max-width: 900px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 20px;
+    }
+
+    .bonus-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 33%;
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        height: stretch;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .bonus-step-link {
+        text-decoration: none;
+        color: inherit;
+        width: 33%;
+        height: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+        border-radius: 8px;
+    }
+
+    .bonus-step-link:hover {
+        background: #e8e8e8;
+        transform: scale(1.05);
+        border-radius: 8px;
+    }
+
+    .bonus-step-link .bonus-step {
+        width: 100%;
+    }
+
+    .step-icon1,
+    .step-icon2,
+    .step-icon3 {
+        width: 100px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .step-icon1 {
+        background-image: url("https://www.forbescasino.cz/text_img/1155248MTN.png");
+    }
+
+    .step-icon2 {
+        background-image: url("https://www.forbescasino.cz/text_img/1155249MmY.png");
+    }
+
+    .step-icon3 {
+        background-image: url("https://www.forbescasino.cz/text_img/1155251ZjU.png");
+    }
+
+    .bonus-step-title {
+        color: #0d1345;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .bonus-step-subtitle {
+        color: #434343;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .bonus-step-subtitle a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    /* === MEDIA === */
+    @media (max-width: 500px) {
+        .bonus-steps {
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            gap: 10px;
+        }
+
+        .bonus-step {
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bonus-step-link {
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .bonus-step-text {
+            width: 70%;
+            align-items: flex-start;
+            margin-left: 1rem;
+            text-align: left;
+        }
+
+        .step-icon1,
+        .step-icon2,
+        .step-icon3 {
+            width: 30%;
+            height: 80px;
+            align-items: flex-start;
+            margin-left: 0rem;
+            margin-bottom: 0rem;
+            text-align: left;
+        }
+    }
+
+    .harmonogram-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 900px;
+        margin: 30px auto 0 auto;
+        padding: 0 10px;
+    }
+
+    .harmonogram-item {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 14px 0 rgba(13, 19, 69, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.18s ease-in-out, box-shadow 0.18s;
+        border: 1px solid #e5e5e5;
+        min-width: 0;
+    }
+
+    .harmonogram-img {
+        width: 100%;
+        max-width: 240px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        display: block;
+        background: #f8f8f8;
+    }
+
+    .harmonogram-date {
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0d1345;
+        padding: 18px 0 8px 0;
+        background-color: #f5f5f5;
+        letter-spacing: 0.04em;
+        border-radius: 0 0 12px 12px;
+        font-family: inherit;
+    }
+
+    .harmonogram-fs {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #7e5b09;
+        padding: 12px 2px;
+        background: linear-gradient(135deg, #fffbe6 0%, #f9e79f 80%, #ffe57f 100%);
+        border-bottom: 1px solid #ffd700;
+        font-family: inherit;
+    }
+
+    /* === EXTRA ODMĚNA SEKCE === */
+    .extra-reward-section {
+        background: linear-gradient(135deg, #fffbe6 0%, #f9e79f 80%, #ffe57f 100%);
+        border: 2px solid #ffd700;
+        box-shadow: 0 4px 24px 0 rgba(255, 215, 0, 0.12);
+        border-radius: 18px;
+        padding: 0px 30px;
+        margin: 30px auto 0 auto;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .extra-reward-image {
+        min-width: 120px;
+        width: 140px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+    }
+
+    .extra-reward-image img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 10px #ffd700bb);
+    }
+
+    .extra-reward-content {
+        flex: 1;
+    }
+
+    .extra-reward-title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #ba8b1d;
+        margin-bottom: 12px;
+        text-shadow: 0 2px 12px #ffd70044;
+        letter-spacing: 0.03em;
+    }
+
+    .extra-reward-text {
+        font-size: 1rem;
+        color: #4d3b0c;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .cta-jackpot-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .cta-jackpot-btn {
+        display: inline-block;
+        text-align: center;
+        max-width: 350px;
+        font-size: 1.2rem;
+        padding: 1rem 1.2rem;
+        border-radius: 100px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #ffcc00 0%, #ff6600 100%);
+        color: #0d0f22;
+        border: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(255, 102, 0, 0.07);
+        cursor: pointer;
+        transition: transform 0.15s cubic-bezier(.4, 0, .2, 1), box-shadow 0.15s;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        text-transform: uppercase;
+    }
+
+    .cta-jackpot-btn:hover,
+    .cta-jackpot-btn:focus {
+        transform: scale(1.04);
+        background: linear-gradient(90deg, #ffd700 0%, #ff6600 100%);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        color: #0d1345;
+        text-decoration: none;
+    }
+
+    .cta-jackpot-btn:active {
+        transform: scale(0.97);
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -27px;
+        }
+
+        .p-0 {
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+        }
+
+        .bonus-image {
+            height: 130px;
+            top: 40px;
+        }
+
+        .cta-jackpot-container {
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-jackpot-btn {
+            font-size: 1.1rem;
+            padding: 0.8rem 0.7rem;
+            width: 80vw;
+            max-width: 350px;
+            white-space: normal;
+        }
+
+        .back-button img {
+            width: 16px;
+            height: 16px;
+            margin-right: 0px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -10px;
+            padding: 1.5rem !important;
+        }
+
+        .bonus-step {
+            height: 100%;
+        }
+
+        .back-button {
+            font-size: 18px;
+            padding: 16px 32px;
+            top: 35px;
+            left: 20px;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -49px;
+        }
+
+        .bonus-title {
+            font-size: 28px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -0.5rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 {
+            margin-top: 1rem;
+        }
+
+        .col-xl-10.offset-xl-1.bg-white.p-4.p-sm-5 {
+            border-radius: 12px 12px 0px 0px;
+            padding: 0rem !important;
+            background: transparent !important;
+        }
+
+        .header-panel {
+            border-radius: 12px 12px 0px 0px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .p-4 {
+            padding: 0rem !important;
+        }
+
+        .content-panel {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    @media (max-width: 950px) {
+        .harmonogram-grid {
+            max-width: 100%;
+            gap: 18px;
+        }
+
+        .harmonogram-date {
+            font-size: 1.4rem;
+            padding: 12px 0 8px 0;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .harmonogram-grid {
+            gap: 12px;
+        }
+
+        .harmonogram-date {
+            font-size: 1.15rem;
+            padding: 10px 0 6px 0;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .harmonogram-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 400px;
+            margin: 24px auto 0 auto;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .harmonogram-grid {
+            gap: 10px;
+            max-width: 100%;
+        }
+
+        .harmonogram-date {
+            font-size: 1rem;
+            padding: 8px 0 4px 0;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .extra-reward-section {
+            flex-direction: column;
+            gap: 0px;
+            padding: 0px 16px 16px 16px;
+            max-width: 99%;
+            text-align: center;
+        }
+
+        .extra-reward-image {
+            margin: 0 auto;
+        }
+
+        .extra-reward-image img {
+            width: 200px;
+        }
+
+        .extra-reward-title {
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .extra-reward-bonus {
+            font-size: 1.08rem;
+            padding: 7px 16px;
+        }
+    }
+
+    .tournament-ended-notice {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        border: 2px solid #cc0000;
+        border-radius: 12px;
+        padding: 24px 30px;
+        margin: 0 auto 30px auto;
+        max-width: 900px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(204, 0, 0, 0.15);
+    }
+
+    .tournament-ended-title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .tournament-ended-text {
+        font-size: 1rem;
+        color: #ffffff;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+</style>
+
+<!-- === HLAVNÍ PANEL === -->
+<div class="header-panel">
+    <div class="bonus-image"> <img alt="Bonus image" src="https://www.forbescasino.cz/text_img/1236489MmJ.png" /> </div>
+    <a class="back-button" href="https://www.forbescasino.cz/turnaje"><img alt="Back icon"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e" />
+        Zpět </a>
+</div>
+
+<!-- === HLAVNÍ OBSAH PANELU === -->
+<div class="content-panel">
+    <h1 class="bonus-title">MEGA Turnaj</h1>
+    <h2 class="bonus-subtitle">Předvánoční Mega Turnaj pro hráče s <strong>úrovní 10+</strong> je tady! Od 24. 11. do
+        30. 11. tě čeká 7
+        dnů plných zábavy – až 15 000 Kč ve free spinech pro každého hráče a k tomu ty nejlepší pecky od Endorphiny!
+    </h2>
+
+    <!-- === OZNÁMENÍ O UKONČENÍ TURNAJE === -->
+    <div class="tournament-ended-notice">
+        <div class="tournament-ended-title">
+            ⚠️ Turnaj ukončen
+        </div>
+        <div class="tournament-ended-text">
+            Tento turnaj byl ukončen dne <strong>30. 11. 2024</strong>. Děkujeme všem účastníkům za skvělou hru!
+        </div>
+    </div>
+
+    <!-- === EXTRA ODMĚNA === -->
+    <div class="extra-reward-section">
+        <div class="extra-reward-image"> <img src="https://www.forbescasino.cz/text_img/1236493YmU.png"
+                alt="Zlaté mince" /> </div>
+        <div class="extra-reward-content">
+            <div class="extra-reward-title">HLAVNÍ ODMĚNA 10 000 Kč!</div>
+            <div class="extra-reward-text"> Pokud vydržíš až do konce a <strong>každý den</strong> splníš všechny tři
+                akce, získáš na závěr <strong>10 000 Kč ve freespinech</strong> – konkrétně 200 FS po 50 Kč do hry Joker
+                Ra. </div>
+        </div>
+    </div>
+
+    <!-- === SEKCE KROKŮ BONUSU === -->
+    <h3 class="how-to">Jak hrát turnaj?</h3>
+    <h2 class="how-to-text">Každý den na tebe čekají tři speciální akce, které si aktivuješ ve Forbesmánii. Splň je a
+        získej parádní odměny v podobě free spinů!
+    </h2>
+    <div class="bonus-steps"> <a href="https://www.forbescasino.cz/forbesmanie" class="bonus-step-link">
+            <div class="bonus-step">
+                <div class="step-icon step-icon1"></div>
+                <div class="bonus-step-text">
+                    <div class="bonus-step-title">75 kč ve free spinech</div>
+                    <div class="bonus-step-subtitle">Protoč 5 000 Kč na hrách Endorphina</div>
+                </div>
+            </div>
+        </a> <a href="https://www.forbescasino.cz/forbesmanie" class="bonus-step-link">
+            <div class="bonus-step">
+                <div class="step-icon step-icon2"></div>
+                <div class="bonus-step-text">
+                    <div class="bonus-step-title">200 Kč ve free spinech</div>
+                    <div class="bonus-step-subtitle">Protoč 15 000 Kč na hrách Endorphina</div>
+                </div>
+            </div>
+        </a> <a href="https://www.forbescasino.cz/forbesmanie" class="bonus-step-link">
+            <div class="bonus-step">
+                <div class="step-icon step-icon3"></div>
+                <div class="bonus-step-text">
+                    <div class="bonus-step-title">450 kč ve free spinech</div>
+                    <div class="bonus-step-subtitle">Protoč 30 000 Kč na hrách Endorphina</div>
+                </div>
+            </div>
+        </a> </div>
+
+    <!-- === HARMONOGRAM TURNAJE === -->
+    <h3 class="how-to" style="margin-top: 20px;">HARMONOGRAM</h3>
+    <div class="harmonogram-grid">
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="https://www.forbescasino.cz/files/1159719MmM.webp" alt="Joker Stoker " />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">24. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="	https://www.forbescasino.cz/files/1161008YmQ.webp" alt="Joker Ra " />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">25. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="	https://www.forbescasino.cz/files/1159721N2J.webp" alt="Cyber Wolf" />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">26. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="https://www.forbescasino.cz/files/1159703Mzh.webp" alt="Hell Hot 40" />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">27. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="https://www.forbescasino.cz/files/1006734ZDM.webp" alt="Lucky Streak 2" />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">28. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="https://www.forbescasino.cz/files/1159705N2U.webp" alt="Hit Slot 2024" />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">29. 11.</div>
+        </div>
+        <div class="harmonogram-item"> <img class="harmonogram-img"
+                src="https://www.forbescasino.cz/files/1006672OTc.webp" alt="Chance Machine 100" />
+            <div class="harmonogram-fs">Až 725 Free spinů</div>
+            <div class="harmonogram-date">30. 11.</div>
+        </div>
+    </div>
+
+    <!-- <div class="cta-jackpot-container"> <a href="https://forbescasino.cz/forbesmanie" class="cta-jackpot-btn">Jdu si pro
+        15 000 Kč</a> </div> -->
+
+
+    <h2 class="warning-text"><strong>Poznámka:</strong> „Turnaj“ na této stránce je marketingová bonusová akce, nikoli
+        turnaj ve smyslu
+        zákona o hazardních hrách. Hráči spolu nesoutěží, nevznikají žebříčky a odměny nezávisí na výsledku hazardní
+        hry. Jde o dobrovolnou sérii denních úkolů, za jejichž splnění hráč obdrží bonusové odměny (freespiny, body
+        apod.) podle dopředu stanovených pravidel.
+    </h2>
+</div>

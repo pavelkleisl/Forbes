@@ -1,0 +1,56 @@
+Chci aby si mi sem přidal kus kódu který mi zajistí co nejlepší SEO score a bude co nejlepší pro Google roboty. + dodělej podle svého uvážení to, co by bylo ještě ideální udělat.
+
+URL stránky kde bude kód nahraný: https://www.forbescasino.cz/sin-slavy-mesic
+(na stránce nemám drobečkovou navigaci),(nevaž se na učitý rok - pracuj s tím obecně), (do tagu head mi dej i moje aktuální CSS styly)
+
+
+KRITICKÉ požadavky: 
+
+1. META TAGY (vložit do <head>):
+   - <title> tag s klíčovými slovy (50-60 znaků)
+   - Meta description (150-160 znaků)
+   - Open Graph tagy (og:title, og:description, og:image, og:url)
+   - Twitter Cards
+   - Canonical URL
+   - Viewport meta tag
+
+2. STRUKTUROVANÁ DATA (JSON-LD script do <head>):
+   - Schema.org WebPage/Article/Product markup
+   - Breadcrumb navigace
+   - Organization schema
+
+URL na naše soc.sítě jsou: 
+WA: https://whatsapp.com/channel/0029VbBoaDV7DAWyEinBzx1M 
+IG: https://www.instagram.com/forbescasino.cz
+FB: https://www.facebook.com/forbescasino 
+FB(druhá facebook skupina): https://www.facebook.com/wwwForbesCasinocz 
+TG: https://t.me/ForbesCasinocz
+YT: https://www.youtube.com/@forbescasino1474
+
+
+
+
+3. OBSAH PRO CKEDITOR (body content):
+   - JEDEN h1 heading s hlavním klíčovým slovem
+   - Logická hierarchie h2, h3, h4
+   - Div bloky s descriptive CSS classes
+   - ARIA role atributy (role="main", role="navigation")
+   - Obrázky s alt texty a loading="lazy"
+   - Interní linky s descriptive anchor texty
+   - Seznamy (ul/ol) pro strukturovaný obsah
+   - Strong/em tagy pro důležitá slova
+
+4. SEO BEST PRACTICES:
+   - Žádné inline styly (pouze classes)
+
+5. ACCESSIBILITY:
+   - Alt texty u všech obrázků
+   - ARIA labels kde potřeba
+   - Proper heading hierarchy
+
+- Div bloky s descriptive CSS classes
+- ARIA role atributy (role="main", role="navigation")
+- Obrázky s alt texty a loading="lazy"
+- Žádné inline styly (pouze classes)
+nepouzivej tag section
+

@@ -1,0 +1,102 @@
+ /* Override existing styles */
+    body {
+        background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 500px;
+    }
+
+    .p-sm-5 {
+        padding: 0rem !important;
+        border-radius: 12px !important;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -27px;
+        }
+
+        .p-0 {
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -10px;
+            padding: 1.5rem !important;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -49px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -0.5rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 {
+            margin-top: 1rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .p-4 {
+            padding: 0rem !important;
+        }
+
+        .content-panel {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+
+------------------------------------------------
+    APLIKACE
+------------------------------------------------
+
+/* === Reset a globální nastavení === */
+     /* Override existing styles */
+        body {
+            height: 100%;
+            background-color: #0f153c;
+            background-image: url(/assets/img/welcome-bg.jpg);
+        }
+
+        .p-sm-5 {
+            padding: 0rem !important;
+            border-radius: 12px !important;
+        }
+
+        .bg-lighter {
+            background: none !important;
+            display: none;
+        }
+
+        .bg-white {
+            background: none !important;
+        }
+
+        .container .row .bg-white {
+            background: transparent !important;
+        }
