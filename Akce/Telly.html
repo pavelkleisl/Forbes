@@ -1,6 +1,5 @@
 <style>
-
-  /* --- IMPORT PŮVODNÍCH STYLŮ (NEMĚNĚNO) změna pro git --- */
+  /* --- IMPORT PŮVODNÍCH STYLŮ (NEMĚNĚNO) --- */
   body {
     background-color: #0e0420 !important;
   }
@@ -347,25 +346,68 @@
   /* Tlačítka */
   .cms-btn {
     display: inline-block;
-    background-color: #f5b30c;
-    color: #000000;
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 12px 30px;
+    position: relative;
+    /* Gradient z tmavě oranžové do jasně zlaté */
+    background: linear-gradient(90deg, #b97322 0%, #f5b30c 100%);
+    color: #ffffff !important;
+    padding: 18px 50px;
     border-radius: 50px;
     text-decoration: none;
-    transition: transform 0.2s, background-color 0.2s;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* Vnější zlatá záře */
+    box-shadow: 0 0 20px rgba(245, 179, 12, 0.4),
+      0 10px 20px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 4px 15px rgba(245, 179, 12, 0.4);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Vnitřní horní odlesk (ta bílá linka nahoře v tlačítku) */
+  .cms-btn::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 10%;
+    width: 80%;
+    height: 30%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+    border-radius: 50px;
+    pointer-events: none;
+  }
+
+  /* Animovaný "lesk", který projede tlačítkem při hoveru */
+  .cms-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+    z-index: -1;
   }
 
   .cms-btn:hover {
-    background-color: #ffc12e;
-    transform: scale(1.05);
-    text-decoration: none;
-    color: #000;
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(245, 179, 12, 0.6);
+    color: #ffffff;
+  }
+
+  .cms-btn:hover::after {
+    left: 150%;
+  }
+
+  /* Aktivní stav při kliknutí */
+  .cms-btn:active {
+    transform: scale(0.95);
   }
 
   /* --- HERO SEKCE (ANIMOVANÁ) --- */
@@ -380,6 +422,7 @@
     position: relative;
     width: 100%;
     height: 400px;
+    /* Výchozí výška pro větší obrazovky */
     /* Mobilní výška */
     overflow: hidden;
   }
@@ -409,7 +452,8 @@
   /* Kompozice Popcornu a Lístků */
   .cms-hero-composition {
     position: absolute;
-    bottom: 125px;
+    bottom: 80px;
+    /* Změněno z 125px - přizpůsobeno nižší výšce */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -727,7 +771,8 @@
   /* Footer */
   .cms-rules-footer {
     font-size: 12px;
-    color: #666;
+    color: #b3b3b3;
+    /* Změněno z #666 */
     max-width: 800px;
     margin: 40px auto 0;
     text-align: left;
@@ -735,7 +780,8 @@
   }
 
   .cms-rules-footer h4 {
-    color: #888;
+    color: #cccccc;
+    /* Změněno z #888 */
     text-transform: uppercase;
     font-weight: 800;
     margin-bottom: 10px;
@@ -754,23 +800,50 @@
   /* --- MEDIA QUERIES --- */
 
   @media (max-width: 768px) {
+    .cms-hero-bg-container {
+      height: 250px;
+      /* Menší výška jen na mobilech */
+    }
+
     .cms-popcorn-img {
-      width: 190px;
-      margin-left: -95px;
+      width: 124px;
+      margin-left: -62px;
+      bottom: 5px;
     }
 
     /* Menší na mobilu */
     .cms-fs-ticket-img {
-      width: 90px;
+      width: 75px;
+      /* Zmenšeno z 90px */
       bottom: 20px;
     }
 
     .cms-fs-left {
       margin-left: -130px;
+      bottom: -5px;
     }
 
     .cms-fs-right {
       margin-left: 50px;
+    }
+
+    .cms-hero-composition {
+      bottom: 60px;
+      /* Ještě nižší na mobilech */
+      height: 280px;
+      /* Menší výška kompozice */
+    }
+
+    .cms-features-grid {
+      flex-direction: column;
+      /* Pod sebou na mobilech */
+      margin: 30px 0 50px 0;
+      /* Zmenšená mezera - 30px nahoře */
+    }
+
+    .cms-split-layout {
+      gap: 30px;
+      /* Zmenšená mezera mezi widgetem a features gridem */
     }
   }
 
@@ -841,39 +914,33 @@
       <h1 class="cms-h1">Toč a sleduj Telly TV<br>měsíc zdarma!</h1>
       <p class="cms-p">
         Chceš se pořádně pobavit a ještě získat exkluzivní odměnu? Roztoč své oblíbené Tech4Bet automaty, získej do nich
-        free spiny a my ti přihodíme Střední balíček od Telly TV navíc jako dárek.
+        free spiny a my ti přihodíme nabitý balíček od Telly TV navíc jako dárek.
       </p>
-      <a href="#akce" class="cms-btn">Chci balíček!</a>
+      <a href="#akce" class="cms-btn">To chci!</a>
     </div>
 
     <div style="margin-top: 60px;">
-      <h2 class="cms-h2">Free spiny od Tech4Bet & Střední balíček<br>od Telly TV</h2>
+      <h2 class="cms-h2">Free spiny od Tech4Bet & Nabitý balíček<br>od Telly TV</h2>
       <p class="cms-p">
-        Určitě to znáš taky. V televizi zrovna nic nedávají a nuda už je doslova hmatatelná. Ve Forbescasino.cz ale na
+        Určitě to znáš taky. V televizi zrovna nic nedávají a nuda už je doslova hmatatelná. Ve <a
+          href="https://www.forbescasino.cz" style="color: inherit; text-decoration: underline;">Forbescasino.cz</a> ale
+        na
         nudu známe lék.
       </p>
       <p class="cms-p">
         Připravili jsme si pro tebe speciální bonusovou akci, která všechno vyřeší za tebe. Čekají na tebe nejen volné
-        točky do her od Tech4Bet v celkové hodnotě 50 Kč, ale také Střední balíček od Telly TV na měsíc zdarma.
+        točky do her od Tech4Bet v celkové hodnotě 50 Kč, ale také <strong>Střední balíček od Telly TV</strong> na měsíc
+        zdarma v hodnotě 480 Kč.
       </p>
       <p class="cms-p">
-        Můžeš si tak nejen zatočit své oblíbené hry, ale ještě u toho sledovat některý ze 108 dostupných kanálů. Nalaď
+        Můžeš si tak nejen zatočit své oblíbené hry, ale ještě u toho <strong>sledovat některý ze 108 dostupných
+          kanálů</strong>. Nalaď
         se na Ligu mistrů nebo si odpočiň u některého z filmových či seriálových hitů. Volba je jenom na tobě.
       </p>
     </div>
 
     <div class="cms-widget-section" id="akce">
       <div class="cms-split-layout">
-
-        <div class="cms-widget-deco-container">
-          <img src="https://www.forbescasino.cz//text_img/1304637Zjk.webp" class="cms-fruit cms-f-clover" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304638N2F.webp" class="cms-fruit cms-f-orange" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304642ZTk.webp" class="cms-fruit cms-f-plum" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304639ODY.webp" class="cms-fruit cms-f-leaf" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304634MWY.webp" class="cms-fruit cms-f-diamond" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304636NWU.webp" class="cms-fruit cms-f-grapes" alt="">
-          <img src="https://www.forbescasino.cz//text_img/1304635NDB.webp" class="cms-fruit cms-f-melon" alt="">
-        </div>
 
         <div class="telly-widget">
           <div class="telly-section-main">
@@ -951,9 +1018,13 @@
       </div>
     </div>
 
-    <h2 class="cms-h2">JAK ZÍSKÁM FREE SPINY A BALÍČEK OD TELLY TV?</h2>
+    <h2 class="cms-h2">Jak získám free spiny a balíček od Telly TV?</h2>
 
     <div class="cms-steps-section">
+      <p class="cms-p" style="margin-bottom: 25px;">
+        Naším hlavním cílem je pořádná zábava. Žádných složitých podmínek se proto bát nemusíš. Získání free spinů i
+        bonusového balíčku je jednoduché:
+      </p>
       <div class="cms-steps-flex">
         <div class="cms-step-col">
           <ul class="cms-step-list">
@@ -961,8 +1032,8 @@
             <li data-index="2">Aktivuj si bonus ve Forbesmánii.</li>
             <li data-index="3">Vlož si na účet alespoň 1 000 Kč.</li>
             <li data-index="4">Protoč 10 000 Kč na hrách od Tech4Bet.</li>
-            <li data-index="5">Ber 10 free spinů po 5 Kč do Tech4Bet automatu tvého výběru.</li>
-            <li data-index="6">Po splnění podmínek ti zašleme tvůj unikátní promo kód.</li>
+            <li data-index="5">Ber <strong>10 free spinů po 5 Kč do Tech4Bet automatu</strong> tvého výběru.</li>
+            <li data-index="6">Po splnění podmínek ti zašleme tvůj <strong>unikátní promo kód</strong>.</li>
             <li data-index="7">Zadej promo kód v sekci „Mám předplacenou kartu / promo kód“ ve tvém Telly TV účtu.</li>
             <li data-index="8">Sleduj tisíce seriálů, filmů a sportovních klání.</li>
           </ul>
@@ -970,7 +1041,8 @@
         <div class="cms-step-col">
           <div class="cms-text-block">
             Stačí splnit tyto jednoduché podmínky a měsíc koukáš úplně zdarma. Žádná opakovaná platba kartou, jen čistá
-            zábava. Pamatuj si však, že musíš mít u Telly založený účet a promo kód využít do 31.12.2026, jinak
+            zábava. Pamatuj si však, že musíš mít u Telly založený účet a <strong>promo kód využít do
+              31.3.2026</strong>, jinak
             propadne.
           </div>
           <div class="cms-text-block">
@@ -985,18 +1057,19 @@
     </div>
 
     <div class="cms-rules-footer">
-      <h4>KOMPLETNÍ PRAVIDLA AKCE</h4>
+      <h4 style="text-transform: uppercase;">Kompletní pravidla akce</h4>
       <ul class="cms-rules-list">
-        <li>Bonus mohou získat pouze hráči s dokončenou registrací včetně ověření totožnosti, připojení platební metody
+        <li>Bonus mohou získat pouze hráči s <strong>dokončenou registrací</strong> včetně ověření totožnosti, připojení
+          platební metody
           a nastavení herních limitů.</li>
-        <li>Bonusovou nabídku je nutné manuálně aktivovat ve Forbesmánii.</li>
+        <li>Bonusovou nabídku je nutné manuálně aktivovat ve <strong>Forbesmánii</strong>.</li>
         <li>Po aktivaci bonusu je třeba vložit si na konto alespoň 1 000 Kč.</li>
         <li>Pro získání bonusu musí hráč protočit 10 000 Kč na automatech od Tech4Bet.</li>
         <li>Free spiny jsou připsány okamžitě do hráčem vybrané hry od Tech4Bet.</li>
         <li>Promo kód na Telly TV bude hráči doručen po úplném splnění všech podmínek bonusu.</li>
         <li>Pro využití promo kódu je nutné, aby si hráč založil účet na Telly TV.</li>
         <li>Speciální promo kód lze uplatnit v sekci „Mám předplacenou kartu / promo kód“ na stránkách Telly TV.</li>
-        <li>Platnost promo kódu je do 31.12.2026.</li>
+        <li>Platnost promo kódu je do 31.3.2026.</li>
       </ul>
     </div>
 
