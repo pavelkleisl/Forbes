@@ -16,7 +16,6 @@ KRITICKÉ požadavky:
 
 2. STRUKTUROVANÁ DATA (JSON-LD script do <head>):
    - Schema.org WebPage/Article/Product markup
-   - Breadcrumb navigace
    - Organization schema
 
 URL na naše soc.sítě jsou: 
@@ -26,6 +25,8 @@ FB: https://www.facebook.com/forbescasino
 FB(druhá facebook skupina): https://www.facebook.com/wwwForbesCasinocz 
 TG: https://t.me/ForbesCasinocz
 YT: https://www.youtube.com/@forbescasino1474
+
+Moje Google Analytics Tracking ID: G-5G2RNYC2E7
 
 
 

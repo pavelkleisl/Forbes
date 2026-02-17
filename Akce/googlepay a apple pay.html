@@ -1,0 +1,760 @@
+<style>
+  /* --- PŮVODNÍ CSS (NEMĚNĚNO) --- */
+  body {
+    background: linear-gradient(135deg, #ffffff 0%, #e8eef5 100%);
+    min-height: 100vh;
+    margin: 0;
+    background-attachment: fixed;
+  }
+
+  .p-sm-5 {
+    padding: 0rem !important;
+    border-radius: 12px !important;
+  }
+
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+
+  .container .row .bg-white {
+    background: transparent !important;
+  }
+
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+  }
+
+  @media (min-width: 991.98px) {
+    .p-sm-5 {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .p-sm-5 {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .p-4 {
+      padding: 0rem !important;
+    }
+
+    .content-panel {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  .d-block {
+    display: none !important;
+  }
+
+  /* --- NOVÉ CMS STYLY --- */
+
+  .cms-wrapper {
+    font-family: inherit;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: #333;
+    line-height: 1.6;
+    padding-bottom: 40px;
+  }
+
+  .cms-h3 {
+    color: #2145a5;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* --- HERO SEKCE --- */
+  .cms-hero {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 2rem 3rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cms-hero-text {
+    flex: 1 1 500px;
+  }
+
+  .cms-h2 {
+    color: #2145a5;
+    font-weight: 900;
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .cms-gold {
+    color: #f5b30c;
+  }
+
+  .cms-lead {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .cms-checks {
+    font-weight: 700;
+    margin-top: 15px;
+    display: inline-block;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(33, 69, 165, 0.1);
+    padding: 12px 20px;
+    border-radius: 50px;
+    /* Kulatější */
+    color: #2145a5;
+    border: 2px solid rgba(33, 69, 165, 0.1);
+  }
+
+  .cms-hero-img-wrapper {
+    flex: 0 0 340px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cms-bubble {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    box-shadow:
+      0 20px 40px rgba(33, 69, 165, 0.2),
+      0 0 0 12px rgba(255, 255, 255, 0.8),
+      0 0 0 15px #f5b30c;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cms-bubble:hover {
+    transform: scale(1.03) rotate(2deg);
+    box-shadow:
+      0 25px 50px rgba(33, 69, 165, 0.25),
+      0 0 0 12px rgba(255, 255, 255, 0.8),
+      0 0 0 15px #f5b30c;
+  }
+
+  .cms-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* --- NOVÝ DESIGN: BRAND CARDS CONTAINER (To barevné pozadí) --- */
+  .cms-brand-container {
+    /* Moderní gradientní pozadí s jemným vzorem */
+    background: linear-gradient(160deg, #eef5ff 0%, #f4f9ff 100%);
+    padding: 4rem 2rem;
+    border-radius: 30px;
+    margin: 4rem 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dceaff;
+  }
+
+  /* Dekorativní jemný vzor na pozadí */
+  .cms-brand-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(45deg, rgba(33, 69, 165, 0.02) 0, rgba(33, 69, 165, 0.02) 2px, transparent 2px, transparent 10px);
+    pointer-events: none;
+  }
+
+  .cms-brand-container-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cms-brand-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .cms-brand-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 40px rgba(33, 69, 165, 0.08);
+    /* Výraznější stín */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .cms-brand-card:hover {
+    transform: translateY(-7px);
+  }
+
+  /* Google specifika */
+  .cms-brand-google {
+    border-top: 8px solid #4285F4;
+  }
+
+  .cms-brand-google .cms-brand-title {
+    color: #4285F4;
+  }
+
+  /* Apple specifika */
+  .cms-brand-apple {
+    border-top: 8px solid #000000;
+  }
+
+  .cms-brand-apple .cms-brand-title {
+    color: #000000;
+  }
+
+  .cms-brand-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cms-brand-logo {
+    width: 60px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .cms-brand-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .cms-brand-subtitle {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .cms-brand-desc {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .cms-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cms-feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    color: #444;
+    font-weight: 500;
+  }
+
+  .cms-feature-icon {
+    margin-right: 15px;
+    font-weight: 900;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+  }
+
+  .cms-icon-google {
+    color: #34A853;
+  }
+
+  .cms-icon-apple {
+    color: #000000;
+  }
+
+  /* --- KROKY (STEPS) --- */
+  .cms-steps-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    margin: 4rem 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  .cms-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 3rem;
+  }
+
+  .cms-step-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 25px;
+    position: relative;
+    border: 2px solid #f5f7fa;
+    /* Velmi jemný rámeček */
+    text-align: center;
+  }
+
+  .cms-step-number {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f5b30c, #ffca2c);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    box-shadow: 0 5px 15px rgba(245, 179, 12, 0.3);
+    border: 3px solid #fff;
+  }
+
+  .cms-step-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #2145a5;
+    font-weight: 700;
+  }
+
+  .cms-screenshot-box {
+    width: 100%;
+    height: auto;
+    min-height: 220px;
+    background-color: #f8f9fa;
+    border: 2px dashed #dce4ec;
+    border-radius: 12px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cms-placeholder-text {
+    color: #aab2bd;
+    font-size: 0.9rem;
+    padding: 20px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* --- FAQ (ACCORDION) --- */
+  .cms-faq-section {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .cms-details {
+    background: #fff;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+  }
+
+  .cms-summary {
+    padding: 1.4rem;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    font-weight: 700;
+    color: #2145a5;
+    font-size: 1.1rem;
+    padding-right: 3rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+  }
+
+  .cms-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .cms-summary:hover {
+    background-color: #f9fbfd;
+    color: #f5b30c;
+  }
+
+  .cms-summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    color: #f5b30c;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .cms-details[open] .cms-summary {
+    background-color: #f4f8ff;
+    border-bottom: 1px solid #eee;
+    color: #2145a5;
+  }
+
+  .cms-details[open] .cms-summary::after {
+    content: '-';
+    color: #2145a5;
+    font-weight: 800;
+  }
+
+  .cms-faq-content {
+    padding: 1.5rem;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    background: #fff;
+  }
+
+  .cms-contact-box {
+    text-align: center;
+    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, #2145a5 0%, #1a3680 100%);
+    border-radius: 20px;
+    margin-top: 3rem;
+    box-shadow: 0 15px 40px rgba(33, 69, 165, 0.25);
+    border: 3px solid #f5b30c;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cms-contact-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245, 179, 12, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cms-contact-box h4 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    margin-bottom: 1rem !important;
+    margin-top: 0 !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .cms-contact-box p {
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+    color: #e8eef5 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cms-contact-box a {
+    color: #ffcc00 !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #ffcc00;
+    transition: all 0.3s ease;
+    padding-bottom: 2px;
+  }
+
+  .cms-contact-box a:hover {
+    color: #fff !important;
+    border-bottom-color: #fff;
+  }
+
+  /* --- RESPONZIVITA --- */
+  @media (max-width: 991px) {
+    .cms-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .cms-hero {
+      display: block;
+      text-align: center;
+      padding: 2rem 1rem;
+      height: auto;
+      padding-bottom: 0px;
+    }
+
+    .cms-hero-text {
+      height: auto;
+      width: 100%;
+      margin-top: 3rem;
+    }
+
+    .cms-hero-img-wrapper {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .cms-bubble {
+      width: 220px;
+      height: 140px;
+      margin: 0 auto;
+    }
+
+    .cms-h2 {
+      font-size: 2rem;
+    }
+
+    .cms-brand-container {
+      padding: 2rem 1rem;
+      border-radius: 20px;
+    }
+
+    .cms-brand-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .cms-brand-card {
+      padding: 2rem;
+    }
+
+    .cms-steps-section {
+      padding: 3rem 1rem;
+    }
+
+    .cms-steps-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .cms-screenshot-box {
+      max-width: 320px;
+      margin: 20px auto 0 auto;
+    }
+
+    .cms-step-number {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Číslo na střed */
+  }
+</style>
+
+<div class="cms-wrapper">
+
+  <div class="cms-hero">
+    <div class="cms-hero-img-wrapper">
+      <div class="cms-bubble">
+        <img src="https://www.forbescasino.cz//text_img/1308658MjQ.jpg" alt="Google Pay a Apple Pay">
+      </div>
+    </div>
+
+    <div class="cms-hero-text">
+      <h2 class="cms-h2">Nejrychlejší vklad <br><span class="cms-gold">jedním dotykem</span></h2>
+      <p class="cms-lead">
+        Přinášíme vám moderní způsoby platby <strong>Google Pay</strong> a <strong>Apple Pay</strong>.
+        Už žádné hledání plastové karty. Stačí vám mobil a váš prst nebo úsměv.
+      </p>
+      <div class="cms-checks">
+        &#9989; Bezpečné &nbsp; &#9989; Okamžité &nbsp; &#9989; Bez poplatků
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-brand-container">
+    <div class="cms-brand-container-content">
+      <h3 class="cms-h3">Detailní informace o metodách</h3>
+
+      <div class="cms-brand-section">
+
+        <div class="cms-brand-card cms-brand-apple">
+          <div class="cms-brand-header">
+            <img src="https://www.forbescasino.cz//text_img/1309284ZDM.svg" alt="Apple Pay Logo" class="cms-brand-logo">
+            <div>
+              <span class="cms-brand-subtitle">iOS / Mac</span>
+              <h4 class="cms-brand-title">Apple Pay</h4>
+            </div>
+          </div>
+
+          <p class="cms-brand-desc">
+            Bezpečná metoda pro iPhone, iPad a Mac. Umožňuje platit online bez zadávání karty, vše chráněno přes Face ID
+            nebo Touch ID.
+          </p>
+
+          <ul class="cms-feature-list">
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-apple">✓</span> Bleskurychlé transakce
+            </li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-apple">✓</span> Biometrická bezpečnost
+              (FaceID)</li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-apple">✓</span> Stačí jeden dotek nebo
+              pohled</li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-apple">✓</span> Žádné poplatky za vklad
+            </li>
+          </ul>
+        </div>
+
+        <div class="cms-brand-card cms-brand-google">
+          <div class="cms-brand-header">
+            <img src="https://www.forbescasino.cz//text_img/1309283Y2Y.svg" alt="Google Pay Logo"
+              class="cms-brand-logo">
+            <div>
+              <span class="cms-brand-subtitle">Android</span>
+              <h4 class="cms-brand-title">Google Pay</h4>
+            </div>
+          </div>
+
+          <p class="cms-brand-desc">
+            Google Pay je moderní digitální peněženka pro Android. Vaše platební údaje jsou chráněny šifrováním a
+            biometrií.
+          </p>
+
+          <ul class="cms-feature-list">
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-google">✓</span> Okamžité vklady během
+              vteřin</li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-google">✓</span> Maximální bezpečnost
+              údajů</li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-google">✓</span> Bez zadávání čísel
+              karty</li>
+            <li class="cms-feature-item"><span class="cms-feature-icon cms-icon-google">✓</span> Žádné poplatky za vklad
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-steps-section">
+    <h3 class="cms-h3" style="text-align: center; margin-bottom: 1rem;">Jak provést vklad?</h3>
+    <p style="text-align: center; margin-bottom: 2rem; color: #666; font-size: 1.1rem;">Je to snadné, zvládnete to ve 3
+      krocích.</p>
+
+    <div class="cms-steps-grid">
+      <div class="cms-step-item">
+        <div class="cms-step-number">1</div>
+        <div class="cms-step-title">Zvolte metodu</div>
+        <p>V sekci <strong>VKLADY</strong> vyberte ikonu G-Pay nebo Apple Pay.</p>
+        <div class="cms-screenshot-box">
+          <img src="https://www.forbescasino.cz//text_img/1308678YjB.png" alt="Výběr metody"
+            style="width: 100%; height: auto; border-radius: 8px;">
+        </div>
+      </div>
+
+      <div class="cms-step-item">
+        <div class="cms-step-number">2</div>
+        <div class="cms-step-title">Zadejte částku</div>
+        <p>Zvolte si, kolik chcete vložit (min. 100 Kč).</p>
+        <div class="cms-screenshot-box">
+          <img src="https://www.forbescasino.cz//text_img/1308678YjB.png" alt="Zadání částky"
+            style="width: 100%; height: auto; border-radius: 8px;">
+        </div>
+      </div>
+
+      <div class="cms-step-item">
+        <div class="cms-step-number">3</div>
+        <div class="cms-step-title">Potvrďte na mobilu</div>
+        <p>Potvrďte otiskem prstu nebo Face ID.</p>
+        <div class="cms-screenshot-box">
+          <img src="https://www.forbescasino.cz//text_img/1308678YjB.png" alt="Potvrzení"
+            style="width: 100%; height: auto; border-radius: 8px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-faq-section">
+    <h3 class="cms-h3">Často kladené otázky</h3>
+
+    <details class="cms-details">
+      <summary class="cms-summary">Jsou Google Pay a Apple Pay bezpečné?</summary>
+      <div class="cms-faq-content">
+        Ano, jsou mezi nejbezpečnějšími platebními metodami. Obě používají pokročilé šifrování a biometrické ověření
+        (otisk prstu, sken obličeje). Vaše bankovní údaje nejsou nikdy přímo vystaveny kasinu – vše probíhá přes
+        zabezpečené brány poskytovatelů.
+      </div>
+    </details>
+
+    <details class="cms-details">
+      <summary class="cms-summary">Jak dlouho trvá vklad?</summary>
+      <div class="cms-faq-content">
+        Vklady jsou obvykle <strong>okamžité</strong>. Peníze se objeví na vašem herním účtu během několika vteřin po
+        úspěšném potvrzení platby na vašem telefonu.
+      </div>
+    </details>
+
+    <details class="cms-details">
+      <summary class="cms-summary">Mohu těmito metodami i vybírat?</summary>
+      <div class="cms-faq-content">
+        Ne, technologie Google Pay a Apple Pay v současné době v kasinech fungují zpravidla pouze pro vklady. Pro výběr
+        svých výher budete muset zvolit bankovní převod nebo jinou dostupnou metodu v sekci Výběry.
+      </div>
+    </details>
+
+    <details class="cms-details">
+      <summary class="cms-summary">Jaké jsou limity vkladu?</summary>
+      <div class="cms-faq-content">
+        Minimální vklad je nastaven na <strong>100 Kč</strong>. Maximální limity se mohou lišit dle vašeho uživatelského
+        statusu a nastavení herních limitů. Konkrétní limity uvidíte vždy v pokladně před potvrzením platby.
+      </div>
+    </details>
+
+    <details class="cms-details">
+      <summary class="cms-summary">Funguje Apple Pay na Androidu?</summary>
+      <div class="cms-faq-content">
+        Ne, Apple Pay je exkluzivní služba pro zařízení Apple (iPhone, iPad, Mac). Pokud máte telefon s Androidem,
+        využijte prosím Google Pay, který funguje na stejném principu.
+      </div>
+    </details>
+
+    <div class="cms-contact-box">
+      <h4>&#128172; Máte více otázek?</h4>
+      <p>Neváhejte se obrátit na náš <strong><a href="https://www.forbescasino.cz/contact">support tým</a></strong>.
+        Jsme tu pro vás 24/7.</p>
+    </div>
+  </div>
+
+</div>

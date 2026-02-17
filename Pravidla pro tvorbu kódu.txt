@@ -14,7 +14,7 @@ Pravidla pro tvorbu kodu:
 
 - pracuji v CMS tzn - nepoužívej tagy body, head, section atd. Pracuj pouze s obecnými tagy jako je div, span atd aby nedocházelo ke kolizím mezi nadřazenou strukturou webu. Také nenastavuj styly pro body. Opět kvůli kolizi. 
 
-- všechny třídy musí mít telly "slava" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
+- všechny třídy musí mít prefix "cms" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
 
 - nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám, vyhni se stylování písma (to vše se přebírá od nadřazeného webu). 
 
