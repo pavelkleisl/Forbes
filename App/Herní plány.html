@@ -1,0 +1,300 @@
+<style type="text/css">
+    
+
+    main {
+        padding-top: 80px;
+    }
+
+
+    .bg-white {
+        --bs-bg-opacity: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .bg-lighter {
+        background: none;
+        display: none !important;
+    }
+
+    .bg-lighter2 {
+        background-color: #f2f2f2;
+    }
+
+    .app-wrap {
+        padding-top: -80px;
+    }
+
+
+
+    :root {
+        --app-bg: #071233;
+        --app-card: #0b1a3a;
+        --app-accent: #f5b30c;
+        --app-text: #ffffff;
+        --app-muted: rgba(255, 255, 255, 0.75);
+        --app-radius: 14px;
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        background: var(--app-bg);
+        color: var(--app-text)
+    }
+
+    .app-wrap {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 18px 0px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: -80px;
+    }
+
+    .app-header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .app-title {
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.05;
+    }
+
+    .app-subtitle {
+        font-size: 13px;
+        color: var(--app-muted);
+        margin-top: 4px;
+    }
+
+    .app-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 6px;
+    }
+
+    .app-item {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        border-radius: var(--app-radius);
+        padding: 12px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.45);
+    }
+
+    /* Icon wrapper with light background behind the PNG */
+    .app-icon-wrapper {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #898989 0%, #592542 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(2, 6, 23, 0.25);
+        padding: 8px;
+        /* gives breathing room around the PNG */
+    }
+
+    .app-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .app-meta {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .app-doc-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--app-text);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        line-height: 1.15;
+    }
+
+    .app-doc-info {
+        font-size: 13px;
+        color: var(--app-muted);
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .app-download-btn {
+        margin-top: 6px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--app-accent);
+        color: #0d1345;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 15px;
+        width: 140px;
+        flex-shrink: 0;
+        border: 0;
+    }
+
+    /* Make CTA full width when needed on very narrow screens */
+    @media (max-width:360px) {
+        .app-download-btn {
+            width: 100%;
+        }
+
+        .app-item {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .app-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            padding: 6px;
+            border-radius: 10px;
+        }
+    }
+
+    .app-note {
+        font-size: 13px;
+        color: var(--app-muted);
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    /* Small focus style */
+    a:focus,
+    button:focus {
+        outline: 3px solid rgba(245, 179, 12, 0.18);
+        outline-offset: 2px
+    }
+</style>
+<div class="app-wrap" role="main">
+    <div class="app-header">
+        <div style="display:flex;flex-direction:column;">
+            <div class="app-title">Základní rozhodnutí a herní plány</div>
+
+            <div class="app-subtitle">Mobilní verze — klepněte na „Stáhnout“</div>
+        </div>
+    </div>
+
+    <div aria-label="Seznam dokumentů" class="app-list"><!-- Item 1 -->
+        <div class="app-item">
+            <!-- Replaced placeholder with the supplied PNG and light background wrapper -->
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">Herní plán — technická hra od 23.7.2025</div>
+
+                <div class="app-doc-info"><span>PDF</span> <span>Aktuální</span></div>
+                <!-- Single download button with requested URL --><a
+                    aria-label="Stáhnout Herní plán - technická hra od 23.7.2025" class="app-download-btn"
+                    href="/files/1132929NzU.pdf">Stáhnout</a>
+            </div>
+        </div>
+        <!-- Item 2 -->
+
+        <div class="app-item">
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">Herní plán — technická hra do 22.7.2025</div>
+
+                <div class="app-doc-info"><span>PDF</span> <span>Archiv/Verze</span></div>
+                <a aria-label="Stáhnout Herní plán - technická hra do 22.7.2025" class="app-download-btn"
+                    href="/files/herni-plan.pdf">Stáhnout</a>
+            </div>
+        </div>
+        <!-- Item 3 -->
+
+        <div class="app-item">
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">Herní plán — živá hra</div>
+
+                <div class="app-doc-info"><span>PDF</span> <span>Živá hra</span></div>
+                <a aria-label="Stáhnout Herní plán - živá hra" class="app-download-btn"
+                    href="/files/1110004ZTc.pdf">Stáhnout</a>
+            </div>
+        </div>
+        <!-- Item 4 -->
+
+        <div class="app-item">
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">ZÁKLADNÍ ROZHODNUTÍ - TECHNICKÁ HRA OD 23.7.2025</div>
+
+                <div class="app-doc-info"><span>PDF</span></div>
+                <a aria-label="Stáhnout Základní rozhodnutí - technická hra od 23.7.2025" class="app-download-btn"
+                    href="/files/1133572ZDB.pdf">Stáhnout</a>
+            </div>
+        </div>
+        <!-- Item 5 -->
+
+        <div class="app-item">
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">Základní rozhodnutí - technická hra od 22.7.2025</div>
+
+                <div class="app-doc-info"><span>PDF</span></div>
+                <a aria-label="Stáhnout Základní rozhodnutí - technická hra od 22.7.2025" class="app-download-btn"
+                    href="/files/1110005ZTY.pdf">Stáhnout</a>
+            </div>
+        </div>
+        <!-- Item 6 -->
+
+        <div class="app-item">
+            <div aria-hidden="true" class="app-icon-wrapper"><img alt="PDF ikona" class="app-icon"
+                    src="/text_img/1241781YTd.png" /></div>
+
+            <div class="app-meta">
+                <div class="app-doc-title">Základní rozhodnutí - živá hra</div>
+
+                <div class="app-doc-info"><span>PDF</span></div>
+                <a aria-label="Stáhnout Základní rozhodnutí - živá hra" class="app-download-btn"
+                    href="/files/1110007MDY.pdf">Stáhnout</a>
+            </div>
+        </div>
+    </div>
+</div>

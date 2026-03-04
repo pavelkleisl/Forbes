@@ -1,0 +1,20 @@
+Úkoly 
+
+- oprava detaily bonusů v aplikaci tak aby odpovídala nové Forbesmaánii.
+
+poslat prověření SEO na Leris - vyplněné SEO tagy nejsou reflektovány na web:
+- https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fwww.forbescasino.cz%2Ftelly
+
+poslat chybu na Cesium ohledně chyby při odhlášení (otevřená app kterou neotevřu třeba den)
+
+
+- navrhnout upravy v seo sekci v administraci
+
+
+- udělet stránku "Máme novou app" 
+
+ 
+
+
+ 
+

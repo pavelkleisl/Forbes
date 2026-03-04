@@ -106,14 +106,15 @@
                 padding: 0 !important;
             }
 
-            .row>* {
-                padding: 0 !important;
-            }
-
             .content-panel {
                 border-radius: 0 !important;
                 margin: 0 auto !important;
             }
+        }
+
+
+        .container .row>* {
+            padding: 0 !important;
         }
 
 
@@ -142,18 +143,6 @@
             border-radius: 12px;
         }
 
-        /* Hlavní nadpis celé stránky */
-        .main-title {
-            font-size: 32px;
-            letter-spacing: 2px;
-            background: linear-gradient(180deg, #0d1345 0%, #1a2a8a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            text-align: center;
-        }
 
         /* Nadpisy jednotlivých sekcí */
         .section-title {
@@ -221,7 +210,7 @@
             /* Téměř bílá, ale jemně průhledná */
             backdrop-filter: blur(5px);
             /* Rozostření pozadí pod kartou */
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgb(143 143 143 / 30%);
             border-radius: 16px;
             /* Kulatější rohy působí moderněji */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -443,16 +432,10 @@
                 padding: 16px;
             }
 
-            .main-title,
             .section-title {
                 padding-right: 1rem;
             }
 
-            .main-title {
-                padding-right: 1rem;
-                font-size: 22px;
-                font-weight: 700;
-            }
 
             .bonuses-container .box1:last-child {
                 margin-right: 30px !important;
@@ -502,11 +485,8 @@
 
 <body>
     <div class="content-panel">
-        <h1 class="main-title">BONUSY FORBES CASINO</h1>
-
-        <hr class="divider">
         <div class="section">
-            <h2 class="section-title">ZA REGISTRACI</h2>
+            <h2 class="section-title" style="margin-top: 0px;">ZA REGISTRACI</h2>
             <div class="bonuses-container">
                 <a href="https://www.forbescasino.cz/vstupni-bonus" class="box1">
                     <img alt="50FS" src="https://www.forbescasino.cz//text_img/1283180OTY.webp" />

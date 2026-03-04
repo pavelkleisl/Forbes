@@ -24,11 +24,6 @@
         .p-sm-5 {
             margin-top: -27px;
         }
-
-        .p-0 {
-            margin-left: -16px !important;
-            margin-right: -16px !important;
-        }
     }
 
     @media (min-width: 576px) {
@@ -100,3 +95,5 @@
         .container .row .bg-white {
             background: transparent !important;
         }
+
+(container musí mít margin-top: -80px;)
