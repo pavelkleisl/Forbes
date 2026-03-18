@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 
 <head>
@@ -100,8 +100,9 @@
         /* Override existing styles */
         body {
             height: 100%;
-            background-color: #0f153c;
+            background-color: #090f2d;
             background-image: url(/assets/img/welcome-bg.jpg);
+            background-attachment: fixed;
         }
 
         .p-sm-5 {
@@ -186,12 +187,15 @@
             justify-content: space-between;
             padding: 20px;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(33, 69, 165, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(10deg, rgb(255 255 255 / 0%) 0%, rgba(255, 255, 255, 0.07) 100%);
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.26);
+            box-shadow: 0 18px 40px rgba(6, 12, 40, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
         .slava-winner-item::before {
@@ -199,13 +203,27 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 5px;
             height: 100%;
-            background: linear-gradient(180deg, #ffc430 0%, #f5b30c 100%);
+            background: linear-gradient(180deg, #ffe183 0%, #ffc430 45%, #f5b30c 100%);
+            box-shadow: 0 0 20px rgba(245, 179, 12, 0.45);
+        }
+
+        .slava-winner-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0.26) 0%,
+                    rgba(255, 255, 255, 0.06) 35%,
+                    rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
         }
 
         .slava-winner-item:hover {
-            box-shadow: 0 8px 24px rgba(33, 69, 165, 0.15);
+            box-shadow: 0 24px 48px rgba(6, 12, 40, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .slava-winner-left {
@@ -218,11 +236,11 @@
         .slava-winner-icon {
             width: 80px;
             height: 80px;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #dbdbdb;
+            box-shadow: 0 12px 28px rgba(3, 7, 24, 0.45);
+            background: rgba(255, 255, 255, 0.18);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -245,35 +263,58 @@
         .slava-winner-game {
             font-size: 20px;
             font-weight: 700;
-            color: #2145a5 !important;
+            color: #ffffff !important;
             margin: 0;
             line-height: 1.3;
             text-decoration: none;
             color: inherit;
+            text-shadow: 0 2px 10px rgba(5, 10, 38, 0.45);
         }
 
         .slava-winner-username {
             font-size: 16px;
-            color: #666;
+            color: rgba(235, 242, 255, 0.86);
             margin: 0;
             line-height: 1.4;
         }
 
         .slava-winner-time {
             font-size: 14px;
-            color: #999;
+            color: rgba(227, 237, 255, 0.72);
             margin: 0;
             line-height: 1.4;
+        }
+
+        .slava-winner-spin-amount {
+            font-size: 13px;
+            margin-top: 0;
+            color: rgb(241 191 69);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-align: right;
+        }
+
+        .slava-winner-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            padding-left: 20px;
         }
 
         .slava-winner-amount {
             font-size: 24px;
             font-weight: 800;
-            color: #f5b30c;
+            color: #ffffff;
             white-space: nowrap;
             text-align: right;
-            padding-left: 20px;
+            padding-left: 0;
             position: relative;
+            text-shadow: 0 0 20px rgba(255, 191, 57, 0.55);
+            background: linear-gradient(130deg, #fff8df 0%, #ffd76b 35%, #ffbf39 70%, #ffe9b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
 
@@ -314,9 +355,18 @@
                 font-size: 13px;
             }
 
+            .slava-winner-spin-amount {
+                font-size: 12px;
+            }
+
+            .slava-winner-right {
+                gap: 4px;
+                padding-left: 12px;
+            }
+
             .slava-winner-amount {
                 font-size: 18px;
-                padding-left: 12px;
+                padding-left: 0;
             }
         }
 
@@ -351,6 +401,17 @@
 
             .slava-winner-time {
                 font-size: 12px;
+            }
+
+            .slava-winner-spin-amount {
+                font-size: 11px;
+            }
+
+            .slava-winner-right {
+                width: 100%;
+                align-items: flex-end;
+                padding-left: 0;
+                margin-top: 8px;
             }
 
             .slava-winner-amount {
@@ -800,7 +861,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin: 32px auto 14px auto;
+            margin: 32px auto 32px auto;
             padding: 16px 24px;
             border-radius: 12px;
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff6b35 100%);
@@ -906,7 +967,7 @@
         <div class="slava-filter-container-modern">
             <a href="https://www.forbescasino.cz/sin-slavy" class="slava-filter-pill">Vše</a>
             <a href="https://www.forbescasino.cz/sin-slavy-tyden" class="slava-filter-pill">Minulý týden</a>
-            <a href="" class="slava-filter-pill slava-filter-pill-active">Minulý měsíc</a>
+            <a class="slava-filter-pill slava-filter-pill-active">Minulý měsíc</a>
         </div>
     </div>
 
@@ -928,7 +989,10 @@
                     <div class="slava-winner-time">01.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">468 540 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">468 540 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -947,7 +1011,10 @@
                     <div class="slava-winner-time">22.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">250 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">250 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -966,7 +1033,10 @@
                     <div class="slava-winner-time">17.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">180 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">180 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -985,7 +1055,10 @@
                     <div class="slava-winner-time">07.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">150 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">150 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1004,7 +1077,10 @@
                     <div class="slava-winner-time">03.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">103 625 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">103 625 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1023,7 +1099,10 @@
                     <div class="slava-winner-time">24.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">102 555 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">102 555 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1042,7 +1121,10 @@
                     <div class="slava-winner-time">11.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">100 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">100 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1061,7 +1143,10 @@
                     <div class="slava-winner-time">26.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">100 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">100 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1080,7 +1165,10 @@
                     <div class="slava-winner-time">28.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">100 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">100 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1099,7 +1187,10 @@
                     <div class="slava-winner-time">27.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">99 500 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">99 500 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1118,7 +1209,10 @@
                     <div class="slava-winner-time">22.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">92 500 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">92 500 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1137,7 +1231,10 @@
                     <div class="slava-winner-time">10.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">88 500 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">88 500 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1156,7 +1253,10 @@
                     <div class="slava-winner-time">17.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">88 200 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">88 200 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1175,7 +1275,10 @@
                     <div class="slava-winner-time">17.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">80 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">80 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1194,7 +1297,10 @@
                     <div class="slava-winner-time">16.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">69 600 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">69 600 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1213,7 +1319,10 @@
                     <div class="slava-winner-time">09.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">69 120 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">69 120 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1232,7 +1341,10 @@
                     <div class="slava-winner-time">21.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">60 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">60 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1251,7 +1363,10 @@
                     <div class="slava-winner-time">25.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">59 200 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">59 200 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1270,7 +1385,10 @@
                     <div class="slava-winner-time">10.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">58 500 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">58 500 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
 
         <div class="slava-winner-item">
@@ -1289,13 +1407,19 @@
                     <div class="slava-winner-time">13.02.2026</div>
                 </div>
             </div>
-            <div class="slava-winner-amount">54 000 Kč</div>
+            <div class="slava-winner-right">
+                <div class="slava-winner-amount">54 000 Kč</div>
+                <div class="slava-winner-spin-amount">Sázka: 50 Kč</div>
+            </div>
         </div>
     </div>
 
 
         <!-- Interactive Star Rating Section -->
         <div class="rating-section">
+            <a href="https://www.forbescasino.cz" class="cta-button" style="text-decoration: none;">
+                <span class="cta-button__text">JDU SI PRO VÝHRU</span>
+            </a>
             <div class="rating-container">
 
                 <!-- Animated background elements -->
@@ -1365,13 +1489,9 @@
                 </div>
             </div>
 
-
-            <a href="https://www.forbescasino.cz" class="cta-button" style="text-decoration: none;">
-                <span class="cta-button__text">JDU SI PRO VÝHRU</span>
-            </a>
-
-
-
         </div>
     </div>
+
 </body>
+
+</html>

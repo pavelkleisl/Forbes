@@ -1,3 +1,5 @@
+
+
 Pravidla pro tvorbu kodu:
 
 - chci CSS i HTML kod v jednom souboru abych ho jednoduše nakopíroval do editoru CMS.
@@ -6,11 +8,11 @@ Pravidla pro tvorbu kodu:
 
 - všechny třídy musí mít prefix "cms" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
 
-- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám, vyhni se stylování písma (to vše se přebírá od nadřazeného webu). 
+- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám). 
 
 - pokud možno vyhni se inline stylům 
 
-- zajisti správnou responzivitu 
+- zajisti správnou responzivitu a hlavně aby bylo vše dobře viditelné a čitelné na mobilech. 
 
 - můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá 
 
@@ -24,12 +26,9 @@ Zde je zadání nové stránky (je to sepsané v documentu který ti ofotím) ty
 
 
 
--------------------------------------------------------------
-
-zkus kompletně přestylovat celou tuhle sekci. Udělej nějaké moderní pěkné UX/UI. Hlavně se zaměř na menší mobilní telefony na kterých to musí být vše hezky viditelné.
 
 
-ABSOLUTNĚ NEMĚŇ TEXTACI. JSOU TO PŘESNÁ PRAVIDLA A NESMÍ BÝT TEXTY ZMĚNĚNY. Můžeš akorát přidat emotikony atd.
+
 
 
 

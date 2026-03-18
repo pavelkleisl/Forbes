@@ -1,0 +1,753 @@
+<style>
+    /* Override existing styles */
+
+    .p-sm-5 {
+        padding: 0rem !important;
+        border-radius: 12px !important;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -27px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -10px;
+            padding: 1.5rem !important;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -49px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -0.5rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 {
+            margin-top: 1rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .container .row .p-4 {
+            padding: 0rem !important;
+        }
+
+        .content-panel {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+
+
+
+
+
+
+
+
+
+    .cms-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: url("https://www.forbescasino.cz//text_img/1326510YTM.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .cms-bg-overlay::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* KONTEJNER - Průhledný pro splynutí s pozadím webu */
+    .cms-withdrawal-main-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        padding-bottom: 100px;
+    }
+
+    /* HERO LAYOUT - Propojení textu a karty */
+    .cms-hero-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+
+    .cms-hero-content {
+        flex: 1.2;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    /* TEXTOVÉ STYLY */
+    .cms-hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.04;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: #ffffff;
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    .cms-hero-title span {
+        color: #f5b30c;
+        display: block;
+    }
+
+    .cms-hero-title--v1 {
+        position: relative;
+    }
+
+    .cms-hero-title--v1::after {
+        content: "";
+        display: block;
+        width: 128px;
+        height: 4px;
+        margin-top: 14px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #f5b30c, rgba(245, 179, 12, 0.25));
+        box-shadow: 0 0 14px rgba(245, 179, 12, 0.45);
+    }
+
+    .cms-store-links {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 6px 0 22px;
+        position: relative;
+        z-index: 4;
+    }
+
+    .cms-store-intro {
+        margin: 0 0 14px;
+        max-width: 520px;
+    }
+
+    .cms-store-kicker {
+        display: inline-block;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 800;
+        color: #f5b30c;
+        margin-bottom: 8px;
+    }
+
+    .cms-store-heading {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 7px;
+        line-height: 1.25;
+    }
+
+    .cms-store-copy {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.97rem;
+        line-height: 1.55;
+    }
+
+    .cms-store-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        padding: 16px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        min-width: 225px;
+    }
+
+    .cms-store-link:hover {
+        transform: translateY(-2px);
+        border-color: rgba(245, 179, 12, 0.7);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .cms-store-link img {
+        display: block;
+        height: 44px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .cms-store-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .cms-store-eyebrow {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.7rem;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .cms-store-name {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .cms-app-info-section {
+        margin-top: 34px;
+        display: flex;
+        flex-direction: column;
+        gap: 52px;
+    }
+
+    .cms-app-info-row {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 34px;
+        align-items: center;
+    }
+
+    .cms-app-info-row--alt {
+        grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .cms-app-info-content h3 {
+        margin: 0 0 18px;
+        color: #f5b30c;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-weight: 900;
+        font-size: clamp(1.8rem, 2.8vw, 2.9rem);
+        line-height: 1.05;
+        text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .cms-app-info-content p {
+        margin: 0 0 16px;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.05rem;
+        line-height: 1.52;
+    }
+
+    .cms-app-info-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .cms-app-info-media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cms-app-info-media img {
+        width: min(100%, 420px);
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.35));
+    }
+
+    @media (min-width: 768px) {
+        .cms-app-info-media img.cms-app-info-media-img--bonus {
+            width: min(100%, 294px);
+        }
+    }
+
+    .cms-app-games-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .cms-app-games-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 1.07rem;
+        text-transform: uppercase;
+        letter-spacing: 0.35px;
+        width: auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        transition: color 0.2s ease;
+    }
+
+    .cms-app-games-item:hover {
+        color: #f5b30c;
+    }
+
+    .cms-app-games-emoji {
+        font-size: 1.05rem;
+        line-height: 1;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+    }
+
+    /* RESPONZIVITA */
+    @media (max-width: 1024px) {
+        .cms-hero-title {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .cms-store-intro {
+            margin-bottom: 52px;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .cms-hero-flex {
+            display: flex;
+            flex-direction: column;
+            /* Vše pod sebe */
+        }
+
+        /* Toto zařídí, aby se vnitřní prvky chovaly jako sourozenci pro 'order' */
+        .cms-hero-flex {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cms-hero-content {
+            display: contents;
+            /* Zruší obal divu pro účely flexboxu */
+        }
+
+        .cms-hero-title {
+            order: 1;
+            /* První nadpis */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cms-hero-title--v1::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cms-store-links {
+            order: 2;
+            justify-content: center;
+            margin: 0 auto 24px;
+            width: min(100%, 360px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .cms-store-intro {
+            order: 4;
+            text-align: center;
+            margin: 0 auto 10px;
+            padding: 0 6px;
+        }
+
+        .cms-store-heading {
+            font-size: 1.08rem;
+        }
+
+        .cms-store-copy {
+            font-size: 0.9rem;
+            max-width: 30ch;
+            margin: 0 auto;
+        }
+
+        .cms-store-link {
+            min-width: 0;
+            width: 100%;
+            justify-content: flex-start;
+            padding: 16px 12px;
+            border-radius: 12px;
+        }
+
+        .cms-store-link img {
+            height: 36px;
+        }
+
+        .cms-store-eyebrow {
+            font-size: 0.6rem;
+        }
+
+        picture.iphone-mockup {
+            order: 3;
+            margin: 4px auto 10px;
+        }
+
+        .cms-app-info-section {
+            margin-top: 0px;
+            gap: 34px;
+        }
+
+        .cms-app-info-row,
+        .cms-app-info-row--alt {
+            grid-template-columns: 1fr;
+            gap: 42px;
+        }
+
+        .cms-app-info-content {
+            text-align: center;
+            order: 1;
+        }
+
+        .cms-app-info-media {
+            order: 2;
+        }
+
+        .cms-app-info-content h3 {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+        }
+
+        .cms-app-info-content p {
+            font-size: 1rem;
+        }
+
+        .cms-app-info-media img {
+            width: min(100%, 310px);
+        }
+
+        .cms-app-games-list {
+            margin-top: 14px;
+            align-items: center;
+        }
+
+        .cms-app-games-item {
+            font-size: 0.96rem;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cms-app-games-emoji {
+            font-size: 0.98rem;
+        }
+
+        .cms-bottom-cta {
+            margin-top: 0px;
+        }
+    }
+
+
+    @media (min-width: 851px) {
+        .cms-hero-flex {
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .cms-hero-content {
+            flex: 0 1 600px;
+        }
+
+        picture.iphone-mockup {
+            flex-shrink: 0;
+        }
+    }
+
+    @media (min-width: 1280px) {
+
+        /* Zvětšíme prostor pro Hero sekci */
+        .cms-hero-flex {
+            gap: 40px;
+        }
+    }
+
+    @media (min-width: 1600px) {}
+
+
+
+    /* Hlavní wrapper elementu */
+    picture.iphone-mockup {
+        --mockup-scale: 1;
+        display: block;
+        width: calc(315.7px * var(--mockup-scale));
+        height: calc(514.85px * var(--mockup-scale));
+        position: relative;
+        animation: float 6s ease-in-out infinite alternate;
+    }
+
+
+    /* Rám telefonu */
+    .phone {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 3;
+        object-fit: contain;
+        pointer-events: none;
+        /* Aby šlo klikat skrz na video/odkazy */
+    }
+
+    /* Společné nastavení pro displej (video i screen) */
+    .screenrecording,
+    .screenshot {
+        position: absolute;
+        z-index: 1;
+        top: calc(18.2px * var(--mockup-scale));
+        left: calc(50.4px * var(--mockup-scale));
+        width: calc(232.05px * var(--mockup-scale));
+        height: calc(460.25px * var(--mockup-scale));
+        /* Klíčová 3D transformace */
+        transform: perspective(1326.5px) skewX(14.7deg) skewY(-14deg) rotateY(30deg);
+        border-radius: calc(25.2px * var(--mockup-scale));
+        object-fit: cover;
+    }
+
+    /* Video vrstva */
+    .screenrecording {
+        z-index: 2;
+        /* Musí být nad screenshotem */
+        display: none;
+        top: calc(14.8px * var(--mockup-scale));
+        left: calc(58.8px * var(--mockup-scale));
+        width: calc(222px * var(--mockup-scale));
+        height: calc(458px * var(--mockup-scale));
+        object-position: center bottom;
+    }
+
+    .screenrecording.show {
+        display: block;
+    }
+
+    /* Screenshot - lehké doladění pozice */
+    .screenshot {
+        left: calc(59.5px * var(--mockup-scale));
+        width: calc(221.55px * var(--mockup-scale));
+        height: calc(458.5px * var(--mockup-scale));
+    }
+
+    @media (max-width: 850px) {
+        picture.iphone-mockup {
+            --mockup-scale: 0.58;
+        }
+    }
+
+    /* BOTTOM CTA SEKCE */
+    .cms-bottom-cta {
+        margin-top: 32px;
+        padding: 40px 24px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(245, 179, 12, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+        border: 1px solid rgba(245, 179, 12, 0.3);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cms-bottom-cta-title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 1.1;
+        margin: 0;
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .cms-bottom-cta-title span {
+        color: #f5b30c;
+    }
+
+    .cms-bottom-cta-sub {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1rem;
+        max-width: 420px;
+    }
+
+    .cms-bottom-cta-links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cms-bottom-cta-links .cms-store-link {
+        min-width: 200px;
+    }
+
+    @media (max-width: 480px) {
+        .cms-bottom-cta-links {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .cms-bottom-cta-links .cms-store-link {
+            min-width: 0;
+            width: 100%;
+        }
+    }
+
+    /* Animace houpání */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(2%) rotateZ(0deg);
+        }
+
+        50% {
+            transform: translateY(-2%) rotateZ(5deg);
+        }
+    }
+</style>
+<div class="cms-bg-overlay"></div>
+<div class="cms-withdrawal-main-wrapper">
+
+    <div class="cms-hero-flex">
+        <div class="cms-hero-content">
+            <div class="cms-hero-title cms-hero-title--v1">
+                Představujeme <span>FORBES APLIKACI!</span>
+            </div>
+
+            <div class="cms-store-intro">
+                <span class="cms-store-kicker">Stáhni a hraj pohodlně</span>
+                <h2 class="cms-store-heading">Vše důležité máš v aplikaci vždy po ruce</h2>
+                <p class="cms-store-copy">Okamžité přihlášení, rychlé vklady a výběry, denní bonusy i turnaje. Vyber si
+                    svůj obchod a nainstaluj Forbes Aplikaci během pár sekund.</p>
+            </div>
+
+            <div class="cms-store-links">
+                <a class="cms-store-link" href="https://www.apple.com/app-store/" target="_blank"
+                    rel="noopener noreferrer" aria-label="Stáhnout na App Store">
+                    <img src="https://forbescasino.cz/text_img/1325609ZDd.webp" alt="Stáhnout na App Store">
+                    <span class="cms-store-meta">
+                        <span class="cms-store-eyebrow">Získejte na</span>
+                        <span class="cms-store-name">App Store</span>
+                    </span>
+                </a>
+                <a class="cms-store-link" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer"
+                    aria-label="Stáhnout na Google Play">
+                    <img src="https://forbescasino.cz/text_img/1325608ZGE.webp" alt="Stáhnout na Google Play">
+                    <span class="cms-store-meta">
+                        <span class="cms-store-eyebrow">Získejte na</span>
+                        <span class="cms-store-name">Google Play</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="cms-mobile-card-wrapper">
+            </div>
+
+        </div>
+
+        <picture class="iphone-mockup reflection-on">
+            <img class="phone" src="https://www.forbescasino.cz//text_img/1326438OWF.png" alt="iPhone Frame">
+
+            <img class="screenshot" src="https://www.forbescasino.cz//text_img/1326436MWN.webp" alt="Screen Screenshot">
+
+            <video class="screenrecording show" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline"
+                webkit-playsinline="webkit-playsinline" preload="auto" disableremoteplayback="disableremoteplayback">
+                <source src="https://www.forbescasino.cz//text_img/1326449NTR.mp4" type="video/mp4">
+            </video>
+        </picture>
+    </div>
+
+    <section class="cms-app-info-section" aria-label="Další informace o aplikaci">
+        <div class="cms-app-info-row">
+            <div class="cms-app-info-content">
+                <h3>Veškeré info hned po ruce</h3>
+                <p><strong>Přišlo upozornění? Jsi u toho jako první.</strong> Nové bonusy, čerstvé akce i nové hry ti
+                    přistanou rovnou v notifikaci.</p>
+                <p><strong>Žádné hledání.</strong> Otevřeš appku, přihlásíš se a jedeš — bonus máš hned připravený k
+                    použití.</p>
+                <p><strong>Kdykoliv, kdekoliv.</strong> Doma na gauči, v pauze v práci nebo cestou městem. Forbes appka
+                    drží tempo s tebou.</p>
+            </div>
+            <div class="cms-app-info-media">
+                <img class="cms-app-info-media-img--bonus" src="https://forbescasino.cz/text_img/1326507NzV.webp"
+                    alt="Mobilní aplikace Forbes Casino s bonusem za registraci">
+            </div>
+        </div>
+
+        <div class="cms-app-info-row cms-app-info-row--alt">
+            <div class="cms-app-info-media">
+                <img src="https://forbescasino.cz/text_img/1326501MjE.png"
+                    alt="Dva telefony s ukázkou her v aplikaci Forbes Casino">
+            </div>
+            <div class="cms-app-info-content">
+                <h3>Hraj kdykoliv a kdekoliv</h3>
+                <p><strong>Nejen bonusy.</strong> V appce roztočíš i svoje oblíbené hry během pár vteřin — bez čekání,
+                    bez zdržování.</p>
+                <div class="cms-app-games-list" aria-label="Dostupné hry v aplikaci">
+                    <div class="cms-app-games-item"><span class="cms-app-games-emoji"
+                            aria-hidden="true">&#127920;</span>Výherní automaty</div>
+                    <div class="cms-app-games-item"><span class="cms-app-games-emoji"
+                            aria-hidden="true">&#127183;</span>Blackjack</div>
+                    <div class="cms-app-games-item"><span class="cms-app-games-emoji"
+                            aria-hidden="true">&#128293;</span>Ruleta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cms-bottom-cta">
+        <p class="cms-bottom-cta-title">Stáhni Forbes Aplikaci<br><span>a hraj hned!</span></p>
+        <p class="cms-bottom-cta-sub">Bonusy, automaty, turnaje — vše v jedné aplikaci. Zdarma ke stažení pro iOS i
+            Android.</p>
+        <div class="cms-bottom-cta-links">
+            <a class="cms-store-link" href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer"
+                aria-label="Stáhnout na App Store">
+                <img src="https://forbescasino.cz/text_img/1325609ZDd.webp" alt="Stáhnout na App Store">
+                <span class="cms-store-meta">
+                    <span class="cms-store-eyebrow">Získejte na</span>
+                    <span class="cms-store-name">App Store</span>
+                </span>
+            </a>
+            <a class="cms-store-link" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer"
+                aria-label="Stáhnout na Google Play">
+                <img src="https://forbescasino.cz/text_img/1325608ZGE.webp" alt="Stáhnout na Google Play">
+                <span class="cms-store-meta">
+                    <span class="cms-store-eyebrow">Získejte na</span>
+                    <span class="cms-store-name">Google Play</span>
+                </span>
+            </a>
+        </div>
+    </div>
+
+</div>

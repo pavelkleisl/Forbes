@@ -1,0 +1,531 @@
+<style>
+    .p-sm-5 {
+        padding: 0rem !important;
+        border-radius: 14px !important;
+    }
+
+    .bg-lighter,
+    .d-block {
+        display: none !important;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 1200px) {
+        .container .row .p-4 {
+            padding: 0rem !important;
+        }
+
+        .content-panel {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .cms-bg-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image: url("https://assets.codepen.io/443195/a_photo-realitic_pattern_of_colorful_flowers.jpg");
+        background-size: 130%;
+        background-position: 50% 50%;
+        animation: drift 70s ease-in-out infinite alternate;
+        transform: scale(1.1);
+    }
+
+    .cms-bg-overlay::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(6, 6, 14, 0.72) 0%, rgba(16, 11, 22, 0.62) 52%, rgba(36, 20, 8, 0.52) 100%);
+    }
+
+    .cms-withdrawal-main-wrapper {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 20px 20px 90px;
+    }
+
+    .cms-hero-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 46px;
+        padding: 24px 0;
+    }
+
+    .cms-hero-content {
+        flex: 1.1;
+        color: #fff;
+    }
+
+    .cms-hero-title {
+        font-size: clamp(2.2rem, 5vw, 3.9rem);
+        font-weight: 900;
+        line-height: 1.08;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 0 8px 24px rgba(0, 0, 0, 0.52);
+    }
+
+    .cms-hero-title span {
+        display: block;
+        color: #ffcf73;
+    }
+
+    .cms-hero-subtitle {
+        font-size: 1.12rem;
+        line-height: 1.55;
+        margin-bottom: 34px;
+        max-width: 570px;
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    .cms-cta-button {
+        display: inline-block;
+        position: relative;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        color: #fff !important;
+        padding: 17px 46px;
+        border-radius: 48px;
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 1.04rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.33),
+            inset -2px -2px 2px rgba(255, 255, 255, 0.22),
+            0 8px 24px rgba(0, 0, 0, 0.28);
+        transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.4), border-radius 0.28s ease;
+    }
+
+    .cms-cta-button:hover {
+        transform: scale(1.05);
+        border-radius: 44px 52px 44px 52px;
+    }
+
+    .cms-cta-button:active {
+        transform: scale(0.96);
+    }
+
+    .cms-steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin: 56px 0;
+    }
+
+    .cms-step-card {
+        position: relative;
+        padding: 36px 28px;
+        border-radius: 24px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.32),
+            inset -2px -2px 3px rgba(255, 255, 255, 0.2),
+            0 10px 28px rgba(0, 0, 0, 0.32);
+        transition: transform 0.28s ease;
+    }
+
+    @supports (backdrop-filter: url(#filter)) {
+        .cms-step-card {
+            backdrop-filter: url(#filter);
+        }
+
+        .cms-info-table,
+        .cms-seo-note,
+        .cms-cta-button {
+            backdrop-filter: url(#filter);
+        }
+    }
+
+    .cms-step-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+
+    .cms-step-icon {
+        font-size: 3.4rem;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 0 9px rgba(255, 207, 115, 0.42));
+    }
+
+    .cms-step-title {
+        font-weight: 800;
+        color: #ffcf73;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .cms-step-description {
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 0.95rem;
+        line-height: 1.58;
+    }
+
+    .cms-details-section {
+        display: flex;
+        gap: 34px;
+        margin-top: 34px;
+        align-items: flex-start;
+    }
+
+    .cms-seo-text {
+        flex: 1.2;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 0.94rem;
+        line-height: 1.66;
+    }
+
+    .cms-seo-text h2 {
+        color: #ffcf73;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+    }
+
+    .cms-seo-note {
+        margin-top: 18px;
+        padding: 14px 15px;
+        border-left: 3px solid #ffcf73;
+        border-radius: 0 12px 12px 0;
+        font-size: 0.86rem;
+        color: rgba(255, 255, 255, 0.86);
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+        border-right: 1px solid rgba(255, 255, 255, 0.22);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .cms-table-wrapper {
+        flex: 1;
+        min-width: 320px;
+    }
+
+    .cms-info-table {
+        width: 100%;
+        border-radius: 22px;
+        overflow: hidden;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: rgba(255, 255, 255, 0.06) !important;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.28), 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .cms-info-table th {
+        background: rgba(255, 207, 115, 0.2) !important;
+        color: #ffe5bb !important;
+        padding: 17px 20px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.86rem;
+    }
+
+    .cms-info-table td {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 0.95rem;
+    }
+
+    .cms-info-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .cms-info-table tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .cms-info-table tr:hover td {
+        background: rgba(255, 207, 115, 0.08);
+    }
+
+    picture.iphone-mockup {
+        --mockup-scale: 1;
+        display: block;
+        width: calc(315.7px * var(--mockup-scale));
+        height: calc(514.85px * var(--mockup-scale));
+        position: relative;
+        animation: float 6s ease-in-out infinite alternate;
+    }
+
+    .phone {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 3;
+        object-fit: contain;
+        pointer-events: none;
+    }
+
+    .screenrecording,
+    .screenshot {
+        position: absolute;
+        z-index: 1;
+        top: calc(18.2px * var(--mockup-scale));
+        left: calc(50.4px * var(--mockup-scale));
+        width: calc(232.05px * var(--mockup-scale));
+        height: calc(460.25px * var(--mockup-scale));
+        transform: perspective(1326.5px) skewX(14.7deg) skewY(-14deg) rotateY(30deg);
+        border-radius: calc(25.2px * var(--mockup-scale));
+        object-fit: cover;
+    }
+
+    .screenrecording {
+        z-index: 2;
+        display: none;
+    }
+
+    .screenrecording.show {
+        display: block;
+    }
+
+    .screenshot {
+        left: calc(59.5px * var(--mockup-scale));
+        width: calc(221.55px * var(--mockup-scale));
+        height: calc(458.5px * var(--mockup-scale));
+    }
+
+    @media (max-width: 850px) {
+        .cms-hero-flex {
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cms-hero-title,
+        .cms-hero-subtitle {
+            text-align: center;
+        }
+
+        .cms-cta-button {
+            margin: 0 auto;
+            display: table;
+        }
+
+        .cms-steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 34px 0;
+        }
+
+        .cms-step-card {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            padding: 15px 18px;
+            gap: 16px;
+        }
+
+        .cms-step-icon {
+            font-size: 2.1rem;
+            width: 48px;
+            flex-shrink: 0;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cms-step-title {
+            font-size: 1.05rem;
+            margin-bottom: 3px;
+        }
+
+        .cms-step-description {
+            font-size: 0.85rem;
+            line-height: 1.35;
+        }
+
+        .cms-details-section {
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .cms-table-wrapper {
+            width: 100%;
+        }
+
+        picture.iphone-mockup {
+            --mockup-scale: 0.7;
+        }
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(2%) rotateZ(0deg);
+        }
+
+        50% {
+            transform: translateY(-2%) rotateZ(5deg);
+        }
+    }
+
+    @keyframes drift {
+        0% {
+            background-position: 50% 50%;
+        }
+
+        25% {
+            background-position: 62% 42%;
+        }
+
+        50% {
+            background-position: 38% 58%;
+        }
+
+        75% {
+            background-position: 56% 44%;
+        }
+
+        100% {
+            background-position: 50% 50%;
+        }
+    }
+</style>
+
+<svg style="display: none;">
+    <filter id="filter" color-interpolation-filters="linearRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+        <feDisplacementMap in="SourceGraphic" in2="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" result="displacementMap" />
+        <feGaussianBlur stdDeviation="3 3" x="0%" y="0%" width="100%" height="100%" in="displacementMap" edgeMode="none" result="blur" />
+    </filter>
+</svg>
+
+<div class="cms-bg-overlay"></div>
+<div class="cms-withdrawal-main-wrapper">
+
+    <div class="cms-hero-flex">
+        <div class="cms-hero-content">
+            <div class="cms-hero-title">
+                Představujeme <span>FORBES APLIKACI!</span>
+            </div>
+
+            <div class="cms-mobile-card-wrapper"></div>
+
+            <div class="cms-hero-subtitle">
+                Představujeme nejrychlejší cestu k vašim financím. Elegantní, bezpečná a neuvěřitelně rychlý výběr přímo
+                na
+                vaši platební kartu. Bez zbytečných otázek.
+            </div>
+
+            <a href="/vyplaty-na-kreditni-kartu(modal:login)" class="cms-cta-button">Převést na kartu</a>
+        </div>
+
+        <picture class="iphone-mockup reflection-on">
+            <img class="phone" src="https://assets.codepen.io/3165458/phone-left_1.png" alt="iPhone Frame">
+
+            <img class="screenshot" src="https://assets.codepen.io/3165458/Past+Here.jpg" alt="Screen Screenshot">
+
+            <video class="screenrecording show" src="https://www.forbescasino.cz//text_img/1326326NzZ.mp4" autoplay muted loop playsinline></video>
+        </picture>
+    </div>
+
+    <div class="cms-steps-grid">
+        <div class="cms-step-card">
+            <div class="cms-step-icon">&#128179;</div>
+            <div>
+                <div class="cms-step-title">VYBERTE KARTU</div>
+                <div class="cms-step-description">Vybírejte na jakoukoli svou ověřenou CZ/SK kartu.</div>
+            </div>
+        </div>
+
+        <div class="cms-step-card">
+            <div class="cms-step-icon">&#9889;</div>
+            <div>
+                <div class="cms-step-title">POTVRĎTE</div>
+                <div class="cms-step-description">Zadejte částku a během okamžiku odesíláme.</div>
+            </div>
+        </div>
+
+        <div class="cms-step-card">
+            <div class="cms-step-icon">&#128184;</div>
+            <div>
+                <div class="cms-step-title">HOTOVO</div>
+                <div class="cms-step-description">Peníze máte na kartě dříve, než vypijete kávu.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cms-details-section">
+        <div class="cms-seo-text">
+            <h2>Výběry na kartu: Budoucnost okamžitých výplat je zde</h2>
+            <p>
+                Díky nové platební bráně <strong>PayU</strong> využíváme technologii <strong>Card Payout</strong>.
+                Peníze
+                neputují standardním bankovním převodem, který může trvat dny, ale využívají bleskovou infrastrukturu
+                sítí Visa
+                a Mastercard.
+            </p>
+            <p>
+                <strong>Jak na to?</strong> Stačí mít kartu ověřenou (provést s ní dříve alespoň jeden úspěšný vklad). V
+                sekci
+                výběrů pak jen zvolíte "Výběr na kartu" a během desítek sekund je transakce schválena.
+            </p>
+
+            <div class="cms-seo-note">
+                <strong style="color: #ffcf73; display: block; margin-bottom: 5px;">Důležité technické informace:</strong>
+                <ul style="margin: 0; padding-left: 15px;">
+                    <li>Služba není podporována pro karty <strong>UniCredit Bank</strong>.</li>
+                    <li>U <strong>České spořitelny</strong> je denní limit nastaven na 50 000 Kč.</li>
+                    <li>U <strong>Raiffeisen Bank</strong> a <strong>Monety</strong> se prostředky mohou objevit v
+                        "blokacích" do doby finálního zaúčtování bankou.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cms-table-wrapper">
+            <div style="overflow-x: auto;">
+                <table class="cms-info-table">
+                    <thead>
+                        <tr>
+                            <th>Služba</th>
+                            <th>Podmínky</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dostupnost</strong></td>
+                            <td>24/7 (včetně víkendů)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doba zpracování</strong></td>
+                            <td>Do 2 minut (obvykle okamžitě)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Podmínka</strong></td>
+                            <td>Předchozí vklad použitou kartou</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Poplatek</strong></td>
+                            <td>0 Kč (ZDARMA)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Minimální částka</strong></td>
+                            <td>100 Kč</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bezpečnost</strong></td>
+                            <td>PayU + 3D Secure</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
