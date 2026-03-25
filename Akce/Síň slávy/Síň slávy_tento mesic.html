@@ -124,10 +124,6 @@
                 margin-top: -27px;
             }
 
-            .p-0 {
-                margin-left: -16px !important;
-                margin-right: -16px !important;
-            }
         }
 
         @media (min-width: 576px) {
@@ -152,11 +148,6 @@
         @media (min-width: 1200px) {
             .p-sm-5 {
                 margin-top: 1rem;
-            }
-
-            .bg-white {
-                border-radius: 12px 12px 0px 0px;
-                padding: 0rem !important;
             }
         }
 
@@ -239,17 +230,38 @@
             border-radius: 18px;
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 12px 28px rgba(3, 7, 24, 0.45);
-            background: rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 12px 28px rgba(3, 7, 24, 0.45),
+                0 0 0 1px rgba(183, 214, 255, 0.24),
+                0 0 18px rgba(139, 194, 255, 0.18);
+            border: 1px solid rgba(200, 225, 255, 0.4);
+            background: linear-gradient(155deg, rgba(255, 255, 255, 0.28) 0%, rgba(130, 170, 230, 0.16) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: box-shadow 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
         }
 
         .slava-winner-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: saturate(1.16) contrast(1.12) brightness(1.06);
+            transition: filter 0.28s ease, transform 0.28s ease;
+        }
+
+        .slava-winner-item:hover .slava-winner-icon {
+            border-color: rgba(213, 235, 255, 0.75);
+            box-shadow:
+                0 16px 32px rgba(3, 7, 24, 0.55),
+                0 0 0 1px rgba(220, 240, 255, 0.52),
+                0 0 28px rgba(154, 207, 255, 0.32);
+            transform: translateY(-1px);
+        }
+
+        .slava-winner-item:hover .slava-winner-icon img {
+            filter: saturate(1.24) contrast(1.16) brightness(1.1);
+            transform: scale(1.03);
         }
 
         .slava-winner-info {
@@ -286,11 +298,11 @@
         }
 
         .slava-winner-spin-amount {
-            font-size: 13px;
-            margin-top: 0;
-            color: rgb(241 191 69);
-            font-weight: 600;
-            letter-spacing: 0.02em;
+            font-size: 12px;
+            margin-top: 1px;
+            color: rgba(215, 224, 247, 0.72);
+            font-weight: 500;
+            letter-spacing: 0.01em;
             text-align: right;
         }
 
@@ -303,14 +315,14 @@
         }
 
         .slava-winner-amount {
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 26px;
+            font-weight: 900;
             color: #ffffff;
             white-space: nowrap;
             text-align: right;
             padding-left: 0;
             position: relative;
-            text-shadow: 0 0 20px rgba(255, 191, 57, 0.55);
+            text-shadow: 0 0 24px rgba(255, 191, 57, 0.62);
             background: linear-gradient(130deg, #fff8df 0%, #ffd76b 35%, #ffbf39 70%, #ffe9b0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -356,7 +368,7 @@
             }
 
             .slava-winner-spin-amount {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .slava-winner-right {
@@ -365,7 +377,7 @@
             }
 
             .slava-winner-amount {
-                font-size: 18px;
+                font-size: 20px;
                 padding-left: 0;
             }
         }
@@ -404,7 +416,7 @@
             }
 
             .slava-winner-spin-amount {
-                font-size: 11px;
+                font-size: 10px;
             }
 
             .slava-winner-right {
@@ -416,7 +428,7 @@
 
             .slava-winner-amount {
                 width: 100%;
-                font-size: 20px;
+                font-size: 22px;
                 padding-left: 0;
                 padding-top: 8px;
             }
@@ -448,9 +460,6 @@
             font-size: 1.15rem;
             color: #f5b30c;
             font-weight: 700;
-            text-shadow:
-                0 0 10px rgba(245, 179, 12, 0.6),
-                0 0 20px rgba(245, 179, 12, 0.4);
         }
 
         @media (max-width: 600px) {
