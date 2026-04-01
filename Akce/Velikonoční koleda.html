@@ -1,0 +1,1041 @@
+<script>
+    (function () {
+        var seo = {
+            title: 'Velikonoční koleda Forbes Casino | Free spiny a bonusy',
+            description: 'Velikonoční koleda ve Forbes Casino: aktivuj bonus, splň podmínky levelu a získej free spiny do Easter Fortune. Akce platí 3.4.-6.4., aktivace až 10x.',
+            url: 'https://www.forbescasino.cz/velikonocni-koleda',
+            image: 'https://www.forbescasino.cz/text_img/1347796YjM.webp',
+            gaId: 'G-5G2RNYC2E7'
+        };
+
+        function upsertMeta(attr, key, content) {
+            var selector = 'meta[' + attr + '="' + key + '"]';
+            var tag = document.head.querySelector(selector);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute(attr, key);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        function upsertLink(rel, href) {
+            var tag = document.head.querySelector('link[rel="' + rel + '"]');
+            if (!tag) {
+                tag = document.createElement('link');
+                tag.setAttribute('rel', rel);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('href', href);
+        }
+
+        function upsertScript(id, type, text) {
+            var tag = document.getElementById(id);
+            if (!tag) {
+                tag = document.createElement('script');
+                tag.id = id;
+                document.head.appendChild(tag);
+            }
+            tag.type = type;
+            tag.text = text;
+        }
+
+        document.title = seo.title;
+        upsertMeta('name', 'description', seo.description);
+        upsertMeta('name', 'viewport', 'width=device-width, initial-scale=1');
+        upsertMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+
+        upsertMeta('property', 'og:type', 'website');
+        upsertMeta('property', 'og:title', seo.title);
+        upsertMeta('property', 'og:description', seo.description);
+        upsertMeta('property', 'og:image', seo.image);
+        upsertMeta('property', 'og:url', seo.url);
+        upsertMeta('property', 'og:site_name', 'Forbes Casino');
+
+        upsertMeta('name', 'twitter:card', 'summary_large_image');
+        upsertMeta('name', 'twitter:title', seo.title);
+        upsertMeta('name', 'twitter:description', seo.description);
+        upsertMeta('name', 'twitter:image', seo.image);
+
+        upsertLink('canonical', seo.url);
+
+        if (!document.getElementById('ga4-loader')) {
+            var gaScript = document.createElement('script');
+            gaScript.id = 'ga4-loader';
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(seo.gaId);
+            document.head.appendChild(gaScript);
+        }
+
+        upsertScript(
+            'ga4-config',
+            'text/javascript',
+            "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" + seo.gaId + "');"
+        );
+
+        var schemaData = {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    '@type': 'WebPage',
+                    '@id': seo.url + '#webpage',
+                    'url': seo.url,
+                    'name': seo.title,
+                    'description': seo.description,
+                    'inLanguage': 'cs-CZ',
+                    'isPartOf': {
+                        '@id': 'https://www.forbescasino.cz/#website'
+                    },
+                    'primaryImageOfPage': {
+                        '@type': 'ImageObject',
+                        'url': seo.image
+                    }
+                },
+                {
+                    '@type': 'Article',
+                    '@id': seo.url + '#article',
+                    'headline': seo.title,
+                    'description': seo.description,
+                    'mainEntityOfPage': {
+                        '@id': seo.url + '#webpage'
+                    },
+                    'image': [seo.image],
+                    'author': {
+                        '@id': 'https://www.forbescasino.cz/#organization'
+                    },
+                    'publisher': {
+                        '@id': 'https://www.forbescasino.cz/#organization'
+                    },
+                    'inLanguage': 'cs-CZ'
+                },
+                {
+                    '@type': 'Organization',
+                    '@id': 'https://www.forbescasino.cz/#organization',
+                    'name': 'Forbes Casino',
+                    'url': 'https://www.forbescasino.cz/',
+                    'logo': {
+                        '@type': 'ImageObject',
+                        'url': 'https://www.forbescasino.cz/favicon.ico'
+                    },
+                    'sameAs': [
+                        'https://whatsapp.com/channel/0029VbBoaDV7DAWyEinBzx1M',
+                        'https://www.instagram.com/forbescasino.cz',
+                        'https://www.facebook.com/forbescasino',
+                        'https://www.facebook.com/wwwForbesCasinocz',
+                        'https://t.me/ForbesCasinocz',
+                        'https://www.youtube.com/@forbescasino1474'
+                    ]
+                },
+                {
+                    '@type': 'WebSite',
+                    '@id': 'https://www.forbescasino.cz/#website',
+                    'url': 'https://www.forbescasino.cz/',
+                    'name': 'Forbes Casino',
+                    'inLanguage': 'cs-CZ',
+                    'publisher': {
+                        '@id': 'https://www.forbescasino.cz/#organization'
+                    }
+                }
+            ]
+        };
+
+        upsertScript('seo-jsonld-easter', 'application/ld+json', JSON.stringify(schemaData));
+    })();
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Baloo+2:wght@700;800&display=swap');
+
+    :root {
+        --cms-bg-soft: #f1fbff;
+        --cms-ink: #10283b;
+        --cms-muted: #426173;
+        --cms-primary: #0f7ea1;
+        --cms-secondary: #ffc93c;
+        --cms-accent: #65d38a;
+        --cms-border: rgba(10, 62, 92, 0.2);
+        --cms-glass: rgba(255, 255, 255, 0.9);
+        --cms-shadow: 0 18px 38px rgba(10, 42, 66, 0.2);
+    }
+
+    /* Override existing styles */
+    body {
+        min-height: 100vh;
+        position: relative;
+        /* Zajišťuje, aby obsah nebyl "přilepený" ke krajům */
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        /* Posune pozadí za text */
+
+        background-image:
+            radial-gradient(circle at 14% 12%, rgba(255, 201, 60, 0.26), transparent 40%),
+            radial-gradient(circle at 90% 18%, rgba(74, 198, 236, 0.24), transparent 34%),
+            radial-gradient(circle at 80% 84%, rgba(101, 211, 138, 0.2), transparent 34%),
+            linear-gradient(160deg, rgba(21, 122, 166, 0.22), rgba(9, 52, 88, 0.2)),
+            url("https://forbescasino.cz/text_img/1347744ODA.webp");
+
+        /* Nastavení pro lepší viditelnost stran */
+        background-size: contain;
+        /* Zobrazí celý obrázek bez ořezu */
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: #093458;
+        /* Barva, která vyplní prázdná místa po stranách */
+
+        /* Efekt rozmazání */
+        filter: blur(3px);
+        /* Mírné zvětšení, aby po rozmazání nebyly vidět bílé okraje */
+        transform: scale(1.08);
+    }
+
+    .p-sm-5 {
+        padding: 0 !important;
+        border-radius: 18px !important;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -6px;
+        }
+
+        .cms-wrapper {
+            padding-bottom: 42px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: 0;
+            padding: 1.1rem !important;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -12px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -8px;
+        }
+
+        .cms-wrapper {
+            margin-bottom: 32px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 {
+            margin-top: 12px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+
+        .content-panel {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+    .cms-wrapper {
+        font-family: 'Outfit', sans-serif;
+        color: var(--cms-ink);
+        background:
+            repeating-linear-gradient(135deg,
+                rgba(255, 215, 60, 0.13) 0px, rgba(255, 215, 60, 0.13) 10px,
+                transparent 10px, transparent 22px,
+                rgba(100, 210, 120, 0.11) 22px, rgba(100, 210, 120, 0.11) 32px,
+                transparent 32px, transparent 44px,
+                rgba(255, 140, 185, 0.1) 44px, rgba(255, 140, 185, 0.1) 54px,
+                transparent 54px, transparent 66px),
+            linear-gradient(160deg, #fffdf0, #f6fef4);
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 26px;
+        border-radius: 24px;
+        box-sizing: border-box;
+        line-height: 1.6;
+        box-shadow: 0 22px 44px rgba(8, 35, 58, 0.24);
+    }
+
+    .cms-wrapper * {
+        box-sizing: border-box;
+    }
+
+    .cms-header-title {
+        color: #0f2f45 !important;
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: clamp(34px, 4.8vw, 56px) !important;
+        letter-spacing: 0.01em !important;
+        margin: 0 0 8px !important;
+        line-height: 1.1 !important;
+        text-shadow: 0 4px 10px rgba(255, 255, 255, 0.38) !important;
+        position: relative !important;
+        z-index: 2 !important;
+        display: block !important;
+    }
+
+    .cms-header-subtitle {
+        color: #2f5468;
+        font-size: clamp(17px, 2vw, 23px);
+        font-weight: 600;
+        max-width: 640px;
+        margin: 0;
+        line-height: 1.35;
+        text-shadow: none;
+        position: relative;
+        z-index: 2;
+        display: block;
+    }
+
+    .cms-banner {
+        display: flex;
+        background:
+            radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.8), transparent 34%),
+            radial-gradient(circle at 92% 88%, rgba(255, 255, 255, 0.6), transparent 34%),
+            linear-gradient(130deg, rgba(255, 246, 220, 0.92), rgba(231, 248, 255, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        border-radius: 26px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 42px rgba(7, 34, 55, 0.18);
+        align-items: stretch;
+        position: relative;
+        isolation: isolate;
+    }
+
+    .cms-banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(125deg, rgba(255, 201, 60, 0.16), rgba(83, 198, 229, 0.12), rgba(101, 211, 138, 0.16));
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .cms-banner::after {
+        content: '';
+        position: absolute;
+        top: -70px;
+        right: -70px;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 70%);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .cms-banner-img-wrap {
+        flex: 0 0 336px;
+        background: linear-gradient(150deg, rgba(15, 126, 161, 0.16), rgba(101, 211, 138, 0.2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cms-banner-img-wrap a {
+        display: block;
+        width: 100%;
+    }
+
+    .cms-banner-img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: 0 16px 28px rgba(6, 33, 54, 0.24);
+        transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .cms-banner:hover .cms-banner-img {
+        transform: scale(1.03);
+        filter: saturate(1.15);
+    }
+
+    .cms-banner-text {
+        padding: 26px 30px 28px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cms-banner-intro {
+        margin-bottom: 18px;
+        border-bottom: 1px solid rgba(15, 110, 148, 0.2);
+        padding-bottom: 14px;
+    }
+
+    .cms-banner-kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #1e9e57, #6edb8e);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-radius: 999px;
+        padding: 7px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.76);
+        box-shadow: 0 8px 16px rgba(30, 158, 87, 0.3);
+    }
+
+    .cms-date-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        background: linear-gradient(135deg, #ffb51f, #ffe07f);
+        color: #0f3850;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        box-shadow: 0 10px 20px rgba(255, 169, 24, 0.28);
+    }
+
+    .cms-banner-title {
+        color: var(--cms-primary);
+        font-size: clamp(25px, 2.9vw, 34px);
+        font-weight: 800;
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .cms-banner-desc {
+        color: var(--cms-muted);
+        font-size: 17px;
+        line-height: 1.65;
+    }
+
+    .cms-banner-lead {
+        margin: 0 0 9px;
+        font-weight: 700;
+    }
+
+    .cms-banner-points {
+        margin: 0;
+        padding-left: 18px;
+        margin-bottom: 20px;
+    }
+
+    .cms-banner-cta-link {
+        display: inline-flex;
+        align-items: center;
+        color: #104865;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        gap: 10px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(237, 249, 255, 0.96));
+        border: 1px solid rgba(15, 115, 151, 0.25);
+        border-radius: 12px;
+        padding: 8px 12px 8px 8px;
+        box-shadow: 0 10px 18px rgba(7, 41, 61, 0.12);
+        transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cms-banner-cta-link:hover {
+        transform: translateX(4px);
+        color: #0c617c;
+        box-shadow: 0 14px 22px rgba(7, 41, 61, 0.2);
+    }
+
+    .cms-banner-cta-thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 9px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        box-shadow: 0 5px 10px rgba(6, 34, 52, 0.2);
+    }
+
+    .cms-banner-cta-arrow {
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .cms-bold {
+        font-weight: 700;
+    }
+
+    .cms-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: center;
+    }
+
+    .cms-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(243, 252, 255, 0.92));
+        border: 1px solid rgba(12, 95, 133, 0.2);
+        border-radius: 20px;
+        padding: 30px 22px 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        width: calc(33.333% - 14px);
+        box-shadow: 0 14px 26px rgba(9, 36, 52, 0.14);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        animation: cms-card-enter 0.6s ease both;
+    }
+
+    .cms-card:nth-child(2) {
+        animation-delay: 0.08s;
+    }
+
+    .cms-card:nth-child(3) {
+        animation-delay: 0.16s;
+    }
+
+    .cms-card:hover {
+        transform: translateY(-9px);
+        border-color: rgba(15, 126, 161, 0.42);
+        box-shadow: 0 22px 40px rgba(8, 35, 54, 0.24);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(236, 250, 255, 0.94));
+    }
+
+    .cms-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 7px;
+        background: linear-gradient(90deg, #0f7ea1, #53c6e5 44%, #65d38a 72%, #ffc93c);
+    }
+
+    .cms-card-header {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .cms-level-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #ffb100, #ffd233 48%, #fff095);
+        color: #0f3750;
+        padding: 7px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        box-shadow: 0 8px 16px rgba(255, 177, 0, 0.34);
+        border: 1px solid rgba(255, 255, 255, 0.82);
+    }
+
+    .cms-card-date {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 800;
+        color: #0f5b7a;
+        margin-bottom: 2px;
+    }
+
+    .cms-prize-title {
+        color: #144c68;
+        font-size: 22px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+
+    .cms-prize-amount {
+        display: block;
+        color: #0f9f65;
+        font-size: clamp(30px, 3.4vw, 38px);
+        font-weight: 800;
+        margin-top: 5px;
+        letter-spacing: 0.01em;
+    }
+
+    .cms-steps-title {
+        font-weight: 700;
+        color: #14587a;
+        margin-bottom: 14px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid rgba(14, 81, 115, 0.14);
+        padding-bottom: 8px;
+    }
+
+    .cms-step {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .cms-step-num {
+        background: linear-gradient(135deg, #0f7ea1, #53c6e5);
+        color: #ffffff;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 13px;
+        flex-shrink: 0;
+        margin-right: 11px;
+        margin-top: 1px;
+        box-shadow: 0 5px 12px rgba(15, 126, 161, 0.33);
+    }
+
+    .cms-step-text {
+        color: #294557;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .cms-step-highlight {
+        font-weight: 700;
+        color: #0f6e94;
+        background-color: rgba(83, 198, 229, 0.2);
+        padding: 0 5px;
+        border-radius: 5px;
+    }
+
+    .cms-card-info {
+        background: linear-gradient(145deg, rgba(15, 126, 161, 0.1), rgba(101, 211, 138, 0.1));
+        border: 1px dashed rgba(15, 126, 161, 0.28);
+        border-radius: 12px;
+        padding: 14px;
+        margin-top: 16px;
+        text-align: center;
+        font-size: 13px;
+        color: #2d556d;
+        line-height: 1.5;
+    }
+
+    .cms-btn-wrap {
+        margin-top: auto;
+        padding-top: 22px;
+        text-align: center;
+    }
+
+    .cms-btn {
+        display: inline-block;
+        width: 100%;
+        background: linear-gradient(135deg, #ffad06, #ffd12f 46%, #fff09c);
+        color: #103850;
+        font-weight: 800;
+        font-size: 17px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 15px 10px;
+        border-radius: 12px;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.84);
+        box-shadow: 0 12px 24px rgba(255, 170, 0, 0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    .cms-btn::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        bottom: -8px;
+        left: -120%;
+        width: 44%;
+        background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.2) 38%, rgba(255, 255, 255, 0.82) 50%, rgba(255, 255, 255, 0.2) 62%, transparent 100%);
+        transform: skewX(-24deg);
+        animation: cms-btn-sheen 5.2s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .cms-btn:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.03);
+        box-shadow: 0 16px 30px rgba(255, 166, 0, 0.5);
+    }
+
+    @keyframes cms-btn-sheen {
+
+        0%,
+        64% {
+            left: -120%;
+            opacity: 0;
+        }
+
+        70% {
+            opacity: 1;
+        }
+
+        86% {
+            left: 130%;
+            opacity: 1;
+        }
+
+        100% {
+            left: 130%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes cms-card-enter {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes cms-sticker-float {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(-7deg) scale(1.04);
+        }
+
+        50% {
+            transform: translateY(-4px) rotate(-4deg) scale(1.08);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .cms-banner-img-wrap {
+            flex-basis: 290px;
+        }
+
+        .cms-banner-text {
+            padding: 22px 22px 24px;
+        }
+
+        .cms-card {
+            width: calc(50% - 10px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cms-wrapper {
+            padding: 12px;
+            border-radius: 0px;
+            margin-top: -20px;
+            padding-bottom: 42px;
+        }
+
+        .cms-card {
+            width: 100%;
+            padding: 20px 16px;
+        }
+
+        .cms-banner {
+            flex-direction: column;
+            text-align: left;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            position: relative;
+            background:
+                radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.9), transparent 36%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(234, 249, 255, 0.97));
+            border: 1px solid rgba(15, 93, 128, 0.22);
+            box-shadow: 0 14px 26px rgba(10, 31, 48, 0.16);
+            overflow: hidden;
+            padding-right: 0;
+            align-items: stretch;
+        }
+
+        .cms-banner-link-mobile {
+            display: none !important;
+        }
+
+        .cms-banner::after {
+            display: none;
+        }
+
+        .cms-banner-img-wrap {
+            display: flex;
+            flex: 0 0 auto;
+            padding: 12px 12px 0;
+            background: transparent;
+        }
+
+        .cms-banner-img {
+            border-radius: 14px;
+            max-height: 220px;
+            object-fit: cover;
+        }
+
+        .cms-banner:hover .cms-banner-img {
+            transform: none;
+            filter: none;
+        }
+
+        .cms-banner-text {
+            padding: 14px 14px 16px;
+            max-width: 100%;
+        }
+
+        .cms-banner-intro {
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+        }
+
+        .cms-banner-title {
+            font-size: 24px;
+        }
+
+        .cms-header-subtitle {
+            font-size: 17px;
+        }
+
+        .cms-date-pill {
+            font-size: 12px;
+            padding: 7px 12px;
+        }
+
+        .cms-banner-cta-link {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+    }
+
+    @media (max-width: 420px) {
+
+        .cms-banner-title {
+            font-size: 21px;
+        }
+
+        .cms-header-title {
+            font-size: 27px;
+        }
+
+        .cms-header-subtitle {
+            font-size: 16px;
+        }
+
+        .cms-banner-desc {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .cms-banner-cta-thumb {
+            width: 36px;
+            height: 36px;
+        }
+
+        .cms-banner-points {
+            margin-bottom: 16px;
+        }
+
+    }
+
+    @keyframes cms-decoration-float {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(2deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(-2deg);
+        }
+    }
+
+    .cms-card-decoration {
+        position: absolute;
+        bottom: -12px;
+        right: -38px;
+        width: 140px;
+        height: 140px;
+        z-index: 2;
+        animation: cms-decoration-float 3.2s ease-in-out infinite;
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+        pointer-events: none;
+    }
+
+    .cms-card-decoration img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+</style>
+
+<div class="cms-wrapper">
+
+    <div class="cms-banner">
+        <a href="https://www.forbescasino.cz/game/3737/online/easter_fortune"
+            class="cms-banner-link-mobile d-md-none"></a>
+
+        <div class="cms-banner-img-wrap">
+            <a href="https://www.forbescasino.cz/game/3737/online/easter_fortune">
+                <img class="cms-banner-img" src="https://www.forbescasino.cz/text_img/1347796YjM.webp"
+                    alt="Hra Easter Fortune">
+            </a>
+        </div>
+        <div class="cms-banner-text">
+            <div class="cms-banner-intro">
+                <div class="cms-banner-kicker">Jarní speciál</div>
+                <h1 class="cms-header-title">Velikonoční koleda</h1>
+                <div class="cms-header-subtitle">Ve Forbes Casino jsme si pro Tebe připravili opravdu roztočené
+                    Velikonoce!</div>
+                <div class="cms-date-pill">&#128197; Akce platí od 3.4. do 6.4. | Aktivace až 10&times;</div>
+            </div>
+            <div class="cms-banner-title">Roztoč to s Easter Fortune</div>
+            <div class="cms-banner-desc">
+                <p class="cms-banner-lead">Pomlázku nech doma, tady se jede o free spiny.</p>
+                <ul class="cms-banner-points">
+                    <li>Odměny máš podle svého levelu.</li>
+                    <li>Podmínky najdeš přehledně hned níž.</li>
+                    <li>Vyber úroveň, aktivuj bonus a roztoč to.</li>
+                </ul>
+                <a href="https://www.forbescasino.cz/game/3737/online/easter_fortune" class="cms-banner-cta-link">
+                    <img class="cms-banner-cta-thumb" src="https://www.forbescasino.cz/text_img/1347796YjM.webp"
+                        alt="Easter Fortune">
+                    <span>Spustit hru Easter Fortune</span>
+                    <span class="cms-banner-cta-arrow">&#8594;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cms-grid">
+
+        <div class="cms-card">
+            <div class="cms-card-header">
+                <span class="cms-level-badge">Level 1 - 9</span>
+            </div>
+            <div class="cms-prize-title">Vykoleduj si <span class="cms-prize-amount">800 Kč</span> ve free spinech!
+            </div>
+
+            <div class="cms-steps-title">Co budeš pro koledu potřebovat?</div>
+            <div class="cms-step"><span class="cms-step-num">1</span><span class="cms-step-text">Přihlas se do svého
+                    účtu.</span></div>
+            <div class="cms-step"><span class="cms-step-num">2</span><span class="cms-step-text">Aktivuj si bonus v
+                    sekci bonusy.</span></div>
+            <div class="cms-step"><span class="cms-step-num">3</span><span class="cms-step-text">Protoč <span
+                        class="cms-step-highlight">2 000 Kč</span> na hrách Synot.</span></div>
+            <div class="cms-step"><span class="cms-step-num">4</span><span class="cms-step-text">Získej <span
+                        class="cms-step-highlight">8 FS po 10 Kč</span> do Easter Fortune.</span></div>
+            <div class="cms-step"><span class="cms-step-num">5</span><span class="cms-step-text"><span
+                        class="cms-bold">Opakuj celý proces!</span></span></div>
+
+            <div class="cms-card-info">
+                <span class="cms-card-date">&#128197; Akce platí od 3.4. do 6.4.</span><br>
+                Pozor, využít ji můžeš hned <span class="cms-bold">10&times;!</span>
+            </div>
+
+            <div class="cms-btn-wrap">
+                <a href="https://www.forbescasino.cz/" class="cms-btn">Jdu koledovat</a>
+            </div>
+
+            <div class="cms-card-decoration">
+                <img src="https://forbescasino.cz/text_img/1347769Yzk.webp" alt="Kure">
+            </div>
+        </div>
+
+        <div class="cms-card">
+            <div class="cms-card-header">
+                <span class="cms-level-badge">Level 10 - 39</span>
+            </div>
+            <div class="cms-prize-title">Vykoleduj si <span class="cms-prize-amount">2 500 Kč</span> ve free spinech!
+            </div>
+
+            <div class="cms-steps-title">Co budeš pro koledu potřebovat?</div>
+            <div class="cms-step"><span class="cms-step-num">1</span><span class="cms-step-text">Přihlas se do svého
+                    účtu.</span></div>
+            <div class="cms-step"><span class="cms-step-num">2</span><span class="cms-step-text">Aktivuj si bonus v
+                    sekci bonusy.</span></div>
+            <div class="cms-step"><span class="cms-step-num">3</span><span class="cms-step-text">Protoč <span
+                        class="cms-step-highlight">5 000 Kč</span> na hrách Synot.</span></div>
+            <div class="cms-step"><span class="cms-step-num">4</span><span class="cms-step-text">Získej <span
+                        class="cms-step-highlight">25 FS po 10 Kč</span> do Easter Fortune.</span></div>
+            <div class="cms-step"><span class="cms-step-num">5</span><span class="cms-step-text"><span
+                        class="cms-bold">Opakuj celý proces!</span></span></div>
+
+            <div class="cms-card-info">
+                <span class="cms-card-date">&#128197; Akce platí od 3.4. do 6.4.</span><br>
+                Pozor, využít ji můžeš hned <span class="cms-bold">10&times;!</span>
+            </div>
+
+            <div class="cms-btn-wrap">
+                <a href="https://www.forbescasino.cz/" class="cms-btn">Jdu koledovat</a>
+            </div>
+
+            <div class="cms-card-decoration">
+                <img src="https://forbescasino.cz/text_img/1347770NGE.webp" alt="Slepice">
+            </div>
+        </div>
+
+        <div class="cms-card">
+            <div class="cms-card-header">
+                <span class="cms-level-badge">Level 40+</span>
+            </div>
+            <div class="cms-prize-title">Vykoleduj si <span class="cms-prize-amount">5 000 Kč</span> ve free spinech!
+            </div>
+
+            <div class="cms-steps-title">Co budeš pro koledu potřebovat?</div>
+            <div class="cms-step"><span class="cms-step-num">1</span><span class="cms-step-text">Přihlas se do svého
+                    účtu.</span></div>
+            <div class="cms-step"><span class="cms-step-num">2</span><span class="cms-step-text">Aktivuj si bonus v
+                    sekci bonusy.</span></div>
+            <div class="cms-step"><span class="cms-step-num">3</span><span class="cms-step-text">Protoč <span
+                        class="cms-step-highlight">10 000 Kč</span> na hrách Synot.</span></div>
+            <div class="cms-step"><span class="cms-step-num">4</span><span class="cms-step-text">Získej <span
+                        class="cms-step-highlight">25 FS po 20 Kč</span> do Easter Fortune.</span></div>
+            <div class="cms-step"><span class="cms-step-num">5</span><span class="cms-step-text"><span
+                        class="cms-bold">Opakuj celý proces!</span></span></div>
+
+            <div class="cms-card-info">
+                <span class="cms-card-date">&#128197; Akce platí od 3.4. do 6.4.</span><br>
+                Pozor, využít ji můžeš hned <span class="cms-bold">10&times;!</span>
+            </div>
+
+            <div class="cms-btn-wrap">
+                <a href="https://www.forbescasino.cz/" class="cms-btn">Jdu koledovat</a>
+            </div>
+
+            <div class="cms-card-decoration">
+                <img src="https://forbescasino.cz/text_img/1347771OWQ.webp" alt="Králik">
+            </div>
+        </div>
+
+    </div>
+</div>

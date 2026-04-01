@@ -52,9 +52,6 @@
     }
 
     @media (max-width: 1200px) {
-        .p-4 {
-            padding: 0rem !important;
-        }
 
         .content-panel {
             margin-bottom: 0px !important;
@@ -97,3 +94,4 @@
         }
 
 (container musí mít margin-top: -80px;)
+
