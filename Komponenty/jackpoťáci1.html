@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jackpoťáci Component</title>
+
+    <style>
+        :root {
+
+            --primary-blue: #0d1345;
+
+            --bg-gray: #f2f2f2;
+
+            --border-color: #dbdbdb;
+
+            --text-gray: #6d6d70;
+
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+        }
+
+
+
+        body {
+
+            background-color: #ffffff;
+
+            font-family: 'Rubik', sans-serif;
+
+            display: flex;
+
+            justify-content: center;
+
+            padding: 50px;
+
+        }
+
+
+
+        /* Hlavní kontejner */
+
+        .jackpot-container {
+
+            width: 400px;
+
+            background-color: var(--bg-gray);
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+
+        /* Hlavička s nápisem */
+
+        .jackpot-header {
+
+            padding: 24px 24px;
+
+            border-bottom: 1px solid var(--border-color);
+
+        }
+
+
+
+        .header-content {
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+
+        .header-content h2 {
+
+            margin: 0;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            color: var(--primary-blue);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+
+        /* Ikona v hlavičce (nahrazena CSS tvarem pro ukázku) */
+
+        .icon-gold {
+
+            width: 24px;
+
+            height: 18px;
+
+            background-color: var(--primary-blue);
+
+            margin-right: 10px;
+
+            -webkit-mask: url("https://www.forbescasino.cz/assets/icons/icons.svg#icon-jackpot-people") no-repeat center / contain;
+
+            mask: url("https://www.forbescasino.cz/assets/icons/icons.svg#icon-jackpot-people") no-repeat center / contain;
+
+        }
+
+
+
+        /* Seznam a karty */
+
+        .winners-viewport {
+
+            overflow: hidden;
+            margin: 20px 0;
+
+        }
+
+        .winners-list {
+
+            padding: 0 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1px;
+
+            box-sizing: border-box;
+
+            will-change: transform;
+
+        }
+
+
+
+        .winner-card {
+
+            background-color: white;
+
+            border: 1px solid #eaeaea;
+
+            border-radius: 10px;
+
+            padding: 16px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            transition: transform 0.2s ease;
+
+            flex: 0 0 auto;
+
+        }
+
+
+
+        .winner-thumb {
+
+            min-width: 80px;
+
+            display: flex;
+
+            justify-content: center;
+
+        }
+
+
+
+        .winner-thumb img {
+
+            height: 50px;
+
+        }
+
+
+
+        .winner-info {
+
+            padding-left: 20px;
+
+        }
+
+
+
+        .winner-username {
+
+            color: var(--text-gray);
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+
+        .winner-badges {
+
+            display: flex;
+
+            gap: 6px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .winner-chip {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            border-radius: 999px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.2px;
+
+            padding: 3px 8px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        .winner-chip-level {
+
+            background: #e7edff;
+
+            color: #0d1345;
+
+            font-size: 11px;
+
+            padding: 4px 10px;
+
+            text-transform: none;
+
+        }
+
+
+
+        .winner-chip-vip {
+
+            background: linear-gradient(90deg, #f4b942 0%, #ffd67a 100%);
+
+            color: #3f2a00;
+
+        }
+
+
+
+        .winner-amount {
+
+            color: var(--primary-blue);
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+    <div class="jackpot-container">
+
+        <div class="jackpot-header">
+
+            <div class="header-content">
+
+                <span class="icon-gold"></span>
+
+                <h2>JACKPOŤÁCI</h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="winners-viewport">
+
+            <div class="winners-list" id="winnersList">
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">He**rais**23</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Lo***e</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">He**rais**23</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Lo***e</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">He**rais**23</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Lo***e</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">He**rais**23</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Lo***e</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">He**rais**23</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Lo***e</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+             <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+             <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+             <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+             <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+             <div class="winner-card">
+
+                <div class="winner-thumb">
+
+                    <img src="https://www.forbescasino.cz/assets/img/jackpot/bronze.svg" alt="Bronze Jackpot">
+
+                </div>
+
+                <div class="winner-info">
+
+                    <div class="winner-username">Jo***ina</div>
+
+                    <div class="winner-amount">1 500 Kč</div>
+
+                </div>
+
+            </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        (function () {
+
+            const visibleCards = 3;
+
+            const stepCards = 3;
+
+            const pauseMs = 3000;
+
+            const transitionMs = 800;
+
+
+
+            const viewport = document.querySelector('.winners-viewport');
+
+            const list = document.getElementById('winnersList');
+
+            if (!viewport || !list) return;
+
+
+
+            const initialCards = Array.from(list.querySelectorAll('.winner-card'));
+
+            const vipIndexes = new Set([0, 4, 9]);
+
+            initialCards.forEach((card, index) => {
+
+                const info = card.querySelector('.winner-info');
+
+                const amount = card.querySelector('.winner-amount');
+
+                if (!info || !amount) return;
+
+
+
+                let badges = info.querySelector('.winner-badges');
+
+                if (!badges) {
+
+                    badges = document.createElement('div');
+
+                    badges.className = 'winner-badges';
+
+                    info.insertBefore(badges, amount);
+
+                }
+
+
+
+                badges.innerHTML = '';
+
+
+
+                if (index % 6 !== 5) {
+
+                    const levelChip = document.createElement('span');
+
+                    levelChip.className = 'winner-chip winner-chip-level';
+
+                    levelChip.textContent = 'Level 40+';
+
+                    badges.appendChild(levelChip);
+
+                }
+
+
+
+                if (vipIndexes.has(index)) {
+
+                    const vipChip = document.createElement('span');
+
+                    vipChip.className = 'winner-chip winner-chip-vip';
+
+                    vipChip.textContent = 'VIP';
+
+                    badges.appendChild(vipChip);
+
+                }
+
+
+
+                if (!badges.children.length) {
+
+                    badges.remove();
+
+                }
+
+            });
+
+            if (initialCards.length <= visibleCards) {
+
+                const singleGap = parseFloat(getComputedStyle(list).gap) || 0;
+
+                const singleHeight = initialCards[0]?.getBoundingClientRect().height || 0;
+
+                viewport.style.height = `${(singleHeight * visibleCards) + (singleGap * (visibleCards - 1))}px`;
+
+                return;
+
+            }
+
+
+
+            const remainder = initialCards.length % stepCards;
+
+            const fillCount = remainder === 0 ? 0 : stepCards - remainder;
+
+            for (let i = 0; i < fillCount; i++) {
+
+                list.appendChild(initialCards[i % initialCards.length].cloneNode(true));
+
+            }
+
+
+
+            const cycleCards = Array.from(list.querySelectorAll('.winner-card'));
+
+            const cycleLength = cycleCards.length;
+
+            for (let i = 0; i < stepCards; i++) {
+
+                list.appendChild(cycleCards[i].cloneNode(true));
+
+            }
+
+
+
+            let gap = 0;
+
+            let cardStepPx = 0;
+
+            let currentOffsetCards = 0;
+
+            let moveTimerId = null;
+
+            let resetTimerId = null;
+
+
+
+            function clearTimers() {
+
+                if (moveTimerId) {
+
+                    clearTimeout(moveTimerId);
+
+                    moveTimerId = null;
+
+                }
+
+                if (resetTimerId) {
+
+                    clearTimeout(resetTimerId);
+
+                    resetTimerId = null;
+
+                }
+
+            }
+
+
+
+            function measure() {
+
+                const cards = list.querySelectorAll('.winner-card');
+
+                const firstCard = cards[0];
+
+                const secondCard = cards[1];
+
+                if (!firstCard || !secondCard) return;
+
+
+
+                const firstTop = firstCard.getBoundingClientRect().top;
+
+                const secondTop = secondCard.getBoundingClientRect().top;
+
+                const firstHeight = firstCard.getBoundingClientRect().height;
+
+
+
+                gap = parseFloat(getComputedStyle(list).gap) || 0;
+
+                cardStepPx = secondTop - firstTop;
+
+
+
+                const viewportHeight = (cardStepPx * visibleCards) - gap;
+
+                viewport.style.height = `${viewportHeight.toFixed(3)}px`;
+
+
+
+                if (!Number.isFinite(cardStepPx) || cardStepPx <= 0) {
+
+                    cardStepPx = firstHeight + gap;
+
+                }
+
+
+
+                list.style.transition = 'none';
+
+                list.style.transform = `translateY(-${(currentOffsetCards * cardStepPx).toFixed(3)}px)`;
+
+            }
+
+
+
+            function scheduleNext(delayMs) {
+
+                moveTimerId = setTimeout(moveNext, delayMs);
+
+            }
+
+
+
+            function moveNext() {
+
+                currentOffsetCards += stepCards;
+
+                list.style.transition = `transform ${transitionMs}ms ease`;
+
+                list.style.transform = `translateY(-${(currentOffsetCards * cardStepPx).toFixed(3)}px)`;
+
+
+
+                if (currentOffsetCards >= cycleLength) {
+
+                    resetTimerId = setTimeout(() => {
+
+                        list.style.transition = 'none';
+
+                        currentOffsetCards = 0;
+
+                        list.style.transform = 'translateY(0px)';
+
+                        list.offsetHeight;
+
+                        scheduleNext(pauseMs);
+
+                    }, transitionMs + 20);
+
+                    return;
+
+                }
+
+
+
+                scheduleNext(pauseMs + transitionMs);
+
+            }
+
+
+
+            measure();
+
+            scheduleNext(pauseMs);
+
+
+
+            window.addEventListener('resize', () => {
+
+                clearTimers();
+
+                measure();
+
+                scheduleNext(pauseMs);
+
+            });
+
+        })();
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>

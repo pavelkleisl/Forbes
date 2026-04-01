@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes Jackpot - Real Nicknames Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --f-blue: #0d1345;
+            --f-gold: #f5b30c;
+            --f-bg-grey: #f4f4f4;
+            --f-border: #e0e0e0;
+            --vip-gradient: linear-gradient(45deg, #b8860b, #f5b30c, #fff3a0, #f5b30c, #b8860b);
+        }
+
+        body {
+            background-color: #ddd;
+            font-family: 'Rubik', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            margin: 0;
+        }
+
+        .jackpot-homepage-wrapper {
+            width: 345px;
+            background-color: var(--f-bg-grey);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--f-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .jackpot-title {
+            padding: 15px 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--f-gold);
+        }
+
+        .jackpot-title span {
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--f-blue);
+            font-size: 14px;
+        }
+
+        .winners-viewport {
+            height: 480px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .winners-list {
+            display: flex;
+            flex-direction: column;
+            animation: scrollUp 45s linear infinite;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .winners-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 90px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .winners-box__img {
+            width: 55px;
+            height: auto;
+            margin-right: 12px;
+        }
+
+        .winners-box__data {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .winner-name {
+            color: #444;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .winner-amount {
+            color: var(--f-gold);
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .badge-vip {
+            position: absolute;
+            right: 12px;
+            top: 18px;
+            background: var(--vip-gradient);
+            background-size: 250% auto;
+            color: #000;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            animation: shimmer 2s linear infinite;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 8px rgba(245, 179, 12, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .badge-level {
+            position: absolute;
+            right: 12px;
+            bottom: 18px;
+            background: #fff;
+            border: 1px solid #ccc;
+            color: #555;
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 250% center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="jackpot-homepage-wrapper">
+    <div class="jackpot-title">
+        <span style="margin-right:10px">🏆</span>
+        <span>Poslední výherci Jackpotů</span>
+    </div>
+    
+    <div class="winners-viewport">
+        <div class="winners-list" id="main-list">
+            <script>
+                const listContainer = document.getElementById('main-list');
+                const imgGold = "https://www.forbescasino.cz//text_img/1336507OWZ.webp";
+                const imgSilver = "https://www.forbescasino.cz//text_img/1336504Yzk.webp";
+                const imgBronze = "https://www.forbescasino.cz//text_img/1336506YTY.webp";
+
+                // REÁLNÉ NICKNAMY Z TVÉHO KÓDU
+                const realNicknames = [
+                    "Pa***61", "yj***89", "Lp***oi", "se***01", "ri***rd", 
+                    "Se***x1", "Do***13", "Vl***a1", "ny***as", "Te***a2", 
+                    "Fl***90", "ma***34", "hu***ki", "bu***ae", "Bo***ek", 
+                    "Ma***76", "Jo***na", "Ma***22", "Fe***64", "Si***08"
+                ];
+
+                const winnersData = [];
+
+                for(let i=1; i<=20; i++) {
+                    let type = "bronze";
+                    let amount = (Math.floor(Math.random() * 15) + 5) * 100 + " Kč";
+                    let vip = false;
+                    let lvl = null;
+
+                    // GOLD JACKPOT - 8. POZICE
+                    if(i === 8) {
+                        type = "gold";
+                        amount = "500 000 Kč";
+                        vip = false;
+                        lvl = "LEVEL 58";
+                    } 
+                    // SILVER JACKPOT - 18. POZICE
+                    else if(i === 18) {
+                        type = "silver";
+                        amount = "15 450 Kč";
+                        vip = true;
+                        lvl = "LEVEL 42";
+                    } 
+                    // BRONZOVÉ JACKPOTY
+                    else {
+                        // 14 z 18 má vysoký level
+                        const highLevelIndices = [1,2,3,4,6,7,9,10,12,13,14,15,17,19,20];
+                        if(highLevelIndices.includes(i)) {
+                            lvl = "LEVEL " + (Math.floor(Math.random() * 20) + 25);
+                        }
+                    }
+
+                    const currentImg = type === "gold" ? imgGold : (type === "silver" ? imgSilver : imgBronze);
+                    
+                    winnersData.push(`
+                        <div class="winners-box">
+                            <img src="${currentImg}" class="winners-box__img">
+                            <div class="winners-box__data">
+                                <div class="winner-name">${realNicknames[i-1]}</div>
+                                <div class="winner-amount">${amount}</div>
+                            </div>
+                            ${vip ? '<span class="badge-vip">VIP KLUB</span>' : ''}
+                            ${lvl ? `<span class="badge-level">${lvl}</span>` : ''}
+                        </div>
+                    `);
+                }
+
+                listContainer.innerHTML = winnersData.join('') + winnersData.join('');
+            </script>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+</html>

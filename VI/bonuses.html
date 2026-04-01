@@ -66,6 +66,8 @@
         ]
       }
     }
+        </script>
+        <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -85,6 +87,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
+        .fixed-top {
+            background: #0d1345 !important;
+        }
+
+        .content-panel {
+            max-width: 1320px !important;
+            margin: 20px auto !important;
+        }
+
+        section {
+            padding: 0 !important;
+        }
+
+        @media (max-width: 978px) {
+            main {
+                padding-top: 80px !important;
+            }
+
+            section .container {
+                padding: 0 !important;
+            }
+
+            .content-panel {
+                border-radius: 0 !important;
+                margin: 0 auto !important;
+            }
+        }
+
+
+        .container .row>* {
+            padding: 0 !important;
+        }
+
+
         .bg-lighter {
             background: none !important;
             display: none;
@@ -110,24 +146,58 @@
             border-radius: 12px;
         }
 
-        .main-title {
-            text-align: center;
+        /* Nadpisy jednotlivých sekcí */
+        .section-title {
+            display: flex;
+            flex-direction: column;
+            /* Linka půjde pod text */
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 26px;
+            /* Mírně zvětšeno */
+            font-weight: 900;
             color: #0d1345;
-            font-size: 24px;
-            font-weight: 700;
+            text-align: center;
+            margin: 50px 0 30px 0;
             text-transform: uppercase;
-            margin-bottom: 32px;
-            margin-top: 0;
+            letter-spacing: 1.5px;
         }
 
-        .section-title {
-            color: #0d1345;
-            font-size: 18px;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            text-align: center;
+        /* Stylová linka - nyní správně pod textem */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: #13db0f;
+            border-radius: 10px;
+            /* Jemná záře linky */
+            box-shadow: 0 0 10px rgba(19, 219, 15, 0.5);
         }
+
+        /* Barvy linek podle sekcí */
+        .section:nth-of-type(1) .section-title::after {
+            background: #13db0f;
+            box-shadow: 0 0 10px rgba(19, 219, 15, 0.5);
+        }
+
+        .section:nth-of-type(2) .section-title::after {
+            background: #f7ff0c;
+            box-shadow: 0 0 10px rgba(247, 255, 12, 0.5);
+        }
+
+        .section:nth-of-type(3) .section-title::after {
+            background: #0094ff;
+            box-shadow: 0 0 10px rgba(0, 148, 255, 0.5);
+        }
+
+        .section:nth-of-type(4) .section-title::after {
+            background: #cc00ff;
+            box-shadow: 0 0 10px rgba(204, 0, 255, 0.5);
+        }
+
+        /* Jackpoty */
 
         .bonuses-container {
             display: flex;
@@ -138,32 +208,46 @@
         .box1 {
             width: 100%;
             max-width: calc(33.333% - 11px);
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            /* Téměř bílá, ale jemně průhledná */
+            backdrop-filter: blur(5px);
+            /* Rozostření pozadí pod kartou */
+            border: 1px solid rgb(143 143 143 / 30%);
+            border-radius: 16px;
+            /* Kulatější rohy působí moderněji */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e0e0e0;
             margin-bottom: 16px;
             align-items: center;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            isolation: isolate;
         }
 
         .box1:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             cursor: pointer;
         }
 
         .box1 img {
             width: 100%;
-            height: 120px;
+            height: 140px;
+            transition: transform 0.6s ease;
             object-fit: cover;
             position: relative;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .box1:hover img {
+            transform: scale(1.08);
         }
 
         .box1-content {
@@ -181,7 +265,7 @@
             padding: 6px 18px;
             font-size: 14px;
             font-weight: 600;
-            border-radius: 1px 0 12px 0;
+            border-radius: 0 0 12px 0;
             color: white;
             text-transform: uppercase;
             max-width: fit-content;
@@ -193,28 +277,39 @@
             top: 0;
             left: 0;
             z-index: 1;
-            border-right: 1px solid #ffffff;
-            border-bottom: 1px solid #ffffff;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            border: none !important;
+            /* Odstraníme nudný border */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+            -webkit-backface-visibility: hidden;
+            /* Pro Safari */
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            /* Vynutí 3D vrstvu */
+            will-change: transform, opacity;
+            /* Oznámí změny prohlížeči */
         }
 
         .badge1 {
-            background: #13db0f;
-            color: #000000;
+            background: linear-gradient(135deg, #13db0f, #0ba309) !important;
+            box-shadow: 0 0 15px rgba(19, 219, 15, 0.4);
         }
 
         .badge2 {
-            background: #f7ff0c;
-            color: #000000;
+            background: linear-gradient(135deg, #f7ff0c, #c9d10a) !important;
+            box-shadow: 0 0 15px rgba(247, 255, 12, 0.4);
         }
 
         .badge3 {
-            background: #0094ff;
-            color: #ffffff;
+            background: linear-gradient(135deg, #0094ff, #006ec2) !important;
+            box-shadow: 0 0 15px rgba(0, 148, 255, 0.4);
         }
 
         .badge4 {
-            background: #cc00ff;
-            color: #ffffff;
+            background: linear-gradient(135deg, #cc00ff, #9900bf) !important;
+            box-shadow: 0 0 15px rgba(204, 0, 255, 0.4);
         }
 
         .title1 {
@@ -254,10 +349,6 @@
                 margin-top: -27px;
             }
 
-            .p-0 {
-                margin-left: -16px !important;
-                margin-right: -16px !important;
-            }
         }
 
         @media (min-width: 576px) {
@@ -339,15 +430,8 @@
                 padding: 16px;
             }
 
-            .main-title,
             .section-title {
                 padding-right: 1rem;
-            }
-
-            .main-title {
-                padding-right: 1rem;
-                font-size: 22px;
-                font-weight: 700;
             }
 
             .bonuses-container .box1:last-child {
@@ -394,28 +478,15 @@
             background-size: cover;
         }
     </style>
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            width: 100vw;
-            background: url("https://www.forbescasino.cz//text_img/1096874NDZ.webp") no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
 </head>
 
 <body>
     <div class="content-panel">
-        <h1 class="main-title">TIỀN THƯỞNG FORBES CASINO</h1>
-
-        <hr class="divider">
         <div class="section">
-            <h2 class="section-title">KHI ĐĂNG KÝ</h2>
+            <h2 class="section-title" style="margin-top: 0px;">KHI ĐĂNG KÝ</h2>
             <div class="bonuses-container">
                 <a href="https://www.forbescasino.cz/vstupni-bonus-vi" class="box1">
-                    <img alt="50FS" src="https://www.forbescasino.cz//text_img/1089404MGR.webp" />
+                    <img alt="50FS" src="https://www.forbescasino.cz//text_img/1283180OTY.webp" />
                     <div class="box1-content">
                         <div class="badge1">KHI ĐĂNG KÝ</div>
                         <h3 class="title1">50 VÒNG QUAY MIỄN PHÍ KHI ĐĂNG KÝ</h3>
@@ -423,7 +494,7 @@
                     </div>
                 </a>
                 <a href="https://www.forbescasino.cz/vkladovy-bonus-vi" class="box1">
-                    <img alt="Tiền thưởng nạp tiền" src="https://www.forbescasino.cz//text_img/1089406MzA.webp" />
+                    <img alt="Tiền thưởng nạp tiền" src="https://www.forbescasino.cz//text_img/1283189MWF.webp" />
                     <div class="box1-content">
                         <div class="badge1">KHI ĐĂNG KÝ</div>
                         <h3 class="title1">TIỀN THƯỞNG NẠP TIỀN</h3>
@@ -432,7 +503,7 @@
                     </div>
                 </a>
                 <a href="https://www.forbescasino.cz/vyherni-kolo-stesti-vi" class="box1">
-                    <img alt="Vòng quay may mắn chào mừng" src="https://www.forbescasino.cz//text_img/1253346YWE.png" />
+                    <img alt="Vòng quay may mắn chào mừng" src="https://www.forbescasino.cz//text_img/1283282Mzh.webp" />
                     <div class="box1-content">
                         <div class="badge1">KHI ĐĂNG KÝ</div>
                         <h3 class="title1">VÒNG QUAY MAY MẮN CHÀO MỪNG</h3>
@@ -448,7 +519,7 @@
             <h2 class="section-title">Trung thực</h2>
             <div class="bonuses-container">
                 <a href="https://www.forbescasino.cz/cashback-vi" class="box1">
-                    <img alt="Hoàn tiền" src="https://www.forbescasino.cz//text_img/1229735YjA.webp" />
+                    <img alt="Hoàn tiền" src="https://www.forbescasino.cz//text_img/1283193ZjM.webp" />
                     <div class="box1-content">
                         <div class="badge2">Trung thực</div>
                         <h3 class="title1">HOÀN TIỀN</h3>
@@ -457,7 +528,7 @@
                     </div>
                 </a>
                 <a href="https://www.forbescasino.cz/level-system-vi" class="box1">
-                    <img alt="Hệ thống cấp độ" src="https://www.forbescasino.cz//text_img/1229734NzM.webp" />
+                    <img alt="Hệ thống cấp độ" src="https://www.forbescasino.cz//text_img/1283281M2U.webp" />
                     <div class="box1-content">
                         <div class="badge2">Trung thực</div>
                         <h3 class="title1">HỆ THỐNG CẤP ĐỘ</h3>
@@ -473,7 +544,7 @@
             <h2 class="section-title">FORBESMÁNIE</h2>
             <div class="bonuses-container">
                 <a href="https://www.forbescasino.cz/info-forbesmanie-vi" class="box1">
-                    <img alt="Forbesmánie" src="https://www.forbescasino.cz//text_img/1089407YmY.webp" />
+                    <img alt="Forbesmánie" src="https://www.forbescasino.cz//text_img/1283183OGR.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">FORBESMÁNIE</h3>
@@ -482,7 +553,7 @@
                     </div>
                 </a>
                 <a href="https://www.forbescasino.cz/bonusovy-kalendar-vi" class="box1">
-                    <img alt="Tiền thưởng hàng ngày" src="https://www.forbescasino.cz//text_img/1089408Yzk.webp" />
+                    <img alt="Tiền thưởng hàng ngày" src="https://www.forbescasino.cz//text_img/1283182ZTF.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">TIỀN THƯỞNG HÀNG NGÀY</h3>
@@ -492,7 +563,7 @@
                 </a>
                 <a href="https://www.forbescasino.cz/premiovy-bonusovy-kalendar-vi" class="box1">
                     <img alt="Tiền thưởng hàng ngày cao cấp"
-                        src="https://www.forbescasino.cz//text_img/1089409NWI.webp" />
+                        src="https://www.forbescasino.cz//text_img/1283182ZTF.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">TIỀN THƯỞNG HÀNG NGÀY CAO CẤP</h3>
@@ -502,7 +573,7 @@
                 </a>
                 <a href="https://www.forbescasino.cz/kolo-stesti-vi" class="box1">
                     <img alt="Vòng quay may mắn của Karlos"
-                        src="https://www.forbescasino.cz//text_img/1089411MDZ.webp" />
+                        src="https://www.forbescasino.cz//text_img/1283200MTc.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">VÒNG QUAY MAY MẮN CỦA KARLOS</h3>
@@ -511,7 +582,7 @@
                     </div>
                 </a>
                 <a href="https://www.forbescasino.cz/narozeninovy-bonus-vi" class="box1">
-                    <img alt="Tiền thưởng sinh nhật" src="https://www.forbescasino.cz//text_img/1089417OGQ.webp" />
+                    <img alt="Tiền thưởng sinh nhật" src="https://www.forbescasino.cz//text_img/1283188MWQ.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">TIỀN THƯỞNG SINH NHẬT</h3>
@@ -521,7 +592,7 @@
                 </a>
                 <a href="https://www.forbescasino.cz/denni-mise-vi" class="box1">
                     <img alt="Tiền thưởng nhiệm vụ hàng ngày"
-                        src="https://www.forbescasino.cz//text_img/1089418ZGJ.webp" />
+                        src="https://www.forbescasino.cz//text_img/1283181OTc.webp" />
                     <div class="box1-content">
                         <div class="badge3">Forbesmánie</div>
                         <h3 class="title1">TIỀN THƯỞNG NHIỆM VỤ HÀNG NGÀY</h3>
@@ -536,7 +607,7 @@
             <h2 class="section-title">JACKPOT TẠI FORBES</h2>
             <div class="bonuses-container">
                 <a href="https://www.forbescasino.cz/jackpoty-vi" class="box1">
-                    <img alt="Jackpot tại Forbes" src="https://www.forbescasino.cz//text_img/1089414ZGY.webp" />
+                    <img alt="Jackpot tại Forbes" src="https://www.forbescasino.cz//text_img/1283184Nzc.webp" />
                     <div class="box1-content">
                         <div class="badge4">Jackpot</div>
                         <h3 class="title1">JACKPOT TẠI FORBES</h3>

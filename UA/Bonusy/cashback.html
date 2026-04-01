@@ -469,6 +469,7 @@
    * ---------------------------------
    */
   .cash-table-block {
+    max-width: 560px;
     background-color: #1A236B;
     padding: 24px;
     overflow-x: auto;
@@ -478,6 +479,8 @@
     flex-direction: column;
     align-items: flex-start;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cash-table-title {
@@ -763,10 +766,6 @@
       margin-top: -27px;
     }
 
-    .p-0 {
-      margin-left: -16px !important;
-      margin-right: -16px !important;
-    }
   }
 
   @media (min-width: 576px) {
@@ -1108,96 +1107,6 @@
       font-size: 19px;
     }
   }
-
-  .notice-cashback__highlight {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 14px;
-    padding: 8px 12px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #10880e 0%, #0d6e0b 45%, #0a5509 100%);
-    border: 1px solid rgba(152, 240, 151, 0.7);
-    font-size: 14px;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    animation: cbGlow 2.6s ease-in-out infinite alternate;
-  }
-
-  .notice-cashback__highlight::before {
-    content: "";
-    position: absolute;
-    top: -130%;
-    left: -40%;
-    width: 60%;
-    height: 360%;
-    transform: rotate(18deg);
-    background: linear-gradient(to right,
-        transparent 0%,
-        rgba(255, 255, 255, 0.10) 45%,
-        rgba(255, 255, 255, 0.26) 50%,
-        rgba(255, 255, 255, 0.10) 55%,
-        transparent 100%);
-    opacity: 0;
-    pointer-events: none;
-    animation: cbShine 4s ease-in-out infinite;
-  }
-
-  .notice-cashback__highlight-amount {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #98F097;
-    text-shadow: 0 0 10px rgba(152, 240, 151, 0.9);
-    animation: cbPulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes cbGlow {
-    0% {
-      box-shadow: 0 0 8px rgba(152, 240, 151, 0.25);
-    }
-
-    100% {
-      box-shadow: 0 0 18px rgba(152, 240, 151, 0.6);
-    }
-  }
-
-  @keyframes cbPulse {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.045);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes cbShine {
-    0% {
-      opacity: 0;
-      transform: translateX(-130%) rotate(18deg);
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    75% {
-      opacity: 0;
-      transform: translateX(190%) rotate(18deg);
-    }
-
-    100% {
-      opacity: 0;
-      transform: translateX(190%) rotate(18deg);
-    }
-  }
 </style>
 <!-- === ГОЛОВНА ПАНЕЛЬ === -->
 <div class="header-panel">
@@ -1211,7 +1120,8 @@
 <div class="content-panel"><!-- === ЗАГОЛОВКИ БОНУСУ === -->
   <h1 class="bonus-title">Кешбек — бали, які ти одразу обміняєш на гроші</h1>
 
-  <h2 class="bonus-subtitle"><b>Бонусні бали ти отримуєш під час гри.</b> Коли захочеш — обміняєш їх <b>1:1 на гроші.</b><br />
+  <h2 class="bonus-subtitle"><b>Бонусні бали ти отримуєш під час гри.</b> Коли захочеш — обміняєш їх <b>1:1 на
+      гроші.</b><br />
     Чим вище твій рівень, тим <b>швидше накопичуються бонусні бали (далі — "Бали").</b></h2>
   <!-- CTA button -->
 
@@ -1256,7 +1166,8 @@
       <p class="notice-cashback__subtitle">Тільки у неділю з 00:00 до 23:59:59 ти отримуєш у рамках програми Кешбек:</p>
 
       <div class="notice-cashback__highlight"><span class="notice-cashback__highlight-amount">+100&nbsp;%</span>
-        <span>збільшення стандартного кешбеку!</span></div>
+        <span>збільшення стандартного кешбеку!</span>
+      </div>
 
       <ul class="notice-cashback__list">
         <li>акція діє лише у неділю з 00:00 до 23:59:59;</li>
@@ -1267,90 +1178,70 @@
   </div>
   <!-- Приклад (До / Після) -->
 
-  <div class="cash-main-content-grid">
-    <div class="cash-promo-block">
-      <div class="cash-promo-before-wrapper">
-        <div class="cash-promo-before">1 000 Kč <span>БАЗОВА СТАВКА</span></div>
-      </div>
+  <div class="cash-table-block">
+    <h3 class="cash-table-title">Огляд рівнів та приблизних множників</h3>
 
-      <div class="cash-promo-after-wrapper">
-        <div class="cash-promo-after">
-          <div class="cash-promo-inner">1 200 Kč <span>ПІСЛЯ&nbsp;ПІДВИЩЕННЯ</span></div>
-
-          <div class="cash-promo-badge">+20 % <span>швидший збір</span></div>
-        </div>
-      </div>
-
-      <p class="cash-promo-text">Кожен рівень прискорює збір Балів приблизно на 20 %.</p>
-
-      <p class="cash-promo-small-print">У цьому прикладі це означає, що з 1 000 Балів ти отримуєш 1 200 Балів — тобто на 200 Kč більше.</p>
-    </div>
-
-    <div class="cash-table-block">
-      <h3 class="cash-table-title">Огляд рівнів та приблизних множників</h3>
-
-      <table class="cash-levels-table">
-        <thead>
-          <tr>
-            <th class="cash-corner-left">Рівень</th>
-            <th>Множник</th>
-            <th class="cash-corner-right">Приклад <span>(з 1000 Балів)</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="cash-td-level">Рівень <span>1</span></td>
-            <td class="cash-td-multi">1.00×</td>
-            <td class="cash-td-example">1000 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>2-9</span></td>
-            <td class="cash-td-multi">1.20×</td>
-            <td class="cash-td-example">1200 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>10-24</span></td>
-            <td class="cash-td-multi">1.44×</td>
-            <td class="cash-td-example">1440 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>25-39</span></td>
-            <td class="cash-td-multi">1.73×</td>
-            <td class="cash-td-example">1730 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>40-59</span></td>
-            <td class="cash-td-multi">2.07×</td>
-            <td class="cash-td-example">2070 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>60-74</span></td>
-            <td class="cash-td-multi">2.49×</td>
-            <td class="cash-td-example">2490 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>75-89</span></td>
-            <td class="cash-td-multi">2.99×</td>
-            <td class="cash-td-example">2990 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>90-99</span></td>
-            <td class="cash-td-multi">3.58×</td>
-            <td class="cash-td-example">3580 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>100-119</span></td>
-            <td class="cash-td-multi">4.30×</td>
-            <td class="cash-td-example">4300 Балів</td>
-          </tr>
-          <tr>
-            <td class="cash-td-level">Рівень <span>120+</span></td>
-            <td class="cash-td-multi">5.16×</td>
-            <td class="cash-td-example">5160 Балів</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="cash-levels-table">
+      <thead>
+        <tr>
+          <th class="cash-corner-left">Рівень</th>
+          <th>Множник</th>
+          <th class="cash-corner-right">Приклад <span>(з 1000 Балів)</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cash-td-level">Рівень <span>1</span></td>
+          <td class="cash-td-multi">1.00×</td>
+          <td class="cash-td-example">1000 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>2-9</span></td>
+          <td class="cash-td-multi">1.20×</td>
+          <td class="cash-td-example">1200 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>10-24</span></td>
+          <td class="cash-td-multi">1.44×</td>
+          <td class="cash-td-example">1440 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>25-39</span></td>
+          <td class="cash-td-multi">1.73×</td>
+          <td class="cash-td-example">1730 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>40-59</span></td>
+          <td class="cash-td-multi">2.07×</td>
+          <td class="cash-td-example">2070 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>60-74</span></td>
+          <td class="cash-td-multi">2.49×</td>
+          <td class="cash-td-example">2490 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>75-89</span></td>
+          <td class="cash-td-multi">2.99×</td>
+          <td class="cash-td-example">2990 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>90-99</span></td>
+          <td class="cash-td-multi">3.58×</td>
+          <td class="cash-td-example">3580 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>100-119</span></td>
+          <td class="cash-td-multi">4.30×</td>
+          <td class="cash-td-example">4300 Балів</td>
+        </tr>
+        <tr>
+          <td class="cash-td-level">Рівень <span>120+</span></td>
+          <td class="cash-td-multi">5.16×</td>
+          <td class="cash-td-example">5160 Балів</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <!-- FAQ -->
 
@@ -1360,19 +1251,22 @@
     <div class="cash-faq-item">
       <h3 class="cash-faq-question">Коли я побачу Бали на рахунку?</h3>
 
-      <p class="cash-faq-answer">Бали нараховуються автоматично, не пізніше ніж <b>через 1 годину</b> після завершення ігрової сесії.</p>
+      <p class="cash-faq-answer">Бали нараховуються автоматично, не пізніше ніж <b>через 1 годину</b> після завершення
+        ігрової сесії.</p>
     </div>
 
     <div class="cash-faq-item">
       <h3 class="cash-faq-question">Чи можу я обміняти Бали у будь-який час?</h3>
 
-      <p class="cash-faq-answer">Так –&gt; 1 Бал = 1 Kč. <b>Обмін можливий без додаткових умов.</b> Мінімальна сума для обміну — 1 бал.</p>
+      <p class="cash-faq-answer">Так –&gt; 1 Бал = 1 Kč. <b>Обмін можливий без додаткових умов.</b> Мінімальна сума для
+        обміну — 1 бал.</p>
     </div>
 
     <div class="cash-faq-item">
       <h3 class="cash-faq-question">Що саме означає +20 %?</h3>
 
-      <p class="cash-faq-answer">Це означає <b>збільшення швидкості збору Балів на 20 % у порівнянні з попереднім рівнем.</b> Дивись приклад у верхній частині сторінки.</p>
+      <p class="cash-faq-answer">Це означає <b>збільшення швидкості збору Балів на 20 % у порівнянні з попереднім
+          рівнем.</b> Дивись приклад у верхній частині сторінки.</p>
     </div>
 
     <div class="cash-faq-item">
