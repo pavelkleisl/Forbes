@@ -2,6 +2,10 @@
 <html lang="cs">
 
 <head>
+
+
+
+
     <style type="text/css">
         /* Override existing styles */
         body {
@@ -20,10 +24,6 @@
             display: none;
         }
 
-        .bg-white {
-            background: none !important;
-        }
-
         .container .row .bg-white {
             background: transparent !important;
         }
@@ -31,11 +31,6 @@
         @media (max-width: 576px) {
             .p-sm-5 {
                 margin-top: -27px;
-            }
-
-            .p-0 {
-                margin-left: -16px !important;
-                margin-right: -16px !important;
             }
         }
 
@@ -63,10 +58,6 @@
                 margin-top: 1rem;
             }
 
-            .bg-white {
-                border-radius: 12px 12px 0px 0px;
-                padding: 0rem !important;
-            }
         }
 
         @media (max-width: 1200px) {
@@ -96,12 +87,15 @@
             justify-content: space-between;
             padding: 20px;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(33, 69, 165, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(10deg, rgb(255 255 255 / 0%) 0%, rgba(255, 255, 255, 0.07) 100%);
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.26);
+            box-shadow: 0 18px 40px rgba(6, 12, 40, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
         .slava-winner-item::before {
@@ -109,13 +103,27 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 5px;
             height: 100%;
-            background: linear-gradient(180deg, #ffc430 0%, #f5b30c 100%);
+            background: linear-gradient(180deg, #ffe183 0%, #ffc430 45%, #f5b30c 100%);
+            box-shadow: 0 0 20px rgba(245, 179, 12, 0.45);
+        }
+
+        .slava-winner-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0.26) 0%,
+                    rgba(255, 255, 255, 0.06) 35%,
+                    rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
         }
 
         .slava-winner-item:hover {
-            box-shadow: 0 8px 24px rgba(33, 69, 165, 0.15);
+            box-shadow: 0 24px 48px rgba(6, 12, 40, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .slava-winner-left {
@@ -128,20 +136,41 @@
         .slava-winner-icon {
             width: 80px;
             height: 80px;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #dbdbdb;
+            box-shadow:
+                0 12px 28px rgba(3, 7, 24, 0.45),
+                0 0 0 1px rgba(183, 214, 255, 0.24),
+                0 0 18px rgba(139, 194, 255, 0.18);
+            border: 1px solid rgba(200, 225, 255, 0.4);
+            background: linear-gradient(155deg, rgba(255, 255, 255, 0.28) 0%, rgba(130, 170, 230, 0.16) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: box-shadow 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
         }
 
         .slava-winner-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: saturate(1.16) contrast(1.12) brightness(1.06);
+            transition: filter 0.28s ease, transform 0.28s ease;
+        }
+
+        .slava-winner-item:hover .slava-winner-icon {
+            border-color: rgba(213, 235, 255, 0.75);
+            box-shadow:
+                0 16px 32px rgba(3, 7, 24, 0.55),
+                0 0 0 1px rgba(220, 240, 255, 0.52),
+                0 0 28px rgba(154, 207, 255, 0.32);
+            transform: translateY(-1px);
+        }
+
+        .slava-winner-item:hover .slava-winner-icon img {
+            filter: saturate(1.24) contrast(1.16) brightness(1.1);
+            transform: scale(1.03);
         }
 
         .slava-winner-info {
@@ -155,35 +184,79 @@
         .slava-winner-game {
             font-size: 20px;
             font-weight: 700;
-            color: #2145a5 !important;
+            color: #ffffff !important;
             margin: 0;
             line-height: 1.3;
             text-decoration: none;
             color: inherit;
+            text-shadow: 0 2px 10px rgba(5, 10, 38, 0.45);
         }
 
         .slava-winner-username {
             font-size: 16px;
-            color: #666;
+            color: rgba(235, 242, 255, 0.86);
             margin: 0;
             line-height: 1.4;
         }
 
         .slava-winner-time {
             font-size: 14px;
-            color: #999;
+            color: rgba(227, 237, 255, 0.72);
             margin: 0;
             line-height: 1.4;
         }
 
+        .slava-winner-spin-amount {
+            font-size: 12px;
+            margin-top: 1px;
+            color: rgba(215, 224, 247, 0.72);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            text-align: right;
+        }
+
+        .slava-winner-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            padding-left: 20px;
+        }
+
         .slava-winner-amount {
-            font-size: 24px;
-            font-weight: 800;
-            color: #f5b30c;
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
             white-space: nowrap;
             text-align: right;
-            padding-left: 20px;
+            padding-left: 0;
             position: relative;
+            text-shadow: 0 0 24px rgba(255, 191, 57, 0.62);
+            background: linear-gradient(130deg, #fff8df 0%, #ffd76b 35%, #ffbf39 70%, #ffe9b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slava-winner-item-fresh {
+            border-color: rgba(245, 179, 12, 0.75);
+            box-shadow: 0 22px 44px rgba(6, 12, 40, 0.45), 0 0 0 1px rgba(245, 179, 12, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .slava-fresh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #090f2d;
+            background: linear-gradient(135deg, #ffe183 0%, #ffc430 45%, #f5b30c 100%);
+            box-shadow: 0 6px 18px rgba(245, 179, 12, 0.45);
+            margin-bottom: 2px;
         }
 
 
@@ -224,9 +297,24 @@
                 font-size: 13px;
             }
 
-            .slava-winner-amount {
-                font-size: 18px;
+            .slava-winner-spin-amount {
+                font-size: 11px;
+            }
+
+            .slava-winner-right {
+                gap: 4px;
                 padding-left: 12px;
+            }
+
+            .slava-fresh-badge {
+                font-size: 10px;
+                padding: 5px 10px;
+                letter-spacing: 0.06em;
+            }
+
+            .slava-winner-amount {
+                font-size: 20px;
+                padding-left: 0;
             }
         }
 
@@ -263,9 +351,20 @@
                 font-size: 12px;
             }
 
+            .slava-winner-spin-amount {
+                font-size: 10px;
+            }
+
+            .slava-winner-right {
+                width: 100%;
+                align-items: flex-end;
+                padding-left: 0;
+                margin-top: 8px;
+            }
+
             .slava-winner-amount {
                 width: 100%;
-                font-size: 20px;
+                font-size: 22px;
                 padding-left: 0;
                 padding-top: 8px;
             }
@@ -278,8 +377,7 @@
 
         .slava-header-container {
             max-width: 800px;
-            margin: 0px auto 0px auto;
-            margin-top: -56px !important;
+            margin: 32px auto 0px auto;
             padding: 0 16px;
             text-align: center;
         }
@@ -290,11 +388,6 @@
             color: #ffffff;
             letter-spacing: 1px;
             margin-bottom: 12px;
-            text-shadow:
-                0 0 10px rgba(255, 255, 255, 0.5),
-                0 0 20px rgba(255, 255, 255, 0.3),
-                0 0 30px rgba(33, 69, 165, 0.3);
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
             line-height: 1.2;
         }
 
@@ -302,12 +395,10 @@
             font-size: 1.15rem;
             color: #f5b30c;
             font-weight: 700;
-            text-shadow:
-                0 0 10px rgba(245, 179, 12, 0.6),
-                0 0 20px rgba(245, 179, 12, 0.4);
         }
 
         @media (max-width: 600px) {
+            .slava-header-container {}
 
             .slava-header-title {
                 font-size: 1.8rem;
@@ -710,7 +801,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin: 32px auto 14px auto;
+            margin: 32px auto 32px auto;
             padding: 16px 24px;
             border-radius: 12px;
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff6b35 100%);
@@ -815,89 +906,118 @@
 
 <div class="slava-filter-wrapper">
     <div class="slava-filter-container-modern">
-        <a href="" class="slava-filter-pill slava-filter-pill-active">Vše</a>
+        <div class="slava-filter-pill slava-filter-pill-active">Vše</div>
         <a href="https://www.forbescasino.cz/sin-slavy-tyden-app?app=true" class="slava-filter-pill">Minulý týden</a>
         <a href="https://www.forbescasino.cz/sin-slavy-mesic-app?app=true" class="slava-filter-pill">Minulý měsíc</a>
     </div>
 </div>
 
-
 <div class="slava-winners-container">
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Joker´s Jewels</span>
+                    <div class="slava-winner-game">Joker´s Jewels</div>
                 </div>
                 <div class="slava-winner-username">va**76**14</div>
-                <div class="slava-winner-time">6.01.2026</div>
+                <div class="slava-winner-time">06.01.2026</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 500 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006692NmQ.webp" alt="Seasons">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006692NmQ.webp" alt="Seasons">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Seasons</span>
+                    <div class="slava-winner-game">Seasons</div>
                 </div>
                 <div class="slava-winner-username">Na**li***03</div>
                 <div class="slava-winner-time">18.12.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006655NTk.webp" alt="Double Game">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006655NTk.webp" alt="Double Game">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Double Game</span>
+                    <div class="slava-winner-game">Double Game</div>
                 </div>
                 <div class="slava-winner-username">Jo**r1**45</div>
                 <div class="slava-winner-time">19.07.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 500 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Joker 40</span>
+                    <div class="slava-winner-game">Super Joker 40</div>
                 </div>
                 <div class="slava-winner-username">Da****go</div>
                 <div class="slava-winner-time">08.07.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Joker 40</span>
+                    <div class="slava-winner-game">Super Joker 40</div>
                 </div>
                 <div class="slava-winner-username">He****n</div>
                 <div class="slava-winner-time">13.01.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
@@ -905,252 +1025,302 @@
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Shining Crown</span>
+                    <div class="slava-winner-game">Shining Crown</div>
                 </div>
                 <div class="slava-winner-username">Kr****an</div>
                 <div class="slava-winner-time">27.06.2023</div>
             </div>
         </div>
-        <div class="slava-winner-amount">500 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">500 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007156ZTk.webp" alt="Multi Vegas 81">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007156ZTk.webp" alt="Multi Vegas 81">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Multi Vegas 81</span>
+                    <div class="slava-winner-game">Multi Vegas 81</div>
                 </div>
                 <div class="slava-winner-username">Ba****84</div>
                 <div class="slava-winner-time">30.09.2023</div>
             </div>
         </div>
-        <div class="slava-winner-amount">480 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">480 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Reels Deluxe</span>
+                    <div class="slava-winner-game">Super Reels Deluxe</div>
                 </div>
                 <div class="slava-winner-username">Pe**mi**es</div>
                 <div class="slava-winner-time">07.07.2025</div>
             </div>
         </div>
-        <div class="slava-winner-amount">469 800 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">469 800 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 450 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Reels Deluxe</span>
+                    <div class="slava-winner-game">Super Reels Deluxe</div>
                 </div>
                 <div class="slava-winner-username">Pe**mi**es</div>
                 <div class="slava-winner-time">24.07.2025</div>
             </div>
         </div>
-        <div class="slava-winner-amount">468 900 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">468 900 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 450 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Aztec Jaguar</span>
+                    <div class="slava-winner-game">Super Reels Deluxe</div>
+                </div>
+                <div class="slava-winner-username">Lu***12</div>
+                <div class="slava-winner-time">01.02.2026</div>
+            </div>
+        </div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">468 540 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 450 Kč</div>
+        </div>
+    </div>
+
+    <div class="slava-winner-item">
+        <div class="slava-winner-left">
+            <div class="slava-winner-icon">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar">
+                </div>
+            </div>
+            <div class="slava-winner-info">
+                <div>
+                    <div class="slava-winner-game">Aztec Jaguar</div>
                 </div>
                 <div class="slava-winner-username">Vl***il***ik</div>
                 <div class="slava-winner-time">09.11.2025</div>
             </div>
         </div>
-        <div class="slava-winner-amount">467 500 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">467 500 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 500 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Reels Deluxe</span>
+                    <div class="slava-winner-game">Super Reels Deluxe</div>
                 </div>
                 <div class="slava-winner-username">Pe**mi**es</div>
                 <div class="slava-winner-time">26.03.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">466 650 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">466 650 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 450 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006911Njc.webp" alt="Hell Bars">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1006911Njc.webp" alt="Hell Bars">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Hell Bars</span>
+                    <div class="slava-winner-game">Hell Bars</div>
                 </div>
                 <div class="slava-winner-username">Pe**e**71</div>
                 <div class="slava-winner-time">19.09.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">459 200 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">459 200 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 800 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Super Joker 40</span>
+                    <div class="slava-winner-game">Super Joker 40</div>
                 </div>
                 <div class="slava-winner-username">Ja***66</div>
                 <div class="slava-winner-time">10.03.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">450 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">450 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 900 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007126YjN.webp" alt="Shuriken Legend">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007126YjN.webp" alt="Shuriken Legend">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Shuriken Legend</span>
+                    <div class="slava-winner-game">Shuriken Legend</div>
                 </div>
                 <div class="slava-winner-username">Ti**n**ix</div>
                 <div class="slava-winner-time">19.06.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">434 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">434 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 500 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1160958ZGF.webp" alt="Fruity Gold 81">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1160958ZGF.webp" alt="Fruity Gold 81">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Fruity Gold 81</span>
+                    <div class="slava-winner-game">Fruity Gold 81</div>
                 </div>
                 <div class="slava-winner-username">fo***la</div>
                 <div class="slava-winner-time">21.06.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">400 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">400 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007729MGU.webp" alt="Hot to Burn Hold and Spin">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007729MGU.webp" alt="Hot to Burn Hold and Spin">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Hot to Burn Hold and Spin</span>
+                    <div class="slava-winner-game">Hot to Burn Hold and Spin</div>
                 </div>
                 <div class="slava-winner-username">We***hi</div>
                 <div class="slava-winner-time">09.06.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">400 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">400 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 20 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007066NjM.webp" alt="DiamondZ">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007066NjM.webp" alt="DiamondZ">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">DiamondZ</span>
+                    <div class="slava-winner-game">DiamondZ</div>
                 </div>
                 <div class="slava-winner-username">An**ny**k7</div>
                 <div class="slava-winner-time">20.05.2024</div>
             </div>
         </div>
-        <div class="slava-winner-amount">397 000 Kč</div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">397 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div>
+        </div>
     </div>
+
     <div class="slava-winner-item">
         <div class="slava-winner-left">
             <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar">
+                <div class="slava-winner-game-img">
+                    <img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar">
+                </div>
             </div>
             <div class="slava-winner-info">
                 <div>
-                    <span class="slava-winner-game">Aztec Jaguar</span>
+                    <div class="slava-winner-game">Aztec Jaguar</div>
                 </div>
                 <div class="slava-winner-username">tb**il**76</div>
                 <div class="slava-winner-time">29.03.2025</div>
             </div>
         </div>
-        <div class="slava-winner-amount">374 000 Kč</div>
-    </div>
-    <div class="slava-winner-item">
-        <div class="slava-winner-left">
-            <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1006855Mjh.webp" alt="Bonus Joker II">
-            </div>
-            <div class="slava-winner-info">
-                <div>
-                    <span class="slava-winner-game">Bonus Joker II</span>
-                </div>
-                <div class="slava-winner-username">Ka**l**ka</div>
-                <div class="slava-winner-time">29.01.2024</div>
-            </div>
+        <div class="slava-winner-right">
+            <div class="slava-winner-amount">374 000 Kč</div>
+            <div class="slava-winner-spin-amount">Sázka: 400 Kč</div>
         </div>
-        <div class="slava-winner-amount">356 000 Kč</div>
-    </div>
-    <div class="slava-winner-item">
-        <div class="slava-winner-left">
-            <div class="slava-winner-icon">
-                <img src="https://www.forbescasino.cz/files/1160955MTF.webp" alt="Respin Joker">
-            </div>
-            <div class="slava-winner-info">
-                <div>
-                    <span class="slava-winner-game">Respin Joker</span>
-                </div>
-                <div class="slava-winner-username">Ma***90</div>
-                <div class="slava-winner-time">01.07.2023</div>
-            </div>
-        </div>
-        <div class="slava-winner-amount">350 000 Kč</div>
     </div>
 
-
-
-
-    <!-- Interactive Star Rating Section -->
     <div class="rating-section">
         <div class="rating-container">
-
-            <!-- Animated background elements -->
             <div class="rating-bg-animation"></div>
-
-            <!-- Content -->
             <div class="rating-content">
-                <!-- Trophy Icon -->
                 <div class="trophy-icon">
                     <div class="trophy-icon-inner">&#127942;</div>
                 </div>
-
-                <!-- Stars Rating -->
                 <div class="stars-rating">
-                    <span class="star">⭐</span>
-                    <span class="star">⭐</span>
-                    <span class="star">⭐</span>
-                    <span class="star">⭐</span>
-                    <span class="star">⭐</span>
+                    <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span
+                        class="star">⭐</span><span class="star">⭐</span>
                 </div>
-
-                <!-- Highlight Text -->
                 <div class="highlight-text">
                     <p class="highlight-title">
                         <span class="highlight-gradient">TOP HODNOCENÍ</span> od hráčů
@@ -1159,8 +1329,6 @@
                         Připoj se k tisícům spokojených hráčů a vychutnej si nejlepší online casino zážitek! 🎰
                     </p>
                 </div>
-
-                <!-- Stats Grid -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">10K+</div>
@@ -1175,8 +1343,6 @@
                         <div class="stat-label">Podpora hráčů</div>
                     </div>
                 </div>
-
-                <!-- Icons Row -->
                 <div class="icons-row">
                     <div class="icon-item">
                         <div class="icon-emoji">&#127922;</div>
@@ -1199,4 +1365,3 @@
         </div>
     </div>
 </div>
-</body>

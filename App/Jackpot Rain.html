@@ -1,0 +1,1062 @@
+
+
+
+<style type="text/css">
+  /* --- OVERRIDE EXISTING STYLES --- */
+  .p-sm-5 {
+    padding: 0rem !important;
+    border-radius: 12px !important;
+  }
+
+  .bg-lighter {
+    background: none !important;
+    display: none;
+  }
+
+  .container .row .bg-white {
+    background: transparent !important;
+  }
+
+  @media (max-width: 576px) {
+    .p-sm-5 {
+      margin-top: -27px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-5 {
+      margin-top: -10px;
+      padding: 1.5rem !important;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .p-sm-5 {
+      margin-top: -49px;
+    }
+  }
+
+
+
+
+  .d-block {
+    display: none !important;
+  }
+
+
+
+
+
+
+
+
+
+
+  /* --- VLASTNÍ STYLY PRO JACKPOT RAIN (Prefix: cms-) --- */
+  .cms-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("https://www.forbescasino.cz//text_img/1340231MGZ.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+
+  .cms-bg-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(1100px 500px at 50% 8%, rgba(73, 120, 255, 0.3) 0%, rgba(73, 120, 255, 0) 68%),
+      linear-gradient(180deg, rgba(6, 14, 42, 0.24) 0%, rgba(5, 11, 30, 0.62) 56%, rgba(3, 5, 14, 0.84) 100%);
+  }
+
+  .cms-rain-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .cms-rain-drop {
+    --cms-drop-length: 64px;
+    --cms-drop-width: 1.4px;
+    --cms-drop-duration: 1.2s;
+    --cms-drop-delay: 0s;
+    --cms-drop-opacity: 0.55;
+    --cms-drop-angle: 11deg;
+    --cms-drop-drift: 34px;
+    --cms-drop-blur: 0px;
+    position: absolute;
+    top: -30vh;
+    left: var(--cms-drop-left, 50%);
+    width: var(--cms-drop-width);
+    height: var(--cms-drop-length);
+    border-radius: 999px;
+    opacity: var(--cms-drop-opacity);
+    filter: blur(var(--cms-drop-blur));
+    background: linear-gradient(180deg,
+        rgba(188, 221, 255, 0) 0%,
+        rgba(188, 221, 255, 0.72) 58%,
+        rgba(231, 245, 255, 0.95) 100%);
+    transform: rotate(var(--cms-drop-angle));
+    transform-origin: 50% 0;
+    animation: cms-rain-fall var(--cms-drop-duration) linear infinite;
+    animation-delay: var(--cms-drop-delay);
+    will-change: transform, opacity;
+  }
+
+  @keyframes cms-rain-fall {
+    from {
+      transform: translate3d(0, -125vh, 0) rotate(var(--cms-drop-angle));
+    }
+
+    to {
+      transform: translate3d(var(--cms-drop-drift), 125vh, 0) rotate(var(--cms-drop-angle));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cms-rain-drop {
+      animation: none;
+      opacity: 0.2;
+    }
+  }
+
+  .cms-wrapper {
+    background-color: #081325;
+    background-image: linear-gradient(180deg, rgba(20, 42, 78, 0.9) 0%, rgba(10, 22, 43, 0.94) 44%, rgba(4, 9, 20, 0.98) 100%);
+    color: #ffffff;
+    padding-bottom: 80px;
+    border-radius: 16px;
+    position: relative;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 34px 82px rgba(3, 7, 30, 0.68), 0 16px 36px rgba(5, 8, 31, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+
+  .cms-wrapper::before,
+  .cms-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cms-wrapper::before {
+    background:
+      radial-gradient(760px 260px at 16% 0%, rgba(78, 132, 228, 0.2) 0%, rgba(78, 132, 228, 0) 68%),
+      radial-gradient(620px 220px at 88% 10%, rgba(132, 190, 255, 0.14) 0%, rgba(132, 190, 255, 0) 70%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 22%, rgba(5, 10, 22, 0.18) 100%);
+  }
+
+  .cms-wrapper::after {
+    background:
+      repeating-linear-gradient(116deg, rgba(255, 255, 255, 0.03) 0 2px, rgba(255, 255, 255, 0) 2px 18px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0%, rgba(255, 255, 255, 0) 30%);
+    opacity: 0.35;
+  }
+
+  .cms-wrapper>* {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* --- HERO SEKCE --- */
+  .cms-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .cms-hero-text {
+    flex: 1.2;
+    text-align: left;
+    z-index: 5;
+  }
+
+  .cms-hero-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    isolation: isolate;
+  }
+
+  .cms-hero-visual::before {
+    content: '';
+    position: absolute;
+    width: min(430px, 92%);
+    height: min(250px, 58vw);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 46%, rgba(103, 154, 255, 0.45) 0%, rgba(73, 114, 231, 0.2) 42%, rgba(36, 24, 116, 0.08) 64%, rgba(10, 8, 40, 0) 80%);
+    transform: translateY(18px) scale(1.02);
+    opacity: 0.9;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cms-hero-visual::after {
+    content: '';
+    position: absolute;
+    width: min(360px, 78%);
+    height: 50px;
+    bottom: 26px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(31, 78, 195, 0.56) 0%, rgba(18, 37, 112, 0.36) 46%, rgba(8, 12, 38, 0) 82%);
+    filter: blur(9px);
+    opacity: 0.75;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cms-hero-img {
+    --cms-logo-tilt-x: 5deg;
+    --cms-logo-tilt-y: -8deg;
+    max-width: 100%;
+    height: auto;
+    width: 450px;
+    filter: drop-shadow(0 14px 26px rgba(6, 8, 31, 0.55)) drop-shadow(0 30px 56px rgba(8, 10, 38, 0.5)) drop-shadow(0 0 20px rgba(66, 136, 255, 0.26));
+    transform: rotateX(var(--cms-logo-tilt-x)) rotateY(var(--cms-logo-tilt-y)) translateZ(0);
+    transform-style: preserve-3d;
+    transform-origin: 50% 58%;
+    position: relative;
+    z-index: 3;
+    animation: cms-hero-lightning-flash 5s linear infinite;
+    transition: filter 0.35s ease;
+  }
+
+  @keyframes cms-hero-lightning-flash {
+
+    0%,
+    92%,
+    100% {
+      filter: drop-shadow(0 14px 26px rgba(6, 8, 31, 0.55)) drop-shadow(0 30px 56px rgba(8, 10, 38, 0.5)) drop-shadow(0 0 20px rgba(66, 136, 255, 0.26));
+    }
+
+    93.1% {
+      filter: drop-shadow(0 18px 34px rgba(6, 8, 31, 0.58)) drop-shadow(0 36px 68px rgba(8, 10, 38, 0.56)) drop-shadow(0 0 38px rgba(128, 198, 255, 0.78)) brightness(1.32) saturate(1.18);
+    }
+
+    94% {
+      filter: drop-shadow(0 15px 29px rgba(6, 8, 31, 0.56)) drop-shadow(0 31px 59px rgba(8, 10, 38, 0.52)) drop-shadow(0 0 24px rgba(90, 166, 255, 0.45)) brightness(1.05) saturate(1.05);
+    }
+
+    94.9% {
+      filter: drop-shadow(0 18px 34px rgba(6, 8, 31, 0.58)) drop-shadow(0 38px 72px rgba(8, 10, 38, 0.58)) drop-shadow(0 0 42px rgba(136, 205, 255, 0.82)) brightness(1.38) saturate(1.22);
+    }
+
+    95.6% {
+      filter: drop-shadow(0 14px 26px rgba(6, 8, 31, 0.55)) drop-shadow(0 30px 56px rgba(8, 10, 38, 0.5)) drop-shadow(0 0 20px rgba(66, 136, 255, 0.26));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cms-hero-img {
+      animation: none;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+
+    .cms-hero-visual:hover::before,
+    .cms-hero-visual:focus-within::before {
+      transform: translateY(14px) scale(1.08);
+      opacity: 1;
+    }
+
+    .cms-hero-visual:hover::after,
+    .cms-hero-visual:focus-within::after {
+      opacity: 0.9;
+    }
+
+  }
+
+  /* --- NÁLEPKA (Fixnutá animace) --- */
+  .cms-badge-float {
+    position: absolute;
+    top: -20px;
+    right: 10%;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(226, 255, 186, 0.34) 0%, rgba(226, 255, 186, 0) 44%),
+      linear-gradient(150deg, #2ddb7f 0%, #169b58 45%, #0a5a33 100%);
+    color: #f6ffd1;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.6px;
+    padding: 15px 30px;
+    border-radius: 20px;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.14) inset, 0 0 22px rgba(45, 219, 127, 0.56), 0 0 15px rgba(157, 255, 99, 0.4);
+    border: 3px solid #9dff63;
+    transform: rotate(8deg) translateZ(0);
+    /* Fix pro plynulost */
+    will-change: transform;
+    backface-visibility: hidden;
+    z-index: 10;
+    animation: cms-levitate-glow 3s ease-in-out infinite;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.08;
+    text-shadow: 0 2px 0 #0e4f2f, 0 4px 10px rgba(0, 0, 0, 0.6), 0 0 14px rgba(212, 255, 160, 0.42);
+    -webkit-text-stroke: 1px rgba(8, 57, 33, 0.75);
+  }
+
+  @keyframes cms-levitate-glow {
+    0% {
+      transform: translateY(0) rotate(8deg) translateZ(0);
+    }
+
+    50% {
+      transform: translateY(-12px) rotate(10deg) scale(1.05) translateZ(0);
+    }
+
+    100% {
+      transform: translateY(0) rotate(8deg) translateZ(0);
+    }
+  }
+
+  .cms-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    line-height: 1.1;
+  }
+
+  .cms-title-highlight {
+    color: #f5b30c;
+    display: block;
+  }
+
+  .cms-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #dbdbdb;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .cms-hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 760px;
+    margin: 0 0 34px;
+  }
+
+  .cms-highlight-item {
+    position: relative;
+    border: 1px solid rgba(166, 206, 255, 0.18);
+    border-radius: 18px;
+    background: linear-gradient(152deg, rgba(118, 169, 255, 0.1) 0%, rgba(20, 39, 86, 0.32) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 24px rgba(3, 12, 38, 0.24);
+    padding: 16px 16px 16px 20px;
+    text-align: left;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: cms-highlight-rise 0.6s ease forwards;
+  }
+
+  .cms-highlight-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-radius: 18px 0 0 18px;
+    background: linear-gradient(180deg, #9ad9ff 0%, #67b7ff 52%, #4d86e9 100%);
+    box-shadow: 0 0 12px rgba(123, 191, 255, 0.35);
+  }
+
+  .cms-highlight-item:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .cms-highlight-item:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .cms-highlight-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: rgba(215, 231, 255, 0.78);
+    margin-bottom: 8px;
+  }
+
+  .cms-highlight-value {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: #f7fbff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.24);
+  }
+
+  @keyframes cms-highlight-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cms-highlight-item {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .cms-card-gold .cms-card-img {
+      animation: none;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
+    }
+  }
+
+  /* --- SEKCE JACKPOTY (Vylepšené UI statistik) --- */
+  .cms-jackpot-heading {
+    max-width: 1200px;
+    margin: 8px auto 28px;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .cms-jackpot-title {
+    margin: 0;
+    font-size: clamp(30px, 3.2vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #ffffff;
+    text-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+  }
+
+  .cms-jackpot-title .cms-title-highlight {
+    display: inline;
+    color: #f5b30c;
+    text-shadow: 0 0 20px rgba(245, 179, 12, 0.32);
+  }
+
+  .cms-jackpot-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cms-card {
+    --cms-accent: rgba(255, 255, 255, 0.45);
+    flex: 1 1 calc(50% - 30px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    padding: 40px 30px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+  }
+
+  .cms-card-gold {
+    border-top: 2px solid #f5b30c;
+    --cms-accent: rgba(245, 179, 12, 0.75);
+  }
+
+  @keyframes cms-gold-royal-drift {
+
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28)) drop-shadow(0 0 8px rgba(245, 179, 12, 0.14));
+    }
+
+    28% {
+      transform: translateY(-4px) scale(1.018);
+      filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.34)) drop-shadow(0 0 18px rgba(245, 179, 12, 0.34));
+    }
+
+    58% {
+      transform: translateY(-1px) scale(1.01);
+      filter: drop-shadow(0 10px 19px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 12px rgba(245, 179, 12, 0.22));
+    }
+
+    82% {
+      transform: translateY(-3px) scale(1.015);
+      filter: drop-shadow(0 11px 21px rgba(0, 0, 0, 0.33)) drop-shadow(0 0 20px rgba(245, 179, 12, 0.4));
+    }
+  }
+
+  .cms-card-silver {
+    border-top: 2px solid #dbdbdb;
+    --cms-accent: rgba(219, 219, 219, 0.7);
+  }
+
+  .cms-card-bronze {
+    border-top: 2px solid #cd7f32;
+    --cms-accent: rgba(205, 127, 50, 0.75);
+  }
+
+  .cms-card-mystery {
+    border-top: 2px solid #32cd32;
+    --cms-accent: rgba(50, 205, 50, 0.72);
+  }
+
+  .cms-card-gold .cms-card-img {
+    height: 155px;
+    margin-top: -15px;
+    transform-origin: 50% 55%;
+    will-change: transform, filter;
+    animation: cms-gold-royal-drift 5s ease-in-out infinite;
+  }
+
+  .cms-card-img {
+    height: 140px;
+    width: auto;
+    margin-bottom: 20px;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .cms-card-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    transition: letter-spacing 0.35s ease, text-shadow 0.35s ease;
+  }
+
+  .cms-card-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    opacity: 0.7;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+
+    .cms-card:hover,
+    .cms-card:focus-within {
+      transform: translateY(-10px) scale(1.01);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 65px rgba(0, 0, 0, 0.45), 0 0 26px -8px var(--cms-accent);
+    }
+
+    .cms-card:hover .cms-card-img,
+    .cms-card:focus-within .cms-card-img {
+      transform: translateY(-4px) scale(1.03);
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+    }
+
+    .cms-card:hover .cms-card-title,
+    .cms-card:focus-within .cms-card-title {
+      letter-spacing: 0.6px;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  .cms-text-gold {
+    color: #f5b30c;
+  }
+
+  .cms-text-silver {
+    color: #dbdbdb;
+  }
+
+  .cms-text-bronze {
+    color: #e08b46;
+  }
+
+  .cms-text-mystery {
+    color: #32cd32;
+  }
+
+  /* Statistiky pod sebou pro všechny bonusy (PC i mobil) */
+  .cms-stats-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .cms-stat-col {
+    flex: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    grid-template-areas:
+      "icon title"
+      "icon value";
+    column-gap: 12px;
+    row-gap: 2px;
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .cms-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+  }
+
+  .cms-icon-inner {
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  .cms-mask-dolar {
+    -webkit-mask-image: url('https://www.forbescasino.cz//text_img/1336502NzY.svg');
+  }
+
+  .cms-mask-time {
+    -webkit-mask-image: url('https://www.forbescasino.cz//text_img/1336501NWQ.svg');
+  }
+
+  .cms-mask-users {
+    -webkit-mask-image: url('https://www.forbescasino.cz//text_img/1336500ZmI.svg');
+  }
+
+  .cms-stat-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .cms-stat-val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .cms-stat-col .cms-icon {
+    grid-area: icon;
+    margin-bottom: 0;
+  }
+
+  .cms-stat-col .cms-stat-title {
+    grid-area: title;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .cms-stat-col .cms-stat-val {
+    grid-area: value;
+    text-align: left;
+  }
+
+  /* --- CTA TLAČÍTKO (Premium UI + Shimmer) --- */
+  .cms-cta-wrapper {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .cms-btn {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #f5b30c 0%, #d28c00 100%);
+    color: #0E0420 !important;
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+    padding: 18px 55px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(245, 179, 12, 0.3), inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    overflow: hidden;
+    /* Důležité pro shimmer */
+  }
+
+  /* Shimmer efekt */
+  .cms-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: rotate(30deg);
+    transition: 0.7s;
+  }
+
+  .cms-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(245, 179, 12, 0.5);
+  }
+
+  .cms-btn:hover::after {
+    left: 150%;
+  }
+
+  /* --- RESPONSIVE FIXES (MOBIL) --- */
+  @media (max-width: 992px) {
+
+    .p-sm-5,
+    .cms-wrapper {
+      border-radius: 0 !important;
+      overflow: hidden;
+    }
+
+    .cms-jackpot-heading {
+      padding: 0 20px;
+      margin: 2px auto 22px;
+    }
+
+    .cms-jackpot-grid {
+      margin-top: 50px;
+      padding: 0 20px;
+    }
+
+    .cms-hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 10px 20px 40px 20px;
+    }
+
+    .cms-hero-text {
+      text-align: center;
+      order: 2;
+      margin-top: -50px;
+    }
+
+    .cms-hero-visual {
+      order: 1;
+      width: 100%;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      perspective: 900px;
+    }
+
+    .cms-hero-visual::before {
+      width: min(330px, 86vw);
+      height: min(190px, 46vw);
+      transform: translateY(12px) scale(1.02);
+    }
+
+    .cms-hero-visual::after {
+      width: min(280px, 74vw);
+      bottom: 10px;
+    }
+
+    .cms-title {
+      font-size: 34px;
+    }
+
+    .cms-badge-float {
+      top: -5px;
+      right: 50%;
+      margin-right: -120px;
+      font-size: 18px;
+      padding: 10px 22px;
+      -webkit-text-stroke: 0;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.48), 0 0 10px rgba(212, 255, 160, 0.32);
+    }
+
+    .cms-hero-img {
+      width: 260px;
+      --cms-logo-tilt-x: 3deg;
+      --cms-logo-tilt-y: -3deg;
+    }
+
+    .cms-hero-highlights {
+      max-width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0 auto 28px;
+    }
+
+    .cms-hero-text>.cms-btn:first-of-type {
+      margin-top: 20px;
+    }
+
+    .cms-stat-val {
+      font-size: 13px;
+    }
+
+    .cms-card {
+      transform: translateY(-10px) scale(1.01);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 65px rgba(0, 0, 0, 0.45), 0 0 26px -8px var(--cms-accent);
+    }
+
+    .cms-card .cms-card-img {
+      transform: translateY(-4px) scale(1.03);
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+    }
+
+    .cms-card .cms-card-title {
+      letter-spacing: 0.6px;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cms-hero-highlights {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    .cms-highlight-value {
+      font-size: 16px;
+    }
+
+    .cms-jackpot-title {
+      font-size: 26px;
+    }
+
+    .cms-card {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+<div class="cms-bg-overlay">&nbsp;</div>
+
+<div aria-hidden="true" class="cms-rain-layer" id="cms-rain-layer">&nbsp;</div>
+
+<div class="cms-wrapper">
+  <div class="cms-hero">
+    <div class="cms-hero-text">
+      <div class="cms-title">Přichází Jackpot Rain!<span class="cms-title-highlight">Smršť výher, která
+          neustává!</span></div>
+
+      <div class="cms-subtitle">Nečekejte na bouřku, u nás prší miliony každý den. Stačí roztočit válce a chytit
+        svůj podíl z měsíčního balíku &nbsp;1&nbsp;000&nbsp;000&nbsp;Kč.</div>
+
+      <div aria-label="Hlavní informace o akci Jackpot Rain" class="cms-hero-highlights">
+        <div class="cms-highlight-item">
+          <div class="cms-highlight-label">Měsíční rozpočet akce</div>
+
+          <div class="cms-highlight-value">1 000 000 Kč</div>
+        </div>
+
+        <div class="cms-highlight-item">
+          <div class="cms-highlight-label">Počet jackpotů</div>
+
+          <div class="cms-highlight-value">4 typy jackpotu</div>
+        </div>
+
+        <div class="cms-highlight-item">
+          <div class="cms-highlight-label">Frekvence výher</div>
+
+          <div class="cms-highlight-value">Výhry každý den</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-hero-visual">
+      <div class="cms-badge-float">1 000 000 Kč<br />
+        měsíčně!</div>
+      <img alt="Jackpot Rain" class="cms-hero-img" src="https://www.forbescasino.cz//text_img/1336511MTB.webp" />
+    </div>
+  </div>
+
+  <div class="cms-jackpot-heading">
+    <h2 class="cms-jackpot-title">Jaké <span class="cms-title-highlight">jackpoty</span> u nás padají?</h2>
+  </div>
+
+  <div class="cms-jackpot-grid">
+    <div class="cms-card cms-card-gold"><img alt="Gold Jackpot" class="cms-card-img"
+        src="https://www.forbescasino.cz//text_img/1336507OWZ.webp" />
+      <div class="cms-card-title cms-text-gold">Gold Tsunami Jackpot</div>
+
+      <div class="cms-card-subtitle">Obrovský jackpot pro všechny šťastlivce</div>
+
+      <div class="cms-stats-row">
+        <div class="cms-stat-col cms-text-gold">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-dolar">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výhra</div>
+
+          <div class="cms-stat-val">500 000 Kč vítězi + bank pro ostatní</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-gold">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-time">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Jak často?</div>
+
+          <div class="cms-stat-val">Několikrát ročně</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-gold">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-users">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výherci</div>
+
+          <div class="cms-stat-val">1 hlavní + všichni aktivní hráči</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-card cms-card-silver"><img alt="Silver Jackpot" class="cms-card-img"
+        src="https://www.forbescasino.cz//text_img/1336504Yzk.webp" />
+      <div class="cms-card-title cms-text-silver">Silver Jackpot</div>
+
+      <div class="cms-card-subtitle">Střední jackpot s dobrými šancemi</div>
+
+      <div class="cms-stats-row">
+        <div class="cms-stat-col cms-text-silver">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-dolar">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výhra</div>
+
+          <div class="cms-stat-val">Tisíce Kč</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-silver">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-time">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Jak často?</div>
+
+          <div class="cms-stat-val">Několikrát týdně</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-silver">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-users">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výherci</div>
+
+          <div class="cms-stat-val">1 Šťastlivec</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-card cms-card-bronze"><img alt="Bronze Jackpot" class="cms-card-img"
+        src="https://www.forbescasino.cz//text_img/1336506YTY.webp" />
+      <div class="cms-card-title cms-text-bronze">Bronze Jackpot</div>
+
+      <div class="cms-card-subtitle">Malý, ale častý jackpot</div>
+
+      <div class="cms-stats-row">
+        <div class="cms-stat-col cms-text-bronze">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-dolar">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výhra</div>
+
+          <div class="cms-stat-val">Tisíce Kč</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-bronze">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-time">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Jak často?</div>
+
+          <div class="cms-stat-val">Několikrát denně</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-bronze">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-users">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výherci</div>
+
+          <div class="cms-stat-val">1 Šťastlivec</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-card cms-card-mystery"><img alt="Mystery Jackpot" class="cms-card-img"
+        src="https://www.forbescasino.cz//text_img/1336505NTU.webp" />
+      <div class="cms-card-title cms-text-mystery">Mystery Jackpot</div>
+
+      <div class="cms-card-subtitle">Tajemný jackpot s překvapením</div>
+
+      <div class="cms-stats-row">
+        <div class="cms-stat-col cms-text-mystery">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-dolar">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výhra</div>
+
+          <div class="cms-stat-val">Náhodná</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-mystery">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-time">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Jak často?</div>
+
+          <div class="cms-stat-val">Mnohokrát denně</div>
+        </div>
+
+        <div class="cms-stat-col cms-text-mystery">
+          <div class="cms-icon">
+            <div class="cms-icon-inner cms-mask-users">&nbsp;</div>
+          </div>
+
+          <div class="cms-stat-title">Výherci</div>
+
+          <div class="cms-stat-val">1 Šťastlivec</div>
+        </div>
+      </div>
+    </div>
+  </div>
