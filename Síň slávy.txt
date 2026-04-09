@@ -1,0 +1,17 @@
+
+Potřebuji abys mi aktualizoval "výhry" v mém kodu ke stránce  akce/sin slavy/sin slavy_tento tyden.html a také na App/Síň slávy/Síň slávy_tyden-app.html
+
+jsou to stránky na našem online casinu a v naší aplikaci a jednou za týden/měsíc ji musím 
+zaktualizovat podle aby to odpovídalo skutečným výhrám z naší databáze. 
+
+V příloze najdeš screen který obsahuje aktuální výhry. 
+
+
+Seznam her a jejich odkazu URL a obrázku najdeš v souboru Forbes/Hry a odkazy na obrázek a URL hry.csv. Může se stát že narazíš na hru která v seznamu chybí,
+ v takovém případě ji vytvoř bez těchto URL a pokračuj dále. Následně mi napiš jaké hry to jsou a já ti URL dodám. (ten název hry nemusí sedět na 100% 
+ podle toho screenu protože na tom screenu je "databázový" název a v tom seznamu her je officiální název hry. Proto tam vidíš v db názvu to "_CZK" atd..
+ když si budeš na 90% jistý že je to ta správná hra tak je tam vlož ty odkazy. Poté mi jen napiš u čeho sis nebyl jistý nebo co tě zmátlo a já to ještě zkonstroluji)
+
+
+
+

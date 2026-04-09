@@ -28,30 +28,9 @@ YT: https://www.youtube.com/@forbescasino1474
 
 Moje Google Analytics Tracking ID: G-5G2RNYC2E7
 
-
-
-
-3. OBSAH PRO CKEDITOR (body content):
-   - JEDEN h1 heading s hlavním klíčovým slovem
-   - Logická hierarchie h2, h3, h4
-   - Div bloky s descriptive CSS classes
-   - ARIA role atributy (role="main", role="navigation")
-   - Obrázky s alt texty a loading="lazy"
-   - Interní linky s descriptive anchor texty
-   - Seznamy (ul/ol) pro strukturovaný obsah
-   - Strong/em tagy pro důležitá slova
-
-4. SEO BEST PRACTICES:
-   - Žádné inline styly (pouze classes)
-
-5. ACCESSIBILITY:
+ACCESSIBILITY:
    - Alt texty u všech obrázků
-   - ARIA labels kde potřeba
-   - Proper heading hierarchy
 
-- Div bloky s descriptive CSS classes
-- ARIA role atributy (role="main", role="navigation")
-- Obrázky s alt texty a loading="lazy"
-- Žádné inline styly (pouze classes)
-nepouzivej tag section
+
+
 

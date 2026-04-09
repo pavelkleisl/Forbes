@@ -28,6 +28,44 @@ Zde je zadání nové stránky (je to sepsané v documentu který ti ofotím) ty
 
 
 
+Na nasem online casinu jsme predelali logiku jak se uživatelé dostanou k bonusum. Dříve to bylo tak že jsme měli stránku "forbesmanie" a tam uživatel po přihlášení viděl dané bonusy. Nyní je tam změna a to taková že je jedna stránka "Bonusy" která má dvě funkce. Nepřihlášený uživatel tam vidí všechny bonusy našeho casina a po rozkliknutí si může přečíst jak daný bonus "funguje" atd. Po přihlášení se ale stránka změní právě na Forbesmanii kde uvidí jen ty bonusy které má aktuálně k dispozici. Ale jmenuje se pořád "Bonusy" ta stránka. Udělali jsme to aby uživatelé nebyli zmatení a také proto že mnohdy nevěděli co si mají pod "forbesmanie" představit.. Takže jedna URL a dvě funkce. 
+
+No ale když jsme toto změnili tak mnohdy zůstali popisy jednotlivých bonusu špatně, protože jsme to dřív měli tak že tam bylo 
+třeba napsano "Jdi do forbesmanie a po přihlášení uvidíš daný bonus" atd.. já jsem nyní věechny bonusy prošel a upravil texty 
+tak aby to odpovídalo nové logice. Po tobě nyní chci kontrolu zda v těch bonusových stránkách je vše logicky správně a taky 
+jestli jsem třeba na něco nezapomněl nebo to nenapsal špatně. Projdi tedy prosím všechny stránky ve složce Forbes/Bonusy (napsané v češtině) a řekni 
+mi zda tam není nějaká chyba. ZATÍM NIC NEMĚŇ. JEN ŘEKNI CO A JAK A POPŘÍPADĚ TO OPRAVÍME V DALŠÍCH KROKU.
+
+
+Potřeboval bych od tebe pomoct vytvořit jednu stránku na našem online casinu. Zadání: Vytvořit obecnou "landingpage" kde bude shrnutí výhod našeho online casina Forbescasino.cz = výhody registrace + další funkce (cashback, lvl systém, appka, výběry na kartu)
+
+Chci aby si prošel VŠECHNY moje aktuální stránky v projektu/složce Forbes aby si lépe pochopil a viděl co všechno máme na casinu a co by si na 
+této stránce z toho mohl použít. Taky tam jasně uvidíš designy jaké používáme a popřípadě mohl zrecyklovat nějaké elementy 
+které jsem již dříve vytvořil - například tu pohyblivou kreditní kartu na stránce vyplaty na kreditní kartu.html nebo třeba ty fotky ze stránky aplikace forbes.html nebo fotky z applepay-googlepay.html stránky.. prostě to nějak zkus celkově uchopit. Napsal jsem ty hlavní věci které by tam měli být, ty hlavní výhody. Ale pokud uznáš že bychom tam mohli dát i nějak jiného tak to tam dej. 
+
+Pravidla pro tvorbu kodu:
+
+- chci CSS i HTML kod v jednom souboru abych ho jednoduše nakopíroval do editoru CMS.
+
+- pracuji v CMS tzn - nepoužívej tagy body, head, section atd. Pracuj pouze s obecnými tagy jako je div, span atd aby nedocházelo ke kolizím mezi nadřazenou strukturou webu. Také nenastavuj styly pro body. Opět kvůli kolizi. 
+
+- všechny třídy musí mít prefix "cms" aby nedocházelo ke kolizím mezi nadřazenou strukturou webu
+
+- nepoužívej :root pro obecné styly. Místo toho piš hodnoty vlastností přímo daným třídám). 
+
+- pokud možno vyhni se inline stylům 
+
+- zajisti správnou responzivitu a hlavně aby bylo vše dobře viditelné a čitelné na mobilech. 
+
+- můj web je modro žluto bílý s různými šedými prvky atd. zde jsou hlavní barvy #f5b30c a #2145a5 a #dbdbdb a bílá 
+
+- JS není v mém CMS povolené, vyhni se mu.
+
+- jedná se online casino stránku, můžeš používat různé prvky a styly co "tahají oči". Udělej nějaké moderní pěkné UX/UI.
+
+-pokud použiješ emoji tak piš kody emoji aby to CMS správně vypsalo
+
+
 
 
 
