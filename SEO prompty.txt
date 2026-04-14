@@ -1,6 +1,6 @@
 Chci aby si mi sem přidal kus kódu který mi zajistí co nejlepší SEO score a bude co nejlepší pro Google roboty. + dodělej podle svého uvážení to, co by bylo ještě ideální udělat.
 
-URL stránky kde bude kód nahraný: https://www.forbescasino.cz/telly-za-registraci
+URL stránky kde bude kód nahraný: https://www.forbescasino.cz/vyhody-forbes-casino
 (na stránce nemám drobečkovou navigaci)
 
 
@@ -30,7 +30,6 @@ Moje Google Analytics Tracking ID: G-5G2RNYC2E7
 
 ACCESSIBILITY:
    - Alt texty u všech obrázků
-
 
 
 
