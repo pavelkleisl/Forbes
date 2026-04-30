@@ -1,6 +1,6 @@
  /* Override existing styles */
     body {
-        background-image: url("https://forbescasino.cz/text_img/869232OWR.jpg");
+        background-image: url("https://www.forbescasino.cz/assets/img/welcome-bg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         min-height: 500px;

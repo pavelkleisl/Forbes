@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes Casino Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-y: auto;
+        }
+
+        body {
+            width: 300px;
+            min-height: 250px;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+        }
+
+        .banner {
+            width: 300px;
+            height: 250px;
+            flex: 0 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #f8f8f8 0%, #f0f0f0 50%, #e8e8e8 100%);
+        }
+
+
+
+        .yellow-wedge {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #FEEB15 0%, #F5B30C 100%);
+            clip-path: polygon(0 60%, 100% 35%, 100% 100%, 0 100%);
+        }
+
+        .logo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: 40px;
+            background-image: url('forbes-logo.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: brightness(0);
+            z-index: 10;
+        }
+
+        .freespin-image {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            width: 130px;
+            height: auto;
+            transform: translateX(-50%) scale(0.08);
+            opacity: 0;
+            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.8));
+        }
+
+        .freespin-title {
+            position: absolute;
+            left: 50%;
+            top: 150px;
+            width: 270px;
+            transform: translateX(-50%) scale(0.08);
+            text-align: center;
+            color: #fff;
+            font-size: 34px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            opacity: 0;
+            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .deposit-image {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.8));
+        }
+
+        .deposit-group {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transform: translate(-50%, -50%) scale(0.08);
+            transform-origin: 50% 50%;
+            opacity: 0;
+            text-align: center;
+        }
+
+        .deposit-title {
+            color: #1f1f1f;
+            font-size: 21px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            text-transform: uppercase;
+        }
+
+        .deposit-subtitle {
+            max-width: 230px;
+            color: #fff;
+            font-size: 32px;
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -0.2px;
+            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .wheel-image {
+            position: absolute;
+            left: 50%;
+            top: 50px;
+            width: 130px;
+            height: auto;
+            transform: translateX(-50%) scale(0.08);
+            opacity: 0;
+            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.8));
+        }
+
+        .wheel-title {
+            position: absolute;
+            left: 50%;
+            top: 135px;
+            width: 270px;
+            transform: translateX(-50%) scale(0.08);
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            opacity: 0;
+            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button {
+            position: absolute;
+            left: 50%;
+            bottom: 80px;
+            transform: translateX(-50%) scale(0.08);
+            width: 230px;
+            padding: 15px 12px;
+            border: 2px solid #1f1f1f;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #ffe96a 0%, #f5b30c 100%);
+            color: #1f1f1f;
+            font-size: 21px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.2px;
+            text-align: center;
+            text-transform: uppercase;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            z-index: 12;
+        }
+
+        /* CTA varianty: v HTML staci menit class cta-v1 ... cta-v10 */
+        .cta-v1 {
+            border-color: #1f1f1f;
+            background: linear-gradient(180deg, #ffe96a 0%, #f5b30c 100%);
+            color: #1f1f1f;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25), 0 0 22px rgba(255, 208, 51, 0.5);
+        }
+
+        .cta-v2 {
+            border-color: #0f172a;
+            background: linear-gradient(180deg, #f8fafc 0%, #dbeafe 100%);
+            color: #0f172a;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+        }
+
+        .cta-v3 {
+            border-color: #0f5132;
+            background: linear-gradient(180deg, #bbf7d0 0%, #22c55e 100%);
+            color: #052e16;
+            box-shadow: 0 10px 20px rgba(21, 128, 61, 0.35);
+        }
+
+        .cta-v4 {
+            border-color: #7f1d1d;
+            background: linear-gradient(180deg, #fecaca 0%, #ef4444 100%);
+            color: #fff7ed;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 20px rgba(153, 27, 27, 0.4);
+        }
+
+        .cta-v5 {
+            border-color: #1d4ed8;
+            background: linear-gradient(180deg, #93c5fd 0%, #2563eb 100%);
+            color: #eff6ff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.45);
+        }
+
+        .cta-v6 {
+            border-color: #6b21a8;
+            background: linear-gradient(180deg, #f5d0fe 0%, #a855f7 100%);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(76, 29, 149, 0.45);
+            box-shadow: 0 10px 24px rgba(107, 33, 168, 0.45);
+        }
+
+        .cta-v7 {
+            border-color: #78350f;
+            background: linear-gradient(180deg, #fde68a 0%, #d97706 100%);
+            color: #1c1917;
+            box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45), 0 11px 20px rgba(120, 53, 15, 0.4);
+        }
+
+        .cta-v8 {
+            border-color: #111827;
+            background: linear-gradient(180deg, #374151 0%, #111827 100%);
+            color: #f9fafb;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+        }
+
+        .cta-v9 {
+            border-color: #7c2d12;
+            background: linear-gradient(180deg, #ffedd5 0%, #fb923c 100%);
+            color: #7c2d12;
+            box-shadow: 0 10px 22px rgba(194, 65, 12, 0.35), 0 0 24px rgba(251, 146, 60, 0.35);
+        }
+
+        .cta-v10 {
+            border-color: #134e4a;
+            background: linear-gradient(180deg, #99f6e4 0%, #0d9488 100%);
+            color: #042f2e;
+            box-shadow: 0 10px 22px rgba(15, 118, 110, 0.4);
+        }
+
+        .warning {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            width: 270px;
+            height: 20px;
+            color: #676464;
+            font-size: 7px;
+            line-height: 9px;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .debug-panel {
+            width: 300px;
+            min-width: 300px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(20, 20, 20, 0.82);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 10px;
+            line-height: 1;
+        }
+
+        .debug-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .debug-button {
+            flex: 1;
+            min-width: 0;
+            padding: 4px 0;
+            border: 0;
+            border-radius: 4px;
+            background: #f5b30c;
+            color: #111;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .debug-scrubber {
+            width: 100%;
+            margin: 0;
+        }
+
+        .debug-time {
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.9;
+        }
+
+        /* ==================== COIN ANIMATION ==================== */
+        .coin-generator {
+            width: 64px;
+            height: 64px;
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .coin {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            z-index: 100;
+            opacity: 0;
+        }
+
+        .coin::after {
+            content: "$";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(237, 196, 107);
+            background: rgb(227, 162, 23);
+            border: 2px solid rgb(237, 196, 107);
+            border-radius: 50%;
+        }
+
+        .coin--animated,
+        .coin--animated::after {
+            animation-delay: var(--coin-delay, 0s);
+            animation-duration: var(--coin-duration, 1.5s);
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+        }
+
+        .coin--animated {
+            animation-name: coin-x-axis;
+            animation-timing-function: ease-in;
+        }
+
+        .coin--animated::after {
+            animation-name: coin-y-axis-and-flip;
+            animation-timing-function: ease-out;
+        }
+
+        @keyframes coin-x-axis {
+            0% {
+                opacity: 0;
+                transform: translateX(0);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(var(--coin-to-x));
+            }
+        }
+
+        @keyframes coin-y-axis-and-flip {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(var(--coin-to-y)) rotate3d(1, 1, 1, 720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="yellow-wedge"></div>
+        <div class="logo"></div>
+        <div class="coin-generator">
+            <div class="coin coin--animated" style="--coin-to-x: -80px; --coin-to-y: -130px; --coin-delay: 0s;"></div>
+            <div class="coin coin--animated" style="--coin-to-x: -10px; --coin-to-y: -190px; --coin-delay: 0.21s;">
+            </div>
+            <div class="coin coin--animated" style="--coin-to-x: 50px; --coin-to-y: -160px; --coin-delay: 0.43s;"></div>
+            <div class="coin coin--animated" style="--coin-to-x: 90px; --coin-to-y: -140px; --coin-delay: 0.64s;"></div>
+            <div class="coin coin--animated" style="--coin-to-x: -40px; --coin-to-y: -170px; --coin-delay: 0.86s;">
+            </div>
+            <div class="coin coin--animated" style="--coin-to-x: 20px; --coin-to-y: -180px; --coin-delay: 1.07s;"></div>
+            <div class="coin coin--animated" style="--coin-to-x: 0px; --coin-to-y: -210px; --coin-delay: 1.29s;"></div>
+        </div>
+        <img class="freespin-image" src="50freespinu.webp" alt="50 freespinů">
+        <div class="freespin-title">FREESPINŮ</div>
+        <div class="deposit-group">
+            <img class="deposit-image" src="vklad.webp" alt="Vkladový bonus">
+            <div class="deposit-title">Vkladový bonus</div>
+            <div class="deposit-subtitle">až 125 000 Kč</div>
+        </div>
+        <img class="wheel-image" src="kolo.webp" alt="Uvítací kolo štěstí">
+        <div class="wheel-title">Uvítací kolo štěstí</div>
+        <div class="cta-button cta-v5">REGISTROVAT SE</div>
+
+        <div class="warning">Ministerstvo financí varuje: účastí na hazardní hře může vzniknout závislost!
+            Hrát mohou pouze osoby starší 18 let. Podmínky akce na www.forbescasino.cz</div>
+    </div>
+
+    <div class="debug-panel">
+        <div>GSAP debug</div>
+        <input class="debug-scrubber" type="range" min="0" max="1000" value="0">
+        <div class="debug-time">
+            <span class="debug-current">0.00s</span>
+            <span class="debug-total">0.00s</span>
+        </div>
+        <div class="debug-buttons">
+            <button class="debug-button debug-toggle" type="button">Start</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        gsap.set('.deposit-image', { scale: 1 });
+        /* Logo zacina velke a vystrednene, pak odfrakne do rohu */
+        gsap.set('.logo', { width: 200, height: 100, left: '50%', top: '50%', xPercent: -50, yPercent: -50 });
+
+        const scrubber = document.querySelector('.debug-scrubber');
+        const currentTimeLabel = document.querySelector('.debug-current');
+        const totalTimeLabel = document.querySelector('.debug-total');
+        const toggleButton = document.querySelector('.debug-toggle');
+        const tl = gsap.timeline({ delay: 0.6 });
+
+        window.tl = tl;
+
+        /* ==================== INTRO ==================== */
+        /* Velke logo + mince jsou viditelne 2s, pote logo odleti do rohu. */
+        tl.to('.logo', {
+            /* Logo odleti z centra do leveho horniho rohu */
+            duration: 0.55,
+            width: 60,
+            height: 40,
+            left: 15,
+            top: 15,
+            xPercent: 0,
+            yPercent: 0,
+            ease: 'power2.inOut'
+        }, '+=1').to('.freespin-image', {
+
+            /* ================== SCENA 1 ================== */
+            /* Zobrazit freespiny a jejich title. */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }, '-=0.01').to('.freespin-title', {
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }, '-=0.55').to('.freespin-image', {
+
+            /* --------------- SCENA 1 GLOW --------------- */
+            /* Zoom a zesileni svitu kolem obrazku freespinu. */
+            duration: 0.5,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }).to('.freespin-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.freespin-image', {
+            duration: 0.4,
+            scale: 1,
+            filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.freespin-image', '.freespin-title'], {
+
+            /* ------------- PRECHOD 1 -> 2 -------------- */
+            /* Odchod freespinu stylem "vcucnuti" do stredu. */
+            duration: 0.5,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+            ease: 'power3.in'
+        }, '+=.5').to('.deposit-group', {
+
+            /* ================== SCENA 2 ================== */
+            /* Prichod vkladoveho bonusu. */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }).to('.deposit-image', {
+
+            /* --------------- SCENA 2 GLOW --------------- */
+            /* Stejny glow efekt pro obrazek vkladu. */
+            duration: 0.5,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }).to('.deposit-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.deposit-image', {
+            duration: 0.6,
+            scale: 1,
+            filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.deposit-group'], {
+
+            /* ------------- PRECHOD 2 -> 3 -------------- */
+            /* Schovat cely blok vkladoveho bonusu stylem "vcucnuti". */
+            duration: 0.5,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+            ease: 'power3.in'
+        }, '+=.5').to('.wheel-image', {
+
+            /* ================== SCENA 3 ================== */
+            /* Prichod kola stesti a jeho title. */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }).to('.wheel-title', {
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }, '-=0.55').to('.wheel-image', {
+
+            /* --------------- SCENA 3 GLOW --------------- */
+            /* Finalni glow a zvyrazneni kola stesti. */
+            duration: 0.5,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }).to('.wheel-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.wheel-image', {
+            duration: 0.6,
+            scale: 1,
+            filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.wheel-image', '.wheel-title'], {
+
+            /* ------------- PRECHOD 3 -> CTA -------------- */
+            /* Kolo se vcucne a nastoupi finalni CTA. */
+            duration: 0.45,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+            ease: 'power3.in'
+        }, '+=0.35').to('.cta-button', {
+
+            /* ================= FINALNI FRAME ================= */
+            /* Velke CTA se zobrazi a zustane aspon 3 sekundy. */
+            duration: 0.5,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'back.out(1.3)'
+        }).to({}, {
+            duration: 3
+        });
+
+        const updateDebugUI = () => {
+            const currentTime = tl.time();
+            const duration = tl.duration();
+            const progress = duration === 0 ? 0 : (currentTime / duration) * 1000;
+
+            scrubber.value = String(progress);
+            currentTimeLabel.textContent = `${currentTime.toFixed(2)}s`;
+            totalTimeLabel.textContent = `${duration.toFixed(2)}s`;
+        };
+
+        tl.eventCallback('onUpdate', updateDebugUI);
+        tl.eventCallback('onComplete', updateDebugUI);
+        updateDebugUI();
+
+        scrubber.addEventListener('input', () => {
+            tl.pause();
+            tl.progress(Number(scrubber.value) / 1000);
+            updateDebugUI();
+        });
+
+        toggleButton.addEventListener('click', () => {
+            if (tl.paused()) {
+                tl.play();
+                toggleButton.textContent = 'Stop';
+            } else {
+                tl.pause();
+                toggleButton.textContent = 'Start';
+            }
+        });
+    </script>
+</body>
+
+</html>

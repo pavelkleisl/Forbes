@@ -18,8 +18,6 @@ Pravidla pro tvorbu kodu:
 
 - JS není v mém CMS povolené, vyhni se mu.
 
-- jedná se online casino stránku, můžeš používat různé prvky a styly co "tahají oči". Udělej nějaké moderní pěkné UX/UI.
-
 -pokud použiješ emoji tak piš kody emoji aby to CMS správně vypsalo
 
 Zde je zadání nové stránky (je to sepsané v documentu který ti ofotím) ty zajisti stylování a vše potřebné aby stránka vypadala hezky. 
