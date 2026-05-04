@@ -266,7 +266,7 @@
         .cta-wrap {
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 57%;
             width: 280px;
             transform: translate(-50%, -50%) scale(0.08);
             transform-origin: 50% 50%;
@@ -275,6 +275,44 @@
             justify-content: center;
             align-items: center;
             z-index: 12;
+        }
+
+        .cta-gift {
+            position: absolute;
+            top: -65px;
+            left: 50%;
+            width: 100px;
+            height: auto;
+            transform: translateX(-50%) rotate(0deg);
+            transform-origin: 50% 85%;
+            pointer-events: none;
+            will-change: transform;
+            animation: cta-gift-shake 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes cta-gift-shake {
+            0%,
+            82%,
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            86% {
+                transform: translateX(calc(-50% - 2px)) rotate(-4deg);
+            }
+
+            90% {
+                transform: translateX(calc(-50% + 2px)) rotate(4deg);
+            }
+
+            94% {
+                transform: translateX(calc(-50% - 1px)) rotate(-2deg);
+            }
+
+            97% {
+                transform: translateX(-50%) rotate(0deg);
+            }
         }
 
         .cta-button {
@@ -311,13 +349,13 @@
                     rgba(255, 255, 255, 0.08) 70%,
                     rgba(255, 255, 255, 0) 100%);
             transform: rotate(20deg) translateX(-320px);
-            animation: cta-sheen-pass 7s ease-in-out infinite;
+            animation: cta-sheen-pass 2s ease-in-out infinite;
             animation-play-state: paused;
             pointer-events: none;
         }
 
         .cta-button.sheen-run::before {
-            animation-play-state: running;
+            animation: cta-sheen-pass 2s ease-in-out 1;
         }
 
         .cta-button::after {
@@ -560,6 +598,7 @@
                     class="wheel-letter">ě</span><span class="wheel-letter">s</span><span
                     class="wheel-letter">t</span><span class="wheel-letter">í</span></span></div>
         <div class="cta-wrap">
+            <img class="cta-gift" src="gift.webp" alt="Dárek">
             <button class="cta-button" type="button">REGISTROVAT SE</button>
         </div>
 
@@ -772,12 +811,7 @@
             ease: 'power3.in'
         }, '+=.5').call(() => {
             banner.classList.add('shimmer-active');
-        }).addLabel('scena4').call(() => {
-            const btn = document.querySelector('.cta-button');
-            btn.classList.remove('sheen-run');
-            void btn.offsetWidth;
-            btn.classList.add('sheen-run');
-        }, 'scena4').to('.cta-wrap', {
+        }).addLabel('scena4').to('.cta-wrap', {
 
             /* ================== SCENA 4 ================== */
             duration: 0.55,
@@ -785,6 +819,11 @@
             opacity: 1,
             transformOrigin: '50% 50%',
             ease: 'back.out(1.2)'
+        }).call(() => {
+            const btn = document.querySelector('.cta-button');
+            btn.classList.remove('sheen-run');
+            void btn.offsetWidth;
+            btn.classList.add('sheen-run');
         }).to({}, {
             duration: 3
         })
@@ -809,7 +848,6 @@
         }, '-=0.2')
         .to('.logo', {
             duration: 0.2,
-            scale: 1.1,
             ease: "power1.inOut"
         })
         .to('.logo', {
