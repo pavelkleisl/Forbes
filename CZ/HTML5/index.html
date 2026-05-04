@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ad.size" content="width=300,height=250">
     <title>Forbes Casino Banner</title>
+    <script>
+        window.clickTag = window.clickTag || 'https://www.forbescasino.cz/';
+    </script>
     <style>
         * {
             margin: 0;
@@ -34,6 +38,16 @@
             position: relative;
             overflow: hidden;
             background: linear-gradient(180deg, #f8f8f8 0%, #f0f0f0 50%, #e8e8e8 100%);
+            cursor: pointer;
+        }
+
+        .click-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 30;
+            display: block;
+            text-decoration: none;
+            background: transparent;
         }
 
 
@@ -127,6 +141,7 @@
             background-repeat: no-repeat;
             filter: brightness(0);
             z-index: 10;
+            transform-origin: center center;
         }
 
         .freespin-image {
@@ -289,8 +304,13 @@
                     rgba(255, 255, 255, 0.08) 70%,
                     rgba(255, 255, 255, 0) 100%);
             transform: rotate(20deg) translateX(-320px);
-                animation: cta-sheen-pass 8.5s ease-in-out infinite;
+            animation: cta-sheen-pass 7s ease-in-out infinite;
+            animation-play-state: paused;
             pointer-events: none;
+        }
+
+        .cta-button.sheen-run::before {
+            animation-play-state: running;
         }
 
         .cta-button::after {
@@ -320,6 +340,13 @@
         }
 
         .cta-button:hover {
+            filter: brightness(1.12) saturate(1.08);
+            transform: translateY(-2px) scale(1.01);
+            border-color: #9eb6ff;
+            box-shadow: 0 18px 34px rgba(11, 32, 116, 0.62), 0 0 0 3px rgba(116, 156, 255, 0.2);
+        }
+
+        .banner:hover .cta-button {
             filter: brightness(1.12) saturate(1.08);
             transform: translateY(-2px) scale(1.01);
             border-color: #9eb6ff;
@@ -408,6 +435,7 @@
             left: 50%;
             z-index: 100;
             opacity: 0;
+            pointer-events: none;
         }
 
         .coin::after {
@@ -477,6 +505,7 @@
 
 <body>
     <div class="banner shimmer-active">
+        <a class="click-layer" href="#" aria-label="Přejít na Forbes Casino"></a>
         <div class="yellow-wedge"></div>
         <div class="crown-pattern-wrap">
             <div class="crown-pattern"></div>
@@ -509,11 +538,7 @@
                     class="deposit-letter">b</span><span class="deposit-letter">o</span><span
                     class="deposit-letter">n</span><span class="deposit-letter">u</span><span
                     class="deposit-letter">s</span></div>
-            <div class="deposit-subtitle"><span class="deposit-letter">a</span><span class="deposit-letter">ž</span>
-                <span class="deposit-letter">1</span><span class="deposit-letter">2</span><span
-                    class="deposit-letter">5</span> <span class="deposit-letter">0</span><span
-                    class="deposit-letter">0</span><span class="deposit-letter">0</span> <span
-                    class="deposit-letter">K</span><span class="deposit-letter">č</span></div>
+            <div class="deposit-subtitle"><span class="deposit-letter">a</span><span class="deposit-letter">ž</span>&nbsp;<span class="deposit-letter">1</span><span class="deposit-letter">2</span><span class="deposit-letter">5</span>&nbsp;<span class="deposit-letter">0</span><span class="deposit-letter">0</span><span class="deposit-letter">0</span>&nbsp;<span class="deposit-letter">K</span><span class="deposit-letter">č</span></div>
         </div>
         <img class="wheel-image" src="kolo.webp" alt="Uvítací kolo štěstí">
         <div class="wheel-title"><span style="white-space:nowrap"><span class="wheel-letter">U</span><span
@@ -548,46 +573,83 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
         const banner = document.querySelector('.banner');
+        const clickLayer = document.querySelector('.click-layer');
 
-        gsap.set('.deposit-image', { scale: 1 });
-        gsap.set('.freespin-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
-        gsap.set('.deposit-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
-        gsap.set('.wheel-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
-        /* Logo zacina velke a vystrednene, pak odfrakne do rohu */
-        gsap.set('.logo', { width: 200, height: 100, left: '50%', top: '50%', xPercent: -50, yPercent: -50 });
+        const openClickTag = (event) => {
+            event.preventDefault();
+            const targetUrl = (typeof window.clickTag === 'string' && window.clickTag.trim()) ? window.clickTag : 'https://www.forbescasino.cz/';
+            window.open(targetUrl, '_blank');
+        };
+
+        clickLayer.addEventListener('click', openClickTag);
+
+        const resetLoopState = () => {
+            banner.classList.add('shimmer-active');
+            gsap.set('.deposit-image', { scale: 1, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
+            gsap.set('.freespin-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
+            gsap.set('.freespin-title', { opacity: 0, scale: 1 });
+            gsap.set('.deposit-group', { scale: 0.08, opacity: 0 });
+            gsap.set('.wheel-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
+            gsap.set('.wheel-title', { opacity: 0, scale: 1 });
+            gsap.set('.cta-wrap', { scale: 0.08, opacity: 0 });
+            gsap.set('.freespin-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
+            gsap.set('.deposit-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
+            gsap.set('.wheel-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
+            
+            /* Logo reset s vynulováním rotace a měřítka */
+            gsap.set('.logo', { 
+                width: 200, 
+                height: 100, 
+                left: '50%', 
+                top: '50%', 
+                xPercent: -50, 
+                yPercent: -50, 
+                rotation: 0,
+                scale: 1,
+                filter: 'brightness(0)' 
+            });
+            gsap.set('.coin-generator', { autoAlpha: 1 });
+        };
+
+        resetLoopState();
 
         const scrubber = document.querySelector('.debug-scrubber');
         const currentTimeLabel = document.querySelector('.debug-current');
         const totalTimeLabel = document.querySelector('.debug-total');
         const toggleButton = document.querySelector('.debug-toggle');
-        const tl = gsap.timeline({ delay: 0.6 });
+        const tl = gsap.timeline({ delay: 0.6, repeat: -1, repeatDelay: 0 });
 
         window.tl = tl;
 
         /* ==================== INTRO ==================== */
-        /* Velke logo + mince jsou viditelne 2s, pote logo odleti do rohu. */
+        /* Dynamický odlet loga s mírným náklonem a pružným dojezdem */
         tl.to('.logo', {
-            /* Logo odleti z centra do leveho horniho rohu */
-            duration: 0.55,
+            duration: 0.7,
             width: 60,
             height: 40,
             left: 15,
             top: 15,
             xPercent: 0,
             yPercent: 0,
-            ease: 'power2.inOut'
-        }, '+=1').call(() => {
+            rotation: -5,
+            ease: "back.inOut(1.7)"
+        }, '+=1.5')
+        .to('.logo', {
+            duration: 0.3,
+            rotation: 0,
+            ease: "power2.out"
+        }, '-=0.2')
+        .call(() => {
             banner.classList.remove('shimmer-active');
-        }).to('.freespin-image', {
+        }).addLabel('scena1').set('.coin-generator', { autoAlpha: 0 }, 'scena1').to('.freespin-image', {
 
             /* ================== SCENA 1 ================== */
-            /* Zobrazit freespiny a jejich title. */
             duration: 0.55,
             scale: 1,
             opacity: 1,
             transformOrigin: '50% 50%',
             ease: 'power2.out'
-        }, '-=0.01').set('.freespin-title', { opacity: 1 }, 1.5).to('.freespin-letter', {
+        }, 'scena1-=0.01').set('.freespin-title', { opacity: 1 }, 'scena1').to('.freespin-letter', {
             y: 0,
             opacity: 1,
             rotateX: 0,
@@ -595,10 +657,9 @@
             duration: 0.55,
             ease: 'power3.out',
             stagger: { each: 0.045, from: 'start' }
-        }, 1.5).to('.freespin-image', {
+        }, 'scena1').to('.freespin-image', {
 
             /* --------------- SCENA 1 GLOW --------------- */
-            /* Zoom a zesileni svitu kolem obrazku freespinu. */
             duration: 0.5,
             scale: 1.25,
             filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
@@ -615,16 +676,14 @@
         }).to(['.freespin-image', '.freespin-title'], {
 
             /* ------------- PRECHOD 1 -> 2 -------------- */
-            /* Odchod freespinu stylem "vcucnuti" do stredu. */
             duration: 0.5,
             scale: 0.08,
             opacity: 0,
             transformOrigin: '50% 50%',
             ease: 'power3.in'
-        }, '+=.5').to('.deposit-group', {
+        }, '+=.5').addLabel('scena2').to('.deposit-group', {
 
             /* ================== SCENA 2 ================== */
-            /* Prichod vkladoveho bonusu. */
             duration: 0.55,
             scale: 1,
             opacity: 1,
@@ -638,10 +697,9 @@
             duration: 0.55,
             ease: 'power3.out',
             stagger: { each: 0.045, from: 'start' }
-        }, 4.8).to('.deposit-image', {
+        }, 'scena2').to('.deposit-image', {
 
             /* --------------- SCENA 2 GLOW --------------- */
-            /* Stejny glow efekt pro obrazek vkladu. */
             duration: 0.5,
             scale: 1.25,
             filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
@@ -658,16 +716,14 @@
         }).to(['.deposit-group'], {
 
             /* ------------- PRECHOD 2 -> 3 -------------- */
-            /* Schovat cely blok vkladoveho bonusu stylem "vcucnuti". */
             duration: 0.5,
             scale: 0.08,
             opacity: 0,
             transformOrigin: '50% 50%',
             ease: 'power3.in'
-        }, '+=.5').to('.wheel-image', {
+        }, '+=.5').addLabel('scena3').to('.wheel-image', {
 
             /* ================== SCENA 3 ================== */
-            /* Prichod kola stesti a jeho title. */
             duration: 0.55,
             scale: 1,
             opacity: 1,
@@ -684,7 +740,6 @@
         }, '-=0.55').to('.wheel-image', {
 
             /* --------------- SCENA 3 GLOW --------------- */
-            /* Finalni glow a zvyrazneni kola stesti. */
             duration: 0.4,
             scale: 1.25,
             filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
@@ -701,7 +756,6 @@
         }).to(['.wheel-image', '.wheel-title'], {
 
             /* ------------- PRECHOD 3 -> CTA ------------- */
-            /* Odejit final frame a otevrit velke CTA tlacitko. */
             duration: 0.5,
             scale: 0.08,
             opacity: 0,
@@ -709,10 +763,14 @@
             ease: 'power3.in'
         }, '+=.5').call(() => {
             banner.classList.add('shimmer-active');
+        }).addLabel('scena4').call(() => {
+            const btn = document.querySelector('.cta-button');
+            btn.classList.remove('sheen-run');
+            void btn.offsetWidth;
+            btn.classList.add('sheen-run');
         }).to('.cta-wrap', {
 
             /* ================== SCENA 4 ================== */
-            /* Velke CTA tlacitko alespon na 3 sekundy. */
             duration: 0.55,
             scale: 1,
             opacity: 1,
@@ -720,6 +778,40 @@
             ease: 'back.out(1.2)'
         }).to({}, {
             duration: 3
+        })
+        /* --- EXPLOZIVNÍ NÁVRAT LOGA --- */
+        .to('.cta-wrap', {
+            duration: 0.4,
+            scale: 1.4,
+            opacity: 0,
+            ease: 'power2.in'
+        })
+        .to('.logo', {
+            duration: 0.8,
+            width: 200,
+            height: 100,
+            left: '50%',
+            top: '50%',
+            xPercent: -50,
+            yPercent: -50,
+            rotation: 360,
+            filter: 'brightness(0)',
+            ease: "back.out(1.5)"
+        }, '-=0.2')
+        .to('.logo', {
+            duration: 0.2,
+            scale: 1.1,
+            ease: "power1.inOut"
+        })
+        .to('.logo', {
+            duration: 0.2,
+            scale: 1,
+            ease: "power1.inOut"
+        })
+        .call(() => {
+            gsap.delayedCall(1, () => {
+                resetLoopState();
+            });
         });
 
         const updateDebugUI = () => {
@@ -734,6 +826,7 @@
 
         tl.eventCallback('onUpdate', updateDebugUI);
         tl.eventCallback('onComplete', updateDebugUI);
+        tl.eventCallback('onRepeat', updateDebugUI);
         updateDebugUI();
 
         scrubber.addEventListener('input', () => {
