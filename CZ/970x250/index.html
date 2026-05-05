@@ -238,7 +238,7 @@
             position: absolute;
             left: 50%;
             top: 22px;
-            width: 167px;
+            width: 190px;
             height: auto;
             transform: translateX(-50%) scale(0.08);
             opacity: 0;
@@ -630,6 +630,13 @@
     <script>
         const banner = document.querySelector('.banner');
         const clickLayer = document.querySelector('.click-layer');
+        const ctaWrap = document.querySelector('.cta-wrap');
+        const ctaButton = document.querySelector('.cta-button');
+
+        const MAGNETIC_RADIUS = 180;
+        const MAGNETIC_MAX_PULL = 16;
+        const magneticToX = gsap.quickTo(ctaWrap, 'x', { duration: 0.3, ease: 'power3.out' });
+        const magneticToY = gsap.quickTo(ctaWrap, 'y', { duration: 0.3, ease: 'power3.out' });
 
         const openClickTag = (event) => {
             event.preventDefault();
@@ -639,6 +646,44 @@
 
         clickLayer.addEventListener('click', openClickTag);
 
+        const resetMagnetic = () => {
+            magneticToX(0);
+            magneticToY(0);
+        };
+
+        const updateMagnetic = (event) => {
+            if (!ctaWrap || !ctaButton) {
+                return;
+            }
+
+            if (Number(gsap.getProperty(ctaWrap, 'opacity')) < 0.2) {
+                resetMagnetic();
+                return;
+            }
+
+            const rect = ctaButton.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = event.clientX - centerX;
+            const deltaY = event.clientY - centerY;
+            const distance = Math.hypot(deltaX, deltaY);
+
+            if (distance >= MAGNETIC_RADIUS) {
+                resetMagnetic();
+                return;
+            }
+
+            const pull = (1 - distance / MAGNETIC_RADIUS);
+            const targetX = (deltaX / MAGNETIC_RADIUS) * MAGNETIC_MAX_PULL * pull;
+            const targetY = (deltaY / MAGNETIC_RADIUS) * MAGNETIC_MAX_PULL * pull;
+
+            magneticToX(targetX);
+            magneticToY(targetY);
+        };
+
+        banner.addEventListener('mousemove', updateMagnetic);
+        banner.addEventListener('mouseleave', resetMagnetic);
+
         const resetLoopState = () => {
             banner.classList.add('shimmer-active');
             gsap.set('.deposit-image', { scale: 1, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
@@ -647,7 +692,7 @@
             gsap.set('.deposit-group', { scale: 0.08, opacity: 0 });
             gsap.set('.wheel-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
             gsap.set('.wheel-title', { opacity: 0, scale: 1 });
-            gsap.set('.cta-wrap', { scale: 0.08, opacity: 0 });
+            gsap.set('.cta-wrap', { scale: 0.08, opacity: 0, x: 0, y: 0 });
             gsap.set('.freespin-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
             gsap.set('.deposit-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
             gsap.set('.wheel-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
