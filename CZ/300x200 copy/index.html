@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="cs">
 
 <head>
@@ -27,14 +27,15 @@
         }
 
         body {
-            width: 300px;
-            min-height: 250px;
+            width: 100%;
+            min-height: 100vh;
             overflow: visible;
             display: flex;
             flex-direction: column;
             gap: 10px;
             font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
+            justify-content: center;
+            align-items: center;
         }
 
         .banner {
@@ -433,7 +434,11 @@
             color: #fff;
             font-size: 10px;
             line-height: 1;
-            margin-top: 200px;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
         }
 
         .debug-buttons {
@@ -615,6 +620,7 @@
         </div>
         <div class="debug-buttons">
             <button class="debug-button debug-toggle" type="button">Start</button>
+            <button class="debug-button debug-restart" type="button">Restart</button>
         </div>
     </div>
 
@@ -665,6 +671,20 @@
         const currentTimeLabel = document.querySelector('.debug-current');
         const totalTimeLabel = document.querySelector('.debug-total');
         const toggleButton = document.querySelector('.debug-toggle');
+        const restartButton = document.querySelector('.debug-restart');
+        const coinNodes = document.querySelectorAll('.coin');
+
+        const restartCoinAnimation = () => {
+            coinNodes.forEach((coin) => {
+                coin.classList.remove('coin--animated');
+            });
+            // Force reflow so CSS animation restarts from frame 0.
+            void banner.offsetWidth;
+            coinNodes.forEach((coin) => {
+                coin.classList.add('coin--animated');
+            });
+        };
+
         const tl = gsap.timeline({ delay: 0.6, repeat: -1, repeatDelay: 0 });
 
         window.tl = tl;
@@ -891,8 +911,15 @@
                 toggleButton.textContent = 'Start';
             }
         });
+
+        restartButton.addEventListener('click', () => {
+            resetLoopState();
+            restartCoinAnimation();
+            tl.restart();
+            toggleButton.textContent = 'Stop';
+            updateDebugUI();
+        });
     </script>
 </body>
 
 </html>
-
