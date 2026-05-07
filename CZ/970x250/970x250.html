@@ -63,13 +63,13 @@
 
         .yellow-wedge {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #FEEB15 0%, #F5B30C 100%);
-            clip-path: polygon(0 60%, 100% 35%, 100% 100%, 0 100%);
+            top: 0;
+            right: -1px;
+            width: 691px;
+            height: 250px;
+            display: block;
             z-index: 1;
+            pointer-events: none;
         }
 
         .crown-pattern-wrap {
@@ -89,18 +89,18 @@
             width: 220%;
             height: 220%;
 
-            /* PouÅ¾ijeme stejnÃ© SVG dvakrÃ¡t */
+            /* Použijeme stejné SVG dvakrát */
             background-image: var(--crown-svg), var(--crown-svg);
             background-repeat: repeat;
 
-            /* NastavÃ­me pevnou velikost dlaÅ¾dice (napÅ™. 50px 40px) */
+            /* Nastavíme pevnou velikost dlaždice (např. 50px 40px) */
             background-size: 50px 40px;
 
-            /* PrvnÃ­ vrstva je na 0 0, druhÃ¡ je posunutÃ¡ o polovinu velikosti (25px 20px) */
+            /* První vrstva je na 0 0, druhá je posunutá o polovinu velikosti (25px 20px) */
             background-position: 0 0, 25px 20px;
 
             opacity: 0.04;
-            /* Rotace zajistÃ­ ten Å¡ikmÃ½ efekt z obrÃ¡zku */
+            /* Rotace zajistí ten šikmý efekt z obrázku */
             transform: rotate(15deg);
         }
 
@@ -143,8 +143,8 @@
 
         .logo {
             position: absolute;
-            top: 50%;
-            left: 100px;
+            top: 18px;
+            left: 52px;
             width: 140px;
             height: 51px;
             background-image: url('forbes-logo.svg');
@@ -153,12 +153,12 @@
             filter: brightness(0);
             z-index: 21;
             transform-origin: center center;
-            transform: translateY(-50%);
+            transform: none;
         }
 
         .freespin-image {
             position: absolute;
-            left: 50%;
+            left: 80%;
             top: 26px;
             width: 174px;
             height: auto;
@@ -170,8 +170,8 @@
 
         .freespin-title {
             position: absolute;
-            left: 50%;
-            top: 152px;
+            left: 79%;
+            top: 157px;
             width: 520px;
             transform: translateX(-50%);
             perspective: 400px;
@@ -195,16 +195,23 @@
         }
 
         .deposit-image {
+            position: absolute;
+            left: 80%;
+            top: 10%;
             width: 167px;
             height: auto;
             filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.99));
+            transform: translate(-50%, -50%) scale(0.08);
+            transform-origin: 50% 50%;
+            opacity: 0;
+            z-index: 3;
         }
 
         .deposit-group {
             position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 520px;
+            left: 77%;
+            top: 72%;
+            width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -212,7 +219,7 @@
             transform: translate(-50%, -50%) scale(0.08);
             transform-origin: 50% 50%;
             opacity: 0;
-            text-align: center;
+            text-align: right;
             z-index: 3;
         }
 
@@ -224,6 +231,7 @@
             letter-spacing: -0.2px;
             text-transform: uppercase;
             perspective: 400px;
+            text-align: right;
         }
 
         .deposit-subtitle {
@@ -235,11 +243,12 @@
             letter-spacing: -0.2px;
             text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
             perspective: 400px;
+            text-align: right;
         }
 
         .wheel-image {
             position: absolute;
-            left: 50%;
+            left: 80%;
             top: 22px;
             width: 190px;
             height: auto;
@@ -251,8 +260,8 @@
 
         .wheel-title {
             position: absolute;
-            left: 50%;
-            top: 130px;
+            left: 76%;
+            top: 139px;
             width: 520px;
             transform: translateX(-50%);
             perspective: 400px;
@@ -270,10 +279,10 @@
 
         .cta-wrap {
             position: absolute;
-            left: 85%;
-            top: 58%;
+            left: 52px;
+            top: 100px;
             width: 520px;
-            transform: translate(-50%, -50%) scale(0.5);
+            transform: scale(0.5);
             transform-origin: 50% 50%;
             opacity: 1;
             display: flex;
@@ -616,27 +625,27 @@
                 gap: 2px;
             }
         }
-
     </style>
 </head>
 
 <body>
     <div class="banner">
         <a class="click-layer" href="#" aria-label="PÅ™ejÃ­t na Forbes Casino"></a>
-        <div class="yellow-wedge"></div>
+        <img class="yellow-wedge" src="yellow-wedge.svg" alt="" aria-hidden="true">
         <div class="crown-pattern-wrap">
             <div class="crown-pattern"></div>
             <div class="crown-shimmer"></div>
         </div>
         <div class="logo"></div>
+        
         <img class="freespin-image" src="50freespinu.webp" alt="50 freespinů">
         <div class="freespin-title"><span class="freespin-letter">F</span><span class="freespin-letter">R</span><span
                 class="freespin-letter">E</span><span class="freespin-letter">E</span><span
                 class="freespin-letter">S</span><span class="freespin-letter">P</span><span
                 class="freespin-letter">I</span><span class="freespin-letter">N</span><span
                 class="freespin-letter">Ů</span></div>
+        <img class="deposit-image" src="vklad.webp" alt="Vkladový bonus">
         <div class="deposit-group">
-            <img class="deposit-image" src="vklad.webp" alt="Vkladový bonus">
             <div class="deposit-title"><span class="deposit-letter">V</span><span class="deposit-letter">k</span><span
                     class="deposit-letter">l</span><span class="deposit-letter">a</span><span
                     class="deposit-letter">d</span><span class="deposit-letter">o</span><span
@@ -682,8 +691,8 @@
         <div class="debug-speed-title">Rychlost příběhu</div>
         <div class="debug-speed-variants">
             <button class="debug-variant" data-speed="1" type="button">1x</button>
-            <button class="debug-variant" data-speed="1.5" type="button">1.5x</button>
-            <button class="debug-variant active" data-speed="2" type="button">2x</button>
+            <button class="debug-variant active" data-speed="1.5" type="button">1.5x</button>
+            <button class="debug-variant" data-speed="2" type="button">2x</button>
         </div>
         <input class="debug-scrubber" type="range" min="0" max="1000" value="0">
         <div class="debug-time">
@@ -727,7 +736,7 @@
         applyCtaVariant(3);
 
         const SPEED_OPTIONS = [1, 1.5, 2];
-        let currentStorySpeed = 2;
+        let currentStorySpeed = 1.5;
 
         const applyStorySpeed = (speed) => {
             const safeSpeed = SPEED_OPTIONS.includes(speed) ? speed : 1;
@@ -797,7 +806,7 @@
         banner.addEventListener('mouseleave', resetMagnetic);
 
         const resetLoopState = () => {
-            gsap.set('.deposit-image', { scale: 1, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
+            gsap.set('.deposit-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
             gsap.set('.freespin-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
             gsap.set('.freespin-title', { opacity: 0, scale: 1 });
             gsap.set('.deposit-group', { scale: 0.08, opacity: 0 });
@@ -811,8 +820,8 @@
             gsap.set('.logo', {
                 width: 140,
                 height: 51,
-                left: 100,
-                top: '50%',
+                left: 60,
+                top: '15%',
                 xPercent: 0,
                 yPercent: -50,
                 rotation: 0,
@@ -821,7 +830,19 @@
             });
         };
 
+        const playWedgeIntro = () => gsap.fromTo('.yellow-wedge', {
+            x: 220,
+            opacity: 0
+        }, {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: true
+        });
+
         resetLoopState();
+        playWedgeIntro();
 
         const scrubber = document.querySelector('.debug-scrubber');
         const currentTimeLabel = document.querySelector('.debug-current');
@@ -834,129 +855,129 @@
 
         tl.addLabel('scena1', '+=1.5').to('.freespin-image', {
 
-                /* ================== SCENA 1 ================== */
-                duration: 0.55,
-                scale: 1,
-                opacity: 1,
-                transformOrigin: '50% 50%',
-                ease: 'power2.out'
-            }, 'scena1-=0.01').set('.freespin-title', { opacity: 1 }, 'scena1').to('.freespin-letter', {
-                y: 0,
-                opacity: 1,
-                rotateX: 0,
-                filter: 'blur(0px)',
-                duration: 0.55,
-                ease: 'power3.out',
-                stagger: { each: 0.045, from: 'start' }
-            }, 'scena1').to('.freespin-image', {
+            /* ================== SCENA 1 ================== */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }, 'scena1-=0.01').set('.freespin-title', { opacity: 1 }, 'scena1').to('.freespin-letter', {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            ease: 'power3.out',
+            stagger: { each: 0.045, from: 'start' }
+        }, 'scena1').to('.freespin-image', {
 
-                /* --------------- SCENA 1 GLOW --------------- */
-                duration: 0.5,
-                scale: 1.25,
-                filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
-                ease: 'back.out(1.5)'
-            }).to('.freespin-image', {
-                duration: 0.4,
-                filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
-                ease: 'power1.out'
-            }).to('.freespin-image', {
-                duration: 0.4,
-                scale: 1,
-                filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
-                ease: 'elastic.out(1, 0.4)'
-            }).to(['.freespin-image', '.freespin-title'], {
+            /* --------------- SCENA 1 GLOW --------------- */
+            duration: 0.5,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }).to('.freespin-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.freespin-image', {
+            duration: 0.4,
+            scale: 1,
+            filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.freespin-image', '.freespin-title'], {
 
-                /* ------------- PRECHOD 1 -> 2 -------------- */
-                duration: 0.5,
-                scale: 0.08,
-                opacity: 0,
-                transformOrigin: '50% 50%',
-                ease: 'power3.in'
-            }, '+=.5').addLabel('scena2').to('.deposit-group', {
+            /* ------------- PRECHOD 1 -> 2 -------------- */
+            duration: 0.5,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+            ease: 'power3.in'
+        }, '+=.5').addLabel('scena2').to(['.deposit-group', '.deposit-image'], {
 
-                /* ================== SCENA 2 ================== */
-                duration: 0.55,
-                scale: 1,
-                opacity: 1,
-                transformOrigin: '50% 50%',
-                ease: 'power2.out'
-            }).to('.deposit-letter', {
-                y: 0,
-                opacity: 1,
-                rotateX: 0,
-                filter: 'blur(0px)',
-                duration: 0.55,
-                ease: 'power3.out',
-                stagger: { each: 0.045, from: 'start' }
-            }, 'scena2').to('.deposit-image', {
+            /* ================== SCENA 2 ================== */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }).to('.deposit-letter', {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            ease: 'power3.out',
+            stagger: { each: 0.045, from: 'start' }
+        }, 'scena2').to('.deposit-image', {
 
-                /* --------------- SCENA 2 GLOW --------------- */
-                duration: 0.5,
-                scale: 1.25,
-                filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
-                ease: 'back.out(1.5)'
-            }).to('.deposit-image', {
-                duration: 0.4,
-                filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
-                ease: 'power1.out'
-            }).to('.deposit-image', {
-                duration: 0.6,
-                scale: 1,
+            /* --------------- SCENA 2 GLOW --------------- */
+            duration: 0.5,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }).to('.deposit-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.deposit-image', {
+            duration: 0.6,
+            scale: 1,
 
-                ease: 'elastic.out(1, 0.4)'
-            }).to(['.deposit-group'], {
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.deposit-group', '.deposit-image'], {
 
-                /* ------------- PRECHOD 2 -> 3 -------------- */
-                duration: 0.5,
-                scale: 0.08,
-                opacity: 0,
-                transformOrigin: '50% 50%',
-            }).addLabel('scena3').to('.wheel-image', {
+            /* ------------- PRECHOD 2 -> 3 -------------- */
+            duration: 0.5,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+        }).addLabel('scena3').to('.wheel-image', {
 
-                /* ================== SCENA 3 ================== */
-                duration: 0.55,
-                scale: 1,
-                opacity: 1,
-                transformOrigin: '50% 50%',
-                ease: 'power2.out'
-            }).set('.wheel-title', { opacity: 1 }, '-=0.55').to('.wheel-letter', {
-                y: 0,
-                opacity: 1,
-                rotateX: 0,
-                filter: 'blur(0px)',
-                duration: 0.55,
-                ease: 'power3.out',
-                stagger: { each: 0.045, from: 'start' }
-            }, '-=0.55').to('.wheel-image', {
+            /* ================== SCENA 3 ================== */
+            duration: 0.55,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: '50% 50%',
+            ease: 'power2.out'
+        }).set('.wheel-title', { opacity: 1 }, '-=0.55').to('.wheel-letter', {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            ease: 'power3.out',
+            stagger: { each: 0.045, from: 'start' }
+        }, '-=0.55').to('.wheel-image', {
 
-                /* --------------- SCENA 3 GLOW --------------- */
-                duration: 0.4,
-                scale: 1.25,
-                filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
-                ease: 'back.out(1.5)'
-            }, '-=0.5').to('.wheel-image', {
-                duration: 0.4,
-                filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
-                ease: 'power1.out'
-            }).to('.wheel-image', {
-                duration: 0.6,
-                scale: 1,
-                filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
-                ease: 'elastic.out(1, 0.4)'
-            }).to(['.wheel-image', '.wheel-title'], {
+            /* --------------- SCENA 3 GLOW --------------- */
+            duration: 0.4,
+            scale: 1.25,
+            filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
+            ease: 'back.out(1.5)'
+        }, '-=0.5').to('.wheel-image', {
+            duration: 0.4,
+            filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))',
+            ease: 'power1.out'
+        }).to('.wheel-image', {
+            duration: 0.6,
+            scale: 1,
+            filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))',
+            ease: 'elastic.out(1, 0.4)'
+        }).to(['.wheel-image', '.wheel-title'], {
 
-                /* ------------- PRECHOD 3 -> CTA ------------- */
-                duration: 0.5,
-                scale: 0.08,
-                opacity: 0,
-                transformOrigin: '50% 50%',
-                ease: 'power3.in'
-            }, '+=.5').addLabel('scena4').addLabel('cta-visible').call(() => {
-                const btn = document.querySelector('.cta-button');
-                btn.classList.remove('sheen-run');
-                void btn.offsetWidth;
-                btn.classList.add('sheen-run');
-            })
+            /* ------------- PRECHOD 3 -> CTA ------------- */
+            duration: 0.5,
+            scale: 0.08,
+            opacity: 0,
+            transformOrigin: '50% 50%',
+            ease: 'power3.in'
+        }, '+=.5').addLabel('scena4').addLabel('cta-visible').call(() => {
+            const btn = document.querySelector('.cta-button');
+            btn.classList.remove('sheen-run');
+            void btn.offsetWidth;
+            btn.classList.add('sheen-run');
+        })
             .call(() => {
                 gsap.delayedCall(1 / currentStorySpeed, () => {
                     resetLoopState();
@@ -981,6 +1002,7 @@
         tl.eventCallback('onComplete', updateDebugUI);
         tl.eventCallback('onRepeat', updateDebugUI);
         updateDebugUI();
+        toggleButton.textContent = tl.paused() ? 'Přehrát' : 'Pozastavit';
 
         scrubber.addEventListener('input', () => {
             tl.pause();
@@ -1000,6 +1022,7 @@
 
         document.querySelector('.debug-restart').addEventListener('click', () => {
             resetLoopState();
+            playWedgeIntro();
             tl.restart();
             toggleButton.textContent = 'Pozastavit';
         });

@@ -1,6 +1,6 @@
 Chci aby si mi sem přidal kus kódu který mi zajistí co nejlepší SEO score a bude co nejlepší pro Google roboty. + dodělej podle svého uvážení to, co by bylo ještě ideální udělat.
 
-URL stránky kde bude kód nahraný: https://www.forbescasino.cz/vyhody-forbes-casino
+URL stránky kde bude kód nahraný: https://www.forbescasino.cz/slovnicek
 (na stránce nemám drobečkovou navigaci)
 
 
