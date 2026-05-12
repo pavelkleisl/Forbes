@@ -1,0 +1,482 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    .cms-geo-page *,
+    .cms-geo-page *::before,
+    .cms-geo-page *::after {
+        box-sizing: border-box;
+    }
+
+    .cms-geo-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .cms-geo-logo {
+        margin-bottom: 40px;
+    }
+
+    .cms-geo-logo img {
+        height: 78px;
+        width: auto;
+        filter: brightness(0) invert(1) drop-shadow(0 2px 16px rgba(245, 179, 12, 0.45));
+    }
+
+    /* ── IKONA ── */
+    .cms-geo-icon-outer {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto 32px;
+        position: relative;
+    }
+
+    .cms-geo-icon-ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 3px solid rgba(245, 179, 12, 0.35);
+        border-right-color: #f5b30c;
+        animation: cms-geo-spin 6s linear infinite;
+    }
+
+    .cms-geo-icon-ring-2 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 2px solid rgba(245, 179, 12, 0.15);
+        border-left-color: rgba(245, 179, 12, 0.55);
+        animation: cms-geo-spin-rev 4s linear infinite;
+    }
+
+    .cms-geo-icon-inner {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 35%, rgba(245, 179, 12, 0.12), rgba(13, 28, 66, 0.6));
+        border: 2px solid rgba(245, 179, 12, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+        position: relative;
+        z-index: 1;
+        animation: cms-geo-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes cms-geo-spin {
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes cms-geo-spin-rev {
+        to { transform: rotate(-360deg); }
+    }
+
+    @keyframes cms-geo-pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(245, 179, 12, 0); }
+        50%       { box-shadow: 0 0 32px 8px rgba(245, 179, 12, 0.15); }
+    }
+
+    /* ── KARTA ── */
+    .cms-geo-card {
+        background: rgba(13, 28, 66, 0.78);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(245, 179, 12, 0.22);
+        border-radius: 16px;
+        max-width: 688px;
+        width: 100%;
+        padding: 52px 48px 44px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .cms-geo-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.08);
+        color: #f5b30c;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(245, 179, 12, 0.35);
+        margin-bottom: 20px;
+    }
+
+    .cms-geo-title {
+        font-size: clamp(20px, 4.5vw, 30px);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 14px 0;
+        color: #ffffff;
+    }
+
+    .cms-geo-title-accent {
+        background: linear-gradient(90deg, #f5b30c, #c98f00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .cms-geo-subtitle {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.68;
+        margin: 0 0 32px 0;
+    }
+
+    /* ── TLAČÍTKA ── */
+    .cms-geo-btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #f5b30c, #c98f00);
+        color: #0d1c42;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 14px 36px;
+        border-radius: 10px;
+        text-decoration: none;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 18px rgba(245, 179, 12, 0.35);
+        transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .cms-geo-btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(245, 179, 12, 0.45);
+    }
+
+    .cms-geo-btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .cms-geo-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+    }
+
+    /* ── VPN TIP ── */
+    .cms-geo-vpn-tip {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: rgba(33, 69, 165, 0.18);
+        border: 1px solid rgba(33, 69, 165, 0.38);
+        border-radius: 10px;
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.55;
+        margin-bottom: 28px;
+    }
+
+    .cms-geo-vpn-tip-icon {
+        font-size: 16px;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    /* ── PATA ── */
+    .cms-geo-foot {
+        margin-top: 32px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .cms-geo-foot a {
+        color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+    }
+
+    .cms-geo-foot a:hover {
+        color: #f5b30c;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+        .cms-geo-card {
+            padding: 36px 20px 28px;
+        }
+    }
+
+    /* ── SPACE BACKGROUND ── */
+    :root {
+        --particle-spacing: 2560px;
+    }
+
+    .page-bg,
+    .animation-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .page-bg {
+        background: radial-gradient(ellipse at bottom, #3399ff 0%, #090a0f 100%);
+        background-size: cover;
+        z-index: -3;
+    }
+
+    .animation-wrapper {
+        z-index: -2;
+        overflow: hidden;
+    }
+
+    .particle,
+    .particle::after {
+        background: transparent;
+    }
+
+    .particle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: var(--cluster-opacity, 1);
+    }
+
+    .particle::after {
+        content: "";
+        position: absolute;
+        top: var(--particle-spacing);
+        left: 0;
+        box-shadow: inherit;
+    }
+
+    .particle-1 {
+        animation: animParticle 60s linear infinite;
+        height: 1px;
+        width: 1px;
+        box-shadow:
+            42px 180px #fff, 96px 520px #fff, 140px 900px #fff, 188px 1240px #fff, 236px 1580px #fff,
+            282px 1940px #fff, 335px 2290px #fff, 388px 140px #fff, 440px 510px #fff, 486px 850px #fff,
+            536px 1210px #fff, 586px 1540px #fff, 640px 1880px #fff, 692px 2225px #fff, 742px 290px #fff,
+            790px 640px #fff, 842px 980px #fff, 896px 1320px #fff, 944px 1680px #fff, 994px 2040px #fff,
+            1044px 2360px #fff, 1094px 210px #fff, 1140px 560px #fff, 1188px 910px #fff, 1240px 1260px #fff,
+            1294px 1625px #fff, 1342px 1960px #fff, 1390px 2320px #fff, 1442px 330px #fff, 1490px 690px #fff,
+            1544px 1010px #fff, 1592px 1370px #fff, 1640px 1710px #fff, 1694px 2080px #fff, 1740px 2400px #fff,
+            1792px 260px #fff, 1846px 620px #fff, 1890px 960px #fff, 1942px 1300px #fff, 1996px 1660px #fff,
+            2040px 2020px #fff, 2094px 2365px #fff, 2142px 370px #fff, 2192px 740px #fff, 2244px 1080px #fff,
+            2290px 1420px #fff, 2342px 1780px #fff, 2392px 2140px #fff, 2440px 2480px #fff, 2492px 470px #fff;
+    }
+
+    .particle-1::after {
+        height: 1px;
+        width: 1px;
+    }
+
+    .particle-2 {
+        animation: animParticle 120s linear infinite;
+        height: 2px;
+        width: 2px;
+        box-shadow:
+            120px 300px #fff, 260px 900px #fff, 420px 1550px #fff, 560px 2140px #fff, 710px 480px #fff,
+            860px 1120px #fff, 1000px 1760px #fff, 1140px 2360px #fff, 1280px 620px #fff, 1420px 1240px #fff,
+            1580px 1880px #fff, 1720px 2440px #fff, 1860px 800px #fff, 2010px 1420px #fff, 2160px 2060px #fff,
+            2310px 360px #fff, 2440px 980px #fff, 220px 1960px #fff, 380px 420px #fff, 540px 1040px #fff,
+            700px 1680px #fff, 870px 2260px #fff, 1030px 580px #fff, 1190px 1200px #fff, 1360px 1820px #fff,
+            1520px 2380px #fff, 1680px 700px #fff, 1840px 1320px #fff, 2000px 1940px #fff, 2180px 260px #fff;
+    }
+
+    .particle-2::after {
+        height: 2px;
+        width: 2px;
+    }
+
+    .particle-3 {
+        animation: animParticle 180s linear infinite;
+        height: 3px;
+        width: 3px;
+        box-shadow:
+            180px 560px #fff, 420px 1480px #fff, 670px 2260px #fff, 930px 860px #fff, 1180px 1700px #fff,
+            1440px 360px #fff, 1700px 1240px #fff, 1960px 2060px #fff, 2220px 720px #fff, 2460px 1600px #fff,
+            300px 1920px #fff, 560px 480px #fff, 820px 1320px #fff, 1080px 2160px #fff, 1340px 920px #fff,
+            1600px 1760px #fff, 1860px 340px #fff, 2120px 1160px #fff, 2380px 1980px #fff, 720px 2480px #fff;
+    }
+
+    .particle-3::after {
+        height: 3px;
+        width: 3px;
+    }
+
+    .particle-4 {
+        animation: animParticle 600s linear infinite;
+        height: 1px;
+        width: 1px;
+        box-shadow:
+            80px 140px #fff, 160px 420px #fff, 240px 760px #fff, 320px 1040px #fff, 400px 1360px #fff,
+            480px 1680px #fff, 560px 2000px #fff, 640px 2320px #fff, 760px 260px #fff, 840px 580px #fff,
+            920px 920px #fff, 1000px 1240px #fff, 1080px 1560px #fff, 1160px 1880px #fff, 1240px 2200px #fff,
+            1360px 320px #fff, 1440px 660px #fff, 1520px 980px #fff, 1600px 1320px #fff, 1680px 1640px #fff,
+            1760px 1960px #fff, 1840px 2280px #fff, 1960px 400px #fff, 2040px 740px #fff, 2120px 1060px #fff,
+            2200px 1400px #fff, 2280px 1720px #fff, 2360px 2040px #fff, 2440px 2360px #fff, 2520px 520px #fff,
+            340px 1860px #fff, 700px 1460px #fff, 1060px 2140px #fff, 1420px 940px #fff, 1780px 620px #fff,
+            2140px 1820px #fff, 2460px 1180px #fff;
+    }
+
+    .particle-4::after {
+        height: 1px;
+        width: 1px;
+    }
+
+    .particle-cluster-b {
+        --x-offset: 120px;
+        --cluster-opacity: 0.82;
+    }
+
+    .particle-cluster-c {
+        --x-offset: 260px;
+        --cluster-opacity: 0.68;
+    }
+
+    @keyframes animParticle {
+        from {
+            transform: translate(var(--x-offset, 0px), 0px);
+        }
+
+        to {
+            transform: translate(var(--x-offset, 0px), calc(var(--particle-spacing) * -1));
+        }
+    }
+
+    /* Override existing styles */
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 500px;
+    }
+
+    .p-sm-5 {
+        padding: 0rem !important;
+        border-radius: 12px !important;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 { margin-top: -27px; }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -10px;
+            padding: 1.5rem !important;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 { margin-top: -49px; }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 { margin-top: -0.5rem; }
+    }
+
+    @media (min-width: 1200px) {
+        .p-sm-5 { margin-top: 1rem; }
+    }
+
+    @media (max-width: 1200px) {
+        .content-panel { margin-bottom: 0px !important; }
+    }
+
+    .d-block { display: none !important; }
+    .footer-wrapper { display: none !important; }
+    header { display: none !important; }
+</style>
+
+<div class="page-bg"></div>
+
+<div class="animation-wrapper" aria-hidden="true">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+
+    <div class="particle particle-1 particle-cluster-b"></div>
+    <div class="particle particle-2 particle-cluster-b"></div>
+    <div class="particle particle-3 particle-cluster-b"></div>
+    <div class="particle particle-4 particle-cluster-b"></div>
+
+    <div class="particle particle-1 particle-cluster-c"></div>
+    <div class="particle particle-2 particle-cluster-c"></div>
+    <div class="particle particle-3 particle-cluster-c"></div>
+    <div class="particle particle-4 particle-cluster-c"></div>
+</div>
+
+<div class="cms-geo-page">
+
+    <div class="cms-geo-logo">
+        <img src="/assets/img/logo-gray.svg" alt="Forbes Casino">
+    </div>
+
+    <div class="cms-geo-card">
+
+        <div class="cms-geo-icon-outer">
+            <div class="cms-geo-icon-ring"></div>
+            <div class="cms-geo-icon-ring-2"></div>
+            <div class="cms-geo-icon-inner">&#127758;</div>
+        </div>
+
+        <div class="cms-geo-badge">&#128683;&nbsp; Přístup omezen</div>
+
+        <div class="cms-geo-title">Služba není dostupná<br><span class="cms-geo-title-accent">ve vaší oblasti</span></div>
+
+        <p class="cms-geo-subtitle">
+            Tato služba bohužel není dostupná z vaší aktuální polohy.
+            Pokud si myslíte, že jde o chybu, zkontrolujte prosím níže uvedený tip nebo nás kontaktujte.
+        </p>
+
+        <div class="cms-geo-vpn-tip">
+            <span class="cms-geo-vpn-tip-icon">&#128161;</span>
+            <span><strong>Používáte VPN nebo proxy?</strong> Některé sítě VPN mohou způsobit nesprávné rozpoznání vaší polohy. Zkuste VPN dočasně vypnout a stránku načíst znovu.</span>
+        </div>
+
+        <a href="" class="cms-geo-btn-primary">&#128260;&nbsp; Načíst znovu</a>
+
+    </div>
+
+    <div class="cms-geo-foot">
+        &copy; 2026 Forbes Casino &nbsp;&middot;&nbsp;
+    </div>
+
+</div>

@@ -1,819 +1,423 @@
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="ad.size" content="width=970,height=250">
-    <title>Forbes Casino Banner</title>
-    <script>
-        window.clickTag = window.clickTag || 'https://www.forbescasino.cz/';
-    </script>
+    <title>Forbes Casino Banner 970x250 - Exact Layout + Debug Panel</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
+        /* =========================================
+           1. ZÁKLADNÍ CSS PROMĚNNÉ (Témata podle Forbes)
+           ========================================= */
         :root {
-            --crown-svg: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNzAiIHZpZXdCb3g9Ii0zMCAzNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU0LjgzMDEgMTQuNjI1QzU0LjgzMDEgMTQuMTgwNiA1NC42MjY4IDEzLjczNjIgNTQuMzAxNyAxMy40MTNDNTMuOTc2NSAxMy4wODk4IDUzLjUyOTQgMTIuOTI4MiA1My4wNDE3IDEyLjkyODJDNTIuNTU0IDEyLjkyODIgNTIuMTQ3NSAxMy4wODk4IDUxLjc4MTcgMTMuNDEzQzUxLjQ1NjUgMTMuNzM2MiA1MS4yNTMzIDE0LjE4MDYgNTEuMjUzMyAxNC42MjVDNTEuMjUzMyAxNC42MjUgNTEuMjUzMyAxNC42MjUgNTEuMjUzMyAxNC43MDU4TDQ0Ljg3MjEgMTkuMDY5MUw0Mi45MjExIDcuOTU4OTFDNDIuOTIxMSA3Ljk1ODkxIDQyLjgzOTggNy44Mzc3MSA0Mi44Mzk4IDcuNzk3MzFDNDMuMTI0MyA3LjY3NjExIDQzLjM2ODIgNy40NzQxIDQzLjUzMDggNy4yMzE3QzQzLjY5MzQgNi45ODkzIDQzLjgyNTMgNi42NjYwOSA0My44MTUzIDYuMzgzMjlDNDMuODE1MyA2LjE0MDg4IDQzLjgyNTMgNS44OTg0OCA0My42OTM0IDUuNjk2NDhDNDMuNjEyMSA1LjQ1NDA3IDQzLjQ5MDEgNS4yNTIwNyA0My4zMjc2IDUuMDkwNDdDNDMuMTY1IDQuOTI4ODcgNDIuOTYxOCA0Ljc2NzI2IDQyLjc1ODUgNC42ODY0NkM0Mi41NTUzIDQuNjA1NjYgNDIuMzExNCA0LjUyNDg2IDQyLjA2NzYgNC41MjQ4NkM0MS44MjM3IDQuNTI0ODYgNDEuNTc5OCA0LjU2NTI2IDQxLjM3NjYgNC42ODY0NkM0MS4xNzM0IDQuNzY3MjYgNDAuOTcwMSA0LjkyODg3IDQwLjgwNzYgNS4wOTA0N0M0MC42NDUgNS4yNTIwNyA0MC41MjMgNS40NTQwNyA0MC40NDE3IDUuNjk2NDhDNDAuMzYwNSA1LjkzODg4IDQwLjMxOTggNi4xNDA4OCA0MC4zMTk4IDYuMzgzMjlDNDAuMzE5OCA2Ljc0Njg5IDQwLjQ4MjQgNy4xMTA1IDQwLjc2NjkgNy40MzM3TDMzLjgxNjYgMTYuMDc5NEwyOC4wNDUgMi44Njg0NEMyOC4yODg5IDIuNTg1NjQgMjguNDUxNSAyLjIyMjAzIDI4LjQ5MjEgMS44NTg0M0MyOC40OTIxIDEuNjE2MDIgMjguNDkyMSAxLjM3MzYyIDI4LjM3MDIgMS4xNzE2MkMyOC4yODg5IDAuOTI5MjEzIDI4LjE2NyAwLjcyNzIxIDI4LjAwNDQgMC41NjU2MDhDMjcuODQxOCAwLjQwNDAwNiAyNy42Mzg2IDAuMjQyNDAzIDI3LjQzNTQgMC4xNjE2MDJDMjcuMjMyMSAwLjA4MDgwMTEgMjYuOTg4MyAwIDI2Ljc0NDQgMEMyNi41MDA1IDAgMjYuMjU2NyAwLjA0MDQwMDYgMjYuMDUzNCAwLjE2MTYwMkMyNS44NTAyIDAuMjQyNDAzIDI1LjY0NyAwLjQwNDAwNiAyNS40ODQ0IDAuNTY1NjA4QzI1LjMyMTggMC43MjcyMSAyNS4xOTk5IDAuOTI5MjEzIDI1LjExODYgMS4xNzE2MkMyNS4wMzczIDEuNDE0MDIgMjQuOTk2NyAxLjYxNjAyIDI0Ljk5NjcgMS44NTg0M0MyNC45OTY3IDIuMTAwODMgMjUuMDM3MyAyLjM0MzIzIDI1LjE1OTIgMi41ODU2NEMyNS4yODEyIDIuODI4MDQgMjUuNDAzMSAyLjk4OTY0IDI1LjYwNjMgMy4xNTEyNEwyMC4xMTkzIDE1LjcxNThMMTMuNDUzNSA3LjQ3NDFDMTMuNDUzNSA3LjQ3NDFDMTMuMzcyMiA3LjQ3NDFDMTMuMzcyMiA3LjM5MzNDMTMuNjE2MSA3LjExMDUgMTMuNzc4NiA2Ljc4NzI5IDEzLzc3ODYgNi40MjM2OUMxMy43Nzg2IDYuMTgxMjggMTMuNzc4NiA1LjkzODg4IDEzLjY1NjcgNS43MzY4OEMxMy41NzU0IDUuNDk0NDggMTMuNDUzNSA1LjI5MjQ3IDEzLjI5MDkgNS4xMzA4N0MxMy4xMjgzIDQuOTY5MjcgMTIuOTI1MSA0LjgwNzY3IDEyLjcyMTkgNC43MjY4NkMxMi41MTg2IDQuNjA1NjYgMTIuMjc0OCA0LjU2NTI2IDEyLjAzMDkgNC41NjUyNkMxMS43ODcgNC41NjUyNiAxMS41NDMyIDQuNjA1NjYgMTEuMzM5OSA0LjcyNjg2QzExLjEzNjcgNC44MDc2NyAxMC45MzM1IDQuOTY5MjcgMTAuNzcwOSA1LjEzMDg3QzEwLjYwODMgNS4yOTI0NyAxMC40ODY0IDUuNDk0NDggMTAuNDA1MSA1LjczNjg4QzEwLjMyMzggNS45NzkyOCAxMC4yODMyIDYuMTgxMjggMTAuMjgzMiA2LjQyMzY5QzEwLjI4MzIgNi43NDY4OSAxMC40MDUxIDcuMDcwMSAxMC42MDgzIDcuMzEyNUMxMC44MTE2IDcuNTU0OSAxMS4wNTU0IDcuNzk3MzEgMTEuMzM5OSA3Ljg3ODExQzExLjMzOTkgNy45MTg1MSAxMS4yNTg3IDcuOTU4OTEgMTEuMjU4NyA3Ljk5OTMxTDkuMzQ4MzQgMTguNjY1MUwzLjQ5NTQ2IDE0LjYyNUMzLjQ5NTQ2IDE0LjYyNSAzLjQxNDE3IDE0LjYyNSAzLjM3MzUzIDE0LjYyNUMzLjM3MzUzIDE0LjUwMzggMy40OTU0NiAxNC40MjMgMy40OTU0NiAxNC4zMDE4QzMuNDk1NDYgMTQuMDU5NCAzLjQ5NTQ2IDEzLjgxNyAzLjM3MzUzIDEzLjYxNUMzLjI5MjI0IDEzLjM3MjYgMy4xNzAzIDEzLjE3MDYgMy4wMDc3MiAxMy4wMDlDMi44NDUxNCAxMi44NDc0IDIuNjQxOTIgMTIuNjg1OCAyLjQzODY5IDEyLjYwNUMyLjIzNTQ3IDEyLjUyNDIgMS45OTE2MSAxMi40NDM0IDEuNzQ3NzQgMTIuNDQzNEMxLjUwMzg3IDEyLjQ0MzQgMS4yNTk5OSAxMi40ODM4IDEuMDU2NzYgMTIuNjA1QzAuODUzNTM4IDEyLjY4NTggMC42NTAzMTUgMTIuODQ3NCAwLjQ4NzczNiAxMy4wMDlDMC4zMjUxNTYgMTMuMTcwNiAwLjIwMzIyIDEzLjM3MjYgMC4xMjE5MyAxMy42MTVDMC4wNDA2NCAxMy44NTc0IDAgMTQuMDU5NCAwIDE0LjMwMThDMCAxNC43NDYyIDAuMTYyNTc2IDE1LjE1MDIgMC40ODc3MzYgMTUuNDczNEMwLjc3MjI1IDE1Ljc5NjYgMS4xNzg3IDE1Ljk5ODYgMS42MjU3OSAxNi4wMzlDMS42MjU3OSAxNi4wMzkgMS42MjU3OSAxNi4xMTk4IDEuNjI1NzkgMTYuMTYwMkw1LjczMDk0IDI4LjUyMjhDNS44MTIyMyAyOC43NjUyIDUuOTc0ODEgMjkuMDA3NiA2LjIxODY4IDI5LjE2OTJDNi40MjE5IDI5LjMzMDggNi43MDY0MSAyOS40MTE2IDYuOTkwOTMgMjkuNDExNkg0OC4wNDI0QzQ4LjI4NjIgMjkuNDExNiA0OC41NzA4IDI5LjMzMDggNDguNzc0IDI5LjE2OTJDNDguOTc3MiAyOS4wMDc2IDQ5LjEzOTggMjguODA1NiA0OS4yNjE3IDI4LjU2MzJMNTMuNjUxNCAxNi40NDNDNTQuMDU3OCAxNi40MDI2IDU0LjE5NSAxNS42ODEzIDU0LjQ3OTUgMTUuMzU4MUM1NC43NjQgMTUuMDM0OSA1NC40Nzk1IDE0Ljc4NjcgNTQuNDt9NVAxNC4zODI3TDU0LjgzMDEgMTQuNjI1Wk00Ni43MDExIDI2Ljc0NTJINy41MTkzMkw0LjkxODA0IDE4Ljg2NzFMOS4yNjcwNSAyMS44NTY3QzkuMjY3MDUgMjEuODU2NyA5LjYzMjg2IDIyLjA1ODcgOS44NzY3MyAyMi4wNTg3QzEwLjA4IDIyLjA1ODcgMTAuMzIzOCAyMi4wNTg3IDEwLjQ4NjQgMjEuOTc3OUMxMC42ODk2IDIxLjg5NzEgMTAuODUyMiAyMS43NzU5IDEw.jk3NDEgMjEuNjE0M0MxMS4wOTYxIDIxLjQ1MjcgMTEuMTc3NCAyMS4yNTA3IDExLjIxOCAyMS4wNDg3TDEy.jk2NTcgMTEuMTkxTDE5LjE4NDQgMTguOTA3NUMxOS4xODQ0IDE4LjkwNzUgMTkuNTA5NiAxOS4yMzA3IDE5LjcxMjggMTkuMzExNUMxOS45MTYgMTkuMzkyMyAyMC4xNTk5IDE5LjQzMjcgMjAuMzYzMSAxOS4zOTIzQzIwLjU2NjQgMTkuMzkyMyAyMC44MTAyIDE5LjI3MTEgMjAyOTcyOCAxOS4xNDk5QzIxLjEzNTQgMS5wMjg3IDIxLjI5OCAxOC44MjY3AyMS4zNzkzIDE4LjYyNDdMMjYuNzAzOCA2LjQyMzY5TDMyLjE5MDggMTguOTg4M0MzMi4yNzIxIDE5LjE5MDMgMzMyLjQzNDcgMTkuMzUxOSAzMi41OTNzIDE5LjUxMzFDMzIuNzU5OSAxOS42MzQ3IDMzLjAwMzcgMTkuNzE1NSAzMy4yMDY5IDE5.NzU1OUMzMy40MTAyIDE5Ljc1NTkgMzMuNjU0IDE5Ljc1NTkgMzMuODU3MyAxOS42NzUxQzM0LjA2MDUgMTkuNTkwMyMzQuMjYzNyAxOS40NzMxIDM0LjM4NTcgMTkuMjcxMUw0MC44ODg4MTEuMTkxTDQyLjcxNzkgMjEuNDUyN0M0Mi43MTc5IDIxLjY1NDcgNDIuODM5OCAyMS44NTY3IDQyLjk2MTggMjIuMDE4M0M0My4wODM3IDIyLjE3OTkgNDMuMjg2OSAyMi4zIDIyIDExIDQzLjQ0OTUgMjIuMzgxOUM0My42NTI3IDIyLjQ2MjcgNDMuODU1OSAyMi41MDMxIDQ0LjA1OTIgMjIuNDYyN0M0NC4yNjI0IDIyLjQ2MjcgNDQuNDY1NiAyMi4zODE5IDQ0LjY2ODggMjIuMjYwN0w0OS41MDU2IDE4Ljk0NzlMNDYuNjYwNCAyNi43MDQ4TDQ2LjcwMTEA2Ni43NDUyWk00Ny42MzU5IDMwLjgyNTZINi41ODQ0OEM2LjI1OTMyIDMwLjgyNTYgNS45MzQxNiA0MzAuOTQ2OCA1LjY5MDI5IDMxLjE4OTJDNS40NDY0MiAzMS40MzE2IDUuMzI0NDggMzEuNzU0OCA1LjMyNDQ4IDMyLjA3OFYzNi45MjYxQzUuMzI0NDggMzcuMjQ5MyA1LjQ0NjQyIDN3LjU3MjUgNS42OTAy5IDM3LjgxNDlDNS45MzQxNiA0MzguMDU3MyA2LjI1OTMyIDM4LjE3ODUgNi41ODQ0OCAzOC4xNzg1SDQ3LjU5NTNDNDcuOTIwNCAzOC4xNzg1IDQ4LjI0NTYyIDM4LjA1NzMgNDguNDg5NSAzNy44MTQ5QzQ4LjNzMzMgMzcuNTcyNSA0OC44NTUzIDM3LjI0OTMgNDguODU1MyA3MzYuOTI2MVYzMi4wNzhDNDguODU1MyAzMi4wNzhDNDguODU1MyAzMS43NTQ4IDQ4Ljc3NCAzMS41OTMyQzQ4Ljg2OTI3IDMxLjQzMTYgNDguNjExNCAzMS4zMTA0IDQ4LjQ4OTUgMzEuMTg5MkM0OC4zNjc1IDMxLjA2OCA0OC4yNDU2IDMwLjk4NzIgNDguMDgzIDMwLjkwNjRDNDcuOTIwNCAzMC44MjU2IDQ3Ljc1NzkgMzAuODI1NiA0Ny41OTUzIDMwLjgyNTZINDcuNjM1OVpNNDYuMzM1MyAzNS42NzM3SDcuODg1MTJWMzMuMzcwOUg0Ni4zMzUzVjM1LjY3MzdaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K');
+            /* Theme 1 - Forbes Main (Tmavě modrá + Žlutá) */
+            --bg-left: #0b1126; 
+            --bg-right-dark: #050814;
+            --bg-right-light: #1b43aa; 
+            --accent-text: #facc15; 
+            --bonus-color: #ffffff;
+            --slash-color: #facc15;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Dynamická barevná schémata z Debug Panelu */
+        /* Forbes Main (Modro-žlutá) */
+        #banner.theme-1 { --bg-left: #0b1126; --bg-right-dark: #050814; --bg-right-light: #1b43aa; --accent-text: #facc15; --bonus-color: #ffffff; --slash-color: #facc15; }
+        /* Space Blue (Hluboký vesmír) */
+        #banner.theme-2 { --bg-left: #0f172a; --bg-right-dark: #000000; --bg-right-light: #0f172a; --accent-text: #38bdf8; --bonus-color: #facc15; --slash-color: #38bdf8; } 
+        /* Dark Gold (Prémiová černozlatá) */
+        #banner.theme-3 { --bg-left: #171717; --bg-right-dark: #0a0a0a; --bg-right-light: #262626; --accent-text: #facc15; --bonus-color: #facc15; --slash-color: #facc15; } 
+        /* Jackpot Purple (Podle vašeho Tsunami jackpotu) */
+        #banner.theme-4 { --bg-left: #1e1b4b; --bg-right-dark: #120b29; --bg-right-light: #3b2875; --accent-text: #facc15; --bonus-color: #ffffff; --slash-color: #d946ef; } 
+        /* Mystery Green (Podle vašeho Mystery jackpotu) */
+        #banner.theme-5 { --bg-left: #020617; --bg-right-dark: #020617; --bg-right-light: #0f172a; --accent-text: #10b981; --bonus-color: #ffffff; --slash-color: #10b981; } 
+
+        body, html { margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: 'Rubik', sans-serif; }
+
+        /* =========================================
+           2. STYLY BANNERU
+           ========================================= */
+        #banner {
+            width: 970px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background-color: #050814; 
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid #1e293b;
+            flex-shrink: 0;
+            transition: all 0.5s ease;
         }
 
-        html {
-            overflow-y: auto;
-            -webkit-text-size-adjust: none;
-            text-size-adjust: none;
+        /* --- LEVÁ ČÁST --- */
+        .left-side {
+            position: absolute;
+            width: 53%; 
+            height: 100%;
+            background-color: var(--bg-left);
+            z-index: 1;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+            transition: background-color 0.5s ease;
+        }
+
+        /* Hvězdné pozadí podle Forbes webu místo mřížky */
+        .stars-bg {
+            position: absolute;
             width: 100%;
             height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
 
-        body {
-            width: 100%;
-            min-height: 100vh;
-            overflow: visible;
+        .left-content { 
+            position: absolute; 
+            top: 55px; 
+            left: 30px; 
+            z-index: 10; 
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .headline-white { font-size: 40px; font-weight: 900; margin: 0; line-height: 1.1; letter-spacing: -1px; }
+        .headline-accent { font-size: 44px; font-weight: 900; color: var(--accent-text); margin: 0; line-height: 1.1; letter-spacing: -1px; display: flex; align-items: center; gap: 5px; transition: color 0.5s ease;}
+        
+        .emoji-think { font-size: 38px; position: relative; left: -5px; }
+        .emoji-yawn { font-size: 24px; position: absolute; bottom: -30px; left: 0; }
+
+        /* --- PRAVÁ ČÁST --- */
+        .right-side {
+            position: absolute;
+            width: 60%;
+            height: 100%;
+            right: 0;
+            background: linear-gradient(135deg, var(--bg-right-light) 0%, var(--bg-right-dark) 100%);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 50px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .neon-slash {
+            position: absolute;
+            width: 4px;
+            height: 150%;
+            background: var(--slash-color);
+            top: -20%;
+            left: 41%;
+            transform: rotate(15deg);
+            box-shadow: 0 0 20px 5px var(--slash-color);
+            z-index: 3;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .right-content { 
+            text-align: center; 
+            z-index: 10; 
+            position: relative; 
+            left: -15px; 
+            margin-right: 180px; 
+        }
+        
+        .bonus-color { font-size: 38px; font-weight: 800; color: var(--bonus-color); margin: 0; line-height: 1; text-shadow: 0 0 15px rgba(255, 255, 255, 0.1); white-space: nowrap; transition: color 0.5s ease;}
+        .bonus-white { font-size: 48px; font-weight: 900; margin: 5px 0; line-height: 1; white-space: nowrap; }
+        .bonus-sub { font-size: 16px; font-weight: 500; letter-spacing: 2px; color: #cbd5e1; white-space: nowrap; }
+
+        .cta-btn {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 15px 35px;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px; /* Zakulacená tlačítka podle Forbes webu */
+            z-index: 10;
+            cursor: pointer;
+            transition: box-shadow 0.3s, transform 0.2s ease, filter 0.2s;
+        }
+
+        /* Dynamické třídy pro CTA z Debug Panelu (Podle webu) */
+        .cta-variant-1 { background: #facc15; color: #000; box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3); } /* Forbes Žlutá */
+        .cta-variant-2 { background: #ffffff; color: #0b1126; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); } /* Bílá */
+
+        .floating-item { position: absolute; z-index: 4; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .f-7 { font-size: 60px; left: 45%; top: 30%; transform: rotate(-15deg); }
+        .f-wheel { font-size: 100px; left: 35%; bottom: -20px; }
+        .f-chip1 { font-size: 70px; right: 200px; bottom: 10px; transform: rotate(20deg); }
+        .f-coin1 { font-size: 30px; left: 52%; top: 10px; }
+        .f-dia1 { font-size: 25px; right: 300px; top: 20px; }
+        .f-dia2 { font-size: 20px; right: 250px; bottom: 30px; }
+
+        .flare { position: absolute; width: 150px; height: 150px; border-radius: 50%; z-index: 0; transition: background 0.5s ease; }
+        .flare-1 { background: radial-gradient(circle, rgba(250, 204, 21, 0.1) 0%, transparent 70%); top: -50px; left: 100px; }
+        .flare-2 { background: radial-gradient(circle, rgba(27, 67, 170, 0.2) 0%, transparent 70%); bottom: -50px; left: 300px; }
+
+        /* =========================================
+           3. STYLY DEBUG PANELU
+           ========================================= */
+        .debug-panel {
+            width: min(970px, calc(100vw - 20px));
+            min-width: 0;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .banner {
-            width: 970px;
-            height: 250px;
-            flex: 0 0 auto;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, #f8f8f8 0%, #f0f0f0 50%, #e8e8e8 100%);
-            cursor: pointer;
-        }
-
-        .click-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 30;
-            display: block;
-            text-decoration: none;
-            background: transparent;
-        }
-
-        .yellow-wedge {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #FEEB15 0%, #F5B30C 100%);
-            clip-path: polygon(0 60%, 100% 35%, 100% 100%, 0 100%);
-            z-index: 1;
-        }
-
-        .crown-pattern-wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .crown-pattern {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 220%;
-            height: 220%;
-            background-image: var(--crown-svg), var(--crown-svg);
-            background-repeat: repeat;
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            opacity: 0.04;
-            transform: rotate(15deg);
-        }
-
-        .crown-shimmer {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 220%;
-            height: 220%;
-            background-image: var(--crown-svg), var(--crown-svg);
-            background-repeat: repeat;
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            filter: sepia(1) saturate(5) hue-rotate(-9deg) brightness(1.55) contrast(1.06);
-            opacity: 0.2;
-            transform: rotate(15deg);
-            pointer-events: none;
-            mask-image: linear-gradient(108deg, transparent 30%, rgba(255, 255, 255, 0.78) 50%, transparent 70%);
-            -webkit-mask-image: linear-gradient(108deg, transparent 30%, rgba(255, 255, 255, 0.78) 50%, transparent 70%);
-            mask-size: 265% 100%;
-            -webkit-mask-size: 265% 100%;
-            mask-position: -170% 0;
-            -webkit-mask-position: -170% 0;
-            animation: crown-shimmer-wave 6s ease-in-out infinite;
-            animation-duration: 7s;
-            animation-delay: 0s;
-            animation-play-state: paused;
-        }
-
-        .banner.shimmer-active .crown-shimmer {
-            animation-play-state: running;
-        }
-
-        @keyframes crown-shimmer-wave {
-            0%   { mask-position: -150% 0; -webkit-mask-position: -150% 0; }
-            100% { mask-position: 250% 0;  -webkit-mask-position: 250% 0; }
-        }
-
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 28px;
-            width: 96px;
-            height: auto;
-            background-image: url('forbes-logo.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            filter: brightness(0);
-            z-index: 21;
-            transform-origin: center center;
-        }
-
-        .freespin-image {
-            position: absolute;
-            left: 50%;
-            top: 26px;
-            width: 174px;
-            height: auto;
-            transform: translateX(-50%) scale(0.08);
-            opacity: 0;
-            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.99));
-            z-index: 3;
-        }
-
-        .freespin-title {
-            position: absolute;
-            left: 50%;
-            top: 152px;
-            width: 520px;
-            transform: translateX(-50%);
-            perspective: 400px;
-            text-align: center;
-            color: #fff;
-            font-size: 50px;
-            line-height: 1;
-            font-weight: 900;
-            letter-spacing: -0.3px;
-            text-transform: uppercase;
-            opacity: 0;
-            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
-            z-index: 3;
-        }
-
-        .freespin-letter,
-        .deposit-letter,
-        .wheel-letter {
-            display: inline-block;
-            will-change: transform, opacity;
-        }
-
-        .deposit-image {
-            width: 167px;
-            height: auto;
-            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.99));
-        }
-
-        .deposit-group {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 520px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: translate(-50%, -50%) scale(0.08);
-            transform-origin: 50% 50%;
-            opacity: 0;
-            text-align: center;
-            z-index: 3;
-        }
-
-        .deposit-title {
-            color: #1f1f1f;
-            font-size: 37px;
-            line-height: 1;
-            font-weight: 800;
-            letter-spacing: -0.2px;
-            text-transform: uppercase;
-            perspective: 400px;
-        }
-
-        .deposit-subtitle {
-            max-width: 500px;
-            color: #fff;
-            font-size: 46px;
-            line-height: 1.05;
-            font-weight: 900;
-            letter-spacing: -0.2px;
-            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
-            perspective: 400px;
-        }
-
-        .wheel-image {
-            position: absolute;
-            left: 50%;
-            top: 22px;
-            width: 190px;
-            height: auto;
-            transform: translateX(-50%) scale(0.08);
-            opacity: 0;
-            filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0.99));
-            z-index: 3;
-        }
-
-        .wheel-title {
-            position: absolute;
-            left: 50%;
-            top: 130px;
-            width: 520px;
-            transform: translateX(-50%);
-            perspective: 400px;
-            text-align: center;
-            color: #fff;
-            font-size: 42px;
-            line-height: 1;
-            font-weight: 900;
-            letter-spacing: -0.3px;
-            text-transform: uppercase;
-            opacity: 0;
-            text-shadow: -1px -1px 2px #1f1f1f, 1px -1px 2px #1f1f1f, -1px 1px 2px #1f1f1f, 1px 1px 2px #1f1f1f, 0 0 4px rgba(255, 215, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.4);
-            z-index: 3;
-        }
-
-        .cta-wrap {
-            position: absolute;
-            left: 50%;
-            top: 65%;
-            width: 520px;
-            transform: translate(-50%, -50%) scale(0.08);
-            transform-origin: 50% 50%;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 12;
-        }
-
-        .cta-gift {
-            position: absolute;
-            top: -95px;
-            left: 50%;
-            width: 140px;
-            height: auto;
-            transform: translateX(-50%) rotate(0deg);
-            transform-origin: 50% 85%;
-            pointer-events: none;
-            will-change: transform;
-            animation: cta-gift-shake 2s ease-in-out infinite;
-            z-index: 5;
-        }
-
-        @keyframes cta-gift-shake {
-            0%, 82%, 100% { transform: translateX(-50%) rotate(0deg); }
-            86% { transform: translateX(calc(-50% - 2px)) rotate(-4deg); }
-            90% { transform: translateX(calc(-50% + 2px)) rotate(4deg); }
-            94% { transform: translateX(calc(-50% - 1px)) rotate(-2deg); }
-            97% { transform: translateX(-50%) rotate(0deg); }
-        }
-
-        /* --- STYLY PRO MINCE ZA TLAČÍTKEM --- */
-        .particles-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 1px;
-            height: 1px;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .coin-particle {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            color: rgb(237, 196, 107);
-            background: rgb(227, 162, 23);
-            border: 1.5px solid rgb(237, 196, 107);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            pointer-events: none;
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .cta-button {
-            width: auto;
-            min-height: 74px;
-            border-radius: 999px;
-            cursor: pointer;
-            text-transform: uppercase;
-            white-space: nowrap;
-            letter-spacing: 1.6px;
-            font-size: 35px;
-            line-height: 1;
-            font-weight: 900;
-            padding: 16px 32px;
-            transition: filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .cta-button.cta-variant-1 {
-            color: #ffffff;
-            background: linear-gradient(180deg, #2d49c0 0%, #17349f 45%, #102575 100%);
-            border: 2px solid #6b8dff;
-            box-shadow: 0 12px 26px rgba(17, 42, 136, 0.55);
-        }
-
-        .cta-button.cta-variant-2 {
-            color: #1f1300;
-            background: linear-gradient(180deg, #ffe57a 0%, #ffd034 55%, #f6b90a 100%);
-            border: 2px solid #fff3b8;
-            box-shadow: 0 14px 30px rgba(163, 108, 0, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.55);
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
-        }
-
-        .cta-button.cta-variant-3 {
-            color: #f7fff4;
-            background: linear-gradient(180deg, #14ae58 0%, #108845 60%, #0c6534 100%);
-            border: 2px solid #7ff2b2;
-            box-shadow: 0 14px 32px rgba(10, 89, 45, 0.52), 0 0 0 4px rgba(17, 121, 67, 0.24);
-        }
-
-        .cta-button.cta-variant-4 {
-            color: #fff4f4;
-            background: linear-gradient(180deg, #ff5a5a 0%, #e72f2f 55%, #b81d1d 100%);
-            border: 2px solid #ffb0b0;
-            box-shadow: 0 14px 34px rgba(142, 21, 21, 0.48);
-            border-radius: 16px;
-            letter-spacing: 1.1px;
-        }
-
-        .cta-button.cta-variant-5 {
-            color: #fefbff;
-            background: linear-gradient(180deg, #3a3a3a 0%, #202020 60%, #0c0c0c 100%);
-            border: 2px solid #f3c24a;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.62), 0 0 0 3px rgba(243, 194, 74, 0.22);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: -140%;
-            left: -45%;
-            width: 38%;
-            height: 380%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 30%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.08) 70%, rgba(255, 255, 255, 0) 100%);
-            transform: rotate(20deg) translateX(-460px);
-            animation: cta-sheen-pass 4s ease-in-out infinite;
-            animation-play-state: paused;
-            pointer-events: none;
-        }
-
-        .cta-button:not(.has-sheen)::before { display: none; }
-        .cta-button.sheen-run::before { animation: cta-sheen-pass 4s ease-in-out 1; }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            border-radius: 999px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.12) 100%);
-            opacity: 0;
-            transition: opacity 0.25s ease;
-            pointer-events: none;
-        }
-
-        @keyframes cta-sheen-pass {
-            0%, 60% { transform: rotate(20deg) translateX(-460px); }
-            88% { transform: rotate(20deg) translateX(780px); }
-            100% { transform: rotate(20deg) translateX(780px); }
-        }
-
-        .cta-button:hover, .banner:hover .cta-button {
-            filter: brightness(1.12) saturate(1.08);
-            transform: translateY(-2px) scale(1.01);
-            border-color: #9eb6ff;
-            box-shadow: 0 18px 34px rgba(11, 32, 116, 0.62), 0 0 0 3px rgba(116, 156, 255, 0.2);
-        }
-
-        .cta-button:hover::after { opacity: 1; }
-        .cta-button:active { transform: translateY(0) scale(0.99); }
-
-        .warning {
-            position: absolute;
-            bottom: -10px;
-            left: 0px;
-            width: 100%;
-            height: 24px;
-            color: #676464;
-            font-size: 8px;
-            line-height: 10px;
-            padding: 0 18px;
-            text-align: center;
-            z-index: 22;
-            box-sizing: border-box;
-        }
-
-        .debug-panel {
-            width: 970px;
-            min-width: 970px;
-            padding: 6px;
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: rgba(20, 20, 20, 0.82);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 10px;
-            line-height: 1;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 255, 0.95) 100%);
+            border: 1px solid rgba(22, 56, 168, 0.2);
+            border-radius: 14px;
+            box-shadow: 0 14px 34px rgba(18, 34, 81, 0.24);
+            color: #1d2340;
+            font-size: 12px;
+            line-height: 1.25;
             position: fixed;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        .debug-panel.active { display: flex; }
+        .debug-row-group { display: flex; gap: 20px; }
+        .debug-col { flex: 1; display: flex; flex-direction: column; gap: 4px; }
 
-        .debug-launch {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 10000;
-            border: 0;
-            border-radius: 999px;
-            background: #121212;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.4px;
-            padding: 8px 12px;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-        }
-
+        .debug-heading { font-size: 15px; font-weight: 900; letter-spacing: 0.2px; margin-bottom: 2px;}
         .debug-buttons { display: flex; gap: 4px; }
-
-        .debug-button {
-            flex: 1;
-            min-width: 0;
-            padding: 4px 0;
-            border: 0;
-            border-radius: 4px;
-            background: #f5b30c;
-            color: #111;
-            font-size: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .debug-scrubber { width: 100%; margin: 0; }
-        .debug-time { display: flex; justify-content: space-between; opacity: 0.9; }
-        .debug-cta-variants { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
-
-        .debug-variant {
-            min-width: 0;
-            padding: 5px 0;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            font-size: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .debug-variant.active {
-            background: #fee93c;
-            color: #121212;
-            border-color: #ffffff;
-        }
-
-        .coin-generator {
-            width: 62px;
-            height: 62px;
-            position: absolute;
-            bottom: 15%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 0;
-        }
-
-        .coin {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .coin::after {
-            content: "$";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 23px;
-            height: 23px;
-            font-size: 13px;
-            font-weight: bold;
-            color: rgb(237, 196, 107);
-            background: rgb(227, 162, 23);
-            border: 2px solid rgb(237, 196, 107);
-            border-radius: 50%;
-        }
-
-        .coin--animated,
-        .coin--animated::after {
-            animation-delay: var(--coin-delay, 0s);
-            animation-duration: var(--coin-duration, 1.5s);
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-        }
-
-        .coin--animated {
-            animation-name: coin-x-axis;
-            animation-timing-function: ease-in;
-        }
-
-        .coin--animated::after {
-            animation-name: coin-y-axis-and-flip;
-            animation-timing-function: ease-out;
-        }
-
-        @keyframes coin-x-axis {
-            0% { opacity: 0; transform: translateX(0); }
-            20% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; transform: translateX(var(--coin-to-x)); }
-        }
-
-        @keyframes coin-y-axis-and-flip {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(var(--coin-to-y)) rotate3d(1, 1, 1, 720deg); }
-        }
+        .debug-button { flex: 1; min-width: 0; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 10px; background: linear-gradient(180deg, #2147c2 0%, #1237ab 100%); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 0.2px; cursor: pointer; transition: filter 0.2s ease, transform 0.2s ease; }
+        .debug-button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        .debug-scrubber { width: 100%; margin: 0; accent-color: #1740b4; min-height: 30px; }
+        .debug-time { display: flex; justify-content: space-between; opacity: 0.95; color: #394064; font-weight: 700; margin-top: -5px;}
+        
+        .debug-variants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(65px, 1fr)); gap: 4px; }
+        .debug-variant { min-width: 0; min-height: 34px; padding: 5px; border: 1px solid rgba(36, 53, 120, 0.22); border-radius: 8px; background: rgba(255, 255, 255, 0.92); color: #283055; font-size: 11px; font-weight: 700; cursor: pointer; transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease; }
+        .debug-variant:hover { border-color: rgba(23, 64, 180, 0.5); background: #f3f7ff; transform: translateY(-1px); }
+        .debug-variant.active { background: linear-gradient(180deg, #fee93c 0%, #f7c61b 100%); color: #1f1f1f; border-color: #e9b413; }
+        .debug-title { font-size: 11px; font-weight: 800; letter-spacing: 0.3px; color: #1d2340; }
     </style>
 </head>
-
 <body>
-    <button class="debug-launch" type="button">Debug OFF</button>
-    <div class="banner shimmer-active">
-        <a class="click-layer" href="#" aria-label="PÅ™ejÃ­t na Forbes Casino"></a>
-        <div class="yellow-wedge"></div>
-        <div class="crown-pattern-wrap">
-            <div class="crown-pattern"></div>
-            <div class="crown-shimmer"></div>
+
+    <div id="banner" class="theme-1">
+        <div class="left-side">
+            <div class="stars-bg"></div>
+            <div class="flare flare-1"></div>
+            <div class="flare flare-2"></div>
+            
+            <div class="left-content">
+                <div class="headline-white">NUDNÝ VEČER?</div>
+                <div class="headline-accent">HLEDEJ AKCI. <span class="emoji-think">🤔</span></div>
+                <div class="emoji-yawn">🥱 <span style="font-size: 12px; color: #666;">. . .</span></div>
+            </div>
         </div>
-        <div class="logo"></div>
-        <div class="coin-generator">
-            <div class="coin coin--animated" style="--coin-to-x: -80px; --coin-to-y: -130px; --coin-delay: 0s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: -10px; --coin-to-y: -190px; --coin-delay: 0.21s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: 50px; --coin-to-y: -160px; --coin-delay: 0.43s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: 90px; --coin-to-y: -140px; --coin-delay: 0.64s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: -40px; --coin-to-y: -170px; --coin-delay: 0.86s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: 20px; --coin-to-y: -180px; --coin-delay: 1.07s;"></div>
-            <div class="coin coin--animated" style="--coin-to-x: 0px; --coin-to-y: -210px; --coin-delay: 1.29s;"></div>
+
+        <div class="neon-slash"></div>
+
+        <div class="right-side">
+            <div class="right-content">
+                <div class="bonus-color">ZÍSKEJ 1000 KČ</div>
+                <div class="bonus-white">BONUS</div>
+                <div class="bonus-sub">NA PRVNÍ VKLAD!</div>
+            </div>
         </div>
-        <img class="freespin-image" src="50freespinu.webp" alt="50 freespinů">
-        <div class="freespin-title"><span class="freespin-letter">F</span><span class="freespin-letter">R</span><span class="freespin-letter">E</span><span class="freespin-letter">E</span><span class="freespin-letter">S</span><span class="freespin-letter">P</span><span class="freespin-letter">I</span><span class="freespin-letter">N</span><span class="freespin-letter">Ů</span></div>
-        <div class="deposit-group">
-            <img class="deposit-image" src="vklad.webp" alt="Vkladový bonus">
-            <div class="deposit-title"><span class="deposit-letter">V</span><span class="deposit-letter">k</span><span class="deposit-letter">l</span><span class="deposit-letter">a</span><span class="deposit-letter">d</span><span class="deposit-letter">o</span><span class="deposit-letter">v</span><span class="deposit-letter">ý</span> <span class="deposit-letter">b</span><span class="deposit-letter">o</span><span class="deposit-letter">n</span><span class="deposit-letter">u</span><span class="deposit-letter">s</span></div>
-            <div class="deposit-subtitle"><span class="deposit-letter">a</span><span class="deposit-letter">ž</span>&nbsp;<span class="deposit-letter">1</span><span class="deposit-letter">2</span><span class="deposit-letter">5</span>&nbsp;<span class="deposit-letter">0</span><span class="deposit-letter">0</span><span class="deposit-letter">0</span>&nbsp;<span class="deposit-letter">K</span><span class="deposit-letter">č</span></div>
-        </div>
-        <img class="wheel-image" src="kolo.webp" alt="Uvítací kolo štěstí">
-        <div class="wheel-title"><span style="white-space:nowrap"><span class="wheel-letter">U</span><span class="wheel-letter">v</span><span class="wheel-letter">í</span><span class="wheel-letter">t</span><span class="wheel-letter">a</span><span class="wheel-letter">c</span><span class="wheel-letter">í</span> <span class="wheel-letter">k</span><span class="wheel-letter">o</span><span class="wheel-letter">l</span><span class="wheel-letter">o</span></span><br><span style="white-space:nowrap"><span class="wheel-letter">š</span><span class="wheel-letter">t</span><span class="wheel-letter">ě</span><span class="wheel-letter">s</span><span class="wheel-letter">t</span><span class="wheel-letter">í</span></span></div>
-        <div class="cta-wrap">
-            <img class="cta-gift" src="gift.webp" alt="Dárek">
-            <div class="particles-container"></div>
-            <button class="cta-button" type="button">
-                REGISTROVAT SE
-            </button>
-        </div>
-        <div class="warning">Ministerstvo financí varuje: účastí na hazardní hře může vzniknout závislost! Hrát mohou pouze osoby starší 18 let. Podmínky akce na www.forbescasino.cz</div>
+
+        <button class="cta-btn cta-variant-1">JDU NA TO</button>
+
+        <div class="floating-item f-7">🎰</div>
+        <div class="floating-item f-wheel">🎯</div>
+        <div class="floating-item f-chip1">🪙</div>
+        <div class="floating-item f-coin1">💰</div>
+        <div class="floating-item f-dia1">💎</div>
+        <div class="floating-item f-dia2">💎</div>
     </div>
 
     <div class="debug-panel">
-        <div>GSAP debug</div>
-        <div class="debug-cta-variants">
-            <button class="debug-variant active" data-cta-variant="1" type="button">CTA 1</button>
-            <button class="debug-variant" data-cta-variant="2" type="button">CTA 2</button>
-            <button class="debug-variant" data-cta-variant="3" type="button">CTA 3</button>
-            <button class="debug-variant" data-cta-variant="4" type="button">CTA 4</button>
-            <button class="debug-variant" data-cta-variant="5" type="button">CTA 5</button>
+        <div class="debug-heading">Řídicí panel animace (Forbes Style)</div>
+        
+        <div class="debug-row-group">
+            <div class="debug-col" style="flex: 2;">
+                <div class="debug-title">Barevné schéma banneru</div>
+                <div class="debug-variants-grid" id="theme-buttons">
+                    <button class="debug-variant active" data-theme="1" type="button">Main</button>
+                    <button class="debug-variant" data-theme="2" type="button">Space</button>
+                    <button class="debug-variant" data-theme="3" type="button">Gold</button>
+                    <button class="debug-variant" data-theme="4" type="button">Jackpot</button>
+                    <button class="debug-variant" data-theme="5" type="button">Mystery</button>
+                </div>
+            </div>
+
+            <div class="debug-col">
+                <div class="debug-title">Rychlost animace</div>
+                <div class="debug-variants-grid" id="speed-buttons">
+                    <button class="debug-variant" data-speed="1" type="button">1x</button>
+                    <button class="debug-variant active" data-speed="1.5" type="button">1.5x</button>
+                    <button class="debug-variant" data-speed="2" type="button">2x</button>
+                </div>
+            </div>
+            
+            <div class="debug-col">
+                <div class="debug-title">Tlačítko</div>
+                <div class="debug-variants-grid" id="cta-buttons">
+                    <button class="debug-variant active" data-cta-variant="1" type="button">Žlutá</button>
+                    <button class="debug-variant" data-cta-variant="2" type="button">Bílá</button>
+                </div>
+            </div>
         </div>
+        
         <input class="debug-scrubber" type="range" min="0" max="1000" value="0">
         <div class="debug-time">
-            <span class="debug-current">0.00s</span>
-            <span class="debug-total">0.00s</span>
+            <span>Aktuální čas: <span class="debug-current">0.00s</span></span>
+            <span>Celkový čas: <span class="debug-total">0.00s</span></span>
         </div>
         <div class="debug-buttons">
-            <button class="debug-button debug-toggle" type="button">Start</button>
-            <button class="debug-button debug-restart" type="button">Restart</button>
+            <button class="debug-button debug-toggle" type="button">Pozastavit</button>
+            <button class="debug-button debug-restart" type="button">Spustit znovu</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
-        const banner = document.querySelector('.banner');
-        const clickLayer = document.querySelector('.click-layer');
-        const ctaWrap = document.querySelector('.cta-wrap');
-        const ctaButton = document.querySelector('.cta-button');
-        const debugPanel = document.querySelector('.debug-panel');
-        const debugLaunch = document.querySelector('.debug-launch');
-        const variantButtons = Array.from(document.querySelectorAll('.debug-variant'));
+        window.addEventListener('load', () => {
+            
+            // 1. NEZÁVISLÁ ANIMACE LEVITACE
+            gsap.to(".floating-item", {
+                y: "random(-15, 15)",
+                x: "random(-10, 10)",
+                rotation: "random(-10, 10)",
+                duration: "random(2, 4)",
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                stagger: { each: 0.2, from: "random" }
+            });
 
-        const applyCtaVariant = (index) => {
-            const safeIndex = Math.min(Math.max(index, 1), 5);
-            ctaButton.classList.remove('cta-variant-1', 'cta-variant-2', 'cta-variant-3', 'cta-variant-4', 'cta-variant-5', 'has-sheen');
-            ctaButton.classList.add(`cta-variant-${safeIndex}`);
-            if (safeIndex === 1 || safeIndex === 5) ctaButton.classList.add('has-sheen');
-            variantButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.ctaVariant) === safeIndex));
-        };
+            // Hover efekty banneru 
+            const banner = document.getElementById('banner');
+            banner.addEventListener('mouseenter', () => {
+                gsap.to(".cta-btn", { scale: 1.05, filter: "brightness(1.1)", duration: 0.3 });
+                gsap.to(".neon-slash", { width: "6px", boxShadow: "0 0 30px 10px var(--slash-color)", duration: 0.3 });
+            });
+            banner.addEventListener('mouseleave', () => {
+                gsap.to(".cta-btn", { scale: 1, filter: "brightness(1)", duration: 0.3 });
+                gsap.to(".neon-slash", { width: "4px", boxShadow: "0 0 20px 5px var(--slash-color)", duration: 0.3 });
+            });
 
-        applyCtaVariant(1);
+            // 2. HLAVNÍ ČASOVÁ OSA
+            const tl = gsap.timeline({ paused: true });
+            window.tl = tl; 
 
-        /* --- LOGIKA PRO MINCE (NEKONEČNÝ PROUD ZA TLAČÍTKEM) --- */
-        const initFizzyEffect = () => {
-            const container = document.querySelector('.particles-container');
-            const numParticles = 30; // Méně částic, protože mince jsou výraznější
-            const particles = [];
-            let mainTimelinePaused = true;
-
-            for (let i = 0; i < numParticles; i++) {
-                const p = document.createElement('div');
-                p.classList.add('coin-particle');
-                p.textContent = '$';
+            function buildTimeline() {
+                tl.clear();
                 
-                const size = gsap.utils.random(12, 20); // Velikost mincí
-                gsap.set(p, {
-                    width: size, height: size,
-                    fontSize: size * 0.6 + 'px',
-                    x: 0, y: 0,
-                    left: '50%', top: '50%',
-                    xPercent: -50, yPercent: -50,
-                    opacity: 0
-                });
-                container.appendChild(p);
-                particles.push(p);
+                gsap.set(".headline-white", { x: -50, opacity: 0 });
+                gsap.set(".headline-accent", { x: -50, opacity: 0 });
+                gsap.set(".emoji-yawn", { opacity: 0 });
+                gsap.set(".right-side", { x: 100, opacity: 0 });
+                gsap.set(".neon-slash", { opacity: 0, scaleY: 0 });
+                gsap.set(".right-content > div", { y: 20, opacity: 0 });
+                gsap.set(".cta-btn", { scale: 0.5, opacity: 0 });
+                gsap.set(".floating-item", { scale: 0, opacity: 0 });
+
+                tl.to(".headline-white", { duration: 0.6, x: 0, opacity: 1, ease: "power2.out", delay: 0.2 })
+                  .to(".headline-accent", { duration: 0.6, x: 0, opacity: 1, ease: "power2.out" }, "-=0.4")
+                  .to(".emoji-yawn", { duration: 0.4, opacity: 1 }, "-=0.2")
+                  .to(".neon-slash", { duration: 0.5, opacity: 1, scaleY: 1, ease: "power4.inOut" }, "-=0.1")
+                  .to(".right-side", { duration: 0.7, x: 0, opacity: 1, ease: "power3.out" }, "-=0.3")
+                  .to(".right-content > div", { duration: 0.5, y: 0, opacity: 1, stagger: 0.15, ease: "back.out(1.5)" }, "-=0.2")
+                  .to(".cta-btn", { duration: 0.6, scale: 1, opacity: 1, ease: "elastic.out(1, 0.6)" }, "-=0.3")
+                  .to(".floating-item", { duration: 0.8, scale: 1, opacity: 1, stagger: 0.1, ease: "back.out(2)" }, "-=0.5");
+                  
+                return tl;
             }
 
-            const animateParticle = (p) => {
-                if (mainTimelinePaused) return;
-                
-                gsap.set(p, { x: 0, y: 0, opacity: 1, scale: 0.8, rotation: 0, rotationX: 0 });
+            // 3. LOGIKA DEBUG PANELU
+            const scrubber = document.querySelector('.debug-scrubber');
+            const currentTimeLabel = document.querySelector('.debug-current');
+            const totalTimeLabel = document.querySelector('.debug-total');
+            const toggleButton = document.querySelector('.debug-toggle');
+            const ctaButton = document.querySelector('.cta-btn');
+            
+            const variantButtons = Array.from(document.querySelectorAll('[data-cta-variant]'));
+            const speedButtons = Array.from(document.querySelectorAll('[data-speed]'));
+            const themeButtons = Array.from(document.querySelectorAll('[data-theme]'));
 
-                gsap.to(p, {
-                    duration: gsap.utils.random(1, 2),
-                    x: gsap.utils.random(-150, 150),
-                    y: gsap.utils.random(-110, 110),
-                    rotation: gsap.utils.random(180, 720), // Točení mince
-                    rotationY: gsap.utils.random(180, 720), // 3D rotace
-                    scale: gsap.utils.random(0.4, 1.2),
-                    opacity: 0,
-                    ease: "power1.out",
-                    delay: gsap.utils.random(0, 1.5),
-                    onComplete: () => animateParticle(p)
-                });
+            let currentStorySpeed = 1.5;
+
+            function updateDebugUI() {
+                const speed = currentStorySpeed || 1;
+                const currentTimeRaw = tl.time();
+                const durationRaw = tl.duration();
+                const progress = durationRaw === 0 ? 0 : (currentTimeRaw / durationRaw) * 1000;
+                const currentTime = currentTimeRaw / speed;
+                const duration = durationRaw / speed;
+
+                scrubber.value = String(progress);
+                currentTimeLabel.textContent = `${currentTime.toFixed(2)}s`;
+                totalTimeLabel.textContent = `${duration.toFixed(2)}s`;
+                toggleButton.textContent = tl.paused() ? 'Přehrát' : 'Pozastavit';
+            }
+
+            tl.eventCallback('onUpdate', updateDebugUI);
+            tl.eventCallback('onComplete', () => { updateDebugUI(); toggleButton.textContent = 'Přehrát'; });
+
+            const applyStorySpeed = (speed) => {
+                currentStorySpeed = speed;
+                tl.timeScale(speed);
+                speedButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.speed) === speed));
+                updateDebugUI();
             };
 
-            const startStream = () => {
-                mainTimelinePaused = false;
-                particles.forEach(p => animateParticle(p));
+            const applyCtaVariant = (index) => {
+                ctaButton.classList.remove('cta-variant-1', 'cta-variant-2');
+                ctaButton.classList.add(`cta-variant-${index}`);
+                variantButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.ctaVariant) === index));
             };
 
-            const stopStream = () => {
-                mainTimelinePaused = true;
-                particles.forEach(p => gsap.to(p, { opacity: 0, duration: 0.5, overwrite: 'auto' }));
+            const applyTheme = (index) => {
+                banner.className = `theme-${index}`;
+                themeButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.theme) === index));
+                gsap.fromTo(banner, { opacity: 0.8 }, { opacity: 1, duration: 0.3 });
             };
 
-            banner.addEventListener('mouseenter', () => {
-                if (gsap.getProperty(ctaWrap, "opacity") > 0.5) startStream();
+            scrubber.addEventListener('input', () => {
+                tl.pause();
+                tl.progress(Number(scrubber.value) / 1000);
+                updateDebugUI();
             });
-            banner.addEventListener('mouseleave', stopStream);
-            window.fizzyControls = { start: startStream, stop: stopStream };
-        };
 
-        initFizzyEffect();
+            toggleButton.addEventListener('click', () => {
+                if (tl.paused()) {
+                    if (tl.progress() === 1) tl.restart(); 
+                    else tl.play();
+                } else {
+                    tl.pause();
+                }
+                updateDebugUI();
+            });
 
-        /* --- MAGNETIC & CORE BANNER LOGIC (NEZMĚNĚNO) --- */
-        const MAGNETIC_RADIUS = 180;
-        const MAGNETIC_MAX_PULL = 16;
-        const magneticToX = gsap.quickTo(ctaWrap, 'x', { duration: 0.3, ease: 'power3.out' });
-        const magneticToY = gsap.quickTo(ctaWrap, 'y', { duration: 0.3, ease: 'power3.out' });
+            document.querySelector('.debug-restart').addEventListener('click', () => {
+                buildTimeline().play();
+                updateDebugUI();
+            });
 
-        clickLayer.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open(window.clickTag || 'https://www.forbescasino.cz/', '_blank');
+            speedButtons.forEach(btn => btn.addEventListener('click', () => applyStorySpeed(Number(btn.dataset.speed))));
+            variantButtons.forEach(btn => btn.addEventListener('click', () => applyCtaVariant(Number(btn.dataset.ctaVariant))));
+            themeButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(Number(btn.dataset.theme))));
+
+            buildTimeline();
+            applyStorySpeed(currentStorySpeed);
+            tl.play();
         });
-
-        const resetMagnetic = () => { magneticToX(0); magneticToY(0); };
-        banner.addEventListener('mousemove', (e) => {
-            if (Number(gsap.getProperty(ctaWrap, 'opacity')) < 0.2) return;
-            const rect = ctaButton.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const deltaX = e.clientX - centerX;
-            const deltaY = e.clientY - centerY;
-            const dist = Math.hypot(deltaX, deltaY);
-            if (dist >= MAGNETIC_RADIUS) { resetMagnetic(); return; }
-            const pull = (1 - dist / MAGNETIC_RADIUS);
-            magneticToX((deltaX / MAGNETIC_RADIUS) * MAGNETIC_MAX_PULL * pull);
-            magneticToY((deltaY / MAGNETIC_RADIUS) * MAGNETIC_MAX_PULL * pull);
-        });
-        banner.addEventListener('mouseleave', resetMagnetic);
-
-        const resetLoopState = () => {
-            banner.classList.add('shimmer-active');
-            gsap.set('.deposit-image', { scale: 1, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
-            gsap.set('.freespin-image', { scale: 0.08, opacity: 0, filter: 'drop-shadow(0 0 0px rgba(255, 215, 0, 0.99))' });
-            gsap.set('.freespin-title, .deposit-group, .wheel-image, .wheel-title, .cta-wrap', { opacity: 0, scale: 0.08 });
-            gsap.set('.freespin-letter, .deposit-letter, .wheel-letter', { y: 28, opacity: 0, rotateX: -90, filter: 'blur(6px)', transformPerspective: 400 });
-            gsap.set('.logo', { width: 280, height: 103, left: '50%', top: '50%', xPercent: -50, yPercent: -50, rotation: 0, scale: 1, filter: 'brightness(0)' });
-            gsap.set('.coin-generator', { autoAlpha: 1 });
-            document.querySelectorAll('.coin--animated').forEach(c => { c.classList.remove('coin--animated'); void c.offsetWidth; c.classList.add('coin--animated'); });
-        };
-
-        resetLoopState();
-
-        const scrubber = document.querySelector('.debug-scrubber');
-        const currentTimeLabel = document.querySelector('.debug-current');
-        const totalTimeLabel = document.querySelector('.debug-total');
-        const toggleButton = document.querySelector('.debug-toggle');
-        const tl = gsap.timeline({ delay: 0.6, repeat: -1 });
-
-        tl.to('.logo', { duration: 0.7, width: 96, height: 36, left: 28, top: 20, xPercent: 0, yPercent: 0, rotation: -5, ease: "back.inOut(1.7)" }, '+=1.5')
-        .to('.logo', { duration: 0.3, rotation: 0, ease: "power2.out" }, '-=0.2')
-        .call(() => banner.classList.remove('shimmer-active'))
-        .addLabel('scena1').set('.coin-generator', { autoAlpha: 0 }, 'scena1')
-        .to('.freespin-image', { duration: 0.55, scale: 1, opacity: 1, transformOrigin: '50% 50%', ease: 'power2.out' }, 'scena1-=0.01')
-        .set('.freespin-title', { opacity: 1 }, 'scena1')
-        .to('.freespin-letter', { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out', stagger: 0.045 }, 'scena1')
-        .to('.freespin-image', { duration: 0.5, scale: 1.25, filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))', ease: 'back.out(1.5)' })
-        .to('.freespin-image', { duration: 0.4, filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))', ease: 'power1.out' })
-        .to('.freespin-image', { duration: 0.4, scale: 1, filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))', ease: 'elastic.out(1, 0.4)' })
-        .to(['.freespin-image', '.freespin-title'], { duration: 0.5, scale: 0.08, opacity: 0, ease: 'power3.in' }, '+=.5')
-        .addLabel('scena2')
-        .to('.deposit-group', { duration: 0.55, scale: 1, opacity: 1, ease: 'power2.out' })
-        .to('.deposit-letter', { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out', stagger: 0.045 }, 'scena2')
-        .to('.deposit-image', { duration: 0.5, scale: 1.25, filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))', ease: 'back.out(1.5)' })
-        .to('.deposit-image', { duration: 0.4, filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.99)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))', ease: 'power1.out' })
-        .to('.deposit-image', { duration: 0.6, scale: 1, ease: 'elastic.out(1, 0.4)' })
-        .to(['.deposit-group'], { duration: 0.5, scale: 0.08, opacity: 0 })
-        .addLabel('scena3')
-        .to('.wheel-image', { duration: 0.55, scale: 1, opacity: 1, ease: 'power2.out' })
-        .set('.wheel-title', { opacity: 1 }, '-=0.55')
-        .to('.wheel-letter', { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out', stagger: 0.045 }, '-=0.55')
-        .to('.wheel-image', { duration: 0.4, scale: 1.25, filter: 'brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 1))', ease: 'back.out(1.5)' }, '-=0.5')
-        .to('.wheel-image', { duration: 0.4, filter: 'brightness(1.3) drop-shadow(0 0 35px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.4))', ease: 'power1.out' })
-        .to('.wheel-image', { duration: 0.6, scale: 1, filter: 'brightness(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))', ease: 'elastic.out(1, 0.4)' })
-        .to(['.wheel-image', '.wheel-title'], { duration: 0.5, scale: 0.08, opacity: 0, ease: 'power3.in' }, '+=.5')
-        .call(() => banner.classList.add('shimmer-active'))
-        .addLabel('scena4')
-        .to('.cta-wrap', { duration: 0.55, scale: 1, opacity: 1, ease: 'back.out(1.2)' })
-        .addLabel('cta-visible').call(() => { if (debugPanel.classList.contains('active')) tl.pause(); })
-        .call(() => { const b = document.querySelector('.cta-button'); b.classList.remove('sheen-run'); void b.offsetWidth; b.classList.add('sheen-run'); })
-        .to({}, { duration: 3 })
-        .to('.cta-wrap', { duration: 0.4, scale: 1.4, opacity: 0, ease: 'power2.in' })
-        .to('.logo', { duration: 0.8, width: 280, height: 103, left: '50%', top: '50%', xPercent: -50, yPercent: -50, rotation: 360, filter: 'brightness(0)', ease: "back.out(1.5)" }, '-=0.2')
-        .to('.logo', { duration: 0.2, ease: "power1.inOut" })
-        .to('.logo', { duration: 0.2, scale: 1, ease: "power1.inOut" })
-        .call(() => gsap.delayedCall(1, resetLoopState));
-
-        const updateDebug = () => { scrubber.value = (tl.duration() === 0 ? 0 : (tl.time() / tl.duration()) * 1000); currentTimeLabel.textContent = tl.time().toFixed(2) + 's'; totalTimeLabel.textContent = tl.duration().toFixed(2) + 's'; };
-        tl.eventCallback('onUpdate', updateDebug);
-        scrubber.addEventListener('input', () => { tl.pause(); tl.progress(Number(scrubber.value) / 1000); updateDebug(); });
-        toggleButton.addEventListener('click', () => { tl.paused() ? tl.play() : tl.pause(); toggleButton.textContent = tl.paused() ? 'Start' : 'Stop'; });
-        document.querySelector('.debug-restart').addEventListener('click', () => { resetLoopState(); tl.restart(); });
-        debugLaunch.addEventListener('click', () => {
-            const e = !debugPanel.classList.contains('active');
-            debugPanel.classList.toggle('active', e);
-            debugLaunch.textContent = e ? 'Debug ON' : 'Debug OFF';
-            if (e) { resetLoopState(); tl.seek('cta-visible', false); tl.pause(); resetMagnetic(); window.fizzyControls.stop(); } else { resetLoopState(); tl.restart(); }
-        });
-        variantButtons.forEach(b => b.addEventListener('click', () => applyCtaVariant(Number(b.dataset.ctaVariant))));
     </script>
 </body>
-
 </html>
