@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katana Slash Master Banner - 970x250</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0; padding: 20px; background: #0f0f13;
+            font-family: 'Montserrat', sans-serif;
+            display: flex; flex-direction: column; align-items: center; color: #fff;
+        }
+
+        /* --- OVLÁDACÍ PANEL --- */
+        .controls {
+            width: 970px; display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 8px; margin-bottom: 20px;
+        }
+        .controls button {
+            padding: 10px; background: #1a1a24; color: #888; border: 1px solid #333;
+            border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .controls button:hover, .controls button.active {
+            background: #fff; color: #000; border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        /* --- BANNER --- */
+        #banner {
+            width: 970px; height: 250px; position: relative; overflow: hidden;
+            background: #000; cursor: pointer; border: 1px solid #222;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            perspective: 1000px;
+        }
+
+        /* --- SKRYTÁ VRSTVA VZADU (Ukáže se po řezu) --- */
+        .layer-behind {
+            position: absolute; inset: 0; background: radial-gradient(circle at center, #1a0b2e 0%, #000 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1; padding-left: 200px; /* offset aby byl prostor pro efekty */
+        }
+        .behind-text { font-size: 42px; font-weight: 900; color: #facc15; margin: 0; line-height: 1; text-shadow: 0 0 20px rgba(250, 204, 21, 0.4); }
+        .behind-cta {
+            margin-top: 15px; padding: 12px 35px; background: transparent; border: 2px solid #facc15;
+            color: #facc15; font-weight: 900; font-size: 18px; text-transform: uppercase;
+            border-radius: 30px; letter-spacing: 2px;
+        }
+
+        /* --- ŘEZANÉ VRSTVY --- */
+        .slice {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 5; background: #0f0f13; display: flex; align-items: center;
+            padding-left: 50px; box-sizing: border-box; overflow: hidden;
+            will-change: transform, clip-path; transform-origin: center;
+        }
+        
+        /* Obsah vrchních vrstev (kopíruje se) */
+        .main-headline { font-family: 'Teko', sans-serif; font-size: 110px; font-weight: 700; line-height: 0.8; margin: 0; color: #fff; text-transform: uppercase;}
+        .main-sub { font-size: 20px; font-weight: 700; color: #ef4444; letter-spacing: 5px; text-transform: uppercase; }
+
+        /* --- EFEKT MEČE (Čára řezu) --- */
+        .slash-fx {
+            position: absolute; height: 4px; background: #fff; z-index: 10;
+            box-shadow: 0 0 15px #fff, 0 0 30px #ef4444; transform-origin: left center;
+            pointer-events: none; opacity: 0;
+        }
+
+        /* Dekorační fleky v řezaných vrstvách pro lepší kontrast */
+        .slice::after {
+            content: ''; position: absolute; right: -50px; top: -50px; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls" id="controls"></div>
+
+    <div id="banner">
+        <div class="layer-behind" id="layer-behind">
+            <h2 class="behind-text" id="cta-text">TVÁ VÝHRA ČEKÁ</h2>
+            <div class="behind-cta">ZÍSKAT BONUS</div>
+        </div>
+
+        <div class="slash-fx" id="slash"></div>
+
+        <div class="slice" id="slice-top">
+            <div>
+                <div class="main-sub" id="t-sub">Extrémní zážitek</div>
+                <h1 class="main-headline" id="t-head">ROZSEKNI<br>NUDU.</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. PŘÍPRAVA HTML - Zduplikování hlavní vrstvy pro dokonalý řez
+        const banner = document.getElementById('banner');
+        const sliceTop = document.getElementById('slice-top');
+        const sliceBot = sliceTop.cloneNode(true); // Dokonalá kopie
+        sliceBot.id = 'slice-bot';
+        banner.insertBefore(sliceBot, document.getElementById('slash')); // Vložíme pod efekt řezu
+
+        const slash = document.getElementById('slash');
+        const layerBehind = document.getElementById('layer-behind');
+        const buttons = document.getElementById('controls');
+
+        // Texty ke změně podle variant
+        const topHead = sliceTop.querySelector('#t-head');
+        const topSub = sliceTop.querySelector('#t-sub');
+        const botHead = sliceBot.querySelector('#t-head');
+        const botSub = sliceBot.querySelector('#t-sub');
+        const ctaText = document.getElementById('cta-text');
+
+        let masterTl = gsap.timeline();
+
+        // 2. DATABÁZE ŘEZŮ (Geometrie a Copywriting)
+        const variants = [
+            { 
+                name: "1. Klasický Katana Sek", type: "diagonal", angle: -10, w: 1200, x: -50, y: 150,
+                cTop: "polygon(0 0, 100% 0, 100% 30%, 0 70%)", cBot: "polygon(0 70%, 100% 30%, 100% 100%, 0 100%)",
+                head: "ROZSEKNI<br>NUDU.", sub: "Extrémní zážitek", cta: "100 FREESPINŮ", color: "#fff", slashColor: "#fff"
+            },
+            { 
+                name: "2. Gilotina (Vertikál)", type: "vertical", angle: 90, w: 500, x: 485, y: -50,
+                cTop: "polygon(0 0, 50% 0, 50% 100%, 0 100%)", cBot: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)",
+                head: "PADÁ<br>JACKPOT.", sub: "Rychlý dopad", cta: "BER VŠECHNO", color: "#facc15", slashColor: "#ef4444"
+            },
+            { 
+                name: "3. Pomalý Odsun", type: "diagonal", angle: 15, w: 1200, x: -50, y: 50,
+                cTop: "polygon(0 0, 100% 0, 100% 70%, 0 30%)", cBot: "polygon(0 30%, 100% 70%, 100% 100%, 0 100%)",
+                head: "ODHAL<br>TAJEMSTVÍ.", sub: "Skrytá šance", cta: "MYSTERY BONUS", color: "#a855f7", slashColor: "#a855f7"
+            },
+            { 
+                name: "4. Zpětný Ráz", type: "diagonal", angle: -25, w: 1200, x: -50, y: 220,
+                cTop: "polygon(0 0, 100% 0, 100% -10%, 0 90%)", cBot: "polygon(0 90%, 100% -10%, 100% 100%, 0 100%)",
+                head: "TVRDÝ<br>NÁRAZ.", sub: "Cítíš tu sílu?", cta: "ZÍSKEJ 5000 KČ", color: "#22c55e", slashColor: "#22c55e"
+            },
+            { 
+                name: "5. Horizontální Split", type: "horizontal", angle: 0, w: 1000, x: 0, y: 125,
+                cTop: "polygon(0 0, 100% 0, 100% 50%, 0 50%)", cBot: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)",
+                head: "DVOJITÁ<br>VÝHRA.", sub: "Znásob to", cta: "100% MATCH", color: "#38bdf8", slashColor: "#38bdf8"
+            },
+            { 
+                name: "6. Zemětřesení", type: "diagonal", angle: -5, w: 1200, x: -50, y: 130,
+                cTop: "polygon(0 0, 100% 0, 100% 40%, 0 55%)", cBot: "polygon(0 55%, 100% 40%, 100% 100%, 0 100%)",
+                head: "TRESE SE<br>ZEMĚ.", sub: "Epic Drops", cta: "VSTUP DO HRY", color: "#f97316", slashColor: "#f97316"
+            },
+            { 
+                name: "7. Opona (Dveře)", type: "vertical", angle: 90, w: 500, x: 485, y: -50,
+                cTop: "polygon(0 0, 50% 0, 50% 100%, 0 100%)", cBot: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)",
+                head: "VSTUP<br>DO VIP.", sub: "Otevíráme", cta: "EXKLUZIVNÍ KLUB", color: "#d4af37", slashColor: "#d4af37"
+            },
+            { 
+                name: "8. 3D Zlom", type: "diagonal", angle: 10, w: 1200, x: -50, y: 80,
+                cTop: "polygon(0 0, 100% 0, 100% 60%, 0 40%)", cBot: "polygon(0 40%, 100% 60%, 100% 100%, 0 100%)",
+                head: "ROZBIJ<br>HRANICE.", sub: "Nová dimenze", cta: "VR CASINO", color: "#e879f9", slashColor: "#fff"
+            },
+            { 
+                name: "9. Slow-Mo Samurai", type: "diagonal", angle: -15, w: 1200, x: -50, y: 180,
+                cTop: "polygon(0 0, 100% 0, 100% 15%, 0 85%)", cBot: "polygon(0 85%, 100% 15%, 100% 100%, 0 100%)",
+                head: "ČAS SE<br>ZASTAVIL.", sub: "Dokonalý moment", cta: "HRAJ HNED", color: "#64748b", slashColor: "#fff"
+            },
+            { 
+                name: "10. Matrix Shard", type: "diagonal", angle: 35, w: 1400, x: -100, y: -50,
+                cTop: "polygon(0 0, 100% 0, 100% 100%, 0 0%)", cBot: "polygon(0 0, 100% 100%, 100% 100%, 0 100%)",
+                head: "SYSTEM<br>HACKED.", sub: "Neo je tady", cta: "VEM SI PILULKU", color: "#10b981", slashColor: "#10b981"
+            }
+        ];
+
+        // 3. VYGENEROVÁNÍ TLAČÍTEK
+        variants.forEach((v, i) => {
+            const btn = document.createElement('button');
+            btn.innerText = v.name.split(' ')[1] + (v.name.split(' ')[2] ? ' ' + v.name.split(' ')[2] : '');
+            btn.onclick = () => playSlash(i);
+            if(i === 0) btn.classList.add('active');
+            buttons.appendChild(btn);
+        });
+
+        // 4. HLAVNÍ FUNKCE PRO ANIMACI
+        function playSlash(index) {
+            // UI Update
+            document.querySelectorAll('.controls button').forEach((b, i) => b.classList.toggle('active', i === index));
+            
+            const v = variants[index];
+            
+            // Sync textů mezi vrstvami
+            topHead.innerHTML = v.head; botHead.innerHTML = v.head;
+            topSub.innerHTML = v.sub; botSub.innerHTML = v.sub;
+            ctaText.innerHTML = v.cta;
+
+            // Reset Timeline a pozic
+            masterTl.clear();
+            gsap.set([sliceTop, sliceBot, slash, layerBehind, topHead, botHead, topSub, botSub], {clearProps: "all"});
+            
+            // Aplikování masek a barev
+            gsap.set(sliceTop, { clipPath: v.cTop });
+            gsap.set(sliceBot, { clipPath: v.cBot });
+            gsap.set([topHead, botHead], { color: v.color });
+            gsap.set(slash, { width: v.w, x: v.x, y: v.y, rotation: v.angle, background: v.slashColor, boxShadow: `0 0 20px ${v.slashColor}, 0 0 40px ${v.slashColor}` });
+            
+            // Výchozí stav obsahu vzadu
+            gsap.set(layerBehind, { autoAlpha: 0, scale: 0.9 });
+
+            // --- ANIMACE DLE TYPU --- //
+
+            if(index === 0) {
+                // 1. Klasický Katana Sek (Rychlé rozdělení a mírný skluz)
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.2, scaleX: 1, ease: "power4.in" }) // Rychlý sek
+                        .to(slash, { duration: 0.2, opacity: 0, scaleY: 3, ease: "power2.out" }) // Vyhasnutí
+                        .to(sliceTop, { duration: 0.8, x: -20, y: -10, ease: "power3.out" }, "-=0.2")
+                        .to(sliceBot, { duration: 0.8, x: 20, y: 10, ease: "power3.out" }, "-=0.8")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1, ease: "back.out(1.5)" }, "-=0.6");
+            
+            } else if (index === 1) {
+                // 2. Gilotina (Padá dolů)
+                masterTl.set(slash, { scaleY: 0, opacity: 1, transformOrigin: "top center" })
+                        .to(slash, { duration: 0.3, scaleY: 1, ease: "bounce.out" })
+                        .to(slash, { duration: 0.2, opacity: 0 })
+                        .to(sliceTop, { duration: 1, x: -50, rotation: -5, ease: "power2.inOut" }, "-=0.3")
+                        .to(sliceBot, { duration: 0.8, y: 300, rotation: 10, ease: "power3.in" }, "-=1") // Pravá půlka spadne pryč
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1 }, "-=0.5");
+
+            } else if (index === 2) {
+                // 3. Pomalý Odsun (Velmi rozvláčné odhalení)
+                masterTl.set(slash, { scaleX: 0, opacity: 1, transformOrigin: "center" })
+                        .to(slash, { duration: 1, scaleX: 1, ease: "power2.inOut" })
+                        .to(slash, { duration: 0.5, opacity: 0 })
+                        .to(sliceTop, { duration: 1.5, y: -250, ease: "power3.inOut" }, "-=0.5") // Zmizí nahoru
+                        .to(sliceBot, { duration: 1.5, y: 250, ease: "power3.inOut" }, "-=1.5") // Zmizí dolů
+                        .to(layerBehind, { duration: 1, autoAlpha: 1, scale: 1, paddingLeft: 0, ease: "power2.out" }, "-=1");
+
+            } else if (index === 3) {
+                // 4. Zpětný Ráz (Odskočí, jako když sekne do kovu)
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.1, scaleX: 1 })
+                        .to(slash, { duration: 0.1, opacity: 0 })
+                        .to(sliceTop, { duration: 0.1, x: -30, y: -30 }) // Odskok
+                        .to(sliceBot, { duration: 0.1, x: 30, y: 30 }, "<")
+                        .to(sliceTop, { duration: 0.8, x: -10, y: -10, ease: "elastic.out(1, 0.3)" }) // Vrací se
+                        .to(sliceBot, { duration: 0.8, x: 10, y: 10, ease: "elastic.out(1, 0.3)" }, "<")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1 }, "-=0.8");
+
+            } else if (index === 4) {
+                // 5. Horizontální (Horní část uletí)
+                masterTl.set(slash, { scaleX: 0, opacity: 1, transformOrigin: "center" })
+                        .to(slash, { duration: 0.4, scaleX: 1, ease: "expo.out" })
+                        .to(slash, { duration: 0.3, opacity: 0, scaleY: 5 })
+                        .to(sliceTop, { duration: 1, y: -250, ease: "back.in(1.5)" }, "-=0.2")
+                        .to(sliceBot, { duration: 1, y: 10, ease: "power2.out" }, "-=1")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1 }, "-=0.5");
+
+            } else if (index === 5) {
+                // 6. Zemětřesení (Hodně shake efektu)
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.2, scaleX: 1, ease: "power4.in" })
+                        .to(slash, { duration: 0.2, opacity: 0 })
+                        .to([sliceTop, sliceBot], { duration: 0.5, x: "random(-15, 15)", y: "random(-15, 15)", repeat: 3, yoyo: true, ease: "rough" }, "-=0.2")
+                        .to(sliceTop, { duration: 0.5, x: -40, y: -20, ease: "power2.out" })
+                        .to(sliceBot, { duration: 0.5, x: 40, y: 20, ease: "power2.out" }, "<")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1 }, "-=0.5");
+
+            } else if (index === 6) {
+                // 7. Opona (Dveře se rozevřou)
+                masterTl.set(slash, { scaleY: 0, opacity: 1, width: 2, x: 485, y: -50, transformOrigin: "top" })
+                        .to(slash, { duration: 0.3, scaleY: 1 })
+                        .to(slash, { duration: 0.3, opacity: 0, scaleX: 10 })
+                        .to(sliceTop, { duration: 1.2, x: -500, ease: "power3.inOut" }, "-=0.3") // Celé doleva
+                        .to(sliceBot, { duration: 1.2, x: 500, ease: "power3.inOut" }, "-=1.2") // Celé doprava
+                        .to(layerBehind, { duration: 1, autoAlpha: 1, scale: 1, paddingLeft: 0, ease: "back.out(1)" }, "-=1");
+
+            } else if (index === 7) {
+                // 8. 3D Zlom (Rotace vrstev ven z obrazovky)
+                gsap.set(sliceTop, { transformOrigin: "left center" });
+                gsap.set(sliceBot, { transformOrigin: "right center" });
+                
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.3, scaleX: 1, ease: "expo.out" })
+                        .to(slash, { duration: 0.2, opacity: 0 })
+                        .to(sliceTop, { duration: 1, rotationY: -45, x: -20, ease: "power2.out" }, "-=0.2")
+                        .to(sliceBot, { duration: 1, rotationY: 45, x: 20, ease: "power2.out" }, "<")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1 }, "-=0.8");
+
+            } else if (index === 8) {
+                // 9. Slow-Mo Samurai (Bleskový sek, zásek, pomalý rozpad)
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.05, scaleX: 1 }) // Okamžitý sek
+                        .to(slash, { duration: 0.1, opacity: 0 }, "+=0.5") // Zpoždění vyhasnutí
+                        .to(sliceTop, { duration: 2, x: -30, y: -10, ease: "sine.out" }, "-=0.1") // Velmi pomalý pohyb
+                        .to(sliceBot, { duration: 2, x: 30, y: 10, ease: "sine.out" }, "<")
+                        .to(layerBehind, { duration: 1, autoAlpha: 1, scale: 1 }, "-=1.5");
+
+            } else if (index === 9) {
+                // 10. Matrix Shard (Extrémní rozlet do stran a rotace)
+                masterTl.set(slash, { scaleX: 0, opacity: 1 })
+                        .to(slash, { duration: 0.2, scaleX: 1, ease: "power4.in" })
+                        .to(slash, { duration: 0.2, opacity: 0 })
+                        .to(sliceTop, { duration: 1, x: -200, y: -100, rotation: -10, ease: "power3.in" }, "-=0.2")
+                        .to(sliceBot, { duration: 1, x: 200, y: 100, rotation: 10, ease: "power3.in" }, "<")
+                        .to(layerBehind, { duration: 0.5, autoAlpha: 1, scale: 1, paddingLeft: 0 }, "-=0.5");
+            }
+        }
+
+        // Init
+        playSlash(0);
+
+    </script>
+</body>
+</html>

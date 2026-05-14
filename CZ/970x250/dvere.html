@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doors Reveal Master Banner - 970x250</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0; padding: 20px; background: #121215;
+            font-family: 'Inter', sans-serif;
+            display: flex; flex-direction: column; align-items: center; color: #fff;
+        }
+
+        /* --- OVLÁDACÍ PANEL --- */
+        .controls {
+            width: 970px; display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 8px; margin-bottom: 20px;
+        }
+        .controls button {
+            padding: 10px; background: #1f1f27; color: #a1a1aa; border: 1px solid #3f3f46;
+            border-radius: 4px; cursor: pointer; font-weight: 800; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .controls button:hover, .controls button.active {
+            background: #10b981; color: #000; border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* --- BANNER KONTEJNER --- */
+        #banner {
+            width: 970px; height: 250px; position: relative; overflow: hidden;
+            background: #000; cursor: pointer; border: 1px solid #333;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            perspective: 1200px; /* Důležité pro 3D efekty dveří */
+        }
+
+        /* --- VZADNÍ VRSTVA (Co je za dveřmi) --- */
+        .layer-behind {
+            position: absolute; inset: 0; background: radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1; text-align: center;
+        }
+        .behind-head { font-family: 'Oswald', sans-serif; font-size: 65px; font-weight: 700; color: #34d399; line-height: 1; text-transform: uppercase; text-shadow: 0 0 30px rgba(52, 211, 153, 0.4); margin: 0;}
+        .behind-sub { font-size: 18px; color: #fff; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+        .cta-btn { padding: 12px 35px; background: #10b981; color: #000; font-weight: 900; font-size: 16px; text-transform: uppercase; border-radius: 4px; box-shadow: 0 5px 15px rgba(16,185,129,0.3); }
+
+        /* --- DVEŘNÍ PANELY (Přední vrstva) --- */
+        .door {
+            position: absolute; z-index: 10; background: #18181b;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; border: 1px solid #3f3f46; box-sizing: border-box;
+            background-image: repeating-linear-gradient(45deg, #18181b 0, #18181b 10px, #1e1e24 10px, #1e1e24 20px); /* Jemná textura */
+            will-change: transform;
+        }
+        
+        /* Centrální text na zavřených dveřích */
+        .door-content {
+            position: absolute; width: 970px; height: 250px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; color: #fff;
+            letter-spacing: 15px; text-transform: uppercase; pointer-events: none;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+
+        /* Dvě poloviny: Levá / Pravá */
+        #door-l { top: 0; left: 0; width: 50%; height: 100%; transform-origin: left center; }
+        #door-r { top: 0; right: 0; width: 50%; height: 100%; transform-origin: right center; }
+        #door-l .door-content { left: 0; }
+        #door-r .door-content { right: 0; }
+
+        /* Dvě poloviny: Horní / Dolní */
+        #door-t { top: 0; left: 0; width: 100%; height: 50%; transform-origin: top center; }
+        #door-b { bottom: 0; left: 0; width: 100%; height: 50%; transform-origin: bottom center; }
+        #door-t .door-content { top: 0; }
+        #door-b .door-content { bottom: 0; }
+
+        /* Celistvé dveře (pro speciální efekty) */
+        #door-full { top: 0; left: 0; width: 100%; height: 100%; transform-origin: center; }
+        
+        /* Zámek / Indikátor */
+        .lock-light {
+            position: absolute; width: 20px; height: 20px; background: #ef4444; border-radius: 50%;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 15;
+            box-shadow: 0 0 15px #ef4444; border: 3px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls" id="controls"></div>
+
+    <div id="banner">
+        <div class="layer-behind" id="behind">
+            <div class="behind-sub">Přístup povolen</div>
+            <div class="behind-head" id="cta-text">100 VOLNÝCH ZATOČENÍ</div>
+            <div class="cta-btn">ZÍSKAT BONUS</div>
+        </div>
+
+        <div class="door" id="door-l"><div class="door-content" id="t-l">ZAVŘENO</div></div>
+        <div class="door" id="door-r"><div class="door-content" id="t-r">ZAVŘENO</div></div>
+
+        <div class="door" id="door-t"><div class="door-content" id="t-t">ZAVŘENO</div></div>
+        <div class="door" id="door-b"><div class="door-content" id="t-b">ZAVŘENO</div></div>
+
+        <div class="door" id="door-full"><div class="door-content" id="t-f">ZAVŘENO</div></div>
+
+        <div class="lock-light" id="lock"></div>
+    </div>
+
+    <script>
+        // DOM Elementy
+        const behind = document.getElementById('behind');
+        const ctaText = document.getElementById('cta-text');
+        const lock = document.getElementById('lock');
+        const btnContainer = document.getElementById('controls');
+
+        const doors = {
+            l: document.getElementById('door-l'), r: document.getElementById('door-r'),
+            t: document.getElementById('door-t'), b: document.getElementById('door-b'),
+            f: document.getElementById('door-full')
+        };
+        const texts = {
+            l: document.getElementById('t-l'), r: document.getElementById('t-r'),
+            t: document.getElementById('t-t'), b: document.getElementById('t-b'),
+            f: document.getElementById('t-f')
+        };
+
+        let masterTl = gsap.timeline();
+
+        // DATABÁZE EFEKTŮ OTEVÍRÁNÍ
+        const variants = [
+            { name: "1. Výtah (Klasika)", type: "horizontal", text: "VÝTAH" },
+            { name: "2. 3D Dvoukřídlé", type: "horizontal-3d", text: "TREZOR" },
+            { name: "3. Garážová vrata", type: "vertical", text: "GARÁŽ" },
+            { name: "4. Scifi Portál", type: "clip-circle", text: "PORTÁL" },
+            { name: "5. Padací most (3D)", type: "bridge-3d", text: "ZÁMEK" },
+            { name: "6. Roleta (Nahoru)", type: "roll-up", text: "ROLETA" },
+            { name: "7. Těžké bankovní", type: "horizontal-heavy", text: "BANKA" },
+            { name: "8. Matrix Flip (3D)", type: "flip-3d", text: "MATRIX" },
+            { name: "9. Vertikální Opona", type: "vertical-bounce", text: "OPONA" },
+            { name: "10. Diagonální Zlom", type: "clip-diag", text: "SYSTEM" }
+        ];
+
+        // Vygenerování ovládacích tlačítek
+        variants.forEach((v, i) => {
+            const btn = document.createElement('button');
+            btn.innerText = v.name;
+            btn.onclick = () => openDoors(i);
+            if(i === 0) btn.classList.add('active');
+            btnContainer.appendChild(btn);
+        });
+
+        // HLAVNÍ FUNKCE
+        function openDoors(index) {
+            // UI Update
+            document.querySelectorAll('.controls button').forEach((b, i) => b.classList.toggle('active', i === index));
+            const v = variants[index];
+
+            // Reset všech dveří a animací
+            masterTl.clear();
+            gsap.killTweensOf("*");
+            gsap.set([doors.l, doors.r, doors.t, doors.b, doors.f, behind, lock], {clearProps: "all"});
+            
+            // Text Update
+            Object.values(texts).forEach(t => t.innerText = v.text);
+
+            // Výchozí stav: Schovat všechny dveře, pak ukážeme jen ty potřebné
+            gsap.set([doors.l, doors.r, doors.t, doors.b, doors.f], { display: "none", autoAlpha: 1 });
+            gsap.set(behind, { autoAlpha: 0, scale: 0.9 });
+            gsap.set(lock, { background: "#ef4444", boxShadow: "0 0 15px #ef4444", scale: 1 }); // Červené zamčeno
+
+            // SPOLEČNÝ ÚVOD (Světlo zezelená)
+            masterTl.to(lock, { duration: 0.2, background: "#10b981", boxShadow: "0 0 20px #10b981", delay: 0.2 })
+                    .to(lock, { duration: 0.3, scale: 0, ease: "back.in(2)" }, "+=0.2"); // Zmizí zámek
+
+            // --- JEDNOTLIVÉ ANIMACE OTEVÍRÁNÍ --- //
+
+            if (v.type === "horizontal") {
+                // 1. Výtah (Odjedou do stran)
+                gsap.set([doors.l, doors.r], { display: "flex" });
+                masterTl.to(doors.l, { duration: 1, x: "-100%", ease: "power3.inOut" }, "open")
+                        .to(doors.r, { duration: 1, x: "100%", ease: "power3.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1, ease: "power2.out" }, "open+=0.3");
+
+            } else if (v.type === "horizontal-3d") {
+                // 2. 3D Dvoukřídlé dveře (Jako u saloonu nebo velké vily)
+                gsap.set([doors.l, doors.r], { display: "flex" });
+                masterTl.to(doors.l, { duration: 1.5, rotationY: -110, ease: "power2.inOut" }, "open")
+                        .to(doors.r, { duration: 1.5, rotationY: 110, ease: "power2.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1, ease: "power2.out" }, "open+=0.5");
+
+            } else if (v.type === "vertical") {
+                // 3. Garáž (Nahoru a dolů)
+                gsap.set([doors.t, doors.b], { display: "flex" });
+                masterTl.to(doors.t, { duration: 1.2, y: "-100%", ease: "power3.inOut" }, "open")
+                        .to(doors.b, { duration: 1.2, y: "100%", ease: "power3.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1, ease: "power2.out" }, "open+=0.4");
+
+            } else if (v.type === "clip-circle") {
+                // 4. Scifi Portál (Kruhová maska se rozšiřuje ze středu)
+                gsap.set(doors.f, { display: "flex", clipPath: "circle(100% at 50% 50%)" });
+                masterTl.to(doors.f, { duration: 1.5, clipPath: "circle(0% at 50% 50%)", ease: "expo.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1 }, "open+=0.5");
+
+            } else if (v.type === "bridge-3d") {
+                // 5. Padací most (Celý předek spadne dopředu dolů)
+                gsap.set(doors.f, { display: "flex", transformOrigin: "bottom center" });
+                masterTl.to(doors.f, { duration: 1.5, rotationX: -90, autoAlpha: 0, ease: "bounce.out" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1 }, "open");
+
+            } else if (v.type === "roll-up") {
+                // 6. Roleta (Sroluje se nahoru)
+                gsap.set(doors.f, { display: "flex", transformOrigin: "top center" });
+                masterTl.to(doors.f, { duration: 1.5, scaleY: 0, ease: "power4.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1 }, "open+=0.5");
+
+            } else if (v.type === "horizontal-heavy") {
+                // 7. Těžké bankovní dveře (Otevírají se pomalu s otřesy)
+                gsap.set([doors.l, doors.r], { display: "flex" });
+                masterTl.to([doors.l, doors.r], { duration: 0.5, x: (i) => i === 0 ? "-5%" : "5%", ease: "rough" }, "open") // Zásek/Otřes
+                        .to(doors.l, { duration: 2, x: "-100%", ease: "power1.inOut" }, "open+=0.5")
+                        .to(doors.r, { duration: 2, x: "100%", ease: "power1.inOut" }, "open+=0.5")
+                        .to(behind, { duration: 1.5, autoAlpha: 1, scale: 1 }, "open+=1");
+
+            } else if (v.type === "flip-3d") {
+                // 8. Matrix Flip (Zatočí se kolem středové osy a zmizí)
+                gsap.set(doors.f, { display: "flex" });
+                masterTl.to(doors.f, { duration: 1.2, rotationX: 90, scale: 1.5, autoAlpha: 0, ease: "power3.in" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1, ease: "back.out(1.5)" }, "open+=0.6");
+
+            } else if (v.type === "vertical-bounce") {
+                // 9. Opona (Nahoru a dolů s pružným dojezdem)
+                gsap.set([doors.t, doors.b], { display: "flex" });
+                masterTl.to(doors.t, { duration: 1.5, y: "-100%", ease: "elastic.in(1, 0.7)" }, "open")
+                        .to(doors.b, { duration: 1.5, y: "100%", ease: "elastic.in(1, 0.7)" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1 }, "open+=0.8");
+
+            } else if (v.type === "clip-diag") {
+                // 10. Diagonální Zlom (Rozevře se jako šikmé scifi dveře)
+                gsap.set(doors.f, { display: "flex", clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" });
+                // Animujeme clip path od středu šikmo ven
+                masterTl.to(doors.f, { duration: 1.5, clipPath: "polygon(0 0, 0 0, 100% 100%, 100% 100%)", ease: "power4.inOut" }, "open")
+                        .to(behind, { duration: 1, autoAlpha: 1, scale: 1, ease: "power2.out" }, "open+=0.5");
+            }
+        }
+
+        // Spustit výchozí variantu
+        openDoors(0);
+
+    </script>
+</body>
+</html>

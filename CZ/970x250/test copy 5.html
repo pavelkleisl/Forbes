@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10x Ultimate Casino Concepts - 970x250</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0; padding: 20px; background: #0a0a0f;
+            font-family: 'Montserrat', sans-serif;
+            display: flex; flex-direction: column; align-items: center; color: #fff;
+        }
+
+        /* --- OVLÁDACÍ PANEL --- */
+        .controls {
+            width: 970px; display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 8px; margin-bottom: 20px;
+        }
+        .controls button {
+            padding: 10px; background: #1a1a24; color: #888; border: 1px solid #333;
+            border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .controls button:hover, .controls button.active {
+            background: #fff; color: #000; border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        /* --- BANNER KONTEJNER --- */
+        #banner {
+            width: 970px; height: 250px; position: relative; overflow: hidden;
+            background: #050505; cursor: pointer; border: 1px solid #222;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); perspective: 1000px;
+        }
+
+        /* --- UNIVERZÁLNÍ ELEMENTY (Zobrazují se dynamicky) --- */
+        .bg-layer { position: absolute; inset: -10%; z-index: 1; background-size: cover; background-position: center; }
+        
+        .main-content {
+            position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+
+        .headline { font-family: 'Anton', sans-serif; font-size: 70px; margin: 0; line-height: 1; letter-spacing: 2px; text-transform: uppercase; }
+        .subheadline { font-size: 22px; font-weight: 700; margin-top: 5px; color: #facc15; letter-spacing: 4px; text-transform: uppercase; }
+        
+        .cta-btn {
+            margin-top: 20px; padding: 12px 30px; background: #ef4444; color: #fff;
+            border: none; border-radius: 4px; font-weight: 900; font-size: 16px;
+            text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 5px 20px rgba(239,68,68,0.5);
+            pointer-events: none;
+        }
+
+        /* --- SPECIFICKÉ REKVIZITY (Props) --- */
+        /* Jackpot Odometer */
+        .odometer { font-family: 'Anton', sans-serif; font-size: 90px; color: #facc15; text-shadow: 0 0 30px rgba(250,204,21,0.5); display: none; }
+        
+        /* 3D Karty */
+        .cards-container { position: absolute; inset: 0; z-index: 5; display: none; align-items: center; justify-content: center; gap: 20px; transform-style: preserve-3d; }
+        .card { width: 100px; height: 140px; background: #fff; border-radius: 10px; border: 5px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; font-size: 60px; backface-visibility: hidden; }
+        .card-back { background: repeating-linear-gradient(45deg, #b91c1c, #b91c1c 10px, #991b1b 10px, #991b1b 20px); position: absolute; inset: 0; border-radius: 5px; backface-visibility: hidden; transform: rotateY(180deg); }
+
+        /* Laser Scanner */
+        .laser-beam { position: absolute; top: 0; left: -20px; width: 10px; height: 100%; background: #06b6d4; box-shadow: 0 0 30px 10px #06b6d4; z-index: 20; display: none; }
+        
+        /* Plovoucí žetony pro explozi */
+        .chips-container { position: absolute; inset: 0; z-index: 8; display: none; pointer-events: none; }
+        .chip { position: absolute; font-size: 40px; }
+
+        /* Zlatý odlesk (Shine) */
+        .gold-shine {
+            background: linear-gradient(90deg, #d4af37 0%, #fff 50%, #d4af37 100%);
+            background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="controls" id="controls"></div>
+
+    <div id="banner">
+        <div class="bg-layer" id="bg"></div>
+        
+        <div class="laser-beam" id="laser"></div>
+        <div class="odometer" id="jackpot-counter">0 Kč</div>
+        
+        <div class="cards-container" id="cards-stage">
+            <div class="card"><div class="card-back"></div>♠️</div>
+            <div class="card"><div class="card-back"></div>♥️</div>
+            <div class="card"><div class="card-back"></div>♣️</div>
+        </div>
+
+        <div class="chips-container" id="chips-stage">
+            </div>
+
+        <div class="main-content" id="content-stage">
+            <div class="headline" id="head">NADPIS</div>
+            <div class="subheadline" id="sub">PODTITULEK</div>
+            <button class="cta-btn" id="cta">HRÁT NYNÍ</button>
+        </div>
+    </div>
+
+    <script>
+        // DOM
+        const els = {
+            bg: document.getElementById('bg'),
+            content: document.getElementById('content-stage'),
+            head: document.getElementById('head'),
+            sub: document.getElementById('sub'),
+            cta: document.getElementById('cta'),
+            odometer: document.getElementById('jackpot-counter'),
+            cards: document.getElementById('cards-stage'),
+            cardItems: document.querySelectorAll('.card'),
+            laser: document.getElementById('laser'),
+            chips: document.getElementById('chips-stage'),
+            banner: document.getElementById('banner')
+        };
+
+        // Generování žetonů pro explozi
+        for(let i=0; i<30; i++) {
+            let chip = document.createElement('div');
+            chip.className = 'chip';
+            chip.innerText = ['🪙','🎰','💎','💸'][Math.floor(Math.random()*4)];
+            els.chips.appendChild(chip);
+        }
+        const chipItems = document.querySelectorAll('.chip');
+
+        let masterTl = gsap.timeline();
+
+        // 10 ZCELA ODLIŠNÝCH SCÉNÁŘŮ
+        const scenarios = [
+            { name: "1. Jackpot Odometer", action: runJackpot },
+            { name: "2. Neon Glitch", action: runGlitch },
+            { name: "3. 3D Rozdání karet", action: runCards },
+            { name: "4. Laser Scanner", action: runLaser },
+            { name: "5. Zlatý Odlesk", action: runGoldShine },
+            { name: "6. Exploze žetonů", action: runChipsExplosion },
+            { name: "7. Tlukot Srdce", action: runHeartbeat },
+            { name: "8. Pátračka (Spotlight)", action: runSpotlight },
+            { name: "9. Slot Machine Drop", action: runSlotDrop },
+            { name: "10. Matrix Kód", action: runMatrix }
+        ];
+
+        // Tlačítka
+        const btnContainer = document.getElementById('controls');
+        scenarios.forEach((s, i) => {
+            const btn = document.createElement('button');
+            btn.innerText = s.name;
+            btn.onclick = () => {
+                document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                resetScene();
+                s.action(); // Spustí specifickou funkci
+            };
+            if(i===0) btn.classList.add('active');
+            btnContainer.appendChild(btn);
+        });
+
+        // Očištění scény před každou animací
+        function resetScene() {
+            masterTl.clear();
+            gsap.killTweensOf("*");
+            gsap.set(Object.values(els), {clearProps: "all"});
+            gsap.set(chipItems, {clearProps: "all"});
+            gsap.set(els.cardItems, {clearProps: "all"});
+            
+            // Skryjeme rekvizity
+            gsap.set([els.odometer, els.cards, els.laser, els.chips], {display: "none"});
+            
+            // Reset textů a stylů
+            els.head.className = "headline";
+            els.head.style.color = "#fff";
+            els.sub.style.color = "#facc15";
+            els.bg.style.background = "#050505";
+        }
+
+        // --- SPECIFICKÉ ANIMACE PRO KAŽDÝ SCÉNÁŘ ---
+
+        // 1. ODOMETER (Rychlé načítání čísel do obří částky)
+        function runJackpot() {
+            gsap.set(els.content, { y: 60 });
+            gsap.set(els.odometer, { display: "block", y: -20 });
+            els.head.innerText = "MEGA JACKPOT";
+            els.sub.innerText = "Může být tvůj";
+            
+            let obj = { val: 0 };
+            masterTl.to(obj, { 
+                val: 5432000, duration: 2.5, ease: "power4.out",
+                onUpdate: () => els.odometer.innerText = Math.floor(obj.val).toLocaleString('cs-CZ') + " Kč"
+            })
+            .from([els.head, els.sub], { duration: 1, autoAlpha: 0, y: 100, stagger: 0.2, ease: "back.out(1.5)" }, "-=1.5")
+            .from(els.cta, { duration: 0.5, scale: 0, ease: "back.out(2)" }, "-=0.5");
+        }
+
+        // 2. NEON GLITCH (Cyberpunk, rozpad textu, RGB split)
+        function runGlitch() {
+            els.head.innerText = "SYSTEM ERROR";
+            els.sub.innerText = "Bonus odemčen";
+            els.bg.style.background = "#020617";
+            els.head.style.textShadow = "3px 0 0 #f00, -3px 0 0 #0ff"; // RGB split simulace
+
+            masterTl.from(els.head, { duration: 0.1, opacity: 0, x: -10, skewX: 20, repeat: 5, yoyo: true })
+                    .from(els.sub, { duration: 0.1, opacity: 0, x: 10, skewX: -20, repeat: 4, yoyo: true }, "+=0.2")
+                    .to(els.bg, { backgroundColor: "#1e1b4b", duration: 0.1, repeat: 3, yoyo: true })
+                    .from(els.cta, { duration: 0.5, autoAlpha: 0, scale: 2, ease: "power2.out" });
+        }
+
+        // 3. KARTY (Letí do 3D prostoru, otočí se na záda a pak na líc)
+        function runCards() {
+            gsap.set(els.cards, { display: "flex" });
+            gsap.set(els.content, { autoAlpha: 0, scale: 1.5 }); // Text schovaný
+            els.head.innerText = "ROYAL FLUSH";
+            els.sub.innerText = "Královská výhra";
+
+            // Karty otočené zády
+            gsap.set(els.cardItems, { rotationY: 180, z: -500, autoAlpha: 0 });
+
+            masterTl.to(els.cardItems, { duration: 1, z: 0, autoAlpha: 1, stagger: 0.2, ease: "back.out(1.5)" })
+                    .to(els.cardItems, { duration: 0.8, rotationY: 0, stagger: 0.2, ease: "power3.inOut" }) // Flip
+                    .to(els.cardItems, { duration: 0.8, y: -200, autoAlpha: 0, stagger: 0.1, ease: "power2.in" }, "+=0.5") // Odletí nahoru
+                    .to(els.content, { duration: 1, autoAlpha: 1, scale: 1, ease: "elastic.out(1, 0.5)" }, "-=0.5");
+        }
+
+        // 4. LASER SCANNER (Překreslení tmy do neonu pomocí ořezu)
+        function runLaser() {
+            els.head.innerText = "SKENOVÁNÍ VÝHRY";
+            els.sub.innerText = "Nalezen 100% Match";
+            els.head.style.color = "#06b6d4";
+            gsap.set(els.laser, { display: "block", x: 0 });
+            
+            // Text je na začátku neviditelný díky clip-path (ukrytý vlevo)
+            gsap.set(els.content, { clipPath: "inset(0 100% 0 0)" });
+
+            masterTl.to(els.laser, { duration: 2, x: 970, ease: "power1.inOut" })
+                    .to(els.content, { duration: 2, clipPath: "inset(0 0% 0 0)", ease: "power1.inOut" }, "<")
+                    .to(els.laser, { duration: 0.3, autoAlpha: 0 });
+        }
+
+        // 5. ZLATÝ ODLESK (Velmi pomalé, VIP, luxusní)
+        function runGoldShine() {
+            els.head.innerText = "VIP EXCLUSIVE";
+            els.sub.innerText = "Vstupenka do lepší společnosti";
+            els.head.classList.add('gold-shine');
+            els.bg.style.background = "radial-gradient(circle, #1a1a1a 0%, #000 100%)";
+            
+            gsap.set(els.head, { backgroundPosition: "200% center" });
+
+            masterTl.from([els.head, els.sub], { duration: 2, autoAlpha: 0, y: 20, stagger: 0.5, ease: "power2.out" })
+                    .to(els.head, { duration: 3, backgroundPosition: "-200% center", ease: "none", repeat: -1 }) // Nekonečný odlesk
+                    .from(els.cta, { duration: 1.5, autoAlpha: 0, background: "#d4af37", color: "#000" }, "-=2");
+        }
+
+        // 6. EXPLOZE ŽETONŮ (Gejzír směrem do kamery)
+        function runChipsExplosion() {
+            els.head.innerText = "CHIP RAIN";
+            els.sub.innerText = "Peníze padají z nebe";
+            gsap.set(els.chips, { display: "block" });
+            
+            // Žetony ve středu
+            gsap.set(chipItems, { x: 485, y: 125, scale: 0, autoAlpha: 1 });
+
+            masterTl.to(chipItems, { 
+                duration: 1.5, scale: "random(0.5, 2)",
+                x: () => gsap.utils.random(-200, 1100), 
+                y: () => gsap.utils.random(-200, 400),
+                rotation: "random(-360, 360)", autoAlpha: 0,
+                ease: "power3.out", stagger: { amount: 0.5, from: "center" }
+            })
+            .from([els.head, els.sub, els.cta], { duration: 1, scale: 0.5, autoAlpha: 0, stagger: 0.2, ease: "back.out(2)" }, "-=1");
+        }
+
+        // 7. TLUKOT SRDCE (Adrenalin, zoomování, pulzování červené)
+        function runHeartbeat() {
+            els.head.innerText = "CÍTÍŠ TO?";
+            els.sub.innerText = "Hra právě začíná";
+            gsap.set(els.bg, { background: "radial-gradient(circle, #991b1b 0%, #000 80%)" });
+
+            masterTl.from(els.content, { duration: 0.2, scale: 0.8, autoAlpha: 0 })
+                    // Tep 1
+                    .to(els.bg, { duration: 0.1, scale: 1.1, background: "radial-gradient(circle, #ef4444 0%, #000 90%)" })
+                    .to(els.content, { duration: 0.1, scale: 1.05 }, "<")
+                    .to(els.bg, { duration: 0.3, scale: 1, background: "radial-gradient(circle, #991b1b 0%, #000 80%)" })
+                    .to(els.content, { duration: 0.3, scale: 1 }, "<")
+                    // Tep 2 (Rychlejší)
+                    .to(els.bg, { duration: 0.1, scale: 1.2, background: "radial-gradient(circle, #ef4444 0%, #000 90%)", delay: 0.2 })
+                    .to(els.content, { duration: 0.1, scale: 1.1 }, "<")
+                    .to(els.bg, { duration: 0.5, scale: 1, background: "radial-gradient(circle, #500 0%, #000 100%)" })
+                    .to(els.content, { duration: 0.5, scale: 1 }, "<")
+                    .from(els.cta, { duration: 0.5, autoAlpha: 0, y: 20 });
+        }
+
+        // 8. PÁTRAČKA (Kruhové světlo hledá po obrazovce)
+        function runSpotlight() {
+            els.head.innerText = "HLEDÁME VÍTĚZE";
+            els.sub.innerText = "Jsi to ty?";
+            
+            // Malý kroužek
+            gsap.set(els.content, { clipPath: "circle(5% at 10% 50%)" });
+
+            masterTl.to(els.content, { duration: 1, clipPath: "circle(8% at 80% 20%)", ease: "sine.inOut" })
+                    .to(els.content, { duration: 1, clipPath: "circle(8% at 30% 80%)", ease: "sine.inOut" })
+                    .to(els.content, { duration: 1, clipPath: "circle(10% at 50% 50%)", ease: "sine.inOut" })
+                    .to(els.content, { duration: 1.5, clipPath: "circle(150% at 50% 50%)", ease: "power4.inOut" }); // Rozsvícení
+        }
+
+        // 9. SLOT MACHINE DROP (Těžké dopady zvrchu jako válce automatu)
+        function runSlotDrop() {
+            els.head.innerText = "🎰 7 7 7 🎰";
+            els.sub.innerText = "Trefil jsi linii";
+            
+            gsap.set(els.head, { y: -300 });
+            gsap.set(els.sub, { y: -300 });
+            gsap.set(els.cta, { y: -300 });
+
+            masterTl.to(els.head, { duration: 0.8, y: 0, ease: "bounce.out" })
+                    .to(els.sub, { duration: 0.8, y: 0, ease: "bounce.out" }, "-=0.6")
+                    .to(els.cta, { duration: 0.8, y: 0, ease: "bounce.out" }, "-=0.6")
+                    // Otřes celého banneru po dopadu
+                    .to(els.banner, { duration: 0.1, y: 5, repeat: 3, yoyo: true }, "-=0.2");
+        }
+
+        // 10. MATRIX KÓD (Text padá zeshora a mění se)
+        function runMatrix() {
+            els.head.innerText = "01100010 01101111"; // Binární
+            els.sub.innerText = "Dekódování...";
+            els.bg.style.background = "#022c22";
+            els.head.style.color = "#10b981";
+            els.sub.style.color = "#34d399";
+            els.cta.style.background = "#10b981";
+            els.cta.style.color = "#000";
+
+            // Simluace dekódování textu
+            masterTl.from(els.head, { duration: 1, autoAlpha: 0, y: -50, ease: "power2.out" })
+                    .to(els.head, { duration: 0.1, textContent: "10010111 0011", repeat: 5 })
+                    .to(els.head, { duration: 0.1, textContent: "VOLNÁ ZATOČENÍ" }) // Rozluštění
+                    .to(els.sub, { duration: 0.1, textContent: "Hacknuto úspěšně" })
+                    .from(els.cta, { duration: 0.5, autoAlpha: 0, scale: 0 });
+        }
+
+        // Init
+        runJackpot();
+
+    </script>
+</body>
+</html>

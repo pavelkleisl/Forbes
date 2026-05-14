@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Casino Banner 970×250 – Brand Colors</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --gold:   #f5b30c;
+  --blue:   #2145a5;
+  --blue2:  #1a3584;
+  --grey:   #dbdbdb;
+  --white:  #ffffff;
+  --dark:   #0d1c45;
+}
+
+body {
+  background: #111827;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px;
+  gap: 20px;
+  min-height: 100vh;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ─ SWITCHER ─ */
+.sw { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
+.sw button {
+  padding: 8px 16px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.4);
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: .8px; cursor: pointer;
+  border-radius: 3px; transition: all .18s;
+}
+.sw button:hover { color:#fff; border-color:rgba(255,255,255,0.3); }
+.sw button.on { background:#f5b30c; color:#0d1c45; border-color:#f5b30c; font-weight:700; }
+
+/* ─ WRAP ─ */
+#wrap {
+  width: 970px; height: 250px;
+  position: relative; overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+
+.bn {
+  position: absolute; inset: 0;
+  width: 970px; height: 250px;
+  overflow: hidden; display: none;
+}
+.bn.on { display: block; }
+
+/* ─ FRAME (slide) system ─ */
+.frame {
+  position: absolute; inset: 0;
+  opacity: 0; pointer-events: none;
+}
+.frame.f-active { pointer-events: auto; }
+
+/* progress dots */
+.dots {
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 6px;
+  z-index: 20;
+}
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: background .3s;
+}
+.dot.on { background: var(--gold); }
+
+/* ════════════════════════════════════
+   B1 – UVÍTACÍ BONUS  (modrá na bílé)
+   bg: bílá, levý panel modrý
+════════════════════════════════════ */
+#b1 { background: var(--white); }
+
+#b1 .side {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 420px;
+  background: var(--blue);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+#b1 .side-pattern {
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 420px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+    transparent 1px, transparent 12px
+  );
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+
+#b1 .logo {
+  position: absolute;
+  top: 22px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--gold); letter-spacing: 3px;
+  text-transform: uppercase;
+}
+#b1 .step-label {
+  position: absolute;
+  top: 20px; left: 30px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+/* Frame 1 */
+#b1 #f1-1 .headline {
+  position: absolute;
+  top: 48px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 62px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b1 #f1-1 .headline em {
+  font-style: normal; color: var(--gold);
+}
+#b1 #f1-1 .sub {
+  position: absolute;
+  bottom: 36px; left: 30px;
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: .5px;
+}
+/* Right side f1 */
+#b1 #f1-1 .right-content {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 530px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px;
+  padding-right: 40px;
+}
+#b1 #f1-1 .bonus-tag {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--blue);
+}
+#b1 #f1-1 .bonus-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px; font-weight: 900; line-height: 1;
+  color: var(--blue);
+}
+#b1 #f1-1 .bonus-desc {
+  font-size: 13px; color: #666;
+  text-align: center;
+}
+
+/* Frame 2 */
+#b1 #f1-2 .headline {
+  position: absolute;
+  top: 46px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 54px; font-weight: 900; line-height: 1.05;
+  color: var(--white);
+}
+#b1 #f1-2 .steps {
+  position: absolute;
+  right: 40px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 14px;
+}
+#b1 #f1-2 .step {
+  display: flex; align-items: center; gap: 12px;
+}
+#b1 #f1-2 .step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gold);
+  color: var(--dark); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#b1 #f1-2 .step-txt {
+  font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75);
+  line-height: 1.3;
+}
+#b1 #f1-2 .step-txt strong { color: #fff; }
+
+/* Frame 3 */
+#b1 #f1-3 .headline {
+  position: absolute;
+  top: 50px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 56px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b1 #f1-3 .headline em { font-style:normal; color: var(--gold); }
+#b1 #f1-3 .sub {
+  position: absolute;
+  bottom: 50px; left: 30px;
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+}
+#b1 #f1-3 .right-final {
+  position: absolute;
+  right: 40px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b1 #f1-3 .right-final .big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px; font-weight: 900;
+  color: var(--blue); line-height: 1;
+}
+#b1 #f1-3 .right-final .small {
+  font-size: 12px; color: #777; margin-bottom: 14px;
+  display: block;
+}
+#b1 .cta {
+  position: absolute;
+  bottom: 28px; right: 40px;
+  padding: 12px 32px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 1px; cursor: pointer;
+  border: none; border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(245,179,12,0.35);
+}
+
+/* ════════════════════════════════════
+   B2 – FREE SPINY (tmavě modrá)
+════════════════════════════════════ */
+#b2 { background: var(--dark); }
+
+#b2 .bg-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(245,179,12,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+#b2 .accent-line {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--blue));
+}
+#b2 .accent-line-b {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--blue));
+}
+
+/* Frame 1 */
+#b2 #f2-1 .eyebrow {
+  position: absolute;
+  top: 30px; left: 50px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+}
+#b2 #f2-1 .headline {
+  position: absolute;
+  top: 50px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b2 #f2-1 .headline em { font-style:normal; color: var(--gold); }
+#b2 #f2-1 .sub {
+  position: absolute;
+  bottom: 34px; left: 50px;
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.4); letter-spacing: .5px;
+}
+#b2 #f2-1 .coin-wrap {
+  position: absolute;
+  right: 60px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b2 #f2-1 .coin-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 96px; font-weight: 900; line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(245,179,12,0.4);
+}
+#b2 #f2-1 .coin-lbl {
+  font-size: 13px; font-weight: 600; letter-spacing: 3px;
+  color: rgba(255,255,255,0.5); text-transform: uppercase;
+}
+
+/* Frame 2 */
+#b2 #f2-2 .headline {
+  position: absolute;
+  top: 36px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 46px; font-weight: 900; line-height: 1.05;
+  color: var(--white);
+}
+#b2 #f2-2 .headline em { font-style:normal; color: var(--gold); }
+#b2 #f2-2 .games {
+  position: absolute;
+  bottom: 34px; left: 50px;
+  display: flex; gap: 10px;
+}
+#b2 #f2-2 .game-pill {
+  padding: 7px 16px;
+  background: rgba(33,69,165,0.5);
+  border: 1px solid rgba(33,69,165,0.8);
+  border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--white); letter-spacing: 1px;
+}
+#b2 #f2-2 .game-pill.highlight {
+  background: var(--gold); color: var(--dark);
+  border-color: var(--gold);
+}
+#b2 #f2-2 .right-img {
+  position: absolute;
+  right: 50px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b2 #f2-2 .slot-mock {
+  display: flex; gap: 5px;
+}
+#b2 #f2-2 .reel {
+  width: 60px; height: 80px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,179,12,0.3);
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+}
+
+/* Frame 3 */
+#b2 #f2-3 .headline {
+  position: absolute;
+  top: 48px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 60px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b2 #f2-3 .headline em { font-style:normal; color: var(--gold); }
+#b2 #f2-3 .sub {
+  position: absolute;
+  bottom: 50px; left: 50px;
+  font-size: 12px; color: rgba(255,255,255,0.4);
+}
+#b2 .cta {
+  position: absolute;
+  bottom: 28px; right: 50px;
+  padding: 13px 34px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700;
+  letter-spacing: 1px; cursor: pointer;
+  border: none; border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════
+   B3 – LIVE CASINO  (bílé bg, modrý right panel)
+════════════════════════════════════ */
+#b3 { background: var(--grey); }
+
+#b3 .right-panel {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 400px;
+  background: var(--blue);
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+#b3 .right-pattern {
+  position: absolute;
+  right: 0; top: 0; bottom: 0; width: 400px;
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px,
+    transparent 1px, transparent 10px
+  );
+}
+
+#b3 .live-badge {
+  position: absolute;
+  top: 22px; left: 30px;
+  display: flex; align-items: center; gap: 7px;
+  background: #e8000d;
+  padding: 4px 12px; border-radius: 2px;
+}
+#b3 .live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #fff; animation: livePulse .8s ease-in-out infinite alternate;
+}
+@keyframes livePulse { from{opacity:1} to{opacity:.3} }
+#b3 .live-txt {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  color: #fff; text-transform: uppercase;
+}
+
+/* Frame 1 */
+#b3 #f3-1 .headline {
+  position: absolute;
+  top: 56px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 66px; font-weight: 900; line-height: 1;
+  color: var(--dark);
+}
+#b3 #f3-1 .headline em { font-style:normal; color: var(--blue); }
+#b3 #f3-1 .sub {
+  position: absolute;
+  bottom: 36px; left: 30px;
+  font-size: 13px; color: #555; font-weight: 300;
+}
+#b3 #f3-1 .right-txt {
+  position: absolute;
+  right: 30px; top: 50%; transform: translateY(-50%);
+  text-align: center; width: 280px;
+}
+#b3 #f3-1 .right-txt .big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 46px; font-weight: 900; line-height: 1;
+  color: var(--gold);
+}
+#b3 #f3-1 .right-txt .med {
+  font-size: 14px; font-weight: 400;
+  color: rgba(255,255,255,0.75); margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Frame 2 */
+#b3 #f3-2 .headline {
+  position: absolute;
+  top: 52px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px; font-weight: 900; line-height: 1.05;
+  color: var(--dark);
+}
+#b3 #f3-2 .headline em { font-style:normal; color: var(--blue); }
+#b3 #f3-2 .features {
+  position: absolute;
+  bottom: 34px; left: 30px;
+  display: flex; gap: 6px; flex-wrap: wrap; max-width: 450px;
+}
+#b3 #f3-2 .feat {
+  padding: 5px 12px;
+  background: var(--white);
+  border: 1px solid var(--grey);
+  border-radius: 2px;
+  font-size: 11px; font-weight: 600;
+  color: var(--blue); letter-spacing: .5px;
+}
+#b3 #f3-2 .right-dealers {
+  position: absolute;
+  right: 30px; top: 50%; transform: translateY(-50%);
+  text-align: center; width: 260px;
+}
+#b3 #f3-2 .dealer-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 64px; font-weight: 900; line-height: 1;
+  color: var(--gold);
+}
+#b3 #f3-2 .dealer-lbl {
+  font-size: 12px; color: rgba(255,255,255,0.55);
+  letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* Frame 3 */
+#b3 #f3-3 .headline {
+  position: absolute;
+  top: 52px; left: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 58px; font-weight: 900; line-height: 1;
+  color: var(--dark);
+}
+#b3 #f3-3 .sub {
+  position: absolute;
+  bottom: 46px; left: 30px;
+  font-size: 12px; color: #555;
+}
+#b3 #f3-3 .right-cta-area {
+  position: absolute;
+  right: 30px; top: 50%; transform: translateY(-50%);
+  text-align: center; width: 260px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+#b3 #f3-3 .right-cta-area .note {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  letter-spacing: .5px;
+}
+#b3 .cta {
+  position: absolute;
+  bottom: 28px; right: 30px;
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 1px; cursor: pointer;
+  border: none; border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════
+   B4 – TURNAJ  (full dark blue, gold akcent)
+════════════════════════════════════ */
+#b4 {
+  background: linear-gradient(135deg, #0d1c45 0%, #162d6e 60%, #0d1c45 100%);
+}
+#b4 .grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(245,179,12,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,179,12,0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+#b4 .top-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--gold);
+}
+#b4 .bot-stripe {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 4px;
+  background: var(--gold);
+}
+
+/* Frame 1 */
+#b4 #f4-1 .eyebrow {
+  position: absolute;
+  top: 28px; left: 50px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+}
+#b4 #f4-1 .headline {
+  position: absolute;
+  top: 48px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 74px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b4 #f4-1 .sub {
+  position: absolute;
+  bottom: 36px; left: 50px;
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.45); letter-spacing: .5px;
+}
+#b4 #f4-1 .prize-wrap {
+  position: absolute;
+  right: 60px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b4 #f4-1 .prize-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 4px;
+}
+#b4 #f4-1 .prize-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 72px; font-weight: 900; line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(245,179,12,0.35);
+}
+#b4 #f4-1 .prize-sub {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  margin-top: 2px;
+}
+
+/* Frame 2 */
+#b4 #f4-2 .headline {
+  position: absolute;
+  top: 36px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 50px; font-weight: 900; line-height: 1.05;
+  color: var(--white);
+}
+#b4 #f4-2 .headline em { font-style:normal; color: var(--gold); }
+#b4 #f4-2 .countdown-label {
+  position: absolute;
+  bottom: 68px; left: 50px;
+  font-size: 10px; letter-spacing: 3px;
+  color: rgba(255,255,255,0.3); text-transform: uppercase;
+}
+#b4 #f4-2 .countdown {
+  position: absolute;
+  bottom: 30px; left: 50px;
+  display: flex; align-items: center; gap: 8px;
+}
+#b4 #f4-2 .cd-block {
+  text-align: center;
+  background: rgba(245,179,12,0.1);
+  border: 1px solid rgba(245,179,12,0.3);
+  padding: 6px 12px; border-radius: 3px;
+  min-width: 52px;
+}
+#b4 #f4-2 .cd-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 900; line-height: 1;
+  color: var(--gold); display: block;
+}
+#b4 #f4-2 .cd-lbl {
+  font-size: 9px; letter-spacing: 1px;
+  color: rgba(255,255,255,0.3); text-transform: uppercase;
+}
+#b4 #f4-2 .cd-sep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 900;
+  color: rgba(245,179,12,0.4); line-height: 1;
+}
+#b4 #f4-2 .right-info {
+  position: absolute;
+  right: 60px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+}
+#b4 #f4-2 .info-row {
+  display: flex; align-items: center; gap: 10px;
+}
+#b4 #f4-2 .info-icon {
+  width: 28px; height: 28px;
+  background: rgba(245,179,12,0.12);
+  border: 1px solid rgba(245,179,12,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+#b4 #f4-2 .info-txt {
+  font-size: 13px; color: rgba(255,255,255,0.65);
+}
+#b4 #f4-2 .info-txt strong { color: #fff; font-weight: 600; }
+
+/* Frame 3 */
+#b4 #f4-3 .headline {
+  position: absolute;
+  top: 50px; left: 50px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 62px; font-weight: 900; line-height: 1;
+  color: var(--white);
+}
+#b4 #f4-3 .headline em { font-style:normal; color: var(--gold); }
+#b4 #f4-3 .sub {
+  position: absolute;
+  bottom: 48px; left: 50px;
+  font-size: 12px; color: rgba(255,255,255,0.35);
+}
+#b4 .cta {
+  position: absolute;
+  bottom: 28px; right: 60px;
+  padding: 13px 34px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700;
+  letter-spacing: 1px; cursor: pointer;
+  border: none; border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(245,179,12,0.3);
+}
+
+/* ════════════════════════════════════
+   B5 – ZODPOVĚDNÉ HRANÍ / BRAND CLEAN
+   světlé, šedé, důvěryhodné
+════════════════════════════════════ */
+#b5 { background: #f0f4ff; }
+
+#b5 .left-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 8px;
+  background: var(--blue);
+}
+#b5 .right-bar {
+  position: absolute;
+  right: 0; top: 0; bottom: 0; width: 8px;
+  background: var(--gold);
+}
+#b5 .top-bar {
+  position: absolute;
+  top: 0; left: 8px; right: 8px; height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+#b5 .bot-bar {
+  position: absolute;
+  bottom: 0; left: 8px; right: 8px; height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+
+#b5 .divider {
+  position: absolute;
+  left: 500px; top: 30px; bottom: 30px;
+  width: 1px; background: var(--grey);
+}
+
+/* Frame 1 */
+#b5 #f5-1 .eyebrow {
+  position: absolute;
+  top: 28px; left: 36px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--blue);
+}
+#b5 #f5-1 .headline {
+  position: absolute;
+  top: 48px; left: 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 64px; font-weight: 900; line-height: 1;
+  color: var(--dark);
+}
+#b5 #f5-1 .headline em { font-style:normal; color: var(--blue); }
+#b5 #f5-1 .sub {
+  position: absolute;
+  bottom: 36px; left: 36px;
+  font-size: 13px; font-weight: 300; color: #555;
+}
+#b5 #f5-1 .right-stats {
+  position: absolute;
+  right: 36px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 14px;
+}
+#b5 #f5-1 .stat-row {
+  display: flex; align-items: center; gap: 12px;
+}
+#b5 #f5-1 .stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px; font-weight: 900;
+  color: var(--blue); min-width: 80px; line-height: 1;
+}
+#b5 #f5-1 .stat-desc {
+  font-size: 12px; color: #666; line-height: 1.3;
+}
+#b5 #f5-1 .stat-desc strong { color: var(--dark); }
+
+/* Frame 2 */
+#b5 #f5-2 .headline {
+  position: absolute;
+  top: 44px; left: 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px; font-weight: 900; line-height: 1.05;
+  color: var(--dark);
+}
+#b5 #f5-2 .headline em { font-style:normal; color: var(--blue); }
+#b5 #f5-2 .badges {
+  position: absolute;
+  bottom: 32px; left: 36px;
+  display: flex; gap: 8px;
+}
+#b5 #f5-2 .badge {
+  padding: 6px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--grey);
+  border-radius: 2px;
+  font-size: 11px; font-weight: 600;
+  color: var(--blue); letter-spacing: .5px;
+  display: flex; align-items: center; gap: 5px;
+}
+#b5 #f5-2 .badge span { font-size: 13px; }
+#b5 #f5-2 .right-offer {
+  position: absolute;
+  right: 36px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b5 #f5-2 .offer-lbl {
+  font-size: 11px; letter-spacing: 2px;
+  color: #888; text-transform: uppercase; margin-bottom: 4px;
+}
+#b5 #f5-2 .offer-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 68px; font-weight: 900; line-height: 1;
+  color: var(--gold);
+}
+#b5 #f5-2 .offer-sub {
+  font-size: 12px; color: #666; margin-top: 2px;
+}
+
+/* Frame 3 */
+#b5 #f5-3 .headline {
+  position: absolute;
+  top: 50px; left: 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 58px; font-weight: 900; line-height: 1;
+  color: var(--dark);
+}
+#b5 #f5-3 .headline em { font-style:normal; color: var(--blue); }
+#b5 #f5-3 .sub {
+  position: absolute;
+  bottom: 48px; left: 36px;
+  font-size: 12px; color: #666;
+}
+#b5 #f5-3 .right-final {
+  position: absolute;
+  right: 36px; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+#b5 #f5-3 .right-final .trust {
+  font-size: 11px; color: #888; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+#b5 #f5-3 .right-final .brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--blue); letter-spacing: 2px;
+}
+#b5 .cta {
+  position: absolute;
+  bottom: 28px; right: 36px;
+  padding: 12px 30px;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 1px; cursor: pointer;
+  border: none; border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ─ DISCLAIMER ─ */
+.disc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.18);
+  text-align: center; max-width: 970px;
+  letter-spacing: .3px;
+}
+</style>
+</head>
+<body>
+
+<div class="sw">
+  <button class="on" onclick="show(1)">B1 – UVÍTACÍ BONUS</button>
+  <button onclick="show(2)">B2 – FREE SPINY</button>
+  <button onclick="show(3)">B3 – LIVE CASINO</button>
+  <button onclick="show(4)">B4 – TURNAJ</button>
+  <button onclick="show(5)">B5 – BRAND CLEAN</button>
+</div>
+
+<div id="wrap">
+
+<!-- ══════════ B1 ══════════ -->
+<div class="bn on" id="b1">
+  <div class="side"></div>
+  <div class="side-pattern"></div>
+
+  <!-- Frame 1 -->
+  <div class="frame" id="f1-1">
+    <div class="headline">NOVÝ<br><em>HRÁČ?</em></div>
+    <div class="sub">Začni s tím nejlepším uvítáním na trhu</div>
+    <div class="right-content">
+      <div class="bonus-tag">Uvítací bonus</div>
+      <div class="bonus-big">500%</div>
+      <div class="bonus-desc">ke vkladu až 5 000 Kč</div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame" id="f1-2">
+    <div class="headline">JAK NA TO?<br>SNADNO.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-txt"><strong>Zaregistruj se</strong> zdarma za 60 vteřin</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-txt"><strong>Vlož první vklad</strong> od 100 Kč</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-txt"><strong>Získej 500% bonus</strong> okamžitě</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame" id="f1-3">
+    <div class="headline">ČEKÁŠ<br>NA CO?<br><em>HRAj!</em></div>
+    <div class="sub">Registrace trvá méně než minutu</div>
+    <div class="right-final">
+      <div class="big">500%</div>
+      <div class="small">bonus na první vklad</div>
+    </div>
+  </div>
+
+  <button class="cta">Získat bonus →</button>
+  <div class="dots" id="dots1"></div>
+</div>
+
+<!-- ══════════ B2 ══════════ -->
+<div class="bn" id="b2">
+  <div class="bg-dots"></div>
+  <div class="accent-line"></div>
+  <div class="accent-line-b"></div>
+
+  <!-- Frame 1 -->
+  <div class="frame" id="f2-1">
+    <div class="eyebrow">Exkluzivní nabídka</div>
+    <div class="headline">ZÍSKEJ<br><em>50</em> FREE<br>SPINŮ</div>
+    <div class="sub">Bez podmínek obratu · Jen dnes</div>
+    <div class="coin-wrap">
+      <div class="coin-num">50</div>
+      <div class="coin-lbl">free spinů</div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame" id="f2-2">
+    <div class="headline">VYBER SI<br>SVŮJ <em>OBLÍBENÝ</em><br>SLOT</div>
+    <div class="games">
+      <div class="game-pill highlight">🎰 Book of Ra</div>
+      <div class="game-pill">💎 Starburst</div>
+      <div class="game-pill">🔥 Gonzo's Quest</div>
+      <div class="game-pill">⭐ Mega Moolah</div>
+    </div>
+    <div class="right-img">
+      <div class="slot-mock">
+        <div class="reel" id="r1">🍒</div>
+        <div class="reel" id="r2">💎</div>
+        <div class="reel" id="r3">7️⃣</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame" id="f2-3">
+    <div class="headline">TOČÍ SE<br>KOLA,<br><em>ROSTOU VÝHRY</em></div>
+    <div class="sub">Výplata do 24 hodin na účet</div>
+  </div>
+
+  <button class="cta">Hrát zdarma →</button>
+  <div class="dots" id="dots2"></div>
+</div>
+
+<!-- ══════════ B3 ══════════ -->
+<div class="bn" id="b3">
+  <div class="right-panel"></div>
+  <div class="right-pattern"></div>
+  <div class="live-badge"><div class="live-dot"></div><div class="live-txt">Live</div></div>
+
+  <!-- Frame 1 -->
+  <div class="frame" id="f3-1">
+    <div class="headline">ŽIVÉ<br><em>CASINO</em><br>24/7</div>
+    <div class="sub">Skuteční dealeři · Reálné výhry</div>
+    <div class="right-txt">
+      <div class="big">150+</div>
+      <div class="med">živých stolů<br>k dispozici právě teď</div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame" id="f3-2">
+    <div class="headline">ŽIVÁ<br><em>RULETA,</em><br>POKER, BLACKJACK</div>
+    <div class="features">
+      <div class="feat">🎯 HD přenos</div>
+      <div class="feat">💬 Chat s dealerem</div>
+      <div class="feat">📱 Mobilní hra</div>
+      <div class="feat">🔒 Bezpečné platby</div>
+    </div>
+    <div class="right-dealers">
+      <div class="dealer-count">50+</div>
+      <div class="dealer-lbl">profesionálních dealerů</div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame" id="f3-3">
+    <div class="headline">SEDNI KE STOLU<br>A ZAČNI<br>VYHRÁVAT</div>
+    <div class="sub">Registrace zdarma · Bonus pro nové hráče</div>
+    <div class="right-cta-area">
+      <div class="note">Bonus pro nové hráče</div>
+    </div>
+  </div>
+
+  <button class="cta">Hrát live →</button>
+  <div class="dots" id="dots3"></div>
+</div>
+
+<!-- ══════════ B4 ══════════ -->
+<div class="bn" id="b4">
+  <div class="grid"></div>
+  <div class="top-stripe"></div>
+  <div class="bot-stripe"></div>
+
+  <!-- Frame 1 -->
+  <div class="frame" id="f4-1">
+    <div class="eyebrow">Týdenní turnaj</div>
+    <div class="headline">VELKÝ<br>TURNAJ</div>
+    <div class="sub">Registrace zdarma · Každý může vyhrát</div>
+    <div class="prize-wrap">
+      <div class="prize-label">Hlavní výhra</div>
+      <div class="prize-big">50 000 Kč</div>
+      <div class="prize-sub">prize pool celkem</div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame" id="f4-2">
+    <div class="headline">ZBÝVÁ<br>MÁLO<br><em>ČASU</em></div>
+    <div class="countdown-label">Turnaj končí za</div>
+    <div class="countdown">
+      <div class="cd-block"><span class="cd-num" id="cd-h">02</span><span class="cd-lbl">hod</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block"><span class="cd-num" id="cd-m">47</span><span class="cd-lbl">min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block"><span class="cd-num" id="cd-s">33</span><span class="cd-lbl">sek</span></div>
+    </div>
+    <div class="right-info">
+      <div class="info-row">
+        <div class="info-icon">🏆</div>
+        <div class="info-txt"><strong>1. místo</strong> – 20 000 Kč</div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🥈</div>
+        <div class="info-txt"><strong>2. místo</strong> – 10 000 Kč</div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🎁</div>
+        <div class="info-txt"><strong>Top 10</strong> vždy vyhrává</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame" id="f4-3">
+    <div class="headline">PŘIDEJ SE<br>K TISÍCŮM<br><em>HRÁČŮ</em></div>
+    <div class="sub">Registrace na turnaj je zdarma</div>
+  </div>
+
+  <button class="cta">Registrovat se →</button>
+  <div class="dots" id="dots4"></div>
+</div>
+
+<!-- ══════════ B5 ══════════ -->
+<div class="bn" id="b5">
+  <div class="left-bar"></div>
+  <div class="right-bar"></div>
+  <div class="top-bar"></div>
+  <div class="bot-bar"></div>
+  <div class="divider"></div>
+
+  <!-- Frame 1 -->
+  <div class="frame" id="f5-1">
+    <div class="eyebrow">Licencované casino</div>
+    <div class="headline">HRAJ<br><em>S DŮVĚROU</em></div>
+    <div class="sub">Certifikováno · Bezpečné · Licencované</div>
+    <div class="right-stats">
+      <div class="stat-row">
+        <div class="stat-num">250 000+</div>
+        <div class="stat-desc"><strong>spokojených hráčů</strong><br>po celé ČR</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">98,5%</div>
+        <div class="stat-desc"><strong>RTP</strong><br>průměrná návratnost</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame" id="f5-2">
+    <div class="headline">LEGÁLNÍ<br>A <em>BEZPEČNÁ</em><br>HRA V ČR</div>
+    <div class="badges">
+      <div class="badge"><span>🔒</span> SSL šifrování</div>
+      <div class="badge"><span>✅</span> Licence MF ČR</div>
+      <div class="badge"><span>🛡️</span> Ověřeno RNG</div>
+    </div>
+    <div class="right-offer">
+      <div class="offer-lbl">Bonus pro nováčky</div>
+      <div class="offer-big">100%</div>
+      <div class="offer-sub">ke prvnímu vkladu</div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame" id="f5-3">
+    <div class="headline">ZAČNI<br><em>BEZPEČNĚ</em><br>HRÁT DNES</div>
+    <div class="sub">Zodpovědná hra · Podpora 24/7</div>
+    <div class="right-final">
+      <div class="trust">Člen programu</div>
+      <div class="brand">BEZPEČNÁ HRA</div>
+    </div>
+  </div>
+
+  <button class="cta">Registrovat se →</button>
+  <div class="dots" id="dots5"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="disc">⚠️ Hazardní hry jsou určeny pouze osobám starším 18 let. Hrajte zodpovědně. Pomoc: hrajizbytecne.cz</div>
+
+<script>
+/* ══════════════════════════════════
+   MULTI-FRAME ENGINE
+══════════════════════════════════ */
+const FRAME_DURATION = 3200; // ms per frame
+
+// Banner definitions: framesCount
+const banners = {
+  1: { frames: 3, timer: null, current: 0 },
+  2: { frames: 3, timer: null, current: 0 },
+  3: { frames: 3, timer: null, current: 0 },
+  4: { frames: 3, timer: null, current: 0 },
+  5: { frames: 3, timer: null, current: 0 },
+};
+
+// Build dots
+Object.keys(banners).forEach(id => {
+  const n = banners[id].frames;
+  const wrap = document.getElementById('dots' + id);
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.dataset.i = i;
+    wrap.appendChild(d);
+  }
+});
+
+function setDot(bannerId, idx) {
+  document.querySelectorAll(`#dots${bannerId} .dot`).forEach((d, i) => {
+    d.classList.toggle('on', i === idx);
+  });
+}
+
+/* ── CTA always visible (not part of frames) ── */
+// CTAs are outside .frame divs so they stay visible always
+
+/* ── Animate a frame IN ── */
+function frameIn(bannerId, frameIdx) {
+  const fId = `#f${bannerId}-${frameIdx + 1}`;
+  const el = document.querySelector(fId);
+  if (!el) return;
+
+  el.classList.add('f-active');
+
+  // Get all direct meaningful children
+  const kids = Array.from(el.children);
+
+  gsap.set(kids, { autoAlpha: 0, y: 12 });
+  gsap.to(kids, {
+    autoAlpha: 1, y: 0,
+    duration: 0.55,
+    stagger: 0.08,
+    ease: 'power2.out',
+    delay: 0.05
+  });
+}
+
+/* ── Animate a frame OUT ── */
+function frameOut(bannerId, frameIdx, onDone) {
+  const fId = `#f${bannerId}-${frameIdx + 1}`;
+  const el = document.querySelector(fId);
+  if (!el) { onDone && onDone(); return; }
+
+  const kids = Array.from(el.children);
+  gsap.to(kids, {
+    autoAlpha: 0, y: -10,
+    duration: 0.35,
+    stagger: 0.04,
+    ease: 'power2.in',
+    onComplete: () => {
+      gsap.set(el, { autoAlpha: 0 });
+      el.classList.remove('f-active');
+      onDone && onDone();
+    }
+  });
+}
+
+/* ── Start banner loop ── */
+function startBanner(id) {
+  const b = banners[id];
+  b.current = 0;
+
+  // Reset all frames
+  for (let i = 1; i <= b.frames; i++) {
+    const el = document.querySelector(`#f${id}-${i}`);
+    if (el) { gsap.set(el, { autoAlpha: 0 }); el.classList.remove('f-active'); }
+  }
+  setDot(id, 0);
+
+  // Animate CTA in
+  const cta = document.querySelector(`#b${id} .cta`);
+  if (cta) { gsap.fromTo(cta, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.5, delay: 0.4 }); }
+
+  frameIn(id, 0);
+
+  clearInterval(b.timer);
+  b.timer = setInterval(() => {
+    const next = (b.current + 1) % b.frames;
+    frameOut(id, b.current, () => {
+      b.current = next;
+      setDot(id, next);
+      frameIn(id, next);
+    });
+  }, FRAME_DURATION);
+}
+
+function stopBanner(id) {
+  clearInterval(banners[id].timer);
+  banners[id].timer = null;
+}
+
+/* ══════════════════════════════════
+   LIVE COUNTERS & SPECIAL EFFECTS
+══════════════════════════════════ */
+
+// Slot reel spins (B2 frame 2)
+const slotEmojis = ['🍒','💎','7️⃣','🍋','⭐','🔔','💰','🎯'];
+let slotInterval = null;
+function startSlots() {
+  if (slotInterval) return;
+  let count = 0;
+  slotInterval = setInterval(() => {
+    ['r1','r2','r3'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
+    });
+    count++;
+    if (count > 12) {
+      clearInterval(slotInterval); slotInterval = null;
+      const r1 = document.getElementById('r1');
+      const r2 = document.getElementById('r2');
+      const r3 = document.getElementById('r3');
+      if(r1) r1.textContent = '7️⃣';
+      if(r2) r2.textContent = '7️⃣';
+      if(r3) r3.textContent = '7️⃣';
+    }
+  }, 80);
+}
+
+// Countdown (B4 frame 2)
+let cdH = 2, cdM = 47, cdS = 33;
+let cdInterval = null;
+function startCountdown() {
+  if (cdInterval) return;
+  cdInterval = setInterval(() => {
+    cdS--;
+    if (cdS < 0) { cdS = 59; cdM--; }
+    if (cdM < 0) { cdM = 59; cdH = Math.max(0, cdH - 1); }
+    const h = document.getElementById('cd-h');
+    const m = document.getElementById('cd-m');
+    const s = document.getElementById('cd-s');
+    if(h) h.textContent = String(cdH).padStart(2,'0');
+    if(m) m.textContent = String(cdM).padStart(2,'0');
+    if(s) s.textContent = String(cdS).padStart(2,'0');
+  }, 1000);
+}
+
+// Watch frame changes to trigger effects
+const origFrameIn = frameIn;
+// Override to hook into frame events for B2 frame 2 and B4 frame 2
+window.frameIn = function(bannerId, frameIdx) {
+  origFrameIn(bannerId, frameIdx);
+  if (bannerId == 2 && frameIdx == 1) setTimeout(startSlots, 600);
+  if (bannerId == 4 && frameIdx == 1) startCountdown();
+};
+// Re-point reference (used in interval)
+const _fi = window.frameIn;
+
+/* ══════════════════════════════════
+   SWITCHER
+══════════════════════════════════ */
+let currentBanner = 1;
+
+function show(n) {
+  if (n === currentBanner) return;
+
+  stopBanner(currentBanner);
+  gsap.killTweensOf(`#b${currentBanner} *`);
+
+  document.querySelectorAll('.bn').forEach(b => b.classList.remove('on'));
+  document.getElementById('b' + n).classList.add('on');
+  document.querySelectorAll('.sw button').forEach((b, i) => b.classList.toggle('on', i === n - 1));
+
+  currentBanner = n;
+  startBanner(n);
+}
+
+// INIT
+startBanner(1);
+startCountdown(); // start silently in bg
+</script>
+</body>
+</html>
