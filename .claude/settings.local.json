@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import openpyxl; wb = openpyxl.load_workbook\\('d:\\\\CSM\\\\Forbes\\\\CZ\\\\Síň slávy+statistika\\\\Nejhranější hry od 2026-05-11 do 2026-05-17 \\(bet\\).xlsx'\\); ws = wb.active; [print\\(row\\) for row in ws.iter_rows\\(values_only=True\\)]\")",
+      "Bash(grep -E \"\\\\.xlsx$\")",
+      "Bash(which python3 *)"
+    ]
+  }
+}

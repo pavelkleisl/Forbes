@@ -1,0 +1,28 @@
+<VAST version="3.0">
+    <Ad id="1">
+        <InLine>
+            <AdSystem>ForbesTest</AdSystem>
+            <AdTitle>vstupni-bonus Kampaň</AdTitle>
+            <Creatives>
+                <Creative>
+                    <Linear>
+                        <Duration>00:00:18</Duration> 
+                        
+                        <VideoClicks>
+                            <ClickThrough>
+                                <![CDATA[https://www.forbescasino.cz/vstupni-bonus]]>
+                            </ClickThrough>
+                        </VideoClicks>
+                        
+                        <MediaFiles>
+                            <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080">
+                                <![CDATA[https://forbes-promo.b-cdn.net/play_1080p.mp4]]>
+                            </MediaFile>
+                        </MediaFiles>
+                        
+                    </Linear>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>
