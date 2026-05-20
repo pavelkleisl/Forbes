@@ -191,13 +191,70 @@
             .page-layout-single .cms-stats-wrapper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 767px) {
-            .page-layout-single .cms-stats-wrapper { grid-template-columns: 1fr; }
+            .page-layout-single .cms-stats-wrapper {
+                display: block;
+            }
+
+            .page-layout-single .stats-grid-flow {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding: 0 16px 20px 0px;
+                gap: 16px;
+            }
+
+            .page-layout-single .stats-grid-flow::-webkit-scrollbar {
+                display: none;
+            }
+
+            .page-layout-single .cms-section-card {
+                padding: 16px 10px;
+                width: 78vw;
+                flex-shrink: 0;
+                margin-bottom: 0;
+                scroll-snap-align: center;
+            }
+
+            .page-layout-single .cms-section-card.multiplier-widget {
+                order: 1;
+            }
+
+            .page-layout-single .cms-section-card.rtp-widget {
+                order: 2;
+            }
+
+            .page-layout-single .cms-section-card:not(.multiplier-widget):not(.rtp-widget) {
+                order: 3;
+            }
+
+            .stats-grid {
+                position: relative;
+            }
         }
+
         /* Mobile Optimizations */
         @media (max-width: 600px) {
-            .slava-filter-wrapper { margin-bottom: 0px; }
-            .slava-filter-container-modern { padding: 16px; gap: 6px; border-radius: 50px; }
-            .slava-filter-pill { padding: 12px 20px; font-size: 14px; min-height: 44px; }
+            .slava-filter-wrapper {
+                margin-bottom: 0px;
+                padding-bottom: 20px;
+            }
+
+            .slava-filter-container-modern {
+                padding: 16px;
+                gap: 6px;
+                border-radius: 50px;
+            }
+
+            .slava-filter-pill {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-height: 44px;
+            }
         }
         @media (max-width: 480px) {
             .slava-filter-container-modern { flex-wrap: wrap; justify-content: center; max-width: 100%; }

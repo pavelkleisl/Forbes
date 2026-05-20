@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept: Liquid Magnetic Slider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
+        body { 
+            background: #020512 url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
+            background-size: cover; min-height: 100vh;
+        }
+
+        /* Top Bar podle zadání */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 40px; height: 75px;
+        }
+        .left-zone { display: flex; align-items: center; gap: 40px; }
+        .logo img { height: 44px; display: block; }
+        .hub-nav { display: flex; gap: 10px; list-style: none; }
+        .hub-nav a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 22px; border-radius: 20px; }
+        .hub-nav .active a { background-color: #ffbe00; color: #020617; }
+        .auth-zone { display: flex; gap: 15px; }
+        .btn { display: inline-flex; align-items: center; height: 42px; padding: 0 28px; border-radius: 21px; font-size: 14px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+        .btn-login { background: #fff; color: #020617; }
+        .btn-register { background: #ffbe00; color: #020617; }
+
+        /* ==========================================================================
+           LIQUID MAGNETIC SUBMENU
+           ========================================================================== */
+        .slider-deck {
+            padding: 10px 40px;
+            position: relative;
+        }
+
+        .slider-menu {
+            display: flex;
+            list-style: none;
+            position: relative;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 6px;
+            border-radius: 24px;
+            max-width: max-content;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+        }
+
+        .slider-item {
+            position: relative;
+            z-index: 2;
+        }
+
+        .slider-item a {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 24px;
+            border-radius: 20px;
+            transition: color 0.25s ease;
+        }
+
+        /* Aktivní stav svítí jasně */
+        .slider-item.active a {
+            color: #ffbe00;
+            font-weight: 700;
+        }
+        .slider-item:hover a {
+            color: #ffffff;
+        }
+
+        /* Klouzající magnetické pozadí na pozadí položek */
+        .magnetic-pill {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            z-index: 1;
+            pointer-events: none;
+            /* Dokonalá matematická křivka pro plynulý skluz */
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="left-zone">
+                <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
+                <ul class="hub-nav">
+                    <li class="active"><a href="#">Sportovní sázení</a></li>
+                    <li><a href="#">Casino</a></li>
+                </ul>
+            </div>
+            <div class="auth-zone">
+                <a href="#" class="btn btn-login">Přihlásit se</a>
+                <a href="#" class="btn btn-register">Registrace</a>
+            </div>
+        </div>
+
+        <div class="slider-deck">
+            <nav>
+                <ul class="slider-menu" id="menu">
+                    <div class="magnetic-pill" id="pill"></div>
+                    
+                    <li class="slider-item active"><a href="#">Kurzy</a></li>
+                    <li class="slider-item"><a href="#">Live</a></li>
+                    <li class="slider-item"><a href="#">Výsledky</a></li>
+                    <li class="slider-item"><a href="#">Komunita</a></li>
+                    <li class="slider-item"><a href="#">Soutěže</a></li>
+                    <li class="slider-item"><a href="#">Bonusy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Magický skript pro ovládání plynulého skluzu
+        const menu = document.getElementById('menu');
+        const pill = document.getElementById('pill');
+        const items = document.querySelectorAll('.slider-item');
+        const activeItem = document.querySelector('.slider-item.active');
+
+        // Funkce pro přesun pilulky na vybraný element
+        function movePill(element) {
+            pill.style.opacity = '1';
+            pill.style.left = element.offsetLeft + 'px';
+            pill.style.width = element.offsetWidth + 'px';
+            pill.style.height = element.offsetHeight + 'px';
+        }
+
+        // Inicializace na aktivní položku
+        if (activeItem) {
+            movePill(activeItem);
+        }
+
+        // Eventy pro hover na položky
+        items.forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                movePill(e.currentTarget);
+            });
+        });
+
+        // Když myš opustí celé menu, vrátí se pilulka na aktivní položku
+        menu.addEventListener('mouseleave', () => {
+            if (activeItem) {
+                movePill(activeItem);
+            } else {
+                pill.style.opacity = '0';
+            }
+        });
+    </script>
+</body>
+</html>

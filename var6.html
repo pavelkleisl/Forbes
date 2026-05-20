@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes - Double Decker (Varianta 1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
+        
+        /* Společné pozadí celého headeru tvořené vaším obrázkem */
+        header {
+            background: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
+            background-size: cover;
+            width: 100%;
+        }
+
+        /* 1. PATRO: Minimalistický produktový rozcestník */
+        .super-header {
+            display: flex;
+            padding: 0 40px;
+            height: 45px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+        }
+        .product-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            opacity: 0.6;
+            transition: opacity 0.2s, color 0.2s;
+        }
+        .product-link:hover { opacity: 1; }
+        .product-link.active {
+            opacity: 1;
+            color: #ffbe00; /* Vaše zlatá/žlutá */
+        }
+        .product-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffbe00;
+        }
+
+        /* 2. PATRO: Vaše stávající hlavička (Layout 1:1 podle screenu) */
+        .main-header {
+            padding: 25px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Horní řada: Logo a CTA */
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 52px; /* Odpovídá proporcím loga */
+            display: block;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Stylování tlačítek přesně podle předlohy */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            padding: 0 32px;
+            border-radius: 22px; /* Perfektní pill shape */
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: transform 0.15s ease;
+        }
+        .btn:hover { transform: scale(1.02); }
+        .btn-login {
+            background-color: #ffffff;
+            color: #03091e;
+        }
+        .btn-register {
+            background-color: #ffbe00;
+            color: #03091e;
+        }
+
+        /* Spodní řada: Vaše menu */
+        .bottom-row {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #ffbe00;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="super-header">
+            <a href="#" class="product-link active">Casino</a>
+            <a href="#" class="product-link">Sportovní sázení</a>
+        </div>
+
+        <div class="main-header">
+            <div class="top-row">
+                <a href="#" class="logo">
+                    <img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes Casino">
+                </a>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Přihlásit se</a>
+                    <a href="#" class="btn btn-register">Registrace</a>
+                </div>
+            </div>
+            
+            <div class="bottom-row">
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#" class="nav-link active">Domů</a></li>
+                        <li><a href="#" class="nav-link">Bonusy</a></li>
+                        <li><a href="#" class="nav-link">Levelovací systém</a></li>
+                        <li><a href="#" class="nav-link">Cashback</a></li>
+                        <li><a href="#" class="nav-link">Turnaje</a></li>
+                        <li><a href="#" class="nav-link">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+</body>
+</html>

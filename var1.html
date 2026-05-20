@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes - Tipsport Style (Glass)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
+        
+        .tipsport-header {
+            background: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
+            background-size: cover;
+            width: 100%;
+        }
+
+        .top-deck {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 75px;
+        }
+        
+        .left-brand-zone { display: flex; align-items: center; gap: 40px; }
+        .logo img { height: 48px; display: block; }
+
+        .main-products-nav { display: flex; gap: 12px; list-style: none; }
+        
+        /* Glassmorphic efekt pro aktivní tab */
+        .product-item a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        .product-item.active a {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border-color: #ffbe00;
+        }
+        .product-item:not(.active) a:hover { color: #ffffff; }
+
+        .auth-zone { display: flex; gap: 15px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px;
+            padding: 0 30px;
+            border-radius: 21px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .btn-login { background-color: #ffffff; color: #03091e; }
+        .btn-register { background-color: #ffbe00; color: #03091e; }
+
+        /* Spodní řada kompletně bez pozadí, jen dělicí linka */
+        .bottom-deck {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 52px;
+        }
+
+        .submenu-nav { display: flex; list-style: none; gap: 35px; }
+        .submenu-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .submenu-item.active a, .submenu-item a:hover { color: #ffbe00; }
+    </style>
+</head>
+<body>
+
+    <header class="tipsport-header">
+        <div class="top-deck">
+            <div class="left-brand-zone">
+                <a href="#" class="logo">
+                    <img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes">
+                </a>
+                <nav>
+                    <ul class="main-products-nav">
+                        <li class="product-item active"><a href="#">🎰 Casino</a></li>
+                        <li class="product-item"><a href="#">⚽ Sporty</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="auth-zone">
+                <a href="#" class="btn btn-login">Přihlásit se</a>
+                <a href="#" class="btn btn-register">Registrace</a>
+            </div>
+        </div>
+
+        <div class="bottom-deck">
+            <nav>
+                <ul class="submenu-nav">
+                    <li class="submenu-item active"><a href="#">Domů</a></li>
+                    <li class="submenu-item"><a href="#">Bonusy</a></li>
+                    <li class="submenu-item"><a href="#">Levelovací systém</a></li>
+                    <li class="submenu-item"><a href="#">Cashback</a></li>
+                    <li class="submenu-item"><a href="#">Turnaje</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+</body>
+</html>
