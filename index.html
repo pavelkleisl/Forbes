@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forbes Menu Presentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+    <title>Forbes Navigation Concepts - Premium Presentation Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Reset a základní rozvržení */
+        /* Reset and Base Layout */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,68 +19,189 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #020617;
+            background: #96989e;
         }
 
-        /* Iframe přes celou obrazovku */
+        /* Iframe Canvas */
         #preview-frame {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
+            transition: opacity 0.2s ease;
         }
 
-        /* Fixovaný spodní panel s přepínačem */
-        .presentation-bar {
+        /* Monolithic Control Dashboard */
+        .presentation-container {
             position: fixed;
-            bottom: 24px;
+            bottom: 32px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 14px;
-            border-radius: 100px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
             z-index: 99999;
+            width: 850px; /* Fixní šířka pro čisté zarovnání textu a tlačítek */
+            max-width: 95vw;
+            
+            /* Glassmorphic Single Block Design */
+            background: rgba(10, 16, 36, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.85),
+                0 0 0 1px rgba(255, 255, 255, 0.02),
+                0 1px 0 rgba(255, 255, 255, 0.1) inset;
         }
 
-        .bar-title {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 11px;
+        /* Control Row Layout */
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dynamic UI Row Behavior */
+        #ui-row {
+            max-height: 50px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-bottom: 2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 16px;
+        }
+        
+        #ui-row.hidden {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0);
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Minimalist Group Labels */
+        .row-label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: 700;
-            padding: 0 12px 0 8px;
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            min-width: 140px;
+            padding-left: 4px;
         }
 
-        /* Styly pro tlačíka variant */
-        .variant-btn {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid transparent;
+        /* Premium Buttons */
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 10px 20px;
-            border-radius: 100px;
+            border-radius: 16px;
             cursor: pointer;
             font-size: 13px;
+            font-weight: 600;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Active State - Layout Architecture (Pure Premium White) */
+        .layout-btn.active {
+            background: #ffffff;
+            color: #020617;
+            border-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
             font-weight: 700;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .variant-btn:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+        /* Active State - UI Styles (Signature Forbes Yellow Glow) */
+        .ui-btn {
+            padding: 8px 16px;
+            font-size: 12px;
+            border-radius: 12px;
         }
-
-        /* Aktivní stav - Forbes Žlutá */
-        .variant-btn.active {
+        
+        .ui-btn.active {
             background: #ffbe00;
             color: #020617;
-            box-shadow: 0 4px 12px rgba(255, 190, 0, 0.3);
+            border-color: #ffbe00;
+            box-shadow: 0 4px 20px rgba(255, 190, 0, 0.35);
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           DYNAMIC DESCRIPTION AREA
+           ========================================================================== */
+        .description-box {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 16px;
+            margin-top: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .description-content {
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Preferred State (Green) */
+        .description-box.preferred .description-content {
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            color: #a7f3d0;
+        }
+        .description-box.preferred .badge {
+            background: #10b981;
+            color: #020617;
+        }
+
+        /* Not Recommended State (Red) */
+        .description-box.rejected .description-content {
+            background: rgba(239, 68, 68, 0.06);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+        }
+        .description-box.rejected .badge {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        /* Design Elements inside Description */
+        .description-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .description-title {
+            font-weight: 700;
+            font-size: 13px;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -88,29 +209,105 @@
 
     <iframe id="preview-frame" src="var1.html"></iframe>
 
-    <div class="presentation-bar">
-        <span class="bar-title">Variants</span>
-        <button class="variant-btn active" onclick="loadVariant('var1.html', this)">1</button>
-        <button class="variant-btn" onclick="loadVariant('var2.html', this)">2</button>
-        <button class="variant-btn" onclick="loadVariant('var3.html', this)">3</button>
-        <button class="variant-btn" onclick="loadVariant('var4.html', this)">4</button>
-        <button class="variant-btn" onclick="loadVariant('var5.html', this)">5</button>
-        <button class="variant-btn" onclick="loadVariant('var6.html', this)">6</button>
-        <button class="variant-btn" onclick="loadVariant('var7.html', this)">7</button>
+    <div class="presentation-container">
+        
+        <div id="ui-row" class="control-row">
+            <div class="row-label">UI Visual Style</div>
+            <button class="nav-btn ui-btn active" onclick="loadFrame('var1.html', this)">Style 1</button>
+            <button class="nav-btn ui-btn" onclick="loadFrame('var2.html', this)">Style 2</button>
+            <button class="nav-btn ui-btn" onclick="loadFrame('var3.html', this)">Style 3</button>
+            <button class="nav-btn ui-btn" onclick="loadFrame('var4.html', this)">Style 4</button>
+            <button class="nav-btn ui-btn" onclick="loadFrame('var5.html', this)">Style 5</button>
+        </div>
+
+        <div class="control-row">
+            <div class="row-label">Layout Concept</div>
+            <button class="nav-btn layout-btn active" onclick="selectLayout(1, 'var1.html', this)">Two-Row Hub</button>
+            <button class="nav-btn layout-btn" onclick="selectLayout(2, 'var6.html', this)">Top Utility with Subsection Header</button>
+            <button class="nav-btn layout-btn" onclick="selectLayout(3, 'var7.html', this)">Inline Consolidated</button>
+        </div>
+
+        <div id="desc-box" class="description-box preferred">
+            <div class="description-content">
+                <div class="description-header">
+                    <span class="badge" id="desc-badge">RECOMMENDED</span>
+                    <span class="description-title" id="desc-title">Two-Row Hub Architecture</span>
+                </div>
+                <p id="desc-text">
+                    This is my highly preferred concept. The two-row hierarchy guarantees absolute scalability for adding future subcategories without cluttering the screen. It separates the primary core products from section-specific features, creating a bulletproof, intuitive UX path.
+                </p>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        function loadVariant(url, buttonElement) {
-            // 1. Změníme zdroj iFramu na požadovaný soubor
-            document.getElementById('preview-frame').src = url;
+        const iframe = document.getElementById('preview-frame');
+        const uiRow = document.getElementById('ui-row');
+        
+        // Description Elements
+        const descBox = document.getElementById('desc-box');
+        const descBadge = document.getElementById('desc-badge');
+        const descTitle = document.getElementById('desc-title');
+        const descText = document.getElementById('desc-text');
 
-            // 2. Odstraníme aktivní třídu ze všech tlačítek
-            document.querySelectorAll('.variant-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+        // Text Database for easy editing
+        const textContent = {
+            1: {
+                status: "preferred",
+                badge: "RECOMMENDED",
+                title: "Two-Row Hub Architecture",
+                text: "This is my highly preferred concept. The two-row hierarchy guarantees absolute scalability for adding future subcategories without cluttering the screen. It separates the primary core products from section-specific features, creating a bulletproof, intuitive UX path."
+            },
+            2: {
+                status: "rejected",
+                badge: "NOT RECOMMENDED",
+                title: "Top Utility Layout Issues",
+                text: "I do not recommend this approach. Pushing the core product switcher to the extreme top border isolates it from the main view and limits discoverability. It decreases overall engagement because users overlook the primary casino/sportsbook toggle. It unnecessarily increases the height of the entire header."
+            },
+            3: {
+                status: "rejected",
+                badge: "NOT RECOMMENDED",
+                title: "Inline Consolidated Limitations",
+                text: "While highly compact, this single-row solution creates severe UX bottlenecks. There is immediate text overcrowding on smaller laptop screens, and we lose any chance of scaling the navigation once a new product line or promo section is added."
+            }
+        };
 
-            // 3. Přidáme aktivní třídu na kliknuté tlačítko
-            buttonElement.classList.add('active');
+        function selectLayout(layoutNum, url, btnElement) {
+            // Smooth content fade transition
+            iframe.style.opacity = '0';
+            
+            setTimeout(() => {
+                iframe.src = url;
+                iframe.style.opacity = '1';
+            }, 150);
+
+            // Update Active Class for Layout Buttons
+            document.querySelectorAll('.layout-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Smart Animate Row Visibility
+            if (layoutNum === 1) {
+                uiRow.classList.remove('hidden');
+                document.querySelectorAll('.ui-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.ui-btn').classList.add('active');
+            } else {
+                uiRow.classList.add('hidden');
+            }
+
+            // Update Dynamic Description Content & Colors
+            const data = textContent[layoutNum];
+            
+            descBox.className = `description-box ${data.status}`;
+            descBadge.textContent = data.badge;
+            descTitle.textContent = data.title;
+            descText.textContent = data.text;
+        }
+
+        function loadFrame(url, btnElement) {
+            iframe.src = url;
+            document.querySelectorAll('.ui-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
         }
     </script>
 

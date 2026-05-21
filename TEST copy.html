@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forbes - Tipsport Style Upravený</title>
+    <title>Forbes - Modern Product Switcher</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -11,111 +11,220 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
         
-        header { width: 100%; }
         body {
-            background-color: #b1bac5;
+            background-color: #03091e;
         }
-        /* HORNÍ PATRO: Tmavé vesmírné pozadí */
-        .top-deck {
+
+        .tipsport-header {
             background: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
             background-size: cover;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .top-deck {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 40px;
-            height: 70px;
+            height: 75px;
         }
         
-        .left-brand-zone { display: flex; align-items: center; gap: 35px; }
-        .logo img { height: 45px; display: block; }
+        .left-brand-zone { display: flex; align-items: center; gap: 40px; }
+        .logo img { height: 48px; display: block; }
 
-        .main-products-nav { display: flex; gap: 8px; list-style: none; }
+        /* MODERNÍ SEGMENTED CONTROL SWITCHER */
+        .switcher-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4px;
+            border-radius: 14px;
+            display: flex;
+            position: relative;
+            gap: 4px;
+        }
+
+        .product-item {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
         .product-item a {
-            color: #ffffff;
+            color: rgba(255, 255, 255, 0.55);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            padding: 8px 20px;
-            border-radius: 20px;
-            transition: all 0.2s;
-        }
-        /* Aktivní produkt (nyní defaultně Sportovní sázení) */
-        .product-item.active a {
-            background-color: #ffbe00;
-            color: #03091e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .auth-zone { display: flex; align-items: center; gap: 15px; }
+        /* Hover efekt pro neaktivní záložky */
+        .product-item:not(.active) a:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Aktivní stav textu a ikony */
+        .product-item.active a {
+            color: #ffffff;
+        }
+
+        /* Dynamický vizuální indikátor (kapsle na pozadí) */
+        .switcher-highlight {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: calc(100% - 8px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(255, 190, 0, 0.6);
+            box-shadow: 0 4px 15px rgba(255, 190, 0, 0.15), inset 0 1px 1px rgba(255,255,255,0.2);
+            border-radius: 10px;
+            z-index: 1;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .nav-icon {
+            height: 16px;
+            width: auto;
+            vertical-align: middle;
+            filter: brightness(0) invert(1);
+            opacity: 0.5;
+            transition: opacity 0.25s, filter 0.25s;
+        }
+
+        .product-item.active .nav-icon {
+            opacity: 1;
+            filter: drop-shadow(0 0 4px rgba(255, 190, 0, 0.6));
+        }
+        
+        .product-item:not(.active) a:hover .nav-icon {
+            opacity: 0.8;
+        }
+
+        /* Auth Zóna */
+        .auth-zone { display: flex; gap: 12px; }
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 40px;
-            padding: 0 28px;
-            border-radius: 20px;
-            font-size: 14px;
+            height: 36px;
+            padding: 0 22px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
-        .btn-login { background-color: #ffffff; color: #03091e; }
-        
-        /* Úprava 5: Registrace je nyní plně žlutá jako na vašem webu */
-        .btn-register { background-color: #ffbe00; color: #03091e; }
+        .btn-login { 
+            background-color: rgba(255,255,255,0.08); 
+            color: #ffffff; 
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .btn-login:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        .btn-register { 
+            background-color: #ffbe00; 
+            color: #03091e;
+            box-shadow: 0 4px 15px rgba(255, 190, 0, 0.3);
+        }
+        .btn-register:hover {
+            background-color: #ffca28;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 190, 0, 0.4);
+        }
 
-
-        /* SPODNÍ PATRO: Kontrastní světlé */
+        /* Spodní řada kompletně bez pozadí, plynulý přechod obsahu */
         .bottom-deck {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 40px;
-            height: 52px; /* Mírně zvětšeno pro lepší prostor kolem podsvíceného bloku */
+            height: 52px;
+            background: rgba(3, 9, 30, 0.2);
+            backdrop-filter: blur(5px);
         }
 
-        .submenu-nav { display: flex; list-style: none; gap: 2px; height: 52px; align-items: stretch; }
-        .submenu-item { display: flex; align-items: stretch; }
-
+        .submenu-nav { 
+            display: flex; 
+            list-style: none; 
+            gap: 35px;
+            transition: opacity 0.2s ease;
+        }
+        
         .submenu-item a {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            padding: 0 18px;
-            display: flex;
-            align-items: center;
-            border-top: 3px solid transparent;
-            transition: all 0.15s ease;
+            transition: all 0.2s;
+            position: relative;
+            padding: 6px 0;
+        }
+        
+        /* Moderní hover linka pod položkou v submenu */
+        .submenu-item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffbe00;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.25s ease;
         }
 
-        .submenu-item:hover a {
-            color: #0f172a;
-            border-top-color: #c0ccdc;
+        .submenu-item.active a { color: #ffbe00; }
+        .submenu-item.active a::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
-
-        .submenu-item.active a {
-            color: #0f172a;
-            font-weight: 700;
-            border-top-color: #ffbe00;
-            background: #fafafa;
+        
+        .submenu-item a:hover { color: #ffffff; }
+        .submenu-item a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
+        
+        /* Třída pro animaci změny submenu přes JS */
+        .fade-out { opacity: 0; }
     </style>
 </head>
 <body>
 
-    <header>
+    <header class="tipsport-header">
         <div class="top-deck">
             <div class="left-brand-zone">
                 <a href="#" class="logo">
                     <img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes">
                 </a>
                 <nav>
-                    <ul class="main-products-nav">
-                        <li class="product-item active"><a href="#">Sportovní sázení</a></li>
-                        <li class="product-item"><a href="#">Casino</a></li>
-                    </ul>
+                    <div class="switcher-container">
+                        <div class="switcher-highlight" id="js-switcher-highlight"></div>
+                        
+                        <ul class="main-products-nav" style="display: flex; gap: 4px;">
+                            <li class="product-item active" data-product="casino">
+                                <a href="#casino"><img src="casino.svg" class="nav-icon" alt=""> Casino</a>
+                            </li>
+                            <li class="product-item" data-product="sporty">
+                                <a href="#sporty"><img src="sport.svg" class="nav-icon" alt=""> Sporty</a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
             <div class="auth-zone">
@@ -126,18 +235,110 @@
 
         <div class="bottom-deck">
             <nav>
-                <ul class="submenu-nav">
-                    <li class="submenu-item active"><a href="#">Kurzy</a></li>
-                    <li class="submenu-item"><a href="#">Live</a></li>
-                    <li class="submenu-item"><a href="#">Výsledky</a></li>
-                    <li class="submenu-item"><a href="#">Komunita</a></li>
-                    <li class="submenu-item"><a href="#">Soutěže</a></li>
-                    <li class="submenu-item"><a href="#">Bonusy</a></li>
-                </ul>
+                <ul class="submenu-nav" id="js-submenu">
+                    </ul>
             </nav>
-            
-            </div>
+        </div>
     </header>
 
+    <script>
+        // Data pro submenu jednotlivých produktů
+        const menuData = {
+            casino: [
+                { title: 'Domů', url: '#', active: true },
+                { title: 'Bonusy', url: '#' },
+                { title: 'Levelovací systém', url: '#' },
+                { title: 'Cashback', url: '#' },
+                { title: 'Turnaje', url: '#' }
+            ],
+            sporty: [
+                { title: 'Kurzová nabídka', url: '#', active: true },
+                { title: 'Live sázky', url: '#' },
+                { title: 'Dnešní zápasy', url: '#' },
+                { title: 'Výsledky', url: '#' },
+                { title: 'Statistiky', url: '#' },
+                { title: 'Inspirace', url: '#' }
+            ]
+        };
+
+        const productItems = document.querySelectorAll('.product-item');
+        const highlight = document.getElementById('js-switcher-highlight');
+        const submenuContainer = document.getElementById('js-submenu');
+
+        // Funkce pro přepočet a posun plovoucího podkresu
+        function updateHighlightPosition(activeItem) {
+            const rect = activeItem.getBoundingClientRect();
+            const containerRect = activeItem.parentElement.parentElement.getBoundingClientRect();
+            
+            // Výpočet relativní pozice uvnitř kontejneru
+            const leftOffset = rect.left - containerRect.left;
+            
+            highlight.style.width = `${rect.width}px`;
+            highlight.style.left = `${leftOffset}px`;
+        }
+
+        // Funkce pro vykreslení submenu na základě vybraného produktu
+        function renderSubmenu(productKey) {
+            submenuContainer.classList.add('fade-out');
+            
+            // Krátký timeout pro plynulý fade-out/fade-in efekt
+            setTimeout(() => {
+                const items = menuData[productKey] || [];
+                submenuContainer.innerHTML = items.map(item => `
+                    <li class="submenu-item ${item.active ? 'active' : ''}">
+                        <a href="${item.url}">${item.title}</a>
+                    </li>
+                `).join('');
+                submenuContainer.classList.remove('fade-out');
+                
+                // Navázání click eventů na nové položky submenu pro ukázku funkčnosti
+                initSubmenuClicks();
+            }, 150);
+        }
+
+        // Pomocná funkce pro překlikávání přímo v submenu
+        function initSubmenuClicks() {
+            const subItems = document.querySelectorAll('.submenu-item');
+            subItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    subItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+        }
+
+        // Hlavní logika pro přepínání produktů (Casino / Sporty)
+        productItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                if (item.classList.contains('active')) return;
+
+                // Aktivace tabu
+                productItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Posun kapsle a změna submenu
+                updateHighlightPosition(item);
+                const productKey = item.getAttribute('data-product');
+                renderSubmenu(productKey);
+            });
+        });
+
+        // Inicializace při načtení stránky
+        window.addEventListener('DOMContentLoaded', () => {
+            const activeItem = document.querySelector('.product-item.active');
+            if (activeItem) {
+                updateHighlightPosition(activeItem);
+                renderSubmenu(activeItem.getAttribute('data-product'));
+            }
+        });
+
+        // Přepočítat pozici kapsle při změně velikosti okna (responzivita)
+        window.addEventListener('resize', () => {
+            const activeItem = document.querySelector('.product-item.active');
+            if (activeItem) updateHighlightPosition(activeItem);
+        });
+    </script>
 </body>
 </html>

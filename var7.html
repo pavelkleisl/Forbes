@@ -3,104 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submenu - Varianta A</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <title>Forbes - Varianta 3 (Glow Switcher)</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
-        
-        /* Horní patro zůstává beze změny */
-        .top-deck {
-            background: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
-            background-size: cover;
-            display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 70px;
-        }
-        .left-brand-zone { display: flex; align-items: center; gap: 35px; }
-        .logo img { height: 45px; display: block; }
-        .main-products-nav { display: flex; gap: 8px; list-style: none; }
-        .product-item a { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 20px; border-radius: 20px; }
-        .product-item.active a { background-color: #ffbe00; color: #03091e; }
-        .auth-zone { display: flex; align-items: center; gap: 15px; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 28px; border-radius: 20px; font-size: 14px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
-        .btn-login { background-color: #ffffff; color: #03091e; }
-        .btn-register { background-color: #ffbe00; color: #03091e; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #96989e; color: #fff; }
 
-        /* ==========================================================================
-           NOVÉ SUBMENU: VARIANTA A (Inverted Tech Pill)
-           ========================================================================== */
-        .bottom-deck {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
+        .header-container {
+            background-color: #070f26;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 40px;
-            height: 54px;
+            height: 80px;
+            border-bottom: 1px solid #1a2342;
         }
 
-        .submenu-nav { 
-            display: flex; 
-            list-style: none; 
-            gap: 6px; 
-            align-items: center; 
-        }
-        
-        .submenu-item a {
-            color: #64748b; /* Příjemná, moderní břidlicová šedá pro neaktivní linky */
+        .brand-block { display: flex; align-items: center; gap: 30px; height: 100%; }
+        .logo { font-size: 22px; font-weight: 900; text-transform: uppercase; color: #fff;}
+
+        /* Hlavní rozcestník jako pilíře */
+        .main-hubs { display: flex; height: 100%; }
+        .hub-link {
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            color: #64748b;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500; /* Jemnější tloušťka */
-            padding: 8px 18px;
-            border-radius: 20px; /* Plná pilulka */
-            transition: all 0.2s ease-in-out;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+            height: 100%;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
         }
+        .hub-link:hover { color: #fff; }
         
-        /* Hover stav: Velmi decentní podbarvení */
-        .submenu-item:hover a {
-            color: #0f172a;
-            background-color: #f1f5f9;
+        /* Aktivní stavy s neon/glow efektem */
+        .hub-link.casino-active {
+            color: #ffb703;
+            border-bottom-color: #ffb703;
+            background: linear-gradient(to bottom, transparent, rgba(255, 183, 3, 0.05));
+            text-shadow: 0 0 10px rgba(255, 183, 3, 0.3);
+        }
+        .hub-link.sport-active {
+            color: #00f5ff;
+            border-bottom-color: #00f5ff;
+            background: linear-gradient(to bottom, transparent, rgba(0, 245, 255, 0.05));
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
         }
 
-        /* Aktivní stav: Kontrastní tmavá pilulka s vaší žlutou */
-        .submenu-item.active a {
-            background-color: #03091e; /* Tmavá barva z vašeho brandu */
-            color: #ffbe00; /* Vaše jasná žlutá */
+        /* Podmenu integrované uprostřed */
+        .sub-navigation { display: flex; list-style: none; gap: 10px; }
+        .sub-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.2s;
         }
+        .sub-link:hover { color: #fff; background-color: #131c38; }
+
+        /* Pravá strana: Login/Reg */
+        .auth-block { display: flex; gap: 10px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            padding: 0 20px;
+            border-radius: 21px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .btn-in { color: #fff; background: transparent; }
+        .btn-reg { background-color: #ffb703; color: #000; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="top-deck">
-            <div class="left-brand-zone">
-                <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
-                <nav>
-                    <ul class="main-products-nav">
-                        <li class="product-item active"><a href="#">Sportovní sázení</a></li>
-                        <li class="product-item"><a href="#">Casino</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="auth-zone">
-                <a href="#" class="btn btn-login">Přihlásit se</a>
-                <a href="#" class="btn btn-register">Registrace</a>
-            </div>
-        </div>
-
-        <div class="bottom-deck">
-            <nav>
-                <ul class="submenu-nav">
-                    <li class="submenu-item active"><a href="#">Kurzy</a></li>
-                    <li class="submenu-item"><a href="#">Live</a></li>
-                    <li class="submenu-item"><a href="#">Výsledky</a></li>
-                    <li class="submenu-item"><a href="#">Komunita</a></li>
-                    <li class="submenu-item"><a href="#">Soutěže</a></li>
-                    <li class="submenu-item"><a href="#">Bonusy</a></li>
-                </ul>
+    <div class="header-container">
+        
+        <div class="brand-block">
+            <div class="logo">Forbes</div>
+            
+            <nav class="main-hubs">
+                <a href="#" class="hub-link casino-active">🎰 Casino</a>
+                <a href="#" class="hub-link">⚽ Sport</a>
             </nav>
         </div>
-    </header>
+
+        <nav>
+            <ul class="sub-navigation">
+                <li><a href="#" class="sub-link">Bonusy</a></li>
+                <li><a href="#" class="sub-link">Turnaje</a></li>
+                <li><a href="#" class="sub-link">Věrnostní systém</a></li>
+                <li><a href="#" class="sub-link">Podpora</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-block">
+            <a class="btn btn-in">Přihlášení</a>
+            <a class="btn btn-reg">Registrace</a>
+        </div>
+
+    </div>
 
 </body>
 </html>
