@@ -19,7 +19,9 @@
         }
 
         .brand-block { display: flex; align-items: center; gap: 30px; height: 100%; }
-        .logo { font-size: 22px; font-weight: 900; text-transform: uppercase; color: #fff;}
+        
+        /* Úprava pro obrázkové logo */
+        .logo img { height: 40px; display: block; }
 
         /* Hlavní rozcestník jako pilíře */
         .main-hubs { display: flex; height: 100%; }
@@ -89,7 +91,9 @@
     <div class="header-container">
         
         <div class="brand-block">
-            <div class="logo">Forbes</div>
+            <a href="#" class="logo">
+                <img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes Casino">
+            </a>
             
             <nav class="main-hubs">
                 <a href="#" class="hub-link casino-active">🎰 Casino</a>
