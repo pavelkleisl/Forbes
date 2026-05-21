@@ -41,7 +41,6 @@
             transform: translateX(-50%);
             z-index: 99999;
             width: 850px;
-            /* Fixní šířka pro čisté zarovnání textu a tlačítek */
             max-width: 95vw;
 
             /* Glassmorphic Single Block Design */
@@ -70,23 +69,17 @@
 
         /* Dynamic UI Row Behavior */
         #ui-row {
-            max-height: 50px;
             opacity: 1;
-            transform: translateY(0);
             margin-bottom: 2px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: 16px;
+            padding-bottom: 16px; /* Přidán padding pro stabilní odsazení linky */
         }
 
+        /* OPRAVA: Řádek nyní nezmizí fyzicky, takže panel neskáče */
         #ui-row.hidden {
-            max-height: 0;
             opacity: 0;
-            transform: translateY(-10px);
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0);
             pointer-events: none;
-            overflow: hidden;
         }
 
         /* Minimalist Group Labels */
@@ -120,7 +113,7 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Active State - Layout Architecture (Pure Premium White) */
+        /* Active State - Layout Architecture */
         .layout-btn.active {
             background: #ffffff;
             color: #020617;
@@ -129,7 +122,7 @@
             font-weight: 700;
         }
 
-        /* Active State - UI Styles (Signature Forbes Yellow Glow) */
+        /* Active State - UI Styles */
         .ui-btn {
             padding: 8px 16px;
             font-size: 12px;
@@ -144,9 +137,7 @@
             font-weight: 700;
         }
 
-        /* ==========================================================================
-           DYNAMIC DESCRIPTION AREA
-           ========================================================================== */
+        /* DYNAMIC DESCRIPTION AREA */
         .description-box {
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: 16px;
@@ -160,6 +151,11 @@
             font-size: 13px;
             line-height: 1.6;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* OPRAVA: Fixní minimální výška textu zabrání skákání kvůli délce popisků */
+        #desc-text {
+            min-height: 65px;
         }
 
         /* Preferred State (Green) */
@@ -217,14 +213,10 @@
 
     <div class="presentation-container">
 
-
-
         <div class="control-row">
             <div class="row-label">Layout Concept</div>
-            <button class="nav-btn layout-btn active" onclick="selectLayout(1, 'vardefault.html', this)">Two-Row
-                Hub</button>
-            <button class="nav-btn layout-btn" onclick="selectLayout(2, 'var6.html', this)">Top Utility with Subsection
-                Header</button>
+            <button class="nav-btn layout-btn active" onclick="selectLayout(1, 'vardefault.html', this)">Two-Row Hub</button>
+            <button class="nav-btn layout-btn" onclick="selectLayout(2, 'var6.html', this)">Top Utility with Subsection Header</button>
             <button class="nav-btn layout-btn" onclick="selectLayout(3, 'var7.html', this)">Inline Consolidated</button>
         </div>
 
@@ -263,7 +255,7 @@
         const descTitle = document.getElementById('desc-title');
         const descText = document.getElementById('desc-text');
 
-        // Text Database for easy editing
+        // Text Database
         const textContent = {
             1: {
                 status: "preferred",
