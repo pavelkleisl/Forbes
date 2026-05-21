@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forbes Navigation Concepts - Premium Presentation Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Reset and Base Layout */
         * {
@@ -14,8 +15,9 @@
             padding: 0;
             font-family: 'Rubik', sans-serif;
         }
-        
-        body, html {
+
+        body,
+        html {
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -38,9 +40,10 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 99999;
-            width: 850px; /* Fixní šířka pro čisté zarovnání textu a tlačítek */
+            width: 850px;
+            /* Fixní šířka pro čisté zarovnání textu a tlačítek */
             max-width: 95vw;
-            
+
             /* Glassmorphic Single Block Design */
             background: rgba(10, 16, 36, 0.8);
             backdrop-filter: blur(30px);
@@ -51,7 +54,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            box-shadow: 
+            box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.85),
                 0 0 0 1px rgba(255, 255, 255, 0.02),
                 0 1px 0 rgba(255, 255, 255, 0.1) inset;
@@ -72,9 +75,9 @@
             transform: translateY(0);
             margin-bottom: 2px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 16px;
+            padding-top: 16px;
         }
-        
+
         #ui-row.hidden {
             max-height: 0;
             opacity: 0;
@@ -132,7 +135,7 @@
             font-size: 12px;
             border-radius: 12px;
         }
-        
+
         .ui-btn.active {
             background: #ffbe00;
             color: #020617;
@@ -165,6 +168,7 @@
             border: 1px solid rgba(16, 185, 129, 0.15);
             color: #a7f3d0;
         }
+
         .description-box.preferred .badge {
             background: #10b981;
             color: #020617;
@@ -176,6 +180,7 @@
             border: 1px solid rgba(239, 68, 68, 0.15);
             color: #fca5a5;
         }
+
         .description-box.rejected .badge {
             background: #ef4444;
             color: #ffffff;
@@ -205,12 +210,24 @@
         }
     </style>
 </head>
+
 <body>
 
     <iframe id="preview-frame" src="vardefault.html"></iframe>
 
     <div class="presentation-container">
-        
+
+
+
+        <div class="control-row">
+            <div class="row-label">Layout Concept</div>
+            <button class="nav-btn layout-btn active" onclick="selectLayout(1, 'vardefault.html', this)">Two-Row
+                Hub</button>
+            <button class="nav-btn layout-btn" onclick="selectLayout(2, 'var6.html', this)">Top Utility with Subsection
+                Header</button>
+            <button class="nav-btn layout-btn" onclick="selectLayout(3, 'var7.html', this)">Inline Consolidated</button>
+        </div>
+
         <div id="ui-row" class="control-row">
             <div class="row-label">UI Visual Style</div>
             <button class="nav-btn ui-btn active" onclick="loadFrame('vardefault.html', this)"> 1</button>
@@ -220,13 +237,6 @@
             <button class="nav-btn ui-btn" onclick="loadFrame('var5.html', this)"> 5</button>
         </div>
 
-        <div class="control-row">
-            <div class="row-label">Layout Concept</div>
-            <button class="nav-btn layout-btn active" onclick="selectLayout(1, 'vardefault.html', this)">Two-Row Hub</button>
-            <button class="nav-btn layout-btn" onclick="selectLayout(2, 'var6.html', this)">Top Utility with Subsection Header</button>
-            <button class="nav-btn layout-btn" onclick="selectLayout(3, 'var7.html', this)">Inline Consolidated</button>
-        </div>
-
         <div id="desc-box" class="description-box preferred">
             <div class="description-content">
                 <div class="description-header">
@@ -234,7 +244,9 @@
                     <span class="description-title" id="desc-title">Two-Row Hub Architecture</span>
                 </div>
                 <p id="desc-text">
-                    This is my highly preferred concept. The two-row hierarchy guarantees absolute scalability for adding future subcategories without cluttering the screen. It separates the primary core products from section-specific features, creating a bulletproof, intuitive UX path.
+                    This is my highly preferred concept. The two-row hierarchy guarantees absolute scalability for
+                    adding future subcategories without cluttering the screen. It separates the primary core products
+                    from section-specific features, creating a bulletproof, intuitive UX path.
                 </p>
             </div>
         </div>
@@ -244,7 +256,7 @@
     <script>
         const iframe = document.getElementById('preview-frame');
         const uiRow = document.getElementById('ui-row');
-        
+
         // Description Elements
         const descBox = document.getElementById('desc-box');
         const descBadge = document.getElementById('desc-badge');
@@ -276,7 +288,7 @@
         function selectLayout(layoutNum, url, btnElement) {
             // Smooth content fade transition
             iframe.style.opacity = '0';
-            
+
             setTimeout(() => {
                 iframe.src = url;
                 iframe.style.opacity = '1';
@@ -297,7 +309,7 @@
 
             // Update Dynamic Description Content & Colors
             const data = textContent[layoutNum];
-            
+
             descBox.className = `description-box ${data.status}`;
             descBadge.textContent = data.badge;
             descTitle.textContent = data.title;
@@ -312,4 +324,5 @@
     </script>
 
 </body>
+
 </html>
