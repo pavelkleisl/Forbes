@@ -11,9 +11,9 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
         
-        /* Horní patro zůstává beze změny */
+        /* Horní patro zůstává beze změny, obrázek se načítá lokálně */
         .top-deck {
-            background: url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
+            background: url('bg.jpg') no-repeat center top;
             background-size: cover;
             display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 70px;
         }
@@ -108,7 +108,7 @@
     <header>
         <div class="top-deck">
             <div class="left-brand-zone">
-                <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
+                <a href="#" class="logo"><img src="logo.svg" alt="Forbes"></a>
                 <nav>
                     <ul class="main-products-nav">
                         <li class="product-item active" id="tabSport"><a href="#" onclick="switchTo('sport', event)">Sportovní sázení</a></li>

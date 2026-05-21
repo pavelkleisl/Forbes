@@ -8,7 +8,8 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
         header { 
-            background: #020512 url('https://www.forbescasino.cz/assets/img/welcome-bg.jpg') no-repeat center top;
+            /* Změněno na lokální soubor bg.jpg ve stejném adresáři */
+            background: #020512 url('bg.jpg') no-repeat center top;
         }
 
         body {
@@ -124,7 +125,7 @@
     <header class="trace-header">
         <div class="top-bar">
             <div class="left-zone">
-                <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
+                <a href="#" class="logo"><img src="logo.svg" alt="Forbes"></a>
                 <ul class="hub-nav">
                     <li class="active" id="tabSport"><a href="#" onclick="switchTo('sport', event)">Sportovní sázení</a></li>
                     <li id="tabCasino"><a href="#" onclick="switchTo('casino', event)">Casino</a></li>
@@ -139,7 +140,7 @@
         <div class="trace-deck">
             <nav>
                 <ul class="trace-menu" id="traceMenu">
-                    </ul>
+                </ul>
             </nav>
         </div>
     </header>
