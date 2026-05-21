@@ -56,7 +56,19 @@
         }
 
         /* Podmenu integrované uprostřed */
-        .sub-navigation { display: flex; list-style: none; gap: 10px; }
+        .sub-navigation { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Třída pro plynulé probliknutí submenu při přepnutí */
+        .sub-navigation.fade-out {
+            opacity: 0;
+        }
+
         .sub-link {
             color: #94a3b8;
             text-decoration: none;
@@ -67,6 +79,20 @@
             transition: all 0.2s;
         }
         .sub-link:hover { color: #fff; background-color: #131c38; }
+
+        /* Dynamické sladění aktivní barvy submenu s vybraným produktem (Glow efekt) */
+        .theme-casino .sub-link.active {
+            color: #ffb703;
+            background-color: #131c38;
+            text-shadow: 0 0 8px rgba(255, 183, 3, 0.2);
+            font-weight: 700;
+        }
+        .theme-sport .sub-link.active {
+            color: #00f5ff;
+            background-color: #131c38;
+            text-shadow: 0 0 8px rgba(0, 245, 255, 0.2);
+            font-weight: 700;
+        }
 
         /* Pravá strana: Login/Reg */
         .auth-block { display: flex; gap: 10px; }
@@ -88,7 +114,7 @@
 </head>
 <body>
 
-    <div class="header-container">
+    <div class="header-container theme-casino" id="headerContainer">
         
         <div class="brand-block">
             <a href="#" class="logo">
@@ -96,18 +122,14 @@
             </a>
             
             <nav class="main-hubs">
-                <a href="#" class="hub-link casino-active">🎰 Casino</a>
-                <a href="#" class="hub-link">⚽ Sport</a>
+                <a href="#" id="hubCasino" class="hub-link casino-active" onclick="switchTo('casino', event)">🎰 Casino</a>
+                <a href="#" id="hubSport" class="hub-link" onclick="switchTo('sport', event)">⚽ Sport</a>
             </nav>
         </div>
 
         <nav>
-            <ul class="sub-navigation">
-                <li><a href="#" class="sub-link">Bonusy</a></li>
-                <li><a href="#" class="sub-link">Turnaje</a></li>
-                <li><a href="#" class="sub-link">Věrnostní systém</a></li>
-                <li><a href="#" class="sub-link">Podpora</a></li>
-            </ul>
+            <ul class="sub-navigation" id="subNavigation">
+                </ul>
         </nav>
 
         <div class="auth-block">
@@ -116,6 +138,78 @@
         </div>
 
     </div>
+
+    <script>
+        // Synchronizovaná data ze vzorové předlohy
+        const menus = {
+            casino: [
+                { label: 'Domů' },
+                { label: 'Bonusy' },
+                { label: 'Cashback' },
+                { label: 'Turnaje' },
+                { label: 'Blog' },
+            ],
+            sport: [
+                { label: 'Domů' },
+                { label: 'Živě' },
+                { label: 'Soutěže' },
+                { label: 'Bonusy' },
+            ],
+        };
+
+        let activeProduct = 'casino';
+
+        // Vykreslení položek v integrovaném submenu
+        function renderMenu(product) {
+            const menuEl = document.getElementById('subNavigation');
+            menuEl.innerHTML = menus[product].map((item, i) => {
+                return `<li>
+                        <a href="#" class="sub-link${i === 0 ? ' active' : ''}" onclick="activateItem(this, event)">${item.label}</a>
+                    </li>`;
+            }).join('');
+        }
+
+        // Aktivace položky uvnitř středového submenu (Domů, Živě, Turnaje atd.)
+        function activateItem(el, e) {
+            e.preventDefault();
+            document.querySelectorAll('#subNavigation .sub-link').forEach(link => link.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Hlavní přepínač s neonovým tématem
+        function switchTo(product, e) {
+            if (e) e.preventDefault();
+            if (product === activeProduct) return;
+            activeProduct = product;
+
+            const container = document.getElementById('headerContainer');
+            const hubCasino = document.getElementById('hubCasino');
+            const hubSport = document.getElementById('hubSport');
+
+            // Přepnutí stylů hlavního rozcestníku a celkového barevného motivu hlavičky
+            if (product === 'casino') {
+                container.className = 'header-container theme-casino';
+                hubCasino.classList.add('casino-active');
+                hubSport.classList.remove('sport-active');
+            } else {
+                container.className = 'header-container theme-sport';
+                hubCasino.classList.remove('casino-active');
+                hubSport.classList.add('sport-active');
+            }
+
+            // Plynulá fade animace pro výměnu odkazů
+            const menuEl = document.getElementById('subNavigation');
+            menuEl.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderMenu(product);
+                menuEl.classList.remove('fade-out');
+            }, 200);
+        }
+
+        // Výchozí spuštění pro Casino variantu
+        renderMenu('casino');
+    </script>
 
 </body>
 </html>

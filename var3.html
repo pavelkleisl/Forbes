@@ -22,9 +22,27 @@
         }
         .left-zone { display: flex; align-items: center; gap: 40px; }
         .logo img { height: 44px; display: block; }
+        
+        /* Hlavní navigace a její liquid hover efekt */
         .hub-nav { display: flex; gap: 10px; list-style: none; }
-        .hub-nav a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 22px; border-radius: 20px; }
+        .hub-nav a { 
+            color: rgba(255, 255, 255, 0.6); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 700; 
+            padding: 8px 22px; 
+            border-radius: 20px; 
+            transition: all 0.25s ease;
+        }
+        
+        /* Čistý hover pro neaktivní položky */
+        .hub-nav li:not(.active) a:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            color: #fff;
+        }
+
         .hub-nav .active a { background-color: #ffbe00; color: #020617; }
+        
         .auth-zone { display: flex; gap: 15px; }
         .btn { display: inline-flex;
             align-items: center;
@@ -58,6 +76,13 @@
             max-width: max-content;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Třída pro hladké probliknutí celého menu při změně kategorie */
+        .slider-menu.fade-out {
+            opacity: 0;
         }
 
         .slider-item {
@@ -106,8 +131,8 @@
             <div class="left-zone">
                 <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
                 <ul class="hub-nav">
-                    <li class="active"><a href="#">Sportovní sázení</a></li>
-                    <li><a href="#">Casino</a></li>
+                    <li class="active" id="tabSport"><a href="#" onclick="switchTo('sport', event)">Sportovní sázení</a></li>
+                    <li id="tabCasino"><a href="#" onclick="switchTo('casino', event)">Casino</a></li>
                 </ul>
             </div>
             <div class="auth-zone">
@@ -119,54 +144,120 @@
         <div class="slider-deck">
             <nav>
                 <ul class="slider-menu" id="menu">
-                    <div class="magnetic-pill" id="pill"></div>
-                    
-                    <li class="slider-item active"><a href="#">Kurzy</a></li>
-                    <li class="slider-item"><a href="#">Live</a></li>
-                    <li class="slider-item"><a href="#">Výsledky</a></li>
-                    <li class="slider-item"><a href="#">Komunita</a></li>
-                    <li class="slider-item"><a href="#">Soutěže</a></li>
-                    <li class="slider-item"><a href="#">Bonusy</a></li>
-                </ul>
+                    </ul>
             </nav>
         </div>
     </header>
 
     <script>
-        // Magický skript pro ovládání plynulého skluzu
-        const menu = document.getElementById('menu');
-        const pill = document.getElementById('pill');
-        const items = document.querySelectorAll('.slider-item');
-        const activeItem = document.querySelector('.slider-item.active');
+        // Data ze vzorové stránky
+        const menus = {
+            casino: [
+                { label: 'Domů' },
+                { label: 'Bonusy' },
+                { label: 'Levelovací systém' },
+                { label: 'Cashback' },
+                { label: 'Turnaje' },
+                { label: 'Blog' },
+            ],
+            sport: [
+                { label: 'Domů' },
+                { label: 'Živě' },
+                { label: 'Soutěže' },
+                { label: 'Bonusy' },
+            ],
+        };
 
-        // Funkce pro přesun pilulky na vybraný element
-        function movePill(element) {
-            pill.style.opacity = '1';
-            pill.style.left = element.offsetLeft + 'px';
-            pill.style.width = element.offsetWidth + 'px';
-            pill.style.height = element.offsetHeight + 'px';
+        let activeProduct = 'sport';
+
+        // Vykreslení celého menu a re-inicializace magnetického efektu
+        function renderMenu(product) {
+            const menuEl = document.getElementById('menu');
+            
+            // Zachováme slider pilulku a vygenerujeme položky
+            menuEl.innerHTML = `
+                <div class="magnetic-pill" id="pill"></div>
+                ${menus[product].map((item, i) => `
+                    <li class="slider-item${i === 0 ? ' active' : ''}">
+                        <a href="#" onclick="activateItem(this, event)">${item.label}</a>
+                    </li>
+                `).join('')}
+            `;
+            
+            // Nastartujeme fyziku slideru pro nově vytvořené DOM elementy
+            initMagneticSlider();
         }
 
-        // Inicializace na aktivní položku
-        if (activeItem) {
-            movePill(activeItem);
-        }
+        // Fyzika a eventy pro liquid magnetic pilulku
+        function initMagneticSlider() {
+            const menu = document.getElementById('menu');
+            const pill = document.getElementById('pill');
+            const items = menu.querySelectorAll('.slider-item');
+            const activeItem = menu.querySelector('.slider-item.active');
 
-        // Eventy pro hover na položky
-        items.forEach(item => {
-            item.addEventListener('mouseenter', (e) => {
-                movePill(e.currentTarget);
-            });
-        });
-
-        // Když myš opustí celé menu, vrátí se pilulka na aktivní položku
-        menu.addEventListener('mouseleave', () => {
-            if (activeItem) {
-                movePill(activeItem);
-            } else {
-                pill.style.opacity = '0';
+            function movePill(element) {
+                if (!element || !pill) return;
+                pill.style.opacity = '1';
+                pill.style.left = element.offsetLeft + 'px';
+                pill.style.width = element.offsetWidth + 'px';
+                pill.style.height = element.offsetHeight + 'px';
             }
-        });
+
+            // Umístění na aktivní tab s drobným timeoutem kvůli vykreslení layoutu v DOMu
+            if (activeItem) {
+                requestAnimationFrame(() => movePill(activeItem));
+            }
+
+            // Sledování pohybu myši nad položkami
+            items.forEach(item => {
+                item.addEventListener('mouseenter', (e) => {
+                    movePill(e.currentTarget);
+                });
+            });
+
+            // Návrat pilulky na aktivní položku po opuštění menu
+            menu.onmouseleave = () => {
+                const currentActive = menu.querySelector('.slider-item.active');
+                if (currentActive) {
+                    movePill(currentActive);
+                } else {
+                    pill.style.opacity = '0';
+                }
+            };
+        }
+
+        // Kliknutí na položku uvnitř submenu (Kurzy, Live atd.)
+        function activateItem(el, e) {
+            e.preventDefault();
+            const menu = document.getElementById('menu');
+            menu.querySelectorAll('.slider-item').forEach(li => li.classList.remove('active'));
+            
+            const parentLi = el.closest('.slider-item');
+            parentLi.classList.add('active');
+        }
+
+        // Přepínání mezi hlavním menu (Sportovní sázení / Casino)
+        function switchTo(product, e) {
+            if (e) e.preventDefault();
+            if (product === activeProduct) return;
+            activeProduct = product;
+
+            // Změna stavu v horní liště
+            document.getElementById('tabSport').classList.toggle('active', product === 'sport');
+            document.getElementById('tabCasino').classList.toggle('active', product === 'casino');
+
+            // Hladká fade animace přechodu
+            const menuEl = document.getElementById('menu');
+            menuEl.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderMenu(product);
+                menuEl.classList.remove('fade-out');
+            }, 200);
+        }
+
+        // Úvodní start stránky
+        renderMenu('sport');
     </script>
 </body>
 </html>

@@ -25,11 +25,19 @@
         .left-zone { display: flex; align-items: center; gap: 40px; }
         .logo img { height: 44px; display: block; }
         
+        /* Hlavní navigace a její hover efekty */
         .hub-nav { display: flex; gap: 10px; list-style: none; }
         .hub-nav a { 
-            color: #fff; text-decoration: none; font-size: 14px; font-weight: 700; 
-            padding: 8px 22px; border-radius: 20px; transition: all 0.2s;
+            color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; font-weight: 700; 
+            padding: 8px 22px; border-radius: 20px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
+        /* Čistý translucentní bento hover pro neaktivní položky hlavního menu */
+        .hub-nav li:not(.active) a:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
         .hub-nav .active a { background-color: #ffbe00; color: #020617; }
 
         .auth-zone { display: flex; gap: 15px; }
@@ -66,6 +74,13 @@
             gap: 4px;
             max-width: max-content;
             backdrop-filter: blur(8px);
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Třída pro plynulý přechod bento menu při přepnutí tabu */
+        .bento-menu.fade-out {
+            opacity: 0;
         }
 
         .bento-item a {
@@ -104,8 +119,8 @@
             <div class="left-zone">
                 <a href="#" class="logo"><img src="https://www.forbescasino.cz/assets/img/logo.svg" alt="Forbes"></a>
                 <ul class="hub-nav">
-                    <li class="active"><a href="#">Sportovní sázení</a></li>
-                    <li><a href="#">Casino</a></li>
+                    <li class="active" id="tabSport"><a href="#" onclick="switchTo('sport', event)">Sportovní sázení</a></li>
+                    <li id="tabCasino"><a href="#" onclick="switchTo('casino', event)">Casino</a></li>
                 </ul>
             </div>
             <div class="auth-zone">
@@ -116,17 +131,73 @@
 
         <div class="bento-strip">
             <nav>
-                <ul class="bento-menu">
-                    <li class="bento-item active"><a href="#">Kurzy</a></li>
-                    <li class="bento-item"><a href="#">Live</a></li>
-                    <li class="bento-item"><a href="#">Výsledky</a></li>
-                    <li class="bento-item"><a href="#">Komunita</a></li>
-                    <li class="bento-item"><a href="#">Soutěže</a></li>
-                    <li class="bento-item"><a href="#">Bonusy</a></li>
-                </ul>
+                <ul class="bento-menu" id="bentoMenu">
+                    </ul>
             </nav>
         </div>
     </header>
+
+    <script>
+        // Data přesně podle vzorové stránky
+        const menus = {
+            casino: [
+                { label: 'Domů' },
+                { label: 'Bonusy' },
+                { label: 'Levelovací systém' },
+                { label: 'Cashback' },
+                { label: 'Turnaje' },
+                { label: 'Blog' },
+            ],
+            sport: [
+                { label: 'Domů' },
+                { label: 'Živě' },
+                { label: 'Soutěže' },
+                { label: 'Bonusy' },
+            ],
+        };
+
+        let activeProduct = 'sport';
+
+        // Vykreslení bento dlaždic v submenu
+        function renderMenu(product) {
+            const menuEl = document.getElementById('bentoMenu');
+            menuEl.innerHTML = menus[product].map((item, i) => {
+                return `<li class="bento-item${i === 0 ? ' active' : ''}">
+                        <a href="#" onclick="activateItem(this, event)">${item.label}</a>
+                    </li>`;
+            }).join('');
+        }
+
+        // Aktivace jednotlivé dlaždice v bento menu
+        function activateItem(el, e) {
+            e.preventDefault();
+            document.querySelectorAll('#bentoMenu .bento-item').forEach(li => li.classList.remove('active'));
+            el.closest('.bento-item').classList.add('active');
+        }
+
+        // Přepínání hlavních produktů (Sportovní sázení / Casino)
+        function switchTo(product, e) {
+            if (e) e.preventDefault();
+            if (product === activeProduct) return;
+            activeProduct = product;
+
+            // Změna aktivního stavu v hlavní nadhlavičce
+            document.getElementById('tabSport').classList.toggle('active', product === 'sport');
+            document.getElementById('tabCasino').classList.toggle('active', product === 'casino');
+
+            // Fade-out animace celého bento bloku před změnou dat
+            const menuEl = document.getElementById('bentoMenu');
+            menuEl.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderMenu(product);
+                menuEl.classList.remove('fade-out');
+            }, 200);
+        }
+
+        // Výchozí načtení menu
+        renderMenu('sport');
+    </script>
 
 </body>
 </html>
