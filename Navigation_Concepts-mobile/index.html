@@ -8,6 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
+        .body {
+            /* Skryje scrollovací lištu pro Firefox */
+            scrollbar-width: none;
+            /* Skryje scrollovací lištu pro IE a starší Edge */
+            -ms-overflow-style: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
         /* Reset and Base Layout */
         * {
             box-sizing: border-box;
@@ -39,7 +50,8 @@
 
         /* Wrapper that controls iframe width */
         .preview-container {
-            width: 100%; /* Default to 100% */
+            width: 100%;
+            /* Default to 100% */
             height: 100%;
             max-height: 80%;
             max-width: 100%;
@@ -176,7 +188,7 @@
 
     <!-- Simplified Responsive Controller -->
     <div class="simulator-controls">
-        
+
         <!-- Presets -->
         <div class="control-group">
             <span class="group-label">Presets</span>
@@ -188,19 +200,9 @@
         <!-- Manual Slider -->
         <div class="control-group width-slider-container">
             <span class="group-label">Width</span>
-            <input 
-                type="range" 
-                id="widthInput" 
-                class="width-slider" 
-                min="320" 
-                max="1920" 
-                value="1440"
-                oninput="handleSlider(this.value)"
-                onmousedown="startSliderDrag()"
-                onmouseup="endSliderDrag()"
-                onTouchstart="startSliderDrag()"
-                onTouchend="endSliderDrag()"
-            >
+            <input type="range" id="widthInput" class="width-slider" min="320" max="1920" value="1440"
+                oninput="handleSlider(this.value)" onmousedown="startSliderDrag()" onmouseup="endSliderDrag()"
+                onTouchstart="startSliderDrag()" onTouchend="endSliderDrag()">
             <span id="width-value" class="width-display">1440px</span>
         </div>
 
@@ -230,7 +232,7 @@
         function handleSlider(val) {
             container.style.width = val + 'px';
             widthValue.textContent = val + 'px';
-            
+
             // Remove active state from preset buttons if they don't match exactly
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -241,7 +243,7 @@
         function updateWidth(px, device, btnElement) {
             container.classList.remove('no-transition');
             container.style.width = px + 'px';
-            
+
             widthSlider.value = px;
             widthValue.textContent = px + 'px';
 
@@ -252,7 +254,7 @@
         // Initialize UI
         initSliderRange();
         window.addEventListener('resize', initSliderRange);
-        
+
         // Set initial desktop width layout visually
         container.style.width = '1440px';
     </script>

@@ -17,20 +17,23 @@
             font-family: 'Rubik', sans-serif;
         }
 
+        /* FIX: Scrollbar binding targeted to both root HTML and BODY nodes */
+        html, body {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none !important; /* Chrome, Safari, Opera */
+            width: 0 !important;
+            height: 0 !important;
+        }
+
         body {
             background-color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-
-            /* Skryje scrollovací lištu pro Firefox */
-            scrollbar-width: none;
-            /* Skryje scrollovací lištu pro IE a starší Edge */
-            -ms-overflow-style: none;
-        }
-
-        body::-webkit-scrollbar {
-            display: none;
         }
 
         /* ─── UKÁZKOVÝ TEST PANEL PRO RANGE SLIDER ───────────────── */
@@ -59,7 +62,7 @@
         }
 
         /* Linka slideru (Track) */
-        .width-slider::-webkit-slider-run runnable-track {
+        .width-slider::-webkit-slider-runnable-track {
             width: 100%;
             height: 4px;
             background: rgba(255, 255, 255, 0.2);
@@ -121,12 +124,14 @@
             vertical-align: middle;
         }
 
+        /* FIX: Horní lišta upevněná pevně nahoře před vším ostatním */
         .tipsport-header {
             background: url('bg.jpg') no-repeat center top;
             background-size: cover;
             width: 100%;
-            position: relative;
-            z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         /* ─── TOP ROW (Desktop) ─────────────────────────────────── */
@@ -430,13 +435,34 @@
         }
 
 
-        /* ─── NOVÝ OBSAH: ALL-IN-ONE ROZCESTNÍK (CMS ŠABLONA) ────── */
+        /* ─── OBSAH: ROZCESTNÍK & NOVE ZOBRAZOVACI SEKCIE ────────── */
         .home-content {
             display: none;
-            /* Skryto na desktopu */
             padding: 16px 14px 30px 14px;
             flex-grow: 1;
         }
+
+        /* Styly pro celoplošné faceholdery */
+        .placeholder-view {
+            display: none;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f5f9;
+            min-height: 60vh;
+        }
+        .placeholder-view h1 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #0d1345;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Třídy pro řízení viditelnosti přes JS bez konfliktu s media queries */
+        /* FIX: display pravidla mají nyní zvýšenou prioritu, takže spolehlivě přepínají taby i na mobilu */
+        .home-content.active-view { display: block !important; }
+        .placeholder-view.active-view { display: flex !important; }
 
         /* Widget 1: Marketingový / Maraton Banner */
         .cms-banner {
@@ -520,6 +546,7 @@
             text-transform: uppercase;
             letter-spacing: 0.3px;
             position: relative;
+            cursor: pointer;
         }
 
         .cms-split-card:active {
@@ -546,53 +573,16 @@
         }
 
         @keyframes pulse-live {
-            0% {
-                transform: scale(0.9);
-                opacity: 1;
-                box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
-            }
-
-            70% {
-                transform: scale(1.2);
-                opacity: 0.4;
-                box-shadow: 0 0 0 6px rgba(255, 68, 68, 0);
-            }
-
-            100% {
-                transform: scale(0.9);
-                opacity: 1;
-                box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
-            }
+            0% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7); }
+            70% { transform: scale(1.2); opacity: 0.4; box-shadow: 0 0 0 6px rgba(255, 68, 68, 0); }
+            100% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
         }
 
         /* Globální styly pro sekce widgetů */
-        .cms-section {
-            margin-bottom: 28px;
-        }
-
-        .cms-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 12px;
-            padding: 0 4px;
-        }
-
-        .cms-section-header h3 {
-            font-size: 15px;
-            font-weight: 800;
-            color: #0b0e26;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cms-section-header a {
-            font-size: 12px;
-            font-weight: 600;
-            color: #1c2780;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
+        .cms-section { margin-bottom: 28px; }
+        .cms-section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; padding: 0 4px; }
+        .cms-section-header h3 { font-size: 15px; font-weight: 800; color: #0b0e26; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cms-section-header a { font-size: 12px; font-weight: 600; color: #1c2780; text-decoration: none; text-transform: uppercase; }
 
         /* Widget 3: Šlágr dne s vlajkami */
         .cms-shlagr-card {
@@ -606,375 +596,101 @@
             border: 1px solid #eaeaea;
         }
 
-        .cms-shlagr-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #777;
-        }
-
-        .cms-shlagr-vs-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 0;
-        }
-
-        .cms-shlagr-team-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 42%;
-            text-align: center;
-            gap: 8px;
-        }
-
-        .cms-shlagr-flag {
-            width: 54px;
-            height: 36px;
-            border-radius: 6px;
-            object-fit: cover;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-            border: 1px solid #f0f0f0;
-        }
-
-        .cms-shlagr-team-name {
-            font-size: 14px;
-            font-weight: 800;
-            color: #0b0e26;
-        }
-
-        .cms-shlagr-vs-divider {
-            font-size: 11px;
-            font-weight: 900;
-            color: #cecdcb;
-            background: #f4f5f9;
-            padding: 4px 8px;
-            border-radius: 20px;
-        }
-
+        .cms-shlagr-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 600; color: #777; }
+        .cms-shlagr-vs-container { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+        .cms-shlagr-team-box { display: flex; flex-direction: column; align-items: center; width: 42%; text-align: center; gap: 8px; }
+        .cms-shlagr-flag { width: 54px; height: 36px; border-radius: 6px; object-fit: cover; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12); border: 1px solid #f0f0f0; }
+        .cms-shlagr-team-name { font-size: 14px; font-weight: 800; color: #0b0e26; }
+        .cms-shlagr-vs-divider { font-size: 11px; font-weight: 900; color: #cecdcb; background: #f4f5f9; padding: 4px 8px; border-radius: 20px; }
+        
         .cms-shlagr-card .btn-detail {
-            background: #1c2780;
-            color: #ffffff;
-            text-align: center;
-            padding: 11px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .cms-shlagr-card .btn-detail:active {
-            background: #0d1345;
+            background: #1c2780; color: #ffffff; text-align: center; padding: 11px; border-radius: 8px;
+            font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.3px;
         }
 
         /* Widget 4: Tiket dne s upraveným vzhledem */
         .cms-ticket-card {
-            background: #ffffff;
-            border-radius: 14px;
-            border: 2px dashed #cecdcb;
-            padding: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            background: #ffffff; border-radius: 14px; border: 2px dashed #cecdcb; padding: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; gap: 10px;
         }
 
-        .cms-ticket-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid #f4f5f9;
-        }
-
-        .cms-ticket-row:last-of-type {
-            border-bottom: none;
-        }
-
-        .cms-ticket-match {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0b0e26;
-        }
-
-        .cms-ticket-tip {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .cms-ticket-tip strong {
-            color: #ffffff;
-            background: #1c2780;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .cms-ticket-odds {
-            font-size: 13px;
-            font-weight: 800;
-            color: #0d1345;
-            background: #f4f5f9;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .cms-ticket-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-            padding-top: 10px;
-            border-top: 2px solid #f4f5f9;
-        }
-
-        .cms-ticket-total {
-            font-size: 12px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .cms-ticket-total strong {
-            font-size: 16px;
-            color: #0d1345;
-            font-weight: 900;
-            margin-left: 4px;
-        }
-
+        .cms-ticket-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f4f5f9; }
+        .cms-ticket-row:last-of-type { border-bottom: none; }
+        .cms-ticket-match { font-size: 13px; font-weight: 700; color: #0b0e26; }
+        .cms-ticket-tip { font-size: 12px; color: #666; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
+        .cms-ticket-tip strong { color: #ffffff; background: #1c2780; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .cms-ticket-odds { font-size: 13px; font-weight: 800; color: #0d1345; background: #f4f5f9; padding: 4px 8px; border-radius: 6px; }
+        .cms-ticket-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 10px; border-top: 2px solid #f4f5f9; }
+        .cms-ticket-total { font-size: 12px; color: #555; font-weight: 600; }
+        .cms-ticket-total strong { font-size: 16px; color: #0d1345; font-weight: 900; margin-left: 4px; }
+        
         .cms-ticket-card .btn-bet-ticket {
-            background: #ffbe00;
-            color: #03091e;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            box-shadow: 0 4px 12px rgba(255, 190, 0, 0.3);
+            background: #ffbe00; color: #03091e; padding: 10px 16px; border-radius: 8px; text-decoration: none;
+            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; box-shadow: 0 4px 12px rgba(255, 190, 0, 0.3);
         }
 
         /* Widget 5: Kompaktní Casino Grid (4 sloupce, max 2 řady = 8 her) */
-        .cms-slots-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-
-        .cms-slot-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            display: block;
-        }
-
-        .cms-slot-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cms-provider-tag {
-            position: absolute;
-            bottom: 3px;
-            left: 3px;
-            background: rgba(3, 9, 30, 0.85);
-            color: #fff;
-            font-size: 7px;
-            font-weight: 700;
-            padding: 1px 4px;
-            border-radius: 2px;
-            text-transform: uppercase;
-        }
+        .cms-slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .cms-slot-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); display: block; }
+        .cms-slot-item img { width: 100%; height: 100%; object-fit: cover; }
+        .cms-provider-tag { position: absolute; bottom: 3px; left: 3px; background: rgba(3, 9, 30, 0.85); color: #fff; font-size: 7px; font-weight: 700; padding: 1px 4px; border-radius: 2px; text-transform: uppercase; }
 
         /* Widget 6: Komunitní Trendy s neutrální barvou progress baru */
-        .cms-trends-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 16px;
-            border: 1px solid #eaeaea;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .cms-trend-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .cms-trend-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 700;
-            color: #0b0e26;
-        }
-
-        .cms-trend-meta span:last-child {
-            color: #1c2780;
-        }
-
-        .cms-progress-bg {
-            background: #f4f5f9;
-            height: 8px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .cms-progress-bar {
-            background: linear-gradient(90deg, #1c2780 0%, #ffbe00 100%);
-            height: 100%;
-            border-radius: 10px;
-        }
+        .cms-trends-card { background: #ffffff; border-radius: 14px; padding: 16px; border: 1px solid #eaeaea; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03); display: flex; flex-direction: column; gap: 14px; }
+        .cms-trend-item { display: flex; flex-direction: column; gap: 6px; }
+        .cms-trend-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #0b0e26; }
+        .cms-trend-meta span:last-child { color: #1c2780; }
+        .cms-progress-bg { background: #f4f5f9; height: 8px; border-radius: 10px; overflow: hidden; position: relative; }
+        .cms-progress-bar { background: linear-gradient(90deg, #1c2780 0%, #ffbe00 100%); height: 100%; border-radius: 10px; }
 
         /* Widget 7: Dlouhodobé sázky */
-        .cms-specials-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
+        .cms-specials-list { display: flex; flex-direction: column; gap: 10px; }
         .cms-special-item {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border: 1px solid #eaeaea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
+            background: #ffffff; border-radius: 10px; padding: 12px 14px; border: 1px solid #eaeaea;
+            display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit;
         }
-
-        .cms-special-item:active {
-            background: #f4f5f9;
-        }
-
-        .cms-special-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0b0e26;
-        }
-
-        .cms-special-sub {
-            font-size: 11px;
-            color: #777;
-            margin-top: 2px;
-        }
-
-        .cms-special-arrow {
-            color: #1c2780;
-            font-weight: 700;
-            font-size: 14px;
-        }
+        .cms-special-title { font-size: 13px; font-weight: 700; color: #0b0e26; }
+        .cms-special-sub { font-size: 11px; color: #777; margin-top: 2px; }
+        .cms-special-arrow { color: #1c2780; font-weight: 700; font-size: 14px; }
 
 
         /* ─── RESPONSIVE BREAKPOINT (< 992px) ───────────────────── */
         @media (max-width: 991px) {
-            .test-panel {
-                display: none !important;
-            }
-
-            .tipsport-header {
-                background: #0d1345 !important;
-            }
-
-            .top-deck {
-                padding: 0 20px;
-                height: 80px;
-                align-items: center;
-            }
-
-            .logo {
-                padding-right: 0;
-            }
-
-            .logo img {
-                height: 46px;
-            }
-
-            .mobile-menu-trigger {
-                display: flex;
-            }
-
-            .mobile-menu-trigger .svg-icon {
-                width: 26px;
-                height: 26px;
-            }
-
-            .product-switcher,
-            .bottom-deck {
-                display: none !important;
-            }
-
-            .auth-zone {
-                gap: 24px;
-            }
+            .test-panel { display: none !important; }
+            .tipsport-header { background: #0d1345 !important; }
+            .top-deck { padding: 0 20px; height: 80px; align-items: center; }
+            .logo { padding-right: 0; }
+            .logo img { height: 46px; }
+            .mobile-menu-trigger { display: flex; }
+            .mobile-menu-trigger .svg-icon { width: 26px; height: 26px; }
+            .product-switcher, .bottom-deck { display: none !important; }
+            .auth-zone { gap: 24px; }
 
             .auth-zone .btn {
-                background: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
-                color: #ffffff !important;
-                flex-direction: column;
-                height: auto;
-                padding: 0;
-                font-size: 11px;
-                font-weight: 400;
-                text-transform: none;
-                letter-spacing: 0.3px;
-                gap: 5px;
+                background: transparent !important; border: none !important; box-shadow: none !important;
+                color: #ffffff !important; flex-direction: column; height: auto; padding: 0;
+                font-size: 11px; font-weight: 400; text-transform: none; letter-spacing: 0.3px; gap: 5px;
             }
-
-            .auth-zone .btn .auth-icon {
-                display: inline-block;
-                width: 22px;
-                height: 22px;
-                fill: #ffffff;
-            }
-
-            .mobile-bottom-nav {
-                display: flex;
-            }
+            .auth-zone .btn .auth-icon { display: inline-block; width: 22px; height: 22px; fill: #ffffff; }
+            .mobile-bottom-nav { display: flex; }
 
             body {
                 background-color: #f4f5f9;
                 padding-bottom: clamp(60px, 7.5vw, 76px);
             }
+            
+            /* FIX: Úplně smazáno "display: block" pravidlo, které způsobovalo ignorování JS navigace! */
+        }
 
-            .home-content {
-                display: block;
-            }
+        @media (min-width: 992px) {
+            /* Na desktopu se přehledové Domů nikdy nezobrazí */
+            #view-home { display: none !important; }
         }
 
         @media (max-width: 400px) {
-            .top-deck {
-                padding: 0 16px;
-            }
-
-            .auth-zone {
-                gap: 16px;
-            }
-
-            .mobile-menu-trigger {
-                margin-right: 8px;
-            }
+            .top-deck { padding: 0 16px; }
+            .auth-zone { gap: 16px; }
+            .mobile-menu-trigger { margin-right: 8px; }
         }
     </style>
 </head>
@@ -983,55 +699,37 @@
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" xmlns:xlink="http://www.w3.org/1999/xlink">
         <symbol id="icon-alert" viewBox="0 0 32 32">
-            <path
-                d="M24.64 26.58H7.36c-1.46 0-2.65-1.19-2.65-2.65 0-.44.11-.87.32-1.26L13.67 6.8a2.65 2.65 0 014.66 0l8.64 15.87a2.648 2.648 0 01-2.33 3.91zm1.17-3.27L17.17 7.43c-.24-.43-.68-.69-1.17-.69s-.93.26-1.16.69L6.19 23.31a1.319 1.319 0 001.16 1.95h17.29c.73 0 1.32-.59 1.32-1.32.01-.22-.05-.44-.15-.63zm-9.81.63c-1.09 0-1.98-.89-1.98-1.98 0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98 0 1.09-.89 1.98-1.98 1.98zm0-2.65a.66.66 0 10-.001 1.321A.66.66 0 0016 21.29zm0-1.98c-.9 0-1.66-.71-1.71-1.61l-.27-4.97v-.04c0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98l-.27 5c-.05.91-.81 1.62-1.71 1.62zm0-7.28c-.36 0-.65.29-.66.65l.27 4.94c.01.21.19.37.39.37s.38-.16.39-.37l.27-4.94a.664.664 0 00-.66-.65z" />
+            <path d="M24.64 26.58H7.36c-1.46 0-2.65-1.19-2.65-2.65 0-.44.11-.87.32-1.26L13.67 6.8a2.65 2.65 0 014.66 0l8.64 15.87a2.648 2.648 0 01-2.33 3.91zm1.17-3.27L17.17 7.43c-.24-.43-.68-.69-1.17-.69s-.93.26-1.16.69L6.19 23.31a1.319 1.319 0 001.16 1.95h17.29c.73 0 1.32-.59 1.32-1.32.01-.22-.05-.44-.15-.63zm-9.81.63c-1.09 0-1.98-.89-1.98-1.98 0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98 0 1.09-.89 1.98-1.98 1.98zm0-2.65a.66.66 0 10-.001 1.321A.66.66 0 0016 21.29zm0-1.98c-.9 0-1.66-.71-1.71-1.61l-.27-4.97v-.04c0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98l-.27 5c-.05.91-.81 1.62-1.71 1.62zm0-7.28c-.36 0-.65.29-.66.65l.27 4.94c.01.21.19.37.39.37s.38-.16.39-.37l.27-4.94a.664.664 0 00-.66-.65z" />
         </symbol>
         <symbol id="icon-home" viewBox="0 0 32 32">
-            <path
-                d="M14.158,7.643l-9.31,7.043v7.6a.777.777,0,0,0,.808.742l5.659-.013a.777.777,0,0,0,.8-.742V17.835a.777.777,0,0,1,.808-.742h3.232a.777.777,0,0,1,.808.742v4.436a.712.712,0,0,0,.236.526.846.846,0,0,0,.572.218l5.657.014a.777.777,0,0,0,.808-.742V14.681L14.93,7.643A.659.659,0,0,0,14.158,7.643ZM28.864,12.43l-4.222-3.2V2.81a.583.583,0,0,0-.606-.557H21.209a.583.583,0,0,0-.606.557V6.178L16.082,2.761a2.592,2.592,0,0,0-3.08,0L.219,12.43a.526.526,0,0,0-.081.784l1.288,1.438a.623.623,0,0,0,.41.2.643.643,0,0,0,.444-.125L14.158,5.742a.659.659,0,0,1,.773,0l11.879,8.986a.644.644,0,0,0,.853-.074l1.288-1.438a.526.526,0,0,0,.135-.409.545.545,0,0,0-.221-.376Z"
-                transform="translate(1.501 3.347)" />
+            <path d="M14.158,7.643l-9.31,7.043v7.6a.777.777,0,0,0,.808.742l5.659-.013a.777.777,0,0,0,.8-.742V17.835a.777.777,0,0,1,.808-.742h3.232a.777.777,0,0,1,.808.742v4.436a.712.712,0,0,0,.236.526.846.846,0,0,0,.572.218l5.657.014a.777.777,0,0,0,.808-.742V14.681L14.93,7.643A.659.659,0,0,0,14.158,7.643ZM28.864,12.43l-4.222-3.2V2.81a.583.583,0,0,0-.606-.557H21.209a.583.583,0,0,0-.606.557V6.178L16.082,2.761a2.592,2.592,0,0,0-3.08,0L.219,12.43a.526.526,0,0,0-.081.784l1.288,1.438a.623.623,0,0,0,.41.2.643.643,0,0,0,.444-.125L14.158,5.742a.659.659,0,0,1,.773,0l11.879,8.986a.644.644,0,0,0,.853-.074l1.288-1.438a.526.526,0,0,0,.135-.409.545.545,0,0,0-.221-.376Z" transform="translate(1.501 3.347)" />
         </symbol>
         <symbol id="icon-bonus" viewBox="0 0 24 24">
             <rect fill="none" />
             <g transform="translate(-1954.557 -3830.987)">
-                <path
-                    d="M1.255,18.568A1.254,1.254,0,0,0,2.51,19.823H8.787V13.547H1.255ZM11.3,19.823h6.276a1.254,1.254,0,0,0,1.255-1.255V13.547H11.3ZM18.828,7.271H17.177a3.42,3.42,0,0,0,.4-1.569A3.457,3.457,0,0,0,14.121,2.25c-1.632,0-2.687.836-4.04,2.679C8.728,3.086,7.673,2.25,6.041,2.25A3.457,3.457,0,0,0,2.589,5.7a3.372,3.372,0,0,0,.4,1.569H1.255A1.254,1.254,0,0,0,0,8.526v3.138a.629.629,0,0,0,.628.628H19.456a.629.629,0,0,0,.628-.628V8.526A1.254,1.254,0,0,0,18.828,7.271Zm-12.792,0a1.569,1.569,0,1,1,0-3.138c.781,0,1.357.129,3.377,3.138Zm8.084,0H10.744c2.016-3,2.577-3.138,3.377-3.138a1.569,1.569,0,0,1,0,3.138Z"
-                    transform="translate(1956.515 3831.951)" />
+                <path d="M1.255,18.568A1.254,1.254,0,0,0,2.51,19.823H8.787V13.547H1.255ZM11.3,19.823h6.276a1.254,1.254,0,0,0,1.255-1.255V13.547H11.3ZM18.828,7.271H17.177a3.42,3.42,0,0,0,.4-1.569A3.457,3.457,0,0,0,14.121,2.25c-1.632,0-2.687.836-4.04,2.679C8.728,3.086,7.673,2.25,6.041,2.25A3.457,3.457,0,0,0,2.589,5.7a3.372,3.372,0,0,0,.4,1.569H1.255A1.254,1.254,0,0,0,0,8.526v3.138a.629.629,0,0,0,.628.628H19.456a.629.629,0,0,0,.628-.628V8.526A1.254,1.254,0,0,0,18.828,7.271Zm-12.792,0a1.569,1.569,0,1,1,0-3.138c.781,0,1.357.129,3.377,3.138Zm8.084,0H10.744c2.016-3,2.577-3.138,3.377-3.138a1.569,1.569,0,0,1,0,3.138Z" transform="translate(1956.515 3831.951)" />
             </g>
         </symbol>
         <symbol id="icon-hamburger" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
             <g id="icon" transform="translate(-2.5 -11.093)">
-                <path id="Path_19904" data-name="Path 19904"
-                    d="M23.667,11.6H5.333a.793.793,0,0,1-.833-.739h0a.793.793,0,0,1,.833-.739H23.667a.793.793,0,0,1,.833.739h0A.793.793,0,0,1,23.667,11.6Z"
-                    transform="translate(0 6.568)" />
-                <path id="Path_19905" data-name="Path 19905"
-                    d="M23.667,18.17H5.333a.76.76,0,0,1-.833-.647h0a.76.76,0,0,1,.833-.647H23.667a.76.76,0,0,1,.833.647h0A.76.76,0,0,1,23.667,18.17Z"
-                    transform="translate(0 5.617)" />
-                <path id="Path_19906" data-name="Path 19906"
-                    d="M23.667,25.085H5.333a.789.789,0,0,1-.833-.73h0a.789.789,0,0,1,.833-.73H23.667a.789.789,0,0,1,.833.73h0A.789.789,0,0,1,23.667,25.085Z"
-                    transform="translate(0 4.483)" />
+                <path id="Path_19904" data-name="Path 19904" d="M23.667,11.6H5.333a.793.793,0,0,1-.833-.739h0a.793.793,0,0,1,.833-.739H23.667a.793.793,0,0,1,.833.739h0A.793.793,0,0,1,23.667,11.6Z" transform="translate(0 6.568)" />
+                <path id="Path_19905" data-name="Path 19905" d="M23.667,18.17H5.333a.76.76,0,0,1-.833-.647h0a.76.76,0,0,1,.833-.647H23.667a.76.76,0,0,1,.833.647h0A.76.76,0,0,1,23.667,18.17Z" transform="translate(0 5.617)" />
+                <path id="Path_19906" data-name="Path 19906" d="M23.667,25.085H5.333a.789.789,0,0,1-.833-.73h0a.789.789,0,0,1,.833-.73H23.667a.789.789,0,0,1,.833.73h0A.789.789,0,0,1,23.667,25.085Z" transform="translate(0 4.483)" />
             </g>
         </symbol>
         <symbol id="icon-login" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
-            <path
-                d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm3.793-12a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z"
-                transform="translate(2232.569 3769)" />
+            <path d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm3.793-12a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z" transform="translate(2232.569 3769)" />
         </symbol>
         <symbol id="icon-register" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
-            <path
-                d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm-1.609-4.546v-3.217h-3.217v-1.609h3.217v-3.217h1.609v3.217h3.218v1.609h-3.218v3.217Zm5.4-7.454a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z"
-                transform="translate(2233.965 3769)" />
+            <path d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm-1.609-4.546v-3.217h-3.217v-1.609h3.217v-3.217h1.609v3.217h3.218v1.609h-3.218v3.217Zm5.4-7.454a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z" transform="translate(2233.965 3769)" />
         </symbol>
         <symbol id="icon-medal" viewBox="0 0 14 22">
-            <path
-                d="M12.0182 14.5706L8.6362 14.1486L7.3732 11.2026C7.33281 11.1267 7.27252 11.0632 7.1988 11.0189C7.12508 10.9746 7.0407 10.9512 6.95469 10.9512C6.86869 10.9512 6.7843 10.9746 6.71058 11.0189C6.63686 11.0632 6.57657 11.1267 6.53619 11.2026L5.27319 14.1486L1.89119 14.5706C1.80653 14.5811 1.72655 14.6152 1.66034 14.669C1.59412 14.7228 1.54435 14.7941 1.51672 14.8748C1.48909 14.9555 1.4847 15.0423 1.50405 15.1254C1.52341 15.2085 1.56573 15.2844 1.62619 15.3446L4.17819 17.8966L3.37818 21.2966C3.35712 21.3834 3.36206 21.4744 3.39239 21.5584C3.42272 21.6424 3.4771 21.7156 3.4771 21.7156L4.05018 21.7966L6.95019 20.1076L9.90919 21.7986C9.97803 21.8379 10.0559 21.8586 10.1352 21.8586C10.2044 21.8585 10.2727 21.8427 10.3348 21.8123C10.397 21.7819 10.4515 21.7378 10.494 21.6833C10.5366 21.6287 10.5663 21.5652 10.5807 21.4975C10.5951 21.4298 10.5939 21.3598 10.5772 21.2926L9.72918 17.9006L12.2782 15.3516C12.3384 15.2912 12.3805 15.2152 12.3998 15.1322C12.419 15.0491 12.4147 14.9623 12.3872 14.8816C12.3602 14.8009 12.3115 14.7291 12.2464 14.6742C12.1813 14.6194 12.1023 14.5835 12.0182 14.5706Z" />
-            <path
-                d="M6.04564 10.926C6.08822 10.9262 6.13063 10.9205 6.17164 10.909C6.23312 10.891 6.2901 10.8602 6.33887 10.8187C6.38763 10.7772 6.42708 10.7258 6.45463 10.668L3.35464 3.368C3.3073 3.25687 3.30604 3.13149 3.35114 3.01944C3.39624 2.90739 3.48401 2.81784 3.59514 2.7705C3.70626 2.72316 3.83164 2.7219 3.94369 2.767C4.05575 2.81211 4.14529 2.89987 4.19263 3.011L7.26263 10.234L7.45663 10.661C7.48396 10.7209 7.52397 10.7742 7.57389 10.8171C7.62381 10.8601 7.68246 10.8917 7.74578 10.9097C7.8091 10.9278 7.87559 10.9319 7.94066 10.9218C8.00572 10.9116 8.06781 10.8875 8.12263 10.851L10.4056 9.33L6.25164 0H3.30664C3.29764 0 3.29064 0.007 3.28164 0.008C3.21097 0.0131 3.14247 0.0346 3.08163 0.071C3.05968 0.0885 3.03896 0.1075 3.01964 0.128C2.98743 0.1513 2.95822 0.1785 2.93264 0.209C2.92564 0.221 2.92764 0.235 2.91964 0.248C2.91164 0.261 2.90164 0.264 2.89564 0.276L0.159637 6.65C0.117827 6.74786 0.111639 6.85728 0.14215 6.95922C0.172661 7.06117 0.237941 7.1492 0.326636 7.208L5.78963 10.85C5.86587 10.8994 5.95477 10.9258 6.04564 10.926Z" />
-            <path
-                d="M13.7451 6.649L11.0141 0.276C10.9787 0.193985 10.92 0.124135 10.8454 0.0750826C10.7708 0.0260306 10.6834 0 10.5941 0H7.24805L11.1671 8.815L13.579 7.207C13.6673 7.14779 13.7321 7.05969 13.7624 6.95785C13.7927 6.85602 13.7866 6.7468 13.7451 6.649Z" />
+            <path d="M12.0182 14.5706L8.6362 14.1486L7.3732 11.2026C7.33281 11.1267 7.27252 11.0632 7.1988 11.0189C7.12508 10.9746 7.0407 10.9512 6.95469 10.9512C6.86869 10.9512 6.7843 10.9746 6.71058 11.0189C6.63686 11.0632 6.57657 11.1267 6.53619 11.2026L5.27319 14.1486L1.89119 14.5706C1.80653 14.5811 1.72655 14.6152 1.66034 14.669C1.59412 14.7228 1.54435 14.7941 1.51672 14.8748C1.48909 14.9555 1.4847 15.0423 1.50405 15.1254C1.52341 15.2085 1.56573 15.2844 1.62619 15.3446L4.17819 17.8966L3.37818 21.2966C3.35712 21.3834 3.36206 21.4744 3.39239 21.5584C3.42272 21.6424 3.4771 21.7156 3.4771 21.7156L4.05018 21.7966L6.95019 20.1076L9.90919 21.7986C9.97803 21.8379 10.0559 21.8586 10.1352 21.8586C10.2044 21.8585 10.2727 21.8427 10.3348 21.8123C10.397 21.7819 10.4515 21.7378 10.494 21.6833C10.5366 21.6287 10.5663 21.5652 10.5807 21.4975C10.5951 21.4298 10.5939 21.3598 10.5772 21.2926L9.72918 17.9006L12.2782 15.3516C12.3384 15.2912 12.3805 15.2152 12.3998 15.1322C12.419 15.0491 12.4147 14.9623 12.3872 14.8816C12.3602 14.8009 12.3115 14.7291 12.2464 14.6742C12.1813 14.6194 12.1023 14.5835 12.0182 14.5706Z" />
+            <path d="M6.04564 10.926C6.08822 10.9262 6.13063 10.9205 6.17164 10.909C6.23312 10.891 6.2901 10.8602 6.33887 10.8187C6.38763 10.7772 6.42708 10.7258 6.45463 10.668L3.35464 3.368C3.3073 3.25687 3.30604 3.13149 3.35114 3.01944C3.39624 2.90739 3.48401 2.81784 3.59514 2.7705C3.70626 2.72316 3.83164 2.7219 3.94369 2.767C4.05575 2.81211 4.14529 2.89987 4.19263 3.011L7.26263 10.234L7.45663 10.661C7.48396 10.7209 7.52397 10.7742 7.57389 10.8171C7.62381 10.8601 7.68246 10.8917 7.74578 10.9097C7.8091 10.9278 7.87559 10.9319 7.94066 10.9218C8.00572 10.9116 8.06781 10.8875 8.12263 10.851L10.4056 9.33L6.25164 0H3.30664C3.29764 0 3.29064 0.007 3.28164 0.008C3.21097 0.0131 3.14247 0.0346 3.08163 0.071C3.05968 0.0885 3.03896 0.1075 3.01964 0.128C2.98743 0.1513 2.95822 0.1785 2.93264 0.209C2.92564 0.221 2.92764 0.235 2.91964 0.248C2.91164 0.261 2.90164 0.264 2.89564 0.276L0.159637 6.65C0.117827 6.74786 0.111639 6.85728 0.14215 6.95922C0.172661 7.06117 0.237941 7.1492 0.326636 7.208L5.78963 10.85C5.86587 10.8994 5.95477 10.9258 6.04564 10.926Z" />
+            <path d="M13.7451 6.649L11.0141 0.276C10.9787 0.193985 10.92 0.124135 10.8454 0.0750826C10.7708 0.0260306 10.6834 0 10.5941 0H7.24805L11.1671 8.815L13.579 7.207C13.6673 7.14779 13.7321 7.05969 13.7624 6.95785C13.7927 6.85602 13.7866 6.7468 13.7451 6.649Z" />
         </symbol>
     </svg>
 
@@ -1044,16 +742,16 @@
                     </svg>
                 </button>
 
-                <a href="#" class="logo">
+                <a href="#" class="logo" onclick="navigateTo('home', event)">
                     <img src="logo.svg" alt="Forbes">
                 </a>
 
                 <div class="product-switcher" id="switcher">
                     <div class="tab-indicator" id="indicator"></div>
-                    <button class="product-btn active" id="btnCasino" onclick="switchTo('casino')">
+                    <button class="product-btn" id="btnCasino" onclick="navigateTo('casino', event)">
                         <img src="casino.svg" class="nav-icon" alt=""> Casino
                     </button>
-                    <button class="product-btn" id="btnSport" onclick="switchTo('sport')">
+                    <button class="product-btn" id="btnSport" onclick="navigateTo('sport', event)">
                         <img src="sport.svg" class="nav-icon" alt=""> Sporty
                     </button>
                 </div>
@@ -1082,8 +780,8 @@
         </div>
     </header>
 
-    <main class="home-content">
-
+    <main class="home-content" id="view-home">
+        
         <section class="cms-banner">
             <div class="cms-banner-badge">Tournament</div>
             <h2>Bettor's Marathon</h2>
@@ -1092,47 +790,47 @@
         </section>
 
         <section class="cms-split-grid">
-            <a href="#" class="cms-split-card">
+            <div class="cms-split-card" onclick="navigateTo('casino', event)">
                 <img src="casino.svg" alt="">
                 <span>Casino</span>
-            </a>
-            <a href="#" class="cms-split-card">
+            </div>
+            <div class="cms-split-card" onclick="navigateTo('sport', event)">
                 <img src="sport.svg" alt="">
                 <span>Sport</span>
-            </a>
-            <a href="#" class="cms-split-card">
+            </div>
+            <div class="cms-split-card" onclick="navigateTo('sport', event)">
                 <span class="cms-live-dot"></span>
                 <img src="sport.svg" alt="">
                 <span>Live</span>
-            </a>
+            </div>
         </section>
 
         <section class="cms-section">
             <div class="cms-section-header">
                 <h3>Match of the Day</h3>
-                <a href="#">All Bets &gt;</a>
+                <a href="#" onclick="navigateTo('sport', event)">All Bets &gt;</a>
             </div>
             <div class="cms-shlagr-card">
                 <div class="cms-shlagr-meta">
                     <span>Ice Hockey – World Cup</span>
                     <span>Today 20:20</span>
                 </div>
-
+                
                 <div class="cms-shlagr-vs-container">
                     <div class="cms-shlagr-team-box">
                         <img src="https://flagcdn.com/w80/cz.png" class="cms-shlagr-flag" alt="Czechia">
                         <span class="cms-shlagr-team-name">Czechia</span>
                     </div>
-
+                    
                     <div class="cms-shlagr-vs-divider">VS</div>
-
+                    
                     <div class="cms-shlagr-team-box">
                         <img src="https://flagcdn.com/w80/ca.png" class="cms-shlagr-flag" alt="Canada">
                         <span class="cms-shlagr-team-name">Canada</span>
                     </div>
                 </div>
 
-                <a href="#" class="btn-detail">View Live Odds</a>
+                <a href="#" class="btn-detail" onclick="navigateTo('sport', event)">View Live Odds</a>
             </div>
         </section>
 
@@ -1162,13 +860,13 @@
                     </div>
                     <div class="cms-ticket-odds">2.10</div>
                 </div>
-
+                
                 <div class="cms-ticket-footer">
                     <div class="cms-ticket-total">
                         <span>Total Odds</span>
                         <strong>~ 6.96</strong>
                     </div>
-                    <a href="#" class="btn-bet-ticket">Place This Bet</a>
+                    <a href="#" class="btn-bet-ticket" onclick="navigateTo('sport', event)">Place This Bet</a>
                 </div>
             </div>
         </section>
@@ -1176,41 +874,41 @@
         <section class="cms-section">
             <div class="cms-section-header">
                 <h3>Popular Games</h3>
-                <a href="#">To Casino &gt;</a>
+                <a href="#" onclick="navigateTo('casino', event)">To Casino &gt;</a>
             </div>
             <div class="cms-slots-grid">
-                <a href="https://www.forbescasino.cz/game/3748/online/legends_of_the_colosseum" class="cms-slot-item">
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1007120MjM.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3749/online/masters_of_eclipse" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1007121YmF.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3750/online/respin_joker_243" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1007122YmU.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3751/online/sweet_dream" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1007123MWY.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3758/online/maxi_5" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1006819OTA.webp" alt="">
                     <span class="cms-provider-tag">E-gaming</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3765/online/gladorius" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1006981ZWY.webp" alt="">
                     <span class="cms-provider-tag">Apollo</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3772/online/hot_fruits" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1007211NTE.webp" alt="">
                     <span class="cms-provider-tag">Kajot</span>
-                </a>
-                <a href="https://www.forbescasino.cz/game/3997/online/100_fruit_chain" class="cms-slot-item">
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event)">
                     <img src="https://www.forbescasino.cz/files/1189336MGU.webp" alt="">
                     <span class="cms-provider-tag">Tech4Bet</span>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -1218,7 +916,7 @@
             <div class="cms-section-header">
                 <h3>Trending Community Bets</h3>
             </div>
-            <div class="cms-trends-card">
+            <div class="cms-trends-card" onclick="navigateTo('sport', event)">
                 <div class="cms-trend-item">
                     <div class="cms-trend-meta">
                         <span>Sparta Prague to Win</span>
@@ -1263,59 +961,61 @@
                 <h3>Long-term Outrights</h3>
             </div>
             <div class="cms-specials-list">
-                <a href="#" class="cms-special-item">
+                <div class="cms-special-item" onclick="navigateTo('sport', event)">
                     <div>
                         <div class="cms-special-title">Who will win the domestic football championship?</div>
                         <div class="cms-special-sub">Full seasonal outright market data</div>
                     </div>
                     <span class="cms-special-arrow">&gt;</span>
-                </a>
-                <a href="#" class="cms-special-item">
+                </div>
+                <div class="cms-special-item" onclick="navigateTo('sport', event)">
                     <div>
                         <div class="cms-special-title">Next UFC Event: Jiri Prochazka</div>
                         <div class="cms-special-sub">Special method-of-victory props</div>
                     </div>
                     <span class="cms-special-arrow">&gt;</span>
-                </a>
+                </div>
             </div>
         </section>
 
     </main>
+
+    <div id="view-casino" class="placeholder-view">
+        <h1>Casino</h1>
+    </div>
+
+    <div id="view-sport" class="placeholder-view">
+        <h1>Sport</h1>
+    </div>
     <nav class="mobile-bottom-nav">
         <ul class="mobile-bottom-nav-list">
-            <li class="mobile-nav-item active">
-                <a href="#" class="mobile-nav-link" onclick="activateMobileItem(this, event)">
-                    <svg class="svg-icon">
-                        <use href="#icon-home"></use>
-                    </svg>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event)">
+                    <svg class="svg-icon"><use href="#icon-home"></use></svg>
                     <span>Domů</span>
                 </a>
             </li>
             <li class="mobile-nav-item">
-                <a href="#" class="mobile-nav-link" onclick="activateMobileItem(this, event)">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('casino', event)">
                     <img src="casino.svg" class="casino-img-icon" alt="">
                     <span>Casino</span>
                 </a>
             </li>
             <li class="mobile-nav-item">
-                <a href="#" class="mobile-nav-link" onclick="activateMobileItem(this, event)">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event)">
                     <img src="sport.svg" class="sport-img-icon" alt="">
                     <span>Sport</span>
                 </a>
             </li>
-            <li class="mobile-nav-item">
-                <a href="#" class="mobile-nav-link" onclick="activateMobileItem(this, event)">
-                    <svg class="svg-icon">
-                        <use href="#icon-bonus"></use>
-                    </svg>
+            <li class="mobile-nav-item" style="pointer-events: none;">
+                <a href="#" class="mobile-nav-link">
+                    <svg class="svg-icon"><use href="#icon-bonus"></use></svg>
                     <span>Bonusy</span>
                 </a>
             </li>
-            <li class="mobile-nav-item">
-                <a href="#" class="mobile-nav-link" onclick="activateMobileItem(this, event)">
-                    <svg class="svg-icon">
-                        <use href="#icon-medal"></use>
-                    </svg>
+            <li class="mobile-nav-item" style="pointer-events: none;">
+                <a href="#" class="mobile-nav-link">
+                    <svg class="svg-icon"><use href="#icon-medal"></use></svg>
                     <span>Síň slávy</span>
                 </a>
             </li>
@@ -1341,6 +1041,8 @@
         };
 
         let active = 'casino';
+        // Hlídání stavu, zda jsme v desktop režimu
+        let isDesktop = window.innerWidth >= 992;
 
         function renderMenu(product) {
             const nav = document.getElementById('submenu');
@@ -1359,20 +1061,60 @@
             el.closest('.submenu-item').classList.add('active');
         }
 
-        /* ─── PŘEKLIKÁVÁNÍ VE SPODNÍ MOBILNÍ LIŠTĚ ───────────────── */
-        function activateMobileItem(el, e) {
-            e.preventDefault();
+        /* ─── UNIFIKOVANÝ NAVIGAČNÍ SYSTÉM PRO PROTOTYP ─────────── */
+        function navigateTo(viewName, e) {
+            if (e) e.preventDefault();
+            
+            // 1. Kompletní skrytí všech pohledů
+            document.getElementById('view-home').classList.remove('active-view');
+            document.getElementById('view-casino').classList.remove('active-view');
+            document.getElementById('view-sport').classList.remove('active-view');
+            
+            // Bezpečnostní pojistka: Na PC nikdy nezobrazovat "home" rozcestník
+            if (viewName === 'home' && window.innerWidth >= 992) {
+                viewName = 'casino'; 
+            }
+
+            // 2. Aktivace správného pohledu
+            document.getElementById('view-' + viewName).classList.add('active-view');
+            
+            // 3. Řízení stavů v horním menu (Desktop)
+            if (viewName === 'casino' || viewName === 'sport') {
+                active = viewName;
+                document.getElementById('btnCasino').classList.toggle('active', viewName === 'casino');
+                document.getElementById('btnSport').classList.toggle('active', viewName === 'sport');
+                moveIndicator(viewName);
+
+                const nav = document.getElementById('submenu');
+                if (nav) {
+                    nav.classList.add('fade-out');
+                    setTimeout(() => {
+                        renderMenu(viewName);
+                        nav.classList.remove('fade-out');
+                    }, 180);
+                }
+            } else if (viewName === 'home') {
+                document.getElementById('btnCasino').classList.remove('active');
+                document.getElementById('btnSport').classList.remove('active');
+            }
+            
+            // 4. Řízení aktivních stavů ve spodní mobilní liště
             document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item').forEach(li => {
                 li.classList.remove('active');
             });
-            el.closest('.mobile-nav-item').classList.add('active');
+            
+            const mobileLinks = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-link');
+            mobileLinks.forEach(link => {
+                const attr = link.getAttribute('onclick') || '';
+                if (attr.includes(`'${viewName}'`)) {
+                    link.closest('.mobile-nav-item').classList.add('active');
+                }
+            });
         }
 
         function moveIndicator(product) {
             const indicator = document.getElementById('indicator');
-            const btn = product === 'casino'
-                ? document.getElementById('btnCasino')
-                : document.getElementById('btnSport');
+            const btn = product === 'casino' ? document.getElementById('btnCasino') : document.getElementById('btnSport');
             const switcher = document.getElementById('switcher');
 
             if (!indicator || !btn || !switcher || window.innerWidth < 992) return;
@@ -1384,27 +1126,31 @@
             indicator.style.transform = `translateX(${btnLeft - switcherLeft}px)`;
         }
 
-        function switchTo(product) {
-            if (product === active) return;
-            active = product;
-
-            document.getElementById('btnCasino').classList.toggle('active', product === 'casino');
-            document.getElementById('btnSport').classList.toggle('active', product === 'sport');
-            moveIndicator(product);
-
-            const nav = document.getElementById('submenu');
-            nav.classList.add('fade-out');
-            setTimeout(() => {
-                renderMenu(product);
-                nav.classList.remove('fade-out');
-            }, 180);
+        /* ─── INICIALIZACE PŘI NAČTENÍ STRÁNKY ───────────────────── */
+        renderMenu('casino');
+        if (window.innerWidth < 992) {
+            navigateTo('home');
+        } else {
+            navigateTo('casino');
         }
 
-        renderMenu('casino');
-        requestAnimationFrame(() => moveIndicator('casino'));
-
+        /* ─── CHYTRÝ DETEKTOR ZMĚNY VELIKOSTI (RESIZE) ───────────── */
         window.addEventListener('resize', () => {
-            if (window.innerWidth >= 992) {
+            const nowDesktop = window.innerWidth >= 992;
+            
+            // Reagujeme POUZE ve chvíli, kdy prohlížeč reálně přeskočí breakpoint hranici
+            if (nowDesktop !== isDesktop) {
+                isDesktop = nowDesktop;
+                
+                if (isDesktop) {
+                    // Přechod na PC -> Otevřeme naposledy aktivní herní záložku
+                    navigateTo(active === 'sport' ? 'sport' : 'casino');
+                } else {
+                    // Přechod na Mobil/Tablet -> Natvrdo defaultně vnutí přehledové "Domů"
+                    navigateTo('home');
+                }
+            } else if (isDesktop) {
+                // Pokud jsme na PC a jen se mění šířka, překreslíme žlutý indikátor pod tabem
                 moveIndicator(active);
             }
         });
