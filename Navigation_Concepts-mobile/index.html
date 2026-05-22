@@ -7,6 +7,19 @@
     <title>Forbes Navigation Concepts - Responsive Simulator</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
+    <script>
+        (function() {
+            // Detekce mobilních zařízení podle User Agentu nebo dotykových bodů u tabletů (např. iPad)
+            const isMobileOrTablet = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || 
+                                     (navigator.maxTouchPoints > 0 && window.innerWidth < 1024);
+            
+            if (isMobileOrTablet) {
+                // Okamžitě přesměruje na samotný prototyp bez zobrazení simulátoru
+                window.location.replace("vardefault.html");
+            }
+        })();
+    </script>
+
     <style>
         .body {
             /* Skryje scrollovací lištu pro Firefox */
@@ -179,17 +192,14 @@
 
 <body>
 
-    <!-- Workspace context where the container can shrink and grow -->
     <div class="workspace">
         <div id="preview-container" class="preview-container">
             <iframe id="preview-frame" src="vardefault.html"></iframe>
         </div>
     </div>
 
-    <!-- Simplified Responsive Controller -->
     <div class="simulator-controls">
 
-        <!-- Presets -->
         <div class="control-group">
             <span class="group-label">Presets</span>
             <button class="preset-btn active" onclick="updateWidth(1440, 'desktop', this)">Desktop (1440px)</button>
@@ -197,7 +207,6 @@
             <button class="preset-btn" onclick="updateWidth(375, 'mobile', this)">Mobile (375px)</button>
         </div>
 
-        <!-- Manual Slider -->
         <div class="control-group width-slider-container">
             <span class="group-label">Width</span>
             <input type="range" id="widthInput" class="width-slider" min="320" max="1920" value="1440"
