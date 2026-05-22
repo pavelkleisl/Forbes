@@ -460,9 +460,8 @@
         }
 
         /* Třídy pro řízení viditelnosti přes JS bez konfliktu s media queries */
-        /* FIX: display pravidla mají nyní zvýšenou prioritu, takže spolehlivě přepínají taby i na mobilu */
-        .home-content.active-view { display: block !important; }
-        .placeholder-view.active-view { display: flex !important; }
+        .home-content.active-view { display: block; }
+        .placeholder-view.active-view { display: flex; }
 
         /* Widget 1: Marketingový / Maraton Banner */
         .cms-banner {
@@ -878,35 +877,35 @@
             </div>
             <div class="cms-slots-grid">
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1007120MjM.webp" alt="">
+                    <img src="1006819OTA.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1007121YmF.webp" alt="">
+                    <img src="1007108ODA.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1007122YmU.webp" alt="">
+                    <img src="1007123MWY.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1007123MWY.webp" alt="">
+                    <img src="1155204OGI.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1006819OTA.webp" alt="">
+                    <img src="1184517ODB.webp" alt="">
                     <span class="cms-provider-tag">E-gaming</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1006981ZWY.webp" alt="">
+                    <img src="1184519YTF.webp" alt="">
                     <span class="cms-provider-tag">Apollo</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1007211NTE.webp" alt="">
+                    <img src="1006819OTA.webp" alt="">
                     <span class="cms-provider-tag">Kajot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event)">
-                    <img src="https://www.forbescasino.cz/files/1189336MGU.webp" alt="">
+                    <img src="1007108ODA.webp" alt="">
                     <span class="cms-provider-tag">Tech4Bet</span>
                 </div>
             </div>
@@ -1150,7 +1149,7 @@
                     navigateTo('home');
                 }
             } else if (isDesktop) {
-                // Pokud jsme na PC a jen se mění šířka, překreslíme žlutý indikátor pod tabem
+                // Pokud jsme na PC a jen se mění šířka, překreslii jsme žlutý indikátor pod tabem
                 moveIndicator(active);
             }
         });
