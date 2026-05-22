@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes - Double Decker (Varianta 1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Rubik', sans-serif; }
+        
+        /* Společné pozadí celého headeru tvořené lokálním obrázkem */
+        header {
+            background: url('bg.jpg') no-repeat center top;
+            background-size: cover;
+            width: 100%;
+        }
+
+        /* 1. PATRO: Minimalistický produktový rozcestník */
+        .super-header {
+            display: flex;
+            padding: 0 40px;
+            height: 45px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+        }
+        .product-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            opacity: 0.6;
+            transition: opacity 0.2s, color 0.2s;
+        }
+        .product-link:hover { opacity: 1; }
+        .product-link.active {
+            opacity: 1;
+            color: #ffbe00; /* Vaše zlatá/žlutá */
+        }
+        .product-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffbe00;
+        }
+
+        /* 2. PATRO: Vaše stávající hlavička (Layout 1:1 podle screenu) */
+        .main-header {
+            padding: 25px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Horní řada: Logo a CTA */
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 52px; /* Odpovídá proporcím loga */
+            display: block;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Stylování tlačitek přesně podle předlohy */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            padding: 0 20px;
+            border-radius: 21px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .btn:hover { transform: scale(1.02); }
+        .btn-login {
+            background-color: #ffffff;
+            color: #03091e;
+        }
+        .btn-register {
+            background-color: #ffbe00;
+            color: #03091e;
+        }
+
+        /* Spodní řada: Vaše menu */
+        .bottom-row {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+        
+        /* Třída pro plynulý přechod menu při přepnutí */
+        .nav-menu.fade-out {
+            opacity: 0;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #ffbe00;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="super-header">
+            <a href="#" class="product-link active" id="linkCasino" onclick="switchTo('casino', event)">Casino</a>
+            <a href="#" class="product-link" id="linkSport" onclick="switchTo('sport', event)">Sportovní sázení</a>
+        </div>
+
+        <div class="main-header">
+            <div class="top-row">
+                <a href="#" class="logo">
+                    <img src="logo.svg" alt="Forbes Casino">
+                </a>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Přihlásit se</a>
+                    <a href="#" class="btn btn-register">Registrace</a>
+                </div>
+            </div>
+            
+            <div class="bottom-row">
+                <nav>
+                    <ul class="nav-menu" id="navMenu">
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Data převzatá přesně ze vzorové stránky
+        const menus = {
+            casino: [
+                { label: 'Domů' },
+                { label: 'Bonusy' },
+                { label: 'Levelovací systém' },
+                { label: 'Cashback' },
+                { label: 'Turnaje' },
+                { label: 'Blog' },
+            ],
+            sport: [
+                { label: 'Domů' },
+                { label: 'Živě' },
+                { label: 'Soutěže' },
+                { label: 'Bonusy' },
+            ],
+        };
+
+        let activeProduct = 'casino';
+
+        // Vykreslení položek v hlavním menu
+        function renderMenu(product) {
+            const menuEl = document.getElementById('navMenu');
+            menuEl.innerHTML = menus[product].map((item, i) => {
+                return `<li>
+                        <a href="#" class="nav-link${i === 0 ? ' active' : ''}" onclick="activateItem(this, event)">${item.label}</a>
+                    </li>`;
+            }).join('');
+        }
+
+        // Aktivace položky uvnitř menu (klik na Bonusy, Turnaje atd.)
+        function activateItem(el, e) {
+            e.preventDefault();
+            document.querySelectorAll('#navMenu .nav-link').forEach(link => link.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Přepínání mezi hlavním rozcestníkem (Casino / Sport)
+        function switchTo(product, e) {
+            if (e) e.preventDefault();
+            if (product === activeProduct) return;
+            activeProduct = product;
+
+            // Přepnutí active stavu na vrchních odkazech
+            document.getElementById('linkCasino').classList.toggle('active', product === 'casino');
+            document.getElementById('linkSport').classList.toggle('active', product === 'sport');
+
+            // Plynulá fade animace pro změnu položek v menu
+            const menuEl = document.getElementById('navMenu');
+            menuEl.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderMenu(product);
+                menuEl.classList.remove('fade-out');
+            }, 200);
+        }
+
+        // Výchozí inicializace pro Casino
+        renderMenu('casino');
+    </script>
+
+</body>
+</html>

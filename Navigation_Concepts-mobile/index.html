@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes Navigation Concepts - Responsive Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Layout */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #1e293b;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Canvas Workspace */
+        .workspace {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: auto;
+            background: #565a64;
+        }
+
+        /* Wrapper that controls iframe width */
+        .preview-container {
+            width: 100%; /* Default to 100% */
+            height: 100%;
+            max-height: 80%;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Disabling transition during manual drag/slide for instant feedback */
+        .preview-container.no-transition {
+            transition: none;
+        }
+
+        #preview-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Control Dashboard Panel */
+        .simulator-controls {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            z-index: 9999;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .group-label {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        /* Preset Buttons */
+        .preset-btn {
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .preset-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .preset-btn.active {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: #ffffff;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Slider Styling */
+        .width-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+        }
+
+        .width-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .width-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffbe00;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .width-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Width Indicator */
+        .width-display {
+            color: #ffbe00;
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Workspace context where the container can shrink and grow -->
+    <div class="workspace">
+        <div id="preview-container" class="preview-container">
+            <iframe id="preview-frame" src="vardefault.html"></iframe>
+        </div>
+    </div>
+
+    <!-- Simplified Responsive Controller -->
+    <div class="simulator-controls">
+        
+        <!-- Presets -->
+        <div class="control-group">
+            <span class="group-label">Presets</span>
+            <button class="preset-btn active" onclick="updateWidth(1440, 'desktop', this)">Desktop (1440px)</button>
+            <button class="preset-btn" onclick="updateWidth(768, 'tablet', this)">Tablet (768px)</button>
+            <button class="preset-btn" onclick="updateWidth(375, 'mobile', this)">Mobile (375px)</button>
+        </div>
+
+        <!-- Manual Slider -->
+        <div class="control-group width-slider-container">
+            <span class="group-label">Width</span>
+            <input 
+                type="range" 
+                id="widthInput" 
+                class="width-slider" 
+                min="320" 
+                max="1920" 
+                value="1440"
+                oninput="handleSlider(this.value)"
+                onmousedown="startSliderDrag()"
+                onmouseup="endSliderDrag()"
+                onTouchstart="startSliderDrag()"
+                onTouchend="endSliderDrag()"
+            >
+            <span id="width-value" class="width-display">1440px</span>
+        </div>
+
+    </div>
+
+    <script>
+        const container = document.getElementById('preview-container');
+        const widthSlider = document.getElementById('widthInput');
+        const widthValue = document.getElementById('width-value');
+
+        // Adjust max slider range to match actual window size if larger than 1920
+        function initSliderRange() {
+            const maxWidth = Math.max(1920, window.innerWidth);
+            widthSlider.max = maxWidth;
+        }
+
+        // Functions to remove animation transition during manual fluid dragging
+        function startSliderDrag() {
+            container.classList.add('no-transition');
+        }
+
+        function endSliderDrag() {
+            container.classList.remove('no-transition');
+        }
+
+        // Handle direct slider input
+        function handleSlider(val) {
+            container.style.width = val + 'px';
+            widthValue.textContent = val + 'px';
+            
+            // Remove active state from preset buttons if they don't match exactly
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+        // Handle preset buttons clicks (with smooth animation transition)
+        function updateWidth(px, device, btnElement) {
+            container.classList.remove('no-transition');
+            container.style.width = px + 'px';
+            
+            widthSlider.value = px;
+            widthValue.textContent = px + 'px';
+
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+
+        // Initialize UI
+        initSliderRange();
+        window.addEventListener('resize', initSliderRange);
+        
+        // Set initial desktop width layout visually
+        container.style.width = '1440px';
+    </script>
+
+</body>
+
+</html>
