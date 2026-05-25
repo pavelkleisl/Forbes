@@ -435,46 +435,6 @@
             opacity: 1;
         }
 
-        /* Pomocné styly pro zelený puntík v sekci Sport - Live */
-        .sport-live-container {
-            position: relative;
-            display: inline-flex;
-        }
-
-        /* ─── MODÁLNÍ OKNO PRO AUTENTIZACI (SIMULACE) ────────────── */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 9, 30, 0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 3000;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            animation: fadeIn 0.2s ease forwards;
-        }
-        .modal-box {
-            background: #ffffff;
-            padding: 30px 24px;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 380px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            position: relative;
-            animation: scaleUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-        .modal-close {
-            position: absolute;
-            top: 12px; right: 16px;
-            background: none; border: none;
-            font-size: 26px; cursor: pointer; color: #999;
-        }
-        .modal-close:hover { color: #333; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes scaleUp { from { transform: scale(0.9); } to { transform: scale(1); } }
-
 
         /* ─── OBSAH: ROZCESTNÍK & NOVE ZOBRAZOVACI SEKCIE ────────── */
         .home-content {
@@ -823,8 +783,9 @@
                 <img src="sport.svg" alt="">
                 <span>Sport</span>
             </div>
-            <div class="cms-split-card" onclick="navigateTo('sport', event, true)">
-                <img src="sport-live.svg" alt="">
+            <div class="cms-split-card" onclick="navigateTo('sport', event)">
+                <span class="cms-live-dot"></span>
+                <img src="sport.svg" alt="">
                 <span>Live</span>
             </div>
         </section>
@@ -1077,99 +1038,6 @@
             e.preventDefault();
             document.querySelectorAll('#submenu .submenu-item').forEach(li => li.classList.remove('active'));
             el.closest('.submenu-item').classList.add('active');
-        }
-
-        /* Dynamické překreslování mobilní lišty na základě aktivního kontextu */
-        function renderMobileNav() {
-            const mobileNavList = document.querySelector('.mobile-bottom-nav-list');
-            if (!mobileNavList) return;
-
-            if (active === 'sport') {
-                // Sportovní navigace - plně klikatelná
-                mobileNavList.innerHTML = `
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event, false)">
-                            <svg class="svg-icon"><use href="#icon-home"></use></svg>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, false)">
-                            <img src="sport.svg" class="sport-img-icon" alt="">
-                            <span>Sport</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('smartico', event, false)">
-                            <svg class="svg-icon"><use href="#icon-smartico"></use></svg>
-                            <span>Smartico</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, true)">
-                            <span class="sport-live-container">
-                                <img src="sport-live.svg" class="sport-img-icon" alt="">
-                            </span>
-                            <span>Live</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('bonuses', event, false)">
-                            <svg class="svg-icon"><use href="#icon-bonus"></use></svg>
-                            <span>Bonuses</span>
-                        </a>
-                    </li>
-                `;
-            } else {
-                // Výchozí / Casino navigace - plně klikatelná
-                mobileNavList.innerHTML = `
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event, false)">
-                            <svg class="svg-icon"><use href="#icon-home"></use></svg>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('casino', event, false)">
-                            <img src="casino.svg" class="casino-img-icon" alt="">
-                            <span>Games</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('smartico', event, false)">
-                            <svg class="svg-icon"><use href="#icon-smartico"></use></svg>
-                            <span>Smartico</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('bonuses', event, false)">
-                            <svg class="svg-icon"><use href="#icon-bonus"></use></svg>
-                            <span>Bonuses</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('medal', event, false)">
-                            <svg class="svg-icon"><use href="#icon-medal"></use></svg>
-                            <span>Hall of Fame</span>
-                        </a>
-                    </li>
-                `;
-            }
-        }
-
-        /* AKCE PRO MODÁLNÍ OKNO */
-        function openAuthModal(type, e) {
-            if (e) e.preventDefault();
-            document.getElementById('modalTitle').innerText = type === 'login' ? 'Log In' : 'Register';
-            document.getElementById('modalBody').innerText = type === 'login' 
-                ? 'Simulated modal window box layout for the Log In authentication process.' 
-                : 'Simulated modal window box layout for the account Registration process.';
-            document.getElementById('authModal').style.display = 'flex';
-        }
-
-        function closeModal(e) {
-            if (e) e.preventDefault();
-            document.getElementById('authModal').style.display = 'none';
         }
 
         /* ─── UNIFIKOVANÝ NAVIGAČNÍ SYSTÉM PRO PROTOTYP ─────────── */
