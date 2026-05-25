@@ -12,11 +12,6 @@
             // Detekce mobilních zařízení podle User Agentu nebo dotykových bodů u tabletů (např. iPad)
             const isMobileOrTablet = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || 
                                      (navigator.maxTouchPoints > 0 && window.innerWidth < 1024);
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> df93c09f0fb833057da86ccad064a047fe84f67e
             if (isMobileOrTablet) {
                 // Okamžitě přesměruje na samotný prototyp bez zobrazení simulátoru
                 window.location.replace("vardefault.html");
