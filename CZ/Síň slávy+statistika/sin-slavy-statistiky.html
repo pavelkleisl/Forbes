@@ -1,0 +1,1106 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <title>Síň slávy a Statistiky Forbes Casino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.forbescasino.cz/favicon.ico" type="image/x-icon">
+
+    <style type="text/css">
+        /* =============================================
+        SPOLEČNÉ A NADŘAZENÉ STYLY 
+        ============================================= */
+        body {
+            height: 100%;
+            background-color: #0f153c;
+            background-image: url(/assets/img/welcome-bg.jpg);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .p-sm-5 {
+            padding: 0rem !important;
+            border-radius: 12px !important;
+        }
+
+        .bg-lighter {
+            background: none !important;
+            display: none;
+        }
+
+        .container .row .bg-white {
+            background: transparent !important;
+        }
+
+        @media (max-width: 576px) {
+            .p-sm-5 { margin-top: -27px; }
+        }
+
+        @media (min-width: 576px) {
+            .p-sm-5 {
+                margin-top: -10px;
+                padding: 1.5rem !important;
+            }
+        }
+
+        @media (min-width: 767.98px) {
+            .p-sm-5 { margin-top: -49px; }
+        }
+
+        @media (min-width: 991.98px) {
+            .p-sm-5 { margin-top: -0.5rem; }
+        }
+
+        @media (min-width: 1200px) {
+            .p-sm-5 { margin-top: 1rem; }
+        }
+
+        @media (max-width: 1200px) {
+            .container .row .p-4 { padding: 0rem !important; }
+            .content-panel { margin-bottom: 0px !important; }
+        }
+
+        .d-block {
+            display: none !important;
+        }
+
+        .mobile-tabs-nav {
+            display: flex;
+            justify-content: center;
+            padding: 18px 12px 4px 12px;
+            margin-bottom: 0;
+        }
+
+        .mobile-tabs-nav-inner {
+            background: linear-gradient(135deg, rgba(24, 34, 74, 0.92) 0%, rgba(12, 20, 50, 0.92) 100%);
+            border-radius: 60px;
+            padding: 8px;
+            display: inline-flex;
+            gap: 8px;
+            box-shadow: 0 12px 34px rgba(4, 10, 34, 0.34), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            width: 100%;
+            max-width: 440px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .mobile-tab-label {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            border-radius: 50px;
+            background: transparent;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 50px;
+            white-space: nowrap;
+            user-select: none;
+            text-decoration: none;
+            border: 2px solid transparent;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
+        }
+
+        .mobile-tab-label:hover {
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.2) 0%, rgba(180, 140, 80, 0.12) 100%);
+            color: #ffd76a;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .mobile-tab-label-active {
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.38) 0%, rgba(171, 119, 37, 0.34) 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(176, 122, 39, 0.24), inset 0 1px 2px rgba(255, 255, 255, 0.16);
+            border-color: rgba(245, 196, 88, 0.55);
+            font-weight: 700;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        @media (max-width: 787px) {
+            .mobile-tab-label {
+                padding: 14px 16px;
+                font-size: 14px;
+                min-height: 48px;
+            }
+        }
+
+        .slava-header-container {
+            max-width: 880px;
+            margin: 36px auto 4px auto;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        .slava-header-title {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.7px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+        }
+
+        .slava-header-subtitle {
+            font-size: 1.15rem;
+            color: #ffd76a;
+            font-weight: 700;
+            text-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .slava-header-title { font-size: 1.8rem; }
+            .slava-header-subtitle { font-size: 1rem; }
+        }
+
+        .slava-filter-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 22px 6px 28px;
+        }
+
+        .slava-filter-container-modern {
+            background: linear-gradient(135deg, rgba(24, 34, 74, 0.92) 0%, rgba(12, 20, 50, 0.92) 100%);
+            border-radius: 60px;
+            padding: 8px;
+            display: inline-flex;
+            gap: 8px;
+            box-shadow: 0 12px 34px rgba(4, 10, 34, 0.34), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .slava-filter-pill {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: 50px;
+            background: transparent;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            white-space: nowrap;
+            min-height: 56px;
+            z-index: 1;
+            cursor: pointer;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
+        }
+
+        .slava-filter-pill:hover:not(.slava-filter-pill-active) {
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.2) 0%, rgba(180, 140, 80, 0.12) 100%);
+            color: #ffd76a !important;
+            box-shadow: 0 6px 18px rgba(176, 122, 39, 0.16), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+        }
+
+        .slava-filter-pill-active {
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.38) 0%, rgba(171, 119, 37, 0.34) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 8px 24px rgba(176, 122, 39, 0.24), inset 0 1px 2px rgba(255, 255, 255, 0.16);
+            border: 2px solid rgba(245, 196, 88, 0.55);
+            font-weight: 700;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .page-layout {
+            display: block;
+            margin: 0 auto;
+            max-width: 1420px;
+            padding: 0 12px;
+            padding-bottom: 50px;
+        }
+
+        .page-layout-single {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .slava-filter-wrapper { margin-bottom: 0px; }
+            .slava-filter-container-modern { padding: 16px; gap: 6px; border-radius: 50px; }
+            .slava-filter-pill { padding: 12px 20px; font-size: 14px; min-height: 44px; }
+        }
+
+        @media (max-width: 480px) {
+            .slava-filter-container-modern { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+        }
+
+        @media (max-width: 380px) {
+            .slava-filter-container-modern { gap: 4px; padding: 16px; }
+        }
+
+        /* =============================================
+           SÍŇ SLÁVY STYLY
+           ============================================= */
+        .slava-winners-container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 0;
+            margin-bottom: 32px;
+        }
+
+        .slava-winner-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 18px;
+            padding: 14px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, rgba(18, 26, 60, 0.92) 0%, rgba(26, 37, 78, 0.84) 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 34px rgba(5, 10, 31, 0.34), 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .slava-winner-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 42%);
+            pointer-events: none;
+        }
+
+        .slava-winner-item:hover {
+            border-color: rgba(245, 179, 12, 0.42);
+            box-shadow: 0 18px 38px rgba(5, 10, 31, 0.38), 0 0 0 1px rgba(245, 179, 12, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .slava-winner-left {
+            display: grid;
+            grid-template-columns: 80px minmax(0, 1fr);
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .slava-winner-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .slava-winner-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.25s ease;
+        }
+
+        .slava-winner-item:hover .slava-winner-icon {
+            border-color: rgba(245, 179, 12, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .slava-winner-item:hover .slava-winner-icon img {
+            transform: scale(1.03);
+        }
+
+        .slava-winner-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .slava-winner-game {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff !important;
+            margin: 0;
+            line-height: 1.25;
+            text-decoration: none;
+        }
+
+        .slava-winner-username {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.78);
+            margin: 0;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .slava-winner-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.62);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .slava-winner-spin-amount {
+            font-size: 12px;
+            margin-top: 0;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-align: right;
+        }
+
+        .slava-winner-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            padding-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .slava-winner-amount {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 128px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffe8ad;
+            white-space: nowrap;
+            text-align: right;
+            position: relative;
+            background: linear-gradient(135deg, rgba(245, 179, 12, 0.33) 0%, rgba(255, 236, 178, 0.22) 100%);
+            border: 1px solid rgba(255, 214, 102, 0.55);
+            box-shadow: 0 0 16px rgba(245, 179, 12, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .slava-winner-item { padding: 12px; margin-bottom: 12px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+            .slava-winner-icon { width: 56px; height: 56px; }
+            .slava-winner-left { grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
+            .slava-winner-game { font-size: 14px; }
+            .slava-winner-username { font-size: 13px; }
+            .slava-winner-time { font-size: 11px; }
+            .slava-winner-right { width: auto; align-items: flex-end; padding-left: 10px; }
+            .slava-winner-amount { font-size: clamp(15px, 4.4vw, 20px); min-width: 96px; padding: 6px 10px; }
+            .slava-winner-spin-amount { font-size: 11px; }
+        }
+
+        .page-layout-single .slava-grid { width: 100%; max-width: none; }
+        .page-layout-single .slava-grid-flow { display: contents; }
+
+        /* =============================================
+           STATISTIKY STYLY
+           ============================================= */
+        .container .row .offset-xl-1 { margin-left: 0px !important; }
+        .container .row .col-xl-10 { width: 100% !important; }
+        
+        .cms-section-card {
+            background: linear-gradient(135deg, rgba(24, 34, 74, 0.92) 0%, rgba(12, 20, 50, 0.92) 100%);
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 24px 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 18px 40px rgba(6, 12, 40, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cms-section-title {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 12px;
+            letter-spacing: 0.2px;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+        }
+
+        .cms-stat-item {
+            display: grid;
+            grid-template-columns: 75px minmax(0, 1fr);
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(16, 23, 52, 0.78) 0%, rgba(31, 41, 82, 0.52) 100%);
+            box-shadow: 0 10px 22px rgba(7, 13, 39, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .cms-stat-item:hover { transform: translateY(-1px); border-color: rgba(245, 179, 12, 0.4); }
+        .cms-stat-img-wrapper { width: 75px; height: 75px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.2); background: #000; }
+        .cms-stat-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .cms-stat-content { min-width: 0; }
+        .cms-stat-name { color: #ffffff; font-weight: 700; font-size: 14px; line-height: 1.25; margin-bottom: 8px; display: block; }
+        .cms-provider-name { display: block; margin-top: -4px; margin-bottom: 8px; font-size: 12px; color: rgba(255, 255, 255, 0.72); font-weight: 600; line-height: 1.2; }
+        .cms-bar-container { width: 100%; height: 12px; background: rgba(255, 255, 255, 0.08); border-radius: 6px; overflow: hidden; position: relative; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05); }
+        .cms-bar-fill { height: 100%; background: linear-gradient(90deg, #f5b30c 0%, #ffd76a 55%, #fff0b3 100%); border-radius: 6px; box-shadow: 0 0 15px rgba(245, 179, 12, 0.38); }
+        
+        .multiplier-list { display: flex; flex-direction: column; gap: 10px; }
+        .multiplier-item { display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: center; padding: 10px; border-radius: 14px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%); border: 1px solid rgba(255, 255, 255, 0.16); transition: transform 0.2s ease, border-color 0.2s ease; }
+        .multiplier-item:hover { transform: translateY(-1px); border-color: rgba(245, 179, 12, 0.5); }
+        .multiplier-thumb { width: 56px; height: 56px; border-radius: 11px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.25); }
+        .multiplier-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .multiplier-main { min-width: 0; }
+        .multiplier-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+        .multiplier-game { color: #ffffff; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .multiplier-value { color: #ffde8b; font-size: 20px; font-weight: 800; flex-shrink: 0; text-shadow: 0 0 14px rgba(245, 179, 12, 0.38); }
+        .multiplier-win { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: linear-gradient(135deg, rgba(245, 179, 12, 0.33) 0%, rgba(255, 236, 178, 0.26) 100%); border: 1px solid rgba(255, 214, 102, 0.65); color: #ffe8ad; font-size: 12px; font-weight: 600; margin-bottom: 7px; }
+        .multiplier-heat { position: relative; height: 8px; background: rgba(255, 255, 255, 0.08); border-radius: 999px; overflow: hidden; margin-bottom: 7px; }
+        .multiplier-heat-fill { height: 100%; border-radius: 999px; background: linear-gradient(-90deg, #ff3b2f 0%, #ff6a00 42%, #ffb300 78%, #ffd56b 100%); box-shadow: 0 0 14px rgba(255, 89, 34, 0.55), 0 0 24px rgba(255, 140, 0, 0.35); }
+        .multiplier-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; color: rgba(255, 255, 255, 0.8); font-size: 11px; }
+
+        @media (max-width: 420px) {
+            .multiplier-item { grid-template-columns: 48px 1fr; gap: 8px; padding: 8px; }
+            .multiplier-thumb { width: 48px; height: 48px; }
+            .multiplier-value { font-size: 17px; }
+            .multiplier-win { font-size: 11px; padding: 4px 8px; }
+        }
+
+        .page-layout-single .stats-grid { width: 100%; margin: 0 auto; position: static; }
+        .page-layout-single .cms-stats-wrapper { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; grid-auto-flow: row; align-items: start; }
+        .page-layout-single .stats-grid-flow { display: contents; }
+        .page-layout-single .cms-section-card,
+        .page-layout-single .provider-share-card,
+        .page-layout-single .multiplier-widget { margin-bottom: 0; }
+        .page-layout-single .multiplier-widget { order: 2; }
+        .page-layout-single .provider-share-card { order: 3; }
+
+        @media (min-width: 1150px) {
+            .page-layout-single .cms-stats-wrapper { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (max-width: 1149px) {
+            .page-layout-single .cms-stats-wrapper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 767px) {
+            .page-layout-single .cms-stats-wrapper { display: block; }
+            .page-layout-single .stats-grid-flow { display: flex; flex-direction: row; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; padding: 0 16px 20px 0px; gap: 16px; }
+            .page-layout-single .stats-grid-flow::-webkit-scrollbar { display: none; }
+            .page-layout-single .cms-section-card { padding: 16px 10px; width: 78vw; flex-shrink: 0; margin-bottom: 0; scroll-snap-align: center; }
+            .page-layout-single .cms-section-card.multiplier-widget { order: 1; }
+            .page-layout-single .cms-section-card.rtp-widget { order: 2; }
+            .page-layout-single .cms-section-card:not(.multiplier-widget):not(.rtp-widget) { order: 3; }
+            .stats-grid { position: relative; }
+        }
+
+        .provider-share-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.08) 100%); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 22px; padding: 24px; box-shadow: 0 18px 40px rgba(6, 12, 40, 0.35); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); position: relative; overflow: hidden; }
+        .provider-share-title { color: #ffffff; font-size: 20px; font-weight: 700; margin: 0 0 18px; position: relative; z-index: 1; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 12px; letter-spacing: 0.2px; }
+        .provider-share-layout { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
+        .provider-share-legend { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+        .provider-share-item { display: flex; flex-direction: column; gap: 10px; background: linear-gradient(135deg, rgba(16, 23, 52, 0.78) 0%, rgba(31, 41, 82, 0.52) 100%); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px; padding: 10px 12px; box-shadow: 0 10px 22px rgba(7, 13, 39, 0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .provider-share-row { display: flex; align-items: center; gap: 10px; width: 100%; }
+        .provider-share-left { display: flex; align-items: center; gap: 0; min-width: 0; }
+        .provider-share-link { display: inline-flex; align-items: center; gap: 0; color: #ffffff !important; text-decoration: none; min-width: 0; }
+        .provider-share-link:hover { opacity: 0.88; }
+        .provider-share-logo { width: 96px; height: 30px; object-fit: contain; filter: brightness(0) invert(1); }
+        .provider-share-bar { width: 100%; height: 10px; background: rgba(255, 255, 255, 0.06); border-radius: 999px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); }
+        .provider-share-bar-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2494ff 0%, #67c1ff 100%); box-shadow: 0 0 18px rgba(66, 154, 255, 0.45); }
+        
+        @media (max-width: 600px) {
+            .provider-share-card { padding: 16px; margin-top: 30px; }
+            .provider-share-logo { width: 78px; height: 24px; }
+        }
+
+        /* HOT/COLD RTP WIDGET STYLY */
+        .rtp-widget { position: relative; overflow: hidden; background: radial-gradient(circle at 8% 10%, rgb(244 44 10 / 41%) 0%, rgba(255, 79, 43, 0) 48%), radial-gradient(circle at 92% 92%, rgb(57 163 255 / 61%) 0%, rgba(57, 163, 255, 0) 52%), linear-gradient(357deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 42%, rgba(255, 255, 255, 0.09) 100%) }
+        .rtp-title-icon { width: 20px; height: 20px; display: inline-block; object-fit: contain; flex-shrink: 0; transform: translateY(-1px); }
+        .rtp-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        .rtp-column { background: transparent; border: 0; border-radius: 0; padding: 0; box-sizing: border-box; }
+        .rtp-column-title { width: 100%; display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 8px 14px; border-radius: 999px; font-size: 16px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22); position: relative; overflow: visible; }
+        .rtp-column-hot .rtp-column-title { background: linear-gradient(135deg, rgba(255, 104, 72, 0.2) 0%, rgba(255, 104, 72, 0.08) 100%); box-shadow: 0 6px 18px rgba(255, 104, 72, 0.12); }
+        .rtp-column-cold .rtp-column-title { background: linear-gradient(135deg, rgba(88, 164, 255, 0.2) 0%, rgba(88, 164, 255, 0.08) 100%); box-shadow: 0 6px 18px rgba(88, 164, 255, 0.12); }
+        .rtp-col-emoji-hot { position: absolute; right: 6px; top: -20px; font-size: 55px; line-height: 1; pointer-events: none; z-index: 5; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
+        .rtp-col-emoji-cold { position: absolute; right: 6px; top: -9px; font-size: 55px; line-height: 1; pointer-events: none; z-index: 5; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
+        .rtp-list { display: flex; flex-direction: column; gap: 10px; }
+        .rtp-item { display: grid; grid-template-columns: 75px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15); background: linear-gradient(135deg, rgba(16, 23, 52, 0.78) 0%, rgba(31, 41, 82, 0.52) 100%); box-shadow: 0 10px 22px rgba(7, 13, 39, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: transform 0.2s ease, border-color 0.2s ease; box-sizing: border-box; }
+        .rtp-item > div { min-width: 0; }
+        .rtp-item:hover { transform: translateY(-1px); }
+        .rtp-column-hot .rtp-item:hover { border-color: rgba(255, 125, 84, 0.6); }
+        .rtp-column-cold .rtp-item:hover { border-color: rgba(108, 183, 255, 0.65); }
+        .rtp-thumb { width: 75px; height: 75px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.3); position: relative; }
+        .rtp-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .rtp-game { color: #ffffff; font-size: 14px; font-weight: 700; line-height: 1.25; white-space: normal; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
+        .rtp-value { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-width: 78px; padding: 8px 22px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: 0.2px; color: #ffffff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18); }
+        .rtp-value-hot { background: linear-gradient(135deg, rgba(255, 87, 51, 0.52) 0%, rgba(255, 140, 78, 0.35) 100%); border: 1px solid rgba(255, 152, 111, 0.7); box-shadow: 0 0 16px rgba(255, 96, 49, 0.28); }
+        .rtp-value-cold { background: linear-gradient(135deg, rgba(77, 159, 255, 0.5) 0%, rgba(77, 159, 255, 0.25) 100%); border: 1px solid rgba(135, 198, 255, 0.72); box-shadow: 0 0 16px rgba(77, 159, 255, 0.24); }
+        .rtp-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85; line-height: 1; padding-top: 3px; }
+        
+        @media (max-width: 430px) {
+            .rtp-item { grid-template-columns: 64px minmax(0, 1fr) auto; padding: 8px; gap: 8px; }
+            .rtp-thumb { width: 64px; height: 64px; }
+            .rtp-value { min-width: 66px; font-size: 12px; padding: 6px 22px; }
+        }
+
+        /* HOVER OVERLAY PRO OBRÁZKY */
+        .slava-winner-icon, .cms-stat-img-wrapper, .multiplier-thumb, .rtp-thumb { position: relative; overflow: hidden; }
+        .slava-winner-icon::before, .cms-stat-img-wrapper::before, .multiplier-thumb::before, .rtp-thumb::before { content: ''; position: absolute; inset: 0; background: rgba(5, 9, 28, 0.48); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; z-index: 1; }
+        .slava-winner-icon::after, .cms-stat-img-wrapper::after, .multiplier-thumb::after, .rtp-thumb::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.92); opacity: 0; width: 0; height: 0; border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 18px solid #ffffff; filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45)); transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; z-index: 2; }
+        .slava-winner-icon:hover::before, .slava-winner-icon:focus-within::before, .cms-stat-img-wrapper:hover::before, .cms-stat-img-wrapper:focus-within::before, .multiplier-thumb:hover::before, .multiplier-thumb:focus-within::before, .rtp-thumb:hover::before, .rtp-thumb:focus-within::before { opacity: 1; }
+        .slava-winner-icon:hover::after, .slava-winner-icon:focus-within::after, .cms-stat-img-wrapper:hover::after, .cms-stat-img-wrapper:focus-within::after, .multiplier-thumb:hover::after, .multiplier-thumb:focus-within::after, .rtp-thumb:hover::after, .rtp-thumb:focus-within::after { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+        /* POMOCNÁ VÝKONNÁ TŘÍDA PRO JS */
+        .view-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slava-header-container">
+        <div class="slava-header-title">Síň slávy Forbes Casino</div>
+        <div class="slava-header-subtitle">Sledujte ty nejlepší, inspirujte se a buďte další na řadě &#x1F389;</div>
+    </div>
+
+    <div class="mobile-tabs-nav">
+        <div class="mobile-tabs-nav-inner">
+            <a class="mobile-tab-label mobile-tab-label-active" data-tab="sin-slavy" href="#">&#127942; Síň slávy</a>
+            <a class="mobile-tab-label" data-tab="statistiky" href="#">&#128200; Statistiky</a>
+        </div>
+    </div>
+
+    <div class="slava-filter-wrapper">
+        <div class="slava-filter-container-modern">
+            <a class="slava-filter-pill slava-filter-pill-active" data-filter="vse" href="#">Vše</a>
+            <a class="slava-filter-pill" data-filter="tyden" href="#">Minulý týden</a>
+            <a class="slava-filter-pill" data-filter="mesic" href="#">Minulý měsíc</a>
+        </div>
+    </div>
+
+    <div class="page-layout page-layout-single">
+
+        <div class="view-container" id="view-sin-slavy-vse" style="display: block;">
+            <div class="slava-grid">
+                <div class="slava-grid-flow">
+                    <div class="slava-winners-container">
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels"><img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels" class="slava-winner-game">Joker´s Jewels</a></div><div class="slava-winner-username">va**76**14</div><div class="slava-winner-time">06.01.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3471/online/seasons"><img src="https://www.forbescasino.cz/files/10066692NmQ.webp" alt="Seasons"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3471/online/seasons" class="slava-winner-game">Seasons</a></div><div class="slava-winner-username">Na**li***03</div><div class="slava-winner-time">18.12.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3457/online/double_game"><img src="https://www.forbescasino.cz/files/1006655NTk.webp" alt="Double Game"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3457/online/double_game" class="slava-winner-game">Double Game</a></div><div class="slava-winner-username">Jo**r1**45</div><div class="slava-winner-time">19.07.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40"><img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40" class="slava-winner-game">Super Joker 40</a></div><div class="slava-winner-username">Da****go</div><div class="slava-winner-time">08.07.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40"><img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40" class="slava-winner-game">Super Joker 40</a></div><div class="slava-winner-username">He****n</div><div class="slava-winner-time">13.01.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><img src="https://www.forbescasino.cz/files/690198NTh.jpg" alt="Shining Crown"></div><div class="slava-winner-info"><div><div class="slava-winner-game">Shining Crown</div></div><div class="slava-winner-username">Kr****an</div><div class="slava-winner-time">27.06.2023</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">500 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81"><img src="https://www.forbescasino.cz/files/1007156ZTk.webp" alt="Multi Vegas 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81" class="slava-winner-game">Multi Vegas 81</a></div><div class="slava-winner-username">Ba****84</div><div class="slava-winner-time">30.09.2023</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">480 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 1 000 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"><img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe" class="slava-winner-game">Super Reels Deluxe</a></div><div class="slava-winner-username">Pe**mi**es</div><div class="slava-winner-time">07.07.2025</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">469 800 Kč</div><div class="slava-winner-spin-amount">Sázka: 450 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"><img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe" class="slava-winner-game">Super Reels Deluxe</a></div><div class="slava-winner-username">Pe**mi**es</div><div class="slava-winner-time">24.07.2025</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">468 900 Kč</div><div class="slava-winner-spin-amount">Sázka: 450 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"><img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe" class="slava-winner-game">Super Reels Deluxe</a></div><div class="slava-winner-username">Lu***12</div><div class="slava-winner-time">01.02.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">468 540 Kč</div><div class="slava-winner-spin-amount">Sázka: 450 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar"><img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar" class="slava-winner-game">Aztec Jaguar</a></div><div class="slava-winner-username">Vl***il***ik</div><div class="slava-winner-time">09.11.2025</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">467 500 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"><img src="https://www.forbescasino.cz/files/1006704OTg.webp" alt="Super Reels Deluxe"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe" class="slava-winner-game">Super Reels Deluxe</a></div><div class="slava-winner-username">Pe**mi**es</div><div class="slava-winner-time">26.03.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">466 650 Kč</div><div class="slava-winner-spin-amount">Sázka: 450 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3533/online/hell_bars"><img src="https://www.forbescasino.cz/files/1006911Njc.webp" alt="Hell Bars"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3533/online/hell_bars" class="slava-winner-game">Hell Bars</a></div><div class="slava-winner-username">Pe**e**71</div><div class="slava-winner-time">19.09.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">459 200 Kč</div><div class="slava-winner-spin-amount">Sázka: 800 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40"><img src="https://www.forbescasino.cz/files/1007189YzQ.webp" alt="Super Joker 40"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3498/online/super_joker_40" class="slava-winner-game">Super Joker 40</a></div><div class="slava-winner-username">Ja***66</div><div class="slava-winner-time">10.03.2024</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">450 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 900 Kč</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-container" id="view-sin-slavy-tyden">
+            <div class="slava-grid">
+                <div class="slava-grid-flow">
+                    <div class="slava-winners-container">
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81"><img src="https://www.forbescasino.cz/files/1007156ZTk.webp" alt="Multi Vegas 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81" class="slava-winner-game">Multi Vegas 81</a></div><div class="slava-winner-username">Zd***66</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">128 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 400 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="slava-winner-game">Gates of Olympus</a></div><div class="slava-winner-username">Fi***GG</div><div class="slava-winner-time">18.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">111 500 Kč</div><div class="slava-winner-spin-amount">Sázka: 100 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">An***ny</div><div class="slava-winner-time">24.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">P2***01</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels"><img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels" class="slava-winner-game">Joker´s Jewels</a></div><div class="slava-winner-username">Fr***em</div><div class="slava-winner-time">18.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels"><img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels" class="slava-winner-game">Joker´s Jewels</a></div><div class="slava-winner-username">Bo***34</div><div class="slava-winner-time">18.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 100 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar"><img src="https://www.forbescasino.cz/files/1007055MDY.webp" alt="Aztec Jaguar"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar" class="slava-winner-game">Aztec Jaguar</a></div><div class="slava-winner-username">RA***13</div><div class="slava-winner-time">20.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">98 100 Kč</div><div class="slava-winner-spin-amount">Sázka: 300 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl"><img src="https://www.forbescasino.cz/files/1007162YTg.webp" alt="Ring of Fire XL"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl" class="slava-winner-game">Ring of Fire XL</a></div><div class="slava-winner-username">Yj***89</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">85 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3738/online/firebird_27"><img src="https://www.forbescasino.cz/files/1007108ODA.webp" alt="Firebird 27"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3738/online/firebird_27" class="slava-winner-game">Firebird 27</a></div><div class="slava-winner-username">Te***a2</div><div class="slava-winner-time">21.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">75 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3543/online/dragons_of_fortune"><img src="https://www.forbescasino.cz/files/1006958OWJ.webp" alt="Dragons of Fortune"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3543/online/dragons_of_fortune" class="slava-winner-game">Dragons of Fortune</a></div><div class="slava-winner-username">Da***44</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">61 500 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2301/online/bonus_joker_81"><img src="https://www.forbescasino.cz/files/1155208YTY.webp" alt="Bonus Joker 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2301/online/bonus_joker_81" class="slava-winner-game">Bonus Joker 81</a></div><div class="slava-winner-username">Ma***55</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">60 500 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3534/online/6fruits"><img src="https://www.forbescasino.cz/files/1160948YWJ.webp" alt="6Fruits"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3534/online/6fruits" class="slava-winner-game">6Fruits</a></div><div class="slava-winner-username">Mi***58</div><div class="slava-winner-time">20.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">50 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2146/online/lumberjack_2"><img src="https://www.forbescasino.cz/files/1091255ZWZ.webp" alt="Lumberjack 2"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2146/online/lumberjack_2" class="slava-winner-game">Lumberjack 2</a></div><div class="slava-winner-username">sl***im</div><div class="slava-winner-time">23.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">43 800 Kč</div><div class="slava-winner-spin-amount">Sázka: 200 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3462/online/fruit_blaster"><img src="https://www.forbescasino.cz/files/1006660NGV.webp" alt="Fruit Blaster"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3462/online/fruit_blaster" class="slava-winner-game">Fruit Blaster</a></div><div class="slava-winner-username">Be***go</div><div class="slava-winner-time">18.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">42 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2261/online/5_fruits"><img src="https://www.forbescasino.cz/files/1106490MDg.webp" alt="5 Fruits"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2261/online/5_fruits" class="slava-winner-game">5 Fruits</a></div><div class="slava-winner-username">ni***va</div><div class="slava-winner-time">18.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">40 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 40 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2054/online/100_hot_wild"><img src="https://www.forbescasino.cz/files/1160923NGM.webp" alt="100 Hot Wild"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2054/online/100_hot_wild" class="slava-winner-game">100 Hot Wild</a></div><div class="slava-winner-username">Xi***31</div><div class="slava-winner-time">24.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">38 925 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3757/online/81_famous_multifruits"><img src="https://www.forbescasino.cz/files/1160967MDl.webp" alt="81 Famous Multifruits"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3757/online/81_famous_multifruits" class="slava-winner-game">81 Famous Multifruits</a></div><div class="slava-winner-username">Vl***a1</div><div class="slava-winner-time">21.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">38 400 Kč</div><div class="slava-winner-spin-amount">Sázka: 300 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">Ne***ya</div><div class="slava-winner-time">22.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">36 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">Ch***24</div><div class="slava-winner-time">19.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">36 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">Lo***se</div><div class="slava-winner-time">22.05.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">35 200 Kč</div><div class="slava-winner-spin-amount">Sázka: 200 Kč</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-container" id="view-sin-slavy-mesic">
+            <div class="slava-grid">
+                <div class="slava-grid-flow">
+                    <div class="slava-winners-container">
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81"><img src="https://www.forbescasino.cz/files/1007156ZTk.webp" alt="Multi Vegas 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3487/online/multi_vegas_81" class="slava-winner-game">Multi Vegas 81</a></div><div class="slava-winner-username">Ji***kk</div><div class="slava-winner-time">03.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">334 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3738/online/firebird_27"><img src="https://www.forbescasino.cz/files/1007108ODA.webp" alt="Firebird 27"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3738/online/firebird_27" class="slava-winner-game">Firebird 27</a></div><div class="slava-winner-username">Te***a2</div><div class="slava-winner-time">15.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">225 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3518/online/turbo_slots"><img src="https://www.forbescasino.cz/files/1006894MDF.webp" alt="Turbo Slots"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3518/online/turbo_slots" class="slava-winner-game">Turbo Slots</a></div><div class="slava-winner-username">Fe***64</div><div class="slava-winner-time">10.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">175 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 350 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl"><img src="https://www.forbescasino.cz/files/1007162YTg.webp" alt="Ring of Fire XL"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl" class="slava-winner-game">Ring of Fire XL</a></div><div class="slava-winner-username">Yj***89</div><div class="slava-winner-time">01.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">115 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3769/online/oldskool_spin_81"><img src="https://www.forbescasino.cz/files/1006996OTR.webp" alt="Oldskool Spin 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3769/online/oldskool_spin_81" class="slava-winner-game">Oldskool Spin 81</a></div><div class="slava-winner-username">Sa***77</div><div class="slava-winner-time">25.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"><img src="https://www.forbescasino.cz/files/1006664MzA.webp" alt="Hunter's Dream 2"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2" class="slava-winner-game">Hunter's Dream 2</a></div><div class="slava-winner-username">Zd***66</div><div class="slava-winner-time">30.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3468/online/multi_5"><img src="https://www.forbescasino.cz/files/1006666NjI.webp" alt="Multi 5"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3468/online/multi_5" class="slava-winner-game">Multi 5</a></div><div class="slava-winner-username">Lo***01</div><div class="slava-winner-time">24.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3458/online/double_game_2"><img src="https://www.forbescasino.cz/files/1006656ZjE.webp" alt="Double Game 2"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3458/online/double_game_2" class="slava-winner-game">Double Game 2</a></div><div class="slava-winner-username">Ma***91</div><div class="slava-winner-time">29.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3793/online/fruit_sizzler"><img src="https://www.forbescasino.cz/files/1006836NWN.webp" alt="Fruit Sizzler"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3793/online/fruit_sizzler" class="slava-winner-game">Fruit Sizzler</a></div><div class="slava-winner-username">is***va</div><div class="slava-winner-time">28.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">100 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 200 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2069/online/81_multi_gold"><img src="https://www.forbescasino.cz/files/1089478ZTQ.webp" alt="81 Multi Gold"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2069/online/81_multi_gold" class="slava-winner-game">81 Multi Gold</a></div><div class="slava-winner-username">Ma***19</div><div class="slava-winner-time">19.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">97 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/4062/online/crystal_fruits_bonanza"><img src="https://www.forbescasino.cz/files/1234963Mjl.webp" alt="Crystal Fruits Bonanza"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/4062/online/crystal_fruits_bonanza" class="slava-winner-game">Crystal Fruits Bonanza</a></div><div class="slava-winner-username">Li***06</div><div class="slava-winner-time">15.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">90 700 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3663/online/5_stones"><img src="https://www.forbescasino.cz/files/1007739ZWE.webp" alt="5 Stones"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3663/online/5_stones" class="slava-winner-game">5 Stones</a></div><div class="slava-winner-username">lu***99</div><div class="slava-winner-time">07.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">90 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 90 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3562/online/hunters_spirit"><img src="https://www.forbescasino.cz/files/1160952ZjQ.webp" alt="Hunter's Spirit"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3562/online/hunters_spirit" class="slava-winner-game">Hunter's Spirit</a></div><div class="slava-winner-username">Ma***to</div><div class="slava-winner-time">02.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">85 800 Kč</div><div class="slava-winner-spin-amount">Sázka: 300 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2069/online/81_multi_gold"><img src="https://www.forbescasino.cz/files/1089478ZTQ.webp" alt="81 Multi Gold"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2069/online/81_multi_gold" class="slava-winner-game">81 Multi Gold</a></div><div class="slava-winner-username">ro***es</div><div class="slava-winner-time">08.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">81 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3791/online/super_frog_hop"><img src="https://www.forbescasino.cz/files/1006835Y2E.webp" alt="Super Frog Hop"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3791/online/super_frog_hop" class="slava-winner-game">Super Frog Hop</a></div><div class="slava-winner-username">mi***S2</div><div class="slava-winner-time">23.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">80 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 400 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img src="https://www.forbescasino.cz/files/1006667MzM.webp" alt="Multiplay 81"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81" class="slava-winner-game">Multiplay 81</a></div><div class="slava-winner-username">ma***ar</div><div class="slava-winner-time">30.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">80 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3590/online/boofa"><img src="https://www.forbescasino.cz/files/1006932MDB.webp" alt="Boofa"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3590/online/boofa" class="slava-winner-game">Boofa</a></div><div class="slava-winner-username">Be***90</div><div class="slava-winner-time">18.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">79 200 Kč</div><div class="slava-winner-spin-amount">Sázka: 200 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"><img src="https://www.forbescasino.cz/files/1006664MzA.webp" alt="Hunter's Dream 2"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2" class="slava-winner-game">Hunter's Dream 2</a></div><div class="slava-winner-username">vc***ik</div><div class="slava-winner-time">08.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">76 000 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/2100/online/extra_joker_40"><img src="https://www.forbescasino.cz/files/1160931YzJ.webp" alt="Extra Joker 40"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/2100/online/extra_joker_40" class="slava-winner-game">Extra Joker 40</a></div><div class="slava-winner-username">Va***os</div><div class="slava-winner-time">12.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">75 850 Kč</div><div class="slava-winner-spin-amount">Sázka: 500 Kč</div></div>
+                        </div>
+                        <div class="slava-winner-item">
+                            <div class="slava-winner-left"><div class="slava-winner-icon"><a href="https://www.forbescasino.cz/game/3573/online/respin_joker"><img src="https://www.forbescasino.cz/files/1160955MTF.webp" alt="Respin Joker"></a></div><div class="slava-winner-info"><div><a href="https://www.forbescasino.cz/game/3573/online/respin_joker" class="slava-winner-game">Respin Joker</a></div><div class="slava-winner-username">De***12</div><div class="slava-winner-time">29.04.2026</div></div></div>
+                            <div class="slava-winner-right"><div class="slava-winner-amount">63 200 Kč</div><div class="slava-winner-spin-amount">Sázka: 200 Kč</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-container" id="view-statistiky-vse">
+            <div class="stats-grid">
+                <div class="cms-stats-wrapper">
+                    <div class="stats-grid-flow">
+                        <div class="cms-section-card">
+                            <div class="cms-section-title"><span>&#127920;</span> Nejhranější hry</div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img alt="Multiplay 81" src="https://www.forbescasino.cz/files/1006667MzM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multiplay 81</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 100%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"><img alt="Hunter's Dream 2" src="https://www.forbescasino.cz/files/1006664MzA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Hunter's Dream 2</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 47.35%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3477/online/wild_cookies"><img alt="Wild Cookies" src="https://www.forbescasino.cz/files/1006718MTk.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Wild Cookies</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 35.18%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3464/online/fruit_jack"><img alt="Fruit Jack" src="https://www.forbescasino.cz/files/1160946YWR.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Fruit Jack</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 32.88%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/2054/online/100_hot_wild"><img alt="100 Hot Wild" src="https://www.forbescasino.cz/files/1160923NGM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">100 Hot Wild</span><span class="cms-provider-name">Tech4bet</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 32.54%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3468/online/multi_5"><img alt="Multi 5" src="https://www.forbescasino.cz/files/1006666NjI.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multi 5</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 32.13%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3473/online/super_reels_deluxe"><img alt="Super Reels Deluxe" src="https://www.forbescasino.cz/files/1006704OTg.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Super Reels Deluxe</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 21.18%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3621/online/aztec_jaguar"><img alt="Aztec Jaguar" src="https://www.forbescasino.cz/files/1007055MDY.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Aztec Jaguar</span><span class="cms-provider-name">Synot</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 18.15%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3573/online/respin_joker"><img alt="Respin Joker" src="https://www.forbescasino.cz/files/1160955MTF.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Respin Joker</span><span class="cms-provider-name">Synot</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 15.78%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/2308/online/karlos_game"><img alt="Karlos Game" src="https://www.forbescasino.cz/files/1154567MmQ.gif" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Karlos Game</span><span class="cms-provider-name">Apollo</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 14.95%;"></div></div></div></div>
+                        </div>
+                        <div class="provider-share-card cms-section-card">
+                            <h3 class="provider-share-title">&#128200; Nejhranější provideři</h3>
+                            <div class="provider-share-layout">
+                                <ul class="provider-share-legend">
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/e-gaming"><img class="provider-share-logo" src="https://www.forbescasino.cz/assets/img/footer-logos/egaming_online.svg" alt="e-gaming" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 100%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/synot"><img class="provider-share-logo" src="https://www.forbescasino.cz/assets/img/footer-logos/synot_online.svg" alt="SYNOT" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 32.14%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/tech4bet"><img class="provider-share-logo" src="https://www.forbescasino.cz//text_img/1367839MWI.png" alt="Tech4Bet" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 22.96%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/apollo-games"><img class="provider-share-logo" src="https://www.forbescasino.cz/assets/img/footer-logos/apollo_online.svg" alt="APOLLO SOFT" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 20.91%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/kajot"><img class="provider-share-logo" src="https://www.forbescasino.cz/assets/img/footer-logos/kajot_online.svg" alt="Kajot" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 10.48%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" style="height: 30px;" href="https://www.forbescasino.cz/adell"><img class="provider-share-logo" style="height: 20px;" src="https://www.forbescasino.cz/assets/img/footer-logos/adell_online.png" alt="ADELL" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 6.00%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/pragmatic-play"><img class="provider-share-logo" style="height: 36px;" src="https://www.forbescasino.cz/assets/img/footer-logos/pragmatic_online.svg" alt="Pragmatic" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 5.25%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/endorphina"><img class="provider-share-logo" src="https://www.forbescasino.cz/assets/img/footer-logos/endorphina_online.png" alt="Endorphina" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 4.29%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/tom-horn-games"><img class="provider-share-logo" src="https://www.forbescasino.cz//text_img/1367868OTE.png" alt="TomHorn" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 2.94%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/abx"><img class="provider-share-logo" src="https://www.forbescasino.cz//text_img/1367841MDB.png" alt="ABX" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 2.23%;"></div></div></li>
+                                    <li class="provider-share-item"><div class="provider-share-row"><div class="provider-share-left"><a class="provider-share-link" href="https://www.forbescasino.cz/ctgaming"><img class="provider-share-logo" style="width: 120px;" src="https://www.forbescasino.cz/assets/img/footer-logos/ctgaming_online.png" alt="CT Gaming" /></a></div></div><div class="provider-share-bar"><div class="provider-share-bar-fill" style="width: 0.80%;"></div></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cms-section-card multiplier-widget">
+                            <div class="cms-section-title"><span>&#128293;</span> Největší násobitele výhry</div>
+                            <div class="multiplier-list">
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3716/online/ultra_hold_and_spin" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007729MGU.webp" alt="Hot to Burn Hold and Spin"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Hot to Burn Hold and Spin</span></div><div class="multiplier-head"><span class="multiplier-value">20 000x</span><div class="multiplier-win">WIN 400 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 100%;"></div></div><div class="multiplier-meta"><span>We***hi</span><span>09.06.2024</span><span>BET 20 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160947MzY.webp" alt="Midnight Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Midnight Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">6 452x</span><div class="multiplier-win">WIN 32 260 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 32.26%;"></div></div><div class="multiplier-meta"><span>Hr***94</span><span>15.02.2024</span><span>BET 5 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3616/online/buffalo_king_megaways" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007655ZjM.webp" alt="Buffalo King Megaways"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Buffalo King Megaways</span></div><div class="multiplier-head"><span class="multiplier-value">5 678x</span><div class="multiplier-win">WIN 181 696 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 28.39%;"></div></div><div class="multiplier-meta"><span>Ku***61</span><span>29.06.2025</span><span>BET 32 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160947MzY.webp" alt="Midnight Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Midnight Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">5 352x</span><div class="multiplier-win">WIN 26 760 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 26.76%;"></div></div><div class="multiplier-meta"><span>to***77</span><span>20.07.2024</span><span>BET 5 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3716/online/ultra_hold_and_spin" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007729MGU.webp" alt="Hot to Burn Hold and Spin"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Hot to Burn Hold and Spin</span></div><div class="multiplier-head"><span class="multiplier-value">5 278x</span><div class="multiplier-win">WIN 21 112 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 26.39%;"></div></div><div class="multiplier-meta"><span>Ch***TT</span><span>24.06.2024</span><span>BET 4 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3716/online/ultra_hold_and_spin" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007729MGU.webp" alt="Hot to Burn Hold and Spin"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Hot to Burn Hold and Spin</span></div><div class="multiplier-head"><span class="multiplier-value">5 148x</span><div class="multiplier-win">WIN 41 184 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 25.74%;"></div></div><div class="multiplier-meta"><span>Ma***32</span><span>15.05.2024</span><span>BET 8 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">5 000x</span><div class="multiplier-win">WIN 50 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 25%;"></div></div><div class="multiplier-meta"><span>Ma***21</span><span>06.01.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">5 000x</span><div class="multiplier-win">WIN 20 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 25%;"></div></div><div class="multiplier-meta"><span>sa***le</span><span>23.01.2026</span><span>BET 4 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">5 000x</span><div class="multiplier-win">WIN 50 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 25%;"></div></div><div class="multiplier-meta"><span>tr***as</span><span>17.09.2025</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">5 000x</span><div class="multiplier-win">WIN 60 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 25%;"></div></div><div class="multiplier-meta"><span>ni***25</span><span>17.02.2025</span><span>BET 12 Kč</span></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-container" id="view-statistiky-tyden">
+            <div class="stats-grid">
+                <div class="cms-stats-wrapper">
+                    <div class="stats-grid-flow">
+                        <div class="cms-section-card">
+                            <div class="cms-section-title"><span>&#127920;</span> Nejhranější hry</div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img alt="Multiplay 81" src="https://www.forbescasino.cz/files/1006667MzM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multiplay 81</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 100%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3468/online/multi_5"><img alt="Multi 5" src="https://www.forbescasino.cz/files/1006666NjI.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multi 5</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 39.24%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"><img alt="Hunter's Dream 2" src="https://www.forbescasino.cz/files/1006664MzA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Hunter's Dream 2</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 39.00%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3477/online/wild_cookies"><img alt="Wild Cookies" src="https://www.forbescasino.cz/files/1006718MTk.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Wild Cookies</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 36.81%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/2054/online/100_hot_wild"><img alt="100 Hot Wild" src="https://www.forbescasino.cz/files/1160923NGM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">100 Hot Wild</span><span class="cms-provider-name">Tech4Bet</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 31.44%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3464/online/fruit_jack"><img alt="Fruit Jack" src="https://www.forbescasino.cz/files/1160946YWR.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Fruit Jack</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 30.88%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3738/online/firebird_27"><img alt="Firebird 27" src="https://www.forbescasino.cz/files/1007108ODA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Firebird 27</span><span class="cms-provider-name">Synot</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 26.61%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits"><img alt="Midnight Fruits" src="https://www.forbescasino.cz/files/1160947MzY.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Midnight Fruits</span><span class="cms-provider-name">Apollo</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 21.79%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3757/online/81_famous_multifruits"><img alt="81 Famous Multifruits" src="https://www.forbescasino.cz/files/1160967MDl.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">81 Famous Multifruits</span><span class="cms-provider-name">Synot</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 21.24%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/2308/online/karlos_game"><img alt="Karlos Game" src="https://www.forbescasino.cz/files/1154567MmQ.gif" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Karlos Game</span><span class="cms-provider-name">Apollo</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 18.53%;"></div></div></div></div>
+                        </div>
+                        <div class="cms-section-card multiplier-widget">
+                            <div class="cms-section-title"><span>&#128293;</span> Největší násobitele měsíce</div>
+                            <div class="multiplier-list">
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">1 125x</span><div class="multiplier-win">WIN 33 750 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 100%;"></div></div><div class="multiplier-meta"><span>hu***ki</span><span>20.05.2026</span><span>BET 30 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">1 115x</span><div class="multiplier-win">WIN 111 500 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 99.11%;"></div></div><div class="multiplier-meta"><span>Fi***GG</span><span>18.05.2026</span><span>BET 100 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3711/online/jokers_jewels" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007693MWI.webp" alt="Joker´s Jewels"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Joker´s Jewels</span></div><div class="multiplier-head"><span class="multiplier-value">1 000x</span><div class="multiplier-win">WIN 100 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 88.89%;"></div></div><div class="multiplier-meta"><span>Bo***34</span><span>18.05.2026</span><span>BET 100 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2261/online/5_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1106490MDg.webp" alt="5 Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">5 Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">1 000x</span><div class="multiplier-win">WIN 40 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 88.89%;"></div></div><div class="multiplier-meta"><span>ni***va</span><span>18.05.2026</span><span>BET 40 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2261/online/5_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1106490MDg.webp" alt="5 Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">5 Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">1 000x</span><div class="multiplier-win">WIN 30 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 88.89%;"></div></div><div class="multiplier-meta"><span>Ve***ca</span><span>18.05.2026</span><span>BET 30 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160947MzY.webp" alt="Midnight Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Midnight Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">717,33x</span><div class="multiplier-win">WIN 21 520 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 63.76%;"></div></div><div class="multiplier-meta"><span>An***ny</span><span>24.05.2026</span><span>BET 30 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2069/online/81_multi_gold" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1089478ZTQ.webp" alt="81 Multi Gold"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">81 Multi Gold</span></div><div class="multiplier-head"><span class="multiplier-value">485x</span><div class="multiplier-win">WIN 24 250 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 43.11%;"></div></div><div class="multiplier-meta"><span>86***ek</span><span>19.05.2026</span><span>BET 50 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3561/online/88_pearls" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007014MDM.webp" alt="88 Pearls"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">88 Pearls</span></div><div class="multiplier-head"><span class="multiplier-value">480,80x</span><div class="multiplier-win">WIN 24 040 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 42.74%;"></div></div><div class="multiplier-meta"><span>Ka***a3</span><span>21.05.2026</span><span>BET 50 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3493/online/turbo_27" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007168MzE.webp" alt="Turbo 27"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Turbo 27</span></div><div class="multiplier-head"><span class="multiplier-value">480x</span><div class="multiplier-win">WIN 33 600 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 42.67%;"></div></div><div class="multiplier-meta"><span>71***ej</span><span>22.05.2026</span><span>BET 70 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2146/online/lumberjack_2" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1091255ZWZ.webp" alt="Lumberjack 2"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Lumberjack 2</span></div><div class="multiplier-head"><span class="multiplier-value">360x</span><div class="multiplier-win">WIN 18 000 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 32.00%;"></div></div><div class="multiplier-meta"><span>Mi***93</span><span>21.05.2026</span><span>BET 50 Kč</span></div></div></div>
+                            </div>
+                        </div>
+                        <div class="cms-section-card rtp-widget">
+                            <div class="cms-section-title"><img class="rtp-title-icon" src="https://forbescasino.cz/text_img/1367871MWE.svg" alt=""> Hot &amp; Cold Games (RTP)</div>
+                            <div class="rtp-grid">
+                                <div class="rtp-column rtp-column-hot">
+                                    <div class="rtp-column-title">&#128293; Hot Games<span class="rtp-col-emoji-hot">&#128293;</span></div>
+                                    <div class="rtp-list">
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3543/online/dragons_of_fortune"><img src="https://www.forbescasino.cz/files/1006958OWJ.webp" alt="Dragons of Fortune"></a><div><span class="rtp-game">Dragons of Fortune</span><span class="rtp-provider-name">Synot</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>223.69%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/2301/online/bonus_joker_81"><img src="https://www.forbescasino.cz/files/1155208YTY.webp" alt="Bonus Joker 81"></a><div><span class="rtp-game">Bonus Joker 81</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>187.87%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl"><img src="https://www.forbescasino.cz/files/1007162YTg.webp" alt="Ring of Fire XL"></a><div><span class="rtp-game">Ring of Fire XL</span><span class="rtp-provider-name">Kajot</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>173.31%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3497/online/multi_diamonds_81"><img src="https://www.forbescasino.cz/files/1007179MzM.webp" alt="Multi Diamonds 81"></a><div><span class="rtp-game">Multi Diamonds 81</span><span class="rtp-provider-name">Kajot</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>159.71%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3514/online/lucky_81"><img src="https://www.forbescasino.cz/files/1006881ZjE.webp" alt="Lucky 81"></a><div><span class="rtp-game">Lucky 81</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>157.34%</span></div>
+                                    </div>
+                                </div>
+                                <div class="rtp-column rtp-column-cold">
+                                    <div class="rtp-column-title">&#x1F9CA; Cold Games<span class="rtp-col-emoji-cold">&#x1F9CA;</span></div>
+                                    <div class="rtp-list">
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/2225/online/kitty_bonus_jackpot"><img src="https://www.forbescasino.cz/files/1096895NjY.jpeg" alt="Kitty Bonus Jackpot"></a><div><span class="rtp-game">Kitty Bonus Jackpot</span><span class="rtp-provider-name">ABXplay</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>64.60%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/2105/online/fruit_dreams"><img src="https://www.forbescasino.cz/files/1089518Y2J.webp" alt="Fruit Dreams"></a><div><span class="rtp-game">Fruit Dreams</span><span class="rtp-provider-name">Tech4Bet</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>64.25%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3529/online/smiling_joker"><img src="https://www.forbescasino.cz/files/1006928MDE.webp" alt="Smiling Joker"></a><div><span class="rtp-game">Smiling Joker</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>63.55%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3594/online/happy_nuts"><img src="https://www.forbescasino.cz/files/1006954YzA.webp" alt="Happy Nuts"></a><div><span class="rtp-game">Happy Nuts</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>61.85%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3587/online/super_star_27"><img src="https://www.forbescasino.cz/files/1006793ZTk.webp" alt="Super Star 27"></a><div><span class="rtp-game">Super Star 27</span><span class="rtp-provider-name">E-gaming</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>48.43%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-container" id="view-statistiky-mesic">
+            <div class="stats-grid">
+                <div class="cms-stats-wrapper">
+                    <div class="stats-grid-flow">
+                        <div class="cms-section-card">
+                            <div class="cms-section-title"><span>&#127920;</span> Nejhranější hry</div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3469/online/multiplay_81"><img alt="Multiplay 81" src="https://www.forbescasino.cz/files/1006667MzM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multiplay 81</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 100%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3468/online/multi_5"><img alt="Multi 5" src="https://www.forbescasino.cz/files/1006666NjI.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Multi 5</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 47.88%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3466/online/hunters_dream_2"><img alt="Hunter's Dream 2" src="https://www.forbescasino.cz/files/1006664MzA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Hunter's Dream 2</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 45.13%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3464/online/fruit_jack"><img alt="Fruit Jack" src="https://www.forbescasino.cz/files/1160946YWR.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Fruit Jack</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 41.22%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3477/online/wild_cookies"><img alt="Wild Cookies" src="https://www.forbescasino.cz/files/1006718MTk.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Wild Cookies</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 36.77%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits"><img alt="Midnight Fruits" src="https://www.forbescasino.cz/files/1160947MzY.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Midnight Fruits</span><span class="cms-provider-name">Apollo</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 26.43%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/2054/online/100_hot_wild"><img alt="100 Hot Wild" src="https://www.forbescasino.cz/files/1160923NGM.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">100 Hot Wild</span><span class="cms-provider-name">Tech4Bet</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 23.53%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3738/online/firebird_27"><img alt="Firebird 27" src="https://www.forbescasino.cz/files/1007108ODA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Firebird 27</span><span class="cms-provider-name">Synot</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 19.79%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3790/online/sugoi_spin"><img alt="Sugoi Spin" src="https://www.forbescasino.cz/files/1006834Mjc.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Sugoi Spin</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 18.79%;"></div></div></div></div>
+                            <div class="cms-stat-item"><div class="cms-stat-img-wrapper"><a href="https://www.forbescasino.cz/game/3758/online/maxi_5"><img alt="Maxi 5" src="https://www.forbescasino.cz/files/1006819OTA.webp" /></a></div><div class="cms-stat-content"><span class="cms-stat-name">Maxi 5</span><span class="cms-provider-name">E-gaming</span><div class="cms-bar-container"><div class="cms-bar-fill" style="width: 17.13%;"></div></div></div></div>
+                        </div>
+                        <div class="cms-section-card multiplier-widget">
+                            <div class="cms-section-title"><span>&#128293;</span> Největší násobitele měsíce</div>
+                            <div class="multiplier-list">
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160947MzY.webp" alt="Midnight Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Midnight Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">3016x</span><div class="multiplier-win">WIN 15 080 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 100%;"></div></div><div class="multiplier-meta"><span>Zi***cz</span><span>02.04.2026</span><span>BET 5 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">2750x</span><div class="multiplier-win">WIN 16 500 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 91.18%;"></div></div><div class="multiplier-meta"><span>Ma***21</span><span>05.04.2026</span><span>BET 6 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3500/online/midnight_fruits" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160947MzY.webp" alt="Midnight Fruits"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Midnight Fruits</span></div><div class="multiplier-head"><span class="multiplier-value">2139x</span><div class="multiplier-win">WIN 21 390 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 70.92%;"></div></div><div class="multiplier-meta"><span>pe***73</span><span>18.04.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2286/online/joker_ra" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1161008YmQ.webp" alt="Joker Ra"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Joker Ra</span></div><div class="multiplier-head"><span class="multiplier-value">1 809,5x</span><div class="multiplier-win">WIN 18 095 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 59.99%;"></div></div><div class="multiplier-meta"><span>ol***10</span><span>15.04.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/2246/online/coffee_magic" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1184526MTR.webp" alt="Coffee Magic"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Coffee Magic</span></div><div class="multiplier-head"><span class="multiplier-value">1 702,19x</span><div class="multiplier-win">WIN 26 809 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 56.44%;"></div></div><div class="multiplier-meta"><span>Tr***rg</span><span>12.04.2026</span><span>BET 15,75 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3490/online/ring_of_fire_xl" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007162YTg.webp" alt="Ring of Fire XL"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Ring of Fire XL</span></div><div class="multiplier-head"><span class="multiplier-value">1673x</span><div class="multiplier-win">WIN 16 730 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 55.47%;"></div></div><div class="multiplier-meta"><span>Lu***88</span><span>28.04.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3614/online/gates_of_olympus" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1160945YWM.webp" alt="Gates of Olympus"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Gates of Olympus</span></div><div class="multiplier-head"><span class="multiplier-value">1534x</span><div class="multiplier-win">WIN 15 340 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 50.86%;"></div></div><div class="multiplier-meta"><span>Ho***ar</span><span>27.04.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3613/online/madame_destiny_megaways" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007698ODR.webp" alt="Madame Destiny Megaways"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Madame Destiny Megaways</span></div><div class="multiplier-head"><span class="multiplier-value">1121x</span><div class="multiplier-win">WIN 11 210 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 37.16%;"></div></div><div class="multiplier-meta"><span>ra***20</span><span>13.04.2026</span><span>BET 10 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/3647/online/tiki_princess" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1007095ZGY.webp" alt="Tiki Princess"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Tiki Princess</span></div><div class="multiplier-head"><span class="multiplier-value">1077x</span><div class="multiplier-win">WIN 32 310 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 35.71%;"></div></div><div class="multiplier-meta"><span>ve***ak</span><span>13.04.2026</span><span>BET 30 Kč</span></div></div></div>
+                                <div class="multiplier-item"><a href="https://www.forbescasino.cz/game/4059/online/rot_stormo" class="multiplier-thumb"><img src="https://www.forbescasino.cz/files/1234956Yjk.webp" alt="Rot Stormo"></a><div class="multiplier-main"><div class="multiplier-head"><span class="multiplier-game">Rot Stormo</span></div><div class="multiplier-head"><span class="multiplier-value">1015x</span><div class="multiplier-win">WIN 20 300 Kč</div></div><div class="multiplier-heat"><div class="multiplier-heat-fill" style="width: 33.65%;"></div></div><div class="multiplier-meta"><span>Ma***y5</span><span>04.04.2026</span><span>BET 20 Kč</span></div></div></div>
+                            </div>
+                        </div>
+                        <div class="cms-section-card rtp-widget">
+                            <div class="cms-section-title"><img class="rtp-title-icon" src="https://forbescasino.cz/text_img/1367871MWE.svg" alt=""> Hot &amp; Cold Games (RTP)</div>
+                            <div class="rtp-grid">
+                                <div class="rtp-column rtp-column-hot">
+                                    <div class="rtp-column-title">&#128293; Hot Games<span class="rtp-col-emoji-hot">&#128293;</span></div>
+                                    <div class="rtp-list">
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3789/online/double_star_27"><img src="https://www.forbescasino.cz/files/1006833OGQ.webp" alt="Double Star 27"></a><div><span class="rtp-game">Double Star 27</span><span class="rtp-provider-name">E-gaming</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>144%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3635/online/red_evil"><img src="https://www.forbescasino.cz/files/1006972MGI.webp" alt="Red Evil"></a><div><span class="rtp-game">Red Evil</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>136%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/4062/online/crystal_fruits_bonanza"><img src="https://www.forbescasino.cz/files/1234963Mjl.webp" alt="Crystal Fruits Bonanza"></a><div><span class="rtp-game">Crystal Fruits Bonanza</span><span class="rtp-provider-name">Tom Horn</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>133%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3590/online/boofa"><img src="https://www.forbescasino.cz/files/1006932MDB.webp" alt="Boofa"></a><div><span class="rtp-game">Boofa</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>132%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3605/online/wolf_gold"><img src="https://www.forbescasino.cz/files/1007737NmZ.webp" alt="Wolf Gold"></a><div><span class="rtp-game">Wolf Gold</span><span class="rtp-provider-name">Pragmatic</span></div><span class="rtp-value rtp-value-hot"><span class="rtp-label">HOT RTP</span>125%</span></div>
+                                    </div>
+                                </div>
+                                <div class="rtp-column rtp-column-cold">
+                                    <div class="rtp-column-title">&#x1F9CA; Cold Games<span class="rtp-col-emoji-cold">&#x1F9CA;</span></div>
+                                    <div class="rtp-list">
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3798/online/bonus_jack"><img src="https://www.forbescasino.cz/files/1006841OWM.webp" alt="Bonus Jack"></a><div><span class="rtp-game">Bonus Jack</span><span class="rtp-provider-name">E-gaming</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>72%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/3510/online/gangster_world"><img src="https://www.forbescasino.cz/files/1006872MmE.webp" alt="Gangster World"></a><div><span class="rtp-game">Gangster World</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>71%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/4063/online/book_of_cleo"><img src="https://www.forbescasino.cz/files/1234966ODk.webp" alt="Book of Cleo"></a><div><span class="rtp-game">Book of Cleo</span><span class="rtp-provider-name">Tom Horn</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>66%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/2319/online/turbokick"><img src="https://www.forbescasino.cz/files/1209285YzY.webp" alt="TurboKick"></a><div><span class="rtp-game">TurboKick</span><span class="rtp-provider-name">Apollo</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>67%</span></div>
+                                        <div class="rtp-item"><a class="rtp-thumb" href="https://www.forbescasino.cz/game/2219/online/hunter_totem"><img src="https://www.forbescasino.cz/files/1155196NDQ.webp" alt="Hunter Totem"></a><div><span class="rtp-game">Hunter Totem</span><span class="rtp-provider-name">ABXplay</span></div><span class="rtp-value rtp-value-cold"><span class="rtp-label">COLD RTP</span>65%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Výběr všech ovládacích prvků
+            const tabs = document.querySelectorAll('.mobile-tab-label');
+            const filters = document.querySelectorAll('.slava-filter-pill');
+            
+            // Výběr textových elementů v headeru pro dynamickou změnu
+            const headerTitle = document.querySelector('.slava-header-title');
+            const headerSubtitle = document.querySelector('.slava-header-subtitle');
+
+            // Výchozí nastavení stavu aplikace
+            let activeTab = 'sin-slavy';
+            let activeFilter = 'vse';
+
+            // Funkce zajišťující kompletní přepnutí viditelnosti na základě stavu
+            function updateLayoutView() {
+                // Skrytí naprosto všech kontejnerů s daty
+                document.querySelectorAll('.view-container').forEach(function(view) {
+                    view.style.display = 'none';
+                });
+
+                // Sestavení ID pro aktivní pohled (např. 'view-sin-slavy-vse')
+                const activeViewId = 'view-' + activeTab + '-' + activeFilter;
+                const activeViewElement = document.getElementById(activeViewId);
+
+                if (activeViewElement) {
+                    activeViewElement.style.display = 'block';
+                }
+
+                // Dynamická úprava textu v hlavní hlavičce podle vybrané záložky
+                if (activeTab === 'sin-slavy') {
+                    headerTitle.innerHTML = 'Síň slávy Forbes Casino';
+                    headerSubtitle.innerHTML = 'Sledujte ty nejlepší, inspirujte se a buďte další na řadě &#x1F389;';
+                } else if (activeTab === 'statistiky') {
+                    headerTitle.innerHTML = 'Statistiky Forbes Casino';
+                    headerSubtitle.innerHTML = 'Nejhranější hry a provideři přehledně na jednom místě &#128200;';
+                }
+            }
+
+            // Obsluha kliknutí na hlavní Záložky (Síň slávy / Statistiky)
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault(); // Zamezení navigace/přesměrování hrefu
+                    
+                    // Reset tříd aktivního stavu u záložek
+                    tabs.forEach(function(t) { t.classList.remove('mobile-tab-label-active'); });
+                    // Přidání aktivní třídy kliknuté záložce
+                    tab.classList.add('mobile-tab-label-active');
+
+                    // Načtení cílové hodnoty z data-tab atributu
+                    activeTab = tab.getAttribute('data-tab');
+                    
+                    // Spuštění překreslení stránky
+                    updateLayoutView();
+                });
+            });
+
+            // Obsluha kliknutí na Časové filtry (Vše / Týden / Měsíc)
+            filters.forEach(function(filter) {
+                filter.addEventListener('click', function(e) {
+                    e.preventDefault(); // Zamezení navigace/přesměrování hrefu
+
+                    // Reset tříd aktivního stavu u filtrů
+                    filters.forEach(function(f) { f.classList.remove('slava-filter-pill-active'); });
+                    // Přidání aktivní třídy kliknutému filtru
+                    filter.classList.add('slava-filter-pill-active');
+
+                    // Načtení cílové hodnoty z data-filter atributu
+                    activeFilter = filter.getAttribute('data-filter');
+
+                    // Spuštění překreslení stránky
+                    updateLayoutView();
+                });
+            });
+
+            // Prvotní inicializace správného zobrazení po načtení DOMu
+            updateLayoutView();
+        });
+    </script>
+</body>
+</html>
