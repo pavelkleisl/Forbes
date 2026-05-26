@@ -504,20 +504,6 @@
         .home-content.active-view { display: block; }
         .placeholder-view.active-view { display: flex; }
 
-        /* ─── IFRAME VIEW (Hall of Fame a další zapuštěné stránky) ── */
-        .iframe-view {
-            display: none;
-        }
-        .iframe-view.active-view {
-            display: block;
-        }
-        .iframe-view iframe {
-            width: 100%;
-            border: none;
-            overflow: hidden;
-            display: block;
-        }
-
         /* Widget 1: Marketingový / Maraton Banner */
         .cms-banner {
             background: linear-gradient(135deg, #070a24 0%, #131b54 100%);
@@ -1035,14 +1021,8 @@
         <h1>Bonuses</h1>
     </div>
 
-    <div id="view-medal" class="iframe-view">
-        <iframe
-            id="hallOfFameFrame"
-            src="sin-slavy.html"
-            scrolling="no"
-            frameborder="0"
-            title="Hall of Fame"
-        ></iframe>
+    <div id="view-medal" class="placeholder-view">
+        <h1>Hall of Fame</h1>
     </div>
 
     <nav class="mobile-bottom-nav">
@@ -1273,34 +1253,6 @@
             indicator.style.width = btn.offsetWidth + 'px';
             indicator.style.transform = `translateX(${btnLeft - switcherLeft}px)`;
         }
-
-        /* ─── IFRAME AUTO-RESIZE (Hall of Fame) ─────────────────── */
-        function resizeHallOfFameFrame() {
-            const frame = document.getElementById('hallOfFameFrame');
-            if (!frame || !frame.contentWindow) return;
-            try {
-                const doc = frame.contentWindow.document;
-                // sin-slavy.html má body { height: 100% } — přepíšeme na auto aby scrollHeight fungovalo
-                doc.body.style.height = 'auto';
-                doc.body.style.minHeight = '0';
-                const height = Math.max(
-                    doc.body.scrollHeight,
-                    doc.documentElement.scrollHeight
-                );
-                if (height > 50) frame.style.height = height + 'px';
-            } catch (e) {}
-        }
-
-        document.getElementById('hallOfFameFrame').addEventListener('load', function() {
-            resizeHallOfFameFrame();
-            // Polling pro případ změny výšky při přepínání tabů uvnitř sin-slavy.html
-            setInterval(function() {
-                if (document.getElementById('view-medal').classList.contains('active-view')) {
-                    resizeHallOfFameFrame();
-                }
-            }, 250);
-        });
-        window.addEventListener('resize', resizeHallOfFameFrame);
 
         /* ─── INICIALIZACE PŘI NAČTENÍ STRÁNKY ───────────────────── */
         renderMenu('casino');
