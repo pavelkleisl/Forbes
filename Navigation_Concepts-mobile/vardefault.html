@@ -18,13 +18,18 @@
         }
 
         /* FIX: Scrollbar binding targeted to both root HTML and BODY nodes */
-        html, body {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE/Edge */
+        html,
+        body {
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
         }
 
-        html::-webkit-scrollbar, body::-webkit-scrollbar {
-            display: none !important; /* Chrome, Safari, Opera */
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none !important;
+            /* Chrome, Safari, Opera */
             width: 0 !important;
             height: 0 !important;
         }
@@ -122,7 +127,8 @@
             fill: currentColor;
             pointer-events: none;
             vertical-align: middle;
-            overflow: visible !important; /* Prevence ořezu hran ikon */
+            overflow: visible !important;
+            /* Prevence ořezu hran ikon */
         }
 
         /* FIX: Horní lišta upevněná pevně nahoře před vším ostatním */
@@ -444,7 +450,10 @@
         /* ─── MODÁLNÍ OKNO PRO AUTENTIZACI (SIMULACE) ────────────── */
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(3, 9, 30, 0.7);
             display: none;
             align-items: center;
@@ -454,6 +463,7 @@
             -webkit-backdrop-filter: blur(4px);
             animation: fadeIn 0.2s ease forwards;
         }
+
         .modal-box {
             background: #ffffff;
             padding: 30px 24px;
@@ -465,15 +475,41 @@
             position: relative;
             animation: scaleUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
+
         .modal-close {
             position: absolute;
-            top: 12px; right: 16px;
-            background: none; border: none;
-            font-size: 26px; cursor: pointer; color: #999;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #999;
         }
-        .modal-close:hover { color: #333; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes scaleUp { from { transform: scale(0.9); } to { transform: scale(1); } }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
 
 
         /* ─── OBSAH: ROZCESTNÍK & NOVE ZOBRAZOVACI SEKCIE ────────── */
@@ -492,6 +528,7 @@
             background-color: #f4f5f9;
             min-height: 60vh;
         }
+
         .placeholder-view h1 {
             font-size: 36px;
             font-weight: 900;
@@ -501,8 +538,13 @@
         }
 
         /* Třídy pro řízení viditelnosti přes JS bez konfliktu s media queries */
-        .home-content.active-view { display: block; }
-        .placeholder-view.active-view { display: flex; }
+        .home-content.active-view {
+            display: block;
+        }
+
+        .placeholder-view.active-view {
+            display: flex;
+        }
 
         /* Widget 1: Marketingový / Maraton Banner */
         .cms-banner {
@@ -600,119 +642,471 @@
             filter: invert(9%) sepia(43%) saturate(5838%) hue-rotate(224deg) brightness(85%) contrast(106%);
         }
 
-        
+
 
         /* Globální styly pro sekce widgetů */
-        .cms-section { margin-bottom: 28px; }
-        .cms-section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; padding: 0 4px; }
-        .cms-section-header h3 { font-size: 15px; font-weight: 800; color: #0b0e26; text-transform: uppercase; letter-spacing: 0.5px; }
-        .cms-section-header a { font-size: 12px; font-weight: 600; color: #1c2780; text-decoration: none; text-transform: uppercase; }
+        .cms-section {
+            margin-bottom: 28px;
+        }
 
-        /* Widget 3: Šlágr dne s vlajkami */
-        .cms-shlagr-card {
+        .cms-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+
+        .cms-section-header h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0b0e26;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cms-section-header a {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1c2780;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+/* Widget 5: Kompaktní Casino Grid (4 sloupce, max 2 řady = 8 her) */
+        .cms-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .cms-slot-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: block;
+        }
+
+        .cms-slot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cms-provider-tag {
+            position: absolute;
+            bottom: 3px;
+            left: 3px;
+            background: rgba(3, 9, 30, 0.85);
+            color: #fff;
+            font-size: 7px;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Widget 6: Komunitní Trendy s neutrální barvou progress baru */
+        .cms-trends-card {
             background: #ffffff;
             border-radius: 14px;
             padding: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eaeaea;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
             gap: 14px;
-            border: 1px solid #eaeaea;
         }
 
-        .cms-shlagr-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 600; color: #777; }
-        .cms-shlagr-vs-container { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
-        .cms-shlagr-team-box { display: flex; flex-direction: column; align-items: center; width: 42%; text-align: center; gap: 8px; }
-        .cms-shlagr-flag { width: 54px; height: 36px; border-radius: 6px; object-fit: cover; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12); border: 1px solid #f0f0f0; }
-        .cms-shlagr-team-name { font-size: 14px; font-weight: 800; color: #0b0e26; }
-        .cms-shlagr-vs-divider { font-size: 11px; font-weight: 900; color: #cecdcb; background: #f4f5f9; padding: 4px 8px; border-radius: 20px; }
-        
-        .cms-shlagr-card .btn-detail {
-            background: #1c2780; color: #ffffff; text-align: center; padding: 11px; border-radius: 8px;
-            font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.3px;
+        .cms-trend-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* Widget 4: Tiket dne s upraveným vzhledem */
-        .cms-ticket-card {
-            background: #ffffff; border-radius: 14px; border: 2px dashed #cecdcb; padding: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; gap: 10px;
+        .cms-trend-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: #0b0e26;
         }
 
-        .cms-ticket-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f4f5f9; }
-        .cms-ticket-row:last-of-type { border-bottom: none; }
-        .cms-ticket-match { font-size: 13px; font-weight: 700; color: #0b0e26; }
-        .cms-ticket-tip { font-size: 12px; color: #666; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
-        .cms-ticket-tip strong { color: #ffffff; background: #1c2780; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-        .cms-ticket-odds { font-size: 13px; font-weight: 800; color: #0d1345; background: #f4f5f9; padding: 4px 8px; border-radius: 6px; }
-        .cms-ticket-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 10px; border-top: 2px solid #f4f5f9; }
-        .cms-ticket-total { font-size: 12px; color: #555; font-weight: 600; }
-        .cms-ticket-total strong { font-size: 16px; color: #0d1345; font-weight: 900; margin-left: 4px; }
-        
-        .cms-ticket-card .btn-bet-ticket {
-            background: #ffbe00; color: #03091e; padding: 10px 16px; border-radius: 8px; text-decoration: none;
-            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; box-shadow: 0 4px 12px rgba(255, 190, 0, 0.3);
+        .cms-trend-meta span:last-child {
+            color: #1c2780;
         }
 
-        /* Widget 5: Kompaktní Casino Grid (4 sloupce, max 2 řady = 8 her) */
-        .cms-slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .cms-slot-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); display: block; }
-        .cms-slot-item img { width: 100%; height: 100%; object-fit: cover; }
-        .cms-provider-tag { position: absolute; bottom: 3px; left: 3px; background: rgba(3, 9, 30, 0.85); color: #fff; font-size: 7px; font-weight: 700; padding: 1px 4px; border-radius: 2px; text-transform: uppercase; }
-
-        /* Widget 6: Komunitní Trendy s neutrální barvou progress baru */
-        .cms-trends-card { background: #ffffff; border-radius: 14px; padding: 16px; border: 1px solid #eaeaea; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03); display: flex; flex-direction: column; gap: 14px; }
-        .cms-trend-item { display: flex; flex-direction: column; gap: 6px; }
-        .cms-trend-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #0b0e26; }
-        .cms-trend-meta span:last-child { color: #1c2780; }
-        .cms-progress-bg { background: #f4f5f9; height: 8px; border-radius: 10px; overflow: hidden; position: relative; }
-        .cms-progress-bar { background: linear-gradient(90deg, #1c2780 0%, #ffbe00 100%); height: 100%; border-radius: 10px; }
-
-        /* Widget 7: Dlouhodobé sázky */
-        .cms-specials-list { display: flex; flex-direction: column; gap: 10px; }
-        .cms-special-item {
-            background: #ffffff; border-radius: 10px; padding: 12px 14px; border: 1px solid #eaeaea;
-            display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit;
+        .cms-progress-bg {
+            background: #f4f5f9;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
         }
-        .cms-special-title { font-size: 13px; font-weight: 700; color: #0b0e26; }
-        .cms-special-sub { font-size: 11px; color: #777; margin-top: 2px; }
-        .cms-special-arrow { color: #1c2780; font-weight: 700; font-size: 14px; }
+
+        .cms-progress-bar {
+            background: linear-gradient(90deg, #1c2780 0%, #ffbe00 100%);
+            height: 100%;
+            border-radius: 10px;
+        }
 
 
         /* ─── RESPONSIVE BREAKPOINT (< 992px) ───────────────────── */
         @media (max-width: 991px) {
-            .test-panel { display: none !important; }
-            .tipsport-header { background: #0d1345 !important; }
-            .top-deck { padding: 0 20px; height: 80px; align-items: center; }
-            .logo { padding-right: 0; }
-            .logo img { height: 46px; }
-            .mobile-menu-trigger { display: flex; }
-            .mobile-menu-trigger .svg-icon { width: 26px; height: 26px; }
-            .product-switcher, .bottom-deck { display: none !important; }
-            .auth-zone { gap: 24px; }
+            .test-panel {
+                display: none !important;
+            }
+
+            .tipsport-header {
+                background: #0d1345 !important;
+            }
+
+            .top-deck {
+                padding: 0 20px;
+                height: 80px;
+                align-items: center;
+            }
+
+            .logo {
+                padding-right: 0;
+            }
+
+            .logo img {
+                height: 46px;
+            }
+
+            .mobile-menu-trigger {
+                display: flex;
+            }
+
+            .mobile-menu-trigger .svg-icon {
+                width: 26px;
+                height: 26px;
+            }
+
+            .product-switcher,
+            .bottom-deck {
+                display: none !important;
+            }
+
+            .auth-zone {
+                gap: 24px;
+            }
 
             .auth-zone .btn {
-                background: transparent !important; border: none !important; box-shadow: none !important;
-                color: #ffffff !important; flex-direction: column; height: auto; padding: 0;
-                font-size: 11px; font-weight: 400; text-transform: none; letter-spacing: 0.3px; gap: 5px;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                color: #ffffff !important;
+                flex-direction: column;
+                height: auto;
+                padding: 0;
+                font-size: 11px;
+                font-weight: 400;
+                text-transform: none;
+                letter-spacing: 0.3px;
+                gap: 5px;
             }
-            .auth-zone .btn .auth-icon { display: inline-block; width: 22px; height: 22px; fill: #ffffff; }
-            .mobile-bottom-nav { display: flex; }
+
+            .auth-zone .btn .auth-icon {
+                display: inline-block;
+                width: 22px;
+                height: 22px;
+                fill: #ffffff;
+            }
+
+            .mobile-bottom-nav {
+                display: flex;
+            }
 
             body {
-                background-color: #f4f5f9;
+                background-color: #060a1f;
                 padding-bottom: clamp(60px, 7.5vw, 76px);
+            }
+
+            /* ─── HOME: kosmické pozadí ─── */
+            #view-home {
+                position: relative;
+                background:
+                    radial-gradient(120% 80% at 50% -10%, rgba(28, 39, 128, 0.55) 0%, transparent 55%),
+                    radial-gradient(90% 60% at 100% 20%, rgba(255, 190, 0, 0.08) 0%, transparent 50%),
+                    linear-gradient(180deg, #0a0f2e 0%, #060a1f 40%, #04061a 100%);
+                padding: 18px 14px 36px 14px;
+            }
+
+            #view-home::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: url('bg.jpg') no-repeat center top;
+                background-size: cover;
+                opacity: 0.12;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            #view-home>* {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* ─── Banner ─── */
+            #view-home .cms-banner {
+                background:
+                    radial-gradient(140% 120% at 100% 0%, rgba(255, 190, 0, 0.18) 0%, transparent 45%),
+                    linear-gradient(135deg, rgba(18, 27, 84, 0.9) 0%, rgba(7, 10, 36, 0.95) 100%);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-left: none;
+                border-radius: 20px;
+                padding: 22px 20px;
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                overflow: hidden;
+            }
+
+            #view-home .cms-banner::after {
+                content: '';
+                position: absolute;
+                top: -60%;
+                right: -20%;
+                width: 220px;
+                height: 220px;
+                background: radial-gradient(circle, rgba(255, 190, 0, 0.35) 0%, transparent 70%);
+                filter: blur(20px);
+                pointer-events: none;
+            }
+
+            #view-home .cms-banner-badge {
+                background: linear-gradient(135deg, #ff5555, #ff2d2d);
+                box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+                padding: 4px 10px;
+                border-radius: 6px;
+            }
+
+            #view-home .cms-banner h2 {
+                font-size: 22px;
+                text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            #view-home .cms-banner p {
+                max-width: 82%;
+                opacity: 0.78;
+            }
+
+            #view-home .cms-banner .btn-banner {
+                background: linear-gradient(135deg, #ffd040 0%, #ffbe00 100%);
+                box-shadow: 0 8px 20px rgba(255, 190, 0, 0.35);
+                padding: 12px 24px;
+                border-radius: 50px;
+            }
+
+            /* ─── Split grid ─── */
+            #view-home .cms-split-grid {
+                gap: 12px;
+                margin-bottom: 30px;
+            }
+
+            #view-home .cms-split-card {
+                background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 18px;
+                padding: 18px 8px;
+                color: #ffffff;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                gap: 10px;
+            }
+
+            #view-home .cms-split-card:active {
+                border-color: rgba(255, 190, 0, 0.6);
+                transform: scale(0.96);
+            }
+
+            #view-home .cms-split-card img {
+                width: 30px;
+                height: 30px;
+                filter: brightness(0) saturate(100%) invert(85%) sepia(48%) saturate(1500%) hue-rotate(358deg) brightness(103%) contrast(103%);
+            }
+
+            /* ─── Sekční hlavičky ─── */
+            #view-home .cms-section-header h3 {
+                color: #ffffff;
+                font-size: 16px;
+                letter-spacing: 0.6px;
+            }
+
+            #view-home .cms-section-header h3::before {
+                content: '';
+                display: inline-block;
+                width: 4px;
+                height: 15px;
+                background: linear-gradient(180deg, #ffd040, #ffbe00);
+                border-radius: 4px;
+                margin-right: 9px;
+                vertical-align: -2px;
+                box-shadow: 0 0 10px rgba(255, 190, 0, 0.6);
+            }
+
+            #view-home .cms-section-header a {
+                color: rgba(255, 255, 255, 0.55);
+                font-weight: 600;
+            }
+
+            /* ─── Šlágr dne ─── */
+/* ─── Casino grid ─── */
+            #view-home .cms-slots-grid {
+                gap: 10px;
+            }
+
+            #view-home .cms-slot-item {
+                border-radius: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+                transition: transform 0.15s ease;
+            }
+
+            #view-home .cms-slot-item::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 14px;
+                background: linear-gradient(180deg, transparent 55%, rgba(4, 6, 26, 0.55) 100%);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+                pointer-events: none;
+            }
+
+            #view-home .cms-slot-item:active {
+                transform: scale(0.94);
+            }
+
+/* ─── Trending Opportunities ─── */
+            .cms-opportunity-card {
+                background: linear-gradient(160deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 100%);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 16px 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                transition: border-color 0.15s ease;
+            }
+
+            .cms-opportunity-card:active {
+                border-color: rgba(255, 190, 0, 0.5);
+            }
+
+            .cms-opportunity-meta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+            }
+
+            .cms-opportunity-flag {
+                width: 20px;
+                height: 13px;
+                border-radius: 2px;
+                display: block;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+
+            .cms-opportunity-league-name {
+                font-size: 10px;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .cms-opportunity-time {
+                font-size: 10px;
+                color: rgba(255, 255, 255, 0.45);
+                font-weight: 400;
+            }
+
+            .cms-opportunity-teams-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .cms-opportunity-team {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex: 0 0 auto;
+            }
+
+            .cms-opportunity-team-logo {
+                width: 48px;
+                height: 48px;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: block;
+                flex-shrink: 0;
+            }
+
+            .cms-opportunity-team-name {
+                font-size: 13px;
+                font-weight: 700;
+                color: #ffffff;
+                white-space: nowrap;
+            }
+
+            .cms-opportunity-bar-wrap {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .cms-opportunity-bar {
+                width: 100%;
+                height: 8px;
+                border-radius: 6px;
+                display: flex;
+                overflow: hidden;
+            }
+
+            .cms-opportunity-bar-left {
+                background: linear-gradient(90deg, #1e88e5, #42a5f5);
+                border-radius: 6px 0 0 6px;
+            }
+
+            .cms-opportunity-bar-right {
+                background: linear-gradient(90deg, #ffbe00, #ffd040);
+                border-radius: 0 6px 6px 0;
             }
         }
 
         @media (min-width: 2000px) {
+
             /* Na desktopu se přehledové Domů nikdy nezobrazí */
-            #view-home { display: none !important; }
+            #view-home {
+                display: none !important;
+            }
         }
 
         @media (max-width: 400px) {
-            .top-deck { padding: 0 16px; }
-            .auth-zone { gap: 16px; }
-            .mobile-menu-trigger { margin-right: 8px; }
+            .top-deck {
+                padding: 0 16px;
+            }
+
+            .auth-zone {
+                gap: 16px;
+            }
+
+            .mobile-menu-trigger {
+                margin-right: 8px;
+            }
         }
     </style>
 </head>
@@ -721,40 +1115,59 @@
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" xmlns:xlink="http://www.w3.org/1999/xlink">
         <symbol id="icon-alert" viewBox="0 0 32 32">
-            <path d="M24.64 26.58H7.36c-1.46 0-2.65-1.19-2.65-2.65 0-.44.11-.87.32-1.26L13.67 6.8a2.65 2.65 0 014.66 0l8.64 15.87a2.648 2.648 0 01-2.33 3.91zm1.17-3.27L17.17 7.43c-.24-.43-.68-.69-1.17-.69s-.93.26-1.16.69L6.19 23.31a1.319 1.319 0 001.16 1.95h17.29c.73 0 1.32-.59 1.32-1.32.01-.22-.05-.44-.15-.63zm-9.81.63c-1.09 0-1.98-.89-1.98-1.98 0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98 0 1.09-.89 1.98-1.98 1.98zm0-2.65a.66.66 0 10-.001 1.321A.66.66 0 0016 21.29zm0-1.98c-.9 0-1.66-.71-1.71-1.61l-.27-4.97v-.04c0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98l-.27 5c-.05.91-.81 1.62-1.71 1.62zm0-7.28c-.36 0-.65.29-.66.65l.27 4.94c.01.21.19.37.39.37s.38-.16.39-.37l.27-4.94a.664.664 0 00-.66-.65z" />
+            <path
+                d="M24.64 26.58H7.36c-1.46 0-2.65-1.19-2.65-2.65 0-.44.11-.87.32-1.26L13.67 6.8a2.65 2.65 0 014.66 0l8.64 15.87a2.648 2.648 0 01-2.33 3.91zm1.17-3.27L17.17 7.43c-.24-.43-.68-.69-1.17-.69s-.93.26-1.16.69L6.19 23.31a1.319 1.319 0 001.16 1.95h17.29c.73 0 1.32-.59 1.32-1.32.01-.22-.05-.44-.15-.63zm-9.81.63c-1.09 0-1.98-.89-1.98-1.98 0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98 0 1.09-.89 1.98-1.98 1.98zm0-2.65a.66.66 0 10-.001 1.321A.66.66 0 0016 21.29zm0-1.98c-.9 0-1.66-.71-1.71-1.61l-.27-4.97v-.04c0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98l-.27 5c-.05.91-.81 1.62-1.71 1.62zm0-7.28c-.36 0-.65.29-.66.65l.27 4.94c.01.21.19.37.39.37s.38-.16.39-.37l.27-4.94a.664.664 0 00-.66-.65z" />
         </symbol>
         <symbol id="icon-home" viewBox="0 0 32 32">
-            <path d="M14.158,7.643l-9.31,7.043v7.6a.777.777,0,0,0,.808.742l5.659-.013a.777.777,0,0,0,.8-.742V17.835a.777.777,0,0,1,.808-.742h3.232a.777.777,0,0,1,.808.742v4.436a.712.712,0,0,0,.236.526.846.846,0,0,0,.572.218l5.657.014a.777.777,0,0,0,.808-.742V14.681L14.93,7.643A.659.659,0,0,0,14.158,7.643ZM28.864,12.43l-4.222-3.2V2.81a.583.583,0,0,0-.606-.557H21.209a.583.583,0,0,0-.606.557V6.178L16.082,2.761a2.592,2.592,0,0,0-3.08,0L.219,12.43a.526.526,0,0,0-.081.784l1.288,1.438a.623.623,0,0,0,.41.2.643.643,0,0,0,.444-.125L14.158,5.742a.659.659,0,0,1,.773,0l11.879,8.986a.644.644,0,0,0,.853-.074l1.288-1.438a.526.526,0,0,0,.135-.409.545.545,0,0,0-.221-.376Z" transform="translate(1.501 3.347)" />
+            <path
+                d="M14.158,7.643l-9.31,7.043v7.6a.777.777,0,0,0,.808.742l5.659-.013a.777.777,0,0,0,.8-.742V17.835a.777.777,0,0,1,.808-.742h3.232a.777.777,0,0,1,.808.742v4.436a.712.712,0,0,0,.236.526.846.846,0,0,0,.572.218l5.657.014a.777.777,0,0,0,.808-.742V14.681L14.93,7.643A.659.659,0,0,0,14.158,7.643ZM28.864,12.43l-4.222-3.2V2.81a.583.583,0,0,0-.606-.557H21.209a.583.583,0,0,0-.606.557V6.178L16.082,2.761a2.592,2.592,0,0,0-3.08,0L.219,12.43a.526.526,0,0,0-.081.784l1.288,1.438a.623.623,0,0,0,.41.2.643.643,0,0,0,.444-.125L14.158,5.742a.659.659,0,0,1,.773,0l11.879,8.986a.644.644,0,0,0,.853-.074l1.288-1.438a.526.526,0,0,0,.135-.409.545.545,0,0,0-.221-.376Z"
+                transform="translate(1.501 3.347)" />
         </symbol>
         <symbol id="icon-bonus" viewBox="0 0 24 24">
             <rect fill="none" />
             <g transform="translate(-1954.557 -3830.987)">
-                <path d="M1.255,18.568A1.254,1.254,0,0,0,2.51,19.823H8.787V13.547H1.255ZM11.3,19.823h6.276a1.254,1.254,0,0,0,1.255-1.255V13.547H11.3ZM18.828,7.271H17.177a3.42,3.42,0,0,0,.4-1.569A3.457,3.457,0,0,0,14.121,2.25c-1.632,0-2.687.836-4.04,2.679C8.728,3.086,7.673,2.25,6.041,2.25A3.457,3.457,0,0,0,2.589,5.7a3.372,3.372,0,0,0,.4,1.569H1.255A1.254,1.254,0,0,0,0,8.526v3.138a.629.629,0,0,0,.628.628H19.456a.629.629,0,0,0,.628-.628V8.526A1.254,1.254,0,0,0,18.828,7.271Zm-12.792,0a1.569,1.569,0,1,1,0-3.138c.781,0,1.357.129,3.377,3.138Zm8.084,0H10.744c2.016-3,2.577-3.138,3.377-3.138a1.569,1.569,0,0,1,0,3.138Z" transform="translate(1956.515 3831.951)" />
+                <path
+                    d="M1.255,18.568A1.254,1.254,0,0,0,2.51,19.823H8.787V13.547H1.255ZM11.3,19.823h6.276a1.254,1.254,0,0,0,1.255-1.255V13.547H11.3ZM18.828,7.271H17.177a3.42,3.42,0,0,0,.4-1.569A3.457,3.457,0,0,0,14.121,2.25c-1.632,0-2.687.836-4.04,2.679C8.728,3.086,7.673,2.25,6.041,2.25A3.457,3.457,0,0,0,2.589,5.7a3.372,3.372,0,0,0,.4,1.569H1.255A1.254,1.254,0,0,0,0,8.526v3.138a.629.629,0,0,0,.628.628H19.456a.629.629,0,0,0,.628-.628V8.526A1.254,1.254,0,0,0,18.828,7.271Zm-12.792,0a1.569,1.569,0,1,1,0-3.138c.781,0,1.357.129,3.377,3.138Zm8.084,0H10.744c2.016-3,2.577-3.138,3.377-3.138a1.569,1.569,0,0,1,0,3.138Z"
+                    transform="translate(1956.515 3831.951)" />
             </g>
         </symbol>
         <symbol id="icon-hamburger" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
             <g id="icon" transform="translate(-2.5 -11.093)">
-                <path id="Path_19904" data-name="Path 19904" d="M23.667,11.6H5.333a.793.793,0,0,1-.833-.739h0a.793.793,0,0,1,.833-.739H23.667a.793.793,0,0,1,.833.739h0A.793.793,0,0,1,23.667,11.6Z" transform="translate(0 6.568)" />
-                <path id="Path_19905" data-name="Path 19905" d="M23.667,18.17H5.333a.76.76,0,0,1-.833-.647h0a.76.76,0,0,1,.833-.647H23.667a.76.76,0,0,1,.833.647h0A.76.76,0,0,1,23.667,18.17Z" transform="translate(0 5.617)" />
-                <path id="Path_19906" data-name="Path 19906" d="M23.667,25.085H5.333a.789.789,0,0,1-.833-.73h0a.789.789,0,0,1,.833-.73H23.667a.789.789,0,0,1,.833.73h0A.789.789,0,0,1,23.667,25.085Z" transform="translate(0 4.483)" />
+                <path id="Path_19904" data-name="Path 19904"
+                    d="M23.667,11.6H5.333a.793.793,0,0,1-.833-.739h0a.793.793,0,0,1,.833-.739H23.667a.793.793,0,0,1,.833.739h0A.793.793,0,0,1,23.667,11.6Z"
+                    transform="translate(0 6.568)" />
+                <path id="Path_19905" data-name="Path 19905"
+                    d="M23.667,18.17H5.333a.76.76,0,0,1-.833-.647h0a.76.76,0,0,1,.833-.647H23.667a.76.76,0,0,1,.833.647h0A.76.76,0,0,1,23.667,18.17Z"
+                    transform="translate(0 5.617)" />
+                <path id="Path_19906" data-name="Path 19906"
+                    d="M23.667,25.085H5.333a.789.789,0,0,1-.833-.73h0a.789.789,0,0,1,.833-.73H23.667a.789.789,0,0,1,.833.73h0A.789.789,0,0,1,23.667,25.085Z"
+                    transform="translate(0 4.483)" />
             </g>
         </symbol>
         <symbol id="icon-login" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
-            <path d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm3.793-12a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z" transform="translate(2232.569 3769)" />
+            <path
+                d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm3.793-12a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z"
+                transform="translate(2232.569 3769)" />
         </symbol>
         <symbol id="icon-register" viewBox="0 0 24 24">
             <rect id="Base" width="24" height="24" fill="none" />
-            <path d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm-1.609-4.546v-3.217h-3.217v-1.609h3.217v-3.217h1.609v3.217h3.218v1.609h-3.218v3.217Zm5.4-7.454a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z" transform="translate(2233.965 3769)" />
+            <path
+                d="M-2228.156-3749v-2c0-2.65,5.073-4,7.587-4s7.586,1.35,7.586,4v2Zm-1.609-4.546v-3.217h-3.217v-1.609h3.217v-3.217h1.609v3.217h3.218v1.609h-3.218v3.217Zm5.4-7.454a3.912,3.912,0,0,1,3.794-4,3.912,3.912,0,0,1,3.793,4,3.912,3.912,0,0,1-3.793,4A3.913,3.913,0,0,1-2224.363-3761Z"
+                transform="translate(2233.965 3769)" />
         </symbol>
         <symbol id="icon-medal" viewBox="-4 -1 22 24">
-            <path d="M12.0182 14.5706L8.6362 14.1486L7.3732 11.2026C7.33281 11.1267 7.27252 11.0632 7.1988 11.0189C7.12508 10.9746 7.0407 10.9512 6.95469 10.9512C6.86869 10.9512 6.7843 10.9746 6.71058 11.0189C6.63686 11.0632 6.57657 11.1267 6.53619 11.2026L5.27319 14.1486L1.89119 14.5706C1.80653 14.5811 1.72655 14.6152 1.66034 14.669C1.59412 14.7228 1.54435 14.7941 1.51672 14.8748C1.48909 14.9555 1.4847 15.0423 1.50405 15.1254C1.52341 15.2085 1.56573 15.2844 1.62619 15.3446L4.17819 17.8966L3.37818 21.2966C3.35712 21.3834 3.36206 21.4744 3.39239 21.5584C3.42272 21.6424 3.4771 21.7156 3.4771 21.7156L4.05018 21.7966L6.95019 20.1076L9.90919 21.7986C9.97803 21.8379 10.0559 21.8586 10.1352 21.8586C10.2044 21.8585 10.2727 21.8427 10.3348 21.8123C10.397 21.7819 10.4515 21.7378 10.494 21.6833C10.5366 21.6287 10.5663 21.5652 10.5807 21.4975C10.5951 21.4298 10.5939 21.3598 10.5772 21.2926L9.72918 17.9006L12.2782 15.3516C12.3384 15.2912 12.3805 15.2152 12.3998 15.1322C12.419 15.0491 12.4147 14.9623 12.3872 14.8816C12.3602 14.8009 12.3115 14.7291 12.2464 14.6742C12.1813 14.6194 12.1023 14.5835 12.0182 14.5706Z" />
-            <path d="M6.04564 10.926C6.08822 10.9262 6.13063 10.9205 6.17164 10.909C6.23312 10.891 6.2901 10.8602 6.33887 10.8187C6.38763 10.7772 6.42708 10.7258 6.45463 10.668L3.35464 3.368C3.3073 3.25687 3.30604 3.13149 3.35114 3.01944C3.39624 2.90739 3.48401 2.81784 3.59514 2.7705C3.70626 2.72316 3.83164 2.7219 3.94369 2.767C4.05575 2.81211 4.14529 2.89987 4.19263 3.011L7.26263 10.234L7.45663 10.661C7.48396 10.7209 7.52397 10.7742 7.57389 10.8171C7.62381 10.8601 7.68246 10.8917 7.74578 10.9097C7.8091 10.9278 7.87559 10.9319 7.94066 10.9218C8.00572 10.9116 8.06781 10.8875 8.12263 10.851L10.4056 9.33L6.25164 0H3.30664C3.29764 0 3.29064 0.007 3.28164 0.008C3.21097 0.0131 3.14247 0.0346 3.08163 0.071C3.05968 0.0885 3.03896 0.1075 3.01964 0.128C2.98743 0.1513 2.95822 0.1785 2.93264 0.209C2.92564 0.221 2.92764 0.235 2.91964 0.248C2.91164 0.261 2.90164 0.264 2.89564 0.276L0.159637 6.65C0.117827 6.74786 0.111639 6.85728 0.14215 6.95922C0.172661 7.06117 0.237941 7.1492 0.326636 7.208L5.78963 10.85C5.86587 10.8994 5.95477 10.9258 6.04564 10.926Z" />
-            <path d="M13.7451 6.649L11.0141 0.276C10.9787 0.193985 10.92 0.124135 10.8454 0.0750826C10.7708 0.0260306 10.6834 0 10.5941 0H7.24805L11.1671 8.815L13.579 7.207C13.6673 7.14779 13.7321 7.05969 13.7624 6.95785C13.7927 6.85602 13.7866 6.7468 13.7451 6.649Z" />
+            <path
+                d="M12.0182 14.5706L8.6362 14.1486L7.3732 11.2026C7.33281 11.1267 7.27252 11.0632 7.1988 11.0189C7.12508 10.9746 7.0407 10.9512 6.95469 10.9512C6.86869 10.9512 6.7843 10.9746 6.71058 11.0189C6.63686 11.0632 6.57657 11.1267 6.53619 11.2026L5.27319 14.1486L1.89119 14.5706C1.80653 14.5811 1.72655 14.6152 1.66034 14.669C1.59412 14.7228 1.54435 14.7941 1.51672 14.8748C1.48909 14.9555 1.4847 15.0423 1.50405 15.1254C1.52341 15.2085 1.56573 15.2844 1.62619 15.3446L4.17819 17.8966L3.37818 21.2966C3.35712 21.3834 3.36206 21.4744 3.39239 21.5584C3.42272 21.6424 3.4771 21.7156 3.4771 21.7156L4.05018 21.7966L6.95019 20.1076L9.90919 21.7986C9.97803 21.8379 10.0559 21.8586 10.1352 21.8586C10.2044 21.8585 10.2727 21.8427 10.3348 21.8123C10.397 21.7819 10.4515 21.7378 10.494 21.6833C10.5366 21.6287 10.5663 21.5652 10.5807 21.4975C10.5951 21.4298 10.5939 21.3598 10.5772 21.2926L9.72918 17.9006L12.2782 15.3516C12.3384 15.2912 12.3805 15.2152 12.3998 15.1322C12.419 15.0491 12.4147 14.9623 12.3872 14.8816C12.3602 14.8009 12.3115 14.7291 12.2464 14.6742C12.1813 14.6194 12.1023 14.5835 12.0182 14.5706Z" />
+            <path
+                d="M6.04564 10.926C6.08822 10.9262 6.13063 10.9205 6.17164 10.909C6.23312 10.891 6.2901 10.8602 6.33887 10.8187C6.38763 10.7772 6.42708 10.7258 6.45463 10.668L3.35464 3.368C3.3073 3.25687 3.30604 3.13149 3.35114 3.01944C3.39624 2.90739 3.48401 2.81784 3.59514 2.7705C3.70626 2.72316 3.83164 2.7219 3.94369 2.767C4.05575 2.81211 4.14529 2.89987 4.19263 3.011L7.26263 10.234L7.45663 10.661C7.48396 10.7209 7.52397 10.7742 7.57389 10.8171C7.62381 10.8601 7.68246 10.8917 7.74578 10.9097C7.8091 10.9278 7.87559 10.9319 7.94066 10.9218C8.00572 10.9116 8.06781 10.8875 8.12263 10.851L10.4056 9.33L6.25164 0H3.30664C3.29764 0 3.29064 0.007 3.28164 0.008C3.21097 0.0131 3.14247 0.0346 3.08163 0.071C3.05968 0.0885 3.03896 0.1075 3.01964 0.128C2.98743 0.1513 2.95822 0.1785 2.93264 0.209C2.92564 0.221 2.92764 0.235 2.91964 0.248C2.91164 0.261 2.90164 0.264 2.89564 0.276L0.159637 6.65C0.117827 6.74786 0.111639 6.85728 0.14215 6.95922C0.172661 7.06117 0.237941 7.1492 0.326636 7.208L5.78963 10.85C5.86587 10.8994 5.95477 10.9258 6.04564 10.926Z" />
+            <path
+                d="M13.7451 6.649L11.0141 0.276C10.9787 0.193985 10.92 0.124135 10.8454 0.0750826C10.7708 0.0260306 10.6834 0 10.5941 0H7.24805L11.1671 8.815L13.579 7.207C13.6673 7.14779 13.7321 7.05969 13.7624 6.95785C13.7927 6.85602 13.7866 6.7468 13.7451 6.649Z" />
         </symbol>
         <symbol id="icon-smartico" viewBox="0 0 24 24">
-            <text x="12" y="12" font-weight="900" font-size="19" font-family="'Rubik', sans-serif" text-anchor="middle" dominant-baseline="central" fill="currentColor">S</text>
+            <text x="12" y="12" font-weight="900" font-size="19" font-family="'Rubik', sans-serif" text-anchor="middle"
+                dominant-baseline="central" fill="currentColor">S</text>
         </symbol>
     </svg>
 
@@ -806,7 +1219,7 @@
     </header>
 
     <main class="home-content" id="view-home">
-        
+
         <section class="cms-banner">
             <div class="cms-banner-badge">Tournament</div>
             <h2>Bettor's Marathon</h2>
@@ -831,66 +1244,86 @@
 
         <section class="cms-section">
             <div class="cms-section-header">
-                <h3>Match of the Day</h3>
-                <a href="#" onclick="navigateTo('sport', event, false)">All Bets &gt;</a>
+                <h3>Trending Opportunities</h3>
             </div>
-            <div class="cms-shlagr-card">
-                <div class="cms-shlagr-meta">
-                    <span>Ice Hockey – World Cup</span>
-                    <span>Today 20:20</span>
-                </div>
-                
-                <div class="cms-shlagr-vs-container">
-                    <div class="cms-shlagr-team-box">
-                        <img src="https://flagcdn.com/w80/cz.png" class="cms-shlagr-flag" alt="Czechia">
-                        <span class="cms-shlagr-team-name">Czechia</span>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/it.webp" alt="IT" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">Serie A</span>
+                        <span class="cms-opportunity-time">· Today 20:45</span>
                     </div>
-                    
-                    <div class="cms-shlagr-vs-divider">VS</div>
-                    
-                    <div class="cms-shlagr-team-box">
-                        <img src="https://flagcdn.com/w80/ca.png" class="cms-shlagr-flag" alt="Canada">
-                        <span class="cms-shlagr-team-name">Canada</span>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/asRome.png');"></div>
+                            <span class="cms-opportunity-team-name">Roma</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 68%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 32%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/inter.png');"></div>
+                            <span class="cms-opportunity-team-name">Inter</span>
+                        </div>
                     </div>
                 </div>
 
-                <a href="#" class="btn-detail" onclick="navigateTo('sport', event, true)">View Live Odds</a>
-            </div>
-        </section>
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/fr.webp" alt="FR" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">French Open</span>
+                        <span class="cms-opportunity-time">· Semis 14:00</span>
+                    </div>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/alcaraz.png');"></div>
+                            <span class="cms-opportunity-team-name">Alcaraz</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 54%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 46%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/zverev.png');"></div>
+                            <span class="cms-opportunity-team-name">Zverev</span>
+                        </div>
+                    </div>
+                </div>
 
-        <section class="cms-section">
-            <div class="cms-section-header">
-                <h3>Inspiration: Ticket of the Day</h3>
-            </div>
-            <div class="cms-ticket-card">
-                <div class="cms-ticket-row">
-                    <div>
-                        <div class="cms-ticket-match">Real Madrid – Barcelona</div>
-                        <div class="cms-ticket-tip">Pick: <strong>Home Win (1)</strong></div>
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/gb-eng.webp" alt="GB" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">Premier League</span>
+                        <span class="cms-opportunity-time">· Sunday 17:30</span>
                     </div>
-                    <div class="cms-ticket-odds">1.95</div>
-                </div>
-                <div class="cms-ticket-row">
-                    <div>
-                        <div class="cms-ticket-match">Boston – NY Rangers</div>
-                        <div class="cms-ticket-tip">Pick: <strong>Over 5.5 Goals</strong></div>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/manCity.png');"></div>
+                            <span class="cms-opportunity-team-name">Man City</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 72%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 28%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/arsenal.png');"></div>
+                            <span class="cms-opportunity-team-name">Arsenal</span>
+                        </div>
                     </div>
-                    <div class="cms-ticket-odds">1.70</div>
-                </div>
-                <div class="cms-ticket-row">
-                    <div>
-                        <div class="cms-ticket-match">Jiri Prochazka – Alex Pereira</div>
-                        <div class="cms-ticket-tip">Pick: <strong>Fight Winner (1)</strong></div>
-                    </div>
-                    <div class="cms-ticket-odds">2.10</div>
-                </div>
-                
-                <div class="cms-ticket-footer">
-                    <div class="cms-ticket-total">
-                        <span>Total Odds</span>
-                        <strong>~ 6.96</strong>
-                    </div>
-                    <a href="#" class="btn-bet-ticket" onclick="navigateTo('sport', event, false)">Place This Bet</a>
                 </div>
             </div>
         </section>
@@ -938,66 +1371,86 @@
 
         <section class="cms-section">
             <div class="cms-section-header">
-                <h3>Trending Community Bets</h3>
+                <h3>Trending Opportunities</h3>
             </div>
-            <div class="cms-trends-card" onclick="navigateTo('sport', event, false)">
-                <div class="cms-trend-item">
-                    <div class="cms-trend-meta">
-                        <span>Sparta Prague to Win</span>
-                        <span>84% of bettors</span>
-                    </div>
-                    <div class="cms-progress-bg">
-                        <div class="cms-progress-bar" style="width: 84%;"></div>
-                    </div>
-                </div>
-                <div class="cms-trend-item">
-                    <div class="cms-trend-meta">
-                        <span>Arsenal to Score Over 1.5 Goals</span>
-                        <span>71% of bettors</span>
-                    </div>
-                    <div class="cms-progress-bg">
-                        <div class="cms-progress-bar" style="width: 71%;"></div>
-                    </div>
-                </div>
-                <div class="cms-trend-item">
-                    <div class="cms-trend-meta">
-                        <span>Conor McGregor to Win by KO</span>
-                        <span>65% of bettors</span>
-                    </div>
-                    <div class="cms-progress-bg">
-                        <div class="cms-progress-bar" style="width: 65%;"></div>
-                    </div>
-                </div>
-                <div class="cms-trend-item">
-                    <div class="cms-trend-meta">
-                        <span>Lakers Match Total Points Over 215.5</span>
-                        <span>78% of bettors</span>
-                    </div>
-                    <div class="cms-progress-bg">
-                        <div class="cms-progress-bar" style="width: 78%;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
 
-        <section class="cms-section">
-            <div class="cms-section-header">
-                <h3>Long-term Outrights</h3>
-            </div>
-            <div class="cms-specials-list">
-                <div class="cms-special-item" onclick="navigateTo('sport', event, false)">
-                    <div>
-                        <div class="cms-special-title">Who will win the domestic football championship?</div>
-                        <div class="cms-special-sub">Full seasonal outright market data</div>
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/it.webp" alt="IT" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">Serie A</span>
+                        <span class="cms-opportunity-time">· Today 20:45</span>
                     </div>
-                    <span class="cms-special-arrow">&gt;</span>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/asRome.png');"></div>
+                            <span class="cms-opportunity-team-name">Roma</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 68%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 32%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/inter.png');"></div>
+                            <span class="cms-opportunity-team-name">Inter</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="cms-special-item" onclick="navigateTo('sport', event, false)">
-                    <div>
-                        <div class="cms-special-title">Next UFC Event: Jiri Prochazka</div>
-                        <div class="cms-special-sub">Special method-of-victory props</div>
+
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/fr.webp" alt="FR" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">French Open</span>
+                        <span class="cms-opportunity-time">· Semis 14:00</span>
                     </div>
-                    <span class="cms-special-arrow">&gt;</span>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/alcaraz.png');"></div>
+                            <span class="cms-opportunity-team-name">Alcaraz</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 54%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 46%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/zverev.png');"></div>
+                            <span class="cms-opportunity-team-name">Zverev</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cms-opportunity-card" onclick="navigateTo('sport', event, false)">
+                    <div class="cms-opportunity-meta">
+                        <img src="images/flags/gb-eng.webp" alt="GB" class="cms-opportunity-flag">
+                        <span class="cms-opportunity-league-name">Premier League</span>
+                        <span class="cms-opportunity-time">· Sunday 17:30</span>
+                    </div>
+                    <div class="cms-opportunity-teams-row">
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/manCity.png');"></div>
+                            <span class="cms-opportunity-team-name">Man City</span>
+                        </div>
+                        <div class="cms-opportunity-bar-wrap">
+                            <div class="cms-opportunity-bar">
+                                <div class="cms-opportunity-bar-left" style="flex: 0 0 72%;"></div>
+                                <div class="cms-opportunity-bar-right" style="flex: 0 0 28%;"></div>
+                            </div>
+                        </div>
+                        <div class="cms-opportunity-team">
+                            <div class="cms-opportunity-team-logo"
+                                style="background-image: url('images/participants/arsenal.png');"></div>
+                            <span class="cms-opportunity-team-name">Arsenal</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1014,7 +1467,8 @@
 
     <div id="view-smartico" class="placeholder-view" style="flex-direction: column; gap: 8px;">
         <h1>Smartico</h1>
-        <span style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
+        <span
+            style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
     </div>
 
     <div id="view-bonuses" class="placeholder-view">
@@ -1027,16 +1481,19 @@
 
     <nav class="mobile-bottom-nav">
         <ul class="mobile-bottom-nav-list">
-            </ul>
+        </ul>
     </nav>
 
     <div class="modal-overlay" id="authModal" onclick="closeModal(event)">
         <div class="modal-box" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal(event)">&times;</button>
             <h2 id="modalTitle">Log In</h2>
-            <div style="width: 40px; height: 3px; background: #ffbe00; margin: 0 auto 20px auto; border-radius: 2px;"></div>
-            <p id="modalBody" style="font-size: 14px; line-height: 1.5; color: #555; margin-bottom: 25px;">Simulated interface container window.</p>
-            <button onclick="closeModal(event)" style="background: #0d1345; color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">Close</button>
+            <div style="width: 40px; height: 3px; background: #ffbe00; margin: 0 auto 20px auto; border-radius: 2px;">
+            </div>
+            <p id="modalBody" style="font-size: 14px; line-height: 1.5; color: #555; margin-bottom: 25px;">Simulated
+                interface container window.</p>
+            <button onclick="closeModal(event)"
+                style="background: #0d1345; color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">Close</button>
         </div>
     </div>
 
@@ -1161,8 +1618,8 @@
         function openAuthModal(type, e) {
             if (e) e.preventDefault();
             document.getElementById('modalTitle').innerText = type === 'login' ? 'Log In' : 'Register';
-            document.getElementById('modalBody').innerText = type === 'login' 
-                ? 'Simulated modal window box layout for the Log In authentication process.' 
+            document.getElementById('modalBody').innerText = type === 'login'
+                ? 'Simulated modal window box layout for the Log In authentication process.'
                 : 'Simulated modal window box layout for the account Registration process.';
             document.getElementById('authModal').style.display = 'flex';
         }
@@ -1175,7 +1632,7 @@
         /* ─── UNIFIKOVANÝ NAVIGAČNÍ SYSTÉM PRO PROTOTYP ─────────── */
         function navigateTo(viewName, e, isLive = false) {
             if (e) e.preventDefault();
-            
+
             // 1. Kompletní skrytí všech pohledů
             document.getElementById('view-home').classList.remove('active-view');
             document.getElementById('view-casino').classList.remove('active-view');
@@ -1183,10 +1640,10 @@
             document.getElementById('view-smartico').classList.remove('active-view');
             document.getElementById('view-bonuses').classList.remove('active-view');
             document.getElementById('view-medal').classList.remove('active-view');
-            
+
             // Bezpečnostní pojistka: Na PC nikdy nezobrazovat "home" rozcestník
             if (viewName === 'home' && window.innerWidth >= 992) {
-                viewName = 'casino'; 
+                viewName = 'casino';
             }
 
             if (viewName === 'casino' || viewName === 'sport') {
@@ -1198,7 +1655,7 @@
 
             // 2. Aktivace správného pohledu
             document.getElementById('view-' + viewName).classList.add('active-view');
-            
+
             // 3. Řízení stavů v horním menu (Desktop)
             if (viewName === 'casino' || viewName === 'sport') {
                 document.getElementById('btnCasino').classList.toggle('active', viewName === 'casino');
@@ -1217,12 +1674,12 @@
                 document.getElementById('btnCasino').classList.remove('active');
                 document.getElementById('btnSport').classList.remove('active');
             }
-            
+
             // 4. Řízení aktivních stavů ve spodní mobilní liště
             document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item').forEach(li => {
                 li.classList.remove('active');
             });
-            
+
             const mobileLinks = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-link');
             mobileLinks.forEach(link => {
                 const attr = link.getAttribute('onclick') || '';
@@ -1265,11 +1722,11 @@
         /* ─── CHYTRÝ DETEKTOR ZMĚNY VELIKOSTI (RESIZE) ───────────── */
         window.addEventListener('resize', () => {
             const nowDesktop = window.innerWidth >= 992;
-            
+
             // Reagujeme POUZE ve chvíli, kdy prohlížeč reálně přeskočí breakpoint hranici
             if (nowDesktop !== isDesktop) {
                 isDesktop = nowDesktop;
-                
+
                 if (isDesktop) {
                     // Přechod na PC -> Otevřeme naposledy aktivní herní záložku
                     navigateTo(active === 'sport' ? 'sport' : 'casino', null, false);
