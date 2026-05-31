@@ -366,10 +366,11 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
             z-index: 999;
-            height: clamp(60px, 7.5vw, 76px);
-            transform: translate3d(0, 0, 0);
-            will-change: transform;
-            padding-bottom: env(safe-area-inset-bottom);
+            height: calc(clamp(60px, 7.5vw, 76px) + env(safe-area-inset-bottom, 0px));
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.25);
+            transform: none;
+            will-change: auto;
         }
 
         .mobile-bottom-nav-list {
