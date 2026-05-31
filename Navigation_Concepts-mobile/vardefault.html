@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -128,7 +128,6 @@
             pointer-events: none;
             vertical-align: middle;
             overflow: visible !important;
-            /* Prevence ořezu hran ikon */
         }
 
         /* FIX: Horní lišta upevněná pevně nahoře před vším ostatním */
@@ -326,10 +325,6 @@
             position: relative;
         }
 
-        .submenu-item.active a {
-            color: #ffffff;
-        }
-
         .submenu-item.active a::after {
             content: '';
             position: absolute;
@@ -425,7 +420,6 @@
             white-space: nowrap;
         }
 
-        /* Aktivní stavy ve spodní liště */
         .mobile-nav-item.active .mobile-nav-link {
             color: #ffbe00;
         }
@@ -441,7 +435,6 @@
             opacity: 1;
         }
 
-        /* Pomocné styly pro zelený puntík v sekci Sport - Live */
         .sport-live-container {
             position: relative;
             display: inline-flex;
@@ -492,23 +485,13 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes scaleUp {
-            from {
-                transform: scale(0.9);
-            }
-
-            to {
-                transform: scale(1);
-            }
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
         }
 
 
@@ -519,7 +502,6 @@
             flex-grow: 1;
         }
 
-        /* Styly pro celoplošné faceholdery */
         .placeholder-view {
             display: none;
             flex-grow: 1;
@@ -537,7 +519,6 @@
             letter-spacing: 2px;
         }
 
-        /* Třídy pro řízení viditelnosti přes JS bez konfliktu s media queries */
         .home-content.active-view {
             display: block;
         }
@@ -546,7 +527,7 @@
             display: flex;
         }
 
-        /* Widget 1: Hero Carousel (CSS-only, full-bleed, auto-rotate) */
+        /* Widget 1: Hero Carousel */
         .cms-hero-carousel {
             position: relative;
             height: 220px;
@@ -568,7 +549,6 @@
             animation: cms-hero-fade 20s infinite;
         }
 
-        /* Background image lives here — only this layer gets the zoom */
         .cms-hero-slide::before {
             content: '';
             position: absolute;
@@ -581,7 +561,6 @@
             transform-origin: center center;
         }
 
-        /* Dark gradient overlay — static, no zoom */
         .cms-hero-slide::after {
             content: '';
             position: absolute;
@@ -593,87 +572,30 @@
             z-index: 1;
         }
 
-        /* Text/CTA content — stays perfectly still, above the zoom layer */
         .cms-hero-slide>* {
             position: relative;
             z-index: 2;
         }
 
-        .cms-hero-slide:nth-child(1) {
-            animation-delay: 0s;
-        }
+        .cms-hero-slide:nth-child(1) { animation-delay: 0s; }
+        .cms-hero-slide:nth-child(2) { animation-delay: -15s; }
+        .cms-hero-slide:nth-child(3) { animation-delay: -10s; }
+        .cms-hero-slide:nth-child(4) { animation-delay: -5s; }
 
-        .cms-hero-slide:nth-child(2) {
-            animation-delay: -15s;
-        }
-
-        .cms-hero-slide:nth-child(3) {
-            animation-delay: -10s;
-        }
-
-        .cms-hero-slide:nth-child(4) {
-            animation-delay: -5s;
-        }
-
-        .cms-hero-slide:nth-child(1)::before {
-            animation-delay: 0s;
-        }
-
-        .cms-hero-slide:nth-child(2)::before {
-            animation-delay: -15s;
-        }
-
-        .cms-hero-slide:nth-child(3)::before {
-            animation-delay: -10s;
-        }
-
-        .cms-hero-slide:nth-child(4)::before {
-            animation-delay: -5s;
-        }
+        .cms-hero-slide:nth-child(1)::before { animation-delay: 0s; }
+        .cms-hero-slide:nth-child(2)::before { animation-delay: -15s; }
+        .cms-hero-slide:nth-child(3)::before { animation-delay: -10s; }
+        .cms-hero-slide:nth-child(4)::before { animation-delay: -5s; }
 
         @keyframes cms-hero-fade {
-            0% {
-                opacity: 1;
-                z-index: 2;
-            }
-
-            22% {
-                opacity: 1;
-                z-index: 2;
-            }
-
-            25% {
-                opacity: 0;
-                z-index: 1;
-            }
-
-            98% {
-                opacity: 0;
-                z-index: 1;
-            }
-
-            100% {
-                opacity: 1;
-                z-index: 2;
-            }
+            0%, 100% { opacity: 1; z-index: 2; }
+            22% { opacity: 1; z-index: 2; }
+            25%, 98% { opacity: 0; z-index: 1; }
         }
 
         @keyframes cms-hero-zoom {
-            0% {
-                transform: scale(1);
-            }
-
-            22% {
-                transform: scale(1.06);
-            }
-
-            25% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0%, 25%, 100% { transform: scale(1); }
+            22% { transform: scale(1.06); }
         }
 
         .cms-hero-badge {
@@ -741,55 +663,17 @@
             animation: cms-hero-dot-pulse 20s infinite;
         }
 
-        .cms-hero-dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .cms-hero-dot:nth-child(2) {
-            animation-delay: -15s;
-        }
-
-        .cms-hero-dot:nth-child(3) {
-            animation-delay: -10s;
-        }
-
-        .cms-hero-dot:nth-child(4) {
-            animation-delay: -5s;
-        }
+        .cms-hero-dot:nth-child(1) { animation-delay: 0s; }
+        .cms-hero-dot:nth-child(2) { animation-delay: -15s; }
+        .cms-hero-dot:nth-child(3) { animation-delay: -10s; }
+        .cms-hero-dot:nth-child(4) { animation-delay: -5s; }
 
         @keyframes cms-hero-dot-pulse {
-            0% {
-                background: #ffbe00;
-                width: 18px;
-                border-radius: 3px;
-            }
-
-            22% {
-                background: #ffbe00;
-                width: 18px;
-                border-radius: 3px;
-            }
-
-            25% {
-                background: rgba(255, 255, 255, 0.38);
-                width: 6px;
-                border-radius: 50%;
-            }
-
-            98% {
-                background: rgba(255, 255, 255, 0.38);
-                width: 6px;
-                border-radius: 50%;
-            }
-
-            100% {
-                background: #ffbe00;
-                width: 18px;
-                border-radius: 3px;
-            }
+            0%, 22%, 100% { background: #ffbe00; width: 18px; border-radius: 3px; }
+            25%, 98% { background: rgba(255, 255, 255, 0.38); width: 6px; border-radius: 50%; }
         }
 
-        /* Widget 2: Třísložkový rozdělovač (Casino, Sport, Live) */
+        /* Widget 2: Třísložkový rozdělovač */
         .cms-split-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -880,20 +764,10 @@
         }
 
         @keyframes cms-live-pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        /* Globální styly pro sekce widgetů */
         .cms-section {
             margin-bottom: 28px;
         }
@@ -922,173 +796,7 @@
             text-transform: uppercase;
         }
 
-        /* Widget 3: Šlágr dne s vlajkami */
-        .cms-shlagr-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            border: 1px solid #eaeaea;
-        }
-
-        .cms-shlagr-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #777;
-        }
-
-        .cms-shlagr-vs-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 0;
-        }
-
-        .cms-shlagr-team-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 42%;
-            text-align: center;
-            gap: 8px;
-        }
-
-        .cms-shlagr-flag {
-            width: 54px;
-            height: 36px;
-            border-radius: 6px;
-            object-fit: cover;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-            border: 1px solid #f0f0f0;
-        }
-
-        .cms-shlagr-team-name {
-            font-size: 14px;
-            font-weight: 800;
-            color: #0b0e26;
-        }
-
-        .cms-shlagr-vs-divider {
-            font-size: 11px;
-            font-weight: 900;
-            color: #cecdcb;
-            background: #f4f5f9;
-            padding: 4px 8px;
-            border-radius: 20px;
-        }
-
-        .cms-shlagr-card .btn-detail {
-            background: #1c2780;
-            color: #ffffff;
-            text-align: center;
-            padding: 11px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        /* Widget 4: Tiket dne s upraveným vzhledem */
-        .cms-ticket-card {
-            background: #ffffff;
-            border-radius: 14px;
-            border: 2px dashed #cecdcb;
-            padding: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .cms-ticket-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid #f4f5f9;
-        }
-
-        .cms-ticket-row:last-of-type {
-            border-bottom: none;
-        }
-
-        .cms-ticket-match {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0b0e26;
-        }
-
-        .cms-ticket-tip {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .cms-ticket-tip strong {
-            color: #ffffff;
-            background: #1c2780;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .cms-ticket-odds {
-            font-size: 13px;
-            font-weight: 800;
-            color: #0d1345;
-            background: #f4f5f9;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .cms-ticket-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-            padding-top: 10px;
-            border-top: 2px solid #f4f5f9;
-        }
-
-        .cms-ticket-total {
-            font-size: 12px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .cms-ticket-total strong {
-            font-size: 16px;
-            color: #0d1345;
-            font-weight: 900;
-            margin-left: 4px;
-        }
-
-        .cms-ticket-card .btn-bet-ticket {
-            background: #ffbe00;
-            color: #03091e;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            box-shadow: 0 4px 12px rgba(255, 190, 0, 0.3);
-        }
-
-        /* Widget 5: Kompaktní Casino Grid (4 sloupce, max 2 řady = 8 her) */
+        /* Widget 5: Kompaktní Casino Grid */
         .cms-slots-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -1123,87 +831,84 @@
             text-transform: uppercase;
         }
 
-        /* Widget 6: Komunitní Trendy s neutrální barvou progress baru */
-        .cms-trends-card {
+
+        /* ─── Widget 8: News & Articles ─────────────────────────── */
+        .cms-news-section {
+            margin-bottom: 28px;
+        }
+
+        .cms-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cms-news-item {
+            display: flex;
+            gap: 12px;
             background: #ffffff;
-            border-radius: 14px;
-            padding: 16px;
-            border: 1px solid #eaeaea;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .cms-trend-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .cms-trend-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 700;
-            color: #0b0e26;
-        }
-
-        .cms-trend-meta span:last-child {
-            color: #1c2780;
-        }
-
-        .cms-progress-bg {
-            background: #f4f5f9;
-            height: 8px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .cms-progress-bar {
-            background: linear-gradient(90deg, #1c2780 0%, #ffbe00 100%);
-            height: 100%;
-            border-radius: 10px;
-        }
-
-        /* Widget 7: Dlouhodobé sázky */
-        .cms-specials-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .cms-special-item {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border: 1px solid #eaeaea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 12px;
+            padding: 11px 12px;
+            border: 1px solid #eaeef5;
+            cursor: pointer;
             text-decoration: none;
             color: inherit;
+            align-items: center;
+            animation: cms-news-fadein 0.4s ease both;
         }
 
-        .cms-special-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0b0e26;
+        @keyframes cms-news-fadein {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        .cms-special-sub {
-            font-size: 11px;
-            color: #777;
-            margin-top: 2px;
+        .cms-news-item:nth-child(1) { animation-delay: 0.05s; }
+        .cms-news-item:nth-child(2) { animation-delay: 0.1s; }
+        .cms-news-item:nth-child(3) { animation-delay: 0.15s; }
+        .cms-news-item:nth-child(4) { animation-delay: 0.2s; }
+
+        .cms-news-item:active {
+            border-color: #c5cbde;
+            box-shadow: 0 4px 14px rgba(13,19,69,0.08);
         }
 
-        .cms-special-arrow {
-            color: #1c2780;
-            font-weight: 700;
-            font-size: 14px;
+        .cms-news-item-thumb {
+            width: 72px; height: 60px;
+            border-radius: 8px;
+            flex-shrink: 0; overflow: hidden;
         }
 
+        .cms-news-item-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover; border-radius: 8px;
+        }
+
+        .cms-news-item-body {
+            flex: 1; min-width: 0;
+            display: flex; flex-direction: column; gap: 4px;
+        }
+
+        .cms-news-item-cat {
+            font-size: 9px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.6px;
+        }
+
+        .cms-news-item-title {
+            font-size: 13px; font-weight: 700;
+            color: #0b0e26; line-height: 1.3;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .cms-news-item-time {
+            font-size: 10px; color: #aaa; font-weight: 500;
+        }
+
+        .cms-news-item-arrow {
+            color: #c5cbde; font-size: 18px; flex-shrink: 0;
+        }
 
         /* ─── RESPONSIVE BREAKPOINT (< 992px) ───────────────────── */
         @media (max-width: 991px) {
@@ -1278,7 +983,7 @@
                 padding-bottom: clamp(60px, 7.5vw, 76px);
             }
 
-            /* ─── Trending Opportunities ─── */
+            /* Trending Opportunities */
             .cms-opportunities-carousel {
                 display: flex;
                 gap: 10px;
@@ -1364,7 +1069,7 @@
                 flex-shrink: 0;
             }
 
-            .cms-opportunity-teams-row {
+            .cms-opportunities-teams-row {
                 display: flex;
                 align-items: flex-start;
                 justify-content: space-between;
@@ -1407,9 +1112,14 @@
             }
         }
 
-        @media (min-width: 2000px) {
+        /* News widget jen na mobilní homescreen */
+        @media (min-width: 992px) {
+            .cms-news-section {
+                display: none !important;
+            }
+        }
 
-            /* Na desktopu se přehledové Domů nikdy nezobrazí */
+        @media (min-width: 2000px) {
             #view-home {
                 display: none !important;
             }
@@ -1434,10 +1144,6 @@
 <body>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <symbol id="icon-alert" viewBox="0 0 32 32">
-            <path
-                d="M24.64 26.58H7.36c-1.46 0-2.65-1.19-2.65-2.65 0-.44.11-.87.32-1.26L13.67 6.8a2.65 2.65 0 014.66 0l8.64 15.87a2.648 2.648 0 01-2.33 3.91zm1.17-3.27L17.17 7.43c-.24-.43-.68-.69-1.17-.69s-.93.26-1.16.69L6.19 23.31a1.319 1.319 0 001.16 1.95h17.29c.73 0 1.32-.59 1.32-1.32.01-.22-.05-.44-.15-.63zm-9.81.63c-1.09 0-1.98-.89-1.98-1.98 0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98 0 1.09-.89 1.98-1.98 1.98zm0-2.65a.66.66 0 10-.001 1.321A.66.66 0 0016 21.29zm0-1.98c-.9 0-1.66-.71-1.71-1.61l-.27-4.97v-.04c0-1.09.89-1.98 1.98-1.98 1.09 0 1.98.89 1.98 1.98l-.27 5c-.05.91-.81 1.62-1.71 1.62zm0-7.28c-.36 0-.65.29-.66.65l.27 4.94c.01.21.19.37.39.37s.38-.16.39-.37l.27-4.94a.664.664 0 00-.66-.65z" />
-        </symbol>
         <symbol id="icon-home" viewBox="0 0 32 32">
             <path
                 d="M14.158,7.643l-9.31,7.043v7.6a.777.777,0,0,0,.808.742l5.659-.013a.777.777,0,0,0,.8-.742V17.835a.777.777,0,0,1,.808-.742h3.232a.777.777,0,0,1,.808.742v4.436a.712.712,0,0,0,.236.526.846.846,0,0,0,.572.218l5.657.014a.777.777,0,0,0,.808-.742V14.681L14.93,7.643A.659.659,0,0,0,14.158,7.643ZM28.864,12.43l-4.222-3.2V2.81a.583.583,0,0,0-.606-.557H21.209a.583.583,0,0,0-.606.557V6.178L16.082,2.761a2.592,2.592,0,0,0-3.08,0L.219,12.43a.526.526,0,0,0-.081.784l1.288,1.438a.623.623,0,0,0,.41.2.643.643,0,0,0,.444-.125L14.158,5.742a.659.659,0,0,1,.773,0l11.879,8.986a.644.644,0,0,0,.853-.074l1.288-1.438a.526.526,0,0,0,.135-.409.545.545,0,0,0-.221-.376Z"
@@ -1548,7 +1254,6 @@
 
         <section class="cms-hero-carousel">
 
-            <!-- Slide 1: Tournament -->
             <div class="cms-hero-slide" style="--slide-bg: url('images/webp/casinowallpaper.webp');">
                 <span class="cms-hero-badge" style="background: #7b2fff;">🎰 Casino</span>
                 <div class="cms-hero-title">1000+ Slots</div>
@@ -1556,7 +1261,6 @@
                 <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Play Now →</a>
             </div>
 
-            <!-- Slide 2: Welcome Bonus -->
             <div class="cms-hero-slide" style="--slide-bg: url('images/webp/giftwallpaper.webp');">
                 <span class="cms-hero-badge">🎁 Welcome Bonus</span>
                 <div class="cms-hero-title">Deposit €50<br>Get €100 Free</div>
@@ -1564,7 +1268,6 @@
                 <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Claim Bonus →</a>
             </div>
 
-            <!-- Slide 3: Casino -->
             <div class="cms-hero-slide" style="--slide-bg: url('images/webp/livesportwallpaper.webp');">
                 <span class="cms-hero-badge" style="background: #00b341;">⚡ Live</span>
                 <div class="cms-hero-title">Bet Live Now</div>
@@ -1572,7 +1275,6 @@
                 <a href="#" class="cms-hero-cta" onclick="navigateTo('sport', event, true)">Bet Live →</a>
             </div>
 
-            <!-- Slide 4: Live Betting -->
             <div class="cms-hero-slide" style="--slide-bg: url('images/webp/tournamentwallpaper.webp');">
                 <span class="cms-hero-badge">🏆 Tournament</span>
                 <div class="cms-hero-title">Bettor's Marathon</div>
@@ -1792,6 +1494,62 @@
             </div>
         </section>
 
+        <section class="cms-news-section">
+            <div class="cms-section-header">
+                <h3>Latest News</h3>
+                <a href="#" onclick="return false;">All articles &gt;</a>
+            </div>
+
+            <div class="cms-news-list">
+                <a href="#" class="cms-news-item" onclick="return false;">
+                    <div class="cms-news-item-thumb">
+                        <img src="images/news/PSG.webp" alt="Ligue 1 PSG" loading="lazy">
+                    </div>
+                    <div class="cms-news-item-body">
+                        <span class="cms-news-item-cat" style="color: #001c58;">⚽ Ligue 1</span>
+                        <div class="cms-news-item-title">PSG Dominates the Season — Check out Next Match Odds</div>
+                        <div class="cms-news-item-time">Today · 4 min read</div>
+                    </div>
+                    <span class="cms-news-item-arrow">›</span>
+                </a>
+
+                <a href="#" class="cms-news-item" onclick="return false;">
+                    <div class="cms-news-item-thumb">
+                        <img src="images/news/transfer.webp" alt="Gordon Barcelona" loading="lazy">
+                    </div>
+                    <div class="cms-news-item-body">
+                        <span class="cms-news-item-cat" style="color: #a50044;">⚽ Transfer</span>
+                        <div class="cms-news-item-title">Gordon Signs for Barcelona Until 2031 — Bet on His First Goal Now</div>
+                        <div class="cms-news-item-time">Yesterday · 3 min read</div>
+                    </div>
+                    <span class="cms-news-item-arrow">›</span>
+                </a>
+
+                <a href="#" class="cms-news-item" onclick="return false;">
+                    <div class="cms-news-item-thumb">
+                        <img src="images/news/fortuna.webp" alt="Fortuna Liga" loading="lazy">
+                    </div>
+                    <div class="cms-news-item-body">
+                        <span class="cms-news-item-cat" style="color: #1a9e3f;">⚽ Fortuna Liga</span>
+                        <div class="cms-news-item-title">Czech League Final Weekend: Who Takes the Championship?</div>
+                        <div class="cms-news-item-time">2 days ago · 5 min read</div>
+                    </div>
+                    <span class="cms-news-item-arrow">›</span>
+                </a>
+
+                <a href="#" class="cms-news-item" onclick="return false;">
+                    <div class="cms-news-item-thumb">
+                        <img src="images/news/canada.webp" alt="Ice Hockey Canada" loading="lazy">
+                    </div>
+                    <div class="cms-news-item-body">
+                        <span class="cms-news-item-cat" style="color: #0057b8;">🏒 Ice Hockey</span>
+                        <div class="cms-news-item-title">World Championship: Canada Dominant — Best Odds to Win Gold</div>
+                        <div class="cms-news-item-time">3 days ago · 3 min read</div>
+                    </div>
+                    <span class="cms-news-item-arrow">›</span>
+                </a>
+            </div>
+        </section>
 
     </main>
 
@@ -1805,8 +1563,7 @@
 
     <div id="view-smartico" class="placeholder-view" style="flex-direction: column; gap: 8px;">
         <h1>Smartico</h1>
-        <span
-            style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
+        <span style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
     </div>
 
     <div id="view-bonuses" class="placeholder-view">
@@ -1826,25 +1583,17 @@
         <div class="modal-box" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal(event)">&times;</button>
             <h2 id="modalTitle">Log In</h2>
-            <div style="width: 40px; height: 3px; background: #ffbe00; margin: 0 auto 20px auto; border-radius: 2px;">
-            </div>
-            <p id="modalBody" style="font-size: 14px; line-height: 1.5; color: #555; margin-bottom: 25px;">Simulated
-                interface container window.</p>
-            <button onclick="closeModal(event)"
-                style="background: #0d1345; color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">Close</button>
+            <div style="width: 40px; height: 3px; background: #ffbe00; margin: 0 auto 20px auto; border-radius: 2px;"></div>
+            <p id="modalBody" style="font-size: 14px; line-height: 1.5; color: #555; margin-bottom: 25px;">Simulated interface container window.</p>
+            <button onclick="closeModal(event)" style="background: #0d1345; color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">Close</button>
         </div>
     </div>
 
     <div class="modal-overlay" id="smarticoModal" onclick="closeSmarticoModal(event)">
-        <div class="modal-box"
-            style="max-width: 900px; width: 92%; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f4f5f9; color: #0d1345; border-radius: 20px;"
-            onclick="event.stopPropagation()">
+        <div class="modal-box" style="max-width: 900px; width: 92%; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f4f5f9; color: #0d1345; border-radius: 20px;" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeSmarticoModal(event)">&times;</button>
-            <h1
-                style="font-size: 42px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #0d1345; margin-bottom: 8px;">
-                Smartico</h1>
-            <span
-                style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
+            <h1 style="font-size: 42px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #0d1345; margin-bottom: 8px;">Smartico</h1>
+            <span style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
         </div>
     </div>
 
@@ -1867,13 +1616,11 @@
         let previousActiveProduct = 'casino';
         let isDesktop = window.innerWidth >= 992;
 
-        // OPRAVENO: renderMenu nyní akceptuje parametr activeLabel a přiřazuje třídu flexibilně
         function renderMenu(product, activeLabel = 'Home') {
             const nav = document.getElementById('submenu');
             if (!nav) return;
             nav.innerHTML = menus[product].map((item) => {
                 const badge = item.badge ? `<span class="badge">${item.badge}</span>` : '';
-
                 let viewTarget = item.label.toLowerCase();
                 let isLive = false;
 
@@ -1896,11 +1643,9 @@
             e.preventDefault();
             document.querySelectorAll('#submenu .submenu-item').forEach(li => li.classList.remove('active'));
             el.closest('.submenu-item').classList.add('active');
-
             navigateTo(viewName, null, isLive);
         }
 
-        /* Dynamické překreslování mobilní lišty na základě aktivního kontextu */
         function renderMobileNav() {
             const mobileNavList = document.querySelector('.mobile-bottom-nav-list');
             if (!mobileNavList) return;
@@ -1976,7 +1721,6 @@
             }
         }
 
-        /* AKCE PRO MODÁLNÍ OKNO AUTENTIZACE */
         function openAuthModal(type, e) {
             if (e) e.preventDefault();
             document.getElementById('modalTitle').innerText = type === 'login' ? 'Log In' : 'Register';
@@ -1994,12 +1738,10 @@
         function openSmarticoModal(e) {
             if (e) e.preventDefault();
             previousActiveProduct = active;
-
             document.getElementById('btnCasino').classList.remove('active');
             document.getElementById('btnSport').classList.remove('active');
             document.getElementById('btnSmartico').classList.add('active');
             moveIndicator('smartico');
-
             document.getElementById('smarticoModal').style.display = 'flex';
         }
 
@@ -2016,11 +1758,9 @@
             moveIndicator(previousActiveProduct);
         }
 
-        /* ─── UNIFIKOVANÝ NAVIGAČNÍ SYSTÉM PRO PROTOTYP ─────────── */
         function navigateTo(viewName, e, isLive = false) {
             if (e) e.preventDefault();
 
-            // 1. Kompletní skrytí všech pohledů
             document.getElementById('view-home').classList.remove('active-view');
             document.getElementById('view-casino').classList.remove('active-view');
             document.getElementById('view-sport').classList.remove('active-view');
@@ -2028,7 +1768,6 @@
             document.getElementById('view-bonuses').classList.remove('active-view');
             document.getElementById('view-medal').classList.remove('active-view');
 
-            // Bezpečnostní pojistka: Na PC nikdy nezobrazovat "home" rozcestník
             if (viewName === 'home' && window.innerWidth >= 992) {
                 viewName = 'casino';
             }
@@ -2037,23 +1776,19 @@
                 active = viewName;
             }
 
-            // Překreslení mobilní navigační lišty dle aktuální sekce
             renderMobileNav();
 
-            // 2. Aktivace správného pohledu 
             const targetView = document.getElementById('view-' + viewName);
             if (targetView) {
                 targetView.classList.add('active-view');
             }
 
-            // 3. Řízení stavů v horním menu (Desktop)
             if (viewName === 'casino' || viewName === 'sport') {
                 document.getElementById('btnCasino').classList.toggle('active', viewName === 'casino');
                 document.getElementById('btnSport').classList.toggle('active', viewName === 'sport');
                 document.getElementById('btnSmartico').classList.remove('active');
                 moveIndicator(viewName);
 
-                // OPRAVENO: Dynamická úprava textu v placeholderu podle stavu Live/Home
                 if (viewName === 'sport') {
                     const sportHeader = document.querySelector('#view-sport h1');
                     if (sportHeader) {
@@ -2065,7 +1800,6 @@
                 if (nav) {
                     nav.classList.add('fade-out');
                     setTimeout(() => {
-                        // OPRAVENO: Výpočet správné záložky pro předání do renderMenu
                         let activeLabel = isLive ? 'Live' : 'Home';
                         renderMenu(viewName, activeLabel);
                         nav.classList.remove('fade-out');
@@ -2077,7 +1811,6 @@
                 document.getElementById('btnSmartico').classList.remove('active');
             }
 
-            // 4. Řízení aktivních stavů ve spodní mobilní liště
             document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item').forEach(li => {
                 li.classList.remove('active');
             });
@@ -2107,7 +1840,6 @@
             else if (product === 'smartico') btn = document.getElementById('btnSmartico');
 
             const switcher = document.getElementById('switcher');
-
             if (!indicator || !btn || !switcher || window.innerWidth < 992) return;
 
             const switcherLeft = switcher.getBoundingClientRect().left;
@@ -2117,7 +1849,6 @@
             indicator.style.transform = `translateX(${btnLeft - switcherLeft}px)`;
         }
 
-        /* ─── INICIALIZACE PŘI NAČTENÍ STRÁNKY ───────────────────── */
         renderMenu('casino', 'Home');
         if (window.innerWidth < 992) {
             navigateTo('home', null, false);
@@ -2125,13 +1856,10 @@
             navigateTo('casino', null, false);
         }
 
-        /* ─── CHYTRÝ DETEKTOR ZMĚNY VELIKOSTI (RESIZE) ───────────── */
         window.addEventListener('resize', () => {
             const nowDesktop = window.innerWidth >= 992;
-
             if (nowDesktop !== isDesktop) {
                 isDesktop = nowDesktop;
-
                 if (isDesktop) {
                     navigateTo(active === 'sport' ? 'sport' : 'casino', null, false);
                 } else {
@@ -2148,7 +1876,5 @@
             }
         });
     </script>
-
 </body>
-
 </html>
