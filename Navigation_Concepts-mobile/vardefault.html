@@ -796,18 +796,30 @@
             text-transform: uppercase;
         }
 
-        /* Widget 5: Kompaktní Casino Grid */
+        /* Widget 5: Popular Games – 2 ŘÁDKY POD SEBOU */
         .cms-slots-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 80px);
+            grid-auto-flow: column;
             gap: 8px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+
+        .cms-slots-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .cms-slot-item {
+            width: 80px;
+            height: 80px;
+            scroll-snap-align: start;
             position: relative;
             border-radius: 8px;
             overflow: hidden;
-            aspect-ratio: 1;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             display: block;
         }
@@ -863,9 +875,9 @@
         }
 
         .cms-news-item:nth-child(1) { animation-delay: 0.05s; }
-        .cms-news-item:nth-child(2) { animation-delay: 0.1s; }
-        .cms-news-item:nth-child(3) { animation-delay: 0.15s; }
-        .cms-news-item:nth-child(4) { animation-delay: 0.2s; }
+        .cms-news-item:nth-child(2) { animation-delay: -10s; }
+        .cms-news-item:nth-child(3) { animation-delay: -15s; }
+        .cms-news-item:nth-child(4) { animation-delay: -2s; }
 
         .cms-news-item:active {
             border-color: #c5cbde;
@@ -1464,6 +1476,18 @@
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1006928MDE.webp" alt="">
+                    <span class="cms-provider-tag">Tech4Bet</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1006936YjV.webp" alt="">
+                    <span class="cms-provider-tag">Apollo</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1007055MDY.webp" alt="">
+                    <span class="cms-provider-tag">Synot</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
                     <img src="images/webp/1007108ODA.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
                 </div>
@@ -1472,8 +1496,28 @@
                     <span class="cms-provider-tag">Synot</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1007655ZjM.webp" alt="">
+                    <span class="cms-provider-tag">Kajot</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1091246NTZ.webp" alt="">
+                    <span class="cms-provider-tag">E-gaming</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1148937ODM.webp" alt="">
+                    <span class="cms-provider-tag">Synot</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1155195OTE.webp" alt="">
+                    <span class="cms-provider-tag">Apollo</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
                     <img src="images/webp/1155204OGI.webp" alt="">
                     <span class="cms-provider-tag">Synot</span>
+                </div>
+                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
+                    <img src="images/webp/1160956ZmV.webp" alt="">
+                    <span class="cms-provider-tag">Tech4Bet</span>
                 </div>
                 <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
                     <img src="images/webp/1184517ODB.webp" alt="">
@@ -1482,14 +1526,6 @@
                 <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
                     <img src="images/webp/1184519YTF.webp" alt="">
                     <span class="cms-provider-tag">Apollo</span>
-                </div>
-                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
-                    <img src="images/webp/1006819OTA.webp" alt="">
-                    <span class="cms-provider-tag">Kajot</span>
-                </div>
-                <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
-                    <img src="images/webp/1007108ODA.webp" alt="">
-                    <span class="cms-provider-tag">Tech4Bet</span>
                 </div>
             </div>
         </section>
