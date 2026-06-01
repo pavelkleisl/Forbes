@@ -934,6 +934,50 @@
             color: #0b0e26;
         }
 
+        /* Widget: Providers – 2 ŘÁDKY POD SEBOU */
+        .cms-providers-carousel {
+            display: grid;
+            grid-template-rows: repeat(2, 46px);
+            grid-auto-flow: column;
+            gap: 8px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+
+        .cms-providers-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cms-provider-capsule {
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 1px solid #e8eaf0;
+            border-radius: 8px;
+            padding: 0 16px;
+            min-width: 100px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            transition: transform 0.1s ease, border-color 0.15s ease;
+        }
+
+        .cms-provider-capsule:active {
+            transform: scale(0.97);
+            border-color: #ffbe00;
+        }
+
+        .cms-provider-capsule img {
+            height: 24px;
+            max-width: 80px;
+            object-fit: contain;
+            
+        }
+
         /* Widget 5: Popular Games – 2 ŘÁDKY POD SEBOU */
         .cms-slots-grid {
             display: grid;
@@ -1028,7 +1072,7 @@
         }
 
         .cms-news-item:nth-child(3) {
-            animation-delay: -15s;
+            animation-delay: -10s;
         }
 
         .cms-news-item:nth-child(4) {
@@ -1701,6 +1745,47 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <section class="cms-section">
+            <div class="cms-section-header">
+                <h3>Providers</h3>
+            </div>
+            <div class="cms-providers-carousel">
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/1367839MWI.png" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img style="max-width: 68px;" src="images/providers/abx_online.png" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img style="max-width: 60px;"src="images/providers/adell_online.png" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/apollo_online.svg" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/ctgaming_online.png" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/egaming_online.svg" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/endorphina_online.png" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/kajot_online.svg" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/pragmatic_online.svg" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/synot_online.svg" alt="Provider">
+                </div>
+                <div class="cms-provider-capsule" onclick="navigateTo('casino', event, false)">
+                    <img src="images/providers/tomhorn_online.png" alt="Provider">
+                </div>
             </div>
         </section>
 
