@@ -589,6 +589,44 @@
             z-index: 2;
         }
 
+        .cms-hero-carousel-wrap {
+            position: relative;
+        }
+
+        .cms-hero-ribbon {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 78px;
+            height: 78px;
+            z-index: 3;
+            pointer-events: none;
+            animation: cms-hero-fade 20s infinite;
+            animation-delay: 0s;
+        }
+
+        .cms-hero-ribbon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .cms-hero-ribbon span {
+            position: absolute;
+            top: 22px;
+            right: 8px;
+            width: 42px;
+            text-align: center;
+            color: #1a1200;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            transform: rotate(45deg);
+            transform-origin: center center;
+            text-transform: uppercase;
+        }
+
         .cms-hero-slide:nth-child(1) {
             animation-delay: 0s;
         }
@@ -1365,6 +1403,131 @@
                 margin-right: 8px;
             }
         }
+
+        /* ─── Widget: Hot & Cold Games ──────────────────────────── */
+        .hc-widget {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .hc-widget-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0b0e26;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hc-row-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 8px;
+            padding: 4px 11px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .hc-row-label-hot {
+            background: rgba(220, 55, 20, 0.08);
+            color: #c83010;
+            border: 1px solid rgba(220, 55, 20, 0.2);
+        }
+
+        .hc-row-label-cold {
+            background: rgba(30, 110, 200, 0.08);
+            color: #1a6ab8;
+            border: 1px solid rgba(30, 110, 200, 0.2);
+        }
+
+        .hc-row + .hc-row {
+            margin-top: 14px;
+        }
+
+        .hc-carousel {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 2px;
+        }
+
+        .hc-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hc-card {
+            flex: 0 0 80px;
+            width: 80px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hc-card-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e8eaf0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            position: relative;
+            transition: transform 0.15s ease;
+        }
+
+        .hc-card:active .hc-card-img {
+            transform: scale(0.94);
+        }
+
+        .hc-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hc-card-name {
+            font-size: 10px;
+            font-weight: 600;
+            color: #0b0e26;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .hc-card-rtp {
+            font-size: 9px;
+            font-weight: 700;
+            border-radius: 4px;
+            padding: 1px 5px;
+            width: fit-content;
+        }
+
+        .hc-card-rtp-hot {
+            color: #c03010;
+            background: rgba(220, 55, 20, 0.08);
+            border: 1px solid rgba(220, 55, 20, 0.2);
+        }
+
+        .hc-card-rtp-cold {
+            color: #1460a8;
+            background: rgba(30, 110, 200, 0.08);
+            border: 1px solid rgba(30, 110, 200, 0.2);
+        }
     </style>
 </head>
 
@@ -1479,44 +1642,60 @@
 
     <main class="home-content" id="view-home">
 
-        <section class="cms-hero-carousel">
+        <div class="cms-hero-carousel-wrap">
 
-            <div class="cms-hero-slide" style="--slide-bg: url('images/webp/casinowallpaper.webp');">
-                <span class="cms-hero-badge" style="background: #7b2fff;">🎰 Casino</span>
-                <div class="cms-hero-title">1000+ Slots</div>
-                <div class="cms-hero-desc">New games added every week. Spin &amp; win big.</div>
-                <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Play Now →</a>
+            <section class="cms-hero-carousel">
+
+                <div class="cms-hero-slide" style="--slide-bg: url('images/webp/casinowallpaper.webp');">
+                    <span class="cms-hero-badge" style="background: #7b2fff;">🎰 Casino</span>
+                    <div class="cms-hero-title">1000+ Slots</div>
+                    <div class="cms-hero-desc">New games added every week. Spin &amp; win big.</div>
+                    <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Play Now →</a>
+                </div>
+
+                <div class="cms-hero-slide" style="--slide-bg: url('images/webp/giftwallpaper.webp');">
+                    <span class="cms-hero-badge">🎁 Welcome Bonus</span>
+                    <div class="cms-hero-title">Deposit €50<br>Get €100 Free</div>
+                    <div class="cms-hero-desc">Your first deposit, doubled. Play sport or casino.</div>
+                    <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Claim Bonus →</a>
+                </div>
+
+                <div class="cms-hero-slide" style="--slide-bg: url('images/webp/livesportwallpaper.webp');">
+                    <span class="cms-hero-badge" style="background: #00b341;">⚡ Live</span>
+                    <div class="cms-hero-title">Bet Live Now</div>
+                    <div class="cms-hero-desc">Real-time odds. Instant markets. 500+ events.</div>
+                    <a href="#" class="cms-hero-cta" onclick="navigateTo('sport', event, true)">Bet Live →</a>
+                </div>
+
+                <div class="cms-hero-slide" style="--slide-bg: url('images/webp/tournamentwallpaper.webp');">
+                    <span class="cms-hero-badge">🏆 Tournament</span>
+                    <div class="cms-hero-title">Bettor's Marathon</div>
+                    <div class="cms-hero-desc">Race for a share of the $250,000 prize pool</div>
+                    <a href="#" class="cms-hero-cta" onclick="navigateTo('sport', event, false)">Join Marathon →</a>
+                </div>
+
+                <div class="cms-hero-dots">
+                    <div class="cms-hero-dot"></div>
+                    <div class="cms-hero-dot"></div>
+                    <div class="cms-hero-dot"></div>
+                    <div class="cms-hero-dot"></div>
+                </div>
+
+            </section>
+
+            <!-- ribbon pro slide 2 -->
+            <div class="cms-hero-ribbon" style="animation-delay: -15s;">
+                <img src="images/icons/ribbon-yellow.png" alt="">
+                <span>NEW</span>
             </div>
 
-            <div class="cms-hero-slide" style="--slide-bg: url('images/webp/giftwallpaper.webp');">
-                <span class="cms-hero-badge">🎁 Welcome Bonus</span>
-                <div class="cms-hero-title">Deposit €50<br>Get €100 Free</div>
-                <div class="cms-hero-desc">Your first deposit, doubled. Play sport or casino.</div>
-                <a href="#" class="cms-hero-cta" onclick="navigateTo('casino', event, false)">Claim Bonus →</a>
+            <!-- ribbon pro slide 4 -->
+            <div class="cms-hero-ribbon" style="animation-delay: -5s;">
+                <img src="images/icons/ribbon-yellow.png" alt="">
+                <span>NEW</span>
             </div>
 
-            <div class="cms-hero-slide" style="--slide-bg: url('images/webp/livesportwallpaper.webp');">
-                <span class="cms-hero-badge" style="background: #00b341;">⚡ Live</span>
-                <div class="cms-hero-title">Bet Live Now</div>
-                <div class="cms-hero-desc">Real-time odds. Instant markets. 500+ events.</div>
-                <a href="#" class="cms-hero-cta" onclick="navigateTo('sport', event, true)">Bet Live →</a>
-            </div>
-
-            <div class="cms-hero-slide" style="--slide-bg: url('images/webp/tournamentwallpaper.webp');">
-                <span class="cms-hero-badge">🏆 Tournament</span>
-                <div class="cms-hero-title">Bettor's Marathon</div>
-                <div class="cms-hero-desc">Race for a share of the $250,000 prize pool</div>
-                <a href="#" class="cms-hero-cta" onclick="navigateTo('sport', event, false)">Join Marathon →</a>
-            </div>
-
-            <div class="cms-hero-dots">
-                <div class="cms-hero-dot"></div>
-                <div class="cms-hero-dot"></div>
-                <div class="cms-hero-dot"></div>
-                <div class="cms-hero-dot"></div>
-            </div>
-
-        </section>
+        </div><!-- /.cms-hero-carousel-wrap -->
 
         <section class="cms-split-grid">
             <div class="cms-split-card" style="background-image: url('images/webp/casinowallpaper.webp');"
@@ -1890,6 +2069,105 @@
                 <div class="cms-slot-item" onclick="navigateTo('casino', event, false)">
                     <img src="images/webp/1184519YTF.webp" alt="">
                     <span class="cms-provider-tag">Apollo</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cms-section">
+            <div class="cms-section-header">
+                <h3>🔥 Hot &amp; Cold Games</h3>
+                <a href="#" onclick="navigateTo('casino', event, false)">To Casino &gt;</a>
+            </div>
+            <div class="hc-widget">
+                <div class="hc-row">
+                    <div class="hc-row-label hc-row-label-hot">🔥 Hot Games</div>
+                    <div class="hc-carousel">
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007702NDQ.webp" alt="Master Joker"></div>
+                            <span class="hc-card-name">Master Joker</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 217.6%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino',1007702NDQ event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1006911Njc.webp" alt="Hell Bars"></div>
+                            <span class="hc-card-name">Hell Bars</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 168.9%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007126YjN.webp" alt="Shuriken Legend"></div>
+                            <span class="hc-card-name">Shuriken Legend</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 153.3%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1091290MDA.webp" alt="Scalper"></div>
+                            <span class="hc-card-name">Scalper</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 147.3%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1006807YmM.webp" alt="Mountain Legends"></div>
+                            <span class="hc-card-name">Mountain Legends</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 146.2%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007004N2V.webp" alt="Golden Myth"></div>
+                            <span class="hc-card-name">Golden Myth</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 138.7%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007154Yjk.webp" alt="Joker Strong"></div>
+                            <span class="hc-card-name">Joker Strong</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 131.4%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007095ZGY.webp" alt="Tiki Princess"></div>
+                            <span class="hc-card-name">Tiki Princess</span>
+                            <span class="hc-card-rtp hc-card-rtp-hot">🔥 124.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hc-row">
+                    <div class="hc-row-label hc-row-label-cold">🧊 Cold Games</div>
+                    <div class="hc-carousel">
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1160956ZmV.webp" alt="Joker 40"></div>
+                            <span class="hc-card-name">Joker 40</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 74.4%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007660ZDE.webp" alt="Cowboys Gold"></div>
+                            <span class="hc-card-name">Cowboys Gold</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 68.2%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1006833OGQ.webp" alt="Double Star 27"></div>
+                            <span class="hc-card-name">Double Star 27</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 63.3%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1155206NDF.webp" alt="Mystery Apollo 243"></div>
+                            <span class="hc-card-name">Mystery Apollo</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 60.7%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1160946YWR.webp" alt="Fruit Jack"></div>
+                            <span class="hc-card-name">Fruit Jack</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 62.1%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007162YTg.webp" alt="Ring of Fire XL"></div>
+                            <span class="hc-card-name">Ring of Fire XL</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 30.0%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1007729MGU.webp" alt="Ultra Hold & Spin"></div>
+                            <span class="hc-card-name">Ultra Hold & Spin</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 55.4%</span>
+                        </div>
+                        <div class="hc-card" onclick="navigateTo('casino', event, false)">
+                            <div class="hc-card-img"><img src="images/webp/1155204OGI.webp" alt="Double Star 27"></div>
+                            <span class="hc-card-name">Double Star 27</span>
+                            <span class="hc-card-rtp hc-card-rtp-cold">🧊 59.8%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
