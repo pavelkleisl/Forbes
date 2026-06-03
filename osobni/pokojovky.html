@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroid & Hydro Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0d110e;
+            --card-bg: #141b17;
+            --accent-color: #2ecc71;
+            --accent-dim: #196f3d;
+            --text-color: #eaeded;
+            --text-muted: #8a9990;
+            --placeholder-bg: #1b241f;
+            --border-radius: 12px;
+
+            /* Barvy pěstebních stylů */
+            --style-splhavci: #3498db;
+            --style-krasky: #9b59b6;
+            --style-citlivky: #e67e22;
+            --style-plevel: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Dynamický Rozcestník */
+        .navigation-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            background: #090d0b;
+            padding: 0.6rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #19221d;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.7rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-color);
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        .tab-btn.active {
+            color: #fff;
+        }
+        .tab-btn[data-filter="all"].active { background-color: var(--accent-dim); }
+        .tab-btn[data-filter="splhavci"].active { background-color: var(--style-splhavci); }
+        .tab-btn[data-filter="krasky"].active { background-color: var(--style-krasky); }
+        .tab-btn[data-filter="citlivky"].active { background-color: var(--style-citlivky); }
+        .tab-btn[data-filter="plevel"].active { background-color: var(--style-plevel); }
+
+        /* Dashboard Grid */
+        .plants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .plant-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid #19221d;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-4px);
+        }
+        .plant-card[data-style="splhavci"]:hover { border-color: var(--style-splhavci); }
+        .plant-card[data-style="krasky"]:hover { border-color: var(--style-krasky); }
+        .plant-card[data-style="citlivky"]:hover { border-color: var(--style-citlivky); }
+        .plant-card[data-style="plevel"]:hover { border-color: var(--style-plevel); }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            height: 200px;
+            background-color: var(--bg-color);
+            flex-shrink: 0;
+        }
+
+        .plant-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.3s ease;
+        }
+
+        .plant-photo:hover {
+            opacity: 0.85;
+            transform: scale(1.03);
+        }
+
+        /* Card Elements */
+        .plant-info {
+            padding: 1.4rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #19221d;
+            padding-bottom: 0.8rem;
+        }
+
+        .plant-title h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .plant-title p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-style: italic;
+            margin-top: 0.1rem;
+        }
+
+        .meta-stats {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .meta-stats .price {
+            color: #e67e22;
+            font-weight: 700;
+        }
+
+        /* Popisy / Specifikace */
+        .spec-box {
+            background-color: rgba(0,0,0,0.15);
+            padding: 0.7rem 0.9rem;
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            border-left: 3px solid #222d26;
+        }
+
+        .spec-box strong {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+        }
+
+        .style-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .st-splhavci { background-color: rgba(52, 152, 219, 0.12); color: var(--style-splhavci); }
+        .st-krasky { background-color: rgba(155, 89, 182, 0.12); color: var(--style-krasky); }
+        .st-citlivky { background-color: rgba(230, 126, 34, 0.12); color: var(--style-citlivky); }
+        .st-plevel { background-color: rgba(231, 76, 60, 0.12); color: var(--style-plevel); }
+
+        .hidden {
+            display: none !important;
+            opacity: 0;
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            backdrop-filter: blur(6px);
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 92vw;
+            max-height: 92vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+            animation: lightbox-in 0.2s ease;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.22);
+        }
+
+        @keyframes lightbox-in {
+            from { opacity: 0; transform: scale(0.93); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .plants-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🌱 Plant Management Dashboard</h1>
+        <p>Kompletní technologická karta a detailní botanické nároky tvých řízků</p>
+    </header>
+
+    <nav class="navigation-tabs">
+        <button class="tab-btn active" data-filter="all">Všechny rostliny (13)</button>
+        <button class="tab-btn" data-filter="splhavci">Šplhavci na DIY tyč</button>
+        <button class="tab-btn" data-filter="krasky">Krásky na polštář / převis</button>
+        <button class="tab-btn" data-filter="citlivky">Sukulentní citlivky bez knotu</button>
+        <button class="tab-btn" data-filter="plevel">Rychlorostoucí plevel</button>
+    </nav>
+
+    <main class="plants-grid" id="plants-container">
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Epipremnum%20Njoy.jpg" alt="Epipremnum Njoy" class="plant-photo" loading="lazy">
+                <img src="Epipremnum%20Njoy.webp" alt="Epipremnum Njoy" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Epipremnum Njoy</h2>
+                        <p>Potos</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">60 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Mutace potosu s bílo-zeleným panašováním vyvinutá v laboratořích. Roste pomaleji než čistě zelené formy, protože má méně chlorofylu. Liánovitý habitus. Botanický původ: tropická Asie.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Knotový systém do spodních kořenů zvládá skvěle. V sezóně (březen–říjen) dávkovat Canna Aqua Vega A+B každých 14 dní v plné dávce.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–25 °C. Vlhkost vzduchu optimálně 50–70 %, v suchém prostředí bílé části listů hnědnou a schnou.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě omezit frekvenci doplňování vody (pije méně), hnojit max. 1x za měsíc slabou poloviční dávkou. Chránit před studeným průvanem při větrání.</div>
+                <div class="card-footer"><span class="badge">Panašovaná</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Epipremnum%20aureum%20neon.jpeg" alt="Epipremnum aureum Neon" class="plant-photo" loading="lazy">
+                <img src="Epipremnum%20aureum%20neon.webp" alt="Epipremnum aureum Neon" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Epipremnum aureum "Neon"</h2>
+                        <p>Potos Neon</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">80 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Agresivně a bleskově rostoucí liána s křiklavě neonovými listy. Původní botanický druh pochází z Francouzské Polynésie, kde šplhá po stromech do obřích rozměrů.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Knot miluje. Hnojení v sezóně stabilně každých 14 dní. Potřebuje silné rozptýlené světlo – při nedostatku světla nové listy tmavnou a ztrácejí neonový efekt.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Široké rozmezí 18–27 °C, v zimě nesmí teplota padnout pod 15 °C. Vlhkost zvládá i běžnou panelákovou (kolem 45 %), na tyči ale ocení vyšší.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Roste mírně i v zimě. Hnojit 1x za měsíc poloviční dávkou. Hlídat dostatek světla, umístit co nejblíže k oknu.</div>
+                <div class="card-footer"><span class="badge">Rychlý růst</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Philodendron%20micans.jpeg" alt="Philodendron micans" class="plant-photo" loading="lazy">
+                <img src="Philodendron%20micans.webp" alt="Philodendron micans" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Philodendron micans</h2>
+                        <p>Filodendron sametový</p>
+                    </div>
+                    <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Exotický popínavý filodendron s drobnějšími listy, které mají sametovou texturu. Svrchní strana je temně zelená, spodní strana je kontrastně bronzovo-červená. Původ: Karibik a Střední Amerika.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Je o něco citlivější na přehnojení a zasolení než potosy. V sezóně hnojit 1x za 2 až 3 týdny. Vyžaduje neustále vlhkou pletivovou tyč, do které masivně koření.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplomilný: 18–24 °C, v zimě striktně nad 16 °C. Vyžaduje vyšší vzdušnou vlhkost (nad 60 %). Při suchém vzduchu listy ztrácejí lesk.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě prochází obdobím klidu. Zálivku omezit, hnojit maximálně jednou za 6 týdnů minimální dávkou. Rosit okolní vzduch, neumísťovat blízko radiátorů.</div>
+                <div class="card-footer"><span class="badge">Velvet</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Philodendron%20red%20emerald.webp" alt="Philodendron red emerald" class="plant-photo" loading="lazy">
+                <img src="Philodendron%20red%20emerald2.webp" alt="Philodendron red emerald" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Philodendron red emerald</h2>
+                        <p>Filodendron</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">70 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Robustní vzpřímená popínavá liána s velkými šípovitými listy. Stonky a nové řapíky mají sytě vínově červenou barvu. Pochází z tropických deštných pralesů Kolumbie.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>V dospělosti je to velký jedlík, potřebuje dostatek dusíku pro tvorbu velkých listů. V sezóně hnojit poctivě každých 14 dní plnou dávkou Canna Aqua Vega.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideální teplota 18–25 °C, v zimě minimum 15 °C. Vlhkost vzduchu střední až vyšší (50 %+).</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě u suchého vzduchu extrémně trpí na svilušky. Listy preventivně otírat od prachu, hnojení omezit na 1x za měsíc. Při nedostatku světla v zimě se stonky vytahují a dělají velké mezery mezi listy.</div>
+                <div class="card-footer"><span class="badge">Červené stonky</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Philodendron%20Painted%20Lady.webp" alt="Philodendron Painted Lady" class="plant-photo" loading="lazy">
+                <img src="Philodendron%20Painted%20Lady2.webp" alt="Philodendron Painted Lady" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Philodendron Painted Lady</h2>
+                        <p>Filodendron</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Sběratelský kultivar filodendronu. Listy se líhnou jasně žluto-zelené s jemným zeleným stříkáním, řapíky jsou jasně růžovo-červené. Středně rychlé tempo růstu.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Pro udržení exkluzivního panašování vyžaduje precizní a pravidelný přísun mikroprvků z hydro roztoku. V sezóně striktně každých 14 dní.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje stabilní teplo 20–26 °C, zimní poklesy pod 16 °C nesnáší dobře. Vyšší vlhkost (55–75 %) zaručí bezproblémové rozbalování nových listů.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Nejcitlivější filodendron ze seznamu. V zimě vyžaduje maximum světla, jinak nové listy rostou čistě zelené bez kresby. Doporučuje se přisvěcování LED grow-lightem. Hnojení v zimě téměř stopnout.</div>
+                <div class="card-footer"><span class="badge">Sběratelský</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+            </div>
+        </div>
+
+
+        <div class="plant-card" data-style="krasky">
+            <div class="photo-grid">
+                <img src="Maranta%20fascinator.jpg" alt="Maranta fascinator" class="plant-photo" loading="lazy">
+                <img src="Maranta%20fascinator.webp" alt="Maranta fascinator" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Maranta fascinator</h2>
+                        <p>Maranta tricolor</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Přezdívaná "modlící se rostlina" – na noc listy vertikálně napřimuje (zavírá) a ráno zase rozevírá. Fascinující kresba s červeným žilkováním. Původ: spodní patra deštných pralesů Brazílie.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Kořeny jsou velmi jemné a citlivé na usazování solí z hnojiv. Používat výhradně poloviční koncentraci Canna hnojiva každé 3 týdny v sezóně. Kamínky na knotu musí být stále mírně vlhké, nesmí nikdy proschnout na prach.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší teplotní výkyvy, studenou vodu a průvan. Vyžaduje extrémní vlhkost (60–80 %). V běžném suchém bytě jí schnou a kroutí se okraje listů.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě upadá do hlubokého spánku. V zimě vůbec nehnojit. Omezit množství vody v zásobníku na minimum, ale udržovat substrát lehce chladno-vlhký. Držet dál od sálajícího tepla z topení.</div>
+                <div class="card-footer"><span class="badge">Prayer Plant</span><span class="style-tag st-krasky">Krásky na polštář / převis</span></div>
+            </div>
+        </div>
+
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Peperomia%20prostrata.jpg" alt="Peperomia prostrata" class="plant-photo" loading="lazy">
+                <img src="Peperomia%20prostrata.webp" alt="Peperomia prostrata" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Peperomia prostrata</h2>
+                        <p>„Želvičky"</p>
+                    </div>
+                    <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Drobná plazivá/převislá rostlina s lístky připomínajícími želví krunýře. V přírodě roste jako epifyt v korunách stromů deštných pralesů Amazonie, kde zachytává vlhkost, ale rychle vysychá.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Bez knotu! Spodní prolévání roztokem na cca 10 minut. Hnojit velmi slabě (poloviční až třetinová dávka) maximálně 1x za měsíc v sezóně. Čekat, až listy začnou gumovatět.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, zima min 15 °C. Vlhkost zvládá standardní bytovou, listy mají tlustou voskovou vrstvu chránící před výparem.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zalévat extrémně málo (klidně 1x za 3 týdny) až po totálním vyschnutí kamínků a změknutí listů. Při sebemenším přelíčení v zimě bleskově hnijí kořeny u báze a celá kytka se rozpadne. V zimě nehnojit.</div>
+                <div class="card-footer"><span class="badge">Epifyt</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Peperomia%20Raindrop.jpg" alt="Peperomia Raindrop" class="plant-photo" loading="lazy">
+                <img src="Peperomia%20Raindrop2.webp" alt="Peperomia Raindrop" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Peperomia Raindrop</h2>
+                        <p>Peperomie polybotrya</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">75 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Kompaktní vzpřímená kytka s tlustými, lesklými listy ve tvaru kapek padajícího deště. Často si ji lidé pletou s Pilea peperomioides. Původ: tropická Jižní Amerika.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Metoda spodního namáčení po úplném proschnutí kamínků. V sezóně hnojit 1x za 3 týdny poloviční dávkou hnojiva.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Optimálně 18–25 °C. Pozor na studené okenní parapety v zimě – nesnáší chlad od kořenů zespodu. Vlhkost vzduchu jí vyhovuje nižší (40–50 %).</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě vynechat hnojení úplně. Zalévat až tehdy, když stonky s listy viditelně poklesnou dolů a listy změknou. Při přelití v kombinaci se zimním chladem shazuje celé listy, které předtím zčernají.</div>
+                <div class="card-footer"><span class="badge">Tlusté listy</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Migrenovn%C3%ADk.jpg" alt="Migrenovník" class="plant-photo" loading="lazy">
+                <img src="Migrenovn%C3%ADk2.jpg" alt="Migrenovník" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Migrenovník</h2>
+                        <p>Plectranthus amboinicus</p>
+                    </div>
+                    <div class="meta-stats">3 ks<br><span class="price">70 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Silně aromatický, hustě větvený dužnatý keřík s chlupatými listy. Při promnutí uvolňuje silnou vůni (směs máty, kafru a eukalyptu), která pomáhá při bolestech hlavy. Původ: tropická Afrika a Asie.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Zalévat formou prolití až po vyschnutí a změknutí (hadrovatění) listů. Roste divoce a rychle, v sezóně snese hnojení 1x za 14 dní standardní dávkou.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje teplo a slunce (20–26 °C). Vlhkost vyžaduje nízkou, suchý vzduch z topení mu vůbec nevadí. Listy nesmí přijít do kontaktu s vodou (nerosit, flekatí).</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě potřebuje absolutně nejsvětlejší okno v domě, jinak se stonky začnou vytahovat za světlem, slábnout a kytka ztratí kompaktní tvar. V zimě hnojit max 1x za 6 týdnů, vodu dávat minimálně. Pravidelně zaštipovat vršky pro větvení.</div>
+                <div class="card-footer"><span class="badge">Léčivý / Bylina</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Hoya%20pubicalyx.jpg" alt="Hoya pubicalyx" class="plant-photo" loading="lazy">
+                <img src="Hoya%20pubicalyx2.jpg" alt="Hoya pubicalyx" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Hoya pubicalyx</h2>
+                        <p>Voskovka</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Liána s dlouhými úzkými listy, které jsou kožovité, tvrdé a mají na sobě stříbřité skvrny (splash efekt). V dospělosti kvete úžasnými polokulovitými květenstvími, která v noci silně voní. Původ: Filipíny.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>V žádném případě nesmí mít kořeny stabilně v mokru (žádný knot do mechu!). Spodní zálivka až po absolutním vyschnutí. V sezóně hnojit 1x za 3 týdny, na konci léta hnojení stopnout, aby rostlina vyzrálá a byla stimulována ke kvetení.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–26 °C, snese v zimě krátkodobý pokles k 15 °C. Vlhkost vzduchu stačí běžná bytová.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Zimní období klidu je pro budoucí kvetení klíčové. Zálivka v zimě téměř nulová (pouze při ohýbání listů do korýtka), držet na světlém a mírně chladnějším místě. Nehnojit v zimě vůbec.</div>
+                <div class="card-footer"><span class="badge">Splash efekt</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+            </div>
+        </div>
+
+
+        <div class="plant-card" data-style="plevel">
+            <div class="photo-grid">
+                <img src="Tradescantia%20nanouk.jpg" alt="Tradescantia nanouk" class="plant-photo" loading="lazy">
+                <img src="Tradescantia%20nanouk.webp" alt="Tradescantia nanouk" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Tradescantia nanouk</h2>
+                        <p>Voděnka růžová</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Robustní, speciálně šlechtěná voděnka s tlustými stonky a masivními listy, které mají ze spodní strany zářivě růžovo-fialovou barvu. Roste velmi hustě a kompaktně.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Klasický knotový hydroponický systém zvládá bez mrknutí oka. Je velmi hladová, v sezóně spotřebuje plnou dávku hnojiva Canna každých 10–14 dní. Vyžaduje extrémní množství světla pro udržení růžové barvy.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Rozmezí 15–25 °C. Vlhkost vzduchu jí stačí průměrná. Nesnáší polévání listů shora (voda se drží v paždí listů a ty pak hnijí).</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v teplých a tmavých bytech drasticky strádá – stonky slábnou, spodní listy hnědnou a usychají. Ideální zimování: snížit teplotu na cca 15–17 °C, omezit vodu a dát pod nejsvětlejší okno. Hnojení v zimě 1x za měsíc.</div>
+                <div class="card-footer"><span class="badge">Extrémní světlo</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="plevel">
+            <div class="photo-grid">
+                <img src="Tradescantia%20zebrina.webp" alt="Tradescantia zebrina" class="plant-photo" loading="lazy">
+                <img src="Tradescantia%20zebrina2.jpg" alt="Tradescantia zebrina" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Tradescantia zebrina</h2>
+                        <p>Voděnka pruhovaná</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Klasická, legendární a nezničitelná pokojovka se stříbřitě fialovými pruhovanými listy. Roste extrémně rychle (metabolický rychlík). Původ: Mexiko a Střední Amerika.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Zakoření i v holé čisté vodě během 48 hodin. V hydro systému na knotu roste jako šílená. V sezóně hnojit každé 2 týdny plnou dávkou živin.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Extrémně adaptabilní (12–25 °C). Vlhkost vzduchu vůbec neřeší, roste v suchu i vlhku.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě se kvůli nedostatku světla stonky vytahují do dálky a listy rostou daleko od sebe (tzv. "vytahaná" kytka). V zimě omezit zálivku a hnojit jen 1x za měsíc. Na jaře je nutné dlouhé šlahouny ostříhat, omladit a uřezané vršky napíchat zpět do kamínků.</div>
+                <div class="card-footer"><span class="badge">Nezničitelná</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="plevel">
+            <div class="photo-grid">
+                <img src="Okrasn%C3%A1%20kop%C5%99iva.webp" alt="Okrasná kopřiva" class="plant-photo" loading="lazy">
+                <img src="Okrasn%C3%A1%20kop%C5%99iva2.jpg" alt="Okrasná kopřiva" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Okrasná kopřiva</h2>
+                        <p>Coleus / Pochvatec</p>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Rostlina pěstovaná výhradně pro své neskutečně pestrobarevné listy. Roste vzpřímeně jako polokeř. Původ: tropická jihovýchodní Asie a Austrálie.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Absolutně největší žrout živin a vody ze všech skupin. V sezóně pije hektolitry vody skrz knot a vyžaduje masivní hnojení – klidně každý týden plnou dávku Canna Aqua Vega, jinak listy okamžitě zblednou a ztratí barvu.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Vyžaduje teplo a přímé slunce (20–26 °C). Čím víc slunce dostane, tím šílenější barvy vytvoří. Vlhkost vzduchu stačí střední.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V bytových podmínkách v zimě často hyne na kombinaci ústupu světla a suchého tepla z radiátorů. Je nutné ji držet na nejjasnějším okně, hlídat škůdce (mšice) a hnojení snížit na 1x za 3 týdny. Často se pěstuje jako jednoletka, ze které se na podzim udělají čerstvé řízky do vody pro novou jarní generaci.</div>
+                <div class="card-footer"><span class="badge">Heavy Feeder</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&#x2715;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Filtrování karet
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const plantCards = document.querySelectorAll('.plant-card');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filterValue = button.getAttribute('data-filter');
+                plantCards.forEach(card => {
+                    const cardStyle = card.getAttribute('data-style');
+                    if (filterValue === 'all' || cardStyle === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        const overlay = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        document.querySelectorAll('.plant-photo').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) closeLightbox();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    });
+</script>
+
+</body>
+</html>
