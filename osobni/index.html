@@ -149,8 +149,6 @@
             transition: transform 0.25s ease, border-color 0.25s ease;
         }
 
-
-
         /* Photo Grid */
         .photo-grid {
             display: grid;
@@ -329,8 +327,81 @@
             to   { opacity: 1; transform: scale(1); }
         }
 
+        /* Mobile Friendly Optimalizace */
         @media (max-width: 768px) {
-            .plants-grid { grid-template-columns: 1fr; }
+            body {
+                padding: 1rem 0; /* Zrušení bočního paddingu body pro roztažení swipu ke krajům */
+            }
+
+            header {
+                padding: 0 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            /* Horizontální scrollovatelný rozcestník */
+            .navigation-tabs {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 0.5rem;
+                margin: 0 1rem 1.5rem 1rem;
+                scrollbar-width: none; /* Skrytí scrollbaru pro Firefox */
+            }
+
+            .navigation-tabs::-webkit-scrollbar {
+                display: none; /* Skrytí scrollbaru pro Chrome, Safari, Opera */
+            }
+
+            .tab-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                white-space: nowrap; /* Tlačítka se nezalomí */
+            }
+
+            /* Swipeable Grid rozvržení karet */
+            .plants-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                gap: 1.2rem;
+                padding: 0 1rem 1.5rem 1rem; /* Spodní padding dává prostor pro případný stín */
+            }
+
+            .plant-card {
+                flex: 0 0 85vw; /* Karta zabírá 85 % šířky obrazovky, zbytek ukazuje další kartu */
+                max-width: 330px;
+                scroll-snap-align: start; /* Zarovnání na začátek při doscrollu */
+            }
+
+            /* Úprava prvků uvnitř karty pro mobil */
+            .photo-grid, .plant-photo {
+                height: 160px;
+                max-height: 160px;
+            }
+
+            .plant-info {
+                padding: 1rem;
+            }
+
+            .plant-title h2 {
+                font-size: 1.2rem;
+            }
+
+            .spec-box {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.7rem;
+            }
         }
     </style>
 </head>
@@ -344,10 +415,10 @@
 
     <nav class="navigation-tabs">
         <button class="tab-btn active" data-filter="all">Všechny rostliny (13)</button>
-        <button class="tab-btn" data-filter="splhavci">Šplhavci na DIY tyč</button>
-        <button class="tab-btn" data-filter="krasky">Krásky na polštář / převis</button>
-        <button class="tab-btn" data-filter="citlivky">Sukulentní citlivky bez knotu</button>
-        <button class="tab-btn" data-filter="plevel">Rychlorostoucí plevel</button>
+        <button class="tab-btn" data-filter="splhavci">Šplhavé</button>
+        <button class="tab-btn" data-filter="krasky">Převislé</button>
+        <button class="tab-btn" data-filter="citlivky">Sukulentní</button>
+        <button class="tab-btn" data-filter="plevel">Rychlerostoucí</button>
     </nav>
 
     <main class="plants-grid" id="plants-container">
@@ -369,7 +440,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Knotový systém do spodních kořenů zvládá skvěle. V sezóně (březen–říjen) dávkovat Canna Aqua Vega A+B každých 14 dní v plné dávce.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–25 °C. Vlhkost vzduchu optimálně 50–70 %, v suchém prostředí bílé části listů hnědnou a schnou.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě omezit frekvenci doplňování vody (pije méně), hnojit max. 1x za měsíc slabou poloviční dávkou. Chránit před studeným průvanem při větrání.</div>
-                <div class="card-footer"><span class="badge">Panašovaná</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+                <div class="card-footer"><span class="badge">Panašovaná</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
         </div>
 
@@ -390,7 +461,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Knot miluje. Hnojení v sezóně stabilně každých 14 dní. Potřebuje silné rozptýlené světlo – při nedostatku světla nové listy tmavnou a ztrácejí neonový efekt.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Široké rozmezí 18–27 °C, v zimě nesmí teplota padnout pod 15 °C. Vlhkost zvládá i běžnou panelákovou (kolem 45 %), na tyči ale ocení vyšší.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Roste mírně i v zimě. Hnojit 1x za měsíc poloviční dávkou. Hlídat dostatek světla, umístit co nejblíže k oknu.</div>
-                <div class="card-footer"><span class="badge">Rychlý růst</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+                <div class="card-footer"><span class="badge">Rychlý růst</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
         </div>
 
@@ -411,7 +482,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Je o něco citlivější na přehnojení a zasolení než potosy. V sezóně hnojit 1x za 2 až 3 týdny. Vyžaduje neustále vlhkou pletivovou tyč, do které masivně koření.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplomilný: 18–24 °C, v zimě striktně nad 16 °C. Vyžaduje vyšší vzdušnou vlhkost (nad 60 %). Při suchém vzduchu listy ztrácejí lesk.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě prochází obdobím klidu. Zálivku omezit, hnojit maximálně jednou za 6 týdnů minimální dávkou. Rosit okolní vzduch, neumísťovat blízko radiátorů.</div>
-                <div class="card-footer"><span class="badge">Velvet</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+                <div class="card-footer"><span class="badge">Velvet</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
         </div>
 
@@ -432,7 +503,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>V dospělosti je to velký jedlík, potřebuje dostatek dusíku pro tvorbu velkých listů. V sezóně hnojit poctivě každých 14 dní plnou dávkou Canna Aqua Vega.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideální teplota 18–25 °C, v zimě minimum 15 °C. Vlhkost vzduchu střední až vyšší (50 %+).</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě u suchého vzduchu extrémně trpí na svilušky. Listy preventivně otírat od prachu, hnojení omezit na 1x za měsíc. Při nedostatku světla v zimě se stonky vytahují a dělají velké mezery mezi listy.</div>
-                <div class="card-footer"><span class="badge">Červené stonky</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+                <div class="card-footer"><span class="badge">Červené stonky</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
         </div>
 
@@ -453,10 +524,9 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Pro udržení exkluzivního panašování vyžaduje precizní a pravidelný přísun mikroprvků z hydro roztoku. V sezóně striktně každých 14 dní.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje stabilní teplo 20–26 °C, zimní poklesy pod 16 °C nesnáší dobře. Vyšší vlhkost (55–75 %) zaručí bezproblémové rozbalování nových listů.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Nejcitlivější filodendron ze seznamu. V zimě vyžaduje maximum světla, jinak nové listy rostou čistě zelené bez kresby. Doporučuje se přisvěcování LED grow-lightem. Hnojení v zimě téměř stopnout.</div>
-                <div class="card-footer"><span class="badge">Sběratelský</span><span class="style-tag st-splhavci">Šplhavci na DIY tyč</span></div>
+                <div class="card-footer"><span class="badge">Sběratelský</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
         </div>
-
 
         <div class="plant-card" data-style="krasky">
             <div class="photo-grid">
@@ -472,13 +542,12 @@
                     <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
                 </div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Přezdívaná "modlící se rostlina" – na noc listy vertikálně napřimuje (zavírá) a ráno zase rozevírá. Fascinující kresba s červeným žilkováním. Původ: spodní patra deštných pralesů Brazílie.</div>
-                <div class="spec-box"><strong>Hydro & Hnojení</strong>Kořeny jsou velmi jemné a citlivé na usazování solí z hnojiv. Používat výhradně poloviční koncentraci Canna hnojiva každé 3 týdny v sezóně. Kamínky na knotu musí být stále mírně vlhké, nesmí nikdy proschnout na prach.</div>
+                <div class="spec-box"><strong>Hydro & Hnojení</strong>Kořeny are velmi jemné a citlivé na usazování solí z hnojiv. Používat výhradně poloviční koncentraci Canna hnojiva každé 3 týdny v sezóně. Kamínky na knotu musí být stále mírně vlhké, nesmí nikdy proschnout na prach.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší teplotní výkyvy, studenou vodu a průvan. Vyžaduje extrémní vlhkost (60–80 %). V běžném suchém bytě jí schnou a kroutí se okraje listů.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě upadá do hlubokého spánku. V zimě vůbec nehnojit. Omezit množství vody v zásobníku na minimum, ale udržovat substrát lehce chladno-vlhký. Držet dál od sálajícího tepla z topení.</div>
-                <div class="card-footer"><span class="badge">Prayer Plant</span><span class="style-tag st-krasky">Krásky na polštář / převis</span></div>
+                <div class="card-footer"><span class="badge">Prayer Plant</span><span class="style-tag st-krasky">Převislé</span></div>
             </div>
         </div>
-
 
         <div class="plant-card" data-style="citlivky">
             <div class="photo-grid">
@@ -497,7 +566,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Bez knotu! Spodní prolévání roztokem na cca 10 minut. Hnojit velmi slabě (poloviční až třetinová dávka) maximálně 1x za měsíc v sezóně. Čekat, až listy začnou gumovatět.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, zima min 15 °C. Vlhkost zvládá standardní bytovou, listy mají tlustou voskovou vrstvu chránící před výparem.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zalévat extrémně málo (klidně 1x za 3 týdny) až po totálním vyschnutí kamínků a změknutí listů. Při sebemenším přelíčení v zimě bleskově hnijí kořeny u báze a celá kytka se rozpadne. V zimě nehnojit.</div>
-                <div class="card-footer"><span class="badge">Epifyt</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+                <div class="card-footer"><span class="badge">Epifyt</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
 
@@ -518,7 +587,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Metoda spodního namáčení po úplném proschnutí kamínků. V sezóně hnojit 1x za 3 týdny poloviční dávkou hnojiva.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Optimálně 18–25 °C. Pozor na studené okenní parapety v zimě – nesnáší chlad od kořenů zespodu. Vlhkost vzduchu jí vyhovuje nižší (40–50 %).</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě vynechat hnojení úplně. Zalévat až tehdy, když stonky s listy viditelně poklesnou dolů a listy změknou. Při přelití v kombinaci se zimním chladem shazuje celé listy, které předtím zčernají.</div>
-                <div class="card-footer"><span class="badge">Tlusté listy</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+                <div class="card-footer"><span class="badge">Tlusté listy</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
 
@@ -539,7 +608,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Zalévat formou prolití až po vyschnutí a změknutí (hadrovatění) listů. Roste divoce a rychle, v sezóně snese hnojení 1x za 14 dní standardní dávkou.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje teplo a slunce (20–26 °C). Vlhkost vyžaduje nízkou, suchý vzduch z topení mu vůbec nevadí. Listy nesmí přijít do kontaktu s vodou (nerosit, flekatí).</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě potřebuje absolutně nejsvětlejší okno v domě, jinak se stonky začnou vytahovat za světlem, slábnout a kytka ztratí kompaktní tvar. V zimě hnojit max 1x za 6 týdnů, vodu dávat minimálně. Pravidelně zaštipovat vršky pro větvení.</div>
-                <div class="card-footer"><span class="badge">Léčivý / Bylina</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+                <div class="card-footer"><span class="badge">Léčivý / Bylina</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
 
@@ -560,10 +629,9 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>V žádném případě nesmí mít kořeny stabilně v mokru (žádný knot do mechu!). Spodní zálivka až po absolutním vyschnutí. V sezóně hnojit 1x za 3 týdny, na konci léta hnojení stopnout, aby rostlina vyzrálá a byla stimulována ke kvetení.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–26 °C, snese v zimě krátkodobý pokles k 15 °C. Vlhkost vzduchu stačí běžná bytová.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Zimní období klidu je pro budoucí kvetení klíčové. Zálivka v zimě téměř nulová (pouze při ohýbání listů do korýtka), držet na světlém a mírně chladnějším místě. Nehnojit v zimě vůbec.</div>
-                <div class="card-footer"><span class="badge">Splash efekt</span><span class="style-tag st-citlivky">Sukulentní citlivky bez knotu</span></div>
+                <div class="card-footer"><span class="badge">Splash efekt</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
-
 
         <div class="plant-card" data-style="plevel">
             <div class="photo-grid">
@@ -582,7 +650,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Klasický knotový hydroponický systém zvládá bez mrknutí oka. Je velmi hladová, v sezóně spotřebuje plnou dávku hnojiva Canna každých 10–14 dní. Vyžaduje extrémní množství světla pro udržení růžové barvy.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Rozmezí 15–25 °C. Vlhkost vzduchu jí stačí průměrná. Nesnáší polévání listů shora (voda se drží v paždí listů a ty pak hnijí).</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v teplých a tmavých bytech drasticky strádá – stonky slábnou, spodní listy hnědnou a usychají. Ideální zimování: snížit teplotu na cca 15–17 °C, omezit vodu a dát pod nejsvětlejší okno. Hnojení v zimě 1x za měsíc.</div>
-                <div class="card-footer"><span class="badge">Extrémní světlo</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+                <div class="card-footer"><span class="badge">Extrémní světlo</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
 
@@ -603,7 +671,7 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Zakoření i v holé čisté vodě během 48 hodin. V hydro systému na knotu roste jako šílená. V sezóně hnojit každé 2 týdny plnou dávkou živin.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Extrémně adaptabilní (12–25 °C). Vlhkost vzduchu vůbec neřeší, roste v suchu i vlhku.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě se kvůli nedostatku světla stonky vytahují do dálky a listy rostou daleko od sebe (tzv. "vytahaná" kytka). V zimě omezit zálivku a hnojit jen 1x za měsíc. Na jaře je nutné dlouhé šlahouny ostříhat, omladit a uřezané vršky napíchat zpět do kamínků.</div>
-                <div class="card-footer"><span class="badge">Nezničitelná</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+                <div class="card-footer"><span class="badge">Nezničitelná</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
 
@@ -624,14 +692,13 @@
                 <div class="spec-box"><strong>Hydro & Hnojení</strong>Absolutně největší žrout živin a vody ze všech skupin. V sezóně pije hektolitry vody skrz knot a vyžaduje masivní hnojení – klidně každý týden plnou dávku Canna Aqua Vega, jinak listy okamžitě zblednou a ztratí barvu.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Vyžaduje teplo a přímé slunce (20–26 °C). Čím víc slunce dostane, tím šílenější barvy vytvoří. Vlhkost vzduchu stačí střední.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V bytových podmínkách v zimě často hyne na kombinaci ústupu světla a suchého tepla z radiátorů. Je nutné ji držet na nejjasnějším okně, hlídat škůdce (mšice) a hnojení snížit na 1x za 3 týdny. Často se pěstuje jako jednoletka, ze které se na podzim udělají čerstvé řízky do vody pro novou jarní generaci.</div>
-                <div class="card-footer"><span class="badge">Heavy Feeder</span><span class="style-tag st-plevel">Rychlorostoucí plevel</span></div>
+                <div class="card-footer"><span class="badge">Heavy Feeder</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
 
     </main>
 </div>
 
-<!-- Lightbox -->
 <div class="lightbox-overlay" id="lightbox">
     <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&#x2715;</button>
     <img class="lightbox-img" id="lightbox-img" src="" alt="">
