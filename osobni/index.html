@@ -349,7 +349,7 @@
             /* Horizontální scrollovatelný rozcestník */
             .navigation-tabs {
                 justify-content: flex-start;
-                flex-wrap: nowrap;
+                flex-wrap: wrap;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 padding: 0.5rem;
@@ -367,7 +367,6 @@
                 white-space: nowrap; /* Tlačítka se nezalomí */
             }
 
-            /* Swipeable Grid rozvržení karet */
             .plants-grid {
                 display: flex;
                 flex-wrap: nowrap;
@@ -375,13 +374,15 @@
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x mandatory;
                 gap: 1.2rem;
-                padding: 0 1rem 1.5rem 1rem; /* Spodní padding dává prostor pro případný stín */
+                /* Zvětšený boční padding, aby šla první i poslední karta vycentrovat */
+                padding: 0 7.5vw 1.5rem 7.5vw; 
             }
 
             .plant-card {
-                flex: 0 0 85vw; /* Karta zabírá 85 % šířky obrazovky, zbytek ukazuje další kartu */
+                flex: 0 0 85vw; 
                 max-width: 330px;
-                scroll-snap-align: start; /* Zarovnání na začátek při doscrollu */
+                /* Změněno ze 'start' na 'center' – karta se upne na střed obrazovky */
+                scroll-snap-align: center; 
             }
 
             /* Úprava prvků uvnitř karty pro mobil */
