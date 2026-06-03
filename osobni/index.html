@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +6,13 @@
     <title>Aroid & Hydro Dashboard</title>
     <style>
         :root {
-            --bg-color: #0d110e;
-            --card-bg: #141b17;
+            --bg-color: #111d15;
+            --card-bg: #1c3024;
             --accent-color: #2ecc71;
-            --accent-dim: #196f3d;
+            --accent-dim: #1a7a42;
             --text-color: #eaeded;
-            --text-muted: #8a9990;
-            --placeholder-bg: #1b241f;
+            --text-muted: #9aaa9f;
+            --placeholder-bg: #243a28;
             --border-radius: 12px;
 
             /* Barvy pěstebních stylů */
@@ -65,10 +65,10 @@
             flex-wrap: wrap;
             gap: 0.8rem;
             margin-bottom: 3rem;
-            background: #090d0b;
+            background: #0e1911;
             padding: 0.6rem;
             border-radius: var(--border-radius);
-            border: 1px solid #19221d;
+            border: 1px solid #2e5040;
         }
 
         .tab-btn {
@@ -107,20 +107,14 @@
         .plant-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            border: 1px solid #19221d;
+            border: 1px solid #2e5040;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.25s ease, border-color 0.25s ease;
         }
 
-        .plant-card:hover {
-            transform: translateY(-4px);
-        }
-        .plant-card[data-style="splhavci"]:hover { border-color: var(--style-splhavci); }
-        .plant-card[data-style="krasky"]:hover { border-color: var(--style-krasky); }
-        .plant-card[data-style="citlivky"]:hover { border-color: var(--style-citlivky); }
-        .plant-card[data-style="plevel"]:hover { border-color: var(--style-plevel); }
+
 
         /* Photo Grid */
         .photo-grid {
@@ -162,7 +156,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
-            border-bottom: 1px solid #19221d;
+            border-bottom: 1px solid #2e5040;
             padding-bottom: 0.8rem;
         }
 
