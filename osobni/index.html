@@ -4,6 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aroid & Hydro Dashboard</title>
+    <link rel="apple-touch-icon" id="touch-icon" href="#">
+    <link rel="icon" id="favicon" type="image/png" href="#">
+    <meta name="apple-mobile-web-app-title" content="Pokojovky">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script>
+        (function() {
+            const c = document.createElement('canvas');
+            c.width = 180; c.height = 180;
+            const ctx = c.getContext('2d');
+            ctx.fillStyle = '#1c3024';
+            roundRect(ctx, 0, 0, 180, 180, 36);
+            ctx.fill();
+            ctx.font = '110px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🌱', 90, 96);
+            const url = c.toDataURL('image/png');
+            document.getElementById('touch-icon').href = url;
+            document.getElementById('favicon').href = url;
+
+            function roundRect(ctx, x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+        })();
+    </script>
     <style>
         :root {
             --bg-color: #111d15;
