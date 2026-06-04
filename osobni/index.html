@@ -150,6 +150,10 @@
         }
 
         /* Photo Grid */
+        .photo-grid img:only-child {
+            grid-column: 1 / -1;
+        }
+
         .photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -370,6 +374,7 @@
             }
 
             .navigation-tabs {
+                justify-content: flex-start;
                 flex-wrap: wrap;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
@@ -451,9 +456,9 @@
                         <h2>Epipremnum Njoy</h2>
                         <p>Potos</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧<span class="dim">💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">60 Kč</span></div>
@@ -478,9 +483,9 @@
                         <h2>Epipremnum aureum "Neon"</h2>
                         <p>Potos Neon</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧💧<span class="dim">💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧<span class="dim">💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">80 Kč</span></div>
@@ -505,9 +510,9 @@
                         <h2>Philodendron micans</h2>
                         <p>Filodendron sametový</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧<span class="dim">💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
@@ -532,9 +537,9 @@
                         <h2>Philodendron red emerald</h2>
                         <p>Filodendron</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧💧<span class="dim">💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧<span class="dim">💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">70 Kč</span></div>
@@ -559,15 +564,15 @@
                         <h2>Philodendron Painted Lady</h2>
                         <p>Filodendron</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧<span class="dim">💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
                 </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Sběratelský hybrid s neonově žluto-zelenými listy a zářivě růžovo-červenými řapíky. Střední tempo růstu. Nejcitlivější kousek ze šplhavců, který nutně potřebuje lehký vzdušný mix a vlhký mech.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Sběratelský hybrid s neonově žluto-zelenými listy a zářivě růžovo-červenými řapíky. Střední tempo růstu. Nejcitlivější kousek ze šplhavců, který nutně potřebuje lehký vzdušný mix and vlhký mech.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Pro zachování luxusního panašování vyžaduje precizní přísun mikroprvků. Po úvodním prokořenění s Rhizotonicem aplikuj minerální hnojivo Canna Aqua Vega stabilně každých 14 dní po celé jaro a léto.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní teplo 20–26 °C, zimní poklesy pod 16 °C nesnáší. Vyšší vlhkost (55–75 %) zaručí hladké rozbalování listů. Skrz kelímek přísně kontrolovat cyklus vysychání substrátu.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě nutně vyžaduje nejjasnější místo, jinak nové listy rostou čistě zelené bez kresby (ideální je přisvěcování). V zimě zálivku drasticky omezit a hnojení téměř úplně stopnout.</div>
@@ -586,9 +591,9 @@
                         <h2>Maranta fascinator</h2>
                         <p>Maranta tricolor</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️<span class="dim">☀️☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧💧💧</span></div>
-                            <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️<span class="dim">☀️☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧💧</span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
@@ -596,8 +601,8 @@
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>"Modlící se rostlina" ze spodních pralesních pater Brazílie. Na noc listy vertikálně napřimuje a zavírá. Na rozdíl od lián se přirozeně plazí – na tvém DIY mechovém polštáři vytvoří úžasně hustý keř.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Jemné kořeny jsou extrémně náchylné k popálení solemi. Používej výhradně poloviční koncentraci Canna hnojiva jednou za 3 týdny (po prokořenění s Rhizotonicem). Vyžaduje hustší hydratační pralesní mix (60% kokos).</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší průvan, teplotní šoky a suchý vzduch (způsobuje kroucení listů). Vyžaduje vysokou vlhkost (60–80 %). Mix v kelímku must přes plast vypadat nonstop tmavý a orosený.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě spí a vůbec se nehnojí. Vodu v zásobníku drž na absolutním minimu, umísti ji dál od sálajících radiátorů topení, ale hlídej přes kelímek, aby substrát v jádru fatálně nevyschl na prach.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší průvan, teplotní šoky and suchý vzduch (způsobuje kroucení listů). Vyžaduje vysokou vlhkost (60–80 %). Mix v kelímku must přes plast vypadat nonstop tmavý a orosený.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě spí and vůbec se nehnojí. Vodu v zásobníku drž na absolutním minimu, umísti ji dál od sálajících radiátorů topení, ale hlídej přes kelímek, aby substrát v jádru fatálně nevyschl na prach.</div>
                 <div class="card-footer"><span class="badge">Prayer Plant</span><span class="style-tag st-krasky">Převislé</span></div>
             </div>
         </div>
@@ -613,9 +618,9 @@
                         <h2>Peperomia prostrata</h2>
                         <p>„Želvičky"</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧<span class="dim">💧💧💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪<span class="dim">🧪🧪🧪🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧<span class="dim">💧💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪<span class="dim">🧪🧪🧪🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
@@ -623,7 +628,7 @@
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Drobné plazivé „želvičky“ z Amazonie rostoucí jako epifyt v korunách stromů, kde bleskově vysychají. Vyžadují upravený sukulentní mix (chipsy a perlit po 40 %, kokosový substrát jen 20 %).</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Absolutně bez knotu! Pouze jednorázové spodní namáčení kelímku na cca 10 minut jednou za čas. Po úvodní fázi s Rhizotonicem hnojit velmi slabě (třetinová dávka Canny) maximálně 1x za měsíc v sezóně.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, v zimě minimálně 15 °C. Vlhkost vzduchu zvládá standardní bytovou díky tlusté voskové vrstvě listů. Vizuální debug: kelímek musí kompletně zbělat/vyschnout a lístky při stisku gumovatět jako rozinky.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, v zimě minimálně 15 °C. Vlhkost vzduchu zvládá standardní bytovou díky tlusté voskové vrstvě listů. Vizuální debug: kelímek must kompletně zbělat/vyschnout a lístky při stisku gumovatět jako rozinky.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zalévat extrémně málo (klidně 1x za 3 týdny) až po totálním proschnutí a jasném změknutí listů. V zimě vůbec nehnojit. Při sebemenším přelíčení v chladnějším období báze stonků bleskově uhnije.</div>
                 <div class="card-footer"><span class="badge">Epifyt</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
@@ -640,9 +645,9 @@
                         <h2>Peperomia Raindrop</h2>
                         <p>Peperomie polybotrya</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧<span class="dim">💧💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧<span class="dim">💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">75 Kč</span></div>
@@ -667,9 +672,9 @@
                         <h2>Migrenovník</h2>
                         <p>Plectranthus amboinicus</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️☀️</span></div>
-                            <div class="rating-row"><span>💧💧<span class="dim">💧💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️☀️</span></div>
+                            <div class="rating-row">💧 <span>💧💧<span class="dim">💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">3 ks<br><span class="price">70 Kč</span></div>
@@ -677,7 +682,7 @@
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Silně aromatický dužnatý keřík s chlupatými listy z tropické Afriky. Roste divoce a velmi rychle. Ideální je udržovat kompaktní tvar pravidelným zaštipováním vršků, které okamžitě větví kytku do hustého keře. Sázet do sukulentního mixu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Zalévat formou prolití svrchu (přebytek nechat ihned odtéct dírkami) až po kompletním vyschnutí kelímku. Jako jediný ze sukulentní skupiny snese v létě plnou dávku Canna Vega 1x za 14 dní (po úvodním startu s Rhizotonicem).</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje teplo a slunce (20–26 °C). Vlhkost vyžaduje nízkou, suchý vzduch z topení zvládá skvěle. Listy nikdy nerosit rozprašovačem, dělají se na nich skvrny a zahnívají.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje teplo a slunce (20–26 °C). Vlhkost vyžaduje nízkou, dry vzduch z topení zvládá skvěle. Listy nikdy nerosit rozprašovačem, dělají se na nich skvrny a zahnívají.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě vyžaduje absolutně nejsvětlejší jižní/východní okno, jinak stonky slábnou a vytahují se za světlem. Hnojit max. 1x za 6 týdnů, vodu dávat minimálně. Žízeň poznáš bezpečně – listy jsou hadrové, měkké a lehce šednou.</div>
                 <div class="card-footer"><span class="badge">Léčivý / Bylina</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
@@ -694,9 +699,9 @@
                         <h2>Hoya pubicalyx</h2>
                         <p>Voskovka</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
-                            <div class="rating-row"><span>💧<span class="dim">💧💧💧💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧<span class="dim">💧💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
@@ -721,9 +726,9 @@
                         <h2>Tradescantia nanouk</h2>
                         <p>Voděnka růžová</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️☀️</span></div>
-                            <div class="rating-row"><span>💧💧💧💧<span class="dim">💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️☀️</span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧<span class="dim">💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
@@ -748,9 +753,9 @@
                         <h2>Tradescantia zebrina</h2>
                         <p>Voděnka pruhovaná</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
-                            <div class="rating-row"><span>💧💧💧💧<span class="dim">💧</span></span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧<span class="dim">💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
@@ -775,9 +780,9 @@
                         <h2>Okrasná kopřiva</h2>
                         <p>Coleus / Pochvatec</p>
                         <div class="plant-ratings">
-                            <div class="rating-row"><span>☀️☀️☀️☀️☀️</span></div>
-                            <div class="rating-row"><span>💧💧💧💧💧</span></div>
-                            <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️☀️</span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧💧</span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
                     <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
@@ -788,6 +793,294 @@
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplo (20–26 °C) and vzdušná vlhkost střední. Skrz průhledný kelímek uvidíš obří spotřebu vody. Jakmile kokos začne světlat, okamžitě doplňuj nádržku, jinak rostlina dramaticky svěsí všechny listy dolů.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v bytě často hyne na nedostatek světla and mšice. Držet na nejjasnějším okně, hnojení snížit na 1x za 3 týdny. Často se na podzim omlazuje čerstvými řízky do vody pro novou jarní generaci.</div>
                 <div class="card-footer"><span class="badge">Heavy Feeder</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="krasky">
+            <div class="photo-grid">
+                <img src="Aglaonema%20Silver%20Bay.jpeg" alt="Aglaonema Silver Bay" class="plant-photo single-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Aglaonema Silver Bay</h2>
+                        <p>Silver Bay / Queen</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️<span class="dim">☀️☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Extrémně nenáročná a vytrvalá rostlina z podrostů tropických deštných lesů jihovýchodní Asie. Roste jako hustý přízemní keř s nádherně stříbřitě zeleným vzorem na širokých listech.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Nevyžaduje intenzivní výživu ani přehnanou péči. V plném růstu hnojit Canna Aqua Vega 1x za 3 týdny v poloviční dávce. Kokosový mix udržovat mírně navlhlý, ale nepřelévat. Čistí vzduch v místnosti.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–24 °C. Skvěle snese i horší světelné podmínky, ideální na poličky dál od okna. Vzdušná vlhkost jí vyhovuje běžná pokojová, na suchý vzduch nereaguje citlivě.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě upadá do klidové fáze a pije minimálně. Drasticky omezit zálivku a hlídat barvu mixu skrz průhledný kelímek. Striktně chránit před chladem a průvanem pod 15 °C, jinak jí uhnijí řapíky.</div>
+                <div class="card-footer"><span class="badge">Nenáročná</span><span class="style-tag st-krasky">Převislé</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Zamioculcas%20zamiifolia.jpeg" alt="Zamioculcas zamiifolia" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Zamioculcas zamiifolia</h2>
+                        <p>Zamiokulkas</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️<span class="dim">☀️☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧<span class="dim">💧💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪<span class="dim">🧪🧪🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Sukulentní tank pocházející ze suchých oblastí východní Afriky. Pod zemí schovává obří bramborovité hlízy a tlusté řapíky, ve kterých drží vodu na celé měsíce dopředu. Absolutně neprůstřelná kytka.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Zabije ji jedině tvoje přehnaná péče a permanentně mokrý knot. Zalévat až tehdy, když je mix totálně vyschlý a kelímek lehký jako pírko. Hnojení stačí minimální, max. 1x za měsíc v létě.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–26 °C. Zvládá stín, polostín i suchý vzduch z radiátorů. Vyžaduje extra podíl perlitu a chipsů pro okamžitý odtok vody z dosahu citlivých podzemních hlíz.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě upadá do totálního vegetativního útlumu. Zalévat klidně jen jednou za měsíc čistou vodou. Nehnojit v zimě vůbec. Pokud dostane v zimě vodu víckrát, hlízy prasknou a stonky odspodu zčernají.</div>
+                <div class="card-footer"><span class="badge">Neprůstřelná</span><span class="style-tag st-citlivky">Sukulentní</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Potos%20mramorov%C3%BD.jpeg" alt="Potos mramorový" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Epipremnum 'Marble Queen'</h2>
+                        <p>Potos mramorový</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Nádherná popínavá liána z Francouzské Polynésie s hustým bílo-krémovým mramorovaným vzorem. Kvůli vysokému podílu bílých nefunkčních tkání roste o něco pomaleji než klasický zelený potos.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Pro udržení luxusní bílé kresby vyžaduje výrazně více světla než ostatní potosy. V sezóně hnojit Canna Aqua Vega pravidelně každých 14 dní. Skvěle zvládá růst na časovaném knotu s pletivovou tyčí.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–25 °C. Vyžaduje stabilní střední vlhkost, v suchém panelákovém vzduchu bílé mapy na listech hnědnou a odumírají. Vzdušné kořeny rády vrůstají do vlhkého mechu na tyči.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zajistit nejjasnější možné okno v domě, jinak nové listy začnou tmavnout a mramorování zakrní. Zálivku přes knot omezit, kontrolovat barvu kokosu skrz plast kelímku a hnojit jen 1x za měsíc.</div>
+                <div class="card-footer"><span class="badge">Mramorování</span><span class="style-tag st-splhavci">Šplhavé</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="%C5%A0eflera%20stromovit%C3%A1.jpeg" alt="Šeflera stromovitá" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Schefflera arboricola</h2>
+                        <p>Šeflera stromovitá</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧<span class="dim">💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Stálezelený polodřevnatý stromeček pocházející z Taiwanu. Má typické dlanitě složené prstovité listy, které rostou z centrálního řapíku. Roste elegantně vertikálně do výšky.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Nesnáší permanentní bláto u kořenů, vyžaduje kompletní proschnutí mixu v kelímku. Žádný trvalý knot. Hnojit v sezóně 1x za 14 dní poloviční dávkou dvousložkové Canny. Vyžaduje velmi vzdušný, lehký substrát.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota v rozmezí 16–24 °C. Miluje světlé stanoviště, snese i mírné ranní slunce. Vzdušná vlhkost jí vyhovuje průměrná pokojová, na dotek jsou listy pevné a kožovité.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě reaguje na jakýkoliv stres (přelití, chlad od kořenů z parapetu nebo ledový průvan) bleskovým radikálním shozením celých zelených listů. Zálivku v zimě omezit na nezbytné minimum a nehnojit.</div>
+                <div class="card-footer"><span class="badge">Malý stromek</span><span class="style-tag st-citlivky">Sukulentní</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Peperomia%20obtusifolia.jpeg" alt="Peperomia obtusifolia" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Peperomia obtusifolia</h2>
+                        <p>Pepřinec tupolistý</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧<span class="dim">💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Robustní, stará kytka zachráněná z kanceláře. Původem z Floridy a Karibiku. Má tlusté, masité stonky a velké kulaté listy, které fungují jako rezervoár vody. Roste přirozeně jako těžký keř či převis.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Aktuálně vyčerpaná a světlá z kanclu. Po přesazení z ubité hlíny nastartovat kořeny Rhizotonicem. Jakmile v kokosu ožije, hnojit Canna Aqua Vega 1x za 14 dní v plné dávce pro návrat temně zeleného lesku.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Optimálně 18–25 °C. Vyžaduje jasné rozptýlené světlo, ale bez přímého poledního úpalu. Vlhkost vzduchu zvládá standardní. Nesnáší těžkou tyč z mechu, raději ji podepři hladkým bambusem.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě držet v suchu a teple. Žízeň indikuje spolehlivě: tlusté listy ztratí pevnost a dají se ohnout a deformovat jako guma (lístky gumovatí). Zalévej až po tomhle signálu spodním namáčením kelímku.</div>
+                <div class="card-footer"><span class="badge">Kancl veterán</span><span class="style-tag st-citlivky">Sukulentní</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Monstera%20deliciosa.jpeg" alt="Monstera deliciosa" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Monstera deliciosa</h2>
+                        <p>Monstera skvostná</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪🧪</span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Absolutní ikona tropických pralesů Mexika a Střední Ameriky. Obří robustní šplhavá liána, která v dospělosti tvoří charakteristické hluboké děrování listů (fenestrace). Vyžaduje masivní prostor a pevnou oporu.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>V létě je to brutální jedlík (Heavy Feeder). Hnojit Canna Aqua Vega každých 10–14 dní v plné palbě. Dlouhé vzdušné kořeny nikdy neřezat, ale systematicky je směřovat dolů do kokosového mixu v kelímku.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–26 °C, miluje vyšší vzdučnou vlhkost (nad 60 %). Skrz průhledný kelímek uvidíš obří, tlusté provazovité kořeny. Brzy bude potřebovat tvoji velkou DIY pletivovou tyč s vlhkým rašeliníkem.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě mírně zpomalí růst. Hnojení stáhnout na 1x za měsíc s poloviční koncentrací. Hlídat přelití spodku kelímku přes časovaný knot – kokosový mix musí mezi zálivkami viditelně zesvětlat do světle hnědé.</div>
+                <div class="card-footer"><span class="badge">Pralesní obor</span><span class="style-tag st-splhavci">Šplhavé</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="plevel">
+            <div class="photo-grid">
+                <img src="Strelitzia%20nicolai.jpeg" alt="Strelitzia nicolai" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Strelitzia nicolai</h2>
+                        <p>Strelície bílá</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️☀️</span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧💧</span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪🧪</span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Majestátní architektonická kytka s obřími banánovými listy pocházející z Jižní Afriky. Královna interiéru s neskutečně rychlým metabolismem. Listy se přirozeně ve větru/průvanu třepí, což je její obranný mechanismus.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Absolutní monstrózní žrout vody a dusíku. Vyžaduje výživný hydratační mix (60 % kokos). V létě pije hektolitry přes knot a potřebuje plné hnojení s Canna Aqua Vega klidně každý týden, jinak listy začnou žloutnout.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje horko (20–28 °C) and vyžaduje absolutní maximum přímého slunce přímo u okna. Zvládá suchý vzduch z topení, ale pro bezchybný vzhled velkých čepelí ocení pravidelné otírání listů mokrým hadříkem.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě trpí nedostatkem světla. Přesunout ji na nejjasnější možné místo k jižnímu oknu. Zálivku omezit, ale přes plast kelímku hlídat, aby kokos nikdy totálně nevyschl na prach, jinak jí popraskají řapíky. Hnojit 1x za měsíc.</div>
+                <div class="card-footer"><span class="badge">Královská</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="citlivky">
+            <div class="photo-grid">
+                <img src="Orchidej%20M%C5%AFrovec.jpeg" alt="Orchidej Můrovec" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Phalaenopsis</h2>
+                        <p>Orchidej Můrovec</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️<span class="dim">☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧<span class="dim">💧💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Čistá hrubá kůra / kousky chipsů, bez jemného kokosového substrátu)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Čistě epifytická orchidej z tropické Asie rostoucí v přírodě v kůře stromů. Její kořeny nutně potřebují nonstop přístup vzduchu a světla pro fotosyntézu – proto je tvůj průhledný kelímek absolutně bezchybné řešení.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Žádná klasická zálivka ani knot! Využij stoprocentní vizuální debug: dokud jsou kořeny v kelímku jasně zelené, kytka má vody dost. Jakmile zešednou/stříbřitě zmatní, namoč kelímek na 15 minut do vody se slabým hnojivem a vyndej.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C. Nesnáší přímé spalující slunce, ale potřebuje hodně rozptýleného světla pro stimulaci tvorby nových stvolů s poupaty. Vlhkost vzduchu stačí běžná.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě hlídat chlad od okenního skla. Pokud kořeny zůstanou v šedém stavu příliš dlouho, rostlina usne a nenasadí květy. V zimě hnojit maximálně jednou za dva měsíce ultra slabým roztokem. Používat tyčky na stvoly.</div>
+                <div class="card-footer"><span class="badge">Epifyt čistý</span><span class="style-tag st-citlivky">Sukulentní</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Trebie.jpeg" alt="Scindapsus pictus" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Scindapsus pictus</h2>
+                        <p>Trebie</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Nádherná popínavá liána z deštných pralesů jihovýchodní Asie. Listy jsou asymetrické, tlusté, mají matný sametový povrch s charakteristickým stříbřitým skvrnitým vzorem. Aktuálně ti bezpečně koření v propagačním boxu v rašeliníku.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Při přesazení z mechu do kelímku nechat na kořenech trochu rašeliníku a prolít Rhizotonicem. V plném růstu hnojit Canna Aqua Vega 1x za 14 dní přes časovaný knot. Úžasný adept na šplhání po tvojí DIY mechové tyči.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, miluje střední až vyšší vzdušnou vlhkost. Skvěle signalizuje žízeň: jakmile má nedostatek vody, celé listy se začnou podélně rolovat do těsných ruliček. Jakmile dostane pít, do pár hodin se narovná.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě roste pomalu a pije minimálně. Sleduj barvu kokosového mixu přes průhledný plast kelímku – doplňuj rezervoár až po řádném vyschnutí a zesvětlení substrátu. Hnojení v zimě omezit na 1x za měsíc.</div>
+                <div class="card-footer"><span class="badge">Splash Velvet</span><span class="style-tag st-splhavci">Šplhavé</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="splhavci">
+            <div class="photo-grid">
+                <img src="Philodendron%20Birkin.jpg" alt="Philodendron Birkin" class="plant-photo" loading="lazy">
+                <img src="Philodendron%20Birkin2.webp" alt="Philodendron Birkin" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Philodendron Birkin</h2>
+                        <p>Filodendron</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️☀️☀️<span class="dim">☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧<span class="dim">💧💧</span></span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Krásná mutace druhu Rojo Congo s hustým a zářivě bílým žíháním listů ze Střední a Jižní Ameriky. Roste spíše vzpřímeně jako polokeř. Mix potřebuje lehký a vzdušný, pro bezpečný a mohutný růst listů ocenci DIY tyč.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>První dny po usazení nebo přesazení podpořit kořeny Rhizotonicem. Pro udržení sytého žíhání a tvorbu nových zdravých listů potřebuje stabilní přísun dusíku a mikroprvků, hnojit v létě s Canna Aqua Vega každých 14 dní.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplomilná kytka (18–25 °C). Klíčové je světlé místo bez přímého poledního úpalu – při nedostatku světla nové listy tmavnou zpět do zelené a ztrácejí kresbu. Vlhkost vzduchu držet nad 50 %.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě roste minimálně a pije málo. Skrz kelímek hlídat světlání kokosového mixu a rezervoár časovaného knotu doplňovat až po mírném proschnutí. Chránit před ledovým průvanem při zimním větrání.</div>
+                <div class="card-footer"><span class="badge">Bílé žíhání</span><span class="style-tag st-splhavci">Šplhavé</span></div>
+            </div>
+        </div>
+
+        <div class="plant-card" data-style="krasky">
+            <div class="photo-grid">
+                <img src="Maranta%20leuconeura%20Lemon.webp" alt="Maranta leuconeura Lemon" class="plant-photo" loading="lazy">
+                <img src="Maranta%20leuconeura%20Lemon2.jpg" alt="Maranta leuconeura Lemon" class="plant-photo" loading="lazy">
+            </div>
+            <div class="plant-info">
+                <div class="plant-header">
+                    <div class="plant-title">
+                        <h2>Maranta leuconeura</h2>
+                        <p>Lemon lime</p>
+                        <div class="plant-ratings">
+                            <div class="rating-row">☀️ <span>☀️☀️<span class="dim">☀️☀️☀️</span></span></div>
+                            <div class="rating-row">💧 <span>💧💧💧💧💧</span></div>
+                            <div class="rating-row">🧪 <span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
+                        </div>
+                    </div>
+                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
+                </div>
+                <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>"Králičí stopy" ze stinného podrostu brazilských pralesů. Večer sklápí listy nahoru. Ve vodě už vybudovala masivní, tlustou síť zdravých kořenů, takže je v dokonalé kondici pro přesazení do tvého hustšího pralesního mixu.</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Po přesazení ihned prolít roztokem Rhizotonicu pro adaptaci vodních kořenů na pevné médium. V sezóně hnojit velmi opatrně poloviční koncentrací Canna Aqua Vega jednou za 3 týdny, má extrémně jemné vlasové kořínky.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C bez výkyvů a ledového průvanu. Vyžaduje permanentně vysokou vlhkost. Substrát udržuj trvale navlhlý (skrz kelímek uvidíš orosené stěny a tmavý kokos), časovaný knot nenechávej úplně proschnout na troud.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Zimní spánek dál od sálajících radiátorů. V zimě vůbec nehnojit, hladinu spodního rezervoáru držet na absolutním minimu, ale vizuálně hlídat, aby substrát v jádru kelímku fatálně nepřeschl na prach.</div>
+                <div class="card-footer"><span class="badge">Masivní kořeny</span><span class="style-tag st-krasky">Převislé</span></div>
             </div>
         </div>
 
