@@ -8,6 +8,10 @@
       {
         "date": "2026-06-09"
       }
-    ]
+    ],
+    "settings": {
+      "water_interval": 7,
+      "fertilize_interval": 20
+    }
   }
 }
