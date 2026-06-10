@@ -358,9 +358,9 @@
         .plant-log-bar {
             display: flex;
             gap: 0.5rem;
-            padding: 0.65rem 1rem;
-            background: rgba(0,0,0,0.18);
-            border-top: 1px solid #243a28;
+            padding: 0.45rem 0.85rem;
+            background: rgba(0,0,0,0.22);
+            border-bottom: 1px solid #243a28;
             flex-shrink: 0;
         }
 
@@ -371,14 +371,14 @@
             flex: 1;
             background: rgba(255,255,255,0.03);
             border-radius: 6px;
-            padding: 0.35rem 0.55rem;
+            padding: 0.3rem 0.5rem;
             min-width: 0;
         }
 
-        .log-icon { font-size: 0.85rem; flex-shrink: 0; }
+        .log-icon { font-size: 0.82rem; flex-shrink: 0; }
 
         .log-days {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             flex: 1;
             white-space: nowrap;
@@ -395,11 +395,11 @@
             background: rgba(46,204,113,0.12);
             border: 1px solid rgba(46,204,113,0.25);
             color: var(--accent-color);
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.4rem;
+            height: 1.4rem;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1;
             display: flex;
             align-items: center;
@@ -427,7 +427,7 @@
             border: 1px solid #2e5040;
             border-radius: var(--border-radius);
             width: min(440px, 94vw);
-            max-height: 88vh;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             box-shadow: 0 24px 70px rgba(0,0,0,0.75);
@@ -456,22 +456,77 @@
             display: flex;
             flex-direction: column;
             gap: 0.35rem;
-            max-height: 220px;
+            max-height: 260px;
             overflow-y: auto;
         }
 
         .log-entry {
             display: flex;
-            gap: 0.7rem;
+            gap: 0.5rem;
             font-size: 0.82rem;
-            padding: 0.45rem 0.7rem;
+            padding: 0.4rem 0.65rem;
             background: rgba(0,0,0,0.15);
             border-radius: 6px;
-            align-items: flex-start;
+            align-items: center;
         }
         .log-entry-date { color: var(--accent-color); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-        .log-entry-note { color: var(--text-muted); }
+        .log-entry-note { color: var(--text-muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+        .log-entry-actions { display: flex; gap: 0.2rem; flex-shrink: 0; }
+
+        .log-action-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 0.78rem;
+            padding: 0.18rem 0.28rem;
+            border-radius: 4px;
+            opacity: 0.45;
+            transition: opacity 0.15s, background 0.15s;
+            color: var(--text-color);
+            line-height: 1;
+        }
+        .log-action-btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
+        .log-action-btn.delete:hover { color: #e74c3c; background: rgba(231,76,60,0.1); }
+
+        .log-entry.editing { flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+        .log-edit-date, .log-edit-note-input {
+            background: rgba(0,0,0,0.25);
+            border: 1px solid #3a6045;
+            border-radius: 5px;
+            color: var(--text-color);
+            padding: 0.28rem 0.5rem;
+            font-size: 0.8rem;
+            font-family: inherit;
+        }
+        .log-edit-date { flex-shrink: 0; }
+        .log-edit-note-input { flex: 1; min-width: 80px; }
+        .log-edit-date:focus, .log-edit-note-input:focus { outline: none; border-color: var(--accent-color); }
+        .log-edit-save { color: #2ecc71; opacity: 0.8; font-size: 0.95rem; }
+        .log-edit-save:hover { opacity: 1; background: rgba(46,204,113,0.12) !important; }
+
         .log-empty { font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 0.8rem 0; }
+
+        .log-section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            border-bottom: 1px solid #2e5040;
+            padding-bottom: 0.3rem;
+        }
+
+        .log-date-input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid #2e5040;
+            border-radius: 6px;
+            color: var(--text-color);
+            padding: 0.5rem 0.7rem;
+            font-size: 0.88rem;
+            font-family: inherit;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .log-date-input:focus { outline: none; border-color: var(--accent-color); }
 
         .log-note-input {
             background: rgba(0,0,0,0.2);
@@ -482,8 +537,9 @@
             font-size: 0.9rem;
             font-family: inherit;
             resize: vertical;
-            min-height: 58px;
+            min-height: 55px;
             width: 100%;
+            box-sizing: border-box;
         }
         .log-note-input::placeholder { color: var(--text-muted); }
         .log-note-input:focus { outline: none; border-color: var(--accent-color); }
@@ -504,9 +560,7 @@
         .log-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         /* ── Token Setup ── */
-        .token-setup {
-            margin-top: 0.6rem;
-        }
+        .token-setup { margin-top: 0.6rem; }
         .token-btn {
             background: transparent;
             border: 1px solid #2e5040;
@@ -518,7 +572,6 @@
             transition: all 0.15s;
         }
         .token-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
-        .token-btn.connected { border-color: rgba(46,204,113,0.5); color: var(--accent-color); }
 
         .token-modal {
             background: #1c3024;
@@ -1379,6 +1432,8 @@
         </div>
         <div class="log-modal-body">
             <div class="log-history" id="log-history"></div>
+            <div class="log-section-label">Přidat záznam</div>
+            <input type="date" class="log-date-input" id="log-date-input">
             <textarea class="log-note-input" id="log-note-input" placeholder="Poznámka (volitelné) — např. kolik hnojiva, stav substrátu..."></textarea>
             <button class="log-save-btn" id="log-save-btn">Uložit záznam</button>
         </div>
@@ -1425,8 +1480,7 @@
             if (!res.ok) throw new Error(res.status);
             const data = await res.json();
             fileSha = data.sha;
-            const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
-            plantLog = JSON.parse(decoded);
+            plantLog = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
         } catch (e) {
             console.warn('fetchLog:', e);
             plantLog = {};
@@ -1444,13 +1498,8 @@
                 headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
-            if (!res.ok) {
-                const err = await res.json();
-                console.error('saveLog:', err);
-                return false;
-            }
-            const data = await res.json();
-            fileSha = data.content.sha;
+            if (!res.ok) { console.error('saveLog:', await res.json()); return false; }
+            fileSha = (await res.json()).content.sha;
             return true;
         } catch (e) {
             console.error('saveLog:', e);
@@ -1459,9 +1508,7 @@
     }
 
     // ── Helpers ────────────────────────────────────────────────
-    function todayStr() {
-        return new Date().toISOString().slice(0, 10);
-    }
+    function todayStr() { return new Date().toISOString().slice(0, 10); }
 
     function daysSince(dateStr) {
         return Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
@@ -1473,8 +1520,7 @@
     }
 
     function getPlantId(card) {
-        const text = card.querySelector('.plant-title h2').textContent.trim();
-        return text.toLowerCase()
+        return card.querySelector('.plant-title h2').textContent.trim().toLowerCase()
             .replace(/[áâà]/g,'a').replace(/[éêè]/g,'e').replace(/[íî]/g,'i')
             .replace(/[óô]/g,'o').replace(/[úûů]/g,'u').replace(/ý/g,'y')
             .replace(/č/g,'c').replace(/š/g,'s').replace(/ž/g,'z')
@@ -1483,7 +1529,7 @@
             .replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-');
     }
 
-    function getEntries(plantId, type) {
+    function getLatestEntries(plantId, type) {
         return (plantLog[plantId]?.[type] || []).slice().reverse();
     }
 
@@ -1503,38 +1549,36 @@
         return 'overdue';
     }
 
-    // ── Log bars ───────────────────────────────────────────────
+    // ── Log bars (position: after photo-grid) ─────────────────
     function renderAllLogBars() {
         document.querySelectorAll('.plant-card').forEach(card => {
             const plantId = getPlantId(card);
             card.querySelector('.plant-log-bar')?.remove();
 
-            const wEntries = getEntries(plantId, 'water');
-            const fEntries = getEntries(plantId, 'fertilize');
+            const wE = getLatestEntries(plantId, 'water');
+            const fE = getLatestEntries(plantId, 'fertilize');
+            const plantName = card.querySelector('.plant-title h2').textContent;
 
             const bar = document.createElement('div');
             bar.className = 'plant-log-bar';
             bar.innerHTML = `
                 <div class="log-item">
                     <span class="log-icon">💧</span>
-                    <span class="log-days ${daysClass(wEntries,false)}" data-plant="${plantId}" data-type="water">${daysLabel(wEntries)}</span>
+                    <span class="log-days ${daysClass(wE,false)}" data-plant="${plantId}" data-type="water">${daysLabel(wE)}</span>
                     <button class="log-btn" data-plant="${plantId}" data-type="water" title="Zaznamenat zálivku">+</button>
                 </div>
                 <div class="log-item">
                     <span class="log-icon">🧪</span>
-                    <span class="log-days ${daysClass(fEntries,true)}" data-plant="${plantId}" data-type="fertilize">${daysLabel(fEntries)}</span>
+                    <span class="log-days ${daysClass(fE,true)}" data-plant="${plantId}" data-type="fertilize">${daysLabel(fE)}</span>
                     <button class="log-btn" data-plant="${plantId}" data-type="fertilize" title="Zaznamenat hnojení">+</button>
                 </div>`;
 
-            const plantName = card.querySelector('.plant-title h2').textContent;
-            bar.querySelectorAll('.log-days').forEach(el => {
-                el.addEventListener('click', () => openLogModal(el.dataset.plant, plantName, el.dataset.type));
-            });
-            bar.querySelectorAll('.log-btn').forEach(btn => {
-                btn.addEventListener('click', () => openLogModal(btn.dataset.plant, plantName, btn.dataset.type));
-            });
+            bar.querySelectorAll('.log-days').forEach(el =>
+                el.addEventListener('click', () => openLogModal(el.dataset.plant, plantName, el.dataset.type)));
+            bar.querySelectorAll('.log-btn').forEach(btn =>
+                btn.addEventListener('click', () => openLogModal(btn.dataset.plant, plantName, btn.dataset.type)));
 
-            card.appendChild(bar);
+            card.querySelector('.photo-grid').insertAdjacentElement('afterend', bar);
         });
     }
 
@@ -1546,24 +1590,85 @@
         activeModalPlantId = plantId;
         activeModalType    = type;
 
-        const title   = document.getElementById('log-modal-title');
-        const history = document.getElementById('log-history');
-        const note    = document.getElementById('log-note-input');
-        const saveBtn = document.getElementById('log-save-btn');
+        document.getElementById('log-modal-title').textContent =
+            `${type === 'water' ? '💧 Zálivka' : '🧪 Hnojení'} — ${plantName}`;
+        document.getElementById('log-date-input').value = todayStr();
+        document.getElementById('log-note-input').value = '';
+        const btn = document.getElementById('log-save-btn');
+        btn.disabled = false;
+        btn.textContent = 'Uložit záznam';
 
-        title.textContent = `${type === 'water' ? '💧 Zálivka' : '🧪 Hnojení'} — ${plantName}`;
-        note.value = '';
-        saveBtn.disabled = false;
-        saveBtn.textContent = 'Uložit záznam';
-
-        const entries = getEntries(plantId, type);
-        history.innerHTML = entries.length
-            ? entries.map(e => `<div class="log-entry"><span class="log-entry-date">${formatDate(e.date)}</span><span class="log-entry-note">${e.note || ''}</span></div>`).join('')
-            : '<div class="log-empty">Zatím žádné záznamy.</div>';
+        renderHistory();
 
         document.getElementById('log-modal-overlay').classList.add('active');
         document.body.style.overflow = 'hidden';
-        note.focus();
+    }
+
+    function renderHistory() {
+        const history    = document.getElementById('log-history');
+        const rawEntries = plantLog[activeModalPlantId]?.[activeModalType] || [];
+
+        if (!rawEntries.length) {
+            history.innerHTML = '<div class="log-empty">Zatím žádné záznamy.</div>';
+            return;
+        }
+
+        history.innerHTML = '';
+        for (let di = 0; di < rawEntries.length; di++) {
+            const actualIdx = rawEntries.length - 1 - di;
+            const e = rawEntries[actualIdx];
+            const div = document.createElement('div');
+            div.className = 'log-entry';
+            div.innerHTML = `
+                <span class="log-entry-date">${formatDate(e.date)}</span>
+                <span class="log-entry-note">${e.note || ''}</span>
+                <div class="log-entry-actions">
+                    <button class="log-action-btn edit" title="Upravit">✏️</button>
+                    <button class="log-action-btn delete" title="Smazat">🗑️</button>
+                </div>`;
+            div.querySelector('.edit').addEventListener('click',   () => startEditEntry(div, actualIdx));
+            div.querySelector('.delete').addEventListener('click', () => deleteEntry(actualIdx));
+            history.appendChild(div);
+        }
+    }
+
+    function startEditEntry(div, actualIdx) {
+        const entry = (plantLog[activeModalPlantId]?.[activeModalType] || [])[actualIdx];
+        if (!entry) return;
+        div.classList.add('editing');
+        div.innerHTML = `
+            <input type="date" class="log-edit-date" value="${entry.date}">
+            <input type="text"  class="log-edit-note-input" value="${entry.note || ''}" placeholder="Poznámka...">
+            <div class="log-entry-actions">
+                <button class="log-action-btn log-edit-save edit"   title="Uložit">✓</button>
+                <button class="log-action-btn log-edit-cancel delete" title="Zrušit">✕</button>
+            </div>`;
+        div.querySelector('.log-edit-save').addEventListener('click',   () => saveEditEntry(div, actualIdx));
+        div.querySelector('.log-edit-cancel').addEventListener('click', () => renderHistory());
+    }
+
+    async function saveEditEntry(div, actualIdx) {
+        const dateVal = div.querySelector('.log-edit-date').value;
+        const noteVal = div.querySelector('.log-edit-note-input').value.trim();
+        if (!dateVal) return;
+
+        const entries  = plantLog[activeModalPlantId][activeModalType];
+        const oldEntry = { ...entries[actualIdx] };
+        entries[actualIdx] = { date: dateVal, ...(noteVal && { note: noteVal }) };
+        entries.sort((a, b) => a.date.localeCompare(b.date));
+
+        const ok = await saveLog();
+        if (ok) { renderHistory(); renderAllLogBars(); }
+        else    { entries[actualIdx] = oldEntry; entries.sort((a,b) => a.date.localeCompare(b.date)); alert('Chyba při ukládání.'); }
+    }
+
+    async function deleteEntry(actualIdx) {
+        if (!confirm('Smazat tento záznam?')) return;
+        const entries = plantLog[activeModalPlantId][activeModalType];
+        const removed = entries.splice(actualIdx, 1);
+        const ok = await saveLog();
+        if (ok) { renderHistory(); renderAllLogBars(); }
+        else    { entries.splice(actualIdx, 0, ...removed); alert('Chyba při ukládání.'); }
     }
 
     function closeLogModal() {
@@ -1575,42 +1680,35 @@
 
     async function saveLogEntry() {
         if (!activeModalPlantId) return;
-        const saveBtn = document.getElementById('log-save-btn');
-        const note    = document.getElementById('log-note-input').value.trim();
+        const btn  = document.getElementById('log-save-btn');
+        const date = document.getElementById('log-date-input').value || todayStr();
+        const note = document.getElementById('log-note-input').value.trim();
 
-        saveBtn.disabled = true;
-        saveBtn.textContent = 'Ukládám…';
+        btn.disabled = true;
+        btn.textContent = 'Ukládám…';
 
         if (!plantLog[activeModalPlantId]) plantLog[activeModalPlantId] = {};
         if (!plantLog[activeModalPlantId][activeModalType]) plantLog[activeModalPlantId][activeModalType] = [];
 
-        const entry = { date: todayStr() };
-        if (note) entry.note = note;
+        const entry = { date, ...(note && { note }) };
         plantLog[activeModalPlantId][activeModalType].push(entry);
+        plantLog[activeModalPlantId][activeModalType].sort((a, b) => a.date.localeCompare(b.date));
 
         const ok = await saveLog();
-        if (ok) {
-            renderAllLogBars();
-            closeLogModal();
-        } else {
-            // roll back
-            plantLog[activeModalPlantId][activeModalType].pop();
-            saveBtn.disabled = false;
-            saveBtn.textContent = 'Uložit záznam';
+        if (ok) { renderAllLogBars(); closeLogModal(); }
+        else {
+            const arr = plantLog[activeModalPlantId][activeModalType];
+            const i = arr.findLastIndex(e => e.date === date && (e.note || '') === note);
+            if (i !== -1) arr.splice(i, 1);
+            btn.disabled = false;
+            btn.textContent = 'Uložit záznam';
             alert('Chyba při ukládání. Zkontroluj token nebo připojení.');
         }
     }
 
     // ── Token modal ────────────────────────────────────────────
     function updateTokenBtn() {
-        const btn = document.getElementById('token-setup-btn');
-        if (ghToken) {
-            btn.textContent = '✅ Deník připojen';
-            btn.classList.add('connected');
-        } else {
-            btn.textContent = '🔑 Nastavit přístup pro deník';
-            btn.classList.remove('connected');
-        }
+        document.querySelector('.token-setup').style.display = ghToken ? 'none' : '';
     }
 
     function openTokenModal() {
@@ -1628,47 +1726,38 @@
     document.addEventListener('DOMContentLoaded', async () => {
 
         // Filtrování karet
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const plantCards = document.querySelectorAll('.plant-card');
-        tabButtons.forEach(button => {
+        document.querySelectorAll('.tab-btn').forEach(button => {
             button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 button.classList.add('active');
-                const filterValue = button.getAttribute('data-filter');
-                plantCards.forEach(card => {
-                    const cardStyle = card.getAttribute('data-style');
-                    card.classList.toggle('hidden', filterValue !== 'all' && cardStyle !== filterValue);
+                const f = button.getAttribute('data-filter');
+                document.querySelectorAll('.plant-card').forEach(card => {
+                    card.classList.toggle('hidden', f !== 'all' && card.getAttribute('data-style') !== f);
                 });
             });
         });
 
         // Lightbox
-        const lbOverlay  = document.getElementById('lightbox');
-        const lbImg      = document.getElementById('lightbox-img');
-        const lbClose    = document.getElementById('lightbox-close');
+        const lbOverlay = document.getElementById('lightbox');
+        const lbImg     = document.getElementById('lightbox-img');
 
-        function closeLightbox() {
-            lbOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+        function closeLightbox() { lbOverlay.classList.remove('active'); document.body.style.overflow = ''; }
 
         document.querySelectorAll('.plant-photo').forEach(img => {
             img.addEventListener('click', () => {
-                lbImg.src = img.src;
-                lbImg.alt = img.alt;
-                lbOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                lbImg.src = img.src; lbImg.alt = img.alt;
+                lbOverlay.classList.add('active'); document.body.style.overflow = 'hidden';
             });
         });
-        lbClose.addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
         lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) closeLightbox(); });
 
-        // Log modal events
+        // Log modal
         document.getElementById('log-modal-close').addEventListener('click', closeLogModal);
         document.getElementById('log-modal-overlay').addEventListener('click', e => { if (e.target.id === 'log-modal-overlay') closeLogModal(); });
         document.getElementById('log-save-btn').addEventListener('click', saveLogEntry);
 
-        // Token modal events
+        // Token modal
         document.getElementById('token-setup-btn').addEventListener('click', openTokenModal);
         document.getElementById('token-modal-close').addEventListener('click', closeTokenModal);
         document.getElementById('token-modal-overlay').addEventListener('click', e => { if (e.target.id === 'token-modal-overlay') closeTokenModal(); });
@@ -1688,15 +1777,11 @@
             closeTokenModal();
         });
 
-        // Escape key
         document.addEventListener('keydown', e => {
             if (e.key !== 'Escape') return;
-            closeLightbox();
-            closeLogModal();
-            closeTokenModal();
+            closeLightbox(); closeLogModal(); closeTokenModal();
         });
 
-        // Load log & render
         updateTokenBtn();
         await fetchLog();
         renderAllLogBars();
