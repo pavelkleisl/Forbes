@@ -610,6 +610,111 @@
         }
         .token-clear-btn:hover { color: #e74c3c; }
 
+        /* ── Settings Button & Modal ── */
+        .settings-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.22rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+            opacity: 0.5;
+            transition: opacity 0.15s, background 0.15s;
+            line-height: 1;
+            align-self: center;
+        }
+        .settings-btn:hover { opacity: 1; background: rgba(255,255,255,0.07); }
+
+        .settings-modal {
+            background: #1c3024;
+            border: 1px solid #2e5040;
+            border-radius: var(--border-radius);
+            width: min(380px, 94vw);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.75);
+            animation: lightbox-in 0.18s ease;
+        }
+        .settings-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.4rem;
+            border-bottom: 1px solid #2e5040;
+        }
+        .settings-modal-header h3 { font-size: 0.95rem; font-weight: 600; }
+        .settings-modal-body {
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .settings-row { display: flex; flex-direction: column; gap: 0.45rem; }
+        .settings-row > label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .settings-controls { display: flex; align-items: center; gap: 0.6rem; }
+        .settings-enabled {
+            width: 1.05rem; height: 1.05rem;
+            accent-color: var(--accent-color);
+            cursor: pointer; flex-shrink: 0;
+        }
+        .settings-days-input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid #2e5040;
+            border-radius: 6px;
+            color: var(--text-color);
+            padding: 0.42rem 0.6rem;
+            font-size: 0.88rem;
+            font-family: inherit;
+            width: 75px;
+            text-align: center;
+        }
+        .settings-days-input:focus { outline: none; border-color: var(--accent-color); }
+        .settings-days-input:disabled { opacity: 0.3; }
+        .settings-unit { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ── Care Summary ── */
+        .care-summary {
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #2e5040;
+            background: rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .care-summary-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1rem;
+            background: rgba(0,0,0,0.18);
+            cursor: pointer;
+            user-select: none;
+        }
+        .care-summary-header h3 { font-size: 0.83rem; font-weight: 600; color: var(--text-muted); }
+        .care-summary-toggle { color: var(--text-muted); font-size: 0.75rem; }
+        .care-summary-list { display: flex; flex-direction: column; }
+        .care-item {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.42rem 1rem;
+            font-size: 0.82rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            cursor: pointer;
+            transition: background 0.12s;
+        }
+        .care-item:hover { background: rgba(255,255,255,0.03); }
+        .care-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+        .care-dot.overdue { background: #e74c3c; }
+        .care-dot.stale   { background: #e67e22; }
+        .care-plant { font-weight: 600; color: var(--text-color); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .care-info { color: var(--text-muted); font-size: 0.77rem; white-space: nowrap; flex-shrink: 0; }
+
         /* ── Mobile Friendly Optimalizace ── */
         @media (max-width: 768px) {
             body {
@@ -700,6 +805,15 @@
         <button class="tab-btn" data-filter="citlivky">Sukulentní</button>
         <button class="tab-btn" data-filter="plevel">Rychlerostoucí</button>
     </nav>
+
+    <!-- Care Summary -->
+    <div id="care-summary" class="care-summary" style="display:none">
+        <div class="care-summary-header" id="care-summary-header">
+            <h3 id="care-summary-title">🌿 Péče o rostliny</h3>
+            <span class="care-summary-toggle" id="care-summary-toggle">▾</span>
+        </div>
+        <div class="care-summary-list" id="care-summary-list"></div>
+    </div>
 
     <main class="plants-grid" id="plants-container">
 
@@ -1434,7 +1548,7 @@
             <div class="log-history" id="log-history"></div>
             <div class="log-section-label">Přidat záznam</div>
             <input type="date" class="log-date-input" id="log-date-input">
-            <textarea class="log-note-input" id="log-note-input" placeholder="Poznámka (volitelné) — např. kolik hnojiva, stav substrátu..."></textarea>
+            <textarea class="log-note-input" id="log-note-input" placeholder="Poznámka"></textarea>
             <button class="log-save-btn" id="log-save-btn">Uložit záznam</button>
         </div>
     </div>
@@ -1451,6 +1565,35 @@
         <input class="token-input" type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
         <button class="log-save-btn" id="token-save-btn">Uložit token</button>
         <button class="token-clear-btn" id="token-clear-btn">Odebrat token z tohoto zařízení</button>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settings-modal-overlay">
+    <div class="settings-modal">
+        <div class="settings-modal-header">
+            <h3 id="settings-modal-title">⚙️ Nastavení péče</h3>
+            <button class="lightbox-close" id="settings-modal-close" aria-label="Zavřít">&#x2715;</button>
+        </div>
+        <div class="settings-modal-body">
+            <div class="settings-row">
+                <label>💧 Interval zálivky</label>
+                <div class="settings-controls">
+                    <input type="checkbox" class="settings-enabled" id="settings-water-enabled" title="Zapnout upozornění na zálivku">
+                    <input type="number" class="settings-days-input" id="settings-water-days" min="1" max="365" placeholder="—">
+                    <span class="settings-unit">dní</span>
+                </div>
+            </div>
+            <div class="settings-row">
+                <label>🧪 Interval hnojení</label>
+                <div class="settings-controls">
+                    <input type="checkbox" class="settings-enabled" id="settings-fertilize-enabled" title="Zapnout upozornění na hnojení">
+                    <input type="number" class="settings-days-input" id="settings-fertilize-days" min="1" max="365" placeholder="—">
+                    <span class="settings-unit">dní</span>
+                </div>
+            </div>
+            <button class="log-save-btn" id="settings-save-btn">Uložit nastavení</button>
+        </div>
     </div>
 </div>
 
@@ -1533,53 +1676,239 @@
         return (plantLog[plantId]?.[type] || []).slice().reverse();
     }
 
-    function daysLabel(entries) {
-        if (!entries.length) return 'nikdy';
-        const d = daysSince(entries[0].date);
-        if (d === 0) return 'dnes';
-        if (d === 1) return 'včera';
-        return `před ${d} dny`;
+    function getSettings(plantId) {
+        return plantLog[plantId]?.settings || {};
     }
 
-    function daysClass(entries, isFert) {
-        if (!entries.length) return '';
+    function daysLabel(entries, plantId, type) {
+        const interval = type === 'water'
+            ? getSettings(plantId).water_interval
+            : getSettings(plantId).fertilize_interval;
+
+        if (!entries.length) return interval ? 'neprovedeno' : 'nikdy';
+
         const d = daysSince(entries[0].date);
-        if (d <= (isFert ? 10 : 4)) return 'fresh';
-        if (d <= (isFert ? 25 : 9)) return 'stale';
-        return 'overdue';
+        if (!interval) {
+            if (d === 0) return 'dnes';
+            if (d === 1) return 'včera';
+            return `před ${d} dny`;
+        }
+        const rem = interval - d;
+        if (rem > 0) return `za ${rem} d`;
+        if (rem === 0) return 'DNES';
+        return `−${Math.abs(rem)} d`;
+    }
+
+    function daysClass(entries, plantId, type) {
+        const interval = type === 'water'
+            ? getSettings(plantId).water_interval
+            : getSettings(plantId).fertilize_interval;
+        const isFert = type === 'fertilize';
+
+        if (!entries.length) {
+            return interval ? 'overdue' : '';
+        }
+        const d = daysSince(entries[0].date);
+        if (!interval) {
+            if (d <= (isFert ? 10 : 4)) return 'fresh';
+            if (d <= (isFert ? 25 : 9)) return 'stale';
+            return 'overdue';
+        }
+        const rem = interval - d;
+        if (rem < 0) return 'overdue';
+        if (rem <= Math.max(1, Math.floor(interval * 0.25))) return 'stale';
+        return 'fresh';
+    }
+
+    // ── Settings modal ─────────────────────────────────────────
+    let activeSettingsPlantId = null;
+
+    function openSettingsModal(plantId, plantName) {
+        activeSettingsPlantId = plantId;
+        document.getElementById('settings-modal-title').textContent = `⚙️ Péče — ${plantName}`;
+
+        const s = getSettings(plantId);
+
+        const wEn = document.getElementById('settings-water-enabled');
+        const wD  = document.getElementById('settings-water-days');
+        const fEn = document.getElementById('settings-fertilize-enabled');
+        const fD  = document.getElementById('settings-fertilize-days');
+
+        wEn.checked = s.water_interval != null;
+        wD.value    = s.water_interval || '';
+        wD.disabled = !wEn.checked;
+
+        fEn.checked = s.fertilize_interval != null;
+        fD.value    = s.fertilize_interval || '';
+        fD.disabled = !fEn.checked;
+
+        const btn = document.getElementById('settings-save-btn');
+        btn.disabled = false;
+        btn.textContent = 'Uložit nastavení';
+
+        document.getElementById('settings-modal-overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+        document.getElementById('settings-modal-overlay').classList.remove('active');
+        document.body.style.overflow = '';
+        activeSettingsPlantId = null;
+    }
+
+    async function saveSettings() {
+        if (!activeSettingsPlantId) return;
+        const btn = document.getElementById('settings-save-btn');
+
+        const wEn = document.getElementById('settings-water-enabled').checked;
+        const wD  = parseInt(document.getElementById('settings-water-days').value);
+        const fEn = document.getElementById('settings-fertilize-enabled').checked;
+        const fD  = parseInt(document.getElementById('settings-fertilize-days').value);
+
+        if (!plantLog[activeSettingsPlantId]) plantLog[activeSettingsPlantId] = {};
+
+        const newSettings = {};
+        if (wEn && wD > 0) newSettings.water_interval = wD;
+        if (fEn && fD > 0) newSettings.fertilize_interval = fD;
+
+        const oldSettings = plantLog[activeSettingsPlantId].settings;
+        if (Object.keys(newSettings).length) {
+            plantLog[activeSettingsPlantId].settings = newSettings;
+        } else {
+            delete plantLog[activeSettingsPlantId].settings;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Ukládám…';
+
+        const ok = await saveLog();
+        if (ok) {
+            renderAllLogBars();
+            closeSettingsModal();
+        } else {
+            if (oldSettings) plantLog[activeSettingsPlantId].settings = oldSettings;
+            else delete plantLog[activeSettingsPlantId].settings;
+            btn.disabled = false;
+            btn.textContent = 'Uložit nastavení';
+            alert('Chyba při ukládání.');
+        }
+    }
+
+    // ── Care Summary ───────────────────────────────────────────
+    function renderCareSummary() {
+        const summaryEl = document.getElementById('care-summary');
+        const listEl    = document.getElementById('care-summary-list');
+        const titleEl   = document.getElementById('care-summary-title');
+
+        const items = [];
+
+        document.querySelectorAll('.plant-card').forEach(card => {
+            const plantId   = getPlantId(card);
+            const plantName = card.querySelector('.plant-title h2').textContent;
+            const s         = getSettings(plantId);
+
+            const check = (type, icon) => {
+                const interval = type === 'water' ? s.water_interval : s.fertilize_interval;
+                if (!interval) return;
+
+                const entries = getLatestEntries(plantId, type);
+                if (!entries.length) {
+                    items.push({ plantId, plantName, type, icon, cls: 'overdue', msg: 'nikdy neprovedeno', urgency: 9999 });
+                    return;
+                }
+
+                const d   = daysSince(entries[0].date);
+                const rem = interval - d;
+                const threshold = Math.max(1, Math.floor(interval * 0.25));
+
+                if (rem <= threshold) {
+                    const msg = rem < 0  ? `po termínu ${Math.abs(rem)} dní`
+                              : rem === 0 ? 'DNES'
+                              : rem === 1 ? 'za 1 den'
+                              : `za ${rem} dny`;
+                    const cls = rem <= 0 ? 'overdue' : 'stale';
+                    items.push({ plantId, plantName, type, icon, cls, msg, urgency: rem });
+                }
+            };
+
+            check('water',     '💧');
+            check('fertilize', '🧪');
+        });
+
+        if (!items.length) {
+            summaryEl.style.display = 'none';
+            return;
+        }
+
+        items.sort((a, b) => a.urgency - b.urgency);
+
+        const overdueCount = items.filter(i => i.cls === 'overdue').length;
+        titleEl.textContent = overdueCount
+            ? `🌿 Péče o rostliny — ${overdueCount} po termínu`
+            : `🌿 Péče o rostliny — ${items.length} brzy`;
+
+        listEl.innerHTML = '';
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'care-item';
+            div.innerHTML = `
+                <span class="care-dot ${item.cls}"></span>
+                <span class="log-icon">${item.icon}</span>
+                <span class="care-plant">${item.plantName}</span>
+                <span class="care-info">${item.msg}</span>`;
+            div.addEventListener('click', () => {
+                const card = [...document.querySelectorAll('.plant-card')]
+                    .find(c => getPlantId(c) === item.plantId);
+                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                openLogModal(item.plantId, item.plantName, item.type);
+            });
+            listEl.appendChild(div);
+        });
+
+        summaryEl.style.display = '';
     }
 
     // ── Log bars (position: after photo-grid) ─────────────────
     function renderAllLogBars() {
         document.querySelectorAll('.plant-card').forEach(card => {
-            const plantId = getPlantId(card);
+            const plantId   = getPlantId(card);
+            const plantName = card.querySelector('.plant-title h2').textContent;
             card.querySelector('.plant-log-bar')?.remove();
 
             const wE = getLatestEntries(plantId, 'water');
             const fE = getLatestEntries(plantId, 'fertilize');
-            const plantName = card.querySelector('.plant-title h2').textContent;
+
+            const wCls = daysClass(wE, plantId, 'water');
+            const fCls = daysClass(fE, plantId, 'fertilize');
+            const wLbl = daysLabel(wE, plantId, 'water');
+            const fLbl = daysLabel(fE, plantId, 'fertilize');
 
             const bar = document.createElement('div');
             bar.className = 'plant-log-bar';
             bar.innerHTML = `
                 <div class="log-item">
                     <span class="log-icon">💧</span>
-                    <span class="log-days ${daysClass(wE,false)}" data-plant="${plantId}" data-type="water">${daysLabel(wE)}</span>
+                    <span class="log-days ${wCls}" data-plant="${plantId}" data-type="water">${wLbl}</span>
                     <button class="log-btn" data-plant="${plantId}" data-type="water" title="Zaznamenat zálivku">+</button>
                 </div>
                 <div class="log-item">
                     <span class="log-icon">🧪</span>
-                    <span class="log-days ${daysClass(fE,true)}" data-plant="${plantId}" data-type="fertilize">${daysLabel(fE)}</span>
+                    <span class="log-days ${fCls}" data-plant="${plantId}" data-type="fertilize">${fLbl}</span>
                     <button class="log-btn" data-plant="${plantId}" data-type="fertilize" title="Zaznamenat hnojení">+</button>
-                </div>`;
+                </div>
+                <button class="settings-btn" title="Nastavit intervaly péče">⚙️</button>`;
 
             bar.querySelectorAll('.log-days').forEach(el =>
                 el.addEventListener('click', () => openLogModal(el.dataset.plant, plantName, el.dataset.type)));
             bar.querySelectorAll('.log-btn').forEach(btn =>
                 btn.addEventListener('click', () => openLogModal(btn.dataset.plant, plantName, btn.dataset.type)));
+            bar.querySelector('.settings-btn').addEventListener('click', () =>
+                openSettingsModal(plantId, plantName));
 
             card.querySelector('.photo-grid').insertAdjacentElement('afterend', bar);
         });
+
+        renderCareSummary();
     }
 
     // ── Log modal ──────────────────────────────────────────────
@@ -1777,9 +2106,31 @@
             closeTokenModal();
         });
 
+        // Settings modal
+        document.getElementById('settings-modal-close').addEventListener('click', closeSettingsModal);
+        document.getElementById('settings-modal-overlay').addEventListener('click', e => {
+            if (e.target.id === 'settings-modal-overlay') closeSettingsModal();
+        });
+        document.getElementById('settings-save-btn').addEventListener('click', saveSettings);
+        document.getElementById('settings-water-enabled').addEventListener('change', e => {
+            document.getElementById('settings-water-days').disabled = !e.target.checked;
+        });
+        document.getElementById('settings-fertilize-enabled').addEventListener('change', e => {
+            document.getElementById('settings-fertilize-days').disabled = !e.target.checked;
+        });
+
+        // Care summary toggle
+        document.getElementById('care-summary-header').addEventListener('click', () => {
+            const list   = document.getElementById('care-summary-list');
+            const toggle = document.getElementById('care-summary-toggle');
+            const open   = list.style.display !== 'none';
+            list.style.display   = open ? 'none' : '';
+            toggle.textContent   = open ? '▸' : '▾';
+        });
+
         document.addEventListener('keydown', e => {
             if (e.key !== 'Escape') return;
-            closeLightbox(); closeLogModal(); closeTokenModal();
+            closeLightbox(); closeLogModal(); closeTokenModal(); closeSettingsModal();
         });
 
         updateTokenBtn();
