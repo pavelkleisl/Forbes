@@ -41,6 +41,7 @@
   },
   "peperomia-obtusifolia": {
     "settings": {
+      "water_interval": "manual",
       "fertilize_interval": 14
     }
   },
