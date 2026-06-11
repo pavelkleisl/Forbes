@@ -32,7 +32,8 @@
     "settings": {
       "water_interval": 14,
       "fertilize_interval": 20
-    }
+    },
+    "gallery": []
   },
   "zamioculcas-zamiifolia": {
     "settings": {
