@@ -33,5 +33,25 @@
       "water_interval": 14,
       "fertilize_interval": 20
     }
+  },
+  "zamioculcas-zamiifolia": {
+    "settings": {
+      "fertilize_interval": 30
+    }
+  },
+  "peperomia-obtusifolia": {
+    "settings": {
+      "fertilize_interval": 14
+    }
+  },
+  "epipremnum-marble-queen": {
+    "settings": {
+      "fertilize_interval": 14
+    }
+  },
+  "aglaonema-silver-bay": {
+    "settings": {
+      "fertilize_interval": 20
+    }
   }
 }
