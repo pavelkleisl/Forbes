@@ -941,6 +941,87 @@
         button, a, input, textarea, select {
             touch-action: manipulation;
         }
+
+        /* ── Plant Gallery ── */
+        .plant-gallery {
+            padding: 0.7rem 1rem 0.9rem;
+            border-top: 1px solid #2e5040;
+        }
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .gallery-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .gallery-add-btn {
+            background: rgba(46,204,113,0.08);
+            border: 1px solid #2e5040;
+            color: var(--accent-color);
+            border-radius: 6px;
+            padding: 0.28rem 0.65rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: inherit;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: background 0.12s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .gallery-add-btn:active { background: rgba(46,204,113,0.18); }
+        .gallery-add-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+        .gallery-scroll {
+            display: flex;
+            gap: 0.45rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 2px;
+        }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        .gallery-thumb-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .gallery-thumb {
+            width: 82px;
+            height: 82px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            border: 1px solid #2e5040;
+        }
+        .gallery-delete-btn {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.72);
+            border: none;
+            color: #fff;
+            font-size: 0.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.55;
+            transition: opacity 0.12s, background 0.12s;
+            line-height: 1;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .gallery-delete-btn:hover, .gallery-delete-btn:active { opacity: 1; background: rgba(231,76,60,0.85); }
+        .gallery-empty { font-size: 0.78rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -1687,6 +1768,13 @@
         <input class="token-input" type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
         <button class="log-save-btn" id="token-save-btn">Uložit token</button>
         <button class="token-clear-btn" id="token-clear-btn">Odebrat token z tohoto zařízení</button>
+        <div style="border-top:1px solid #2e5040;margin-top:1rem;padding-top:1rem;">
+            <h3 style="font-size:1rem;margin-bottom:0.5rem;">📸 imgbb API klíč</h3>
+            <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:0.75rem;line-height:1.45;">Pro nahrávání fotek do galerie. Klíč získáš zdarma na <strong style="color:var(--accent-color)">api.imgbb.com</strong> po registraci.</p>
+            <input class="token-input" type="password" id="imgbb-key-input" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+            <button class="log-save-btn" id="imgbb-key-save-btn" style="margin-top:0.4rem;">Uložit klíč</button>
+            <button class="token-clear-btn" id="imgbb-key-clear-btn">Odebrat imgbb klíč</button>
+        </div>
     </div>
 </div>
 
@@ -1732,6 +1820,8 @@
     </div>
 </div>
 
+<input type="file" id="gallery-file-input" accept="image/*" style="display:none">
+
 <div class="lightbox-overlay" id="lightbox">
     <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&#x2715;</button>
     <img class="lightbox-img" id="lightbox-img" src="" alt="">
@@ -1747,6 +1837,8 @@
     let plantLog = {};
     let fileSha  = null;
     let ghToken  = localStorage.getItem('plant_gh_token');
+    let imgbbKey = localStorage.getItem('plant_imgbb_key');
+    let galleryUploadPlantId = null;
 
     // ── GitHub helpers ─────────────────────────────────────────
     async function fetchLog() {
@@ -2160,6 +2252,7 @@
 
         renderCareSummary();
         buildGrid();
+        renderGalleries();
     }
 
     // ── Log modal ──────────────────────────────────────────────
@@ -2286,6 +2379,169 @@
         }
     }
 
+    // ── Gallery ────────────────────────────────────────────────
+    function renderGalleries() {
+        document.querySelectorAll('.plant-card').forEach(card => {
+            const plantId = getPlantId(card);
+            card.querySelector('.plant-gallery')?.remove();
+
+            const photos = plantLog[plantId]?.gallery || [];
+
+            const section = document.createElement('div');
+            section.className = 'plant-gallery';
+
+            const addBtn = document.createElement('button');
+            addBtn.className = 'gallery-add-btn';
+            addBtn.innerHTML = '📷 Přidat foto';
+            addBtn.addEventListener('click', () => triggerGalleryUpload(plantId, addBtn));
+
+            const header = document.createElement('div');
+            header.className = 'gallery-header';
+            const label = document.createElement('span');
+            label.className = 'gallery-label';
+            label.textContent = '📸 Galerie';
+            header.appendChild(label);
+            header.appendChild(addBtn);
+            section.appendChild(header);
+
+            const scroll = document.createElement('div');
+            scroll.className = 'gallery-scroll';
+
+            if (photos.length === 0) {
+                const empty = document.createElement('span');
+                empty.className = 'gallery-empty';
+                empty.textContent = 'Zatím žádné fotky.';
+                scroll.appendChild(empty);
+            } else {
+                photos.forEach((photo, idx) => {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'gallery-thumb-wrap';
+
+                    const img = document.createElement('img');
+                    img.className = 'gallery-thumb';
+                    img.src = photo.thumb || photo.url;
+                    img.alt = 'Fotka rostliny';
+                    img.loading = 'lazy';
+                    img.addEventListener('click', () => {
+                        const lbImg = document.getElementById('lightbox-img');
+                        lbImg.src = photo.url;
+                        lbImg.alt = 'Fotka rostliny';
+                        document.getElementById('lightbox').classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+
+                    const delBtn = document.createElement('button');
+                    delBtn.className = 'gallery-delete-btn';
+                    delBtn.textContent = '✕';
+                    delBtn.title = 'Odstranit foto';
+                    delBtn.addEventListener('click', () => deleteGalleryPhoto(plantId, idx));
+
+                    wrap.appendChild(img);
+                    wrap.appendChild(delBtn);
+                    scroll.appendChild(wrap);
+                });
+            }
+
+            section.appendChild(scroll);
+            card.appendChild(section);
+        });
+    }
+
+    function triggerGalleryUpload(plantId) {
+        if (!imgbbKey) {
+            alert('Nejprve nastav imgbb API klíč — klikni na 🔑 v záhlaví stránky.');
+            return;
+        }
+        galleryUploadPlantId = plantId;
+        document.getElementById('gallery-file-input').click();
+    }
+
+    async function resizeImage(file, maxSize = 1400) {
+        return new Promise(resolve => {
+            const img = new Image();
+            const blobUrl = URL.createObjectURL(file);
+            img.onload = () => {
+                URL.revokeObjectURL(blobUrl);
+                let w = img.width, h = img.height;
+                if (w <= maxSize && h <= maxSize) { resolve(file); return; }
+                if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+                else       { w = Math.round(w * maxSize / h); h = maxSize; }
+                const canvas = document.createElement('canvas');
+                canvas.width = w; canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.82);
+            };
+            img.onerror = () => resolve(file);
+            img.src = blobUrl;
+        });
+    }
+
+    async function handleGalleryFileSelect(file) {
+        if (!galleryUploadPlantId || !file) return;
+        const plantId = galleryUploadPlantId;
+        galleryUploadPlantId = null;
+
+        const card = [...document.querySelectorAll('.plant-card')].find(c => getPlantId(c) === plantId);
+        const addBtn = card?.querySelector('.gallery-add-btn');
+        if (addBtn) { addBtn.disabled = true; addBtn.textContent = '⏳ Nahrávám…'; }
+
+        try {
+            const resized = await resizeImage(file);
+            const base64 = await new Promise((res, rej) => {
+                const reader = new FileReader();
+                reader.onload  = e => res(e.target.result.split(',')[1]);
+                reader.onerror = rej;
+                reader.readAsDataURL(resized);
+            });
+
+            const form = new FormData();
+            form.append('key', imgbbKey);
+            form.append('image', base64);
+
+            const resp = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: form });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const data = await resp.json();
+            if (!data.success) throw new Error(data.error?.message || 'Upload selhal');
+
+            const photo = {
+                url:   data.data.url,
+                thumb: data.data.thumb?.url || data.data.display_url,
+                date:  todayStr(),
+            };
+
+            if (!plantLog[plantId]) plantLog[plantId] = {};
+            if (!plantLog[plantId].gallery) plantLog[plantId].gallery = [];
+            plantLog[plantId].gallery.push(photo);
+
+            const ok = await saveLog();
+            if (ok) {
+                renderGalleries();
+            } else {
+                plantLog[plantId].gallery.pop();
+                if (addBtn) { addBtn.disabled = false; addBtn.textContent = '📷 Přidat foto'; }
+                alert('Fotka nahrána na imgbb, ale nepodařilo se uložit odkaz do deníku. Zkontroluj GitHub token.');
+            }
+        } catch (e) {
+            console.error('Gallery upload:', e);
+            if (addBtn) { addBtn.disabled = false; addBtn.textContent = '📷 Přidat foto'; }
+            alert('Chyba při nahrávání fotky: ' + e.message);
+        }
+    }
+
+    async function deleteGalleryPhoto(plantId, idx) {
+        if (!confirm('Odstranit tuto fotku z galerie?')) return;
+        const gallery = plantLog[plantId]?.gallery;
+        if (!gallery) return;
+        const removed = gallery.splice(idx, 1);
+        const ok = await saveLog();
+        if (ok) {
+            renderGalleries();
+        } else {
+            gallery.splice(idx, 0, ...removed);
+            alert('Chyba při ukládání.');
+        }
+    }
+
     // ── Token modal ────────────────────────────────────────────
     function updateTokenBtn() {
         document.querySelector('.token-setup').style.display = ghToken ? 'none' : '';
@@ -2359,6 +2615,32 @@
             localStorage.removeItem('plant_gh_token');
             updateTokenBtn();
             closeTokenModal();
+        });
+
+        // imgbb key
+        const imgbbKeyInput = document.getElementById('imgbb-key-input');
+        if (imgbbKey) imgbbKeyInput.placeholder = '(klíč uložen)';
+        document.getElementById('imgbb-key-save-btn').addEventListener('click', () => {
+            const val = imgbbKeyInput.value.trim();
+            if (!val) return;
+            imgbbKey = val;
+            localStorage.setItem('plant_imgbb_key', val);
+            imgbbKeyInput.value = '';
+            imgbbKeyInput.placeholder = '(klíč uložen)';
+            closeTokenModal();
+        });
+        document.getElementById('imgbb-key-clear-btn').addEventListener('click', () => {
+            imgbbKey = null;
+            localStorage.removeItem('plant_imgbb_key');
+            imgbbKeyInput.value = '';
+            imgbbKeyInput.placeholder = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+        });
+
+        // Gallery file input
+        document.getElementById('gallery-file-input').addEventListener('change', e => {
+            const file = e.target.files[0];
+            e.target.value = '';
+            if (file) handleGalleryFileSelect(file);
         });
 
         // Settings modal
