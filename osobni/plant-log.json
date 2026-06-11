@@ -4,7 +4,11 @@
       {
         "date": "2026-06-09"
       }
-    ]
+    ],
+    "settings": {
+      "water_interval": 10,
+      "fertilize_interval": 30
+    }
   },
   "epipremnum-njoy": {},
   "monstera-deliciosa": {
