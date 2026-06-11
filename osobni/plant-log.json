@@ -1,10 +1,23 @@
 {
   "phalaenopsis": {
+    "water": []
+  },
+  "epipremnum-njoy": {},
+  "monstera-deliciosa": {
     "water": [
       {
-        "date": "2026-06-10",
-        "note": "9.6"
+        "date": "2026-06-09"
       }
-    ]
+    ],
+    "settings": {
+      "water_interval": 7,
+      "fertilize_interval": 20
+    }
+  },
+  "maranta-leuconeura": {
+    "settings": {
+      "water_interval": 5,
+      "fertilize_interval": 20
+    }
   }
 }
