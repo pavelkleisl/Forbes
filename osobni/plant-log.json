@@ -48,5 +48,10 @@
     "settings": {
       "fertilize_interval": 14
     }
+  },
+  "aglaonema-silver-bay": {
+    "settings": {
+      "fertilize_interval": 20
+    }
   }
 }
