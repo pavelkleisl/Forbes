@@ -27,5 +27,11 @@
       "water_interval": 5,
       "fertilize_interval": 20
     }
+  },
+  "peperomia-raindrop": {
+    "settings": {
+      "water_interval": 14,
+      "fertilize_interval": 20
+    }
   }
 }
