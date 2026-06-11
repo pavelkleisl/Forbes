@@ -16,6 +16,7 @@
   },
   "maranta-leuconeura": {
     "settings": {
+      "water_interval": 5,
       "fertilize_interval": 20
     }
   }
