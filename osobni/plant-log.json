@@ -43,5 +43,10 @@
     "settings": {
       "fertilize_interval": 14
     }
+  },
+  "epipremnum-marble-queen": {
+    "settings": {
+      "fertilize_interval": 14
+    }
   }
 }
