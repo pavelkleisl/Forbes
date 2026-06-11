@@ -54,5 +54,11 @@
       "water_interval": 14,
       "fertilize_interval": 20
     }
+  },
+  "strelitzia-nicolai": {
+    "settings": {
+      "water_interval": 7,
+      "fertilize_interval": 7
+    }
   }
 }
