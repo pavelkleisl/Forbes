@@ -553,18 +553,32 @@
         .log-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         /* ── Token Setup ── */
-        .token-setup { margin-top: 0.6rem; }
-        .token-btn {
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .token-icon-btn {
+            position: absolute;
+            right: 0;
             background: transparent;
             border: 1px solid #2e5040;
             color: var(--text-muted);
-            padding: 0.28rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.78rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1rem;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.15s;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-        .token-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .token-icon-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .token-icon-btn:active { background: rgba(46,204,113,0.1); }
 
         .token-modal {
             background: #1c3024;
@@ -1028,9 +1042,9 @@
 
 <div class="container">
     <header>
-        <h1>🌱 Plant Management</h1>
-        <div class="token-setup">
-            <button class="token-btn" id="token-setup-btn">🔑 Nastavit přístup pro deník</button>
+        <div class="header-top">
+            <h1>🌱 Plant Management</h1>
+            <button class="token-icon-btn" id="token-setup-btn" title="Nastavení přístupu">🔑</button>
         </div>
     </header>
 
@@ -2062,7 +2076,7 @@
 
     function openSettingsModal(plantId, plantName) {
         activeSettingsPlantId = plantId;
-        document.getElementById('settings-modal-title').textContent = `⚙️ Péče — ${plantName}`;
+        document.getElementById('settings-modal-title').textContent = `⚙️ Nastavení péče`;
 
         const s = getSettings(plantId);
 
@@ -2443,7 +2457,12 @@
             }
 
             section.appendChild(scroll);
-            card.appendChild(section);
+            const plantHeader = card.querySelector('.plant-header');
+            if (plantHeader) {
+                plantHeader.insertAdjacentElement('afterend', section);
+            } else {
+                card.appendChild(section);
+            }
         });
     }
 
@@ -2544,7 +2563,7 @@
 
     // ── Token modal ────────────────────────────────────────────
     function updateTokenBtn() {
-        document.querySelector('.token-setup').style.display = ghToken ? 'none' : '';
+        // icon button always visible — nothing to hide
     }
 
     function openTokenModal() {
