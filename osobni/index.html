@@ -715,6 +715,139 @@
         .care-plant { font-weight: 600; color: var(--text-color); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .care-info { color: var(--text-muted); font-size: 0.77rem; white-space: nowrap; flex-shrink: 0; }
 
+        /* ── Plant Grid Overview ── */
+        .plant-grid-overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        @media (min-width: 480px) {
+            .plant-grid-overview { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (min-width: 768px) {
+            .plant-grid-overview { grid-template-columns: repeat(6, 1fr); gap: 0.65rem; }
+        }
+
+        .grid-card {
+            background: var(--card-bg);
+            border: 1px solid #2e5040;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .grid-card:active { transform: scale(0.93); }
+
+        .grid-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+        .grid-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .grid-dots {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            padding: 3px 3px 4px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.72));
+        }
+        .gdot-icon {
+            font-size: 0.55rem;
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+        .gdot-icon.fresh   { background: rgba(46,204,113,0.38); }
+        .gdot-icon.stale   { background: rgba(230,126,34,0.5); }
+        .gdot-icon.overdue { background: rgba(231,76,60,0.55); }
+        .gdot-icon.none    { background: rgba(255,255,255,0.07); opacity: 0.45; }
+
+        .grid-name {
+            padding: 0.26rem 0.3rem;
+            font-size: 0.65rem;
+            color: var(--accent-color);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.25;
+        }
+
+        /* ── Detail Panel ── */
+        .detail-panel {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-color);
+            z-index: 8000;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+        .detail-panel.open { transform: translateX(0); }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 1rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid #2e5040;
+            flex-shrink: 0;
+            min-height: 50px;
+        }
+        .detail-back-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            line-height: 1;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .detail-back-btn:active { background: rgba(46,204,113,0.15); }
+        .detail-header-name {
+            font-size: 1rem;
+            font-weight: 600;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .detail-content {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+        .detail-content .plant-card {
+            flex: none !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            scroll-snap-align: none;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+        }
+
         /* ── Mobile Friendly Optimalizace ── */
         @media (max-width: 768px) {
             body {
@@ -798,13 +931,7 @@
         </div>
     </header>
 
-    <nav class="navigation-tabs">
-        <button class="tab-btn active" data-filter="all">Vše</button>
-        <button class="tab-btn" data-filter="splhavci">Šplhavé</button>
-        <button class="tab-btn" data-filter="krasky">Převislé</button>
-        <button class="tab-btn" data-filter="citlivky">Sukulentní</button>
-        <button class="tab-btn" data-filter="plevel">Rychlerostoucí</button>
-    </nav>
+    <div id="plant-grid-overview" class="plant-grid-overview"></div>
 
     <!-- Care Summary -->
     <div id="care-summary" class="care-summary" style="display:none">
@@ -815,7 +942,7 @@
         <div class="care-summary-list" id="care-summary-list"></div>
     </div>
 
-    <main class="plants-grid" id="plants-container">
+    <main class="plants-grid" id="plants-container" style="display:none">
 
         <div class="plant-card" data-style="splhavci">
             <div class="photo-grid">
@@ -1568,6 +1695,15 @@
     </div>
 </div>
 
+<!-- Detail Panel -->
+<div id="detail-panel" class="detail-panel">
+    <div class="detail-header">
+        <button class="detail-back-btn" id="detail-back-btn">&#8592;</button>
+        <span class="detail-header-name" id="detail-header-name"></span>
+    </div>
+    <div class="detail-content" id="detail-content"></div>
+</div>
+
 <!-- Settings Modal -->
 <div class="modal-overlay" id="settings-modal-overlay">
     <div class="settings-modal">
@@ -1718,6 +1854,84 @@
         if (rem < 0) return 'overdue';
         if (rem <= Math.max(1, Math.floor(interval * 0.25))) return 'stale';
         return 'fresh';
+    }
+
+    // ── Grid Overview ─────────────────────────────────────────
+    function plantUrgency(plantId) {
+        const wCls = daysClass(getLatestEntries(plantId, 'water'),     plantId, 'water');
+        const fCls = daysClass(getLatestEntries(plantId, 'fertilize'), plantId, 'fertilize');
+        if (wCls === 'overdue' || fCls === 'overdue') return 0;
+        if (wCls === 'stale'   || fCls === 'stale')   return 1;
+        return 2;
+    }
+
+    function buildGrid() {
+        const container = document.getElementById('plant-grid-overview');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const cards = [...document.querySelectorAll('.plant-card')].map(card => ({
+            card,
+            plantId: getPlantId(card),
+        }));
+        cards.sort((a, b) => plantUrgency(a.plantId) - plantUrgency(b.plantId));
+
+        cards.forEach(({ card, plantId }) => {
+            const name      = card.querySelector('.plant-title h2').textContent;
+            const czechName = card.querySelector('.plant-title p')?.textContent || name;
+            const imgSrc    = card.querySelector('.plant-photo')?.getAttribute('src') || '';
+
+            const wCls = daysClass(getLatestEntries(plantId, 'water'),     plantId, 'water')     || 'none';
+            const fCls = daysClass(getLatestEntries(plantId, 'fertilize'), plantId, 'fertilize') || 'none';
+
+            const tile = document.createElement('div');
+            tile.className = 'grid-card';
+            tile.innerHTML = `
+                <div class="grid-thumb">
+                    <img src="${imgSrc}" alt="${name}" loading="lazy">
+                    <div class="grid-dots">
+                        <span class="gdot-icon ${wCls}" title="Zálivka">💧</span>
+                        <span class="gdot-icon ${fCls}" title="Hnojení">🧪</span>
+                    </div>
+                </div>
+                <div class="grid-name">${czechName}</div>`;
+
+            tile.addEventListener('click', () => openDetail(plantId, name));
+            container.appendChild(tile);
+        });
+    }
+
+    // ── Detail Panel ───────────────────────────────────────────
+    let detailOpenPlantId = null;
+
+    function openDetail(plantId, name) {
+        detailOpenPlantId = plantId;
+        const card = [...document.querySelectorAll('.plant-card')]
+            .find(c => getPlantId(c) === plantId);
+        if (!card) return;
+
+        document.getElementById('detail-header-name').textContent = name;
+        const content = document.getElementById('detail-content');
+        content.scrollTop = 0;
+        content.innerHTML = '';
+        content.appendChild(card);
+
+        document.getElementById('detail-panel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetail() {
+        const panel   = document.getElementById('detail-panel');
+        const content = document.getElementById('detail-content');
+        panel.classList.remove('open');
+        document.body.style.overflow = '';
+
+        setTimeout(() => {
+            const card = content.querySelector('.plant-card');
+            if (card) document.getElementById('plants-container').appendChild(card);
+            content.innerHTML = '';
+            detailOpenPlantId = null;
+        }, 300);
     }
 
     // ── Settings modal ─────────────────────────────────────────
@@ -1909,6 +2123,7 @@
         });
 
         renderCareSummary();
+        buildGrid();
     }
 
     // ── Log modal ──────────────────────────────────────────────
@@ -2054,17 +2269,21 @@
     // ── Init ───────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', async () => {
 
-        // Filtrování karet
-        document.querySelectorAll('.tab-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                button.classList.add('active');
-                const f = button.getAttribute('data-filter');
-                document.querySelectorAll('.plant-card').forEach(card => {
-                    card.classList.toggle('hidden', f !== 'all' && card.getAttribute('data-style') !== f);
-                });
-            });
-        });
+        // Detail panel — back button + swipe right to close
+        document.getElementById('detail-back-btn').addEventListener('click', closeDetail);
+        (function() {
+            let startX = 0, startY = 0;
+            const panel = document.getElementById('detail-panel');
+            panel.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+            panel.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - startX;
+                const dy = Math.abs(e.changedTouches[0].clientY - startY);
+                if (dx > 55 && dy < 100) closeDetail();
+            }, { passive: true });
+        })();
 
         // Lightbox
         const lbOverlay = document.getElementById('lightbox');
@@ -2130,7 +2349,7 @@
 
         document.addEventListener('keydown', e => {
             if (e.key !== 'Escape') return;
-            closeLightbox(); closeLogModal(); closeTokenModal(); closeSettingsModal();
+            closeLightbox(); closeLogModal(); closeTokenModal(); closeSettingsModal(); closeDetail();
         });
 
         updateTokenBtn();
