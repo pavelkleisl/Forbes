@@ -38,5 +38,10 @@
     "settings": {
       "fertilize_interval": 30
     }
+  },
+  "peperomia-obtusifolia": {
+    "settings": {
+      "fertilize_interval": 14
+    }
   }
 }
