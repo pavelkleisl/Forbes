@@ -41,6 +41,7 @@
   },
   "peperomia-obtusifolia": {
     "settings": {
+      "water_interval": "manual",
       "fertilize_interval": 14
     }
   },
@@ -51,7 +52,14 @@
   },
   "aglaonema-silver-bay": {
     "settings": {
+      "water_interval": 14,
       "fertilize_interval": 20
+    }
+  },
+  "strelitzia-nicolai": {
+    "settings": {
+      "water_interval": 7,
+      "fertilize_interval": 7
     }
   }
 }
