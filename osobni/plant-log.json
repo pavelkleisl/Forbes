@@ -51,6 +51,7 @@
   },
   "aglaonema-silver-bay": {
     "settings": {
+      "water_interval": "manual",
       "fertilize_interval": 20
     }
   }
