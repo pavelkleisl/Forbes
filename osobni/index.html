@@ -233,18 +233,6 @@
             opacity: 0.2;
         }
 
-        .meta-stats {
-            text-align: right;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.3;
-        }
-
-        .meta-stats .price {
-            color: #e67e22;
-            font-weight: 700;
-        }
-
         /* Popisy / Specifikace */
         .spec-box {
             background-color: rgba(0,0,0,0.15);
@@ -357,57 +345,55 @@
         /* ── Plant Log Bar ── */
         .plant-log-bar {
             display: flex;
-            gap: 0.5rem;
-            padding: 0.45rem 0.85rem;
-            background: rgba(0,0,0,0.22);
+            gap: 0.4rem;
+            padding: 0.5rem 0.7rem;
+            background: #141f17;
+            border-top: 2px solid #0e1911;
             border-bottom: 1px solid #243a28;
             flex-shrink: 0;
         }
 
-        .log-item {
+        .log-item-btn {
             display: flex;
             align-items: center;
             gap: 0.35rem;
             flex: 1;
             background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 6px;
-            padding: 0.3rem 0.5rem;
+            padding: 0.55rem 0.5rem;
+            min-height: 44px;
+            cursor: pointer;
             min-width: 0;
+            color: inherit;
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+            transition: background 0.12s;
         }
+        .log-item-btn:active { background: rgba(255,255,255,0.08); }
 
-        .log-icon { font-size: 0.82rem; flex-shrink: 0; }
+        .log-icon { font-size: 0.85rem; flex-shrink: 0; }
 
         .log-days {
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            cursor: pointer;
         }
-        .log-days:hover { text-decoration: underline; }
         .log-days.fresh { color: #2ecc71; }
         .log-days.stale { color: #e67e22; }
         .log-days.overdue { color: #e74c3c; }
 
-        .log-btn {
-            background: rgba(46,204,113,0.12);
-            border: 1px solid rgba(46,204,113,0.25);
+        .log-add {
             color: var(--accent-color);
-            width: 1.4rem;
-            height: 1.4rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
-            transition: background 0.15s;
+            opacity: 0.7;
+            margin-left: auto;
         }
-        .log-btn:hover { background: rgba(46,204,113,0.25); }
 
         /* ── Log Modal ── */
         .modal-overlay {
@@ -450,6 +436,7 @@
             flex-direction: column;
             gap: 0.75rem;
             overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .log-history {
@@ -524,6 +511,8 @@
             font-size: 0.88rem;
             font-family: inherit;
             width: 100%;
+            max-width: 100%;
+            min-width: 0;
             box-sizing: border-box;
         }
         .log-date-input:focus { outline: none; border-color: var(--accent-color); }
@@ -612,19 +601,25 @@
 
         /* ── Settings Button & Modal ── */
         .settings-btn {
-            background: transparent;
-            border: none;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
             color: var(--text-muted);
             cursor: pointer;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.22rem;
-            border-radius: 4px;
+            font-size: 0.85rem;
+            padding: 0;
+            border-radius: 6px;
             flex-shrink: 0;
-            opacity: 0.5;
+            opacity: 0.6;
             transition: opacity 0.15s, background 0.15s;
             line-height: 1;
-            align-self: center;
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
+        .settings-btn:active { opacity: 1; background: rgba(255,255,255,0.08); }
         .settings-btn:hover { opacity: 1; background: rgba(255,255,255,0.07); }
 
         .settings-modal {
@@ -741,7 +736,6 @@
         .grid-card:active { transform: scale(0.93); }
 
         .grid-thumb {
-            position: relative;
             width: 100%;
             aspect-ratio: 1 / 1;
             overflow: hidden;
@@ -752,31 +746,9 @@
             object-position: center;
             display: block;
         }
-        .grid-dots {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-            padding: 3px 3px 4px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.72));
-        }
-        .gdot-icon {
-            font-size: 0.55rem;
-            width: 13px; height: 13px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-        }
-        .gdot-icon.fresh   { background: rgba(46,204,113,0.38); }
-        .gdot-icon.stale   { background: rgba(230,126,34,0.5); }
-        .gdot-icon.overdue { background: rgba(231,76,60,0.55); }
-        .gdot-icon.none    { background: rgba(255,255,255,0.07); opacity: 0.45; }
 
         .grid-name {
-            padding: 0.26rem 0.3rem;
+            padding: 0.26rem 0.3rem 0.1rem;
             font-size: 0.65rem;
             color: var(--accent-color);
             text-align: center;
@@ -785,6 +757,22 @@
             text-overflow: ellipsis;
             line-height: 1.25;
         }
+
+        .grid-status {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.12rem 0.25rem 0.28rem;
+        }
+        .gstatus-item {
+            font-size: 0.58rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.2);
+            white-space: nowrap;
+            letter-spacing: 0.1px;
+        }
+        .gstatus-item.fresh   { color: #27ae60; }
+        .gstatus-item.stale   { color: #e67e22; }
+        .gstatus-item.overdue { color: #e74c3c; }
 
         /* ── Detail Panel ── */
         .detail-panel {
@@ -918,6 +906,16 @@
                 font-size: 0.85rem;
                 padding: 0.5rem 0.7rem;
             }
+
+            /* Zabraňuje automatickému zoomu na iOS Safari při focusu inputu */
+            input, textarea, select {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Zabraňuje double-tap zoomu na tlačítkách a odkazech */
+        button, a, input, textarea, select {
+            touch-action: manipulation;
         }
     </style>
 </head>
@@ -960,8 +958,7 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">60 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Mutace potosu s bílo-zeleným panašováním vyvinutá v laboratořích. Botanický původ: tropická Asie. Roste pomaleji. Skvěle prosperuje v Aroid mixu na DIY pletivové tyči s rašeliníkem.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>První 2 týdny po přesazení zalévat výhradně s Canna Rhizotonic pro stimulaci kořenů. Poté nasadit dvousložkovou Canna Aqua Vega (2ml/L každé složky) podávanou přes časovaný knot nebo vrchem.</div>
@@ -987,8 +984,7 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">80 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Bleskově rostoucí liána s jasně neonovými listy z Francouzské Polynésie. Miluje šplhání po vlhké DIY pletivové tyči s rašeliníkem, což stimuluje masivní zvětšování listových čepelí.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Po přesazení do kelímku nastartovat kořeny pomocí Rhizotonicu. Následně hnojit Canna Aqua Vega každých 14 dní v plné dávce. Vyžaduje silné rozptýlené světlo, jinak listy tmavnou do obyčejné zelené.</div>
@@ -1014,12 +1010,11 @@
                             <div class="rating-row"><span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Popínavý filodendron se sametovými bronzovo-červenými listy z Karibiku. Pro zdravý růst nutně vyžaduje neustále vlhkou DIY pletivovou tyč s mechem, do které jeho křehké vzdušné kořeny hluboce vrůstají.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Citlivější na přehnojení a usazování solí v kokosu. Po úvodním prokořenění s Rhizotonicem dávkovat Canna Aqua Vega v mírnější koncentraci (1.5 ml/L) každé 2 až 3 týdny. Využít systém časovaného knotu.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplomilný druh: ideál 18–24 °C, v zimě striktně nad 16 °C. Vyžaduje vyšší vzdučnou vlhkost (nad 60 %), jinak listy ztrácejí sametový lesk a schnou jim špičky.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplomilný druh: ideál 18–24 °C, v zimě striktně nad 16 °C. Vyžaduje vyšší vzdušnou vlhkost (nad 60 %), jinak listy ztrácejí sametový lesk a schnou jim špičky.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě prochází fází klidu. Hnojení omezit max. na 1x za 6 týdnů v minimální dávce. Skrz průhledný kelímek kontrolovat, zda spodní polovina substrátu nestojí v trvalé, neprodyšné bažině.</div>
                 <div class="card-footer"><span class="badge">Velvet</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
@@ -1041,10 +1036,9 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">70 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Vzpřímená robustní liána s velkými šípovitými listy and vínově červenými stonky z deštných pralesů Kolumbie. Miluje pevné mechanické upevnění k tvojí DIY zinkové tyči napěchované rašeliníkem.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Vzpřímená robustní liána s velkými šípovitými listy a vínově červenými stonky z deštných pralesů Kolumbie. Miluje pevné mechanické upevnění k tvojí DIY zinkové tyči napěchované rašeliníkem.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Velký a rychlý jedlík. Po úvodní startovací fázi s Rhizotonicem vyžaduje v plné sezóně poctivé dávkování dusíku z Canna Vega A+B v plné síle každých 14 dní pro nárůst velkých zdravých listů.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–25 °C, v zimě minimum 15 °C. Vlhkost vzduchu střední až vyšší (50 %+). Rostlina tvoří tlusté provazovité kořeny, které v kelímku uvidíš plazit se po stěnách velmi brzy.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v suchém vzduchu trpí na svilušky (listy otírat od prachu). Hnojení snížit na 1x za měsíc. Substrát udržovat mírně vlhký přes časovaný knot, nenechat dno kelímku trvale utopené v roztoku.</div>
@@ -1068,10 +1062,9 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Sběratelský hybrid s neonově žluto-zelenými listy a zářivě růžovo-červenými řapíky. Střední tempo růstu. Nejcitlivější kousek ze šplhavců, který nutně potřebuje lehký vzdušný mix and vlhký mech.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Sběratelský hybrid s neonově žluto-zelenými listy a zářivě růžovo-červenými řapíky. Střední tempo růstu. Nejcitlivější kousek ze šplhavců, který nutně potřebuje lehký vzdušný mix a vlhký mech.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Pro zachování luxusního panašování vyžaduje precizní přísun mikroprvků. Po úvodním prokořenění s Rhizotonicem aplikuj minerální hnojivo Canna Aqua Vega stabilně každých 14 dní po celé jaro a léto.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní teplo 20–26 °C, zimní poklesy pod 16 °C nesnáší. Vyšší vlhkost (55–75 %) zaručí hladké rozbalování listů. Skrz kelímek přísně kontrolovat cyklus vysychání substrátu.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě nutně vyžaduje nejjasnější místo, jinak nové listy rostou čistě zelené bez kresby (ideální je přisvěcování). V zimě zálivku drasticky omezit a hnojení téměř úplně stopnout.</div>
@@ -1095,13 +1088,12 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>"Modlící se rostlina" ze spodních pralesních pater Brazílie. Na noc listy vertikálně napřimuje a zavírá. Na rozdíl od lián se přirozeně plazí – na tvém DIY mechovém polštáři vytvoří úžasně hustý keř.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Jemné kořeny jsou extrémně náchylné k popálení solemi. Používej výhradně poloviční koncentraci Canna hnojiva jednou za 3 týdny (po prokořenění s Rhizotonicem). Vyžaduje hustší hydratační pralesní mix (60% kokos).</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší průvan, teplotní šoky and suchý vzduch (způsobuje kroucení listů). Vyžaduje vysokou vlhkost (60–80 %). Mix v kelímku must přes plast vypadat nonstop tmavý a orosený.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě spí and vůbec se nehnojí. Vodu v zásobníku drž na absolutním minimu, umísti ji dál od sálajících radiátorů topení, ale hlídej přes kelímek, aby substrát v jádru fatálně nevyschl na prach.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Stabilní 18–23 °C. Nesnáší průvan, teplotní šoky a suchý vzduch (způsobuje kroucení listů). Vyžaduje vysokou vlhkost (60–80 %). Mix v kelímku musí přes plast vypadat nonstop tmavý a orosený.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě spí a vůbec se nehnojí. Vodu v zásobníku drž na absolutním minimu, umísti ji dál od sálajících radiátorů topení, ale hlídej přes kelímek, aby substrát v jádru fatálně nevyschl na prach.</div>
                 <div class="card-footer"><span class="badge">Prayer Plant</span><span class="style-tag st-krasky">Převislé</span></div>
             </div>
         </div>
@@ -1122,12 +1114,11 @@
                             <div class="rating-row"><span>🧪<span class="dim">🧪🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">2 ks<br><span class="price">80 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Drobné plazivé „želvičky“ z Amazonie rostoucí jako epifyt v korunách stromů, kde bleskově vysychají. Vyžadují upravený sukulentní mix (chipsy a perlit po 40 %, kokosový substrát jen 20 %).</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Absolutně bez knotu! Pouze jednorázové spodní namáčení kelímku na cca 10 minut jednou za čas. Po úvodní fázi s Rhizotonicem hnojit velmi slabě (třetinová dávka Canny) maximálně 1x za měsíc v sezóně.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, v zimě minimálně 15 °C. Vlhkost vzduchu zvládá standardní bytovou díky tlusté voskové vrstvě listů. Vizuální debug: kelímek must kompletně zbělat/vyschnout a lístky při stisku gumovatět jako rozinky.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–24 °C, v zimě minimálně 15 °C. Vlhkost vzduchu zvládá standardní bytovou díky tlusté voskové vrstvě listů. Vizuální debug: kelímek musí kompletně zbělat/vyschnout a lístky při stisku gumovatět jako rozinky.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zalévat extrémně málo (klidně 1x za 3 týdny) až po totálním proschnutí a jasném změknutí listů. V zimě vůbec nehnojit. Při sebemenším přelíčení v chladnějším období báze stonků bleskově uhnije.</div>
                 <div class="card-footer"><span class="badge">Epifyt</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
@@ -1149,13 +1140,12 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">75 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Kompaktní vzpřímená rostlina s tlustými lesklými listy ve tvaru dešťových kapek z tropické Jižní Ameriky. Roste jako pevný samostojný stromeček, nepotřebuje tyč. Vyžaduje sukulentní mix se zvýšeným podílem chipsů a perlitu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Zálivka výhradně spodním namáčením po kompletním vyschnutí celého kelímku. V sezóně (po úvodním zakořenění s Rhizotonicem) hnojit 1x za 3 týdny poloviční koncentrací dvousložkové Canny.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Optimálně 18–25 °C. Pozor na ledové okenní parapety v zimě – chlad od kořenů nesnáší. Vlhkost vzduchu jí vyhovuje nižší bytová (40–50 %). Dokud je přes kelímek vidět tmavý vlhký kokos, nezalévat.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zcela vynechat hnojení. Žízeň indikuje mírný pokles řapíků dolů and gumovatění listových čepelí (listy lze ohýbat jako měkký ohebný plast). Při přelíčení v zimním chladu listy zčernají and bleskově opadají.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě zcela vynechat hnojení. Žízeň indikuje mírný pokles řapíků dolů a gumovatění listových čepelí (listy lze ohýbat jako měkký ohebný plast). Při přelíčení v zimním chladu listy zčernají a bleskově opadají.</div>
                 <div class="card-footer"><span class="badge">Tlusté listy</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
@@ -1176,8 +1166,7 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">3 ks<br><span class="price">70 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Silně aromatický dužnatý keřík s chlupatými listy z tropické Afriky. Roste divoce a velmi rychle. Ideální je udržovat kompaktní tvar pravidelným zaštipováním vršků, které okamžitě větví kytku do hustého keře. Sázet do sukulentního mixu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Zalévat formou prolití svrchu (přebytek nechat ihned odtéct dírkami) až po kompletním vyschnutí kelímku. Jako jediný ze sukulentní skupiny snese v létě plnou dávku Canna Vega 1x za 14 dní (po úvodním startu s Rhizotonicem).</div>
@@ -1203,13 +1192,12 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">100 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Filipínská popínavá liána s tuhými listy se stříbrytým splashem. Vyžaduje vysoce drenážní sukulentní mix (50 % perlitu and chipsů). Jako oporu jí vyrob žebříček nebo kruh z čistého suchého jarního bambusu bez mechu.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Filipínská popínavá liána s tuhými listy se stříbřitými skvrnami. Vyžaduje vysoce drenážní sukulentní mix (50 % perlitu a chipsů). Jako oporu jí vyrob žebříček nebo kruh z čistého suchého jarního bambusu bez mechu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Nesnáší stabilní mokro u kořenů, bleskově by shnila (žádný knot!). Pouze spodní zálivka po vyschnutí. V sezóně hnojit 1x za 3 týdny poloviční dávkou Canny, na konci srpna hnojení stopnout pro vyzrání pletiv.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–26 °C, snese krátkodobý pokles k 15 °C. Vlhkost vzduchu stačí běžná bytová. Přes průhledný plast kelímku pravidelně kontrolovat stav and barvu kořenů.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Zimní sucho and chladnější světlé místo jsou kritické pro budoucí kvetení v noci vonících polokoulí. Zálivka v zimě téměř nulová – teprve tehdy, když se běžně dřevnatý list podélně ohne do měkkého korýtka. V zimě nehnojit.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplota 18–26 °C, snese krátkodobý pokles k 15 °C. Vlhkost vzduchu stačí běžná bytová. Přes průhledný plast kelímku pravidelně kontrolovat stav a barvu kořenů.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>Zimní sucho a chladnější světlé místo jsou kritické pro budoucí kvetení v noci vonících polokoulí. Zálivka v zimě téměř nulová – teprve tehdy, když se běžně dřevnatý list podélně ohne do měkkého korýtka. V zimě nehnojit.</div>
                 <div class="card-footer"><span class="badge">Splash efekt</span><span class="style-tag st-citlivky">Sukulentní</span></div>
             </div>
         </div>
@@ -1230,13 +1218,12 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">90 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Robustní šlechtěná voděnka s tlustými stonky and masivními růžovo-fialovými listy. Vyžaduje extrémní množství světla pro udržení barev. Pravidelně stříhat dlouhé vršky. Vyžaduje humóznější hydratační mix (60% kokos).</div>
-                <div class="spec-box"><strong>Péče & Hnojení</strong>Velmi hladový and žíznivý metabolický rychlík. V sezóně spotřebuje plnou dávku hnojiva Canna každých 10–14 dní (po úvodním prokořenění s Rhizotonicem). Systém časovaného knotu zde funguje perfektně.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Rozmezí 15–25 °C. Vlhkost vzduchu stačí průměrná. Nesnáší polévání listů shora, voda se drží v paždí tlustých listů and ty hnijí. Skrz kelímek doplňovat nádržku knotu, jakmile substrát v horní třetině zesvětlá.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V teplých and tmavých bytech v zimě strádá (spodky hnědnou, stonky slábnou). Ideální zimování: snížit teplotu na cca 16 °C, omezit vodu na minimum and hnojit max. 1x za měsíc.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Robustní šlechtěná voděnka s tlustými stonky a masivními růžovo-fialovými listy. Vyžaduje extrémní množství světla pro udržení barev. Pravidelně stříhat dlouhé vršky. Vyžaduje humóznější hydratační mix (60% kokos).</div>
+                <div class="spec-box"><strong>Péče & Hnojení</strong>Velmi hladový a žíznivý metabolický rychlík. V sezóně spotřebuje plnou dávku hnojiva Canna každých 10–14 dní (po úvodním prokořenění s Rhizotonicem). Systém časovaného knotu zde funguje perfektně.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Rozmezí 15–25 °C. Vlhkost vzduchu stačí průměrná. Nesnáší polévání listů shora, voda se drží v paždí tlustých listů a ty hnijí. Skrz kelímek doplňovat nádržku knotu, jakmile substrát v horní třetině zesvětlá.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V teplých a tmavých bytech v zimě strádá (spodky hnědnou, stonky slábnou). Ideální zimování: snížit teplotu na cca 16 °C, omezit vodu na minimum a hnojit max. 1x za měsíc.</div>
                 <div class="card-footer"><span class="badge">Extrémní světlo</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
@@ -1257,13 +1244,12 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Nezničitelná stříbřitě fialová voděnka z Mexika. Je to metabolický rychlík, který v hydratačním pralesním mixu (60% kokos) na časovaném knotu poroste zběsilým tempem and bezpečně otestuje funkčnost and propustnost tvého nového setupu.</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Nezničitelná stříbřitě fialová voděnka z Mexika. Je to metabolický rychlík, který v hydratačním pralesním mixu (60% kokos) na časovaném knotu poroste zběsilým tempem a bezpečně otestuje funkčnost a propustnost tvého nového setupu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Po přesazení do kelímku bleskově prokoření díky startovacímu Rhizotonicu. V plném růstu hnojit každé 2 týdny plnou dávkou Canna Aqua Vega. Snese jak sucho, tak náhodné přelíčení.</div>
                 <div class="spec-box"><strong>Teplota & Vlhkost</strong>Extrémně adaptabilní (12–25 °C), vzdušnou vlhkost vůbec neřeší. Skrz průhledný plast kelímku uvidíš masivní, hustou síť bílých kořenů během několika málo týdnů.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě se kvůli nedostatku světla vytahuje do dálky (velké mezery mezi listy). Omezit zálivku and hnojit jen 1x za měsíc. Na jaře je ideální vytahané šlahouny radikálně ostříhat and uřezané vršky napíchat zpět do kokosu.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě se kvůli nedostatku světla vytahuje do dálky (velké mezery mezi listy). Omezit zálivku a hnojit jen 1x za měsíc. Na jaře je ideální vytahané šlahouny radikálně ostříhat a uřezané vršky napíchat zpět do kokosu.</div>
                 <div class="card-footer"><span class="badge">Nezničitelná</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
@@ -1284,13 +1270,12 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">40 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
-                <div class="spec-box"><strong>Popis & Původ</strong>Pestrobarevný Pochvatec z tropické jihovýchodní Asie. Roste vzpřímeně jako polokeř. Vyžaduje teplé and maximálně osluněné stanoviště na okně pro syté vybarvení vzorů. Perfektně prosperuje v hydratačním mixu (60% kokos).</div>
+                <div class="spec-box"><strong>Popis & Původ</strong>Pestrobarevný Pochvatec z tropické jihovýchodní Asie. Roste vzpřímeně jako polokeř. Vyžaduje teplé a maximálně osluněné stanoviště na okně pro syté vybarvení vzorů. Perfektně prosperuje v hydratačním mixu (60% kokos).</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Absolutně největší žrout ze všech skupin (Heavy Feeder). V létě vyžaduje hnojení klidně každý týden plnou dávkou Canny, jinak listy okamžitě zblednou. Její časovaný knot bude vysychat nejrychleji.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplo (20–26 °C) and vzdušná vlhkost střední. Skrz průhledný kelímek uvidíš obří spotřebu vody. Jakmile kokos začne světlat, okamžitě doplňuj nádržku, jinak rostlina dramaticky svěsí všechny listy dolů.</div>
-                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v bytě často hyne na nedostatek světla and mšice. Držet na nejjasnějším okně, hnojení snížit na 1x za 3 týdny. Často se na podzim omlazuje čerstvými řízky do vody pro novou jarní generaci.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Teplo (20–26 °C) a vzdušná vlhkost střední. Skrz průhledný kelímek uvidíš obří spotřebu vody. Jakmile kokos začne světlat, okamžitě doplňuj nádržku, jinak rostlina dramaticky svěsí všechny listy dolů.</div>
+                <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě v bytě často hyne na nedostatek světla a mšice. Držet na nejjasnějším okně, hnojení snížit na 1x za 3 týdny. Často se na podzim omlazuje čerstvými řízky do vody pro novou jarní generaci.</div>
                 <div class="card-footer"><span class="badge">Heavy Feeder</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
         </div>
@@ -1310,8 +1295,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Extrémně nenáročná a vytrvalá rostlina z podrostů tropických deštných lesů jihovýchodní Asie. Roste jako hustý přízemní keř s nádherně stříbřitě zeleným vzorem na širokých listech.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Nevyžaduje intenzivní výživu ani přehnanou péči. V plném růstu hnojit Canna Aqua Vega 1x za 3 týdny v poloviční dávce. Kokosový mix udržovat mírně navlhlý, ale nepřelévat. Čistí vzduch v místnosti.</div>
@@ -1336,8 +1320,7 @@
                             <div class="rating-row"><span>🧪<span class="dim">🧪🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Sukulentní tank pocházející ze suchých oblastí východní Afriky. Pod zemí schovává obří bramborovité hlízy a tlusté řapíky, ve kterých drží vodu na celé měsíce dopředu. Absolutně neprůstřelná kytka.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Zabije ji jedině tvoje přehnaná péče a permanentně mokrý knot. Zalévat až tehdy, když je mix totálně vyschlý a kelímek lehký jako pírko. Hnojení stačí minimální, max. 1x za měsíc v létě.</div>
@@ -1362,8 +1345,7 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Nádherná popínavá liána z Francouzské Polynésie s hustým bílo-krémovým mramorovaným vzorem. Kvůli vysokému podílu bílých nefunkčních tkání roste o něco pomaleji než klasický zelený potos.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Pro udržení luxusní bílé kresby vyžaduje výrazně více světla než ostatní potosy. V sezóně hnojit Canna Aqua Vega pravidelně každých 14 dní. Skvěle zvládá růst na časovaném knotu s pletivovou tyčí.</div>
@@ -1388,8 +1370,7 @@
                             <div class="rating-row"><span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Stálezelený polodřevnatý stromeček pocházející z Taiwanu. Má typické dlanitě složené prstovité listy, které rostou z centrálního řapíku. Roste elegantně vertikálně do výšky.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Nesnáší permanentní bláto u kořenů, vyžaduje kompletní proschnutí mixu v kelímku. Žádný trvalý knot. Hnojit v sezóně 1x za 14 dní poloviční dávkou dvousložkové Canny. Vyžaduje velmi vzdušný, lehký substrát.</div>
@@ -1414,8 +1395,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Robustní, stará kytka zachráněná z kanceláře. Původem z Floridy a Karibiku. Má tlusté, masité stonky a velké kulaté listy, které fungují jako rezervoár vody. Roste přirozeně jako těžký keř či převis.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Aktuálně vyčerpaná a světlá z kanclu. Po přesazení z ubité hlíny nastartovat kořeny Rhizotonicem. Jakmile v kokosu ožije, hnojit Canna Aqua Vega 1x za 14 dní v plné dávce pro návrat temně zeleného lesku.</div>
@@ -1440,12 +1420,11 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Absolutní ikona tropických pralesů Mexika a Střední Ameriky. Obří robustní šplhavá liána, která v dospělosti tvoří charakteristické hluboké děrování listů (fenestrace). Vyžaduje masivní prostor a pevnou oporu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>V létě je to brutální jedlík (Heavy Feeder). Hnojit Canna Aqua Vega každých 10–14 dní v plné palbě. Dlouhé vzdušné kořeny nikdy neřezat, ale systematicky je směřovat dolů do kokosového mixu v kelímku.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–26 °C, miluje vyšší vzdučnou vlhkost (nad 60 %). Skrz průhledný kelímek uvidíš obří, tlusté provazovité kořeny. Brzy bude potřebovat tvoji velkou DIY pletivovou tyč s vlhkým rašeliníkem.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Ideál 18–26 °C, miluje vyšší vzdušnou vlhkost (nad 60 %). Skrz průhledný kelímek uvidíš obří, tlusté provazovité kořeny. Brzy bude potřebovat tvoji velkou DIY pletivovou tyč s vlhkým rašeliníkem.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě mírně zpomalí růst. Hnojení stáhnout na 1x za měsíc s poloviční koncentrací. Hlídat přelití spodku kelímku přes časovaný knot – kokosový mix musí mezi zálivkami viditelně zesvětlat do světle hnědé.</div>
                 <div class="card-footer"><span class="badge">Pralesní obor</span><span class="style-tag st-splhavci">Šplhavé</span></div>
             </div>
@@ -1466,12 +1445,11 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪🧪</span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Majestátní architektonická kytka s obřími banánovými listy pocházející z Jižní Afriky. Královna interiéru s neskutečně rychlým metabolismem. Listy se přirozeně ve větru/průvanu třepí, což je její obranný mechanismus.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Absolutní monstrózní žrout vody a dusíku. Vyžaduje výživný hydratační mix (60 % kokos). V létě pije hektolitry přes knot a potřebuje plné hnojení s Canna Aqua Vega klidně každý týden, jinak listy začnou žloutnout.</div>
-                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje horko (20–28 °C) and vyžaduje absolutní maximum přímého slunce přímo u okna. Zvládá suchý vzduch z topení, ale pro bezchybný vzhled velkých čepelí ocení pravidelné otírání listů mokrým hadříkem.</div>
+                <div class="spec-box"><strong>Teplota & Vlhkost</strong>Miluje horko (20–28 °C) a vyžaduje absolutní maximum přímého slunce přímo u okna. Zvládá suchý vzduch z topení, ale pro bezchybný vzhled velkých čepelí ocení pravidelné otírání listů mokrým hadříkem.</div>
                 <div class="spec-box"><strong>Zimní péče & Sezónnost</strong>V zimě trpí nedostatkem světla. Přesunout ji na nejjasnější možné místo k jižnímu oknu. Zálivku omezit, ale přes plast kelímku hlídat, aby kokos nikdy totálně nevyschl na prach, jinak jí popraskají řapíky. Hnojit 1x za měsíc.</div>
                 <div class="card-footer"><span class="badge">Královská</span><span class="style-tag st-plevel">Rychlerostoucí</span></div>
             </div>
@@ -1492,8 +1470,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Čistá hrubá kůra / kousky chipsů, bez jemného kokosového substrátu)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Čistě epifytická orchidej z tropické Asie rostoucí v přírodě v kůře stromů. Její kořeny nutně potřebují nonstop přístup vzduchu a světla pro fotosyntézu – proto je tvůj průhledný kelímek absolutně bezchybné řešení.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Žádná klasická zálivka ani knot! Využij stoprocentní vizuální debug: dokud jsou kořeny v kelímku jasně zelené, kytka má vody dost. Jakmile zešednou/stříbřitě zmatní, namoč kelímek na 15 minut do vody se slabým hnojivem a vyndej.</div>
@@ -1518,8 +1495,7 @@
                             <div class="rating-row"><span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Nádherná popínavá liána z deštných pralesů jihovýchodní Asie. Listy jsou asymetrické, tlusté, mají matný sametový povrch s charakteristickým stříbřitým skvrnitým vzorem. Aktuálně ti bezpečně koření v propagačním boxu v rašeliníku.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Při přesazení z mechu do kelímku nechat na kořenech trochu rašeliníku a prolít Rhizotonicem. V plném růstu hnojit Canna Aqua Vega 1x za 14 dní přes časovaný knot. Úžasný adept na šplhání po tvojí DIY mechové tyči.</div>
@@ -1545,8 +1521,7 @@
                             <div class="rating-row"><span>🧪🧪🧪🧪<span class="dim">🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Aroid Classic (Kokosový substrát 40%, Kokosové chipsy 30%, Perlit 30%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Krásná mutace druhu Rojo Congo s hustým a zářivě bílým žíháním listů ze Střední a Jižní Ameriky. Roste spíše vzpřímeně jako polokeř. Mix potřebuje lehký a vzdušný, pro bezpečný a mohutný růst listů ocenci DIY tyč.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>První dny po usazení nebo přesazení podpořit kořeny Rhizotonicem. Pro udržení sytého žíhání a tvorbu nových zdravých listů potřebuje stabilní přísun dusíku a mikroprvků, hnojit v létě s Canna Aqua Vega každých 14 dní.</div>
@@ -1572,8 +1547,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>"Králičí stopy" ze stinného podrostu brazilských pralesů. Večer sklápí listy nahoru. Ve vodě už vybudovala masivní, tlustou síť zdravých kořenů, takže je v dokonalé kondici pro přesazení do tvého hustšího pralesního mixu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Po přesazení ihned prolít roztokem Rhizotonicu pro adaptaci vodních kořenů na pevné médium. V sezóně hnojit velmi opatrně poloviční koncentrací Canna Aqua Vega jednou za 3 týdny, má extrémně jemné vlasové kořínky.</div>
@@ -1598,8 +1572,7 @@
                             <div class="rating-row"><span>🧪🧪🧪<span class="dim">🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Pochází z Mexika, kde roste jako divoký mohutný keř. Má silný dřevnatý základ. Pozor při střihu – jako každý pryšec obsahuje jedovaté a dráždivé bílé mléko.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Zásadně bez permanentního knotu. Zalévat až po hlubokém proschnutí kelímku/květináče svrchu nebo spodním namáčením. V sezóně hnojit Canna Aqua Vega 1x za 3 týdny. Pro udržení hustoty keře ji po jaru nebát se radikálně seříznout.</div>
@@ -1624,8 +1597,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">1 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Hydratační prales (Kokosový substrát 60%, Kokosové chipsy 20%, Perlit 20%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Příbuzná Marant a Kalatéí z brazilských tropických pralesů. Listy jsou tříbarevné – sytě zelené s krémovou kresbou na líci a zářivě fuchsiově růžové na rubu. Jako všechny modlící se rostliny sklápí listy na noc svisle nahoru. Dorůstá do výšky přes 60 cm a tvoří hustý, dekorativní trs.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Má velmi jemné kořeny citlivé na soli a fluor v kohoutkové vodě – ideálně zalévat přefiltrovanou nebo odstátou vodou. Po přesazení nastartovat s Rhizotonicem. V sezóně hnojit slabou koncentrací (třetinová dávka Canna Aqua Vega) max. jednou za 3 týdny. Přehnojení se okamžitě projeví hnědými špičkami a okraji listů.</div>
@@ -1650,8 +1622,7 @@
                             <div class="rating-row"><span>🧪🧪<span class="dim">🧪🧪🧪</span></span></div>
                         </div>
                     </div>
-                    <div class="meta-stats">2 ks<br><span class="price">0 Kč</span></div>
-                </div>
+                                    </div>
                 <div class="spec-box"><strong>Substrát</strong>Ultra-vzdušný (Kokosový substrát 20%, Kokosové chipsy 40%, Perlit 40%)</div>
                 <div class="spec-box"><strong>Popis & Původ</strong>Pochází z Madagaskaru. Roste jako štíhlý nepravý stromeček s chocholkou úzkých listů. Tvoje varianta má krásné růžovo-červené okraje (Tricolor). Její dřevnatý kmen slouží jako hardwarový rezervoár na vodu.</div>
                 <div class="spec-box"><strong>Péče & Hnojení</strong>Nesnáší permanentní bláto (trvalý knot ji spolehlivě utopí). Vyžaduje zalévání až po téměř úplném vyschnutí celého kelímku. V sezóně hnojit Canna Aqua Vega max. 1x za 3 až 4 týdny v poloviční dávce.</div>
@@ -1857,6 +1828,19 @@
     }
 
     // ── Grid Overview ─────────────────────────────────────────
+    function gridStatusLabel(entries, plantId, type) {
+        const interval = type === 'water'
+            ? getSettings(plantId).water_interval
+            : getSettings(plantId).fertilize_interval;
+        if (!entries.length) return interval ? '!' : '—';
+        const d = daysSince(entries[0].date);
+        if (!interval) return d === 0 ? 'dnes' : `${d}d`;
+        const rem = interval - d;
+        if (rem > 0) return `+${rem}d`;
+        if (rem === 0) return 'DNES';
+        return `−${Math.abs(rem)}d`;
+    }
+
     function plantUrgency(plantId) {
         const wCls = daysClass(getLatestEntries(plantId, 'water'),     plantId, 'water');
         const fCls = daysClass(getLatestEntries(plantId, 'fertilize'), plantId, 'fertilize');
@@ -1881,20 +1865,24 @@
             const czechName = card.querySelector('.plant-title p')?.textContent || name;
             const imgSrc    = card.querySelector('.plant-photo')?.getAttribute('src') || '';
 
-            const wCls = daysClass(getLatestEntries(plantId, 'water'),     plantId, 'water')     || 'none';
-            const fCls = daysClass(getLatestEntries(plantId, 'fertilize'), plantId, 'fertilize') || 'none';
+            const wE   = getLatestEntries(plantId, 'water');
+            const fE   = getLatestEntries(plantId, 'fertilize');
+            const wCls = daysClass(wE, plantId, 'water')     || 'none';
+            const fCls = daysClass(fE, plantId, 'fertilize') || 'none';
+            const wLbl = gridStatusLabel(wE, plantId, 'water');
+            const fLbl = gridStatusLabel(fE, plantId, 'fertilize');
 
             const tile = document.createElement('div');
             tile.className = 'grid-card';
             tile.innerHTML = `
                 <div class="grid-thumb">
                     <img src="${imgSrc}" alt="${name}" loading="lazy">
-                    <div class="grid-dots">
-                        <span class="gdot-icon ${wCls}" title="Zálivka">💧</span>
-                        <span class="gdot-icon ${fCls}" title="Hnojení">🧪</span>
-                    </div>
                 </div>
-                <div class="grid-name">${czechName}</div>`;
+                <div class="grid-name">${czechName}</div>
+                <div class="grid-status">
+                    <span class="gstatus-item ${wCls}">💧 ${wLbl}</span>
+                    <span class="gstatus-item ${fCls}">🧪 ${fLbl}</span>
+                </div>`;
 
             tile.addEventListener('click', () => openDetail(plantId, name));
             container.appendChild(tile);
@@ -2100,21 +2088,19 @@
             const bar = document.createElement('div');
             bar.className = 'plant-log-bar';
             bar.innerHTML = `
-                <div class="log-item">
+                <button class="log-item-btn" data-plant="${plantId}" data-type="water" title="Zálivka">
                     <span class="log-icon">💧</span>
-                    <span class="log-days ${wCls}" data-plant="${plantId}" data-type="water">${wLbl}</span>
-                    <button class="log-btn" data-plant="${plantId}" data-type="water" title="Zaznamenat zálivku">+</button>
-                </div>
-                <div class="log-item">
+                    <span class="log-days ${wCls}">${wLbl}</span>
+                    <span class="log-add">+</span>
+                </button>
+                <button class="log-item-btn" data-plant="${plantId}" data-type="fertilize" title="Hnojení">
                     <span class="log-icon">🧪</span>
-                    <span class="log-days ${fCls}" data-plant="${plantId}" data-type="fertilize">${fLbl}</span>
-                    <button class="log-btn" data-plant="${plantId}" data-type="fertilize" title="Zaznamenat hnojení">+</button>
-                </div>
+                    <span class="log-days ${fCls}">${fLbl}</span>
+                    <span class="log-add">+</span>
+                </button>
                 <button class="settings-btn" title="Nastavit intervaly péče">⚙️</button>`;
 
-            bar.querySelectorAll('.log-days').forEach(el =>
-                el.addEventListener('click', () => openLogModal(el.dataset.plant, plantName, el.dataset.type)));
-            bar.querySelectorAll('.log-btn').forEach(btn =>
+            bar.querySelectorAll('.log-item-btn').forEach(btn =>
                 btn.addEventListener('click', () => openLogModal(btn.dataset.plant, plantName, btn.dataset.type)));
             bar.querySelector('.settings-btn').addEventListener('click', () =>
                 openSettingsModal(plantId, plantName));
@@ -2135,7 +2121,7 @@
         activeModalType    = type;
 
         document.getElementById('log-modal-title').textContent =
-            `${type === 'water' ? '💧 Zálivka' : '🧪 Hnojení'} — ${plantName}`;
+            type === 'water' ? '💧 Zálivka' : '🧪 Hnojení';
         document.getElementById('log-date-input').value = todayStr();
         document.getElementById('log-note-input').value = '';
         const btn = document.getElementById('log-save-btn');

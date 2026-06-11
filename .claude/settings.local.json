@@ -6,7 +6,8 @@
       "Bash(which python3 *)",
       "Bash(Get-ChildItem \"d:\\\\CSM\\\\Forbes\\\\osobni\\\\\" | Select-Object Name)",
       "Bash(ls /mnt/d/CSM/Forbes/osobni/)",
-      "Read(//mnt/d/CSM/Forbes/**)"
+      "Read(//mnt/d/CSM/Forbes/**)",
+      "Bash(python -c ' *)"
     ]
   }
 }
