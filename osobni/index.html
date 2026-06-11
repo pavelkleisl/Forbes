@@ -508,6 +508,7 @@
         }
 
         .log-date-input {
+            display: block;
             background: rgba(0,0,0,0.2);
             border: 1px solid #2e5040;
             border-radius: 6px;
@@ -516,8 +517,6 @@
             font-size: 0.88rem;
             font-family: inherit;
             width: 100%;
-            max-width: 100%;
-            min-width: 0;
             box-sizing: border-box;
         }
         .log-date-input:focus { outline: none; border-color: var(--accent-color); }
@@ -650,6 +649,26 @@
             gap: 1rem;
         }
         .settings-row { display: flex; flex-direction: column; gap: 0.45rem; }
+        .mode-tabs { display: flex; gap: 0.3rem; }
+        .mode-tab {
+            flex: 1;
+            padding: 0.38rem 0.3rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #2e5040;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mode-tab.active {
+            background: var(--accent-dim);
+            border-color: var(--accent-dim);
+            color: #fff;
+        }
         .settings-row > label {
             font-size: 0.75rem;
             font-weight: 600;
@@ -1650,7 +1669,7 @@
         <div class="log-modal-body">
             <div class="log-history" id="log-history"></div>
             <div class="log-section-label">Přidat záznam</div>
-            <input type="date" class="log-date-input" id="log-date-input">
+            <input type="text" class="log-date-input" id="log-date-input" placeholder="RRRR-MM-DD" inputmode="numeric" autocomplete="off">
             <textarea class="log-note-input" id="log-note-input" placeholder="Poznámka"></textarea>
             <button class="log-save-btn" id="log-save-btn">Uložit záznam</button>
         </div>
@@ -1689,9 +1708,13 @@
         </div>
         <div class="settings-modal-body">
             <div class="settings-row">
-                <label>💧 Interval zálivky</label>
-                <div class="settings-controls">
-                    <input type="checkbox" class="settings-enabled" id="settings-water-enabled" title="Zapnout upozornění na zálivku">
+                <label>💧 Zálivka</label>
+                <div class="mode-tabs" id="settings-water-mode-tabs">
+                    <button class="mode-tab" data-value="off">Vypnuto</button>
+                    <button class="mode-tab" data-value="manual">Ručně</button>
+                    <button class="mode-tab" data-value="interval">Interval</button>
+                </div>
+                <div class="settings-controls" id="settings-water-days-row" style="display:none">
                     <input type="number" class="settings-days-input" id="settings-water-days" min="1" max="365" placeholder="—">
                     <span class="settings-unit">dní</span>
                 </div>
@@ -1797,6 +1820,14 @@
             ? getSettings(plantId).water_interval
             : getSettings(plantId).fertilize_interval;
 
+        if (interval === 'manual') {
+            if (!entries.length) return 'ručně';
+            const d = daysSince(entries[0].date);
+            if (d === 0) return 'dnes';
+            if (d === 1) return 'včera';
+            return `před ${d} dny`;
+        }
+
         if (!entries.length) return interval ? 'neprovedeno' : 'nikdy';
 
         const d = daysSince(entries[0].date);
@@ -1816,6 +1847,8 @@
             ? getSettings(plantId).water_interval
             : getSettings(plantId).fertilize_interval;
         const isFert = type === 'fertilize';
+
+        if (interval === 'manual') return '';
 
         if (!entries.length) {
             return interval ? 'overdue' : '';
@@ -1837,6 +1870,11 @@
         const interval = type === 'water'
             ? getSettings(plantId).water_interval
             : getSettings(plantId).fertilize_interval;
+        if (interval === 'manual') {
+            if (!entries.length) return 'ručně';
+            const d = daysSince(entries[0].date);
+            return d === 0 ? 'dnes' : `${d}d`;
+        }
         if (!entries.length) return interval ? '!' : '—';
         const d = daysSince(entries[0].date);
         if (!interval) return d === 0 ? 'dnes' : `${d}d`;
@@ -1936,15 +1974,21 @@
 
         const s = getSettings(plantId);
 
-        const wEn = document.getElementById('settings-water-enabled');
-        const wD  = document.getElementById('settings-water-days');
+        // Water mode tabs
+        const wMode = s.water_interval === 'manual' ? 'manual'
+                    : s.water_interval > 0           ? 'interval'
+                    : 'off';
+        document.querySelectorAll('#settings-water-mode-tabs .mode-tab').forEach(t => {
+            t.classList.toggle('active', t.dataset.value === wMode);
+        });
+        const wDaysRow = document.getElementById('settings-water-days-row');
+        const wD       = document.getElementById('settings-water-days');
+        wDaysRow.style.display = wMode === 'interval' ? '' : 'none';
+        wD.value = (typeof s.water_interval === 'number') ? s.water_interval : '';
+
+        // Fertilize (unchanged)
         const fEn = document.getElementById('settings-fertilize-enabled');
         const fD  = document.getElementById('settings-fertilize-days');
-
-        wEn.checked = s.water_interval != null;
-        wD.value    = s.water_interval || '';
-        wD.disabled = !wEn.checked;
-
         fEn.checked = s.fertilize_interval != null;
         fD.value    = s.fertilize_interval || '';
         fD.disabled = !fEn.checked;
@@ -1967,7 +2011,7 @@
         if (!activeSettingsPlantId) return;
         const btn = document.getElementById('settings-save-btn');
 
-        const wEn = document.getElementById('settings-water-enabled').checked;
+        const wActiveTab = document.querySelector('#settings-water-mode-tabs .mode-tab.active')?.dataset.value || 'off';
         const wD  = parseInt(document.getElementById('settings-water-days').value);
         const fEn = document.getElementById('settings-fertilize-enabled').checked;
         const fD  = parseInt(document.getElementById('settings-fertilize-days').value);
@@ -1975,7 +2019,8 @@
         if (!plantLog[activeSettingsPlantId]) plantLog[activeSettingsPlantId] = {};
 
         const newSettings = {};
-        if (wEn && wD > 0) newSettings.water_interval = wD;
+        if (wActiveTab === 'manual')               newSettings.water_interval = 'manual';
+        else if (wActiveTab === 'interval' && wD > 0) newSettings.water_interval = wD;
         if (fEn && fD > 0) newSettings.fertilize_interval = fD;
 
         const oldSettings = plantLog[activeSettingsPlantId].settings;
@@ -2016,7 +2061,7 @@
 
             const check = (type, icon) => {
                 const interval = type === 'water' ? s.water_interval : s.fertilize_interval;
-                if (!interval) return;
+                if (!interval || interval === 'manual') return;
 
                 const entries = getLatestEntries(plantId, type);
                 if (!entries.length) {
@@ -2172,7 +2217,7 @@
         if (!entry) return;
         div.classList.add('editing');
         div.innerHTML = `
-            <input type="date" class="log-edit-date" value="${entry.date}">
+            <input type="text" class="log-edit-date" value="${entry.date}" placeholder="RRRR-MM-DD" inputmode="numeric" autocomplete="off">
             <input type="text"  class="log-edit-note-input" value="${entry.note || ''}" placeholder="Poznámka...">
             <div class="log-entry-actions">
                 <button class="log-action-btn log-edit-save edit"   title="Uložit">✓</button>
@@ -2322,8 +2367,13 @@
             if (e.target.id === 'settings-modal-overlay') closeSettingsModal();
         });
         document.getElementById('settings-save-btn').addEventListener('click', saveSettings);
-        document.getElementById('settings-water-enabled').addEventListener('change', e => {
-            document.getElementById('settings-water-days').disabled = !e.target.checked;
+        document.querySelectorAll('#settings-water-mode-tabs .mode-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('#settings-water-mode-tabs .mode-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('settings-water-days-row').style.display =
+                    tab.dataset.value === 'interval' ? '' : 'none';
+            });
         });
         document.getElementById('settings-fertilize-enabled').addEventListener('change', e => {
             document.getElementById('settings-fertilize-days').disabled = !e.target.checked;
