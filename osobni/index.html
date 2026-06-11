@@ -711,42 +711,6 @@
         .settings-days-input:disabled { opacity: 0.3; }
         .settings-unit { font-size: 0.82rem; color: var(--text-muted); }
 
-        /* ── Care Summary ── */
-        .care-summary {
-            margin-bottom: 1.5rem;
-            border-radius: var(--border-radius);
-            border: 1px solid #2e5040;
-            background: rgba(0,0,0,0.15);
-            overflow: hidden;
-        }
-        .care-summary-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.6rem 1rem;
-            background: rgba(0,0,0,0.18);
-            cursor: pointer;
-            user-select: none;
-        }
-        .care-summary-header h3 { font-size: 0.83rem; font-weight: 600; color: var(--text-muted); }
-        .care-summary-toggle { color: var(--text-muted); font-size: 0.75rem; }
-        .care-summary-list { display: flex; flex-direction: column; }
-        .care-item {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.42rem 1rem;
-            font-size: 0.82rem;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            cursor: pointer;
-            transition: background 0.12s;
-        }
-        .care-item:hover { background: rgba(255,255,255,0.03); }
-        .care-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-        .care-dot.overdue { background: #e74c3c; }
-        .care-dot.stale   { background: #e67e22; }
-        .care-plant { font-weight: 600; color: var(--text-color); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .care-info { color: var(--text-muted); font-size: 0.77rem; white-space: nowrap; flex-shrink: 0; }
 
         /* ── Plant Grid Overview ── */
         .plant-grid-overview {
@@ -1049,15 +1013,6 @@
     </header>
 
     <div id="plant-grid-overview" class="plant-grid-overview"></div>
-
-    <!-- Care Summary -->
-    <div id="care-summary" class="care-summary" style="display:none">
-        <div class="care-summary-header" id="care-summary-header">
-            <h3 id="care-summary-title">🌿 Péče o rostliny</h3>
-            <span class="care-summary-toggle" id="care-summary-toggle">▾</span>
-        </div>
-        <div class="care-summary-list" id="care-summary-list"></div>
-    </div>
 
     <main class="plants-grid" id="plants-container" style="display:none">
 
@@ -2152,80 +2107,6 @@
         }
     }
 
-    // ── Care Summary ───────────────────────────────────────────
-    function renderCareSummary() {
-        const summaryEl = document.getElementById('care-summary');
-        const listEl    = document.getElementById('care-summary-list');
-        const titleEl   = document.getElementById('care-summary-title');
-
-        const items = [];
-
-        document.querySelectorAll('.plant-card').forEach(card => {
-            const plantId   = getPlantId(card);
-            const plantName = card.querySelector('.plant-title h2').textContent;
-            const s         = getSettings(plantId);
-
-            const check = (type, icon) => {
-                const interval = type === 'water' ? s.water_interval : s.fertilize_interval;
-                if (!interval || interval === 'manual') return;
-
-                const entries = getLatestEntries(plantId, type);
-                if (!entries.length) {
-                    items.push({ plantId, plantName, type, icon, cls: 'overdue', msg: 'nikdy neprovedeno', urgency: 9999 });
-                    return;
-                }
-
-                const d   = daysSince(entries[0].date);
-                const rem = interval - d;
-                const threshold = Math.max(1, Math.floor(interval * 0.25));
-
-                if (rem <= threshold) {
-                    const msg = rem < 0  ? `po termínu ${Math.abs(rem)} dní`
-                              : rem === 0 ? 'DNES'
-                              : rem === 1 ? 'za 1 den'
-                              : `za ${rem} dny`;
-                    const cls = rem <= 0 ? 'overdue' : 'stale';
-                    items.push({ plantId, plantName, type, icon, cls, msg, urgency: rem });
-                }
-            };
-
-            check('water',     '💧');
-            check('fertilize', '🧪');
-        });
-
-        if (!items.length) {
-            summaryEl.style.display = 'none';
-            return;
-        }
-
-        items.sort((a, b) => a.urgency - b.urgency);
-
-        const overdueCount = items.filter(i => i.cls === 'overdue').length;
-        titleEl.textContent = overdueCount
-            ? `🌿 Péče o rostliny — ${overdueCount} po termínu`
-            : `🌿 Péče o rostliny — ${items.length} brzy`;
-
-        listEl.innerHTML = '';
-        items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'care-item';
-            div.innerHTML = `
-                <span class="care-dot ${item.cls}"></span>
-                <span class="log-icon">${item.icon}</span>
-                <span class="care-plant">${item.plantName}</span>
-                <span class="care-info">${item.msg}</span>`;
-            div.addEventListener('click', () => {
-                const card = [...document.querySelectorAll('.plant-card')]
-                    .find(c => getPlantId(c) === item.plantId);
-                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                openLogModal(item.plantId, item.plantName, item.type);
-            });
-            listEl.appendChild(div);
-        });
-
-        summaryEl.style.display = '';
-    }
-
     // ── Log bars (position: after photo-grid) ─────────────────
     function renderAllLogBars() {
         document.querySelectorAll('.plant-card').forEach(card => {
@@ -2264,7 +2145,6 @@
             card.querySelector('.photo-grid').insertAdjacentElement('afterend', bar);
         });
 
-        renderCareSummary();
         buildGrid();
         renderGalleries();
     }
@@ -2678,15 +2558,6 @@
         });
         document.getElementById('settings-fertilize-enabled').addEventListener('change', e => {
             document.getElementById('settings-fertilize-days').disabled = !e.target.checked;
-        });
-
-        // Care summary toggle
-        document.getElementById('care-summary-header').addEventListener('click', () => {
-            const list   = document.getElementById('care-summary-list');
-            const toggle = document.getElementById('care-summary-toggle');
-            const open   = list.style.display !== 'none';
-            list.style.display   = open ? 'none' : '';
-            toggle.textContent   = open ? '▸' : '▾';
         });
 
         document.addEventListener('keydown', e => {
