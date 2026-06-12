@@ -63,5 +63,14 @@
       "fertilize_interval": 7
     }
   },
-  "scindapsus-pictus": {}
+  "scindapsus-pictus": {},
+  "philodendron-red-emerald": {
+    "gallery": [
+      {
+        "url": "https://i.ibb.co/fzcMvPvJ/d8868b449556.jpg",
+        "thumb": "https://i.ibb.co/mVxJ8M8p/d8868b449556.jpg",
+        "date": "2026-06-12"
+      }
+    ]
+  }
 }
