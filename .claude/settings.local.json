@@ -7,7 +7,12 @@
       "Bash(Get-ChildItem \"d:\\\\CSM\\\\Forbes\\\\osobni\\\\\" | Select-Object Name)",
       "Bash(ls /mnt/d/CSM/Forbes/osobni/)",
       "Read(//mnt/d/CSM/Forbes/**)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(python -m http.server 8910)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8910/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8910/index.html)"
     ]
   }
 }

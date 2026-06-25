@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Atlantis Brno Rozdrojovice | VictoriaTip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+    function includeHTML() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="casino-detail-page">
+        <div class="container">
+
+            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+
+            <div class="casino-detail-header">
+                <span class="badge-yellow">Brno Rozdrojovice</span>
+                <h1 class="hero-title">Casino Atlantis</h1>
+                <div class="casino-detail-tags">
+                    <span>Black Jack</span>
+                    <span>Ruleta</span>
+                    <span>Vlt</span>
+                    <span>Poker</span>
+                    <span>Kostky</span>
+                </div>
+            </div>
+
+            <div class="casino-gallery">
+                <div class="gallery-main-frame">
+                    <img id="gallery-main-img" src="img/casino-atlantis-rozdrojovice/atlantis-01.jpg" alt="Casino Atlantis - fotka 1">
+                    <button class="gallery-nav-btn gallery-nav-prev" aria-label="Předchozí fotka">‹</button>
+                    <button class="gallery-nav-btn gallery-nav-next" aria-label="Další fotka">›</button>
+                    <span class="gallery-counter" id="gallery-counter">1 / 7</span>
+                </div>
+                <div class="gallery-thumb-strip">
+                    <button class="gallery-thumb active" data-src="img/casino-atlantis-rozdrojovice/atlantis-01.jpg" data-alt="Casino Atlantis - fotka 1"><img src="img/casino-atlantis-rozdrojovice/atlantis-01.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-02.jpg" data-alt="Casino Atlantis - fotka 2"><img src="img/casino-atlantis-rozdrojovice/atlantis-02.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-03.jpg" data-alt="Casino Atlantis - fotka 3"><img src="img/casino-atlantis-rozdrojovice/atlantis-03.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-04.jpg" data-alt="Casino Atlantis - fotka 4"><img src="img/casino-atlantis-rozdrojovice/atlantis-04.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-05.jpg" data-alt="Casino Atlantis - fotka 5"><img src="img/casino-atlantis-rozdrojovice/atlantis-05.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-06.jpg" data-alt="Casino Atlantis - fotka 6"><img src="img/casino-atlantis-rozdrojovice/atlantis-06.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-atlantis-rozdrojovice/atlantis-07.jpg" data-alt="Casino Atlantis - fotka 7"><img src="img/casino-atlantis-rozdrojovice/atlantis-07.jpg" alt=""></button>
+                </div>
+            </div>
+
+            <div class="casino-detail-grid">
+                <div class="casino-detail-main glass-card">
+                    <h2>O casinu</h2>
+                    <p>V našem novém casinu najdete všechny vaše oblíbené hry. Od pokerových turnajů s každodenní garancí, cash game stolů s blindy 10/20 Kč a vyššími, přes 50 VLT, až po Americkou ruletu, Black Jack a Ultimate texas holdem.</p>
+
+                    <h3>Co u nás najdete</h3>
+                    <ul class="casino-highlight-list">
+                        <li><span class="suit">🟢</span> Casino otevřeno nonstop</li>
+                        <li><span class="suit">♠</span> Živá hra nonstop</li>
+                        <li><span class="suit">♣</span> Pokerové turnaje 6× týdně</li>
+                    </ul>
+
+                    <div class="casino-detail-ctas">
+                        <a href="https://www.casinoatlantis.cz/" target="_blank" class="btn-primary">Navštívit web casina</a>
+                    </div>
+                </div>
+
+                <aside class="casino-detail-sidebar">
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kde nás najdete</h3>
+                        <p class="map-info-address">📍 Brána 177, 664 34 Rozdrojovice</p>
+                        <div class="mini-map-frame">
+                            <div id="mini-map"></div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=49.247346854003,16.518484082339" target="_blank" class="btn-route btn-full">➤ Naplánovat trasu</a>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Provozní doba</h3>
+                        <p>Casino otevřeno NONSTOP</p>
+                        <p>Živá hra NONSTOP</p>
+                        <p>Pokerové turnaje začínají ve 20:00 hodin</p>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kontakty</h3>
+                        <p>📞 Recepce: <a href="tel:+420608123199">+420 608 123 199</a></p>
+                        <p>📞 Manažer: <a href="tel:+420732582973">+420 732 582 973</a></p>
+                        <p>📧 <a href="mailto:ambrozkasinoatlantis@gmail.com">ambrozkasinoatlantis@gmail.com</a></p>
+                        <p>📧 <a href="mailto:travnicekcasinoatlantis@gmail.com">travnicekcasinoatlantis@gmail.com</a></p>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.CASINO_LAT = 49.247346854003;
+        window.CASINO_LNG = 16.518484082339;
+        window.CASINO_TITLE = "Casino Atlantis";
+    </script>
+    <script src="js/mini-mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
+    <script src="js/casino-gallery.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VictoriaTip | Provozovny</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        function includeHTML() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    const mobileBtn = document.getElementById('mobileToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    if (mobileBtn && mainNav) {
+                        mobileBtn.addEventListener('click', function() {
+                            this.classList.toggle('active');
+                            mainNav.classList.toggle('active');
+                        });
+                    }
+
+                    let currentUrl = window.location.pathname.split('/').pop();
+                    if (currentUrl === '') currentUrl = 'index.html'; 
+
+                    const navLinks = document.querySelectorAll('.main-nav a');
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === currentUrl) {
+                            link.classList.add('active');
+                        }
+                    });
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+        }
+        window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <main class="map-page-wrapper">
+        <div class="container">
+
+            <div class="map-page-header text-center">
+                <span class="badge-yellow">Síť poboček VictoriaTip</span>
+                <h1 class="hero-title">Najděte casino<br>poblíž vás</h1>
+                <p class="hero-subtitle">Prohlédněte si všechny naše casina a herny přehledně na mapě i v seznamu.</p>
+            </div>
+
+            <div class="map-frame">
+                <div class="map-canvas-wrapper">
+                    <div id="map"></div>
+                    <div id="casino-detail-panel" class="casino-detail-panel"></div>
+                </div>
+            </div>
+
+            <div class="seznam-provozoven-wrapper">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Kompletní seznam našich poboček</h2>
+                    <p class="hero-subtitle" style="margin-bottom: 25px;">Vyhledejte konkrétní pobočku podle města, ulice nebo názvu.</p>
+
+                    <div class="search-box">
+                        <input type="text" id="hledatPobocku" placeholder="🔍 Hledat město, ulici nebo název..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="seznam-grid" id="seznam-grid"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMapa" async defer></script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VictoriaTip | Svět prémiové zábavy a sázení</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+    function includeHTML() {
+        // Načtení hlavičky
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                
+                // 1. Zprovoznění mobilního menu po načtení
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+                // 2. Chytré rozsvícení aktivní položky
+                // Zjistíme, na jaké jsme URL (např. "mapa-provozoven.html")
+                let currentUrl = window.location.pathname.split('/').pop();
+                // Pokud je adresa prázdná (např. localhost:5500/), bereme to jako index.html
+                if (currentUrl === '') currentUrl = 'index.html'; 
+
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    // Pokud se cíl odkazu shoduje s naší aktuální adresou, přidáme třídu .active
+                    if (link.getAttribute('href') === currentUrl) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+        // Načtení patičky
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+</script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="hero-pillars">
+        <div class="container text-center">
+            <span class="badge-yellow">Vítejte ve světě VictoriaTip</span>
+            <h1 class="hero-title">Zábava, napětí a výhry<br>na jednom místě</h1>
+            <p class="hero-subtitle">Propojujeme špičkové online casino, novou sázkovou kancelář a prémiovou síť kamenných poboček po celé ČR.</p>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🎰</div>
+                    <h3>Online Casino</h3>
+                    <p>Hrajte tisíce her z pohodlí domova na ForbesCasino.cz.</p>
+                    <a href="https://forbescasino.cz" target="_blank" class="btn-primary">Vstoupit do casina</a>
+                </div>
+
+                <div class="pillar-card featured-pillar">
+                    <div class="badge-live"><span class="live-dot"></span>Nově spuštěno</div>
+                    <div class="pillar-icon">⚽</div>
+                    <h3>Sportovní sázení</h3>
+                    <p>Forbes Sázky je tu! Sázejte živě na tisíce sportovních zápasů s nejlepšími kurzy na trhu.</p>
+                    <a href="#" class="btn-primary">Vstoupit do sázkové kanceláře</a>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">📍</div>
+                    <h3>Síť Casin a Heren</h3>
+                    <p>Zažijte atmosféru, živé hry a špičkový servis na našich pobočkách.</p>
+                    <a href="mapa-provozoven.html" class="btn-outline-yellow">Mapa poboček</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="poker-section">
+        <div class="container">
+            <div class="poker-content">
+                <div class="poker-text">
+                    <h2 class="section-title">Milujete živý poker?</h2>
+                    <p>Na našich vybraných casinech to s kartami umíme. Pravidelně pořádáme atraktivní garantované turnaje i každodenní cash game stoly pro začátečníky i profesionály.</p>
+                    <ul class="poker-list">
+                        <li><span class="suit">♠</span> Texas Hold'em & Omaha</li>
+                        <li><span class="suit">♥</span> Profesionální dealeři</li>
+                        <li><span class="suit">♣</span> Skvělý barový servis pro hráče</li>
+                    </ul>
+                    <a href="#" class="btn-primary">Vyhledat pokerová casina</a>
+                </div>
+                <div class="poker-visual-card">
+                    <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="chipGoldGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#FFD166"/>
+                                <stop offset="100%" stop-color="#e0922c"/>
+                            </linearGradient>
+                            <linearGradient id="chipPurpleGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#a78bfa"/>
+                                <stop offset="100%" stop-color="#6d28d9"/>
+                            </linearGradient>
+                            <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="100%" stop-color="#e7e7ef"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Karty -->
+                        <g transform="translate(95,70) rotate(-12)">
+                            <rect x="0" y="0" width="92" height="128" rx="12" fill="url(#cardGrad)" stroke="#cfcfe0" stroke-width="2"/>
+                            <text x="14" y="34" font-family="Inter, sans-serif" font-size="26" font-weight="800" fill="#d9534f">A♥</text>
+                        </g>
+                        <g transform="translate(150,78) rotate(10)">
+                            <rect x="0" y="0" width="92" height="128" rx="12" fill="url(#cardGrad)" stroke="#cfcfe0" stroke-width="2"/>
+                            <text x="14" y="34" font-family="Inter, sans-serif" font-size="26" font-weight="800" fill="#1a1a2e">K♠</text>
+                        </g>
+
+                        <!-- Žetony -->
+                        <g class="poker-chip chip-1" transform="translate(60,220)">
+                            <circle cx="0" cy="0" r="34" fill="url(#chipGoldGrad)" stroke="#fff5d6" stroke-width="3" stroke-dasharray="6 6"/>
+                            <circle cx="0" cy="0" r="20" fill="#160c00" opacity="0.15"/>
+                        </g>
+                        <g class="poker-chip chip-2" transform="translate(160,250)">
+                            <circle cx="0" cy="0" r="40" fill="url(#chipPurpleGrad)" stroke="#e9d8fd" stroke-width="3" stroke-dasharray="6 6"/>
+                            <circle cx="0" cy="0" r="24" fill="#160c00" opacity="0.15"/>
+                        </g>
+                        <g class="poker-chip chip-3" transform="translate(245,210)">
+                            <circle cx="0" cy="0" r="30" fill="url(#chipGoldGrad)" stroke="#fff5d6" stroke-width="3" stroke-dasharray="6 6"/>
+                            <circle cx="0" cy="0" r="17" fill="#160c00" opacity="0.15"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="premium-casinos">
+        <div class="container">
+            <div class="section-header text-center" id="premium-casinos">
+                <h2 class="section-title">Naše prémiová Casina</h2>
+                <p>Navštivte vlajkové lodě sítě VictoriaTip s nabídkou živých her a maximálním komfortem.</p>
+            </div>
+
+            <div class="casinos-grid">
+                <a href="casino-royale.html" class="casino-card">
+                    <img src="img/casino-royale.jpg" alt="Casino Royale" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Živá hra</span><span>Poker</span><span>Bar</span>
+                            </div>
+                            <h3>Casino Royale</h3>
+                            <p class="casino-address">Rumunská 655/9, Liberec</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="casino-atlantis.html" class="casino-card">
+                    <img src="img/casino-atlantis.jpg" alt="Casino Atlantis" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Živá hra</span><span>VLT</span><span>Bar</span>
+                            </div>
+                            <h3>Casino Atlantis</h3>
+                            <p class="casino-address">Brána 177, Rozdrojovice</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="casino-forbes-brandys.html" class="casino-card">
+                    <img src="img/casino-forbes.jpg" alt="Casino Forbes" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Poker</span><span>VLT</span><span>Parkování</span>
+                            </div>
+                            <h3>Forbes Brandýs</h3>
+                            <p class="casino-address">Pražská 1777, Brandýs nad Labem</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="casino-jacks.html" class="casino-card">
+                    <img src="img/casino-jacks.jpg" alt="Casino Jacks" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Živá hra</span><span>Bar</span>
+                            </div>
+                            <h3>Casino Jacks</h3>
+                            <p class="casino-address">Turkaňk 49, Kutná Hora</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="casino-litomerice.html" class="casino-card">
+                    <img src="img/casino-litomerice.jpg" alt="Casino Litoměřice" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Živá hra</span><span>Poker</span><span>VLT</span>
+                            </div>
+                            <h3>Casino Litoměřice</h3>
+                            <p class="casino-address">Pokratická 1853/71, Litoměřice</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="casino-sokolov.html" class="casino-card">
+                    <img src="img/casino-sokolov.jpg" alt="Casino Sokolov" class="casino-img">
+                    <div class="casino-info">
+                        <div class="casino-info-text">
+                            <div class="casino-tags">
+                                <span>Živá hra</span><span>VLT</span><span>Bar</span>
+                            </div>
+                            <h3>Forbes Sokolov</h3>
+                            <p class="casino-address">Staré náměstí 132, Sokolov</p>
+                        </div>
+                        <svg class="casino-card-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M5 6 L16 16 L5 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 6 L27 16 L16 26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

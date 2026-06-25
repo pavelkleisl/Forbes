@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbes Sokolov | VictoriaTip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+    function includeHTML() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="casino-detail-page">
+        <div class="container">
+
+            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+
+            <div class="casino-detail-header">
+                <span class="badge-yellow">Sokolov</span>
+                <h1 class="hero-title">Forbes Sokolov</h1>
+                <div class="casino-detail-tags">
+                    <span>Black jack</span>
+                    <span>Easy poker</span>
+                    <span>Vlt</span>
+                </div>
+            </div>
+
+            <div class="casino-gallery">
+                <div class="gallery-main-frame">
+                    <img id="gallery-main-img" src="img/casino-forbes-sokolov/sokolov-01.jpg" alt="Forbes Sokolov - fotka 1">
+                    <button class="gallery-nav-btn gallery-nav-prev" aria-label="Předchozí fotka">‹</button>
+                    <button class="gallery-nav-btn gallery-nav-next" aria-label="Další fotka">›</button>
+                    <span class="gallery-counter" id="gallery-counter">1 / 10</span>
+                </div>
+                <div class="gallery-thumb-strip">
+                    <button class="gallery-thumb active" data-src="img/casino-forbes-sokolov/sokolov-01.jpg" data-alt="Forbes Sokolov - fotka 1"><img src="img/casino-forbes-sokolov/sokolov-01.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-02.jpg" data-alt="Forbes Sokolov - fotka 2"><img src="img/casino-forbes-sokolov/sokolov-02.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-03.jpg" data-alt="Forbes Sokolov - fotka 3"><img src="img/casino-forbes-sokolov/sokolov-03.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-04.jpg" data-alt="Forbes Sokolov - fotka 4"><img src="img/casino-forbes-sokolov/sokolov-04.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-05.jpg" data-alt="Forbes Sokolov - fotka 5"><img src="img/casino-forbes-sokolov/sokolov-05.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-06.jpg" data-alt="Forbes Sokolov - fotka 6"><img src="img/casino-forbes-sokolov/sokolov-06.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-07.jpg" data-alt="Forbes Sokolov - fotka 7"><img src="img/casino-forbes-sokolov/sokolov-07.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-08.jpg" data-alt="Forbes Sokolov - fotka 8"><img src="img/casino-forbes-sokolov/sokolov-08.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-09.jpg" data-alt="Forbes Sokolov - fotka 9"><img src="img/casino-forbes-sokolov/sokolov-09.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-sokolov/sokolov-10.jpg" data-alt="Forbes Sokolov - fotka 10"><img src="img/casino-forbes-sokolov/sokolov-10.jpg" alt=""></button>
+                </div>
+            </div>
+
+            <div class="casino-detail-grid">
+                <div class="casino-detail-main glass-card">
+                    <h2>O casinu</h2>
+                    <p>Casino Forbes Sokolov vás zve do nově otevřeného poker roomu, kde je tři dny v týdnu pro vás připravena široká nabídka pokerových turnajů, cash game s blindy začínajících 10/10 Kč, 10/20 Kč a vyšších. Všechny turnaje začínají od 18:30 hod. a buy-in se pohybuje od 200 Kč do 5.000 Kč.</p>
+                    <p>V Sokolově hrajeme turnaje série Forbes Pokerman Tour s freerollem o 1.500.000 Kč. Pro hráče je připraveno několik stolů živé hry – Easy Poker, Black Jack, nebo můžete zkusit štěstí na výherních automatech. Samozřejmostí je občerstvení, pivo a nealkoholické nápoje pro hráče zdarma.</p>
+
+                    <h3>Co u nás najdete</h3>
+                    <ul class="casino-highlight-list">
+                        <li><span class="suit">♣</span> Cash games</li>
+                        <li><span class="suit">🎁</span> Speciální akce</li>
+                        <li><span class="suit">♠</span> Turnaje s garancí</li>
+                    </ul>
+
+                    <div class="casino-detail-ctas">
+                        <a href="http://www.casinosokolov.cz/" target="_blank" class="btn-primary">Navštívit web casina</a>
+                    </div>
+                </div>
+
+                <aside class="casino-detail-sidebar">
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kde nás najdete</h3>
+                        <p class="map-info-address">📍 Staré náměstí 132, 356 01 Sokolov</p>
+                        <div class="mini-map-frame">
+                            <div id="mini-map"></div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=50.1805588,12.6394092" target="_blank" class="btn-route btn-full">➤ Naplánovat trasu</a>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Provozní doba</h3>
+                        <p>Casino otevřeno NONSTOP</p>
+                        <p>Pokerové turnaje začínají ve 18:30 hodin</p>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kontakty</h3>
+                        <p>📧 <a href="mailto:info@casinosokolov.cz">info@casinosokolov.cz</a></p>
+                        <p>📞 <a href="tel:+420736781162">+420 736 781 162</a></p>
+                        <p>🌐 <a href="http://www.casinosokolov.cz/" target="_blank">www.casinosokolov.cz</a></p>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.CASINO_LAT = 50.1805588;
+        window.CASINO_LNG = 12.6394092;
+        window.CASINO_TITLE = "Forbes Sokolov";
+    </script>
+    <script src="js/mini-mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
+    <script src="js/casino-gallery.js"></script>
+
+</body>
+</html>

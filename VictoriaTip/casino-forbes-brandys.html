@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Forbes Brandýs nad Labem | VictoriaTip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+    function includeHTML() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="casino-detail-page">
+        <div class="container">
+
+            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+
+            <div class="casino-detail-header">
+                <span class="badge-yellow">Brandýs nad Labem</span>
+                <h1 class="hero-title">Casino Forbes Brandýs</h1>
+                <div class="casino-detail-tags">
+                    <span>Americká ruleta</span>
+                    <span>Easy poker</span>
+                    <span>Black Jack</span>
+                    <span>Vlt</span>
+                </div>
+            </div>
+
+            <div class="casino-gallery">
+                <div class="gallery-main-frame">
+                    <img id="gallery-main-img" src="img/casino-forbes-brandys/brandys-01.jpg" alt="Casino Forbes Brandýs - fotka 1">
+                    <button class="gallery-nav-btn gallery-nav-prev" aria-label="Předchozí fotka">‹</button>
+                    <button class="gallery-nav-btn gallery-nav-next" aria-label="Další fotka">›</button>
+                    <span class="gallery-counter" id="gallery-counter">1 / 9</span>
+                </div>
+                <div class="gallery-thumb-strip">
+                    <button class="gallery-thumb active" data-src="img/casino-forbes-brandys/brandys-01.jpg" data-alt="Casino Forbes Brandýs - fotka 1"><img src="img/casino-forbes-brandys/brandys-01.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-02.jpg" data-alt="Casino Forbes Brandýs - fotka 2"><img src="img/casino-forbes-brandys/brandys-02.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-03.jpg" data-alt="Casino Forbes Brandýs - fotka 3"><img src="img/casino-forbes-brandys/brandys-03.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-04.jpg" data-alt="Casino Forbes Brandýs - fotka 4"><img src="img/casino-forbes-brandys/brandys-04.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-05.jpg" data-alt="Casino Forbes Brandýs - fotka 5"><img src="img/casino-forbes-brandys/brandys-05.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-06.jpg" data-alt="Casino Forbes Brandýs - fotka 6"><img src="img/casino-forbes-brandys/brandys-06.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-07.jpg" data-alt="Casino Forbes Brandýs - fotka 7"><img src="img/casino-forbes-brandys/brandys-07.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-08.jpg" data-alt="Casino Forbes Brandýs - fotka 8"><img src="img/casino-forbes-brandys/brandys-08.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-forbes-brandys/brandys-09.jpg" data-alt="Casino Forbes Brandýs - fotka 9"><img src="img/casino-forbes-brandys/brandys-09.jpg" alt=""></button>
+                </div>
+            </div>
+
+            <div class="casino-detail-grid">
+                <div class="casino-detail-main glass-card">
+                    <h2>O casinu</h2>
+                    <p>Vážení příznivci her, dobré zábavy a drobného hazardu, zveme vás do nově otevřeného pokerového klubu. Ať už na cash game s blindy 10/20 Kč, 25/50 Kč a vyšší, nebo k turnajům, které budou probíhat od 19 hodin. Buy-iny jsou v rozmezí 200–5.000 Kč.</p>
+                    <p>V Brandýse hrajeme turnaje série Forbes Pokerman Tour s freerollem o 1.000.000 Kč. Pro hráče je připraveno několik stolů živé hry – Ultimate Texas Holdem, Easy Poker, Black Jack a ruletu, nebo můžete zkusit štěstí na výherních automatech. Samozřejmostí je občerstvení, pivo a nealkoholické nápoje pro hráče zdarma.</p>
+
+                    <h3>Co u nás najdete</h3>
+                    <ul class="casino-highlight-list">
+                        <li><span class="suit">♠</span> Forbes Pokerman Tour</li>
+                        <li><span class="suit">♣</span> Cash games</li>
+                        <li><span class="suit">♥</span> Turnaje BFPT</li>
+                    </ul>
+
+                    <div class="casino-detail-ctas">
+                        <a href="https://www.forbes-brandys.cz/" target="_blank" class="btn-primary">Navštívit web casina</a>
+                    </div>
+                </div>
+
+                <aside class="casino-detail-sidebar">
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kde nás najdete</h3>
+                        <p class="map-info-address">📍 Pražská 1777, 250 01 Brandýs nad Labem</p>
+                        <div class="mini-map-frame">
+                            <div id="mini-map"></div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=50.1841512,14.6578907" target="_blank" class="btn-route btn-full">➤ Naplánovat trasu</a>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Provozní doba</h3>
+                        <p>Casino otevřeno NONSTOP</p>
+                        <p>Živá hra NONSTOP</p>
+                        <p>Pokerové turnaje začínají ve 19:00 hodin</p>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kontakty</h3>
+                        <p>📞 <a href="tel:+420607223223">+420 607 223 223</a></p>
+                        <p>📧 <a href="mailto:info@forbesbrandys.cz">info@forbesbrandys.cz</a></p>
+                        <p>🌐 <a href="https://www.forbesbrandys.cz/" target="_blank">www.forbesbrandys.cz</a></p>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.CASINO_LAT = 50.1841512;
+        window.CASINO_LNG = 14.6578907;
+        window.CASINO_TITLE = "Casino Forbes Brandýs";
+    </script>
+    <script src="js/mini-mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
+    <script src="js/casino-gallery.js"></script>
+
+</body>
+</html>

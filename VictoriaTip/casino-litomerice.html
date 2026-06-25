@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Litoměřice | VictoriaTip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+    function includeHTML() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="casino-detail-page">
+        <div class="container">
+
+            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+
+            <div class="casino-detail-header">
+                <span class="badge-yellow">Litoměřice</span>
+                <h1 class="hero-title">Casino Litoměřice</h1>
+                <div class="casino-detail-tags">
+                    <span>Vlt</span>
+                    <span>Poker</span>
+                    <span>Black Jack</span>
+                    <span>Ruleta</span>
+                </div>
+            </div>
+
+            <div class="casino-gallery">
+                <div class="gallery-main-frame">
+                    <img id="gallery-main-img" src="img/casino-litomerice/litomerice-01.jpg" alt="Casino Litoměřice - fotka 1">
+                    <button class="gallery-nav-btn gallery-nav-prev" aria-label="Předchozí fotka">‹</button>
+                    <button class="gallery-nav-btn gallery-nav-next" aria-label="Další fotka">›</button>
+                    <span class="gallery-counter" id="gallery-counter">1 / 9</span>
+                </div>
+                <div class="gallery-thumb-strip">
+                    <button class="gallery-thumb active" data-src="img/casino-litomerice/litomerice-01.jpg" data-alt="Casino Litoměřice - fotka 1"><img src="img/casino-litomerice/litomerice-01.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-02.jpg" data-alt="Casino Litoměřice - fotka 2"><img src="img/casino-litomerice/litomerice-02.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-03.jpg" data-alt="Casino Litoměřice - fotka 3"><img src="img/casino-litomerice/litomerice-03.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-04.jpg" data-alt="Casino Litoměřice - fotka 4"><img src="img/casino-litomerice/litomerice-04.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-05.jpg" data-alt="Casino Litoměřice - fotka 5"><img src="img/casino-litomerice/litomerice-05.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-06.jpg" data-alt="Casino Litoměřice - fotka 6"><img src="img/casino-litomerice/litomerice-06.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-07.jpg" data-alt="Casino Litoměřice - fotka 7"><img src="img/casino-litomerice/litomerice-07.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-08.jpg" data-alt="Casino Litoměřice - fotka 8"><img src="img/casino-litomerice/litomerice-08.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-litomerice/litomerice-09.jpg" data-alt="Casino Litoměřice - fotka 9"><img src="img/casino-litomerice/litomerice-09.jpg" alt=""></button>
+                </div>
+            </div>
+
+            <div class="casino-detail-grid">
+                <div class="casino-detail-main glass-card">
+                    <h2>O casinu</h2>
+                    <p>Pro casino jsou typické luxusní rauty, se kterými se jinde takřka nesetkáte. V roce 2019 proběhla velká rekonstrukce a díky ní se casino nyní rozkládá na více než 600 m². Součástí jsou živé hry – ruleta, blackjack, ultimate holdem a nově také netradiční, ale populární Gotes – neboli plátýnko.</p>
+                    <p>9 pokerových stolů dává prostor pro pořádání turnajů s garancemi přes 700.000 Kč měsíčně, mezi které patří každý měsíc minimálně jedna litoměřická „ČTVRTMIČUDA". Všechny Vás do našeho casina srdečně zveme a těšíme se na Vaši návštěvu.</p>
+
+                    <h3>Co u nás najdete</h3>
+                    <ul class="casino-highlight-list">
+                        <li><span class="suit">♠</span> 9 pokerových stolů</li>
+                        <li><span class="suit">🍷</span> Luxusní rauty</li>
+                        <li><span class="suit">♥</span> Živé hry</li>
+                    </ul>
+
+                    <div class="casino-detail-ctas">
+                        <a href="http://casinolitomerice.cz/" target="_blank" class="btn-primary">Navštívit web casina</a>
+                    </div>
+                </div>
+
+                <aside class="casino-detail-sidebar">
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kde nás najdete</h3>
+                        <p class="map-info-address">📍 Pokratická 1853/71, Pokratice, 412 01 Litoměřice</p>
+                        <div class="mini-map-frame">
+                            <div id="mini-map"></div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=50.5445196,14.1239125" target="_blank" class="btn-route btn-full">➤ Naplánovat trasu</a>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Provozní doba</h3>
+                        <p>Otevřeno NONSTOP</p>
+                        <p>Pokerové turnaje začínají ve 18:00 hodin</p>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kontakty</h3>
+                        <p>📞 Bar: <a href="tel:+420725388066">+420 725 388 066</a></p>
+                        <p>📞 Manager / Floorman: <a href="tel:+420777856935">+420 777 856 935</a></p>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.CASINO_LAT = 50.5445196;
+        window.CASINO_LNG = 14.1239125;
+        window.CASINO_TITLE = "Casino Litoměřice";
+    </script>
+    <script src="js/mini-mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
+    <script src="js/casino-gallery.js"></script>
+
+</body>
+</html>

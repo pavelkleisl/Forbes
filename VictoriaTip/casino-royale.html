@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royale Liberec | VictoriaTip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+    function includeHTML() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                const mobileBtn = document.getElementById('mobileToggle');
+                const mainNav = document.getElementById('mainNav');
+                if (mobileBtn && mainNav) {
+                    mobileBtn.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        mainNav.classList.toggle('active');
+                    });
+                }
+
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    }
+    window.onload = includeHTML;
+    </script>
+</head>
+<body class="hp-body">
+
+    <div id="header-placeholder"></div>
+
+    <section class="casino-detail-page">
+        <div class="container">
+
+            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+
+            <div class="casino-detail-header">
+                <span class="badge-yellow">Liberec</span>
+                <h1 class="hero-title">Casino Royale</h1>
+                <div class="casino-detail-tags">
+                    <span>Black Jack</span>
+                    <span>Ruleta</span>
+                    <span>Vlt</span>
+                    <span>Poker</span>
+                </div>
+            </div>
+
+            <div class="casino-gallery">
+                <div class="gallery-main-frame">
+                    <img id="gallery-main-img" src="img/casino-royale-liberec/royale-01.jpg" alt="Casino Royale Liberec - fotka 1">
+                    <button class="gallery-nav-btn gallery-nav-prev" aria-label="Předchozí fotka">‹</button>
+                    <button class="gallery-nav-btn gallery-nav-next" aria-label="Další fotka">›</button>
+                    <span class="gallery-counter" id="gallery-counter">1 / 10</span>
+                </div>
+                <div class="gallery-thumb-strip">
+                    <button class="gallery-thumb active" data-src="img/casino-royale-liberec/royale-01.jpg" data-alt="Casino Royale Liberec - fotka 1"><img src="img/casino-royale-liberec/royale-01.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-02.jpg" data-alt="Casino Royale Liberec - fotka 2"><img src="img/casino-royale-liberec/royale-02.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-03.jpg" data-alt="Casino Royale Liberec - fotka 3"><img src="img/casino-royale-liberec/royale-03.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-04.jpg" data-alt="Casino Royale Liberec - fotka 4"><img src="img/casino-royale-liberec/royale-04.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-05.jpg" data-alt="Casino Royale Liberec - fotka 5"><img src="img/casino-royale-liberec/royale-05.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-06.jpg" data-alt="Casino Royale Liberec - fotka 6"><img src="img/casino-royale-liberec/royale-06.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-07.jpg" data-alt="Casino Royale Liberec - fotka 7"><img src="img/casino-royale-liberec/royale-07.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-08.jpg" data-alt="Casino Royale Liberec - fotka 8"><img src="img/casino-royale-liberec/royale-08.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-09.jpg" data-alt="Casino Royale Liberec - fotka 9"><img src="img/casino-royale-liberec/royale-09.jpg" alt=""></button>
+                    <button class="gallery-thumb" data-src="img/casino-royale-liberec/royale-10.jpg" data-alt="Casino Royale Liberec - fotka 10"><img src="img/casino-royale-liberec/royale-10.jpg" alt=""></button>
+                </div>
+            </div>
+
+            <div class="casino-detail-grid">
+                <div class="casino-detail-main glass-card">
+                    <h2>O casinu</h2>
+                    <p>Královská zábava v srdci Liberce. Casino Royale Liberec je casino v centru města. Čeká na Vás spousta zábavy: VLT automaty, americká ruleta a kola štěstí. Pořádáme pokerové turnaje a cash game každé úterý, čtvrtek a sobotu od 20 hodin. Vyzkoušejte svůj cit pro hru!</p>
+
+                    <h3>Co u nás najdete</h3>
+                    <ul class="casino-highlight-list">
+                        <li><span class="suit">🎡</span> Kola štěstí</li>
+                        <li><span class="suit">♠</span> Pokerové turnaje</li>
+                        <li><span class="suit">♣</span> Cash game</li>
+                    </ul>
+
+                    <div class="casino-detail-ctas">
+                        <a href="https://casinoroyal.cz/" target="_blank" class="btn-primary">Navštívit web casina</a>
+                    </div>
+                </div>
+
+                <aside class="casino-detail-sidebar">
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kde nás najdete</h3>
+                        <p class="map-info-address">📍 Rumunská 655/9, 460 01 – Liberec</p>
+                        <div class="mini-map-frame">
+                            <div id="mini-map"></div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=50.7664506,15.0584345" target="_blank" class="btn-route btn-full">➤ Naplánovat trasu</a>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Provozní doba</h3>
+                        <p>Pondělí – Neděle<br>12:00 – 6:00</p>
+                    </div>
+
+                    <div class="glass-card casino-sidebar-card">
+                        <h3>Kontakty</h3>
+                        <p>📞 <a href="tel:+420725458606">+420 725 458 606</a></p>
+                        <p>📷 <a href="https://instagram.com/casinoroyaleliberec/" target="_blank">Instagram</a></p>
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.CASINO_LAT = 50.7664506;
+        window.CASINO_LNG = 15.0584345;
+        window.CASINO_TITLE = "Casino Royale";
+    </script>
+    <script src="js/mini-mapa.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
+    <script src="js/casino-gallery.js"></script>
+
+</body>
+</html>

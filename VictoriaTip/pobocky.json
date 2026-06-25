@@ -1,0 +1,1601 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 160,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "Casino Royale",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/05\/r1.jpg",
+            "location": {
+                "value": "50.7664506,15.0584345",
+                "lat": "50.7664506",
+                "lng": "15.0584345",
+                "zoom": "10",
+                "address": "Rumunsk\u00e1 655\/9 460 01 \u2013 Liberec"
+            },
+            "location_title": "Liberec",
+            "location_exclude": false,
+            "description": "Kr\u00e1lovsk\u00e1 z\u00e1bava v srdci Liberce. Casino Royale Liberec je casino v centru m\u011bsta. \u010cek\u00e1 na V\u00e1s spousta z\u00e1bavy: VLT automaty, americk\u00e1 ruleta a kola \u0161t\u011bst\u00ed. Po\u0159\u00e1d\u00e1me pokerov\u00e9 turnaje a cash game ka\u017ed\u00e9 \u00fater\u00fd, \u010dtvrtek a\u2026",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-royale-liberec\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": 47,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "Casino Atlantis",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/03\/forbes-atlantis-zachytto-cz-8-of-11-1024x683.jpg",
+            "location": {
+                "value": "49.247346854003,16.518484082339",
+                "lat": "49.247346854003",
+                "lng": "16.518484082339",
+                "zoom": "17",
+                "address": "Atlantis Casino Brno Br\u00e1na 177 664 34 Rozdrojovice"
+            },
+            "location_title": "Brno Rozdrojovice",
+            "location_exclude": false,
+            "description": "V na\u0161em nov\u00e9m casinu najdete v\u0161echny va\u0161e obl\u00edben\u00e9 hry. Od pokerov\u00fdch turnaj\u016f s ka\u017edodenn\u00ed garanc\u00ed, cash game stol\u016f s blindy 10\/20 K\u010d a vy\u0161\u0161\u00edmi, p\u0159es 50 VLT, a\u017e po Americkou ruletu, Black Jack a Ultimate texas holdem.",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-atlantis-2\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": 26,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "CASINO FORBES",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/03\/5-1024x683.jpg",
+            "location": {
+                "value": "50.1841512,14.6578907",
+                "lat": "50.1841512",
+                "lng": "14.6578907",
+                "zoom": "10",
+                "address": "Pra\u017esk\u00e1 1777 250 01 Brand\u00fds nad Labem"
+            },
+            "location_title": "Brand\u00fds nad Labem",
+            "location_exclude": false,
+            "description": "V\u00e1\u017een\u00ed p\u0159\u00edznivci her, dobr\u00e9 z\u00e1bavy a drobn\u00e9ho hazardu, zveme v\u00e1s do nov\u011b otev\u0159en\u00e9ho pokerov\u00e9ho klubu. A\u0165 u\u017e na cash game s blindy 10\/20 K\u010d, 25\/50 K\u010d a vy\u0161\u0161\u00ed, nebo k turnaj\u016fm, kter\u00e9 budou prob\u00edhat od 19 hodin.",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-forbes\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": 29,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "Casino Jacks",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/03\/274814937-3115028105438246-4514686021725861908-n-1024x684.jpg",
+            "location": {
+                "value": "49.9811174,15.2856763",
+                "lat": "49.9811174",
+                "lng": "15.2856763",
+                "zoom": "10",
+                "address": "Casino Jacks, Kutn\u00e1 Hora"
+            },
+            "location_title": " Kutn\u00e1 Hora",
+            "location_exclude": false,
+            "description": "Bu\u010f tam, kde se hraje! V\u00e1\u017een\u00ed p\u0159\u00edznivci her, dobr\u00e9 z\u00e1bavy a drobn\u00e9ho hazardu, zveme v\u00e1s do nov\u011b otev\u0159en\u00e9ho pokerov\u00e9ho klubu. A\u0165 u\u017e na cash game Holdem s blindy 10\/20 K\u010d, 25\/50 K\u010d, cash game Omaha 25\/25 K\u010d, 50\/50 K\u010d\u2026",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-jacks\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": 135,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "Casino Litom\u011b\u0159ice",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/05\/img-6718-1024x683.jpg",
+            "location": {
+                "value": "50.5445196,14.1239125",
+                "lat": "50.5445196",
+                "lng": "14.1239125",
+                "zoom": "10",
+                "address": "Pokratick\u00e1 1853\/71, Pokratice, 412 01 Litom\u011b\u0159ice"
+            },
+            "location_title": "Litom\u011b\u0159ice",
+            "location_exclude": false,
+            "description": "Pro casino jsou typick\u00e9&nbsp;luxusn\u00ed rauty, se kter\u00fdmi se jinde tak\u0159ka nesetk\u00e1te. V roce 2019 prob\u011bhla velk\u00e1 rekonstrukce a d\u00edky n\u00ed se casino nyn\u00ed rozkl\u00e1d\u00e1 na v\u00edce ne\u017e&nbsp;600 m2. Sou\u010d\u00e1st\u00ed jsou&nbsp;\u017eiv\u00e9 hry&nbsp;\u2013\u2026",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-litomerice\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": 122,
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-64px.png",
+            "title": "FORBES SOKOLOV",
+            "thumbnail": "https:\/\/victoriatip.cz\/wp-content\/uploads\/2022\/05\/sokolov-5-1024x683.jpg",
+            "location": {
+                "value": "50.1805588,12.6394092",
+                "lat": "50.1805588",
+                "lng": "12.6394092",
+                "zoom": "10",
+                "address": "Star\u00e9 n\u00e1m\u011bst\u00ed 132 356 01 Sokolov"
+            },
+            "location_title": "Sokolov",
+            "location_exclude": false,
+            "description": "Casino Forbes Sokolov v\u00e1s zve do nov\u011b otev\u0159en\u00e9ho poker roomu, kde je t\u0159i dny v t\u00fddnu pro v\u00e1s p\u0159ipravena \u0161irok\u00e1 nab\u00eddka pokerov\u00fdch turnaj\u016f, cash game s blindy za\u010d\u00ednaj\u00edc\u00edch 10\/10 K\u010d 10\/20 K\u010d a vy\u0161\u0161\u00edch. V\u0161echny turnaje\u2026",
+            "url": "https:\/\/victoriatip.cz\/casinos\/casino-forbes-sokolov\/",
+            "herna": false,
+            "detail": true
+        },
+        {
+            "id": "mini-0",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": " FORBES CASINO MAX",
+            "location": {
+                "value": "50.6425093,13.8261671",
+                "lat": "50.6425093",
+                "lng": "13.8261671",
+                "zoom": "10",
+                "address": "Bene\u0161ovo n\u00e1m\u011bst\u00ed  491\/1, 41501 Teplice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Bene\u0161ovo n\u00e1m\u011bst\u00ed  491\/1, 41501 Teplice",
+            "detail": false
+        },
+        {
+            "id": "mini-1",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO FAIR PLAY",
+            "location": {
+                "value": "50.4238399,14.2440487",
+                "lat": "50.4238399",
+                "lng": "14.2440487",
+                "zoom": "10",
+                "address": "Alej 17. listopadu  1762, 41301 Roudnice nad Labem"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Alej 17. listopadu  1762, 41301 Roudnice nad Labem",
+            "detail": false
+        },
+        {
+            "id": "mini-2",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO DRU\u017dBA",
+            "location": {
+                "value": "50.5445196,14.1239125",
+                "lat": "50.5445196",
+                "lng": "14.1239125",
+                "zoom": "10",
+                "address": "Pokratick\u00e1  1853\/71, 41201 Litom\u011b\u0159ice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Pokratick\u00e1  1853\/71, 41201 Litom\u011b\u0159ice",
+            "detail": false
+        },
+        {
+            "id": "mini-3",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA ROYALE",
+            "location": {
+                "value": "49.4752709,17.1081657",
+                "lat": "49.4752709",
+                "lng": "17.1081657",
+                "zoom": "10",
+                "address": "Kosteleck\u00e1  417\/5, 79601 Prost\u011bjov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Kosteleck\u00e1  417\/5, 79601 Prost\u011bjov",
+            "detail": false
+        },
+        {
+            "id": "mini-4",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO RODAX 28",
+            "location": {
+                "value": "50.6453855,13.82848",
+                "lat": "50.6453855",
+                "lng": "13.82848",
+                "zoom": "10",
+                "address": "28. \u0159\u00edjna  3238, 41501 Teplice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "28. \u0159\u00edjna  3238, 41501 Teplice",
+            "detail": false
+        },
+        {
+            "id": "mini-5",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO",
+            "location": {
+                "value": "50.4946516,13.6571331",
+                "lat": "50.4946516",
+                "lng": "13.6571331",
+                "zoom": "10",
+                "address": "Vi\u0161\u0148ov\u00e1 983\/3, 43401 Most"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Vi\u0161\u0148ov\u00e1 983\/3, 43401 Most",
+            "detail": false
+        },
+        {
+            "id": "mini-6",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA LU\u017dAN",
+            "location": {
+                "value": "50.9508668,14.5586393",
+                "lat": "50.9508668",
+                "lng": "14.5586393",
+                "zoom": "10",
+                "address": "N\u00e1m\u011bst\u00ed Lu\u017eick\u00e9  211\/15, 40801 Rumburk"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1m\u011bst\u00ed Lu\u017eick\u00e9  211\/15, 40801 Rumburk",
+            "detail": false
+        },
+        {
+            "id": "mini-7",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "49.4543023,17.4625198",
+                "lat": "49.4543023",
+                "lng": "17.4625198",
+                "zoom": "10",
+                "address": "Vsadsko 2225\/2, 75002 P\u0159erov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Vsadsko 2225\/2, 75002 P\u0159erov",
+            "detail": false
+        },
+        {
+            "id": "mini-8",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "50.7409564,15.3097995",
+                "lat": "50.7409564",
+                "lng": "15.3097995",
+                "zoom": "10",
+                "address": "Krkono\u0161sk\u00e1  246, 46841 Tanvald"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Krkono\u0161sk\u00e1  246, 46841 Tanvald",
+            "detail": false
+        },
+        {
+            "id": "mini-9",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA CHANCE",
+            "location": {
+                "value": "50.4220128,14.2532914",
+                "lat": "50.4220128",
+                "lng": "14.2532914",
+                "zoom": "10",
+                "address": "\u0160pindlerova t\u0159\u00edda  808, 41301 Roudnice nad Labem"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u0160pindlerova t\u0159\u00edda  808, 41301 Roudnice nad Labem",
+            "detail": false
+        },
+        {
+            "id": "mini-10",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FAIR PLAY",
+            "location": {
+                "value": "50.4563636,14.3715068",
+                "lat": "50.4563636",
+                "lng": "14.3715068",
+                "zoom": "10",
+                "address": "Litom\u011b\u0159ick\u00e1  504, 41108 \u0160t\u011bt\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Litom\u011b\u0159ick\u00e1  504, 41108 \u0160t\u011bt\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-11",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO PALMA",
+            "location": {
+                "value": "50.6464498,13.8544619",
+                "lat": "50.6464498",
+                "lng": "13.8544619",
+                "zoom": "10",
+                "address": "Trnovansk\u00e1 1798, 41501 Teplice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Trnovansk\u00e1 1798, 41501 Teplice",
+            "detail": false
+        },
+        {
+            "id": "mini-12",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "49.8368273,13.8923674",
+                "lat": "49.8368273",
+                "lng": "13.8923674",
+                "zoom": "10",
+                "address": "Masarykova  392\/20, 26801 Ho\u0159ovice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Masarykova  392\/20, 26801 Ho\u0159ovice",
+            "detail": false
+        },
+        {
+            "id": "mini-13",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA KULA\u0164\u00c1K",
+            "location": {
+                "value": "50.3927357,13.1817048",
+                "lat": "50.3927357",
+                "lng": "13.1817048",
+                "zoom": "10",
+                "address": "Poln\u00ed 682, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Poln\u00ed 682, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-14",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO",
+            "location": {
+                "value": "50.5493383,13.7750741",
+                "lat": "50.5493383",
+                "lng": "13.7750741",
+                "zoom": "10",
+                "address": "\u017delivsk\u00e9ho  67\/6, 41801 B\u00edlina "
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u017delivsk\u00e9ho  67\/6, 41801 B\u00edlina ",
+            "detail": false
+        },
+        {
+            "id": "mini-15",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA LAS VEGAS",
+            "location": {
+                "value": "50.9512689,14.5605968",
+                "lat": "50.9512689",
+                "lng": "14.5605968",
+                "zoom": "10",
+                "address": "U Jiskry 116\/4, 40801 Rumburk"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "U Jiskry 116\/4, 40801 Rumburk",
+            "detail": false
+        },
+        {
+            "id": "mini-16",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO 777",
+            "location": {
+                "value": "50.7887078,14.2889286",
+                "lat": "50.7887078",
+                "lng": "14.2889286",
+                "zoom": "10",
+                "address": "Hunt\u00ed\u0159ov 186, 40502 Hunt\u00ed\u0159ov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Hunt\u00ed\u0159ov 186, 40502 Hunt\u00ed\u0159ov",
+            "detail": false
+        },
+        {
+            "id": "mini-17",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA BAR 9999",
+            "location": {
+                "value": "50.4237116,14.2673176",
+                "lat": "50.4237116",
+                "lng": "14.2673176",
+                "zoom": "10",
+                "address": "N\u00e1m\u011bst\u00ed 28. \u0159\u00edjna  1693, 41301 Roudnice nad Labem"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1m\u011bst\u00ed 28. \u0159\u00edjna  1693, 41301 Roudnice nad Labem",
+            "detail": false
+        },
+        {
+            "id": "mini-18",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA RETRO 1.",
+            "location": {
+                "value": "49.8792827,18.5498558",
+                "lat": "49.8792827",
+                "lng": "18.5498558",
+                "zoom": "10",
+                "address": "Doln\u00ed Marklovice  262, 73572 Petrovice u Karvin\u00e9"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Doln\u00ed Marklovice  262, 73572 Petrovice u Karvin\u00e9",
+            "detail": false
+        },
+        {
+            "id": "mini-19",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO KRUH",
+            "location": {
+                "value": "48.8558941,16.0552127",
+                "lat": "48.8558941",
+                "lng": "16.0552127",
+                "zoom": "10",
+                "address": "Rooseveltova  838\/2, 66902 Znojmo"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Rooseveltova  838\/2, 66902 Znojmo",
+            "detail": false
+        },
+        {
+            "id": "mini-20",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO MARINER",
+            "location": {
+                "value": "49.0503273,14.4365646",
+                "lat": "49.0503273",
+                "lng": "14.4365646",
+                "zoom": "10",
+                "address": "Tyr\u0161ova  23, 37341 Hlubok\u00e1 nad Vltavou"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Tyr\u0161ova  23, 37341 Hlubok\u00e1 nad Vltavou",
+            "detail": false
+        },
+        {
+            "id": "mini-21",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "ROYALE CASINO",
+            "location": {
+                "value": "50.7664506,15.0584345",
+                "lat": "50.7664506",
+                "lng": "15.0584345",
+                "zoom": "10",
+                "address": "Rumunsk\u00e1  655\/9, 46001 Liberec"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Rumunsk\u00e1  655\/9, 46001 Liberec",
+            "detail": false
+        },
+        {
+            "id": "mini-22",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "49.8824567,16.8760726",
+                "lat": "49.8824567",
+                "lng": "16.8760726",
+                "zoom": "10",
+                "address": "\u017di\u017ekova 340\/45, 78901 Z\u00e1b\u0159eh"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u017di\u017ekova 340\/45, 78901 Z\u00e1b\u0159eh",
+            "detail": false
+        },
+        {
+            "id": "mini-23",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "50.2489163,14.3152485",
+                "lat": "50.2489163",
+                "lng": "14.3152485",
+                "zoom": "10",
+                "address": "Hakenova 725, 27801 Kralupy nad Vltavou"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Hakenova 725, 27801 Kralupy nad Vltavou",
+            "detail": false
+        },
+        {
+            "id": "mini-24",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA KOSTELEC",
+            "location": {
+                "value": "50.2274127,14.587174",
+                "lat": "50.2274127",
+                "lng": "14.587174",
+                "zoom": "10",
+                "address": "T. G. Masaryka 158, 27713 Kostelec nad Labem"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "T. G. Masaryka 158, 27713 Kostelec nad Labem",
+            "detail": false
+        },
+        {
+            "id": "mini-25",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO HONG KONG",
+            "location": {
+                "value": "50.4896579,13.6463496",
+                "lat": "50.4896579",
+                "lng": "13.6463496",
+                "zoom": "10",
+                "address": "\u010cesk\u00e1  842\/14, 43401 Most"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u010cesk\u00e1  842\/14, 43401 Most",
+            "detail": false
+        },
+        {
+            "id": "mini-26",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO RODAX",
+            "location": {
+                "value": "50.6524442,13.8454559",
+                "lat": "50.6524442",
+                "lng": "13.8454559",
+                "zoom": "10",
+                "address": "Masarykova t\u0159\u00edda 273\/186, 41501 Teplice "
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Masarykova t\u0159\u00edda 273\/186, 41501 Teplice ",
+            "detail": false
+        },
+        {
+            "id": "mini-27",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "CLUB SELECT HERNA",
+            "location": {
+                "value": "49.4693754,17.110067",
+                "lat": "49.4693754",
+                "lng": "17.110067",
+                "zoom": "10",
+                "address": "Pod\u011bbradovo n\u00e1m. 984\/10, 79601 Prost\u011bjov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Pod\u011bbradovo n\u00e1m. 984\/10, 79601 Prost\u011bjov",
+            "detail": false
+        },
+        {
+            "id": "mini-28",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "50.1805588,12.6394092",
+                "lat": "50.1805588",
+                "lng": "12.6394092",
+                "zoom": "10",
+                "address": "Star\u00e9 n\u00e1m\u011bst\u00ed  132, 35601 Sokolov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Star\u00e9 n\u00e1m\u011bst\u00ed  132, 35601 Sokolov",
+            "detail": false
+        },
+        {
+            "id": "mini-29",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO ATLANTIS",
+            "location": {
+                "value": "49.2546442,16.5099332",
+                "lat": "49.2546442",
+                "lng": "16.5099332",
+                "zoom": "10",
+                "address": "Br\u00e1na 177, 66434 Rozdrojovice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Br\u00e1na 177, 66434 Rozdrojovice",
+            "detail": false
+        },
+        {
+            "id": "mini-30",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA HOKEJKA",
+            "location": {
+                "value": "50.387058,13.1942844",
+                "lat": "50.387058",
+                "lng": "13.1942844",
+                "zoom": "10",
+                "address": "N\u00e1dra\u017en\u00ed 151, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1dra\u017en\u00ed 151, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-31",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO JACKS",
+            "location": {
+                "value": "49.9810548,15.2856542",
+                "lat": "49.9810548",
+                "lng": "15.2856542",
+                "zoom": "10",
+                "address": "Turka\u0148k 49, 28532 Kutn\u00e1 Hora"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Turka\u0148k 49, 28532 Kutn\u00e1 Hora",
+            "detail": false
+        },
+        {
+            "id": "mini-32",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "48.6158594,14.3115916",
+                "lat": "48.6158594",
+                "lng": "14.3115916",
+                "zoom": "10",
+                "address": "N\u00e1m\u011bst\u00ed 78, 38273 Vy\u0161\u0161\u00ed Brod"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1m\u011bst\u00ed 78, 38273 Vy\u0161\u0161\u00ed Brod",
+            "detail": false
+        },
+        {
+            "id": "mini-33",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "49.6749864,12.6730906",
+                "lat": "49.6749864",
+                "lng": "12.6730906",
+                "zoom": "10",
+                "address": "Borsk\u00e1 159, 34806 P\u0159imda"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Borsk\u00e1 159, 34806 P\u0159imda",
+            "detail": false
+        },
+        {
+            "id": "mini-34",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "49.7817963,14.6877751",
+                "lat": "49.7817963",
+                "lng": "14.6877751",
+                "zoom": "10",
+                "address": "Tyr\u0161ova 217, 25601 Bene\u0161ov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Tyr\u0161ova 217, 25601 Bene\u0161ov",
+            "detail": false
+        },
+        {
+            "id": "mini-35",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO FAIR PLAY",
+            "location": {
+                "value": "50.6453427,13.8280182",
+                "lat": "50.6453427",
+                "lng": "13.8280182",
+                "zoom": "10",
+                "address": "28.\u0159\u00edjna 918\/31, 41501 Teplice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "28.\u0159\u00edjna 918\/31, 41501 Teplice",
+            "detail": false
+        },
+        {
+            "id": "mini-36",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO SV\u011aT",
+            "location": {
+                "value": "50.559935,15.9119211",
+                "lat": "50.559935",
+                "lng": "15.9119211",
+                "zoom": "10",
+                "address": "Havl\u00ed\u010dkova 116, 54101 Trutnov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Havl\u00ed\u010dkova 116, 54101 Trutnov",
+            "detail": false
+        },
+        {
+            "id": "mini-37",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA MAXIM",
+            "location": {
+                "value": "49.5947282,13.101543",
+                "lat": "49.5947282",
+                "lng": "13.101543",
+                "zoom": "10",
+                "address": "Jir\u00e1skova t\u0159\u00edda 67, 34562 Hol\u00fd\u0161ov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Jir\u00e1skova t\u0159\u00edda 67, 34562 Hol\u00fd\u0161ov",
+            "detail": false
+        },
+        {
+            "id": "mini-38",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "50.1758846,12.6694214",
+                "lat": "50.1758846",
+                "lng": "12.6694214",
+                "zoom": "10",
+                "address": "Marie Majerov\u00e9 1815, 35601 Sokolov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Marie Majerov\u00e9 1815, 35601 Sokolov",
+            "detail": false
+        },
+        {
+            "id": "mini-39",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO BABYLON",
+            "location": {
+                "value": "50.7599042,15.0521762",
+                "lat": "50.7599042",
+                "lng": "15.0521762",
+                "zoom": "10",
+                "address": "Nitransk\u00e1 415\/1, 46007 Liberec III - Je\u0159\u00e1b"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Nitransk\u00e1 415\/1, 46007 Liberec III - Je\u0159\u00e1b",
+            "detail": false
+        },
+        {
+            "id": "mini-40",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA GOLDEN GAME",
+            "location": {
+                "value": "50.1771997,12.6474974",
+                "lat": "50.1771997",
+                "lng": "12.6474974",
+                "zoom": "10",
+                "address": "Bo\u017eeny N\u011bmcov\u00e9 1766, 35601 Sokolov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Bo\u017eeny N\u011bmcov\u00e9 1766, 35601 Sokolov",
+            "detail": false
+        },
+        {
+            "id": "mini-41",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA",
+            "location": {
+                "value": "50.1891786,15.0341304",
+                "lat": "50.1891786",
+                "lng": "15.0341304",
+                "zoom": "10",
+                "address": "Ji\u010d\u00ednsk\u00e1 573, 28802 Nymburk"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Ji\u010d\u00ednsk\u00e1 573, 28802 Nymburk",
+            "detail": false
+        },
+        {
+            "id": "mini-42",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO VICTORIA",
+            "location": {
+                "value": "49.184636,16.4039133",
+                "lat": "49.184636",
+                "lng": "16.4039133",
+                "zoom": "10",
+                "address": "Brn\u011bnsk\u00e1  1194, 66501 Rosice "
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Brn\u011bnsk\u00e1  1194, 66501 Rosice ",
+            "detail": false
+        },
+        {
+            "id": "mini-43",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA",
+            "location": {
+                "value": "50.1891786,15.0341304",
+                "lat": "50.1891786",
+                "lng": "15.0341304",
+                "zoom": "10",
+                "address": "Ji\u010d\u00ednsk\u00e1 573, 28802 Nymburk"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Ji\u010d\u00ednsk\u00e1 573, 28802 Nymburk",
+            "detail": false
+        },
+        {
+            "id": "mini-44",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO DRAGON 88",
+            "location": {
+                "value": "50.046339,12.3526494",
+                "lat": "50.046339",
+                "lng": "12.3526494",
+                "zoom": "10",
+                "address": "Svat\u00fd K\u0159\u00ed\u017e 338, 35002 Cheb"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Svat\u00fd K\u0159\u00ed\u017e 338, 35002 Cheb",
+            "detail": false
+        },
+        {
+            "id": "mini-45",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA HENA",
+            "location": {
+                "value": "49.7142087,13.2099203",
+                "lat": "49.7142087",
+                "lng": "13.2099203",
+                "zoom": "10",
+                "address": "Bene\u0161ova t\u0159\u00edda 308, 33023 N\u00fd\u0159any"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Bene\u0161ova t\u0159\u00edda 308, 33023 N\u00fd\u0159any",
+            "detail": false
+        },
+        {
+            "id": "mini-46",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA No.1",
+            "location": {
+                "value": "50.5381192,14.1278291",
+                "lat": "50.5381192",
+                "lng": "14.1278291",
+                "zoom": "10",
+                "address": "Masarykova 422\/14, 41201 Litom\u011b\u0159ice "
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Masarykova 422\/14, 41201 Litom\u011b\u0159ice ",
+            "detail": false
+        },
+        {
+            "id": "mini-47",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA N\u00c1M\u011aST\u00cd",
+            "location": {
+                "value": "50.9511353,14.5593747",
+                "lat": "50.9511353",
+                "lng": "14.5593747",
+                "zoom": "10",
+                "address": "N\u00e1m\u011bst\u00ed Lu\u017eick\u00e9 12\/3, 40801 Rumburk"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1m\u011bst\u00ed Lu\u017eick\u00e9 12\/3, 40801 Rumburk",
+            "detail": false
+        },
+        {
+            "id": "mini-48",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA DRAGON 4",
+            "location": {
+                "value": "50.3867446,13.1907681",
+                "lat": "50.3867446",
+                "lng": "13.1907681",
+                "zoom": "10",
+                "address": "N\u00e1dra\u017en\u00ed  197, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "N\u00e1dra\u017en\u00ed  197, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-49",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA SKORPIO",
+            "location": {
+                "value": "50.385388,13.1916767",
+                "lat": "50.385388",
+                "lng": "13.1916767",
+                "zoom": "10",
+                "address": "Pra\u017esk\u00e1 393, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Pra\u017esk\u00e1 393, 43151 Kl\u00e1\u0161terec nad Oh\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-50",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA MAX",
+            "location": {
+                "value": "50.5657117,14.6544545",
+                "lat": "50.5657117",
+                "lng": "14.6544545",
+                "zoom": "10",
+                "address": "Komensk\u00e9ho  169, 47201 Doksy"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Komensk\u00e9ho  169, 47201 Doksy",
+            "detail": false
+        },
+        {
+            "id": "mini-51",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA AMERICAN ",
+            "location": {
+                "value": "51.0040432,14.4549031",
+                "lat": "51.0040432",
+                "lng": "14.4549031",
+                "zoom": "10",
+                "address": "T. G. Masaryka  494, 40777 \u0160luknov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "T. G. Masaryka  494, 40777 \u0160luknov",
+            "detail": false
+        },
+        {
+            "id": "mini-52",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FANATIC",
+            "location": {
+                "value": "49.9530427,15.2768413",
+                "lat": "49.9530427",
+                "lng": "15.2768413",
+                "zoom": "10",
+                "address": "Trebi\u0161ovsk\u00e1 642, 28401 Kutn\u00e1 Hora"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Trebi\u0161ovsk\u00e1 642, 28401 Kutn\u00e1 Hora",
+            "detail": false
+        },
+        {
+            "id": "mini-53",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "50.6067372,13.7479189",
+                "lat": "50.6067372",
+                "lng": "13.7479189",
+                "zoom": "10",
+                "address": "Zelenkova  519\/16, 41901 Duchcov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Zelenkova  519\/16, 41901 Duchcov",
+            "detail": false
+        },
+        {
+            "id": "mini-54",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "50.6229593,13.5939689",
+                "lat": "50.6229593",
+                "lng": "13.5939689",
+                "zoom": "10",
+                "address": "Okru\u017en\u00ed  392, 43513 Mezibo\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Okru\u017en\u00ed  392, 43513 Mezibo\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-55",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA VICTORIE",
+            "location": {
+                "value": "49.9644497,12.6995912",
+                "lat": "49.9644497",
+                "lng": "12.6995912",
+                "zoom": "10",
+                "address": "Chebsk\u00e1  408\/9, 35301 Mari\u00e1nsk\u00e9 L\u00e1zn\u011b"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Chebsk\u00e1  408\/9, 35301 Mari\u00e1nsk\u00e9 L\u00e1zn\u011b",
+            "detail": false
+        },
+        {
+            "id": "mini-56",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA ROYAL CLUB",
+            "location": {
+                "value": "50.6008579,15.3352916",
+                "lat": "50.6008579",
+                "lng": "15.3352916",
+                "zoom": "10",
+                "address": "Tyr\u0161ova  493, 51301 Semily"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Tyr\u0161ova  493, 51301 Semily",
+            "detail": false
+        },
+        {
+            "id": "mini-57",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA QUEENS",
+            "location": {
+                "value": "49.720312656705,15.669882123348",
+                "lat": "49.720312656705",
+                "lng": "15.669882123348",
+                "zoom": "19",
+                "address": "n\u00e1m\u011bst\u00ed T.G. Masaryka 199, 58301 Chot\u011bbo\u0159"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "n\u00e1m\u011bst\u00ed T.G. Masaryka 199, 58301 Chot\u011bbo\u0159",
+            "detail": false
+        },
+        {
+            "id": "mini-58",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA ZRCADLO",
+            "location": {
+                "value": "50.5840828,13.5361557",
+                "lat": "50.5840828",
+                "lng": "13.5361557",
+                "zoom": "10",
+                "address": "Gen. Svobody 563\/30, 43543 Horn\u00ed Ji\u0159et\u00edn"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Gen. Svobody 563\/30, 43543 Horn\u00ed Ji\u0159et\u00edn",
+            "detail": false
+        },
+        {
+            "id": "mini-59",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA SPORTBAR ",
+            "location": {
+                "value": "49.7512054,16.4728672",
+                "lat": "49.7512054",
+                "lng": "16.4728672",
+                "zoom": "10",
+                "address": "Svitavsk\u00e1 665\/6, 56802 Svitavy"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Svitavsk\u00e1 665\/6, 56802 Svitavy",
+            "detail": false
+        },
+        {
+            "id": "mini-60",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA AB",
+            "location": {
+                "value": "49.1454416,15.0081774",
+                "lat": "49.1454416",
+                "lng": "15.0081774",
+                "zoom": "10",
+                "address": "Denisova 943, 37701 Jind\u0159ich\u016fv Hradec"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Denisova 943, 37701 Jind\u0159ich\u016fv Hradec",
+            "detail": false
+        },
+        {
+            "id": "mini-61",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "49.4475376,17.4470856",
+                "lat": "49.4475376",
+                "lng": "17.4470856",
+                "zoom": "10",
+                "address": "Kram\u00e1\u0159ova 1461\/5, 75002 P\u0159erov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Kram\u00e1\u0159ova 1461\/5, 75002 P\u0159erov",
+            "detail": false
+        },
+        {
+            "id": "mini-62",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA BAR",
+            "location": {
+                "value": "50.4058411,14.0415747",
+                "lat": "50.4058411",
+                "lng": "14.0415747",
+                "zoom": "10",
+                "address": "n\u00e1m\u011bst\u00ed 5. kv\u011btna 24, 41117 Libochovice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "n\u00e1m\u011bst\u00ed 5. kv\u011btna 24, 41117 Libochovice",
+            "detail": false
+        },
+        {
+            "id": "mini-63",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA STAR",
+            "location": {
+                "value": "50.4330928,15.3589273",
+                "lat": "50.4330928",
+                "lng": "15.3589273",
+                "zoom": "10",
+                "address": "F\u00fcgnerova 228, 50601 Ji\u010d\u00edn"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "F\u00fcgnerova 228, 50601 Ji\u010d\u00edn",
+            "detail": false
+        },
+        {
+            "id": "mini-64",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA BRN\u011aNSK\u00c1",
+            "location": {
+                "value": "49.2162472,15.8967435",
+                "lat": "49.2162472",
+                "lng": "15.8967435",
+                "zoom": "10",
+                "address": "Brn\u011bnsk\u00e1 346, 67401 T\u0159eb\u00ed\u010d"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Brn\u011bnsk\u00e1 346, 67401 T\u0159eb\u00ed\u010d",
+            "detail": false
+        },
+        {
+            "id": "mini-65",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FAIR PLAY CASINO",
+            "location": {
+                "value": "50.6440605,13.8305552",
+                "lat": "50.6440605",
+                "lng": "13.8305552",
+                "zoom": "18",
+                "address": "Masarykova t\u0159\u00edda 1049\/52, 41501 Teplice"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Masarykova t\u0159\u00edda 1049\/52, 41501 Teplice",
+            "detail": false
+        },
+        {
+            "id": "mini-66",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "50.1841512,14.6578907",
+                "lat": "50.1841512",
+                "lng": "14.6578907",
+                "zoom": "10",
+                "address": "Pra\u017esk\u00e1  1777, 25001 Brand\u00fds nad Labem-Star\u00e1 Boleslav "
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Pra\u017esk\u00e1  1777, 25001 Brand\u00fds nad Labem-Star\u00e1 Boleslav ",
+            "detail": false
+        },
+        {
+            "id": "mini-67",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA MEZ\u00c1K",
+            "location": {
+                "value": "50.6197141,13.6040368",
+                "lat": "50.6197141",
+                "lng": "13.6040368",
+                "zoom": "10",
+                "address": "n\u00e1m. 8. kv\u011btna 394, 43513 Mezibo\u0159\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "n\u00e1m. 8. kv\u011btna 394, 43513 Mezibo\u0159\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-68",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA AR\u00c9NA",
+            "location": {
+                "value": "49.7555129,16.4707589",
+                "lat": "49.7555129",
+                "lng": "16.4707589",
+                "zoom": "10",
+                "address": "n\u00e1m\u011bst\u00ed M\u00edru 64\/35, 56802 Svitavy"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "n\u00e1m\u011bst\u00ed M\u00edru 64\/35, 56802 Svitavy",
+            "detail": false
+        },
+        {
+            "id": "mini-69",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO",
+            "location": {
+                "value": "49.9497259,15.266135",
+                "lat": "49.9497259",
+                "lng": "15.266135",
+                "zoom": "10",
+                "address": "\u0160ultysova 174\/5, 28401 Kutn\u00e1 Hora"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u0160ultysova 174\/5, 28401 Kutn\u00e1 Hora",
+            "detail": false
+        },
+        {
+            "id": "mini-70",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "FORBES CASINO",
+            "location": {
+                "value": "49.9495556,14.0413745",
+                "lat": "49.9495556",
+                "lng": "14.0413745",
+                "zoom": "10",
+                "address": "Plze\u0148sk\u00e1 392, 26701 Kr\u00e1l\u016fv Dv\u016fr"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Plze\u0148sk\u00e1 392, 26701 Kr\u00e1l\u016fv Dv\u016fr",
+            "detail": false
+        },
+        {
+            "id": "mini-71",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA",
+            "location": {
+                "value": "50.046670616061,12.354880780443",
+                "lat": "50.046670616061",
+                "lng": "12.354880780443",
+                "zoom": "18",
+                "address": "budova bez \u010d.p.\/\u010d.e na parcele 1032\/4, 35002 Cheb"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "budova bez \u010d.p.\/\u010d.e na parcele 1032\/4, 35002 Cheb",
+            "detail": false
+        },
+        {
+            "id": "mini-72",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA MONZA",
+            "location": {
+                "value": "50.151161388018,13.902348246627",
+                "lat": "50.151161388018",
+                "lng": "13.902348246627",
+                "zoom": "19",
+                "address": "\u010cs. arm\u00e1dy 168, 27101 Nov\u00e9 Stra\u0161ec\u00ed"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "\u010cs. arm\u00e1dy 168, 27101 Nov\u00e9 Stra\u0161ec\u00ed",
+            "detail": false
+        },
+        {
+            "id": "mini-73",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO",
+            "location": {
+                "value": "50.2297355,14.5882927",
+                "lat": "50.2297355",
+                "lng": "14.5882927",
+                "zoom": "18",
+                "address": "T. G. Masaryka 282, 27713 Kostelec nad Labem"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "T. G. Masaryka 282, 27713 Kostelec nad Labem",
+            "detail": false
+        },
+        {
+            "id": "mini-74",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO VILLA GAMES",
+            "location": {
+                "value": "49.5337734,13.3053824",
+                "lat": "49.5337734",
+                "lng": "13.3053824",
+                "zoom": "18",
+                "address": "Borovy 73, 33401 Borovy"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Borovy 73, 33401 Borovy",
+            "detail": false
+        },
+        {
+            "id": "mini-75",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-gold.png",
+            "title": "CASINO STERNSPIELER",
+            "location": {
+                "value": "49.416983842305,12.873983746866",
+                "lat": "49.416983842305",
+                "lng": "12.873983746866",
+                "zoom": "19",
+                "address": "Babylon 32, 34401 Babylon"
+            },
+            "url": "",
+            "tel": "",
+            "herna": false,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "Babylon 32, 34401 Babylon",
+            "detail": false
+        },
+        {
+            "id": "mini-76",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA",
+            "location": {
+                "value": "50.2474377,14.3177026",
+                "lat": "50.2474377",
+                "lng": "14.3177026",
+                "zoom": "19",
+                "address": "n\u00e1m. J. Seiferta 696, 27801 Kralupy nad Vltavou"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "n\u00e1m. J. Seiferta 696, 27801 Kralupy nad Vltavou",
+            "detail": false
+        },
+        {
+            "id": "mini-77",
+            "icon": "https:\/\/victoriatip.cz\/wp-content\/themes\/smplv4-child\/assets\/img\/icon-map-32px-blue.png",
+            "title": "HERNA FORBES",
+            "location": {
+                "value": "49.471502487522,17.095995917197",
+                "lat": "49.471502487522",
+                "lng": "17.095995917197",
+                "zoom": "18",
+                "address": "s\u00eddl. Svobody 3576\/77, 79601 Prost\u011bjov"
+            },
+            "url": "",
+            "tel": "",
+            "herna": true,
+            "location_title": "",
+            "location_exclude": true,
+            "description": "s\u00eddl. Svobody 3576\/77, 79601 Prost\u011bjov",
+            "detail": false
+        }
+    ]
+}
