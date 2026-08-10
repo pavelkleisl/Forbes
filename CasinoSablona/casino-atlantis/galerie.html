@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotogalerie | Casino Atlantis Brno Rozdrojovice</title>
+    <meta name="description" content="Fotogalerie Casino Atlantis v Rozdrojovicích u Brna. Prohlédněte si prostory našeho casina.">
+    <link rel="canonical" href="https://www.casinoatlantis.cz/galerie.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fotogalerie | Casino Atlantis">
+    <meta property="og:description" content="Prohlédněte si prostory Casino Atlantis v Rozdrojovicích u Brna.">
+    <meta property="og:image" content="https://www.casinoatlantis.cz/img/atlantis-01.jpg">
+    <meta property="og:url" content="https://www.casinoatlantis.cz/galerie.html">
+
+    <link rel="stylesheet" href="../_shared/style.css">
+    <script src="../_shared/include.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .page-hero {
+            padding: 70px 0 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .gallery-page-wrap {
+            padding: 60px 0 80px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .gallery-grid-item {
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.07);
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+
+        .gallery-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+            opacity: 0.85;
+        }
+
+        .gallery-grid-item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.4rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .lightbox-close:hover { opacity: 1; }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 2rem;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .lightbox-nav:hover { background: rgba(255,209,102,0.2); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .lightbox-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-hero">
+        <div class="container">
+            <span class="badge-yellow">Fotogalerie</span>
+            <h1 class="hero-title" style="font-size: 2.8rem;">Prohlédněte si nás</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 560px;">Nahlédněte do prostorů Casino Atlantis v Rozdrojovicích u Brna.</p>
+        </div>
+    </div>
+
+    <section class="gallery-page-wrap">
+        <div class="container">
+
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-grid-item" data-index="0"><img src="img/atlantis-01.jpg" alt="Casino Atlantis - fotka 1"></div>
+                <div class="gallery-grid-item" data-index="1"><img src="img/atlantis-02.jpg" alt="Casino Atlantis - fotka 2"></div>
+                <div class="gallery-grid-item" data-index="2"><img src="img/atlantis-03.jpg" alt="Casino Atlantis - fotka 3"></div>
+                <div class="gallery-grid-item" data-index="3"><img src="img/atlantis-04.jpg" alt="Casino Atlantis - fotka 4"></div>
+                <div class="gallery-grid-item" data-index="4"><img src="img/atlantis-05.jpg" alt="Casino Atlantis - fotka 5"></div>
+                <div class="gallery-grid-item" data-index="5"><img src="img/atlantis-06.jpg" alt="Casino Atlantis - fotka 6"></div>
+                <div class="gallery-grid-item" data-index="6"><img src="img/atlantis-07.jpg" alt="Casino Atlantis - fotka 7"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../_shared/casino.js"></script>
+
+    <script>
+        const images = [
+            { src: 'img/atlantis-01.jpg', alt: 'Casino Atlantis - fotka 1' },
+            { src: 'img/atlantis-02.jpg', alt: 'Casino Atlantis - fotka 2' },
+            { src: 'img/atlantis-03.jpg', alt: 'Casino Atlantis - fotka 3' },
+            { src: 'img/atlantis-04.jpg', alt: 'Casino Atlantis - fotka 4' },
+            { src: 'img/atlantis-05.jpg', alt: 'Casino Atlantis - fotka 5' },
+            { src: 'img/atlantis-06.jpg', alt: 'Casino Atlantis - fotka 6' },
+            { src: 'img/atlantis-07.jpg', alt: 'Casino Atlantis - fotka 7' },
+        ];
+
+        let current = 0;
+        const lightbox    = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const counter     = document.getElementById('lightboxCounter');
+
+        function openLightbox(index) {
+            current = index;
+            lightboxImg.src = images[current].src;
+            lightboxImg.alt = images[current].alt;
+            counter.textContent = (current + 1) + ' / ' + images.length;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showNext() {
+            current = (current + 1) % images.length;
+            lightboxImg.src = images[current].src;
+            counter.textContent = (current + 1) + ' / ' + images.length;
+        }
+
+        function showPrev() {
+            current = (current - 1 + images.length) % images.length;
+            lightboxImg.src = images[current].src;
+            counter.textContent = (current + 1) + ' / ' + images.length;
+        }
+
+        document.querySelectorAll('.gallery-grid-item').forEach(item => {
+            item.addEventListener('click', () => openLightbox(+item.dataset.index));
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxNext').addEventListener('click', showNext);
+        document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
+        });
+    </script>
+
+</body>
+</html>

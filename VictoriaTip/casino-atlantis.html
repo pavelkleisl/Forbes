@@ -1,37 +1,57 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Atlantis Brno Rozdrojovice | VictoriaTip</title>
+    <meta name="description" content="Casino Atlantis u Brna – Black Jack, ruleta, poker, kostky i výherní automaty. Adresa: Brána 177, Rozdrojovice. Součást sítě VictoriaTip.">
+    <link rel="canonical" href="https://victoriatip.cz/casino-atlantis.html">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#FFD166">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VictoriaTip">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:title" content="Casino Atlantis Brno Rozdrojovice | VictoriaTip">
+    <meta property="og:description" content="Black Jack, ruleta, poker, kostky i výherní automaty kousek od Brna.">
+    <meta property="og:image" content="https://victoriatip.cz/img/casino-atlantis.jpg">
+    <meta property="og:url" content="https://victoriatip.cz/casino-atlantis.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Casino Atlantis Brno Rozdrojovice | VictoriaTip">
+    <meta name="twitter:description" content="Black Jack, ruleta, poker, kostky i výherní automaty kousek od Brna.">
+    <meta name="twitter:image" content="https://victoriatip.cz/img/casino-atlantis.jpg">
+
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/vt-preferences.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="js/include.js" defer></script>
 
-    <script>
-    function includeHTML() {
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-
-                const mobileBtn = document.getElementById('mobileToggle');
-                const mainNav = document.getElementById('mainNav');
-                if (mobileBtn && mainNav) {
-                    mobileBtn.addEventListener('click', function() {
-                        this.classList.toggle('active');
-                        mainNav.classList.toggle('active');
-                    });
-                }
-
-            });
-
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Casino",
+        "name": "Casino Atlantis",
+        "url": "https://victoriatip.cz/casino-atlantis.html",
+        "image": "https://victoriatip.cz/img/casino-atlantis.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Brána 177",
+            "addressLocality": "Rozdrojovice",
+            "postalCode": "664 34",
+            "addressCountry": "CZ"
+        },
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "VictoriaTip",
+            "url": "https://victoriatip.cz/"
+        }
     }
-    window.onload = includeHTML;
     </script>
 </head>
 <body class="hp-body">
@@ -41,7 +61,7 @@
     <section class="casino-detail-page">
         <div class="container">
 
-            <a href="index.html#premium-casinos" class="back-link">← Zpět na přehled casin</a>
+            <a href="nase-casina.html" class="back-link">← Zpět na přehled casin</a>
 
             <div class="casino-detail-header">
                 <span class="badge-yellow">Brno Rozdrojovice</span>
@@ -80,9 +100,9 @@
 
                     <h3>Co u nás najdete</h3>
                     <ul class="casino-highlight-list">
-                        <li><span class="suit">🟢</span> Casino otevřeno nonstop</li>
+                        <li><span class="suit">🕕</span> Casino otevřeno denně 18:00 – 06:00</li>
                         <li><span class="suit">♠</span> Živá hra nonstop</li>
-                        <li><span class="suit">♣</span> Pokerové turnaje 6× týdně</li>
+                        <li><span class="suit">♣</span> Pokerové turnaje 6× týdně od 19:00</li>
                     </ul>
 
                     <div class="casino-detail-ctas">
@@ -102,17 +122,16 @@
 
                     <div class="glass-card casino-sidebar-card">
                         <h3>Provozní doba</h3>
-                        <p>Casino otevřeno NONSTOP</p>
-                        <p>Živá hra NONSTOP</p>
-                        <p>Pokerové turnaje začínají ve 20:00 hodin</p>
+                        <p>Casino: denně 18:00 – 06:00</p>
+                        <p>Živá hra: NONSTOP</p>
+                        <p>Pokerové turnaje začínají v 19:00 hodin</p>
                     </div>
 
                     <div class="glass-card casino-sidebar-card">
                         <h3>Kontakty</h3>
-                        <p>📞 Recepce: <a href="tel:+420608123199">+420 608 123 199</a></p>
-                        <p>📞 Manažer: <a href="tel:+420732582973">+420 732 582 973</a></p>
-                        <p>📧 <a href="mailto:ambrozkasinoatlantis@gmail.com">ambrozkasinoatlantis@gmail.com</a></p>
-                        <p>📧 <a href="mailto:travnicekcasinoatlantis@gmail.com">travnicekcasinoatlantis@gmail.com</a></p>
+                        <p>📧 <a href="mailto:kasinoatlantis@gmail.com">kasinoatlantis@gmail.com</a></p>
+                        <p>📘 <a href="https://www.facebook.com/kasinoatlantis" target="_blank">facebook.com/kasinoatlantis</a></p>
+                        <p>📸 <a href="https://www.instagram.com/kasino_atlantis" target="_blank">instagram.com/kasino_atlantis</a></p>
                     </div>
                 </aside>
             </div>
@@ -127,6 +146,7 @@
         window.CASINO_LNG = 16.518484082339;
         window.CASINO_TITLE = "Casino Atlantis";
     </script>
+    <script src="js/map-style.js"></script>
     <script src="js/mini-mapa.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMiniMapa" async defer></script>
     <script src="js/casino-gallery.js"></script>

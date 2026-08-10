@@ -12,7 +12,9 @@
       "Skill(run:*)",
       "Bash(python -m http.server 8910)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8910/index.html)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8910/index.html)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8910/index.html)",
+      "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\pavel\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--CSM-Forbes\\\\cb232601-eac5-43d9-9bf6-4d138a975cfd\\\\scratchpad\\\\replace-radius.ps1\")",
+      "Bash(awk 'BEGIN{o=0;c=0} {o+=gsub\\(/{/,\"{\"\\); c+=gsub\\(/}/,\"}\"\\)} END{print \"open:\",o,\" close:\",c}' css/style.css)"
     ]
   }
 }

@@ -1,0 +1,996 @@
+<style>
+
+/* Override existing styles */
+    body {
+        background-color: #eef1f8;
+        background-image:
+            radial-gradient(circle at 15% 10%, rgba(33,69,165,0.10) 0%, rgba(33,69,165,0) 45%),
+            radial-gradient(circle at 85% 90%, rgba(245,179,12,0.14) 0%, rgba(245,179,12,0) 45%),
+            linear-gradient(180deg, #eef1f8 0%, #e4e9f5 100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 500px;
+    }
+
+    .p-sm-5 {
+        padding: 0rem !important;
+        border-radius: 12px !important;
+    }
+
+    .bg-lighter {
+        background: none !important;
+        display: none;
+    }
+
+    .container .row .bg-white {
+        background: transparent !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-sm-5 {
+            margin-top: -32px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .p-sm-5 {
+            margin-top: -20px;
+            padding: 1.5rem !important;
+        }
+    }
+
+    @media (min-width: 767.98px) {
+        .p-sm-5 {
+            margin-top: -65px;
+        }
+    }
+
+    @media (min-width: 991.98px) {
+        .p-sm-5 {
+            margin-top: -0.7rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+
+        .content-panel {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    .d-block {
+        display: none !important;
+    }
+
+
+/* ===== RESET / SCOPE ===== */
+
+.cms-tk-wrap, .cms-tk-wrap * {
+  box-sizing: border-box;
+}
+.cms-tk-wrap {
+  font-family: 'Roboto', 'Arial', sans-serif !important;
+  color: #1b1b1b !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+.cms-tk-wrap a {
+  text-decoration: none !important;
+}
+.cms-tk-wrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cms-tk-wrap strong {
+  font-weight: 800 !important;
+  color: inherit !important;
+}
+
+/* ===== HERO ===== */
+.cms-tk-hero {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(22,48,110,0.55) 0%, rgba(13,31,76,0.65) 100%),
+    url('https://www.forbescasino.cz/text_img/1449812ZjE.avif') center center / cover no-repeat;
+  border-radius: 18px;
+  padding: 36px 20px 30px;
+  margin: 18px 10px 24px;
+  overflow: hidden;
+  text-align: center !important;
+  box-shadow: 0 10px 30px rgba(22,48,110,0.30);
+}
+.cms-tk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5b30c;
+  color: #16306e !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 7px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+.cms-tk-hero-title {
+  position: relative;
+  z-index: 2;
+  color: #ffffff !important;
+  font-size: 34px !important;
+  line-height: 1.15 !important;
+  font-weight: 900 !important;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35) !important;
+}
+.cms-tk-hero-title span {
+  color: #ff3b30 !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45) !important;
+}
+.cms-tk-hero-sub {
+  position: relative;
+  z-index: 2;
+  color: #dbe3f7 !important;
+  font-size: 16px !important;
+  max-width: 560px;
+  margin: 0 auto 42px;
+  line-height: 1.5 !important;
+}
+.cms-tk-hero-sub strong {
+  color: #ffffff !important;
+}
+.cms-tk-hero-card {
+  position: relative;
+  z-index: 2;
+  max-width: 320px;
+  margin: 0 auto 24px;
+  animation: cms-tk-float-card 4.5s ease-in-out infinite;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.cms-tk-hero-card img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.35));
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.cms-tk-hero-badge-t4b {
+  position: absolute;
+  top: 20%;
+  right: -8%;
+  left: auto;
+  z-index: 3;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: linear-gradient(160deg, #ffffff 0%, #eef1f8 100%);
+  border: 1px solid rgba(33,69,165,0.14);
+  border-radius: 14px;
+  padding: 8px 16px 7px;
+  box-shadow: 0 4px 8px rgba(22,48,110,0.10), 0 14px 26px rgba(0,0,0,0.28);
+  transform: translateY(-50%) rotate(-4deg);
+  animation: cms-tk-float-badge 3.6s ease-in-out infinite;
+}
+.cms-tk-hero-badge-t4b img {
+  height: 60px;
+  width: auto;
+  display: block;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .cms-tk-hero-badge-t4b {
+  top: 15%;
+  right: 5%;
+}
+.cms-tk-hero-badge-t4b img {
+  height: 40px
+}
+}
+
+@keyframes cms-tk-float-card {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes cms-tk-float-badge {
+  0%, 100% { transform: translateY(-50%) rotate(-4deg); }
+  50% { transform: translateY(-62%) rotate(-1deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cms-tk-hero-card,
+  .cms-tk-hero-badge-t4b {
+    animation: none;
+  }
+}
+.cms-tk-cta {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ffce3d 0%, #f5b30c 55%, #e0a300 100%);
+  color: #16306e !important;
+  font-weight: 800 !important;
+  font-size: 17px !important;
+  letter-spacing: 0.2px !important;
+  padding: 16px 40px;
+  border-radius: 999px;
+  border: none;
+  box-shadow: 0 10px 24px rgba(224,163,0,0.40), inset 0 1px 0 rgba(255,255,255,0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cms-tk-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(224,163,0,0.50), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.cms-tk-cta:active {
+  transform: translateY(-1px);
+}
+.cms-tk-hero-note {
+  position: relative;
+  z-index: 2;
+  color: #b9c6ea !important;
+  font-size: 12px !important;
+  margin-top: 12px;
+}
+
+/* ===== SECTION TITLES ===== */
+.cms-tk-section-title {
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  color: #16306e !important;
+  margin: 0 0 6px;
+}
+.cms-tk-section-sub {
+  text-align: center !important;
+  font-size: 14px !important;
+  color: #6b6b6b !important;
+  margin: 0 0 22px;
+}
+
+/* ===== STEPS ===== */
+.cms-tk-steps-outer {
+  margin: 10px 10px 30px;
+}
+.cms-tk-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  position: relative;
+}
+.cms-tk-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #eceef6;
+  border-radius: 18px;
+  padding: 28px 18px 22px;
+  text-align: center !important;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(22,48,110,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+a.cms-tk-step:hover,
+.cms-tk-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(22,48,110,0.16);
+  border-color: #d7deef;
+}
+.cms-tk-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  right: -11px;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #d7deef;
+  border-right: 3px solid #d7deef;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+.cms-tk-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  max-width: 46px;
+  max-height: 46px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2145a5 0%, #16306e 100%);
+  color: #ffffff !important;
+  font-family: 'Roboto', 'Arial', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 19px !important;
+  line-height: 1 !important;
+  box-shadow: 0 0 0 4px rgba(245,179,12,0.22), 0 8px 16px rgba(22,48,110,0.28);
+  border: none;
+  margin: 0 auto 16px;
+}
+.cms-tk-step h3 {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #16306e !important;
+  margin: 0 0 6px;
+}
+.cms-tk-step p {
+  font-size: 13px !important;
+  color: #555555 !important;
+  margin: 0;
+  line-height: 1.4 !important;
+  flex-grow: 1;
+}
+.cms-tk-step-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #8a93ab !important;
+  letter-spacing: 0.2px !important;
+  transition: color 0.2s ease;
+}
+a.cms-tk-step:hover .cms-tk-step-cta {
+  color: #e0a300 !important;
+}
+
+/* ===== PRIZE SPLIT ===== */
+.cms-tk-prize {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 26px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 18px;
+  padding: 28px;
+  margin: 10px 10px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.cms-tk-prize::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 5px;
+  height: calc(100% - 20px);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #dc0011 0%, #f5b30c 100%);
+}
+.cms-tk-prize-img img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.cms-tk-prize-text h2 {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #16306e !important;
+  margin: 0 0 10px;
+}
+.cms-tk-prize-text p {
+  font-size: 14px !important;
+  color: #444444 !important;
+  line-height: 1.6 !important;
+  margin: 0 0 14px;
+}
+.cms-tk-prize-list li {
+  font-size: 14px !important;
+  color: #2145a5 !important;
+  font-weight: 700 !important;
+  padding: 6px 0 6px 26px;
+  position: relative;
+}
+.cms-tk-prize-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5b30c 0%, #dc0011 100%);
+  box-shadow: 0 0 0 3px rgba(33,69,165,0.12);
+}
+
+/* ===== GAMES / CAROUSEL ===== */
+.cms-tk-games {
+  margin: 10px 10px 34px;
+}
+.cms-tk-games-panel {
+  background: #ffffff;
+  border: 1px solid #e6e9f3;
+  border-radius: 22px;
+  padding: 30px 22px 26px;
+  box-shadow: 0 8px 26px rgba(22,48,110,0.07);
+}
+.cms-tk-games-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.cms-tk-t4b-eyebrow {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #8a93ab !important;
+}
+.cms-tk-t4b-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #eceef6;
+  border-radius: 16px;
+  padding: 12px 28px;
+  box-shadow: 0 8px 20px rgba(22,48,110,0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cms-tk-t4b-logo-wrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(22,48,110,0.16);
+}
+.cms-tk-t4b-logo-wrap img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.cms-tk-games-cta-wrap {
+  text-align: center !important;
+  margin-top: 22px;
+}
+.cms-tk-games-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2f57bd 0%, #2145a5 55%, #16306e 100%);
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 14.5px !important;
+  letter-spacing: 0.2px !important;
+  padding: 13px 30px;
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(22,48,110,0.30), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cms-tk-games-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(22,48,110,0.38), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.cms-tk-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 8px 18px;
+  -webkit-overflow-scrolling: touch;
+}
+.cms-tk-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+.cms-tk-carousel::-webkit-scrollbar-track {
+  background: #eef1f8;
+  border-radius: 10px;
+}
+.cms-tk-carousel::-webkit-scrollbar-thumb {
+  background: #2145a5;
+  border-radius: 10px;
+}
+.cms-tk-game-card {
+  display: block;
+  scroll-snap-align: start;
+  width: 140px;
+  height: 140px;
+  background: #16306e;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(22,48,110,0.14);
+  border: 1px solid #e6e9f3;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cms-tk-game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(22,48,110,0.24);
+}
+.cms-tk-game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.cms-tk-game-card:hover img {
+  transform: scale(1.08);
+}
+
+/* ===== FAQ ===== */
+.cms-tk-faq {
+  width: calc(100% - 20px);
+  margin: 10px auto 30px;
+  max-width: 780px;
+}
+.cms-tk-faq-item {
+  background: #ffffff;
+  border: 1px solid #e6e9f3;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(22,48,110,0.05);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.cms-tk-faq-item:hover {
+  box-shadow: 0 8px 22px rgba(22,48,110,0.10);
+}
+.cms-tk-faq-item[open] {
+  border-color: #c9d4ee;
+  box-shadow: 0 10px 26px rgba(22,48,110,0.12);
+}
+.cms-tk-faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 20px;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.1px !important;
+  color: #16306e !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.cms-tk-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.cms-tk-faq-item summary::marker {
+  content: "";
+}
+.cms-tk-faq-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: #eef1f8;
+  flex: 0 0 auto;
+  transition: background 0.25s ease;
+}
+.cms-tk-faq-icon::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #2145a5;
+  border-bottom: 2px solid #2145a5;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.cms-tk-faq-item[open] .cms-tk-faq-icon {
+  background: #fdf1d3;
+}
+.cms-tk-faq-item[open] .cms-tk-faq-icon::after {
+  border-color: #e0a300;
+  transform: rotate(225deg);
+}
+.cms-tk-faq-item p {
+  padding: 0 20px 20px;
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid #eef1f8;
+  font-size: 14px !important;
+  color: #4a4a4a !important;
+  line-height: 1.7 !important;
+}
+
+/* ===== RULES LINK ===== */
+.cms-tk-rules {
+  text-align: center !important;
+  margin: 0 10px 34px;
+}
+.cms-tk-rules a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #dbdbdb;
+  color: #16306e !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid #c5c5c5;
+}
+.cms-tk-rules a:hover {
+  background: #cfcfcf;
+}
+
+.cms-tk-disclaimer {
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #7c818f !important;
+  margin: -22px 10px 26px;
+}
+
+/* ===== FINAL CTA ===== */
+.cms-tk-final {
+  position: relative;
+  text-align: center !important;
+  background: linear-gradient(135deg, #1b3a80 0%, #142c66 55%, #0d1f4c 100%);
+  border-radius: 18px;
+  padding: 34px 20px;
+  margin: 10px 10px 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(13,31,76,0.35);
+}
+.cms-tk-final::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  left: -50px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(245,179,12,0.25) 0%, rgba(245,179,12,0) 70%);
+  border-radius: 50%;
+}
+.cms-tk-final::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -50px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(220,0,17,0.22) 0%, rgba(220,0,17,0) 70%);
+  border-radius: 50%;
+}
+.cms-tk-final h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  margin: 0 0 8px;
+}
+.cms-tk-final p {
+  position: relative;
+  z-index: 2;
+  font-size: 14px !important;
+  color: #cfd8ef !important;
+  margin: 0 0 20px;
+}
+.cms-tk-final p strong {
+  color: #f5b30c !important;
+}
+.cms-tk-final .cms-tk-cta {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .cms-tk-prize {
+    grid-template-columns: 1fr;
+    text-align: center !important;
+  }
+  .cms-tk-prize-list {
+    display: inline-block;
+    text-align: left !important;
+  }
+}
+@media (max-width: 700px) {
+  .cms-tk-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cms-tk-step::after {
+    display: none;
+  }
+  .cms-tk-hero-title {
+    font-size: 26px !important;
+  }
+  .cms-tk-step h3 {
+    font-size: 17px !important;
+  }
+  .cms-tk-game-card {
+    width: 108px;
+    height: 108px;
+  }
+}
+@media (max-width: 420px) {
+  .cms-tk-steps {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="cms-tk-wrap">
+
+  <div class="cms-tk-hero">
+    <div class="cms-tk-badge">Akce trvá od <strong>22. 7. do 31. 7.</strong></div>
+    <h1 class="cms-tk-hero-title">Vyhraj 1 z 10 tankovacích karet <span>ORLEN</span> v hodnotě 5&nbsp;000&nbsp;Kč</h1>
+    <p class="cms-tk-hero-sub">Aktivuj bonus, protoč <strong>5&nbsp;000&nbsp;Kč</strong> na hrách <strong>Tech4Bet</strong> a získej los do slosování o tankovací kartu ORLEN v hodnotě <strong>5&nbsp;000&nbsp;Kč</strong>, kterou využiješ podle vlastního výběru.</p>
+    <div class="cms-tk-hero-card">
+      <span class="cms-tk-hero-badge-t4b"><img src="https://www.forbescasino.cz/text_img/1449795NjU.png" alt="Tech4Bet" /></span>
+      <img src="https://www.forbescasino.cz/text_img/1450509ZGN.png" alt="Soutěž o tankovací kartu ORLEN v hodnotě 5 000 Kč na Forbes Casino" />
+    </div>
+    <br />
+    <a class="cms-tk-cta" href="https://www.forbescasino.cz/bonuses">⚡ Aktivovat bonus</a>
+    <div class="cms-tk-hero-note">Soutěž je určena pouze registrovaným hráčům Forbes Casina.</div>
+  </div>
+
+  <div class="cms-tk-steps-outer">
+    <h2 class="cms-tk-section-title">Jak se zapojit do soutěže o tankovací kartu ORLEN?</h2>
+    <div class="cms-tk-section-sub">Stačí 3 jednoduché kroky a jsi ve hře o tankovací kartu</div>
+    <div class="cms-tk-steps">
+      <a class="cms-tk-step" href="https://www.forbescasino.cz/(modal:login)">
+        <span class="cms-tk-step-num">1</span>
+        <h3>Registrace / přihlášení</h3>
+        <p>Přihlas se do svého hráčského konta na Forbes Casino.</p>
+        <span class="cms-tk-step-cta">Přihlásit se &rarr;</span>
+      </a>
+      <a class="cms-tk-step" href="https://www.forbescasino.cz/bonuses">
+        <span class="cms-tk-step-num">2</span>
+        <h3>Aktivuj bonus</h3>
+        <p>V sekci Bonusy si aktivuj akci &bdquo;<strong>Tankovací karta!</strong>&ldquo;.</p>
+        <span class="cms-tk-step-cta">Do sekce Bonusy &rarr;</span>
+      </a>
+      <a class="cms-tk-step" href="https://www.forbescasino.cz/tag/Tech_4Bet">
+        <span class="cms-tk-step-num">3</span>
+        <h3>Protoč 5 000 Kč</h3>
+        <p>Splň podmínku protočení na hrách <strong>Tech4Bet</strong>.</p>
+        <span class="cms-tk-step-cta">Hrát Tech4Bet &rarr;</span>
+      </a>
+      <div class="cms-tk-step">
+        <span class="cms-tk-step-num">4</span>
+        <h3>Získej los</h3>
+        <p>Za splnění podmínek získáš <strong>los do slosování</strong>. Opakuj a získej losů víc!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-tk-prize">
+    <div class="cms-tk-prize-img">
+      <img src="https://www.forbescasino.cz/text_img/1450509ZGN.png" alt="Tankovací karta ORLEN 5 000 Kč - hlavní výhra soutěže Forbes Casino" />
+    </div>
+    <div class="cms-tk-prize-text">
+      <h2><strong>10&times; tankovací karta ORLEN</strong> v hodnotě 5&nbsp;000&nbsp;Kč</h2>
+      <p>Po skončení akce vylosujeme celkem <strong>10 výherců</strong> ze všech získaných losů. Každý z nich obdrží tankovací kartu ORLEN v hodnotě <strong>5&nbsp;000&nbsp;Kč</strong> &ndash; ideální na běžné tankování i na delší výlety autem.</p>
+      <ul class="cms-tk-prize-list">
+        <li><strong>10 tankovacích karet</strong> k vyhrání</li>
+        <li>Hodnota každé karty <strong>5 000 Kč</strong></li>
+        <li>Los za každé splnění podmínek</li>
+        <li>Slosování do <strong>3 dnů</strong> od konce akce</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cms-tk-games">
+    <div class="cms-tk-games-panel">
+    <h2 class="cms-tk-section-title">Hraj na automatech Tech4Bet</h2>
+    <div class="cms-tk-games-header">
+      <span class="cms-tk-t4b-eyebrow">Herní partner soutěže</span>
+      <a class="cms-tk-t4b-logo-wrap" href="https://www.forbescasino.cz/tech4bet" title="Více o poskytovateli Tech4Bet"><img src="https://www.forbescasino.cz/text_img/1449795NjU.png" alt="Tech4Bet - herní partner soutěže o tankovací kartu ORLEN" /></a>
+      <span class="cms-tk-section-sub" style="margin:0;">vyber si z desítek automatů a protoč svou částku</span>
+    </div>
+    <div class="cms-tk-carousel">
+
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2054/online/100_hot_wild">
+        <img src="https://www.forbescasino.cz/files/1160923NGM.webp" alt="100 Hot Wild" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2069/online/81_multi_gold">
+        <img src="https://www.forbescasino.cz/files/1089478ZTQ.webp" alt="81 Multi Gold" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2146/online/lumberjack_2">
+        <img src="https://www.forbescasino.cz/files/1091255ZWZ.webp" alt="Lumberjack 2" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2171/online/respin_queen">
+        <img src="https://www.forbescasino.cz/files/1160925NmU.webp" alt="Respin Queen" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2094/online/dance_night_81">
+        <img src="https://www.forbescasino.cz/files/1089506OTM.webp" alt="Dance Night 81" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2057/online/243_simply_ways">
+        <img src="https://www.forbescasino.cz/files/1089465ZmU.webp" alt="243 Simply Ways" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2068/online/81_hot_ways">
+        <img src="https://www.forbescasino.cz/files/1089477NTR.webp" alt="81 Hot Ways" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2127/online/hyper_wheels">
+        <img src="https://www.forbescasino.cz/files/1160932NGR.webp" alt="Hyper Wheels" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2198/online/wild_blast">
+        <img src="https://www.forbescasino.cz/files/1091314ZTQ.webp" alt="Wild Blast" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2074/online/81_win_spin">
+        <img src="https://www.forbescasino.cz/files/1089484MzQ.webp" alt="81 Win Spin" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2072/online/81_simply_ways">
+        <img src="https://www.forbescasino.cz/files/1089481ZWY.webp" alt="81 Simply Ways" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/3998/online/5_dragon_hearts">
+        <img src="https://www.forbescasino.cz/files/1189338Njh.webp" alt="5 Dragon Hearts" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/4025/online/mushroom_party">
+        <img src="https://www.forbescasino.cz/files/1189394MTA.webp" alt="Mushroom Party" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2172/online/respin_queen_81">
+        <img src="https://www.forbescasino.cz/files/1091282NzU.webp" alt="Respin Queen 81" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2067/online/81_hot_seven_twins">
+        <img src="https://www.forbescasino.cz/files/1089476YzI.webp" alt="81 Hot Seven Twins" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2152/online/mega_carp_caramba">
+        <img src="https://www.forbescasino.cz/files/1091261Yjd.webp" alt="Mega Carp Caramba" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2056/online/243_hot_ways">
+        <img src="https://www.forbescasino.cz/files/1089464MmJ.webp" alt="243 Hot Ways" />
+      </a>
+      <a class="cms-tk-game-card" href="https://www.forbescasino.cz/game/2141/online/kings_fruit">
+        <img src="https://www.forbescasino.cz/files/1091246NTZ.webp" alt="Kings Fruit" />
+      </a>
+
+    </div>
+    <div class="cms-tk-games-cta-wrap">
+      <a class="cms-tk-games-cta" href="https://www.forbescasino.cz/tag/Tech_4Bet">Zobrazit všechny hry Tech4Bet &rarr;</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="cms-tk-faq">
+    <h2 class="cms-tk-section-title">Časté dotazy k soutěži o tankovací kartu ORLEN</h2>
+    <div class="cms-tk-section-sub">Vše, co potřebuješ vědět o soutěži</div>
+
+    <details class="cms-tk-faq-item">
+      <summary>Jak získám los do slosování?<span class="cms-tk-faq-icon"></span></summary>
+      <p>Stačí si v sekci Bonusy aktivovat akci &bdquo;Tankovací karta!&ldquo; a v době trvání akce protočit <strong>5&nbsp;000&nbsp;Kč</strong> na hrách poskytovatele <strong>Tech4Bet</strong>. Za úspěšné splnění podmínky obdržíš <strong>1 los do slosování</strong>.</p>
+    </details>
+    <details class="cms-tk-faq-item">
+      <summary>Kolik losů mohu získat?<span class="cms-tk-faq-icon"></span></summary>
+      <p>Podmínku protočení můžeš splnit <strong>opakovaně</strong> &ndash; za každé splnění získáš další los, a zvyšuješ tak svou šanci na výhru.</p>
+    </details>
+    <details class="cms-tk-faq-item">
+      <summary>Kdy proběhne slosování?<span class="cms-tk-faq-icon"></span></summary>
+      <p>Slosování proběhne <strong>nejpozději do 3 dnů</strong> od ukončení soutěže, tedy krátce po 31.&nbsp;7.</p>
+    </details>
+    <details class="cms-tk-faq-item">
+      <summary>Jak se dozvím o výhře?<span class="cms-tk-faq-icon"></span></summary>
+      <p>Výherci budou <strong>kontaktováni</strong> prostřednictvím kontaktních údajů uvedených ve svém hráčském kontě.</p>
+    </details>
+  </div>
+
+  <div class="cms-tk-rules">
+    <a href="https://www.forbescasino.cz/files/1450189NmI.pdf" target="_blank" rel="noopener">Kompletní pravidla soutěže</a>
+  </div>
+
+  <div class="cms-tk-disclaimer">*ORLEN není pořadatelem ani partnerem této akce.</div>
+
+  <div class="cms-tk-final">
+    <h2>Nečekej a zapoj se ještě dnes!</h2>
+    <p>Akce trvá jen od <strong>22.&nbsp;7. do 31.&nbsp;7.</strong> &ndash; aktivuj bonus a hraj o tankovací kartu ORLEN.</p>
+    <a class="cms-tk-cta" href="https://www.forbescasino.cz/bonuses">✅ Aktivovat bonus a hrát</a>
+  </div>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Soutěž o 10× tankovací kartu ORLEN",
+  "description": "Aktivuj bonus, protoč 5 000 Kč na hrách Tech4Bet a získej los do slosování o 10 tankovacích karet ORLEN v hodnotě 5 000 Kč. Soutěž probíhá na Forbes Casino od 22.7. do 31.7.",
+  "startDate": "2026-07-22T00:00:00+02:00",
+  "endDate": "2026-07-31T23:59:59+02:00",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://www.forbescasino.cz/soutez-o-tankovaci-karty"
+  },
+  "image": [
+    "https://www.forbescasino.cz/text_img/1450509ZGN.png"
+  ],
+  "organizer": {
+    "@type": "Organization",
+    "name": "Victoria - Tip, a.s. (Forbes Casino)",
+    "url": "https://www.forbescasino.cz"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.forbescasino.cz/soutez-o-tankovaci-karty",
+    "price": "0",
+    "priceCurrency": "CZK",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-07-22T00:00:00+02:00"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Jak získám los do slosování?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stačí si v sekci Bonusy aktivovat akci „Tankovací karta!“ a v době trvání akce protočit 5 000 Kč na hrách poskytovatele Tech4Bet. Za úspěšné splnění podmínky obdržíš 1 los do slosování."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kolik losů mohu získat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Podmínku protočení můžeš splnit opakovaně – za každé splnění získáš další los, a zvyšuješ tak svou šanci na výhru."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kdy proběhne slosování?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Slosování proběhne nejpozději do 3 dnů od ukončení soutěže, tedy krátce po 31. 7."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak se dozvím o výhře?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Výherci budou kontaktováni prostřednictvím kontaktních údajů uvedených ve svém hráčském kontě."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forbes Casino",
+      "item": "https://www.forbescasino.cz/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Soutěž o tankovací kartu ORLEN",
+      "item": "https://www.forbescasino.cz/soutez-o-tankovaci-karty"
+    }
+  ]
+}
+</script>

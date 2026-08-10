@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chyba 502 – Chybná brána | VictoriaTip</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#FFD166">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="hp-body">
+
+    <header class="main-header error-minimal-header">
+        <div class="container header-container" style="justify-content:center;">
+            <a href="/index.html" class="header-logo">
+                <img src="/img/victoriaTip-logo.svg" alt="VictoriaTip">
+            </a>
+        </div>
+    </header>
+
+    <section class="error-page-section">
+        <div class="container">
+            <div class="error-card glass-card">
+                <div class="error-icon">🔌</div>
+                <span class="badge-yellow">Chyba 502</span>
+                <div class="error-code">502</div>
+                <h1 class="error-title">Server je dočasně nedostupný</h1>
+                <p class="error-subtitle">Server, který má vyřídit váš požadavek, momentálně neodpovídá. Stránka se za chvíli automaticky zkusí načíst znovu.</p>
+
+                <div class="error-progress-wrap">
+                    <div class="error-progress-bar"></div>
+                </div>
+
+                <div class="error-actions">
+                    <a href="javascript:location.reload();" class="btn-primary">Zkusit znovu</a>
+                    <a href="/index.html" class="btn-outline-yellow">Zpět na hlavní stránku</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="error-minimal-footer">
+        <p>&copy; 2026 Victoria-Tip a.s. Všechna práva vyhrazena.</p>
+        <p>Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost! 18+</p>
+    </footer>
+
+    <script>
+        setTimeout(function () { location.reload(); }, 30000);
+    </script>
+
+</body>
+</html>

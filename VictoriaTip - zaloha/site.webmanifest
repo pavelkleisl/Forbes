@@ -1,0 +1,14 @@
+{
+    "name": "VictoriaTip",
+    "short_name": "VictoriaTip",
+    "description": "Síť kamenných casin a heren propojená s prémiovým online casinem a sportovním sázením.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#060818",
+    "theme_color": "#FFD166",
+    "lang": "cs",
+    "icons": [
+        { "src": "/img/favicon.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "/img/apple-touch-icon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }
+    ]
+}
