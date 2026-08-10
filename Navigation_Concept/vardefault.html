@@ -1551,7 +1551,7 @@
         </symbol>
         <symbol id="icon-smartico" viewBox="0 0 24 24">
             <text x="12" y="12" font-weight="900" font-size="19" font-family="'Rubik', sans-serif" text-anchor="middle"
-                dominant-baseline="central" fill="currentColor">S</text>
+                dominant-baseline="central" fill="currentColor">V</text>
         </symbol>
     </svg>
 
@@ -1576,11 +1576,11 @@
                     <button class="product-btn" id="btnSport" onclick="navigateTo('sport', event, false)">
                         <img src="images/icons/sport.svg" class="nav-icon" alt=""> Sports
                     </button>
-                    <button class="product-btn" id="btnSmartico" onclick="openSmarticoModal(event)">
+                    <button class="product-btn" id="btnVernost" onclick="openVernostModal(event)">
                         <svg class="nav-icon"
                             style="width: 22px; height: 22px; display: inline-block; vertical-align: middle;">
                             <use href="#icon-smartico"></use>
-                        </svg> Smartico
+                        </svg> Věrnost
                     </button>
                 </div>
             </div>
@@ -2202,8 +2202,8 @@
         <h1>Sport</h1>
     </div>
 
-    <div id="view-smartico" class="placeholder-view" style="flex-direction: column; gap: 8px;">
-        <h1>Smartico</h1>
+    <div id="view-vernost" class="placeholder-view" style="flex-direction: column; gap: 8px;">
+        <h1>Věrnost</h1>
         <span
             style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
     </div>
@@ -2218,6 +2218,36 @@
 
     <nav class="mobile-bottom-nav">
         <ul class="mobile-bottom-nav-list">
+            <li class="mobile-nav-item" id="nav-doma">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event, false)">
+                    <svg class="svg-icon"><use href="#icon-home"></use></svg>
+                    <span>Domů</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item" id="nav-casino">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('casino', event, false)">
+                    <img src="images/icons/casino.svg" class="casino-img-icon" alt="">
+                    <span>Casino</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item" id="nav-sport">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, false)">
+                    <img src="images/icons/sport.svg" class="sport-img-icon" alt="">
+                    <span>Sport</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item" id="nav-live">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, true)">
+                    <img src="images/icons/sport-live.svg" class="sport-img-icon" alt="">
+                    <span>Live</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item" id="nav-vernost">
+                <a href="#" class="mobile-nav-link" onclick="navigateTo('vernost', event, false)">
+                    <svg class="svg-icon"><use href="#icon-smartico"></use></svg>
+                    <span>Věrnost</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -2234,14 +2264,14 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="smarticoModal" onclick="closeSmarticoModal(event)">
+    <div class="modal-overlay" id="vernostModal" onclick="closeVernostModal(event)">
         <div class="modal-box"
             style="max-width: 900px; width: 92%; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f4f5f9; color: #0d1345; border-radius: 20px;"
             onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeSmarticoModal(event)">&times;</button>
+            <button class="modal-close" onclick="closeVernostModal(event)">&times;</button>
             <h1
                 style="font-size: 42px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #0d1345; margin-bottom: 8px;">
-                Smartico</h1>
+                Věrnost</h1>
             <span
                 style="font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">modul</span>
         </div>
@@ -2296,81 +2326,6 @@
             navigateTo(viewName, null, isLive);
         }
 
-        function renderMobileNav() {
-            const mobileNavList = document.querySelector('.mobile-bottom-nav-list');
-            if (!mobileNavList) return;
-
-            if (active === 'sport') {
-                mobileNavList.innerHTML = `
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event, false)">
-                            <svg class="svg-icon"><use href="#icon-home"></use></svg>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, false)">
-                            <img src="images/icons/sport.svg" class="sport-img-icon" alt="">
-                            <span>Sport</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('smartico', event, false)">
-                            <svg class="svg-icon"><use href="#icon-smartico"></use></svg>
-                            <span>Smartico</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('sport', event, true)">
-                            <span class="sport-live-container">
-                                <img src="images/icons/sport-live.svg" class="sport-img-icon" alt="">
-                            </span>
-                            <span>Live</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('bonuses', event, false)">
-                            <svg class="svg-icon"><use href="#icon-bonus"></use></svg>
-                            <span>Bonuses</span>
-                        </a>
-                    </li>
-                `;
-            } else {
-                mobileNavList.innerHTML = `
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('home', event, false)">
-                            <svg class="svg-icon"><use href="#icon-home"></use></svg>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('casino', event, false)">
-                            <img src="images/icons/casino.svg" class="casino-img-icon" alt="">
-                            <span>Games</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('smartico', event, false)">
-                            <svg class="svg-icon"><use href="#icon-smartico"></use></svg>
-                            <span>Smartico</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('bonuses', event, false)">
-                            <svg class="svg-icon"><use href="#icon-bonus"></use></svg>
-                            <span>Bonuses</span>
-                        </a>
-                    </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link" onclick="navigateTo('medal', event, false)">
-                            <svg class="svg-icon"><use href="#icon-medal"></use></svg>
-                            <span>Hall of Fame</span>
-                        </a>
-                    </li>
-                `;
-            }
-        }
-
         function openAuthModal(type, e) {
             if (e) e.preventDefault();
             document.getElementById('modalTitle').innerText = type === 'login' ? 'Log In' : 'Register';
@@ -2385,20 +2340,20 @@
             document.getElementById('authModal').style.display = 'none';
         }
 
-        function openSmarticoModal(e) {
+        function openVernostModal(e) {
             if (e) e.preventDefault();
             previousActiveProduct = active;
             document.getElementById('btnCasino').classList.remove('active');
             document.getElementById('btnSport').classList.remove('active');
-            document.getElementById('btnSmartico').classList.add('active');
-            moveIndicator('smartico');
-            document.getElementById('smarticoModal').style.display = 'flex';
+            document.getElementById('btnVernost').classList.add('active');
+            moveIndicator('vernost');
+            document.getElementById('vernostModal').style.display = 'flex';
         }
 
-        function closeSmarticoModal(e) {
+        function closeVernostModal(e) {
             if (e) e.preventDefault();
-            document.getElementById('smarticoModal').style.display = 'none';
-            document.getElementById('btnSmartico').classList.remove('active');
+            document.getElementById('vernostModal').style.display = 'none';
+            document.getElementById('btnVernost').classList.remove('active');
 
             if (previousActiveProduct === 'casino') {
                 document.getElementById('btnCasino').classList.add('active');
@@ -2414,7 +2369,7 @@
             document.getElementById('view-home').classList.remove('active-view');
             document.getElementById('view-casino').classList.remove('active-view');
             document.getElementById('view-sport').classList.remove('active-view');
-            document.getElementById('view-smartico').classList.remove('active-view');
+            document.getElementById('view-vernost').classList.remove('active-view');
             document.getElementById('view-bonuses').classList.remove('active-view');
             document.getElementById('view-medal').classList.remove('active-view');
 
@@ -2426,8 +2381,6 @@
                 active = viewName;
             }
 
-            renderMobileNav();
-
             const targetView = document.getElementById('view-' + viewName);
             if (targetView) {
                 targetView.classList.add('active-view');
@@ -2436,7 +2389,7 @@
             if (viewName === 'casino' || viewName === 'sport') {
                 document.getElementById('btnCasino').classList.toggle('active', viewName === 'casino');
                 document.getElementById('btnSport').classList.toggle('active', viewName === 'sport');
-                document.getElementById('btnSmartico').classList.remove('active');
+                document.getElementById('btnVernost').classList.remove('active');
                 moveIndicator(viewName);
 
                 if (viewName === 'sport') {
@@ -2458,28 +2411,23 @@
             } else if (viewName === 'home') {
                 document.getElementById('btnCasino').classList.remove('active');
                 document.getElementById('btnSport').classList.remove('active');
-                document.getElementById('btnSmartico').classList.remove('active');
+                document.getElementById('btnVernost').classList.remove('active');
             }
 
             document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item').forEach(li => {
                 li.classList.remove('active');
             });
 
-            const mobileLinks = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-link');
-            mobileLinks.forEach(link => {
-                const attr = link.getAttribute('onclick') || '';
-                if (viewName === 'sport') {
-                    if (isLive && attr.includes('true')) {
-                        link.closest('.mobile-nav-item').classList.add('active');
-                    } else if (!isLive && attr.includes(`'sport'`) && !attr.includes('true')) {
-                        link.closest('.mobile-nav-item').classList.add('active');
-                    }
-                } else {
-                    if (attr.includes(`'${viewName}'`)) {
-                        link.closest('.mobile-nav-item').classList.add('active');
-                    }
-                }
-            });
+            const mobileNavMap = {
+                home: 'nav-doma',
+                casino: 'nav-casino',
+                vernost: 'nav-vernost',
+            };
+            let activeNavId = viewName === 'sport' ? (isLive ? 'nav-live' : 'nav-sport') : mobileNavMap[viewName];
+            if (activeNavId) {
+                const el = document.getElementById(activeNavId);
+                if (el) el.classList.add('active');
+            }
         }
 
         function moveIndicator(product) {
@@ -2487,7 +2435,7 @@
             let btn;
             if (product === 'casino') btn = document.getElementById('btnCasino');
             else if (product === 'sport') btn = document.getElementById('btnSport');
-            else if (product === 'smartico') btn = document.getElementById('btnSmartico');
+            else if (product === 'vernost') btn = document.getElementById('btnVernost');
 
             const switcher = document.getElementById('switcher');
             if (!indicator || !btn || !switcher || window.innerWidth < 992) return;
@@ -2513,13 +2461,13 @@
                 if (isDesktop) {
                     navigateTo(active === 'sport' ? 'sport' : 'casino', null, false);
                 } else {
-                    document.getElementById('smarticoModal').style.display = 'none';
+                    document.getElementById('vernostModal').style.display = 'none';
                     navigateTo('home', null, false);
                 }
             } else if (isDesktop) {
-                const smarticoModal = document.getElementById('smarticoModal');
-                if (smarticoModal && smarticoModal.style.display === 'flex') {
-                    moveIndicator('smartico');
+                const vernostModal = document.getElementById('vernostModal');
+                if (vernostModal && vernostModal.style.display === 'flex') {
+                    moveIndicator('vernost');
                 } else {
                     moveIndicator(active);
                 }
