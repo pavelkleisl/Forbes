@@ -1565,7 +1565,7 @@
                 </button>
 
                 <a href="#" class="logo" onclick="navigateTo('home', event, false)">
-                    <img src="images/icons/logo.svg" alt="Forbes">
+                    <img src="images/icons/forbes-casino-logo.svg" alt="Forbes">
                 </a>
 
                 <div class="product-switcher" id="switcher">
@@ -1574,7 +1574,7 @@
                         <img src="images/icons/casino.svg" class="nav-icon" style="height: 15px;" alt=""> Casino
                     </button>
                     <button class="product-btn" id="btnSport" onclick="navigateTo('sport', event, false)">
-                        <img src="images/icons/sport.svg" class="nav-icon" alt=""> Sports
+                        <img src="images/icons/sport.svg" class="nav-icon" alt=""> Sport
                     </button>
                     <button class="product-btn" id="btnVernost" onclick="openVernostModal(event)">
                         <svg class="nav-icon"
@@ -1590,13 +1590,13 @@
                     <svg class="auth-icon">
                         <use href="#icon-register"></use>
                     </svg>
-                    <span>Register</span>
+                    <span>Registrace</span>
                 </a>
                 <a href="#" class="btn btn-login" onclick="openAuthModal('login', event)">
                     <svg class="auth-icon">
                         <use href="#icon-login"></use>
                     </svg>
-                    <span>Log In</span>
+                    <span>Přihlásit se</span>
                 </a>
             </div>
         </div>
@@ -2254,7 +2254,7 @@
     <div class="modal-overlay" id="authModal" onclick="closeModal(event)">
         <div class="modal-box" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal(event)">&times;</button>
-            <h2 id="modalTitle">Log In</h2>
+            <h2 id="modalTitle">Přihlásit se</h2>
             <div style="width: 40px; height: 3px; background: #ffbe00; margin: 0 auto 20px auto; border-radius: 2px;">
             </div>
             <p id="modalBody" style="font-size: 14px; line-height: 1.5; color: #555; margin-bottom: 25px;">Simulated
@@ -2280,15 +2280,15 @@
     <script>
         const menus = {
             casino: [
-                { label: 'Home' },
-                { label: 'Bonuses' },
-                { label: 'Tournaments' },
-                { label: 'Blog' },
+                { label: 'Domů', id: 'home' },
+                { label: 'Bonusy', id: 'bonuses' },
+                { label: 'Turnaje', id: 'tournaments' },
+                { label: 'Blog', id: 'blog' },
             ],
             sport: [
-                { label: 'Home' },
-                { label: 'Live' },
-                { label: 'Bonuses' },
+                { label: 'Domů', id: 'home' },
+                { label: 'Live', id: 'live' },
+                { label: 'Bonusy', id: 'bonuses' },
             ],
         };
 
@@ -2296,12 +2296,12 @@
         let previousActiveProduct = 'casino';
         let isDesktop = window.innerWidth >= 992;
 
-        function renderMenu(product, activeLabel = 'Home') {
+        function renderMenu(product, activeId = 'home') {
             const nav = document.getElementById('submenu');
             if (!nav) return;
             nav.innerHTML = menus[product].map((item) => {
                 const badge = item.badge ? `<span class="badge">${item.badge}</span>` : '';
-                let viewTarget = item.label.toLowerCase();
+                let viewTarget = item.id;
                 let isLive = false;
 
                 if (viewTarget === 'home') {
@@ -2311,7 +2311,7 @@
                     isLive = true;
                 }
 
-                const isActive = item.label.toLowerCase() === activeLabel.toLowerCase();
+                const isActive = item.id === activeId;
 
                 return `<li class="submenu-item${isActive ? ' active' : ''}">
                         <a href="#" onclick="activateItem(this, event, '${viewTarget}', ${isLive})">${item.label}${badge}</a>
@@ -2328,7 +2328,7 @@
 
         function openAuthModal(type, e) {
             if (e) e.preventDefault();
-            document.getElementById('modalTitle').innerText = type === 'login' ? 'Log In' : 'Register';
+            document.getElementById('modalTitle').innerText = type === 'login' ? 'Přihlásit se' : 'Registrace';
             document.getElementById('modalBody').innerText = type === 'login'
                 ? 'Simulated modal window box layout for the Log In authentication process.'
                 : 'Simulated modal window box layout for the account Registration process.';
@@ -2392,6 +2392,11 @@
                 document.getElementById('btnVernost').classList.remove('active');
                 moveIndicator(viewName);
 
+                const logoImg = document.querySelector('.logo img');
+                if (logoImg) {
+                    logoImg.src = viewName === 'sport' ? 'images/icons/forbes-sporty-logo.svg' : 'images/icons/forbes-casino-logo.svg';
+                }
+
                 if (viewName === 'sport') {
                     const sportHeader = document.querySelector('#view-sport h1');
                     if (sportHeader) {
@@ -2403,7 +2408,7 @@
                 if (nav) {
                     nav.classList.add('fade-out');
                     setTimeout(() => {
-                        let activeLabel = isLive ? 'Live' : 'Home';
+                        let activeLabel = isLive ? 'live' : 'home';
                         renderMenu(viewName, activeLabel);
                         nav.classList.remove('fade-out');
                     }, 180);
