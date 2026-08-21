@@ -1415,6 +1415,131 @@
             }
         }
 
+        /* ─── Widget: YouTube Highlights ───────────────────────── */
+        .cms-yt-carousel {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+
+        .cms-yt-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cms-yt-card {
+            flex: 0 0 240px;
+            scroll-snap-align: start;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0d1038;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .cms-yt-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.26);
+        }
+
+        .cms-yt-thumb {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .cms-yt-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cms-yt-card:hover .cms-yt-thumb img {
+            transform: scale(1.05);
+        }
+
+        .cms-yt-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .cms-yt-card:hover .cms-yt-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .cms-yt-play-btn {
+            width: 46px;
+            height: 46px;
+            background: #FF0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(255, 0, 0, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cms-yt-card:hover .cms-yt-play-btn {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.65);
+        }
+
+        .cms-yt-play-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            margin-left: 3px;
+        }
+
+        .cms-yt-badge-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: rgba(255,255,255,0.85);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+
+        .cms-yt-info {
+            padding: 10px 12px 13px;
+        }
+
+        .cms-yt-league {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .cms-yt-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+            margin: 0;
+        }
+
         /* ─── Widget: Hot & Cold Games ──────────────────────────── */
         .hc-widget {
             background: transparent;
@@ -1908,6 +2033,63 @@
             </div>
         </section>
         -->
+
+        <section class="cms-section">
+            <div class="cms-section-header">
+                <h3>Yesterday's Matches</h3>
+            </div>
+            <div class="cms-yt-carousel">
+
+                <a href="https://www.youtube.com/watch?v=TCMLua52xqY" target="_blank" class="cms-yt-card">
+                    <div class="cms-yt-thumb">
+                        <img src="images/youtube_images/AthxMal.jpg" alt="Atlético de Madrid vs Málaga CF">
+                        <div class="cms-yt-overlay">
+                            <div class="cms-yt-play-btn">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <span class="cms-yt-badge-label">Highlights</span>
+                    </div>
+                    <div class="cms-yt-info">
+                        <span class="cms-yt-league">🇪🇸 La Liga</span>
+                        <p class="cms-yt-title">Atlético de Madrid 2–0 Málaga CF</p>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=2n65HLTjOBk" target="_blank" class="cms-yt-card">
+                    <div class="cms-yt-thumb">
+                        <img src="images/youtube_images/CerxPlz.jpg" alt="Crvena Zvezda vs Viktoria Plzeň">
+                        <div class="cms-yt-overlay">
+                            <div class="cms-yt-play-btn">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <span class="cms-yt-badge-label">Highlights</span>
+                    </div>
+                    <div class="cms-yt-info">
+                        <span class="cms-yt-league">🇪🇺 Evropská liga – Kvalifikace</span>
+                        <p class="cms-yt-title">Crvena Zvezda 0–3 Viktoria Plzeň</p>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=IsMhKcBLVDs" target="_blank" class="cms-yt-card">
+                    <div class="cms-yt-thumb">
+                        <img src="images/youtube_images/ArsxCity.jpg" alt="Arsenal vs Manchester City">
+                        <div class="cms-yt-overlay">
+                            <div class="cms-yt-play-btn">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <span class="cms-yt-badge-label">Highlights</span>
+                    </div>
+                    <div class="cms-yt-info">
+                        <span class="cms-yt-league">🇬🇧 FA Community Shield</span>
+                        <p class="cms-yt-title">Arsenal 3–0 Manchester City</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
 
         <section class="cms-section">
             <div class="cms-section-header">
